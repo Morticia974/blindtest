@@ -1,0 +1,637 @@
+/* =========================================================================
+   Ok Balance le Son Papa — feuille de style
+   Ambiance assumée : fond vert-nuit, accent vert citron, ambre doré pour les points.
+   Conçu d'abord pour le téléphone : c'est là que les joueurs seront.
+   ========================================================================= */
+
+:root {
+  /* Vert citron sur fond vert-nuit. L'ambre doré reste réservé à tout ce qui
+     touche aux points et au temps qui passe — c'est ce qui réchauffe le vert. */
+  --encre:      #06140F;
+  --encre-haut: #0A1E16;
+  --surface:    #0E2A20;
+  --surface-2:  #14392B;
+  --bord:       #1F5942;
+  --texte:      #EBFCF3;
+  --doux:       #7FB89C;
+  --vert:       #8CFF4A;
+  --vert-fonce: #46C41B;
+  --ambre:      #FFC247;
+  --corail:     #FF6B6B;   /* uniquement les erreurs */
+  --menthe-ok:  #5CE6A0;
+
+  --rayon:      14px;
+  --rayon-lg:   22px;
+  --ombre:      0 18px 44px rgba(0,0,0,.5);
+
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --corps:   "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:    "DM Mono", "Consolas", ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 620px at 12% -8%, #10422F 0%, transparent 62%),
+    radial-gradient(880px 520px at 92% 8%, #0C3A4A 0%, transparent 58%),
+    var(--encre);
+  background-attachment: fixed;
+  color: var(--texte);
+  font-family: var(--corps);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+.ecran { display: none; }
+.ecran.actif { display: block; }
+
+.enveloppe {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  padding-inline: 18px;
+  padding-block: 26px 40px;
+  position: relative;
+  z-index: 1;          /* passe devant les émojis flottants */
+}
+
+/* ---------- émojis qui habillent le fond ---------- */
+
+.decor {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.decor span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  font-size: var(--s, 30px);
+  opacity: .28;
+  animation: flotte var(--v, 9s) ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  will-change: transform;
+}
+@keyframes flotte {
+  0%, 100% { transform: translateY(0)     rotate(var(--r, 0deg)); }
+  50%      { transform: translateY(-18px) rotate(calc(var(--r, 0deg) + 7deg)); }
+}
+/* Sur petit écran, on en garde moins pour ne pas charger la page. */
+@media (max-width: 620px) {
+  .decor span.secondaire { display: none; }
+  .decor span { font-size: calc(var(--s, 30px) * .8); opacity: .16; }
+}
+
+/* ---------- éléments de base ---------- */
+
+.etiquette {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--doux);
+  font-weight: 700;
+}
+
+.bouton {
+  appearance: none;
+  border: 1px solid var(--bord);
+  background: var(--surface-2);
+  color: var(--texte);
+  padding: 13px 20px;
+  border-radius: var(--rayon);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .12s ease, border-color .15s ease, background .15s ease;
+}
+.bouton:hover  { border-color: var(--vert); }
+.bouton:active { transform: translateY(1px); }
+.bouton:focus-visible { outline: 3px solid var(--ambre); outline-offset: 2px; }
+.bouton[disabled] { opacity: .45; cursor: not-allowed; }
+
+.bouton.principal {
+  background: linear-gradient(180deg, var(--vert), var(--vert-fonce));
+  border-color: transparent;
+  /* Texte sombre : sur un vert citron aussi lumineux, du blanc serait illisible. */
+  color: #06140F;
+  text-shadow: none;
+  box-shadow: 0 10px 26px rgba(140,255,74,.30);
+}
+.bouton.principal:hover { filter: brightness(1.07); }
+
+.bouton.discret { background: transparent; }
+
+.champ {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.58);
+  color: var(--texte);
+}
+.champ::placeholder { color: #4E7A66; }
+.champ:focus { outline: none; border-color: var(--vert); box-shadow: 0 0 0 3px rgba(140,255,74,.22); }
+
+.carte {
+  background: linear-gradient(180deg, rgba(20,57,43,.80), rgba(14,42,32,.85));
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon-lg);
+  padding: 20px;
+}
+
+/* =========================================================================
+   Accueil
+   ========================================================================= */
+
+.entete-accueil { text-align: center; padding-block: 18px 6px; }
+
+/* Dit de quoi il s'agit, puisque le nom du site ne le dit pas. */
+.sur-titre {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--menthe-ok);
+}
+
+.logo {
+  font-family: var(--display);
+  font-size: clamp(34px, 9.5vw, 64px);
+  font-weight: 800;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
+  margin-inline: auto;
+  background: linear-gradient(96deg, var(--ambre) 6%, var(--vert) 54%, #3DE0C0 96%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accroche {
+  color: var(--texte);
+  max-width: 42ch;
+  margin: 14px auto 0;
+  font-size: clamp(15px, 3.6vw, 17.5px);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.grille-accueil {
+  display: grid;
+  gap: 16px;
+  margin-top: 26px;
+}
+@media (min-width: 720px) {
+  .grille-accueil { grid-template-columns: 1fr 1fr; align-items: start; }
+  .grille-accueil .pleine { grid-column: 1 / -1; }
+}
+
+.ligne-profil { display: flex; gap: 10px; align-items: stretch; }
+
+.choix-emoji {
+  flex: 0 0 auto;
+  width: 60px;
+  font-size: 26px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.58);
+  cursor: pointer;
+  line-height: 1;
+}
+.choix-emoji:hover { border-color: var(--vert); }
+
+.saisie-code {
+  font-family: var(--mono);
+  font-size: 26px;
+  letter-spacing: .34em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   Salon d'attente
+   ========================================================================= */
+
+.bandeau-code {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.code-salon {
+  font-family: var(--mono);
+  font-size: clamp(38px, 12vw, 58px);
+  font-weight: 500;
+  letter-spacing: .16em;
+  color: var(--ambre);
+  line-height: 1;
+}
+
+.liste-joueurs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jeton-joueur {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px 9px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--bord);
+  font-weight: 600;
+}
+.jeton-joueur .rond { font-size: 20px; line-height: 1; }
+.jeton-joueur.moi { border-color: var(--vert); }
+.jeton-joueur .role { font-size: 11px; color: var(--ambre); font-weight: 700; }
+
+.grille-manches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 11px;
+  margin-top: 14px;
+}
+
+.vignette-manche {
+  text-align: left;
+  padding: 15px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.45);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, transform .12s ease;
+}
+.vignette-manche:hover { border-color: var(--vert); transform: translateY(-2px); }
+.vignette-manche[aria-pressed="true"] {
+  border-color: var(--vert);
+  background: linear-gradient(180deg, rgba(140,255,74,.22), rgba(140,255,74,.06));
+}
+.vignette-manche .emoji { font-size: 24px; display: block; margin-bottom: 7px; }
+.vignette-manche .nom { font-family: var(--display); font-weight: 700; font-size: 16px; display: block; }
+.vignette-manche .desc { font-size: 12.5px; color: var(--doux); display: block; margin-top: 3px; }
+
+.reglages { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.reglage span { display: block; margin-bottom: 6px; }
+.reglage input[type="range"] { width: 100%; accent-color: var(--vert); }
+.reglage .valeur { font-family: var(--mono); color: var(--ambre); }
+
+/* =========================================================================
+   Écran de jeu
+   ========================================================================= */
+
+.scene {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .scene { grid-template-columns: 1fr 268px; }
+}
+
+.barre-progression {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.compteur-manche { font-family: var(--mono); color: var(--doux); font-size: 14px; }
+
+/* --- le disque central --- */
+
+.plateau {
+  position: relative;
+  width: min(300px, 74vw);
+  aspect-ratio: 1;
+  margin: 4px auto 0;
+  display: grid;
+  place-items: center;
+}
+
+.anneau { position: absolute; inset: 0; transform: rotate(-90deg); }
+.anneau circle { fill: none; stroke-width: 9; stroke-linecap: round; }
+.anneau .piste-fond { stroke: rgba(255,255,255,.08); }
+.anneau .piste-temps { stroke: var(--vert); transition: stroke .4s ease; }
+.plateau.presse .anneau .piste-temps { stroke: var(--ambre); }
+
+.visualiseur {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 42%, #144232 0%, #07170F 74%);
+}
+.visualiseur canvas { width: 100%; height: 100%; display: block; }
+
+.centre-plateau {
+  position: absolute;
+  text-align: center;
+  pointer-events: none;
+  padding-inline: 14px;
+}
+.chrono {
+  font-family: var(--mono);
+  font-size: 46px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-shadow: 0 3px 18px rgba(0,0,0,.65);
+}
+.sous-chrono {
+  font-size: 12px;
+  color: var(--doux);
+  margin: 5px auto 0;
+  max-width: 15ch;      /* pour que « on réessaie… » reste dans le disque */
+  line-height: 1.3;
+}
+
+/* pochette révélée */
+.pochette {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  box-shadow: 0 0 0 4px rgba(255,194,71,.45), 0 18px 46px rgba(0,0,0,.6);
+  animation: apparait .45s ease both;
+}
+@keyframes apparait { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
+
+/* --- volume --- */
+
+.reglage-son {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(260px, 100%);
+  margin: 16px auto 0;
+}
+.bouton-son {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  font-size: 19px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.58);
+  cursor: pointer;
+  transition: border-color .15s ease, transform .12s ease;
+}
+.bouton-son:hover { border-color: var(--vert); }
+.bouton-son:active { transform: scale(.94); }
+.bouton-son:focus-visible { outline: 3px solid var(--ambre); outline-offset: 2px; }
+.reglage-son input[type="range"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  accent-color: var(--vert);
+  cursor: pointer;
+}
+
+/* --- réponse --- */
+
+.zone-reponse { margin-top: 18px; }
+
+.paire-reponses { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.paire-reponses.solo { grid-template-columns: 1fr; }
+
+/* Crédit affiché à la révélation d'une manche à réponse unique : l'info qui
+   ne rapportait pas de points, montrée quand même. */
+.credit-solo {
+  margin: -4px 0 12px;
+  font-size: 13px;
+  color: var(--doux);
+  font-weight: 600;
+}
+.credit-solo::first-letter { text-transform: uppercase; }
+
+.case-reponse {
+  border: 1px dashed var(--bord);
+  border-radius: var(--rayon);
+  padding: 12px 14px;
+  background: rgba(4,14,10,.40);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: border-color .2s ease, background .2s ease, box-shadow .25s ease;
+}
+.case-reponse .etiquette { display: block; margin-bottom: 4px; }
+.case-reponse .contenu { font-weight: 700; font-size: 15px; color: var(--doux); }
+
+/* Dès que la réponse est connue, elle cesse d'être une étiquette : elle passe
+   en gros, dans la police d'affichage, avec un halo. C'est le moment que tout
+   le monde regarde. */
+.case-reponse.trouve .contenu,
+.case-reponse.revele .contenu {
+  font-family: var(--display);
+  font-size: clamp(19px, 4.8vw, 24px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  display: block;
+  margin-top: 2px;
+  animation: reponse-tombe .34s cubic-bezier(.2,.9,.3,1.3) both;
+}
+@keyframes reponse-tombe {
+  from { opacity: 0; transform: translateY(8px) scale(.94); }
+  to   { opacity: 1; transform: none; }
+}
+
+.case-reponse.trouve {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--menthe-ok);
+  background: rgba(92,230,160,.17);
+  box-shadow: 0 0 0 4px rgba(92,230,160,.10), 0 10px 26px rgba(92,230,160,.18);
+}
+.case-reponse.trouve .contenu { color: #D6FFEC; text-shadow: 0 0 22px rgba(92,230,160,.55); }
+.case-reponse.trouve .etiquette { color: var(--menthe-ok); }
+.case-reponse.trouve .etiquette::after { content: " ✓"; }
+
+.case-reponse.revele {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--ambre);
+  background: rgba(255,194,71,.14);
+  box-shadow: 0 0 0 4px rgba(255,194,71,.08), 0 10px 26px rgba(255,194,71,.16);
+}
+.case-reponse.revele .contenu { color: #FFE9BC; text-shadow: 0 0 22px rgba(255,194,71,.45); }
+.case-reponse.revele .etiquette { color: var(--ambre); }
+
+.ligne-saisie { display: flex; gap: 9px; }
+.ligne-saisie .champ { font-size: 17px; }
+.ligne-saisie.secoue { animation: secousse .34s ease; }
+@keyframes secousse {
+  0%,100% { transform: translateX(0); }
+  22% { transform: translateX(-7px); }
+  46% { transform: translateX(6px); }
+  72% { transform: translateX(-3px); }
+}
+
+.info-saisie { min-height: 22px; margin-top: 9px; font-size: 14px; font-weight: 600; }
+.info-saisie.bien { color: var(--menthe-ok); }
+.info-saisie.raté { color: var(--doux); }
+
+/* points qui s'envolent */
+.gain {
+  position: fixed;
+  z-index: 40;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--ambre);
+  pointer-events: none;
+  animation: envole 1.05s ease-out forwards;
+  text-shadow: 0 3px 16px rgba(0,0,0,.6);
+}
+@keyframes envole {
+  0%   { opacity: 0; transform: translate(-50%, 0) scale(.7); }
+  18%  { opacity: 1; transform: translate(-50%, -14px) scale(1.12); }
+  100% { opacity: 0; transform: translate(-50%, -88px) scale(1); }
+}
+
+/* --- tableau des scores --- */
+
+.tableau-scores { padding: 16px; }
+.tableau-scores h3 { font-size: 15px; margin-bottom: 12px; }
+
+.ligne-score {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 10px;
+  border-radius: 11px;
+  transition: background .3s ease;
+}
+.ligne-score + .ligne-score { margin-top: 3px; }
+.ligne-score.moi { background: rgba(140,255,74,.13); }
+.ligne-score .rang { font-family: var(--mono); color: var(--doux); font-size: 13px; }
+.ligne-score .nom { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ligne-score .pts { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ambre); font-weight: 500; }
+.ligne-score .etat { font-size: 13px; letter-spacing: .08em; }
+.ligne-score.absent { opacity: .42; }
+
+/* =========================================================================
+   Fin de partie
+   ========================================================================= */
+
+.podium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px;
+  align-items: end;
+  margin: 26px 0;
+}
+.marche { text-align: center; }
+.marche .socle {
+  background: linear-gradient(180deg, var(--surface-2), rgba(25,19,51,.4));
+  border: 1px solid var(--bord);
+  border-radius: 13px 13px 0 0;
+  display: grid;
+  place-items: end center;
+  padding-bottom: 11px;
+  font-family: var(--mono);
+  color: var(--ambre);
+}
+.marche.or     .socle { height: 128px; border-color: var(--ambre); box-shadow: inset 0 -3px 0 var(--ambre); }
+.marche.argent .socle { height: 94px; }
+.marche.bronze .socle { height: 74px; }
+.marche .tete { font-size: 30px; }
+.marche .qui { font-weight: 700; font-size: 14px; margin: 5px 0 7px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.recap { list-style: none; padding: 0; margin: 20px 0 0; }
+.recap li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 11px;
+  padding: 9px 0;
+  border-top: 1px solid var(--bord);
+  font-size: 14.5px;
+}
+.recap .num { font-family: var(--mono); color: var(--doux); }
+.recap .titre-piste { font-weight: 700; }
+.recap .artiste-piste { color: var(--doux); }
+
+/* =========================================================================
+   Divers
+   ========================================================================= */
+
+.banniere {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 13px 16px;
+  border-radius: var(--rayon);
+  background: rgba(255,194,71,.1);
+  border: 1px solid rgba(255,194,71,.36);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.banniere.erreur { background: rgba(255,107,107,.14); border-color: rgba(255,107,107,.5); }
+.banniere b { color: var(--ambre); }
+
+.chargement {
+  display: inline-block;
+  width: 17px; height: 17px;
+  border: 2px solid rgba(255,255,255,.22);
+  border-top-color: var(--vert);
+  border-radius: 50%;
+  animation: tourne .8s linear infinite;
+  vertical-align: -3px;
+}
+@keyframes tourne { to { transform: rotate(360deg); } }
+
+.pied {
+  text-align: center;
+  color: #4E7A66;
+  font-size: 12.5px;
+  padding: 26px 18px 34px;
+}
+
+.invisible { display: none !important; }
+
+/* Doit passer après .credit et consorts, qui forcent un display. */
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

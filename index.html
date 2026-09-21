@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ok Balance le Son Papa</title>
+<meta name="description" content="Blind test en ligne : chacun sur son téléphone, la playlist s'enchaîne toute seule.">
+<meta name="theme-color" content="#06140F">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css?v=22">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+</head>
+<body>
+
+<!-- ===================== ACCUEIL ===================== -->
+<section id="ecran-accueil" class="ecran actif">
+
+  <div class="decor" aria-hidden="true">
+    <span style="--x:5%;--y:14%;--s:38px;--r:-12deg;--d:0s">🎵</span>
+    <span style="--x:88%;--y:9%;--s:34px;--r:10deg;--d:1.2s">🎶</span>
+    <span style="--x:12%;--y:74%;--s:42px;--r:8deg;--d:2.4s">😄</span>
+    <span style="--x:80%;--y:66%;--s:40px;--r:-9deg;--d:.6s">😛</span>
+    <span class="secondaire" style="--x:46%;--y:88%;--s:30px;--r:14deg;--d:3s;--v:11s">🎤</span>
+    <span class="secondaire" style="--x:70%;--y:34%;--s:28px;--r:-6deg;--d:1.8s;--v:10s">🎧</span>
+    <span class="secondaire" style="--x:22%;--y:38%;--s:26px;--r:16deg;--d:3.6s">🎶</span>
+    <span class="secondaire" style="--x:93%;--y:46%;--s:32px;--r:-14deg;--d:2s;--v:12s">🤪</span>
+    <span class="secondaire" style="--x:3%;--y:50%;--s:28px;--r:6deg;--d:4.2s">🪩</span>
+    <span class="secondaire" style="--x:57%;--y:6%;--s:26px;--r:-10deg;--d:2.8s;--v:10s">🎉</span>
+  </div>
+
+  <div class="enveloppe">
+
+    <header class="entete-accueil">
+      <p class="sur-titre">🎧 Le blind test entre amis</p>
+      <div class="logo">Ok Balance le Son Papa</div>
+      <p class="accroche" id="accroche">Chacun son téléphone, et que le meilleur gagne.</p>
+    </header>
+
+    <div id="banniere-mode" class="banniere invisible" style="margin-top:22px"></div>
+
+    <div class="grille-accueil">
+
+      <div class="carte pleine">
+        <label class="etiquette" for="champ-pseudo">Ton nom de scène</label>
+        <div class="ligne-profil" style="margin-top:8px">
+          <button type="button" id="bouton-emoji" class="choix-emoji" title="Changer d'avatar" aria-label="Changer d'avatar">🎤</button>
+          <input id="champ-pseudo" class="champ" maxlength="18" placeholder="Audrey" autocomplete="nickname">
+        </div>
+      </div>
+
+      <div class="carte">
+        <h2 style="font-size:19px">Ouvrir un salon</h2>
+        <p style="color:var(--doux);font-size:14px;margin:8px 0 16px">
+          Tu choisis la playlist, tu partages le code aux copains.
+        </p>
+        <button id="bouton-creer" class="bouton principal" style="width:100%">Créer un salon</button>
+      </div>
+
+      <div class="carte">
+        <h2 style="font-size:19px">Rejoindre</h2>
+        <p style="color:var(--doux);font-size:14px;margin:8px 0 12px">
+          Entre le code à 4 lettres qu'on t'a donné.
+        </p>
+        <input id="champ-code" class="champ saisie-code" maxlength="4" placeholder="····"
+               inputmode="latin" autocomplete="off" spellcheck="false">
+        <button id="bouton-rejoindre" class="bouton" style="width:100%;margin-top:10px">Rejoindre la partie</button>
+      </div>
+
+    </div>
+
+    <div id="erreur-accueil" class="banniere erreur invisible" style="margin-top:18px"></div>
+
+    <p class="pied">
+      Les extraits viennent du catalogue Apple Music (30&nbsp;secondes, gratuits, sans compte).
+    </p>
+  </div>
+</section>
+
+<!-- ===================== SALON D'ATTENTE ===================== -->
+<section id="ecran-salon" class="ecran">
+
+  <div class="decor" aria-hidden="true">
+    <span style="--x:7%;--y:20%;--s:34px;--r:-10deg;--d:0s">🎶</span>
+    <span style="--x:90%;--y:15%;--s:36px;--r:12deg;--d:1.5s">😁</span>
+    <span class="secondaire" style="--x:84%;--y:72%;--s:30px;--r:-8deg;--d:2.6s;--v:11s">🎵</span>
+    <span class="secondaire" style="--x:10%;--y:62%;--s:32px;--r:9deg;--d:3.4s">😛</span>
+    <span class="secondaire" style="--x:50%;--y:92%;--s:28px;--r:-14deg;--d:1.1s;--v:10s">🕺</span>
+  </div>
+
+  <div class="enveloppe">
+
+    <div class="carte">
+      <div class="bandeau-code">
+        <div>
+          <span class="etiquette">Code du salon</span>
+          <div id="affichage-code" class="code-salon">····</div>
+        </div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap">
+          <button id="bouton-copier" class="bouton discret">Copier le lien</button>
+          <button id="bouton-quitter" class="bouton discret">Quitter</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="carte" style="margin-top:16px">
+      <span class="etiquette">Joueurs dans la place</span>
+      <ul id="liste-joueurs" class="liste-joueurs" style="margin-top:11px"></ul>
+    </div>
+
+    <div class="carte" style="margin-top:16px">
+      <span class="etiquette">La manche</span>
+      <div id="grille-manches" class="grille-manches"></div>
+    </div>
+
+    <div class="carte" style="margin-top:16px">
+      <span class="etiquette">Réglages</span>
+      <div class="reglages" style="margin-top:13px">
+        <label class="reglage">
+          <span>Nombre de titres&nbsp;: <b class="valeur" id="valeur-titres">12</b></span>
+          <input id="reglage-titres" type="range" min="5" max="25" step="1" value="12">
+        </label>
+        <label class="reglage">
+          <span>Durée d'écoute&nbsp;: <b class="valeur" id="valeur-duree">30</b>&nbsp;s</span>
+          <input id="reglage-duree" type="range" min="10" max="30" step="5" value="30">
+        </label>
+        <label class="reglage">
+          <span>Pause entre deux&nbsp;: <b class="valeur" id="valeur-pause">8</b>&nbsp;s</span>
+          <input id="reglage-pause" type="range" min="4" max="15" step="1" value="8">
+        </label>
+      </div>
+    </div>
+
+    <div id="note-chef" class="banniere invisible" style="margin-top:16px"></div>
+
+    <button id="bouton-lancer" class="bouton principal" style="width:100%;margin-top:16px;padding:17px">
+      Lancer la partie
+    </button>
+
+  </div>
+</section>
+
+<!-- ===================== JEU ===================== -->
+<section id="ecran-jeu" class="ecran">
+  <div class="enveloppe">
+
+    <div class="barre-progression">
+      <span class="compteur-manche" id="compteur-manche">Titre 1 / 12</span>
+      <span class="compteur-manche" id="nom-manche"></span>
+    </div>
+
+    <div class="scene">
+      <div>
+        <div class="plateau" id="plateau">
+          <svg class="anneau" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="piste-fond" cx="50" cy="50" r="45.5"></circle>
+            <circle class="piste-temps" id="piste-temps" cx="50" cy="50" r="45.5"
+                    stroke-dasharray="285.9" stroke-dashoffset="0"></circle>
+          </svg>
+          <div class="visualiseur"><canvas id="toile" width="520" height="520"></canvas></div>
+          <img id="pochette" class="pochette invisible" alt="" >
+          <div class="centre-plateau" id="centre-plateau">
+            <div class="chrono" id="chrono">30</div>
+            <div class="sous-chrono" id="sous-chrono">à l'écoute</div>
+          </div>
+        </div>
+
+        <div class="reglage-son">
+          <button type="button" id="bouton-muet" class="bouton-son"
+                  aria-label="Couper le son" title="Couper le son">🔊</button>
+          <input id="curseur-volume" type="range" min="0" max="100" step="1" value="80"
+                 aria-label="Volume">
+        </div>
+
+        <div class="zone-reponse">
+          <div class="paire-reponses" id="paire-reponses">
+            <div class="case-reponse" id="case-titre">
+              <span class="etiquette" id="label-titre">Titre</span>
+              <span class="contenu" id="contenu-titre">à trouver</span>
+            </div>
+            <div class="case-reponse" id="case-artiste">
+              <span class="etiquette" id="label-artiste">Artiste</span>
+              <span class="contenu" id="contenu-artiste">à trouver</span>
+            </div>
+          </div>
+          <p class="credit-solo" id="credit-solo" hidden></p>
+
+          <form id="formulaire-reponse" class="ligne-saisie" autocomplete="off">
+            <input id="champ-reponse" class="champ" placeholder="Titre ou artiste…"
+                   autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="send">
+            <button type="submit" class="bouton principal">Go</button>
+          </form>
+          <div class="info-saisie" id="info-saisie"></div>
+        </div>
+      </div>
+
+      <aside class="carte tableau-scores">
+        <h3>Scores 🏆</h3>
+        <div id="tableau-scores"></div>
+      </aside>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== FIN ===================== -->
+<section id="ecran-fin" class="ecran">
+  <div class="enveloppe">
+    <header style="text-align:center">
+      <span class="etiquette">Partie terminée</span>
+      <h1 style="font-size:clamp(30px,8vw,46px);margin-top:8px" id="titre-fin">Et le gagnant est…</h1>
+    </header>
+
+    <div class="podium" id="podium"></div>
+
+    <div class="carte">
+      <span class="etiquette">Ce qui est passé</span>
+      <ul class="recap" id="recap"></ul>
+    </div>
+
+    <div style="display:flex;gap:11px;margin-top:18px;flex-wrap:wrap">
+      <button id="bouton-rejouer" class="bouton principal" style="flex:1;min-width:190px">Rejouer</button>
+      <button id="bouton-accueil" class="bouton" style="flex:1;min-width:190px">Retour à l'accueil</button>
+    </div>
+  </div>
+</section>
+
+<audio id="lecteur" crossorigin="anonymous" preload="auto"></audio>
+
+<!-- Firebase (uniquement utile quand config.js est rempli) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<!-- Le ?v=22 force le navigateur à recharger ces fichiers au lieu de servir une
+     vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
+     le changement ne s'affiche pas, passe tous les ?v=22 à ?v=22. -->
+<script src="js/config.js?v=22"></script>
+<script src="js/match.js?v=22"></script>
+<script src="js/playlists.js?v=22"></script>
+<script src="js/itunes.js?v=22"></script>
+<script src="js/net.js?v=22"></script>
+<script src="js/game.js?v=22"></script>
+<script src="js/app.js?v=22"></script>
+
+</body>
+</html>
