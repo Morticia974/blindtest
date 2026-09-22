@@ -141,7 +141,8 @@ var Playlists = (function () {
            remplacés par un autre titre du même artiste — et Leslie, absente.
            Corneille, Amel Bent et K-Maro sont déjà dans le rap, Shaggy dans le
            dancefloor : on ne les remet pas ici. */
-        { t: "Bring Me to Life", a: "Evanescence" },
+        // « Bring Me to Life » est déjà dans la catégorie Métal.
+        { t: "The Reason", a: "Hoobastank" },
         { t: "How You Remind Me", a: "Nickelback" },
         { t: "Complicated", a: "Avril Lavigne" },
         { t: "Beautiful", a: "Christina Aguilera" },
@@ -212,7 +213,33 @@ var Playlists = (function () {
         { t: "Je m'en vais", a: "Vianney" },
         { t: "Christine", a: "Christine and the Queens" },
         { t: "Dernière danse", a: "Indila" },
-        { t: "Papaoutai", a: "Stromae" }
+        { t: "Papaoutai", a: "Stromae" },
+
+        { t: "Ne me quitte pas", a: "Jacques Brel" },
+        { t: "Le Gorille", a: "Georges Brassens" },
+        /* Sans l'album, Apple servait la reprise de La Grande Sophie. */
+        { t: "Comme un arbre dans la ville", a: "Maxime Le Forestier", q: "Maxime Le Forestier Comme un arbre dans la ville Mon frere" },
+        { t: "Ella, elle l'a", a: "France Gall" },
+        { t: "Dis, quand reviendras-tu ?", a: "Barbara" },
+        { t: "Requiem pour un fou", a: "Johnny Hallyday" },
+        { t: "Quelque chose de Tennessee", a: "Johnny Hallyday" },
+        { t: "L'Encre de tes yeux", a: "Francis Cabrel" },
+        { t: "Je l'aime à mourir", a: "Francis Cabrel" },
+        { t: "S'il suffisait d'aimer", a: "Céline Dion" },
+        { t: "Elle a les yeux revolver", a: "Marc Lavoine" },
+        { t: "Désenchantée", a: "Mylène Farmer" },
+        { t: "Libertine", a: "Mylène Farmer" },
+        { t: "Mon mec à moi", a: "Patricia Kaas" },
+        { t: "Voyage en Italie", a: "Lilicub" },
+        { t: "Tous les cris les SOS", a: "Daniel Balavoine" },
+        { t: "Encore un matin", a: "Jean-Jacques Goldman" },
+        { t: "Je te donne", a: "Jean-Jacques Goldman", altA: ["Michael Jones"] },
+        { t: "Ma Liberté de penser", a: "Florent Pagny" },
+        { t: "Jardin d'hiver", a: "Henri Salvador" },
+        { t: "Sur un prélude de Bach", a: "Maurane" },
+        { t: "Sous le vent", a: "Garou & Céline Dion", altA: ["Garou", "Céline Dion"] },
+        { t: "Manhattan-Kaboul", a: "Renaud & Axelle Red", altA: ["Renaud", "Axelle Red"] },
+        { t: "Lettre à France", a: "Michel Polnareff" }
       ]
     },
     {
@@ -246,7 +273,25 @@ var Playlists = (function () {
         // Titre complet exigé : « Blanche-Neige » seul est le nom du personnage,
         // pas celui du film. La forme avec le chiffre 7 est acceptée telle quelle.
         { t: "Un jour mon prince viendra", a: "Blanche-Neige et les Sept Nains", q: "Un jour mon prince viendra Blanche Neige", altA: ["Blanche-Neige et les 7 nains"] },
-        { t: "Prince Ali", a: "Aladdin", q: "Prince Ali Aladdin" }
+        { t: "Prince Ali", a: "Aladdin", q: "Prince Ali Aladdin" },
+
+        /* Apple France n'a rien d'utilisable pour Dumbo, Coco, Le Prince
+           d'Égypte, Kuzco, Oliver et Compagnie ni Rox et Rouky : que des
+           versions piano, anglaises, ou un autre film entièrement. */
+        { t: "Bibbidi-Bobbidi-Boo", a: "Cendrillon", q: "Cendrillon Bibbidi Bobbidi Boo Bande Originale Française" },
+        { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews" },
+        { t: "J'en ai rêvé", a: "La Belle au bois dormant", q: "La Belle au bois dormant J'en ai rêvé bande originale française" },
+        { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française" },
+        { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins" },
+        { t: "Au bout du rêve", a: "La Princesse et la Grenouille", q: "La Princesse et la Grenouille Au bout du rêve" },
+        { t: "Cruella De Vil", a: "Les 101 Dalmatiens", q: "Les 101 Dalmatiens Cruella De Vil", altA: ["101 Dalmatiens"] },
+        { t: "Dans un autre monde", a: "La Reine des neiges 2", q: "La Reine des neiges 2 Dans un autre monde", altA: ["La Reine des neiges"] },
+        { t: "Ne parlons pas de Bruno", a: "Encanto", q: "Encanto Ne parlons pas de Bruno", altA: ["La Fantastique Famille Madrigal"] },
+        { t: "Loin du froid de décembre", a: "Anastasia", q: "Anastasia Loin du froid de décembre" },
+        { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français" },
+        // Audrey a validé ce titre-là pour Merlin plutôt que « Un tout petit rien ».
+        { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus" },
+        { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" }
       ]
     },
     {
@@ -288,7 +333,26 @@ var Playlists = (function () {
         { t: "Now We Are Free", a: "Gladiator", q: "Now We Are Free Hans Zimmer" },
         { t: "Back to the Future", a: "Retour vers le futur", q: "Back to the Future Theme Alan Silvestri" },
         { t: "The Imperial March", a: "Star Wars, épisode V : L'Empire contre-attaque", q: "Imperial March John Williams", altT: ["Marche impériale"], altA: ["Star Wars", "La Guerre des étoiles"] },
-        { t: "Married Life", a: "Là-haut", q: "Married Life Michael Giacchino Up", altA: ["Up"] }
+        { t: "Married Life", a: "Là-haut", q: "Married Life Michael Giacchino Up", altA: ["Up"] },
+
+        /* Abandonnés : Les Simpson (Apple France n'a que des arrangements pour
+           orchestre de chambre), E.T. (uniquement en medley) et 2001 (Apple ne
+           remonte pas le bon mouvement de Zarathoustra). */
+        { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
+        { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold" },
+        { t: "Woke Up This Morning", a: "Les Soprano", q: "Woke Up This Morning Alabama 3", altA: ["The Sopranos"] },
+        { t: "Stranger Things", a: "Stranger Things", q: "Stranger Things Theme Kyle Dixon Michael Stein" },
+        { t: "Red Right Hand", a: "Peaky Blinders", q: "Red Right Hand Nick Cave and the Bad Seeds" },
+        { t: "Theme from Jurassic Park", a: "Jurassic Park", q: "Jurassic Park Original Motion Picture Soundtrack John Williams main theme" },
+        { t: "The Terminator Theme", a: "Terminator", q: "Terminator Main Title Brad Fiedel" },
+        { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield" },
+        { t: "Halloween Theme", a: "Halloween", q: "Halloween Theme John Carpenter" },
+        { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore" },
+        { t: "Lux Aeterna", a: "Requiem for a Dream", q: "Lux Aeterna Clint Mansell" },
+        { t: "The Pink Panther Theme", a: "La Panthère rose", q: "Pink Panther Theme Henry Mancini" },
+        { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone" },
+        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" },
+        { t: "Chariots of Fire", a: "Les Chariots de feu", q: "Vangelis Chariots of Fire" }
       ]
     },
     {
@@ -322,7 +386,30 @@ var Playlists = (function () {
         // que la réponse affichée restait « Enrique Iglesias ».
         { t: "Bailando", a: "Enrique Iglesias feat. Descemer Bueno & Gente de Zona", q: "Bailando Spanish Version Enrique Iglesias", altA: ["Enrique Iglesias", "Gente de Zona", "Descemer Bueno"] },
         { t: "Danza Kuduro", a: "Don Omar feat. Lucenzo", altA: ["Lucenzo", "Don Omar"] },
-        { t: "On Écrit Sur Les Murs", a: "Kids United", q: "On écrit sur les murs Kids United" }
+        { t: "On Écrit Sur Les Murs", a: "Kids United", q: "On écrit sur les murs Kids United" },
+
+        { t: "Lady (Hear Me Tonight)", a: "Modjo" },
+        // Sans l'album, une reprise de « Dance Fruits Music » passait devant.
+        { t: "Music Sounds Better with You", a: "Stardust", q: "Stardust Music Sounds Better With You 1998" },
+        { t: "L'Amour Toujours", a: "Gigi D'Agostino" },
+        { t: "9 PM (Till I Come)", a: "ATB", altT: ["9 PM Till I Come"] },
+        { t: "Sandstorm", a: "Darude" },
+        { t: "Better Off Alone", a: "Alice Deejay" },
+        // « Heaven » tout court ramenait celui d'Avicii.
+        { t: "Heaven", a: "DJ Sammy", q: "DJ Sammy Yanou Do Heaven Candlelight" },
+        { t: "Everytime We Touch", a: "Cascada" },
+        { t: "Cotton Eye Joe", a: "Rednex" },
+        { t: "Boom, Boom, Boom, Boom!!", a: "Vengaboys" },
+        { t: "Gasolina", a: "Daddy Yankee" },
+        { t: "Give Me Everything", a: "Pitbull", altA: ["Ne-Yo", "Afrojack"] },
+        { t: "Low", a: "Flo Rida", altA: ["T-Pain"] },
+        { t: "Party Rock Anthem", a: "LMFAO" },
+        { t: "Gangnam Style", a: "PSY" },
+        { t: "Cheerleader", a: "OMI", q: "OMI Cheerleader Me 4 U" },
+        { t: "Be Mine", a: "Ofenbach" },
+        { t: "Axel F", a: "Crazy Frog" },
+        { t: "Who Let the Dogs Out", a: "Baha Men" },
+        { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"] }
       ]
     },
     {
@@ -352,7 +439,34 @@ var Playlists = (function () {
         { t: "Every You Every Me", a: "Placebo" },
         { t: "Basket Case", a: "Green Day" },
         { t: "Should I Stay or Should I Go", a: "The Clash" },
-        { t: "Born to Be Wild", a: "Steppenwolf" }
+        { t: "Born to Be Wild", a: "Steppenwolf" },
+
+        { t: "Another Brick in the Wall, Pt. 2", a: "Pink Floyd" },
+        { t: "Baba O'Riley", a: "The Who" },
+        { t: "Heroes", a: "David Bowie" },
+        { t: "Riders on the Storm", a: "The Doors" },
+        // Sans l'album, Apple servait une prise alternative de l'anthologie.
+        { t: "Purple Haze", a: "Jimi Hendrix", q: "Jimi Hendrix Purple Haze Are You Experienced" },
+        { t: "Sweet Home Alabama", a: "Lynyrd Skynyrd" },
+        { t: "I Was Made for Lovin' You", a: "Kiss" },
+        { t: "Blitzkrieg Bop", a: "Ramones" },
+        { t: "Anarchy in the U.K.", a: "Sex Pistols" },
+        { t: "I Love Rock 'n Roll", a: "Joan Jett & the Blackhearts", altA: ["Joan Jett"] },
+        { t: "Fortunate Son", a: "Creedence Clearwater Revival", altA: ["CCR", "Creedence"] },
+        { t: "Friday I'm in Love", a: "The Cure" },
+        { t: "Enjoy the Silence", a: "Depeche Mode" },
+        { t: "Alive", a: "Pearl Jam" },
+        { t: "Pretty Fly (For a White Guy)", a: "The Offspring" },
+        { t: "Buddy Holly", a: "Weezer" },
+        { t: "Take Me Out", a: "Franz Ferdinand" },
+        { t: "Last Nite", a: "The Strokes" },
+        { t: "Sex on Fire", a: "Kings of Leon" },
+        { t: "Californication", a: "Red Hot Chili Peppers", altA: ["RHCP"] },
+        { t: "It's My Life", a: "Bon Jovi" },
+        /* « Rage Against Power Machines » : un groupe hommage remontait avant
+           l'original. On épingle l'album. */
+        { t: "Killing in the Name", a: "Rage Against the Machine", q: "Rage Against the Machine Killing in the Name 1992 album", altA: ["RATM"] },
+        { t: "Lambé An Dro", a: "Matmatah" }
       ]
     },
     {
@@ -448,7 +562,9 @@ var Playlists = (function () {
         { t: "Rose", a: "NANA", q: "Rose Anna Tsuchiya NANA" },
         { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki" },
         { t: "Grain", a: "Monster", q: "Grain Kuniaki Haishima Monster" },
-        { t: "Wakfu", a: "Wakfu", q: "Wakfu générique série animée" }
+        /* La requête générique ne donnait rien du tout : la bande originale
+           est cataloguée au nom du compositeur, pas de la série. */
+        { t: "Wakfu opening song", a: "Wakfu", q: "Wakfu Guillaume Houzé opening song", altT: ["Wakfu"] }
       ]
     },
     {
@@ -543,7 +659,27 @@ var Playlists = (function () {
         { t: "Transformers", a: "Bernard Minet", q: "Transformers pour un monde meilleur Bernard Minet" },
         { t: "Je veux être un Bisounours", a: "Bernard Minet", q: "Je veux être un bisounours Bernard Minet", altT: ["Les Bisounours", "Bisounours"] },
         { t: "L'École des champions", a: "Bernard Minet", q: "L'école des champions Bernard Minet" },
-        { t: "Les Mystérieuses Cités d'or", a: "Le Groupe Apollo", q: "Les Mystérieuses Cités d'or générique" }
+        { t: "Les Mystérieuses Cités d'or", a: "Le Groupe Apollo", q: "Les Mystérieuses Cités d'or générique" },
+
+        { t: "Ulysse 31", a: "Le Groupe Apollo", q: "Ulysse revient Le Groupe Apollo Ulysse 31", altT: ["Ulysse revient", "Ulysse"] },
+        { t: "Bomber X", a: "Le Groupe Apollo & Lionel Leroy", q: "Bomber X Le Groupe Apollo Lionel Leroy générique" },
+        { t: "Clémentine", a: "Marie Dauphin", q: "Clémentine Marie Dauphin bande originale feuilleton" },
+        { t: "Lady Oscar", a: "Marie Dauphin", q: "Lady Oscar Marie Dauphin" },
+        { t: "Princesse Sarah", a: "Claude Lombard", q: "Princesse Sarah Claude Lombard" },
+        { t: "Embrasse-moi Lucille", a: "Claude Lombard", q: "Embrasse-moi Lucille Claude Lombard", altT: ["Max et Compagnie"] },
+        { t: "Les Quatre Filles du docteur March", a: "Claude Lombard", q: "Les quatre filles du docteur March Claude Lombard" },
+        { t: "Les Samouraïs de l'éternel", a: "Bernard Minet", q: "Les samouraïs de l'éternel Bernard Minet" },
+        { t: "She-Ra", a: "Bernard Minet", q: "She Ra J'ai le pouvoir Bernard Minet Caline", altT: ["J'ai le pouvoir", "She-Ra la princesse du pouvoir"] },
+        { t: "Tom Sawyer", a: "Elfie", q: "Tom Sawyer générique original du dessin animé" },
+        { t: "Les Minipouss", a: "Les Minipouss", q: "Les Minipouss générique original du dessin animé" },
+        { t: "Inspecteur Gadget", a: "Jacques Cardona", q: "Inspecteur Gadget générique original du dessin animé" },
+        /* Seule version disponible : le générique remixé. « voulue » empêche le
+           moteur de la rétrograder pour le mot « remix ». */
+        { t: "Creamy, merveilleuse Creamy", a: "Majokko Club", q: "Creamy merveilleuse Creamy générique", voulue: true, altT: ["Creamy"] },
+        { t: "Les Mondes engloutis", a: "Vladimir Cosma", q: "Les mondes engloutis générique Vladimir Cosma" },
+        { t: "Jayce et les Conquérants de la lumière", a: "Nick Carr", q: "Jayce et les conquérants de la lumière générique", altT: ["Jayce"] },
+        { t: "Les Entrechats", a: "Noam", q: "Les entrechats sont là générique original du dessin animé", altT: ["Les entrechats sont là !"] },
+        { t: "Les Schtroumpfs", a: "Dorothée", q: "La danse des Schtroumpfs Dorothée", altT: ["La danse des Schtroumpfs"] }
       ]
     },
     {
@@ -626,7 +762,32 @@ var Playlists = (function () {
         // (« Alors on danse » et « Papaoutai » en variété française).
         { t: "Je veux", a: "ZAZ" },
         { t: "Sur ma route", a: "Black M" },
-        { t: "Andalouse", a: "Kendji Girac" }
+        { t: "Andalouse", a: "Kendji Girac" },
+
+        // « Sugar » seul ramenait « Maps » : on précise l'album.
+        { t: "Sugar", a: "Maroon 5", q: "Maroon 5 Sugar V album" },
+        { t: "Just the Way You Are", a: "Bruno Mars" },
+        { t: "Diamonds", a: "Rihanna" },
+        { t: "Roar", a: "Katy Perry" },
+        { t: "Sorry", a: "Justin Bieber" },
+        { t: "Closer", a: "The Chainsmokers", altA: ["Halsey"] },
+        { t: "Rather Be", a: "Clean Bandit", altA: ["Jess Glynne"] },
+        { t: "Let Her Go", a: "Passenger" },
+        { t: "Little Talks", a: "Of Monsters and Men" },
+        { t: "Royals", a: "Lorde" },
+        { t: "Summertime Sadness", a: "Lana Del Rey" },
+        { t: "Stressed Out", a: "Twenty One Pilots" },
+        // Sans l'album, on tombait sur une reprise de « Madilyn ».
+        { t: "Thrift Shop", a: "Macklemore & Ryan Lewis", q: "Macklemore Ryan Lewis Thrift Shop The Heist", altA: ["Macklemore", "Wanz"] },
+        { t: "Hymn for the Weekend", a: "Coldplay" },
+        { t: "Stay With Me", a: "Sam Smith" },
+        { t: "Señorita", a: "Shawn Mendes & Camila Cabello", altA: ["Shawn Mendes", "Camila Cabello"] },
+        { t: "Dance Monkey", a: "Tones and I" },
+        { t: "Le Lac", a: "Julien Doré" },
+        { t: "J'ai cherché", a: "Amir" },
+        { t: "Un homme debout", a: "Claudio Capéo" },
+        { t: "Makeba", a: "Jain" },
+        { t: "Le Chant des sirènes", a: "Fréro Delavega" }
       ]
     },
     {
@@ -644,7 +805,6 @@ var Playlists = (function () {
         { t: "Belle-Île-en-Mer, Marie-Galante", a: "Laurent Voulzy", altT: ["Belle-Île-en-Mer"] },
         { t: "Pour que tu m'aimes encore", a: "Céline Dion" },
         { t: "Chanter", a: "Florent Pagny" },
-        { t: "Ma Philosophie", a: "Amel Bent" },
         { t: "Vois sur ton chemin", a: "Les Choristes", q: "Vois sur ton chemin Les Choristes Bruno Coulais" },
         { t: "Paroles, paroles", a: "Dalida", altA: ["Alain Delon"] },
         { t: "I Will Survive", a: "Gloria Gaynor" },
@@ -654,8 +814,29 @@ var Playlists = (function () {
         { t: "Total Eclipse of the Heart", a: "Bonnie Tyler" },
         { t: "Twist and Shout", a: "The Beatles" },
         { t: "La Bamba", a: "Ritchie Valens" },
-        { t: "Wonderwall", a: "Oasis" },
-        { t: "Les Lacs du Connemara", a: "Michel Sardou" }
+        { t: "Petit Papa Noël", a: "Tino Rossi" },
+
+        { t: "Femme libérée", a: "Cookie Dingler" },
+        { t: "Santiano", a: "Hugues Aufray" },
+        { t: "Les Corons", a: "Pierre Bachelet" },
+        { t: "Étienne", a: "Guesch Patti" },
+        { t: "La Mer", a: "Charles Trenet" },
+        { t: "Lily", a: "Pierre Perret" },
+        { t: "La Salsa du démon", a: "Le Grand Orchestre du Splendid" },
+        { t: "Macumba", a: "Jean-Pierre Mader" },
+        { t: "Il est libre Max", a: "Hervé Cristiani" },
+        { t: "Pour un flirt", a: "Michel Delpech" },
+        { t: "Les Copains d'abord", a: "Georges Brassens" },
+        { t: "Vieille Canaille", a: "Serge Gainsbourg" },
+        { t: "Le Chanteur", a: "Daniel Balavoine" },
+        { t: "We Are the Champions", a: "Queen" },
+        { t: "Take Me Home, Country Roads", a: "John Denver", altT: ["Country Roads"] },
+        { t: "Stand by Me", a: "Ben E. King" },
+        { t: "My Way", a: "Frank Sinatra" },
+        { t: "Summer of '69", a: "Bryan Adams" },
+        { t: "Angels", a: "Robbie Williams" },
+        { t: "Hallelujah", a: "Jeff Buckley" },
+        { t: "Karma Chameleon", a: "Culture Club" }
       ]
     },
     {
@@ -687,7 +868,25 @@ var Playlists = (function () {
         { t: "Mon histoire", a: "Les Misérables", q: "Mon histoire Les Misérables" },
         // Titre corrigé : la chanson des Demoiselles de Rochefort s'appelle
         // « Chanson des jumelles », pas « Je suis un homme heureux ».
-        { t: "Chanson des jumelles", a: "Les Demoiselles de Rochefort", q: "Chanson des jumelles Les Demoiselles de Rochefort" }
+        { t: "Chanson des jumelles", a: "Les Demoiselles de Rochefort", q: "Chanson des jumelles Les Demoiselles de Rochefort" },
+
+        /* « Ziggy » est catalogué chez Apple sous son sous-titre : on affiche
+           les deux, et les deux sont acceptés. */
+        { t: "Un garçon pas comme les autres", a: "Starmania", q: "Starmania Un garçon pas comme les autres Fabienne Thibeault", altT: ["Ziggy"] },
+        { t: "Danse mon Esmeralda", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Danse mon Esmeralda Garou" },
+        { t: "Dieu que le monde est injuste", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Dieu que le monde est injuste" },
+        { t: "Vivre à en crever", a: "Mozart l'Opéra Rock", q: "Mozart l'Opera Rock Vivre a en crever" },
+        { t: "Je dors sur les roses", a: "Mozart l'Opéra Rock", q: "Mozart l'Opera Rock Je dors sur des roses", altT: ["Je dors sur des roses"] },
+        { t: "Mon frère", a: "Les Dix Commandements", q: "Les Dix Commandements Mon frere Daniel Levi" },
+        { t: "Ça ira mon amour", a: "1789, Les Amants de la Bastille", q: "1789 Les Amants de la Bastille Ca ira mon amour", altA: ["1789"] },
+        { t: "Pour la peine", a: "1789, Les Amants de la Bastille", q: "1789 Les Amants de la Bastille Pour la peine", altA: ["1789"] },
+        { t: "Être à la hauteur", a: "Le Roi Soleil", q: "Le Roi Soleil Etre a la hauteur Emmanuel Moire" },
+        { t: "J'avais rêvé d'une autre vie", a: "Les Misérables", q: "Les Miserables J'avais reve d'une autre vie" },
+        { t: "Memory", a: "Cats", q: "Cats Memory Elaine Paige" },
+        { t: "The Phantom of the Opera", a: "Le Fantôme de l'Opéra", q: "The Phantom of the Opera Andrew Lloyd Webber", altA: ["The Phantom of the Opera"] },
+        { t: "Alexander Hamilton", a: "Hamilton", q: "Hamilton Alexander Hamilton Original Broadway Cast" },
+        { t: "Defying Gravity", a: "Wicked", q: "Wicked Defying Gravity Idina Menzel" },
+        { t: "This Is Me", a: "The Greatest Showman", q: "The Greatest Showman This Is Me Keala Settle" }
         // « Résiste » retiré d'ici : c'était un doublon de la chanson de France
         // Gall, déjà présente dans les Années 80, et pas la version du spectacle.
       ]
@@ -720,7 +919,32 @@ var Playlists = (function () {
         { t: "Hotel California", a: "Eagles" },
         { t: "Rasputin", a: "Boney M." },
         { t: "Superstition", a: "Stevie Wonder" },
-        { t: "I Feel Love", a: "Donna Summer" }
+        { t: "I Feel Love", a: "Donna Summer" },
+
+        { t: "Sympathy for the Devil", a: "The Rolling Stones" },
+        { t: "Good Vibrations", a: "The Beach Boys" },
+        { t: "The House of the Rising Sun", a: "The Animals" },
+        { t: "Respect", a: "Aretha Franklin" },
+        { t: "I Want You Back", a: "The Jackson 5", altA: ["Jackson 5", "Michael Jackson"] },
+        { t: "My Girl", a: "The Temptations" },
+        { t: "What's Going On", a: "Marvin Gaye" },
+        { t: "Imagine", a: "John Lennon" },
+        { t: "Killing Me Softly with His Song", a: "Roberta Flack" },
+        { t: "Le Freak", a: "CHIC" },
+        { t: "Born to Be Alive", a: "Patrick Hernandez" },
+        { t: "Ring My Bell", a: "Anita Ward" },
+        { t: "Le Métèque", a: "Georges Moustaki" },
+        { t: "Mamy Blue", a: "Nicoletta" },
+        { t: "Capri c'est fini", a: "Hervé Vilard" },
+        { t: "Les Mots bleus", a: "Christophe" },
+        { t: "Tous les garçons et les filles", a: "Françoise Hardy" },
+        { t: "La Poupée qui fait non", a: "Michel Polnareff" },
+        { t: "Nathalie", a: "Gilbert Bécaud" },
+        { t: "Belles belles belles", a: "Claude François" },
+        { t: "Je suis malade", a: "Serge Lama" },
+        { t: "Waterloo", a: "ABBA" },
+        { t: "September", a: "Earth, Wind & Fire" },
+        { t: "Le Téléfon", a: "Nino Ferrer" }
       ]
     },
     {
@@ -754,7 +978,30 @@ var Playlists = (function () {
         { t: "Pata Pata", a: "Miriam Makeba", altA: ["Coumba Gawlo"], voulue: true,
           q: "Pata Pata Karaoke Coumba Gawlo Universal Sound Machine" },
         { t: "Soul Makossa", a: "Manu Dibango" },
-        { t: "Jerusalema", a: "Master KG" }
+        { t: "Jerusalema", a: "Master KG" },
+
+        { t: "Sofia", a: "Alvaro Soler" },
+        { t: "Mambo Italiano", a: "Dean Martin" },
+        { t: "Guantanamera", a: "Compay Segundo" },
+        { t: "Oye Como Va", a: "Santana" },
+        { t: "Smooth", a: "Santana", altA: ["Rob Thomas"] },
+        { t: "Lady Marmalade", a: "Labelle" },
+        { t: "7 Seconds", a: "Youssou N'Dour", altT: ["Seven Seconds"], altA: ["Neneh Cherry"] },
+        { t: "Sweet Lullaby", a: "Deep Forest" },
+        { t: "Magic in the Air", a: "Magic System", altA: ["Ahmed Chawki"] },
+        { t: "Zombie", a: "Fela Kuti" },
+        { t: "Mas Que Nada", a: "Sergio Mendes" },
+        { t: "The Girl from Ipanema", a: "Stan Getz & João Gilberto", altA: ["Astrud Gilberto"] },
+        { t: "Bella Ciao", a: "Manu Pilas", altA: ["La Casa de Papel"] },
+        /* Sans précision, Apple servait la version « Ao Vivo », enregistrée en
+           concert. On demande la version studio. */
+        { t: "Balada", a: "Gusttavo Lima", altT: ["Balada Tchê Tcherere Tchê Tchê"], q: "Gusttavo Lima Balada Tche Tcherere Tche Tche" },
+        { t: "Tusa", a: "KAROL G", q: "KAROL G Nicki Minaj Tusa", altA: ["Nicki Minaj", "Karol G"] },
+        { t: "El Perdón", a: "Nicky Jam & Enrique Iglesias", altA: ["Nicky Jam", "Enrique Iglesias"] },
+        { t: "Baila Morena", a: "Zucchero" },
+        { t: "Obsesión", a: "Aventura" },
+        { t: "La Isla Bonita", a: "Madonna" },
+        { t: "La Bomba", a: "King Africa", altT: ["Bomba"] }
       ]
     }
   ];
