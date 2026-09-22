@@ -83,19 +83,26 @@ var Itunes = (function () {
     var vTitre = Match.variantesTitre(piste.t);
     var vArtiste = piste.a ? Match.variantesArtiste(piste.a) : [];
 
+    /* Certains morceaux ne sont connus QUE par une version alternative : le
+       karaoke de Coumba Gawlo pour « Pata Pata », par exemple. La playlist le
+       signale avec « voulue », et on lève alors les deux pénalités ci-dessous
+       - sans quoi le moteur irait chercher l'originale, justement celle qu'on
+       ne veut pas. */
+    var voulue = !!piste.voulue;
+
     var note = candidats.map(function (r) {
       var n = 0;
       if (Match.correspond(r.trackName, vTitre)) n += 10;
       else if (Match.normaliser(r.trackName).indexOf(Match.normaliser(piste.t)) !== -1) n += 5;
       if (vArtiste.length && Match.correspond(r.artistName, vArtiste)) n += 6;
       // On écarte les reprises et les karaokés déguisés…
-      if (/karaoke|tribute|made popular|in the style of|cover version/i.test(
+      if (!voulue && /karaoke|tribute|made popular|in the style of|cover version/i.test(
             (r.artistName || '') + ' ' + (r.collectionName || ''))) n -= 20;
 
       /* …et toutes les versions alternatives : un remix ou une version acoustique
          est méconnaissable en blind test. La pénalité n'exclut pas, elle
          rétrograde : si Apple n'a que ça, le morceau est quand même joué. */
-      if (/\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo-fi)\b/i
+      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo-fi)\b/i
             .test((r.trackName || '') + ' ' + (r.collectionName || ''))) n -= 12;
       return { r: r, n: n };
     });

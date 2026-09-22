@@ -645,7 +645,12 @@ var Playlists = (function () {
         { t: "Dragostea Din Tei", a: "O-Zone" },
         { t: "Lambada", a: "Kaoma" },
         { t: "Yéké Yéké", a: "Mory Kanté" },
-        { t: "Pata Pata", a: "Miriam Makeba" },
+        /* Audrey a choisi l'arrangement rythme de Coumba Gawlo, que le catalogue
+           d'Apple n'a qu'en karaoke : la voix manque, mais c'est ce rythme-la
+           qu'on reconnait. « voulue » empeche le moteur de lui preferer
+           l'originale de Miriam Makeba. */
+        { t: "Pata Pata", a: "Miriam Makeba", altA: ["Coumba Gawlo"], voulue: true,
+          q: "Pata Pata Karaoke Coumba Gawlo Universal Sound Machine" },
         { t: "Soul Makossa", a: "Manu Dibango" },
         { t: "Jerusalema", a: "Master KG" }
       ]
