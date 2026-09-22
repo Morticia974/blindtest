@@ -140,6 +140,9 @@ var Playlists = (function () {
       nom: "Disney & dessins animés",
       emoji: "🏰",
       desc: "En français. Ici on devine la chanson et le film.",
+      // Comme pour les génériques et les animes : c'est le film qu'on cherche,
+      // donc le nom du chanteur relevé chez Apple ne vaut pas réponse.
+      strict: true,
       labelA: "Film",
       pistes: [
         { t: "Libérée, délivrée", a: "La Reine des neiges", q: "Libérée délivrée Anaïs Delva" },
@@ -160,7 +163,9 @@ var Playlists = (function () {
         { t: "Les Cloches de Notre-Dame", a: "Le Bossu de Notre-Dame", q: "Les Cloches de Notre-Dame Bossu" },
         { t: "C'est la fête", a: "La Belle et la Bête", q: "C'est la fête La Belle et la Bête" },
         { t: "Je voudrais déjà être roi", a: "Le Roi Lion", q: "Je voudrais déjà être roi Le Roi Lion" },
-        { t: "Un jour mon prince viendra", a: "Blanche-Neige", q: "Un jour mon prince viendra Blanche Neige" },
+        // Titre complet exigé : « Blanche-Neige » seul est le nom du personnage,
+        // pas celui du film. La forme avec le chiffre 7 est acceptée telle quelle.
+        { t: "Un jour mon prince viendra", a: "Blanche-Neige et les Sept Nains", q: "Un jour mon prince viendra Blanche Neige", altA: ["Blanche-Neige et les 7 nains"] },
         { t: "Prince Ali", a: "Aladdin", q: "Prince Ali Aladdin" }
       ]
     },
