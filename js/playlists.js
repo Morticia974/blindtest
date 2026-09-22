@@ -529,7 +529,7 @@ var Playlists = (function () {
 
         /* Ajouts demandés par Audrey : la catégorie était trop petite, donc les
            artistes présents deux fois revenaient à presque chaque partie. */
-        { t: "La Boulette", a: "Diam's", q: "Diam's La boulette Génération nan nan" },
+        { t: "Jeune demoiselle", a: "Diam's" },
         { t: "Gravé dans la roche", a: "Sniper" },
         { t: "L'amour du risque", a: "Fonky Family", q: "Fonky Family L'amour du risque Taxi" },
         { t: "Nirvana", a: "Doc Gynéco" },
@@ -541,7 +541,7 @@ var Playlists = (function () {
         { t: "Banlieusards", a: "Kery James" },
         { t: "Désolé", a: "Sexion d'Assaut" },
         { t: "Dreamin'", a: "Youssoupha", q: "Youssoupha Dreamin Indila" },
-        { t: "Sur ma route", a: "Black M" },
+        { t: "Mme. Pavoshko", a: "Black M", altT: ["Madame Pavoshko"] },
         { t: "On verra", a: "Nekfeu" },
         { t: "Reine", a: "Dadju" },
         { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
