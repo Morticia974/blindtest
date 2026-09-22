@@ -88,11 +88,28 @@
     if (gain) gain.gain.value = volume;
     else lecteur.volume = volume;   // repli si le circuit audio n'a pas pu démarrer
 
-    var b = $('bouton-muet');
-    b.textContent = volume === 0 ? '🔇' : (volume < 0.34 ? '🔈' : (volume < 0.7 ? '🔉' : '🔊'));
-    b.setAttribute('aria-label', volume === 0 ? 'Remettre le son' : 'Couper le son');
-    b.setAttribute('title', volume === 0 ? 'Remettre le son' : 'Couper le son');
-    $('curseur-volume').value = Math.round(volume * 100);
+    /* Le reglage existe en plusieurs exemplaires - un par ecran qui joue du
+       son. On les tient tous a jour, sinon celui de l'ecran de fin afficherait
+       un volume different de celui qu'on entend. */
+    var icone = volume === 0 ? '🔇'
+              : volume < 0.34 ? '🔈'
+              : volume < 0.7 ? '🔉' : '🔊';
+    var dit = volume === 0 ? 'Remettre le son' : 'Couper le son';
+
+    boutonsSon().forEach(function (b) {
+      b.textContent = icone;
+      b.setAttribute('aria-label', dit);
+      b.setAttribute('title', dit);
+    });
+    curseursSon().forEach(function (c) { c.value = Math.round(volume * 100); });
+  }
+
+  function boutonsSon() {
+    return [].slice.call(document.querySelectorAll('.bouton-son'));
+  }
+
+  function curseursSon() {
+    return [].slice.call(document.querySelectorAll('.reglage-son input[type="range"]'));
   }
 
   function chargerVolume() {
@@ -640,17 +657,21 @@
       this.textContent = profil.emoji;
     });
 
-    $('curseur-volume').addEventListener('input', function () {
-      volume = parseInt(this.value, 10) / 100;
-      if (volume > 0) volumeAvantCoupure = volume;
-      appliquerVolume();
-      sauverVolume();
+    curseursSon().forEach(function (c) {
+      c.addEventListener('input', function () {
+        volume = parseInt(this.value, 10) / 100;
+        if (volume > 0) volumeAvantCoupure = volume;
+        appliquerVolume();
+        sauverVolume();
+      });
     });
 
-    $('bouton-muet').addEventListener('click', function () {
-      volume = volume === 0 ? (volumeAvantCoupure || 0.8) : 0;
-      appliquerVolume();
-      sauverVolume();
+    boutonsSon().forEach(function (b) {
+      b.addEventListener('click', function () {
+        volume = volume === 0 ? (volumeAvantCoupure || 0.8) : 0;
+        appliquerVolume();
+        sauverVolume();
+      });
     });
 
     $('champ-code').addEventListener('input', function () {
