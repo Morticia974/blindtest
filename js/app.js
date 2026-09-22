@@ -156,6 +156,46 @@
     lecteur.pause();
   }
 
+  /* ================= extraits téléchargés d'avance ================= */
+
+  /* Le son se coupait par à-coups pendant le morceau : le navigateur
+     téléchargeait l'extrait au fur et à mesure qu'il le jouait, et la moindre
+     hésitation du réseau s'entendait. On télécharge donc le fichier en entier
+     avant de le jouer, et on lit depuis la mémoire.
+
+     Le morceau suivant est préparé pendant la pause, quand rien ne joue : le
+     téléchargement ne prend de la bande passante à personne. */
+  var extraits = {};        // url d'origine -> url locale
+  var enCours = {};         // téléchargements déjà lancés
+
+  function precharger(piste) {
+    if (!piste || !piste.apercu) return;
+    var url = piste.apercu;
+    if (extraits[url] || enCours[url]) return;
+    enCours[url] = true;
+
+    fetch(url, { cache: 'force-cache' })
+      .then(function (r) { return r.ok ? r.blob() : null; })
+      .then(function (blob) {
+        if (blob) extraits[url] = URL.createObjectURL(blob);
+      })
+      .catch(function () { /* on jouera en direct, comme avant */ })
+      .then(function () { delete enCours[url]; });
+  }
+
+  /* On ne garde pas tout en mémoire indéfiniment : au-delà d'une dizaine
+     d'extraits, on libère les plus anciens. */
+  function rangerExtraits() {
+    var urls = Object.keys(extraits);
+    while (urls.length > 10) {
+      var vieille = urls.shift();
+      if (extraits[vieille] !== dernierePisteJouee) {
+        try { URL.revokeObjectURL(extraits[vieille]); } catch (e) {}
+        delete extraits[vieille];
+      }
+    }
+  }
+
   /* Cale la lecture sur l'heure du salon : un retardataire tombe au bon endroit. */
   function jouerExtrait(piste, debutA) {
     if (!piste || !piste.apercu) return;
@@ -164,8 +204,10 @@
     lecteur.loop = false;   // le sacre a pu la laisser active
     if (dernierePisteJouee !== piste.apercu) {
       dernierePisteJouee = piste.apercu;
-      lecteur.src = piste.apercu;
+      // Le fichier téléchargé si on l'a, la source d'Apple sinon.
+      lecteur.src = extraits[piste.apercu] || piste.apercu;
       lecteur.load();
+      rangerExtraits();
     }
     if (contexte && contexte.state === 'suspended') contexte.resume();
 
@@ -196,9 +238,9 @@
      Le morceau tourne en boucle tant qu'on reste sur l'ecran de fin, et chacun
      peut le couper - le choix est retenu d'une partie a l'autre. */
   var SACRE = {
-    t: "You're the First, the Last, My Everything",
+    t: "Let the Music Play",
     a: "Barry White",
-    q: "You're the First the Last My Everything Barry White"
+    q: "Barry White Let the Music Play"
   };
   var sacreEnCours = false;
 
@@ -221,7 +263,7 @@
       // ou couper le sacre. On verifie avant de lancer quoi que ce soit.
       if (!sacreEnCours || !piste || !piste.apercu) return;
       dernierePisteJouee = piste.apercu;
-      lecteur.src = piste.apercu;
+      lecteur.src = extraits[piste.apercu] || piste.apercu;
       lecteur.loop = true;
       lecteur.load();
       if (contexte && contexte.state === 'suspended') contexte.resume();
@@ -231,6 +273,11 @@
   }
 
   function arreterSacre() {
+    /* Ne toucher au son QUE si Barry jouait vraiment. montrer('jeu') est
+       rappelé à chaque rafraîchissement du salon — toutes les 15 secondes au
+       rythme des signes de vie — et sans cette garde il coupait l'extrait en
+       plein milieu : c'était la cause des petites coupures pendant le morceau. */
+    if (!sacreEnCours) return;
     sacreEnCours = false;
     lecteur.loop = false;
     arreterExtrait();
@@ -632,8 +679,16 @@
         historique.push(piste);
       }
 
+      /* Pendant la révélation et la pause, on prépare le morceau suivant :
+         il sera déjà en mémoire au moment de le jouer. */
+      precharger(piste);
+      precharger(etat.pistes[etat.tour.index + 1]);
+
       if (etat.tour.phase === 'ecoute' && piste && etat.tour.debutA) {
-        if (lecteur.paused || dernierePisteJouee !== piste.apercu) {
+        /* « ended » : l'extrait dure 30 s et la manche aussi, donc il se termine
+           un cheveu avant la révélation. Sans cette garde, on le relançait pour
+           une fraction de seconde — un petit hoquet au bout de chaque manche. */
+        if ((lecteur.paused && !lecteur.ended) || dernierePisteJouee !== piste.apercu) {
           jouerExtrait(piste, etat.tour.debutA);
         }
       }
