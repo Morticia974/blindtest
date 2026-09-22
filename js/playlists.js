@@ -51,7 +51,34 @@ var Playlists = (function () {
         { t: "Besoin de rien, envie de toi", a: "Peter et Sloane", altA: ["Peter & Sloane", "Peter and Sloane"] },
         { t: "Je ne suis pas un héros", a: "Daniel Balavoine" },
         { t: "Nuit de folie", a: "Début de Soirée" },
-        { t: "Les Démons de minuit", a: "Images" }
+        { t: "Les Démons de minuit", a: "Images" },
+
+        /* Vingt-quatre sur vingt-quatre : la meilleure vague de la journée. Les
+           tubes de cette décennie sont tous chez Apple en version d'origine. */
+        { t: "Shout", a: "Tears for Fears" },
+        { t: "Don't You (Forget About Me)", a: "Simple Minds" },
+        { t: "Call Me", a: "Blondie", q: "Blondie Call Me American Gigolo" },
+        { t: "Rio", a: "Duran Duran" },
+        { t: "I Wanna Dance with Somebody", a: "Whitney Houston" },
+        { t: "What's Love Got to Do with It", a: "Tina Turner" },
+        { t: "Venus", a: "Bananarama" },
+        { t: "In the Air Tonight", a: "Phil Collins" },
+        { t: "Once in a Lifetime", a: "Talking Heads" },
+        { t: "Need You Tonight", a: "INXS" },
+        { t: "Flashdance... What a Feeling", a: "Irene Cara" },
+        { t: "Kids in America", a: "Kim Wilde" },
+        { t: "Brother Louie", a: "Modern Talking" },
+        { t: "Self Control", a: "Laura Branigan" },
+        { t: "Rock Me Amadeus", a: "Falco" },
+        { t: "99 Luftballons", a: "Nena" },
+        { t: "Forever Young", a: "Alphaville" },
+        { t: "Tainted Love", a: "Soft Cell" },
+        { t: "Amoureux solitaires", a: "Lio" },
+        { t: "T'en va pas", a: "Elsa" },
+        { t: "Les Sunlights des tropiques", a: "Gilbert Montagné" },
+        { t: "Partenaire particulier", a: "Partenaire Particulier" },
+        { t: "Tchiki boum", a: "Niagara" },
+        { t: "Femme que j'aime", a: "Jean-Luc Lahaye" }
       ]
     },
     {
@@ -293,7 +320,27 @@ var Playlists = (function () {
         { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus" },
         { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" },
         // Venu des génériques : c'est un dessin animé, sa place est ici.
-        { t: "Test Drive", a: "Dragons", q: "Test Drive John Powell How to Train Your Dragon", altA: ["How to Train Your Dragon"] }
+        { t: "Test Drive", a: "Dragons", q: "Test Drive John Powell How to Train Your Dragon", altA: ["How to Train Your Dragon"] },
+
+        /* Le « et compagnie » du nom sert enfin : Shrek, Les Trolls et Zootopie
+           rejoignent la maison. Madagascar et Kung Fu Panda sont écartés — Apple
+           n'a que des reprises du premier, et pour le second la version du film
+           n'y est pas, seulement l'original de Carl Douglas, qui ferait répondre
+           « Kung Fu Fighting » plutôt que le nom du film. */
+        { t: "Le Festin", a: "Ratatouille", q: "Camille Le Festin Ratatouille" },
+        { t: "Down to Earth", a: "Wall-E", q: "Peter Gabriel Down to Earth Wall-E" },
+        { t: "The Glory Days", a: "Les Indestructibles", q: "Michael Giacchino The Glory Days The Incredibles", altA: ["The Incredibles"] },
+        { t: "Bundle of Joy", a: "Vice-versa", q: "Michael Giacchino Bundle of Joy Inside Out", altA: ["Inside Out"] },
+        { t: "Touch the Sky", a: "Rebelle", q: "Julie Fowlis Touch the Sky Brave", altA: ["Brave"] },
+        { t: "Hawaiian Roller Coaster Ride", a: "Lilo & Stitch", q: "Hawaiian Roller Coaster Ride Lilo and Stitch Original Motion Picture Soundtrack" },
+        { t: "I'm Still Here (Jim's Theme)", a: "La Planète au trésor", q: "John Rzeznik I'm Still Here Jim's Theme Treasure Planet", altT: ["I'm Still Here"] },
+        { t: "L'Apprenti sorcier", a: "Fantasia", q: "L'apprenti sorcier Philadelphia Orchestra Leopold Stokowski" },
+        { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"] },
+        { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack" },
+        { t: "Can't Stop the Feeling!", a: "Les Trolls", q: "Justin Timberlake Can't Stop the Feeling Trolls Original Motion Picture Soundtrack", altA: ["Trolls"] },
+        { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"] },
+        { t: "Winnie l'ourson", a: "Winnie l'ourson", q: "Winnie l'Ourson Nicole Croisille 100% Disney" },
+        { t: "Oo-De-Lally", a: "Robin des Bois", q: "Roger Miller Oo-De-Lally Robin Hood Legacy Collection" }
       ]
     },
     {
@@ -632,7 +679,32 @@ var Playlists = (function () {
         { t: "Bleed", a: "Meshuggah" },
         { t: "Davidian", a: "Machine Head" },
         { t: "Primo Victoria", a: "Sabaton" },
-        { t: "Évier Metal", a: "Ultra Vomit", q: "Evier Metal Ultra Vomit", altT: ["Evier Metal"] }
+        { t: "Évier Metal", a: "Ultra Vomit", q: "Evier Metal Ultra Vomit", altT: ["Evier Metal"] },
+
+        /* Alice in Chains écarté : Apple n'en a qu'un quatuor à cordes puis une
+           reprise coréenne. */
+        { t: "Thunderstruck", a: "AC/DC" },
+        { t: "Poison", a: "Alice Cooper" },
+        { t: "We're Not Gonna Take It", a: "Twisted Sister" },
+        { t: "Caught in a Mosh", a: "Anthrax" },
+        { t: "Roots Bloody Roots", a: "Sepultura" },
+        { t: "Numb", a: "Linkin Park" },
+        { t: "Rollin' (Air Raid Vehicle)", a: "Limp Bizkit" },
+        { t: "Down with the Sickness", a: "Disturbed" },
+        // « The Beautiful People » ramenait David Guetta : on prend le morceau-titre.
+        { t: "Antichrist Superstar", a: "Marilyn Manson", q: "Marilyn Manson Antichrist Superstar album" },
+        { t: "Dragula", a: "Rob Zombie" },
+        { t: "Bat Country", a: "Avenged Sevenfold" },
+        { t: "Throne", a: "Bring Me the Horizon" },
+        { t: "Square Hammer", a: "Ghost" },
+        { t: "Demons Are a Girl's Best Friend", a: "Powerwolf" },
+        { t: "Ice Queen", a: "Within Temptation" },
+        { t: "Pull Me Under", a: "Dream Theater" },
+        { t: "Schism", a: "Tool" },
+        { t: "Change (In the House of Flies)", a: "Deftones" },
+        { t: "Black Hole Sun", a: "Soundgarden" },
+        { t: "Blood and Thunder", a: "Mastodon" },
+        { t: "O Father O Satan O Sun", a: "Behemoth", altT: ["O Father O Satan O Sun!"] }
       ]
     },
     {
@@ -684,7 +756,29 @@ var Playlists = (function () {
         { t: "Grain", a: "Monster", q: "Grain Kuniaki Haishima Monster" },
         /* La requête générique ne donnait rien du tout : la bande originale
            est cataloguée au nom du compositeur, pas de la série. */
-        { t: "Wakfu opening song", a: "Wakfu", q: "Wakfu Guillaume Houzé opening song", altT: ["Wakfu"] }
+        { t: "Wakfu opening song", a: "Wakfu", q: "Wakfu Guillaume Houzé opening song", altT: ["Wakfu"] },
+
+        /* Sept abandons : Mob Psycho, Dr. Stone, Black Clover, Frieren, Détective
+           Conan, Akira et Konosuba. Apple les noie sous les reprises de chaînes
+           YouTube — Miura Jam, Jonathan Young — quand il ne rend pas rien du tout. */
+        { t: "GO!!!", a: "Naruto", q: "GO!!! FLOW Naruto opening" },
+        { t: "Hacking to the Gate", a: "Steins;Gate", q: "Hacking to the Gate ITO KANAKO", altA: ["Steins Gate"] },
+        { t: "Redo", a: "Re:Zero", q: "Redo Konomi Suzuki Re Zero", altA: ["Re Zero"] },
+        { t: "Mukanjyo", a: "Vinland Saga", q: "Mukanjyo Survive Said The Prophet Inside Your Head" },
+        /* Seule version officielle disponible : l'enregistrement acoustique en
+           direct de THE FIRST TAKE. C'est bien SPYAIR, mais plus dépouillé que
+           le générique — l'alternative était une boîte à musique. */
+        { t: "Imagination", a: "Haikyu!!", q: "SPYAIR イマジネーション From THE FIRST TAKE", altA: ["Haikyuu"] },
+        { t: "Can Do", a: "Kuroko no Basket", q: "GRANRODEO Can Do Single", altA: ["Kuroko's Basketball"] },
+        { t: "Cry Baby", a: "Tokyo Revengers", q: "Official HIGE DANDISM Cry Baby Single" },
+        { t: "Mixed Nuts", a: "Spy x Family", q: "OFFICIAL HIGE DANDISM ミックスナッツ Rejoice", altT: ["ミックスナッツ"] },
+        { t: "Clattanoia", a: "Overlord", q: "Clattanoia OxT Overlord" },
+        { t: "Touch off", a: "The Promised Neverland", q: "Touch off UVERworld Promised Neverland", altA: ["Yakusoku no Neverland"] },
+        { t: "Princesse Mononoké", a: "Princesse Mononoké", q: "Joe Hisaishi Yoshikazu Mera Princesse Mononoké chant Original Soundtrack", altA: ["Mononoke"] },
+        { t: "Making of Cyborg", a: "Ghost in the Shell", q: "Kenji Kawai Making of Cyborg Ghost in the Shell Original Soundtrack" },
+        { t: "Sincerely", a: "Violet Evergarden", q: "Sincerely TRUE Violet Evergarden Vocal Album" },
+        { t: "Hikarunara", a: "Your Lie in April", q: "Goose house Hikarunara Milk", altT: ["Hikaru Nara"], altA: ["Shigatsu wa Kimi no Uso"] },
+        { t: "My Soul, Your Beats!", a: "Angel Beats!", q: "My Soul Your Beats Lia Angel Beats", altA: ["Angel Beats"] }
       ]
     },
     {
@@ -745,6 +839,24 @@ var Playlists = (function () {
         { t: "Call of Duty Modern Warfare 2: Theme", a: "Call of Duty", q: "Call of Duty Modern Warfare 2 Theme Orchestre Philharmonique de Londres", altA: ["COD", "Modern Warfare"] },
         { t: "Pac Man Theme", a: "Pac-Man", q: "Pac Man Theme Theme Mania Video Games Themes Collection", altA: ["Pacman"] },
         { t: "Tetris Theme (Korobeiniki)", a: "Tetris", q: "Tetris Theme Korobeiniki Orchestre Philharmonique de Londres", altT: ["Korobeiniki"] },
+
+        /* Quatre abandons : Half-Life (Valve ne distribue pas sa musique — la
+           recherche finit chez Adele), Persona 5, Street Fighter II et NieR:
+           Automata, qui n'existent qu'en reprises. */
+        { t: "Snake Eater", a: "Metal Gear Solid 3", q: "Snake Eater Cynthia Harrell Metal Gear Solid", altA: ["Metal Gear Solid"] },
+        { t: "Promise (Reprise)", a: "Silent Hill 2", q: "Akira Yamaoka Promise Reprise Silent Hill 2 Original Soundtrack", altT: ["Promise"], altA: ["Silent Hill"] },
+        { t: "Techno Syndrome", a: "Mortal Kombat", q: "Techno Syndrome Mortal Kombat The Immortals" },
+        { t: "Green Hill Zone", a: "Sonic the Hedgehog", q: "Masato Nakamura Green Hill Zone Sonic The Hedgehog Soundtrack", altA: ["Sonic"] },
+        { t: "Vampire Killer", a: "Castlevania", q: "Vampire Killer Castlevania" },
+        { t: "Corridors of Time", a: "Chrono Trigger", q: "Corridors of Time Yasunori Mitsuda Chrono Trigger" },
+        { t: "Greenpath", a: "Hollow Knight", q: "Greenpath Christopher Larkin Hollow Knight" },
+        { t: "Stardew Valley Overture", a: "Stardew Valley", q: "Stardew Valley Overture ConcernedApe" },
+        { t: "Simple and Clean", a: "Kingdom Hearts", q: "Simple and Clean Hikaru Utada" },
+        { t: "Proof of a Hero", a: "Monster Hunter", q: "Proof of a Hero Monster Hunter World Original Soundtrack" },
+        { t: "Hell March 3", a: "Command & Conquer", q: "Frank Klepacki Hell March 3 Red Alert 3", altT: ["Hell March"], altA: ["Red Alert"] },
+        { t: "Nate's Theme", a: "Uncharted", q: "Nate's Theme Greg Edmonson Uncharted Drake's Fortune" },
+        { t: "Aloy's Theme", a: "Horizon Zero Dawn", q: "Joris de Man Aloy's Theme Horizon Zero Dawn Original Soundtrack", altA: ["Horizon"] },
+        { t: "Angry Birds Theme", a: "Angry Birds", q: "Angry Birds Theme Ari Pulkkinen" }
       ]
     },
     {
@@ -852,7 +964,27 @@ var Playlists = (function () {
         { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
         { t: "La vie qu'on mène", a: "Ninho", q: "Ninho La vie qu'on mène Destin" },
         { t: "La Kiffance", a: "Naps" },
-        { t: "Ça va ça vient", a: "Vitaa & Slimane", altA: ["Vitaa", "Slimane"] }
+        { t: "Ça va ça vient", a: "Vitaa & Slimane", altA: ["Vitaa", "Slimane"] },
+
+        /* Le rap français récent est très inégalement distribué chez Apple.
+           Vald, Sinik, PLK, Lartiste et Wallen n'y sont pas du tout. Plusieurs
+           autres y sont, mais sous un autre morceau que celui demandé : on prend
+           celui qui existe, l'artiste reste le bon. */
+        { t: "Zoo", a: "Kaaris", q: "Kaaris Zoo Or Noir" },
+        { t: "Madre Mia", a: "SCH", q: "SCH Madre Mia Morad Autobahn" },
+        { t: "Terrasser", a: "Gradur", q: "Gradur Terrasser" },
+        { t: "J'pète les plombs", a: "Disiz la Peste", q: "Disiz J'pète les plombs Le poisson rouge", altA: ["Disiz"] },
+        { t: "Mon papa à moi est un gangster", a: "Stomy Bugsy", q: "Stomy Bugsy Mon papa à moi est un gangster Le calibre qu'il te faut" },
+        { t: "Jour 2 tonnerre", a: "Ärsenik", q: "Ärsenik Jour 2 tonnerre Quelques gouttes suffisent", altA: ["Arsenik"] },
+        { t: "365 jours", a: "Oxmo Puccino", q: "Oxmo Puccino 365 jours L'arme de paix" },
+        { t: "Samuraï", a: "Shurik'n", q: "Shurik'n Samuraï Où je vis" },
+        { t: "C'est chelou", a: "Zaho", q: "Zaho C'est chelou Dima" },
+        { t: "Femme de couleur", a: "Shy'm", q: "Shy'm Femme de couleur Mes Fantaisies" },
+        { t: "Boozillé", a: "Rim'K", q: "Rim'K Boozillé L'enfant du pays" },
+        { t: "Maharaja", a: "Heuss l'Enfoiré", q: "Heuss L'enfoiré Maharaja" },
+        { t: "KASSAV", a: "Gazo", q: "Gazo KASSAV Tiakola DRILL FR", altA: ["Tiakola"] },
+        { t: "Bazardée", a: "KeBlack", q: "KeBlack Bazardée Premier étage" },
+        { t: "Ce soir ne sors pas", a: "Lacrim", q: "Lacrim Ce soir ne sors pas Maître Gims R.I.P.R.O 3" }
       ]
     },
     {
