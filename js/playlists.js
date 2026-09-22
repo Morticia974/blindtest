@@ -81,7 +81,27 @@ var Playlists = (function () {
         { t: "Tomber la chemise", a: "Zebda" },
         { t: "Je danse le mia", a: "IAM" },
         { t: "Foule sentimentale", a: "Alain Souchon" },
-        { t: "J't'emmène au vent", a: "Louise Attaque" }
+        { t: "J't'emmène au vent", a: "Louise Attaque" },
+
+        /* Cités par Audrey. */
+        { t: "Losing My Religion", a: "R.E.M.", altA: ["REM"] },
+        { t: "The Show Must Go On", a: "Queen" },
+        { t: "Knockin' on Heaven's Door", a: "Guns N' Roses", altA: ["Guns and Roses"] },
+        { t: "Don't Speak", a: "No Doubt" },
+        { t: "I Can't Dance", a: "Genesis" },
+        { t: "Runaway", a: "The Corrs" },
+        { t: "Torn", a: "Natalie Imbruglia" },
+        { t: "Believe", a: "Cher" },
+        { t: "Say My Name", a: "Destiny's Child" },
+        { t: "Gangsta's Paradise", a: "Coolio", altA: ["L.V.", "Coolio et L.V."] },
+        { t: "No Limit", a: "2 Unlimited" },
+        { t: "The Rhythm of the Night", a: "Corona", altT: ["Rhythm of the Night"] },
+        { t: "Scatman (Ski-Ba-Bop-Ba-Dop-Bop)", a: "Scatman John", altT: ["Scatman"], altA: ["Scatman"] },
+        { t: "Ameno", a: "Era" },
+        { t: "Over the Rainbow", a: "Israel Kamakawiwo'ole", altT: ["Somewhere Over the Rainbow"], altA: ["IZ", "Kamakawiwo'ole"] },
+        { t: "Baby Come Back", a: "Worlds Apart" },
+        { t: "Partir un jour", a: "2 Be 3" },
+        { t: "Te garder près de moi", a: "Alliage" }
       ]
     },
     {
