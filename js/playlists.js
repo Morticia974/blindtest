@@ -450,7 +450,17 @@ var Playlists = (function () {
         { t: "Buffy the Vampire Slayer", a: "Buffy contre les vampires", q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's", altA: ["Buffy"] },
         { t: "The Office", a: "The Office", q: "The Office Scranton Crew TV Generation" },
         { t: "Mystery Movie Theme", a: "Columbo", q: "Mystery Movie Theme Columbo Geek Music" },
-        { t: "Criminal Minds", a: "Esprits criminels", q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes", altA: ["Criminal Minds"] }
+        { t: "Criminal Minds", a: "Esprits criminels", q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes", altA: ["Criminal Minds"] },
+
+        /* Rattrapées après coup : je n'avais cherché que le générique, alors
+           qu'il fallait fouiller le catalogue des interprètes. */
+        // Apple n'a de « Sámbame » que le « Radio Edit Remix », qui est la
+        // version single : « voulue » empêche le moteur de la rétrograder.
+        { t: "Sámbame", a: "Un dos tres", voulue: true, q: "Upa Dance Sámbame Radio Edit Remix Collector Edition", altA: ["Upa Dance", "Un paso adelante"] },
+        /* Bridgerton, c'est le son du quatuor à cordes reprenant des tubes :
+           c'est ce qu'Audrey voulait. À surveiller en partie — on peut répondre
+           « Ariana Grande » au lieu de la série. */
+        { t: "Thank U, Next", a: "Les Chroniques de Bridgerton", q: "Vitamin String Quartet Thank U Next Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] }
       ]
     },
     {
