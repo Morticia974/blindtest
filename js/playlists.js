@@ -236,7 +236,10 @@ var Playlists = (function () {
         { t: "World, Hold On", a: "Bob Sinclar" },
         { t: "Hello", a: "Martin Solveig", altA: ["Dragonette"] },
         { t: "This Girl", a: "Kungs", altA: ["Cookin' on 3 Burners"] },
-        { t: "Bailando", a: "Enrique Iglesias", altA: ["Gente de Zona", "Descemer Bueno"] },
+        // Sans « Spanish Version », Apple sert la version anglaise avec Sean Paul,
+        // moins connue en France — et le jeu acceptait alors « Sean Paul » alors
+        // que la réponse affichée restait « Enrique Iglesias ».
+        { t: "Bailando", a: "Enrique Iglesias", q: "Bailando Spanish Version Enrique Iglesias", altA: ["Gente de Zona", "Descemer Bueno"] },
         { t: "Danza Kuduro", a: "Don Omar", altA: ["Lucenzo"] },
         { t: "On Écrit Sur Les Murs", a: "Kids United", q: "On écrit sur les murs Kids United" }
       ]
