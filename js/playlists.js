@@ -80,7 +80,7 @@ var Playlists = (function () {
         { t: "La Tribu de Dana", a: "Manau" },
         { t: "Tomber la chemise", a: "Zebda" },
         { t: "Je danse le mia", a: "IAM" },
-        { t: "Foule sentimentale", a: "Alain Souchon" },
+        { t: "Foule sentimentale", a: "Alain Souchon", q: "Alain Souchon Foule sentimentale C'est deja ca" },
         { t: "J't'emmène au vent", a: "Louise Attaque" },
 
         /* Cités par Audrey. */
@@ -543,7 +543,7 @@ var Playlists = (function () {
         { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"] },
         { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu" },
         { t: "Kick Back", a: "Chainsaw Man", q: "Kick Back Kenshi Yonezu" },
-        { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu Judy and Mary", altA: ["Rurouni Kenshin"] },
+        { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu JUDY AND MARY The Great Escape", altA: ["Rurouni Kenshin"] },
 
         /* Ajoutés sur proposition d'Audrey : la catégorie manquait de variété. */
         { t: "Pokémon Theme", a: "Pokémon", q: "Pokemon Theme Gotta Catch Em All" },
@@ -557,7 +557,7 @@ var Playlists = (function () {
         { t: "LEveL", a: "Solo Leveling", q: "LEveL SawanoHiroyuki nZk Tomorrow X Together" },
         { t: "Forces", a: "Berserk", q: "Forces Susumu Hirasawa Berserk" },
         { t: "Snow Fairy", a: "Fairy Tail", q: "Snow Fairy FUNKIST" },
-        { t: "Seishun Satsubatsuron", a: "Assassination Classroom", q: "Seishun Satsubatsuron Assassination Classroom", altA: ["Ansatsu Kyoushitsu"] },
+        { t: "Seishun Satsubatsuron", a: "Assassination Classroom", q: "Seishun Satsubatsuron 3-nen E-gumi Utatan", altA: ["Ansatsu Kyoushitsu"] },
         { t: "Sono Chi no Sadame", a: "JoJo's Bizarre Adventure", q: "Sono Chi no Sadame Hiroaki Tommy Tominaga", altA: ["JoJo"] },
         { t: "Rose", a: "NANA", q: "Rose Anna Tsuchiya NANA" },
         { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki" },
@@ -899,7 +899,8 @@ var Playlists = (function () {
       labelA: "Artiste",
       pistes: [
         { t: "Poupée de cire, poupée de son", a: "France Gall" },
-        { t: "Aline", a: "Christophe" },
+        // « Intime » (2014) est un réenregistrement : on épingle 1965.
+        { t: "Aline", a: "Christophe", q: "Christophe Aline 2013 Remaster 1965" },
         { t: "Il est cinq heures, Paris s'éveille", a: "Jacques Dutronc" },
         { t: "Je t'aime... moi non plus", a: "Jane Birkin & Serge Gainsbourg", altA: ["Serge Gainsbourg", "Jane Birkin"] },
         { t: "Le Pénitencier", a: "Johnny Hallyday" },
@@ -996,7 +997,9 @@ var Playlists = (function () {
         /* Sans précision, Apple servait la version « Ao Vivo », enregistrée en
            concert. On demande la version studio. */
         { t: "Balada", a: "Gusttavo Lima", altT: ["Balada Tchê Tcherere Tchê Tchê"], q: "Gusttavo Lima Balada Tche Tcherere Tche Tche" },
-        { t: "Tusa", a: "KAROL G", q: "KAROL G Nicki Minaj Tusa", altA: ["Nicki Minaj", "Karol G"] },
+        // Apple France n'a « Tusa » que sur des compilations : la pochette
+        // montree ne dirait rien de Karol G. On prend un titre a elle.
+        { t: "Dákiti", a: "Bad Bunny & Jhay Cortez", q: "Bad Bunny Jhay Cortez Dakiti", altA: ["Bad Bunny", "Jhay Cortez"] },
         { t: "El Perdón", a: "Nicky Jam & Enrique Iglesias", altA: ["Nicky Jam", "Enrique Iglesias"] },
         { t: "Baila Morena", a: "Zucchero" },
         { t: "Obsesión", a: "Aventura" },

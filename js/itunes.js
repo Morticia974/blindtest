@@ -107,9 +107,21 @@ var Itunes = (function () {
 
       /* …et toutes les versions alternatives : un remix ou une version acoustique
          est méconnaissable en blind test. La pénalité n'exclut pas, elle
-         rétrograde : si Apple n'a que ça, le morceau est quand même joué. */
-      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi)\b/
+         rétrograde : si Apple n'a que ça, le morceau est quand même joué.
+         « music box », « orgel » et « lullaby » sont arrivés par la bande :
+         Apple regorge de berceuses au carillon, et deux génériques d'animes
+         étaient tombés dessus. */
+      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit|midi)\b/
             .test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
+
+      /* À enregistrement égal, on préfère l'album de l'artiste à une
+         compilation. Ce n'est pas une question de son — c'est le même — mais
+         d'image : la pochette montrée à la révélation doit parler de la
+         réponse, et « NRJ Happy Hits 2020 » ne dit rien de Karol G. La
+         pénalité est légère exprès : beaucoup de morceaux n'existent que sur
+         une compilation, et ceux-là doivent quand même passer. */
+      if (/\b(best of|greatest hits|compilation|presente|anthologie|essentiel|collection|hit parade|100 tubes|nrj|fun radio|le top|les plus belles|megamix|party mix|summer hits)\b/
+            .test(etiquette)) n -= 4;
       return { r: r, n: n };
     });
 
