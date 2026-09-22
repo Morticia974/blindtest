@@ -340,7 +340,13 @@ var Playlists = (function () {
         { t: "Can't Stop the Feeling!", a: "Les Trolls", q: "Justin Timberlake Can't Stop the Feeling Trolls Original Motion Picture Soundtrack", altA: ["Trolls"] },
         { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"] },
         { t: "Winnie l'ourson", a: "Winnie l'ourson", q: "Winnie l'Ourson Nicole Croisille 100% Disney" },
-        { t: "Oo-De-Lally", a: "Robin des Bois", q: "Roger Miller Oo-De-Lally Robin Hood Legacy Collection" }
+        { t: "Oo-De-Lally", a: "Robin des Bois", q: "Roger Miller Oo-De-Lally Robin Hood Legacy Collection" },
+
+        /* Trois Pixar pour aligner la catégorie sur les autres. « Là-haut »
+           vient des films cultes, où il n'avait rien à faire. */
+        { t: "Married Life", a: "Là-haut", q: "Michael Giacchino Married Life Up Soundtrack from the Motion Picture", altA: ["Up"] },
+        { t: "Life Is a Highway", a: "Cars", q: "Rascal Flatts Life Is a Highway Cars Original Motion Picture Soundtrack" },
+        { t: "If I Didn't Have You", a: "Monstres & Cie", q: "Billy Crystal John Goodman If I Didn't Have You Monsters Inc Original Soundtrack", altA: ["Monstres et Cie", "Monsters, Inc."] }
       ]
     },
     {
