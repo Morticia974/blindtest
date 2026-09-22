@@ -3,60 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Où démarrer Barry ?</title>
+<title>Quel Barry ?</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap">
 <style>
   :root { --vert:#8CFF4A; --encre:#06140F; --ambre:#FFC247; --doux:#9DB5A8; --bord:rgba(140,255,74,.22); }
   * { box-sizing:border-box; }
   body {
-    margin:0; padding:26px 16px 60px; min-height:100vh;
+    margin:0; padding:26px 16px 70px; min-height:100vh;
     background:radial-gradient(1100px 700px at 50% -10%, #0d2b1d 0%, var(--encre) 60%);
     color:#EAFBF1; font-family:Figtree,system-ui,sans-serif;
   }
-  .enveloppe { max-width:620px; margin:0 auto; }
-  h1 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(26px,6vw,36px); margin:0 0 6px; color:var(--vert); }
-  .sous { color:var(--doux); margin:0 0 24px; font-size:15px; line-height:1.5; }
-  .grille { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
-  button.pt {
-    padding:16px 10px; border-radius:14px; cursor:pointer;
+  .enveloppe { max-width:640px; margin:0 auto; }
+  h1 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(26px,6vw,36px); margin:0 0 8px; color:var(--vert); }
+  .sous { color:var(--doux); margin:0 0 6px; font-size:15px; line-height:1.55; }
+  .sous b { color:#EAFBF1; }
+  h2 { font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--ambre); margin:28px 0 12px; }
+  .choix {
+    display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+    padding:14px 16px; margin-bottom:10px; border-radius:14px; cursor:pointer;
     border:1px solid var(--bord); background:rgba(4,14,10,.6); color:#EAFBF1;
-    font-family:inherit; font-size:16px; font-weight:700;
-    transition:border-color .15s, transform .1s;
+    font-family:inherit; font-size:15px; transition:border-color .15s, transform .1s;
   }
-  button.pt:hover { border-color:var(--vert); }
-  button.pt:active { transform:scale(.97); }
-  button.pt.actif { border-color:var(--ambre); color:var(--ambre); }
-  button.pt small { display:block; font-weight:400; font-size:12px; color:var(--doux); margin-top:3px; }
-  .barre { display:flex; gap:10px; align-items:center; margin:22px 0 10px; flex-wrap:wrap; }
+  .choix:hover { border-color:var(--vert); }
+  .choix:active { transform:scale(.99); }
+  .choix.actif { border-color:var(--ambre); }
+  .choix .num {
+    flex:0 0 auto; width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(140,255,74,.14); color:var(--vert); font-weight:800;
+  }
+  .choix .nom { flex:1 1 auto; font-weight:700; }
+  .choix .nom small { display:block; font-weight:400; color:var(--doux); font-size:13px; margin-top:2px; }
+  .barre { display:flex; gap:12px; align-items:center; margin-top:20px; flex-wrap:wrap; }
   button.stop { padding:12px 18px; border-radius:12px; border:1px solid var(--bord); background:rgba(4,14,10,.6); color:#EAFBF1; font-family:inherit; cursor:pointer; }
-  #etat { color:var(--ambre); font-weight:700; min-height:24px; margin-top:14px; }
-  .note { color:var(--doux); font-size:14px; margin-top:26px; line-height:1.55; }
+  #etat { color:var(--ambre); font-weight:700; min-height:24px; margin-top:16px; }
+  .note { color:var(--doux); font-size:14px; margin-top:24px; line-height:1.6; border-top:1px solid var(--bord); padding-top:18px; }
 </style>
 </head>
 <body>
 <div class="enveloppe">
 
-  <h1>Où démarrer Barry ? 🎺</h1>
+  <h1>Quel Barry ? 🎺</h1>
   <p class="sous">
-    Clique sur un chiffre : le morceau démarre à cet endroit et s'arrête au bout
-    de 8&nbsp;secondes. Dis-moi ensuite lequel contient ton «&nbsp;haaan ouaiiis&nbsp;».
+    La chanson entière n'est pas disponible — tout le jeu tourne sur les extraits
+    de 30&nbsp;secondes d'Apple. <b>Mais chaque édition de l'album découpe ces
+    30&nbsp;secondes à un endroit différent.</b> Certaines tombent en plein dans
+    le fort du morceau.
+  </p>
+  <p class="sous">
+    Écoute-les et dis-moi le <b>numéro</b> de celle qui a ton «&nbsp;haaan
+    ouaiiis&nbsp;». Chaque essai dure 12&nbsp;secondes et s'arrête tout seul.
   </p>
 
-  <div class="grille" id="points"></div>
+  <h2>Les éditions</h2>
+  <div id="liste"></div>
 
   <div class="barre">
     <button class="stop" id="stop">⏹ Arrêter</button>
-    <label style="display:flex;align-items:center;gap:8px;flex:1;min-width:180px">
+    <label style="display:flex;align-items:center;gap:8px;flex:1;min-width:190px">
       <span style="font-size:14px;color:var(--doux)">Volume</span>
       <input id="vol" type="range" min="0" max="100" value="70" style="flex:1;accent-color:var(--vert)">
     </label>
   </div>
 
-  <div id="etat">Chargement de l'extrait…</div>
+  <div id="etat">Chargement…</div>
 
   <p class="note">
-    L'extrait dure 30&nbsp;secondes en tout. Actuellement le jeu démarre à
-    <b>18&nbsp;s</b>, et tu le trouves trop tardif.
+    Celle que le jeu utilise aujourd'hui est <b>Let The Music Play</b> (l'album).
+    Son extrait commence sur un passage calme — c'est pour ça qu'il fallait
+    attendre 18&nbsp;secondes. Les autres éditions démarrent beaucoup plus fort.
   </p>
 
 </div>
@@ -65,60 +80,83 @@
 
 <script>
 (function () {
-  var POINTS = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 23];
-  var DUREE = 8;
+  /* Éditions retenues après mesure du niveau sonore de chaque extrait.
+     Le nom doit correspondre au champ « album » renvoyé par Apple. */
+  var VOULUES = [
+    { cle: "Love's Theme",            note: "démarre fort et ne faiblit jamais" },
+    { cle: "The Ultimate Collection", note: "attaque à fond dès la 1re seconde" },
+    { cle: "Number Ones",             note: "très fort dès la 1re seconde" },
+    { cle: "Let The Music Play (Expanded Edition)", note: "monte à fond en 1 seconde" },
+    { cle: "Barry White - The Collection",          note: "monte à fond en 1 seconde" },
+    { cle: "All-Time Greatest Hits",  note: "démarre soutenu" },
+    { cle: "Let The Music Play",      note: "celle d'aujourd'hui — départ calme" }
+  ];
+
+  var DUREE = 12;
   var a = document.getElementById('a');
   var etat = document.getElementById('etat');
   var minuteur = null;
 
-  document.getElementById('vol').addEventListener('input', function () {
-    a.volume = this.value / 100;
-  });
+  document.getElementById('vol').addEventListener('input', function () { a.volume = this.value / 100; });
   a.volume = 0.7;
 
   fetch('https://itunes.apple.com/search?' + new URLSearchParams({
     term: 'Barry White Let the Music Play', media: 'music', entity: 'song',
-    limit: 8, country: 'FR'
+    limit: 25, country: 'FR'
   }))
     .then(function (r) { return r.json(); })
     .then(function (d) {
-      var bon = (d.results || []).filter(function (x) {
+      var tout = (d.results || []).filter(function (x) {
         return x.previewUrl && /barry white/i.test(x.artistName) &&
-               /let the music play/i.test(x.trackName);
-      })[0];
-      if (!bon) { etat.textContent = 'Extrait introuvable — réessaie dans une minute.'; return; }
-      a.src = bon.previewUrl;
-      etat.textContent = 'Prêt. Clique sur un chiffre.';
-      dessiner();
+               /^let the music play/i.test(x.trackName) &&
+               !/remix|instrumental|throwback|funkstar|club deluxe/i.test(x.trackName);
+      });
+      var retenus = [];
+      VOULUES.forEach(function (v) {
+        var trouve = tout.filter(function (x) {
+          return (x.collectionName || '').toLowerCase().indexOf(v.cle.toLowerCase()) === 0;
+        })[0];
+        if (trouve && !retenus.some(function (r) { return r.url === trouve.previewUrl; })) {
+          retenus.push({ album: trouve.collectionName, titre: trouve.trackName,
+                         url: trouve.previewUrl, note: v.note });
+        }
+      });
+      if (!retenus.length) { etat.textContent = "Apple ne répond pas — réessaie dans une minute."; return; }
+      dessiner(retenus);
+      etat.textContent = 'Prêt. Clique sur une édition.';
     })
-    .catch(function () { etat.textContent = 'Apple ne répond pas — réessaie dans une minute.'; });
+    .catch(function () { etat.textContent = "Apple ne répond pas — réessaie dans une minute."; });
 
-  function dessiner() {
-    var boite = document.getElementById('points');
-    POINTS.forEach(function (s) {
+  function dessiner(liste) {
+    var boite = document.getElementById('liste');
+    liste.forEach(function (v, i) {
       var b = document.createElement('button');
-      b.className = 'pt';
-      b.innerHTML = s + ' s' + (s === 18 ? '<small>actuel</small>' : '<small>&nbsp;</small>');
+      b.className = 'choix';
+      b.innerHTML = '<span class="num">' + (i + 1) + '</span>' +
+                    '<span class="nom">' + v.album +
+                    '<small>' + v.note + '</small></span>' +
+                    '<span style="color:var(--vert);font-size:20px">▶</span>';
       b.addEventListener('click', function () {
         [].forEach.call(boite.children, function (x) { x.classList.remove('actif'); });
         b.classList.add('actif');
-        jouer(s);
+        jouer(v, i + 1);
       });
       boite.appendChild(b);
     });
   }
 
-  function jouer(depart) {
+  function jouer(v, numero) {
     clearTimeout(minuteur);
-    try { a.currentTime = depart; } catch (e) {}
+    if (a.src !== v.url) { a.src = v.url; }
+    try { a.currentTime = 0; } catch (e) {}
     a.play().then(function () {
-      etat.textContent = '▶ lecture à partir de ' + depart + ' s';
+      etat.textContent = '▶ n° ' + numero + ' — ' + v.album;
       minuteur = setTimeout(function () {
         a.pause();
-        etat.textContent = 'Fini pour ' + depart + ' s — essaie un autre chiffre.';
+        etat.textContent = 'Fini pour le n° ' + numero + '. Essaie-en une autre.';
       }, DUREE * 1000);
     }).catch(function () {
-      etat.textContent = 'Le navigateur bloque le son : reclique sur le chiffre.';
+      etat.textContent = 'Le navigateur bloque le son : reclique.';
     });
   }
 
