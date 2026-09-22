@@ -532,7 +532,9 @@ var Playlists = (function () {
         { t: "Tatoue-moi", a: "Mozart l'Opéra Rock", q: "Tatoue moi Mozart l'Opéra Rock" },
         { t: "Les Rois du monde", a: "Roméo et Juliette", q: "Les Rois du monde Roméo et Juliette" },
         { t: "Aimer", a: "Roméo et Juliette", q: "Aimer Roméo et Juliette Damien Sargue" },
-        { t: "Vérone", a: "Roméo et Juliette", q: "Vérone Roméo et Juliette Damien Sargue" },
+        // Sans « Gérard Presgurvic », Apple ne trouve aucun « Vérone » et se
+        // rabat sur « Aimer » — le même extrait sortait alors sous deux noms.
+        { t: "Vérone", a: "Roméo et Juliette", q: "Vérone Gérard Presgurvic" },
         { t: "À la volonté du peuple", a: "Les Misérables", q: "À la volonté du peuple Les Misérables" },
         { t: "Mon histoire", a: "Les Misérables", q: "Mon histoire Les Misérables" },
         // Titre corrigé : la chanson des Demoiselles de Rochefort s'appelle
@@ -634,6 +636,19 @@ var Playlists = (function () {
     });
   }
 
+  /* L'œuvre dont provient un morceau — film, anime, jeu, dessin animé — ou null
+     quand la catégorie est organisée par artistes (auquel cas plusieurs titres
+     du même chanteur sont tout à fait souhaitables). */
+  function cleOeuvre(p, m) {
+    var label = m.labelA || 'Artiste';
+    if (m.solo === 'titre') return Match.normaliser(p.t);   // Club Dorothée : l'œuvre est le titre
+    if (label === 'Artiste' || label === 'Interprète') return null;
+    /* On coupe au premier deux-points ou à la première virgule pour remonter à
+       la saga : « Star Wars, épisode IV » et « épisode V » comptent pour une
+       seule œuvre, tout comme les deux Zelda. */
+    return Match.normaliser(String(p.a).split(/[:,]/)[0]);
+  }
+
   function parId(id) {
     for (var i = 0; i < manches.length; i++) if (manches[i].id === id) return manches[i];
     return null;
@@ -643,15 +658,26 @@ var Playlists = (function () {
   function tirage(id, nombre, graine) {
     var source;
     if (id === 'melange') {
-      // Certains titres figurent dans deux catégories (« Wonderwall » est à la
-      // fois dans Années 90 et Karaoké). Sans ce filtre, ils pourraient tomber
-      // deux fois dans la même partie.
-      var vus = {};
+      /* Deux filtres pour que le Grand mélange reste varié :
+         1. le même morceau listé dans deux catégories (« Wonderwall » est à la
+            fois dans Années 90 et Karaoké) ;
+         2. deux morceaux différents tirés de la même œuvre — le générique de
+            Dragon Ball Z et son thème japonais, ou quatre chansons de Starmania.
+         Dans les catégories d'artistes, en revanche, on garde bien plusieurs
+         titres d'un même chanteur. */
+      var vus = {}, vuesOeuvres = {};
       source = [];
       manches.forEach(function (m) {
         m.pistes.forEach(function (p) {
           var cle = Match.normaliser(p.t) + '|' + Match.normaliser(p.a);
           if (vus[cle]) return;
+
+          var oeuvre = cleOeuvre(p, m);
+          if (oeuvre) {
+            if (vuesOeuvres[oeuvre]) return;
+            vuesOeuvres[oeuvre] = 1;
+          }
+
           vus[cle] = 1;
           source.push(habillerPiste(p, m));
         });
