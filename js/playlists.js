@@ -389,7 +389,6 @@ var Playlists = (function () {
         { t: "Dragonborn", a: "Skyrim", q: "Dragonborn Jeremy Soule Skyrim", altA: ["The Elder Scrolls"] },
         { t: "Baba Yetu", a: "Civilization IV", q: "Baba Yetu Christopher Tin", altA: ["Civilization"] },
         { t: "Still Alive", a: "Portal", q: "Still Alive Jonathan Coulton Portal" },
-        { t: "Aerith's Theme", a: "Final Fantasy VII", q: "Aerith's Theme Final Fantasy VII", altA: ["Final Fantasy"] },
         { t: "One-Winged Angel", a: "Final Fantasy VII", q: "One Winged Angel Final Fantasy VII", altA: ["Final Fantasy"] },
         // Nintendo n'est pas sur Apple Music : ces trois-là sont des versions
         // orchestrales. La mélodie est identique, c'est tout ce qui compte ici.
@@ -400,10 +399,7 @@ var Playlists = (function () {
         { t: "Rip & Tear", a: "Doom", q: "Rip and Tear Mick Gordon Doom" },
         { t: "Geralt of Rivia", a: "The Witcher 3", q: "Geralt of Rivia Marcin Przybylowicz Witcher 3", altA: ["The Witcher"] },
         { t: "I Really Want to Stay at Your House", a: "Cyberpunk 2077", q: "I Really Want to Stay at Your House Rosa Walton", altA: ["Cyberpunk"] },
-        { t: "Good Riddance", a: "Hades", q: "Good Riddance Darren Korb Hades" },
         { t: "Build That Wall", a: "Bastion", q: "Build That Wall Darren Korb Bastion" },
-        { t: "Nascence", a: "Journey", q: "Nascence Austin Wintory Journey" },
-        { t: "City Escape", a: "Sonic Adventure 2", q: "City Escape Sonic Adventure 2", altA: ["Sonic"] }
       ]
     },
     {
