@@ -341,9 +341,7 @@ var Playlists = (function () {
         { t: "Again", a: "Fullmetal Alchemist Brotherhood", q: "Again YUI Fullmetal Alchemist", altA: ["Fullmetal Alchemist"] },
         { t: "Tank!", a: "Cowboy Bebop", q: "Tank Seatbelts Cowboy Bebop" },
         { t: "A Cruel Angel's Thesis", a: "Neon Genesis Evangelion", q: "A Cruel Angel's Thesis Yoko Takahashi", altT: ["Zankoku na Tenshi no These"], altA: ["Evangelion", "Evangelion 1.0"] },
-        { t: "Sign", a: "Naruto Shippuden", q: "Sign FLOW Naruto", altA: ["Naruto"] },
         { t: "Colors", a: "Code Geass", q: "Colors FLOW Code Geass" },
-        { t: "Silhouette", a: "Naruto Shippuden", q: "Silhouette KANA-BOON", altA: ["Naruto"] },
         { t: "Kaikai Kitan", a: "Jujutsu Kaisen", q: "Kaikai Kitan Eve" },
         { t: "Idol", a: "Oshi no Ko", q: "Idol YOASOBI" },
         { t: "Zenzenzense", a: "Your Name", q: "Zenzenzense RADWIMPS", altA: ["Kimi no Na wa"] },
@@ -351,7 +349,26 @@ var Playlists = (function () {
         { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"] },
         { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu" },
         { t: "Kick Back", a: "Chainsaw Man", q: "Kick Back Kenshi Yonezu" },
-        { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu Judy and Mary", altA: ["Rurouni Kenshin"] }
+        { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu Judy and Mary", altA: ["Rurouni Kenshin"] },
+
+        /* Ajoutés sur proposition d'Audrey : la catégorie manquait de variété. */
+        { t: "Pokémon Theme", a: "Pokémon", q: "Pokemon Theme Gotta Catch Em All" },
+        { t: "Crossing Field", a: "Sword Art Online", q: "Crossing Field LiSA", altA: ["SAO"] },
+        { t: "Déjà Vu", a: "Initial D", q: "Deja Vu Dave Rodgers" },
+        { t: "The WORLD", a: "Death Note", q: "The World Nightmare Death Note" },
+        { t: "Departure!", a: "Hunter x Hunter", q: "Departure Masatoshi Ono Hunter", altA: ["HxH"] },
+        { t: "THE HERO !!", a: "One Punch Man", q: "The Hero JAM Project One Punch Man" },
+        { t: "Asterisk", a: "Bleach", q: "Asterisk Orange Range Bleach" },
+        { t: "Re:Re:", a: "Erased", q: "Re Re Asian Kung-Fu Generation", altA: ["Boku dake ga Inai Machi"] },
+        { t: "LEveL", a: "Solo Leveling", q: "LEveL SawanoHiroyuki nZk Tomorrow X Together" },
+        { t: "Forces", a: "Berserk", q: "Forces Susumu Hirasawa Berserk" },
+        { t: "Snow Fairy", a: "Fairy Tail", q: "Snow Fairy FUNKIST" },
+        { t: "Seishun Satsubatsuron", a: "Assassination Classroom", q: "Seishun Satsubatsuron Assassination Classroom", altA: ["Ansatsu Kyoushitsu"] },
+        { t: "Sono Chi no Sadame", a: "JoJo's Bizarre Adventure", q: "Sono Chi no Sadame Hiroaki Tommy Tominaga", altA: ["JoJo"] },
+        { t: "Rose", a: "NANA", q: "Rose Anna Tsuchiya NANA" },
+        { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki" },
+        { t: "Grain", a: "Monster", q: "Grain Kuniaki Haishima Monster" },
+        { t: "Wakfu", a: "Wakfu", q: "Wakfu générique série animée" }
       ]
     },
     {
@@ -385,7 +402,6 @@ var Playlists = (function () {
         { t: "Good Riddance", a: "Hades", q: "Good Riddance Darren Korb Hades" },
         { t: "Build That Wall", a: "Bastion", q: "Build That Wall Darren Korb Bastion" },
         { t: "Nascence", a: "Journey", q: "Nascence Austin Wintory Journey" },
-        { t: "Pokémon Theme", a: "Pokémon", q: "Pokemon Theme Gotta Catch Em All" },
         { t: "City Escape", a: "Sonic Adventure 2", q: "City Escape Sonic Adventure 2", altA: ["Sonic"] }
       ]
     },
