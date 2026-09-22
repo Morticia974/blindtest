@@ -292,6 +292,14 @@
   var sacreEnCours = false;
   var sacrePiste = null;      // le morceau du sacre, une fois trouvé
 
+  /* On ne démarre pas le sacre au début de l'extrait : Audrey voulait le
+     refrain, plus percutant au moment du podium. Le chiffre n'est pas choisi au
+     hasard — l'extrait a été décodé et son niveau sonore mesuré demi-seconde
+     par demi-seconde. Il reste autour de 15-44 % jusqu'à 13 s, monte à 40-53 %
+     vers 14-17 s, puis passe à 56-70 % à 18 s et culmine à 100 % à 26,5 s.
+     C'est donc à 18 s que le refrain s'installe. */
+  var DEPART_SACRE = 18;
+
   /* Cherche le morceau du sacre et le garde sous la main. Appelé dès le début
      de la partie : au moment du podium, il est déjà prêt.
 
@@ -357,9 +365,21 @@
       lecteur.src = extraits[piste.apercu] || piste.apercu;
       lecteur.loop = true;
       lecteur.load();
-      if (contexte && contexte.state === 'suspended') contexte.resume();
-      if (!gain) lecteur.volume = volume;
-      lecteur.play().catch(function () {});
+
+      /* On ne peut pas se placer dans le morceau tant que sa durée est
+         inconnue : on attend que le lecteur l'ait lue. */
+      var entrerEnScene = function () {
+        try {
+          if (isFinite(lecteur.duration) && DEPART_SACRE < lecteur.duration - 1) {
+            lecteur.currentTime = DEPART_SACRE;
+          }
+        } catch (e) {}
+        if (contexte && contexte.state === 'suspended') contexte.resume();
+        if (!gain) lecteur.volume = volume;
+        lecteur.play().catch(function () {});
+      };
+      if (lecteur.readyState >= 1) entrerEnScene();
+      else lecteur.addEventListener('loadedmetadata', entrerEnScene, { once: true });
     });
   }
 
