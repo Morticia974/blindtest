@@ -617,7 +617,8 @@ var Playlists = (function () {
         { t: "Tristram", a: "Diablo", q: "Tristram Matt Uelmen Diablo" },
         { t: "Counter-Strike: Global Offensive Main Theme", a: "Counter-Strike", q: "Counter-Strike Global Offensive Main Theme XG Stephen", altA: ["CS", "CS GO", "Counter Strike Global Offensive"] },
         { t: "Rocket League (2015) - Theme", a: "Rocket League", q: "Rocket League 2015 Theme Geek Music" },
-        { t: "Among Us Drip Theme", a: "Among Us", q: "Among Us Drip Theme Dario D'Aversa" },
+        // Among Us retiré à la demande d'Audrey : le « drip theme » qu'Apple
+        // propose n'est pas la musique qu'on associe au jeu.
         { t: "Rainbow Road", a: "Mario Kart", q: "Rainbow Road Mario Kart 64 Qumu", altA: ["Mario Kart 64"] },
         { t: "Fallout 4 Main Theme", a: "Fallout", q: "Fallout 4 Main Theme Inon Zur", altA: ["Fallout 4"] },
         { t: "Gwyn, Lord of Cinder", a: "Dark Souls", q: "Gwyn Lord of Cinder Motoi Sakuraba Dark Souls" },

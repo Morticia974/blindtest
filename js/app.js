@@ -182,6 +182,10 @@
     if (!piste || !piste.apercu) return;
     var url = piste.apercu;
     if (extraits[url] || enCours[url]) return;
+    /* Si on est en train de lire ce morceau en direct, le télécharger en même
+       temps reviendrait à demander deux fois le même fichier : autant de débit
+       en moins pour la lecture, et le son se hache. */
+    if (lecteur.src === url) return;
     enCours[url] = true;
 
     fetch(url, { cache: 'force-cache' })
@@ -211,6 +215,32 @@
     }
   }
 
+  /* ================= compteur de coupures ================= */
+
+  /* Enregistre ce que fait réellement le lecteur chez le joueur, et le résume
+     sur l'écran de fin. Sert à comprendre un défaut qu'on ne reproduit pas. */
+  var bilanAudio = { coupures: 0, enMemoire: 0, enReseau: 0 };
+
+  lecteur.addEventListener('waiting', function () {
+    if ($('ecran-jeu').classList.contains('actif')) bilanAudio.coupures++;
+  });
+  lecteur.addEventListener('stalled', function () {
+    if ($('ecran-jeu').classList.contains('actif')) bilanAudio.coupures++;
+  });
+
+  function rendreBilanAudio() {
+    var el = $('bilan-audio');
+    if (!el) return;
+    var total = bilanAudio.enMemoire + bilanAudio.enReseau;
+    if (!total) { el.hidden = true; return; }
+    el.hidden = false;
+    el.textContent = bilanAudio.coupures === 0
+      ? 'Son : aucune coupure sur ' + total + ' morceaux 👍'
+      : 'Son : ' + bilanAudio.coupures + ' coupure' + (bilanAudio.coupures > 1 ? 's' : '') +
+        ' — ' + bilanAudio.enMemoire + ' morceaux joués depuis la mémoire, ' +
+        bilanAudio.enReseau + ' en direct';
+  }
+
   /* Cale la lecture sur l'heure du salon : un retardataire tombe au bon endroit. */
   function jouerExtrait(piste, debutA) {
     if (!piste || !piste.apercu) return;
@@ -220,7 +250,9 @@
     if (dernierePisteJouee !== piste.apercu) {
       dernierePisteJouee = piste.apercu;
       // Le fichier téléchargé si on l'a, la source d'Apple sinon.
-      lecteur.src = extraits[piste.apercu] || piste.apercu;
+      var local = extraits[piste.apercu];
+      if (local) bilanAudio.enMemoire++; else bilanAudio.enReseau++;
+      lecteur.src = local || piste.apercu;
       lecteur.load();
       rangerExtraits();
     }
@@ -644,6 +676,7 @@
       recap.appendChild(li);
     });
 
+    rendreBilanAudio();
     majBoutonSacre();
     jouerSacre();
   }
@@ -694,10 +727,13 @@
         historique.push(piste);
       }
 
-      /* Pendant la révélation et la pause, on prépare le morceau suivant :
-         il sera déjà en mémoire au moment de le jouer. */
+      /* On prépare tout ce que le chef a déjà résolu, pas seulement le morceau
+         suivant : le premier de la partie n'avait aucune avance et partait donc
+         toujours en direct. */
       precharger(piste);
-      precharger(etat.pistes[etat.tour.index + 1]);
+      for (var k = etat.tour.index + 1; k <= etat.tour.index + 3; k++) {
+        precharger(etat.pistes[k]);
+      }
 
       if (etat.tour.phase === 'ecoute' && piste && etat.tour.debutA) {
         /* « ended » : l'extrait dure 30 s et la manche aussi, donc il se termine
