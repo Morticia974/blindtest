@@ -284,21 +284,25 @@
   /* Le podium ne se devoile pas en silence : Barry White entre en scene.
      Le morceau tourne en boucle tant qu'on reste sur l'ecran de fin, et chacun
      peut le couper - le choix est retenu d'une partie a l'autre. */
+  /* Chaque édition de l'album découpe ses trente secondes ailleurs, et on était
+     tombés sur la plus molle : « Let The Music Play » traîne à 31 % de niveau
+     sonore pendant vingt secondes, d'où l'entrée retardée à 18 s.
+
+     Cette requête sort la version single des compilations 20th Century, mesurée
+     à 79, 78, 98, 89, 95, 90 % sur ses quatre premières secondes : elle est dans
+     le vif immédiatement. Audrey a écouté les six éditions candidates et les
+     trouve très proches à l'oreille, donc le choix se fait sur ce critère. */
   var SACRE = {
     t: "Let the Music Play",
     a: "Barry White",
-    q: "Barry White Let the Music Play"
+    q: "Barry White Let the Music Play Love's Theme Best of the 20th Century Records Singles"
   };
   var sacreEnCours = false;
   var sacrePiste = null;      // le morceau du sacre, une fois trouvé
 
-  /* On ne démarre pas le sacre au début de l'extrait : Audrey voulait le
-     refrain, plus percutant au moment du podium. Le chiffre n'est pas choisi au
-     hasard — l'extrait a été décodé et son niveau sonore mesuré demi-seconde
-     par demi-seconde. Il reste autour de 15-44 % jusqu'à 13 s, monte à 40-53 %
-     vers 14-17 s, puis passe à 56-70 % à 18 s et culmine à 100 % à 26,5 s.
-     C'est donc à 18 s que le refrain s'installe. */
-  var DEPART_SACRE = 18;
+  /* Plus besoin d'attendre : l'édition retenue est dans le vif dès la première
+     seconde. On garde le réglage, il resservira si on change de morceau. */
+  var DEPART_SACRE = 0;
 
   /* Cherche le morceau du sacre et le garde sous la main. Appelé dès le début
      de la partie : au moment du podium, il est déjà prêt.
