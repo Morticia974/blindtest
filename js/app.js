@@ -701,6 +701,23 @@
 
   /* ================= rendu du jeu ================= */
 
+  /* Rendre la main au champ de réponse tout seul, pour ne pas avoir à cliquer
+     dedans à chaque morceau. Sur un ordinateur c'est gratuit ; sur un
+     téléphone, faire surgir le clavier sans prévenir cacherait la moitié de
+     l'écran, alors on ne le rouvre que si le joueur s'en servait déjà. */
+  var pointeurFin = !!(window.matchMedia &&
+                       window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+  var clavierVoulu = false;
+  var champEtaitFerme = true;
+
+  function redonnerLaMain() {
+    var champ = $('champ-reponse');
+    if (!champ || champ.disabled) return;
+    if (document.activeElement === champ) return;
+    if (!pointeurFin && !clavierVoulu) return;
+    try { champ.focus({ preventScroll: true }); } catch (e) { champ.focus(); }
+  }
+
   function rendreJeu() {
     var etat = partie.etat;
     var tour = etat.tour;
@@ -760,7 +777,15 @@
     // le champ se ferme quand tout est trouvé ou pendant la révélation
     var fini = reveal || (trouves.titre && trouves.artiste);
     $('champ-reponse').disabled = fini;
-    if (fini) $('champ-reponse').blur();
+    if (fini) {
+      $('champ-reponse').blur();
+      champEtaitFerme = true;
+    } else if (champEtaitFerme) {
+      // Seulement à la réouverture : sinon on reprendrait le curseur au joueur
+      // en train de régler le volume au milieu du morceau.
+      champEtaitFerme = false;
+      redonnerLaMain();
+    }
 
     rendreScores();
   }
@@ -912,6 +937,8 @@
       info('');
       $('champ-reponse').value = '';
       $('champ-reponse').disabled = false;
+      champEtaitFerme = false;
+      redonnerLaMain();
       $('pochette').classList.add('invisible');
       arreterExtrait();
     });
@@ -1074,6 +1101,8 @@
       majBoutonSacre();
       if (on) jouerSacre(); else arreterSacre();
     });
+
+    $('champ-reponse').addEventListener('focus', function () { clavierVoulu = true; });
 
     $('formulaire-reponse').addEventListener('submit', function (e) {
       e.preventDefault();
