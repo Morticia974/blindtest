@@ -244,7 +244,7 @@ var Playlists = (function () {
     },
     {
       id: 'disney',
-      nom: "Disney & dessins animés",
+      nom: "Disney et compagnie",
       emoji: "🏰",
       desc: "En français. Ici on devine la chanson et le film.",
       // Comme pour les génériques et les animes : c'est le film qu'on cherche,
@@ -291,12 +291,14 @@ var Playlists = (function () {
         { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français" },
         // Audrey a validé ce titre-là pour Merlin plutôt que « Un tout petit rien ».
         { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus" },
-        { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" }
+        { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" },
+        // Venu des génériques : c'est un dessin animé, sa place est ici.
+        { t: "Test Drive", a: "Dragons", q: "Test Drive John Powell How to Train Your Dragon", altA: ["How to Train Your Dragon"] }
       ]
     },
     {
       id: 'generiques',
-      nom: "Génériques cultes",
+      nom: "Films cultes",
       emoji: "🍿",
       desc: "Films et séries. Ici on devine l'œuvre.",
       // Une seule réponse : le film ou la série, pas le titre du morceau.
@@ -311,11 +313,9 @@ var Playlists = (function () {
         // Le titre du film doit être écrit en entier — mais le nom de la
         // licence est toujours accepté : « Star Wars » vaut pour la Marche
         // impériale. En revanche « Amélie Poulain » tronqué ne passe pas.
-        { t: "I'll Be There for You", a: "Friends", q: "I'll Be There for You The Rembrandts" },
         { t: "Hedwig's Theme", a: "Harry Potter à l'école des sorciers", q: "Hedwig's Theme John Williams", altA: ["Harry Potter"] },
         { t: "He's a Pirate", a: "Pirates des Caraïbes : La Malédiction du Black Pearl", q: "He's a Pirate Klaus Badelt", altA: ["Pirates des Caraïbes", "Pirates of the Caribbean"] },
         { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"] },
-        { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"] },
         { t: "Mission: Impossible Theme", a: "Mission impossible", q: "Mission Impossible Theme Lalo Schifrin" },
         { t: "Raiders March", a: "Les Aventuriers de l'arche perdue", q: "Raiders March John Williams", altA: ["Indiana Jones", "Indiana", "Raiders of the Lost Ark", "Indiana Jones et les Aventuriers de l'arche perdue"] },
         { t: "Eye of the Tiger", a: "Rocky III", q: "Eye of the Tiger Survivor", altA: ["Rocky"] },
@@ -328,21 +328,18 @@ var Playlists = (function () {
         { t: "Danger Zone", a: "Top Gun", q: "Danger Zone Kenny Loggins" },
         { t: "Skyfall", a: "Skyfall", q: "Skyfall Adele", altA: ["James Bond", "007"] },
         { t: "Comptine d'un autre été", a: "Le Fabuleux Destin d'Amélie Poulain", q: "Comptine d'un autre été Yann Tiersen" },
-        { t: "Circle of Life", a: "Le Roi Lion", q: "Circle of Life Lion King", altA: ["The Lion King"] },
-        { t: "Test Drive", a: "Dragons", q: "Test Drive John Powell How to Train Your Dragon", altA: ["How to Train Your Dragon"] },
+        // « Circle of Life » retiré : c'est la version anglaise de « L'Histoire
+        // de la vie », déjà dans la catégorie Disney & dessins animés.
+        // « Dragons » déplacé vers Disney & dessins animés : c'est un DreamWorks.
         { t: "Now We Are Free", a: "Gladiator", q: "Now We Are Free Hans Zimmer" },
         { t: "Back to the Future", a: "Retour vers le futur", q: "Back to the Future Theme Alan Silvestri" },
         { t: "The Imperial March", a: "Star Wars, épisode V : L'Empire contre-attaque", q: "Imperial March John Williams", altT: ["Marche impériale"], altA: ["Star Wars", "La Guerre des étoiles"] },
-        { t: "Married Life", a: "Là-haut", q: "Married Life Michael Giacchino Up", altA: ["Up"] },
+        // « Là-haut » retiré : c'est un Pixar, sa place est dans la catégorie
+        // Disney & dessins animés, pas parmi les films.
 
         /* Abandonnés : Les Simpson (Apple France n'a que des arrangements pour
            orchestre de chambre), E.T. (uniquement en medley) et 2001 (Apple ne
            remonte pas le bon mouvement de Zarathoustra). */
-        { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
-        { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold" },
-        { t: "Woke Up This Morning", a: "Les Soprano", q: "Woke Up This Morning Alabama 3", altA: ["The Sopranos"] },
-        { t: "Stranger Things", a: "Stranger Things", q: "Stranger Things Theme Kyle Dixon Michael Stein" },
-        { t: "Red Right Hand", a: "Peaky Blinders", q: "Red Right Hand Nick Cave and the Bad Seeds" },
         { t: "Theme from Jurassic Park", a: "Jurassic Park", q: "Jurassic Park Original Motion Picture Soundtrack John Williams main theme" },
         { t: "The Terminator Theme", a: "Terminator", q: "Terminator Main Title Brad Fiedel" },
         { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield" },
@@ -351,8 +348,62 @@ var Playlists = (function () {
         { t: "Lux Aeterna", a: "Requiem for a Dream", q: "Lux Aeterna Clint Mansell" },
         { t: "The Pink Panther Theme", a: "La Panthère rose", q: "Pink Panther Theme Henry Mancini" },
         { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone" },
-        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" },
-        { t: "Chariots of Fire", a: "Les Chariots de feu", q: "Vangelis Chariots of Fire" }
+        { t: "Chariots of Fire", a: "Les Chariots de feu", q: "Vangelis Chariots of Fire" },
+
+        /* Vingt-six films cités par Audrey. Huit d'entre eux sortaient sur une
+           reprise et ont demandé une requête épinglée : Matrix arrivait en
+           quatuor à cordes, OSS 117 en fanfare, Rabbi Jacob en version
+           classique, « Laid » chez un autre artiste que James. */
+        { t: "The Godfather Waltz", a: "Le Parrain", q: "The Godfather Waltz Nino Rota" },
+        // « Clubbed to Death » n'existe chez Apple qu'en reprise : on prend
+        // l'autre morceau emblématique du film, la scène du hall.
+        { t: "Spybreak!", a: "Matrix", q: "Propellerheads Spybreak Decksandrumsandrockandroll" },
+        { t: "Time", a: "Inception", q: "Time Hans Zimmer Inception" },
+        { t: "Cornfield Chase", a: "Interstellar", q: "Cornfield Chase Hans Zimmer Interstellar" },
+        { t: "The Diva Dance", a: "Le Cinquième Élément", q: "Eric Serra Diva Dance Fifth Element Original Motion Picture Soundtrack", altA: ["Le 5e Élément"] },
+        { t: "Forrest Gump Suite", a: "Forrest Gump", q: "Forrest Gump Suite Alan Silvestri" },
+        { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction" },
+        { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
+        { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
+        { t: "Main Title (The Shining)", a: "Shining", q: "The Shining Main Title Wendy Carlos" },
+        { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore" },
+        { t: "C'era una volta il West", a: "Il était une fois dans l'Ouest", q: "Ennio Morricone C'era una volta il West" },
+        { t: "Main Title", a: "Braveheart", q: "Braveheart Main Title James Horner" },
+        { t: "The Big Blue (Overture)", a: "Le Grand Bleu", q: "The Big Blue Overture Eric Serra" },
+        { t: "Enae Volare", a: "Les Visiteurs", q: "Les Visiteurs Eric Levi bande originale" },
+        { t: "Reality", a: "La Boum", q: "Reality Richard Sanderson La Boum" },
+        { t: "Oss 117 thème", a: "OSS 117", q: "Ludovic Bource OSS 117 Le Caire nid d'espions bande originale du film" },
+        { t: "I'm Just Ken", a: "Barbie", q: "I'm Just Ken Ryan Gosling Barbie" },
+        { t: "Laid", a: "American Pie", q: "James Laid Laid album" },
+        { t: "I See You", a: "Avatar", q: "I See You Leona Lewis Avatar" },
+        { t: "Astérix et Obélix: Mission Cléopâtre", a: "Astérix et Obélix : Mission Cléopâtre", q: "Asterix Obelix Mission Cleopatre bande originale Philippe Chany", altA: ["Mission Cléopâtre", "Astérix et Obélix"] },
+        { t: "La Carioca", a: "La Cité de la peur", q: "La Carioca La Cite de la peur Les Nuls" },
+        { t: "The Addams Family - Main Theme", a: "La Famille Addams", q: "Vic Mizzy Addams Family Original Music From The T.V. Show", altT: ["The Addams Family"] },
+        { t: "Rabbi Jacob", a: "Les Aventures de Rabbi Jacob", q: "Vladimir Cosma Rabbi Jacob bande originale du film", altA: ["Rabbi Jacob"] },
+        { t: "Come and Get Your Love", a: "Les Gardiens de la Galaxie", q: "Come and Get Your Love Redbone" },
+        { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer" }
+      ]
+    },
+    {
+      id: 'series',
+      nom: "Séries cultes",
+      emoji: "📺",
+      desc: "Les génériques qu'on connaît par cœur. Ici on devine la série.",
+      // Même principe que les films : c'est l'œuvre qu'on cherche, pas le nom
+      // du compositeur relevé chez Apple.
+      solo: 'artiste',
+      strict: true,
+      labelT: "Titre du morceau",
+      labelA: "Série",
+      pistes: [
+        { t: "I'll Be There for You", a: "Friends", q: "I'll Be There for You The Rembrandts" },
+        { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"] },
+        { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
+        { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold" },
+        { t: "Woke Up This Morning", a: "Les Soprano", q: "Woke Up This Morning Alabama 3", altA: ["The Sopranos"] },
+        { t: "Stranger Things", a: "Stranger Things", q: "Stranger Things Theme Kyle Dixon Michael Stein" },
+        { t: "Red Right Hand", a: "Peaky Blinders", q: "Red Right Hand Nick Cave and the Bad Seeds" },
+        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" }
       ]
     },
     {
