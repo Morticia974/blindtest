@@ -465,7 +465,14 @@ var Playlists = (function () {
         { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] },
         { t: "American Horror Story Theme", a: "American Horror Story", q: "American Horror Story Theme Cesar Davila-Irizarry Charlie Clouser", altA: ["AHS"] },
         // Laurie Johnson, depuis la bande originale officielle de la série.
-        { t: "Main Titles Theme", a: "Chapeau melon et bottes de cuir", q: "Laurie Johnson Main Titles Theme The Avengers 1968-1969 Soundtrack from the TV Series", altA: ["The Avengers"] }
+        { t: "Main Titles Theme", a: "Chapeau melon et bottes de cuir", q: "Laurie Johnson Main Titles Theme The Avengers 1968-1969 Soundtrack from the TV Series", altA: ["The Avengers"] },
+        /* La chanson du récapitulatif de chaque fin de saison. C'est un titre de
+           Kansas, mais la catégorie demande explicitement une série : personne ne
+           répondra « Kansas ». Le groupe n'est nulle part ailleurs dans le jeu. */
+        { t: "Carry On Wayward Son", a: "Supernatural", q: "Kansas Carry On Wayward Son Leftoverture" },
+        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] },
+        // Le thème de 1996, celui de la musique officielle de RTL.
+        { t: "Original Theme 1996", a: "Alerte Cobra", q: "Reinhard Scheuregger Original Theme 1996 Alarm für Cobra 11 Originalmusik RTL Serie", altA: ["Alarm für Cobra 11", "Cobra 11"] }
       ]
     },
     {
