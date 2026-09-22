@@ -99,7 +99,8 @@ var Playlists = (function () {
         { t: "La Boulette", a: "Diam's" },
         { t: "En apesanteur", a: "Calogero" },
         { t: "Butterfly", a: "Superbus" },
-        { t: "Ces soirées-là", a: "Yannick" },
+        // « Ces soirées-là » retiré : Apple n'a que des reprises (Generation Mix,
+        // Shewood Band, Les Enfoirés en live), jamais l'original de Yannick.
         { t: "L'Hymne de nos campagnes", a: "Tryo" }
       ]
     },
