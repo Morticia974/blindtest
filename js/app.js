@@ -322,7 +322,27 @@
      Si la vidéo devient indisponible ou si l'API ne se charge pas, on retombe
      sur l'extrait Apple plutôt que de rester muet. */
   var VIDEO_SACRE = 'V3eOuK_-c34';   // Barry White — Let The Music Play (lien donné par Audrey)
-  var DEPART_VIDEO = 19;             // le « haaan ouaiiis », repéré à l'oreille par Audrey
+  /* La fenêtre choisie par Audrey à l'oreille : le « haaan ouaiiis » tombe à
+     19 s, et le passage tient jusqu'à 58 s. */
+  var DEPART_VIDEO = 19;
+  var FIN_VIDEO = 58;
+
+  /* On ne télécharge ni ne redécoupe quoi que ce soit : c'est le lecteur de
+     YouTube qui lit, on lui demande simplement de revenir en arrière quand il
+     dépasse la fenêtre voulue. */
+  var boucleVideo = null;
+
+  function surveillerBoucleVideo() {
+    clearInterval(boucleVideo);
+    boucleVideo = setInterval(function () {
+      if (!lecteurVideo || !videoPrete) return;
+      try {
+        if (lecteurVideo.getCurrentTime() >= FIN_VIDEO) {
+          lecteurVideo.seekTo(DEPART_VIDEO, true);
+        }
+      } catch (e) {}
+    }, 400);
+  }
 
   var lecteurVideo = null;
   var videoPrete = false;
@@ -364,6 +384,7 @@
           lecteurVideo.seekTo(DEPART_VIDEO, true);
           lecteurVideo.setVolume(Math.round(volume * 100));
           lecteurVideo.playVideo();
+          surveillerBoucleVideo();
         } catch (e) {}
         return;
       }
@@ -378,6 +399,7 @@
               try {
                 e.target.setVolume(Math.round(volume * 100));
                 e.target.playVideo();
+                surveillerBoucleVideo();
               } catch (err) {}
             },
             /* Vidéo supprimée, privée, ou bloquée dans le pays : on revient à
@@ -397,6 +419,7 @@
   }
 
   function arreterSacreVideo() {
+    clearInterval(boucleVideo);
     if (lecteurVideo && videoPrete) { try { lecteurVideo.pauseVideo(); } catch (e) {} }
     var scene = $('scene-sacre');
     if (scene) scene.hidden = true;
