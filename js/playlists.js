@@ -64,7 +64,6 @@ var Playlists = (function () {
         { t: "All That She Wants", a: "Ace of Base" },
         { t: "Macarena", a: "Los del Río" },
         { t: "I Will Always Love You", a: "Whitney Houston" },
-        { t: "My Heart Will Go On", a: "Céline Dion" },
         { t: "Belle", a: "Garou, Daniel Lavoie & Patrick Fiori", altA: ["Notre-Dame de Paris"] },
         { t: "La Tribu de Dana", a: "Manau" },
         { t: "Tomber la chemise", a: "Zebda" },
@@ -195,6 +194,9 @@ var Playlists = (function () {
         { t: "Raiders March", a: "Les Aventuriers de l'arche perdue", q: "Raiders March John Williams", altA: ["Indiana Jones", "Indiana", "Raiders of the Lost Ark", "Indiana Jones et les Aventuriers de l'arche perdue"] },
         { t: "Eye of the Tiger", a: "Rocky III", q: "Eye of the Tiger Survivor", altA: ["Rocky"] },
         { t: "Ghostbusters", a: "SOS Fantômes", q: "Ghostbusters Ray Parker Jr", altA: ["Ghostbusters"] },
+        // Déplacé depuis les Années 90 : c'est le thème de Titanic avant d'être
+        // une chanson de Céline Dion, et ici c'est le film qu'on devine.
+        { t: "My Heart Will Go On", a: "Titanic", q: "My Heart Will Go On Céline Dion" },
         { t: "The Time of My Life", a: "Dirty Dancing", q: "I've Had The Time of My Life Bill Medley" },
         { t: "You're the One That I Want", a: "Grease", q: "You're the One That I Want Grease" },
         { t: "Danger Zone", a: "Top Gun", q: "Danger Zone Kenny Loggins" },
