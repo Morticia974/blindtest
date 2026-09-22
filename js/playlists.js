@@ -133,7 +133,55 @@ var Playlists = (function () {
         { t: "Butterfly", a: "Superbus" },
         // « Ces soirées-là » retiré : Apple n'a que des reprises (Generation Mix,
         // Shewood Band, Les Enfoirés en live), jamais l'original de Yannick.
-        { t: "L'Hymne de nos campagnes", a: "Tryo" }
+        { t: "L'Hymne de nos campagnes", a: "Tryo" },
+
+        /* Ajouts validés par Audrey. Écartés faute de mieux chez Apple France :
+           Green Day (que des reprises au quatuor à cordes), James Blunt pour
+           « You're Beautiful », Lady Gaga pour « Poker Face » — ces deux-là sont
+           remplacés par un autre titre du même artiste — et Leslie, absente.
+           Corneille, Amel Bent et K-Maro sont déjà dans le rap, Shaggy dans le
+           dancefloor : on ne les remet pas ici. */
+        { t: "Bring Me to Life", a: "Evanescence" },
+        { t: "How You Remind Me", a: "Nickelback" },
+        { t: "Complicated", a: "Avril Lavigne" },
+        { t: "Beautiful", a: "Christina Aguilera" },
+        { t: "So What", a: "P!nk", altA: ["Pink"] },
+        { t: "I Gotta Feeling", a: "The Black Eyed Peas", altA: ["Black Eyed Peas"] },
+        { t: "Apologize", a: "Timbaland", altA: ["OneRepublic", "One Republic"] },
+        { t: "Yeah!", a: "Usher", altA: ["Lil Jon", "Ludacris"] },
+        { t: "In Da Club", a: "50 Cent" },
+        { t: "Chasing Cars", a: "Snow Patrol" },
+        { t: "That's Not My Name", a: "The Ting Tings" },
+        { t: "Porcelain", a: "Moby" },
+        { t: "Get Busy", a: "Sean Paul" },
+        { t: "Since U Been Gone", a: "Kelly Clarkson" },
+        { t: "I Kissed a Girl", a: "Katy Perry" },
+        { t: "Just Dance", a: "Lady Gaga", q: "Lady Gaga Just Dance The Fame", altA: ["Colby O'Donis"] },
+        { t: "This Is the Life", a: "Amy Macdonald" },
+        { t: "Goodbye My Lover", a: "James Blunt" },
+        { t: "White Flag", a: "Dido" },
+        { t: "Aux arbres citoyens", a: "Yannick Noah" },
+        { t: "C'est quand le bonheur ?", a: "Cali", altT: ["C'est quand le bonheur"] },
+        { t: "Caravane", a: "Raphaël" },
+        { t: "Le Dîner", a: "Bénabar" },
+        { t: "On s'attache", a: "Christophe Maé" },
+        { t: "Toi + Moi", a: "Grégoire" },
+        { t: "Les Voisines", a: "Renan Luce" },
+        { t: "Ta douleur", a: "Camille" },
+        { t: "J'traîne des pieds", a: "Olivia Ruiz" },
+        { t: "J'ai demandé à la lune", a: "Indochine" },
+        /* Apple n'a de « Au soleil » que le « Nouveau Mix 2002 » — c'est bien le
+           single de l'époque. Sans « voulue », le mot « Mix » le faisait
+           rétrograder derrière la reprise des Kids United. */
+        { t: "Au Soleil", a: "Jenifer", voulue: true, q: "Jenifer Au Soleil Nouveau Mix 2002" },
+        { t: "Près de moi", a: "Lorie" },
+        // « La musique » est une reprise d'Angelica : c'est sous ce nom-là
+        // qu'Apple la range, et sans le préciser on tombait sur l'album
+        // Michel Berger de la Star Academy 2.
+        { t: "La musique (Angelica)", a: "Star Academy", altT: ["La musique"], q: "Star Academy La musique Angelica" },
+        { t: "Elle me contrôle", a: "M. Pokora", altA: ["Matt Pokora", "Sweety"] },
+        { t: "Parle-moi", a: "Nâdiya", altT: ["Parle moi"] },
+        { t: "Tu seras", a: "Emma Daumas" }
       ]
     },
     {
