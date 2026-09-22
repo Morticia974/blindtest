@@ -39,7 +39,19 @@ var Playlists = (function () {
         { t: "Alexandrie Alexandra", a: "Claude François" },
         { t: "Voyage voyage", a: "Desireless" },
         { t: "Joe le taxi", a: "Vanessa Paradis" },
-        { t: "Marcia Baila", a: "Les Rita Mitsouko" }
+        { t: "Marcia Baila", a: "Les Rita Mitsouko" },
+
+        /* Cités par Audrey. */
+        { t: "I Want to Break Free", a: "Queen" },
+        { t: "Born in the U.S.A.", a: "Bruce Springsteen", altT: ["Born in the USA"] },
+        { t: "With or Without You", a: "U2" },
+        { t: "Careless Whisper", a: "George Michael" },
+        { t: "I'm So Excited", a: "The Pointer Sisters", altA: ["Pointer Sisters"] },
+        { t: "Il jouait du piano debout", a: "France Gall" },
+        { t: "Besoin de rien, envie de toi", a: "Peter et Sloane", altA: ["Peter & Sloane", "Peter and Sloane"] },
+        { t: "Je ne suis pas un héros", a: "Daniel Balavoine" },
+        { t: "Nuit de folie", a: "Début de Soirée" },
+        { t: "Les Démons de minuit", a: "Images" }
       ]
     },
     {
