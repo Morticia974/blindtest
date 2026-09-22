@@ -40,6 +40,7 @@
   /* ================= écrans ================= */
 
   function montrer(nom) {
+    if (nom !== 'fin') arreterSacre();
     ['accueil', 'salon', 'jeu', 'fin'].forEach(function (e) {
       $('ecran-' + e).classList.toggle('actif', e === nom);
     });
@@ -143,6 +144,7 @@
     if (!piste || !piste.apercu) return;
     var position = Math.max(0, (net.maintenant() - debutA) / 1000);
 
+    lecteur.loop = false;   // le sacre a pu la laisser active
     if (dernierePisteJouee !== piste.apercu) {
       dernierePisteJouee = piste.apercu;
       lecteur.src = piste.apercu;
@@ -169,6 +171,52 @@
   function arreterExtrait() {
     try { lecteur.pause(); } catch (e) {}
     dernierePisteJouee = null;
+  }
+
+  /* ================= le sacre ================= */
+
+  /* Le podium ne se devoile pas en silence : Barry White entre en scene.
+     Le morceau tourne en boucle tant qu'on reste sur l'ecran de fin, et chacun
+     peut le couper - le choix est retenu d'une partie a l'autre. */
+  var SACRE = {
+    t: "You're the First, the Last, My Everything",
+    a: "Barry White",
+    q: "You're the First the Last My Everything Barry White"
+  };
+  var sacreEnCours = false;
+
+  function sacreVoulu() {
+    try { return localStorage.getItem('bt.sacre') !== '0'; } catch (e) { return true; }
+  }
+
+  function majBoutonSacre() {
+    var b = $('bouton-sacre');
+    if (b) b.textContent = sacreVoulu()
+      ? '🎺 Barry White : oui'
+      : '🔇 Barry White : non';
+  }
+
+  function jouerSacre() {
+    if (sacreEnCours || !sacreVoulu()) return;
+    sacreEnCours = true;
+    Itunes.resoudre(SACRE).then(function (piste) {
+      // Apple met un instant a repondre : entre-temps on a pu quitter l'ecran
+      // ou couper le sacre. On verifie avant de lancer quoi que ce soit.
+      if (!sacreEnCours || !piste || !piste.apercu) return;
+      dernierePisteJouee = piste.apercu;
+      lecteur.src = piste.apercu;
+      lecteur.loop = true;
+      lecteur.load();
+      if (contexte && contexte.state === 'suspended') contexte.resume();
+      if (!gain) lecteur.volume = volume;
+      lecteur.play().catch(function () {});
+    });
+  }
+
+  function arreterSacre() {
+    sacreEnCours = false;
+    lecteur.loop = false;
+    arreterExtrait();
   }
 
   /* ================= visualiseur ================= */
@@ -516,6 +564,9 @@
       li.querySelector('.artiste-piste').textContent = p.artiste;
       recap.appendChild(li);
     });
+
+    majBoutonSacre();
+    jouerSacre();
   }
 
   /* ================= aiguillage selon l'état ================= */
@@ -687,6 +738,13 @@
 
     $('bouton-rejouer').addEventListener('click', function () {
       if (partie) partie.rejouer();
+    });
+
+    $('bouton-sacre').addEventListener('click', function () {
+      var on = !sacreVoulu();
+      try { localStorage.setItem('bt.sacre', on ? '1' : '0'); } catch (e) {}
+      majBoutonSacre();
+      if (on) jouerSacre(); else arreterSacre();
     });
 
     $('formulaire-reponse').addEventListener('submit', function (e) {
