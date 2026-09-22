@@ -42,6 +42,62 @@ var Jeu = (function () {
   }
 
   /* ------------------------------------------------------------------
+     Brouillage des réponses.
+
+     Les fiches des morceaux transitent par Firebase, et chacun reçoit les
+     suivantes en avance pour que le son parte sans attendre. Publiées en
+     clair, il suffisait d'ouvrir la console du navigateur pour lire le titre
+     et l'artiste pendant qu'on écoutait l'extrait.
+
+     Ce n'est pas un coffre-fort : le site est entièrement public, donc la clé
+     est forcément dans la page et quelqu'un qui sait lire du JavaScript finira
+     par la retrouver. Ça ferme simplement la porte grande ouverte — on ne
+     triche plus d'un coup d'œil.
+     ------------------------------------------------------------------ */
+  var POIVRE = 'ok-balance-le-son-papa';
+  // Ce qui donne la réponse. Le reste (l'extrait, les étiquettes) reste lisible.
+  var A_CACHER = ['titre', 'artiste', 'pochette', 'variantesTitre', 'variantesArtiste'];
+
+  function graine(cle) {
+    var h = 2166136261;
+    for (var i = 0; i < cle.length; i++) {
+      h = (h ^ cle.charCodeAt(i)) >>> 0;
+      // h * 16777619, sans déborder des 32 bits
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return h || 1;
+  }
+
+  function flux(h) {
+    h ^= h << 13; h >>>= 0;
+    h ^= h >>> 17;
+    h ^= h << 5;  h >>>= 0;
+    return h || 1;
+  }
+
+  /* Texte UTF-8 <-> octets. encodeURIComponent/unescape est le vieux tour de
+     passe-passe, mais c'est celui qui marche partout, vieux téléphones compris. */
+  function brouiller(texte, cle) {
+    var octets = unescape(encodeURIComponent(texte));
+    var h = graine(cle), sortie = '';
+    for (var i = 0; i < octets.length; i++) {
+      h = flux(h);
+      sortie += String.fromCharCode(octets.charCodeAt(i) ^ (h & 255));
+    }
+    return btoa(sortie);
+  }
+
+  function debrouiller(code64, cle) {
+    var octets = atob(code64);
+    var h = graine(cle), sortie = '';
+    for (var i = 0; i < octets.length; i++) {
+      h = flux(h);
+      sortie += String.fromCharCode(octets.charCodeAt(i) ^ (h & 255));
+    }
+    return decodeURIComponent(escape(sortie));
+  }
+
+  /* ------------------------------------------------------------------
      Une session = un joueur dans un salon.
      ------------------------------------------------------------------ */
   function session(net, options) {
@@ -54,6 +110,34 @@ var Jeu = (function () {
       meta: null, joueurs: {}, tour: null, pistes: {},
       jeSuisChef: false, erreur: null, souci: null
     };
+
+    /* Une clé par morceau : deux titres identiques dans deux salons ne
+       donnent pas le même brouillage, et on ne peut pas recopier d'un tour
+       sur l'autre. */
+    function cleDe(i) { return POIVRE + ':' + code + ':' + i; }
+
+    function emballer(resolue, i) {
+      var visible = {}, secret = {};
+      Object.keys(resolue).forEach(function (k) {
+        if (A_CACHER.indexOf(k) === -1) visible[k] = resolue[k];
+        else secret[k] = resolue[k];
+      });
+      visible.x = brouiller(JSON.stringify(secret), cleDe(i));
+      return visible;
+    }
+
+    function deballer(publiee, i) {
+      if (!publiee || !publiee.x) return publiee;   // ancien format, ou déjà ouvert
+      var p = {};
+      Object.keys(publiee).forEach(function (k) { if (k !== 'x') p[k] = publiee[k]; });
+      try {
+        var secret = JSON.parse(debrouiller(publiee.x, cleDe(i)));
+        Object.keys(secret).forEach(function (k) { p[k] = secret[k]; });
+      } catch (e) {
+        return publiee;
+      }
+      return p;
+    }
 
     var ecouteurs = {};
     var desabonnements = [];
@@ -158,7 +242,8 @@ var Jeu = (function () {
           return resoudreEmplacement(i, restants - 1);
         }
         etat.pistes[i] = resolue;
-        return net.ecrire(racine + '/pistes/' + i, resolue).then(function () { return true; });
+        return net.ecrire(racine + '/pistes/' + i, emballer(resolue, i))
+                  .then(function () { return true; });
       }).catch(function () { return false; });
     }
 
@@ -331,7 +416,10 @@ var Jeu = (function () {
           recalculer(); rafraichir();
         }));
         desabonnements.push(net.ecouter(racine + '/pistes', function (v) {
-          etat.pistes = v || {}; rafraichir();
+          var recues = v || {}, ouvertes = {};
+          Object.keys(recues).forEach(function (k) { ouvertes[k] = deballer(recues[k], k); });
+          etat.pistes = ouvertes;
+          rafraichir();
         }));
 
         etat.connecte = true;

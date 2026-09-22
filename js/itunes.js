@@ -193,14 +193,14 @@ var Itunes = (function () {
     (piste.altT || []).forEach(function (x) { vT = vT.concat(Match.variantesTitre(x)); });
     (piste.altA || []).forEach(function (x) { vA = vA.concat(Match.variantesArtiste(x)); });
 
+    /* Volontairement sans album, année ni lien Apple : rien ne les affiche,
+       et l'URL du lien contient le titre du morceau en toutes lettres. Moins
+       on publie, moins il y a à lire dans la console. */
     return {
       titre: titreAffiche,
       artiste: artisteAffiche,
-      album: resolue.album,
-      annee: resolue.annee,
       apercu: resolue.apercu,
       pochette: resolue.pochette,
-      lien: resolue.lien,
       labelA: piste.labelA || 'Artiste',
       labelT: piste.labelT || 'Titre',
       solo: piste.solo || null,
