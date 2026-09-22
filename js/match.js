@@ -115,13 +115,22 @@ var Match = (function () {
     var sansArticle = complet.replace(ARTICLES, '');
     if (sansArticle && sansArticle.length >= 3) out[sansArticle] = 1;
 
-    String(artiste).split(/\s*(?:&|,|\/|\bet\b|\bfeat\.?\b|\bft\.?\b|\bwith\b|\bx\b)\s*/i)
+    /* On sépare les artistes multiples — « Jane Birkin & Serge Gainsbourg » —
+       mais SURTOUT PAS sur le mot « et » : il fait partie de quantité de titres
+       d'œuvres. Sans cette précaution, « La Belle et la Bête » se découpait en
+       « la belle » / « la bête », et répondre « La Belle et le Clochard » était
+       accepté. Les vrais duos utilisent « & » ou une virgule. */
+    String(artiste).split(/\s*(?:&|,|\/|\bfeat\.?\b|\bft\.?\b|\bwith\b|\bx\b)\s*/i)
       .forEach(function (part) {
         var n = normaliser(part);
         if (n && n.length >= 3) {
           out[n] = 1;
           var sa = n.replace(ARTICLES, '');
           if (sa && sa.length >= 3) out[sa] = 1;
+          // Nom de famille seul pour chaque membre d'un duo : on dit
+          // « Gainsbourg », pas « Serge Gainsbourg ».
+          var m = n.split(' ');
+          if (m.length === 2 && m[1].length >= 4) out[m[1]] = 1;
         }
       });
 
@@ -152,6 +161,11 @@ var Match = (function () {
   // réponse groupée : "Cendrillon par Téléphone", "Africa de Toto".
   var LIAISONS = { par: 1, by: 1, de: 1, du: 1, des: 1, d: 1, c: 1, cest: 1, et: 1 };
 
+  /* Cette moitié représente-t-elle l'essentiel de la réponse tapée ? */
+  function pese(moitie, tout) {
+    return normaliser(moitie).length >= normaliser(tout).length * 0.55;
+  }
+
   /* Le joueur a tout tapé d'un coup : "Danza Kuduro Don Omar", ou l'inverse.
      On essaie chaque découpe possible entre deux mots, dans les deux sens.
      Renvoie ce qui a été reconnu, ou null si aucune découpe ne donne rien. */
@@ -179,10 +193,17 @@ var Match = (function () {
         var gA = correspond(gauche, vArtiste), dT = correspond(droite, vTitre);
         if (gA && dT) return { titre: true, artiste: true };
 
-        // Une seule moitié juste : on la garde de côté. Mieux vaut accorder le
-        // titre à quelqu'un qui a écorché le nom de l'artiste que tout refuser.
-        if (!partiel && (gT || dT)) partiel = { titre: true, artiste: false };
-        if (!partiel && (gA || dA)) partiel = { titre: false, artiste: true };
+        /* Une seule moitié juste : on la garde de côté, mais uniquement si elle
+           pèse l'essentiel de ce qui a été tapé. Mieux vaut accorder le titre à
+           quelqu'un qui a écorché le nom de l'artiste que tout refuser — en
+           revanche deux mots justes sur six ne valident rien. */
+        if (!partiel) {
+          if ((gT && pese(gauche, proposition)) || (dT && pese(droite, proposition))) {
+            partiel = { titre: true, artiste: false };
+          } else if ((gA && pese(gauche, proposition)) || (dA && pese(droite, proposition))) {
+            partiel = { titre: false, artiste: true };
+          }
+        }
       }
     }
 
