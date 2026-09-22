@@ -457,10 +457,9 @@ var Playlists = (function () {
         // Apple n'a de « Sámbame » que le « Radio Edit Remix », qui est la
         // version single : « voulue » empêche le moteur de la rétrograder.
         { t: "Sámbame", a: "Un dos tres", voulue: true, q: "Upa Dance Sámbame Radio Edit Remix Collector Edition", altA: ["Upa Dance", "Un paso adelante"] },
-        /* Bridgerton, c'est le son du quatuor à cordes reprenant des tubes :
-           c'est ce qu'Audrey voulait. À surveiller en partie — on peut répondre
-           « Ariana Grande » au lieu de la série. */
-        { t: "Thank U, Next", a: "Les Chroniques de Bridgerton", q: "Vitamin String Quartet Thank U Next Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] }
+        // Audrey a écouté les cinq candidats et retenu celui-ci : la reprise
+        // au piano, moins marquée par le tube d'origine que celles au quatuor.
+        { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] }
       ]
     },
     {
