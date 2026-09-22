@@ -95,20 +95,30 @@ var Itunes = (function () {
       if (Match.correspond(r.trackName, vTitre)) n += 10;
       else if (Match.normaliser(r.trackName).indexOf(Match.normaliser(piste.t)) !== -1) n += 5;
       if (vArtiste.length && Match.correspond(r.artistName, vArtiste)) n += 6;
+      /* On compare sur du texte normalisé — sans accents — sinon « Version
+         karaoké » passait entre les mailles du filet et « Laisse pas traîner
+         ton fils » jouait un karaoké. Apple étiquette aussi en français :
+         « Rendu célèbre par NTM » là où l'anglais dit « made popular by ». */
+      var etiquette = Match.normaliser((r.artistName || '') + ' ' + (r.collectionName || ''));
+
       // On écarte les reprises et les karaokés déguisés…
-      if (!voulue && /karaoke|tribute|made popular|in the style of|cover version/i.test(
-            (r.artistName || '') + ' ' + (r.collectionName || ''))) n -= 20;
+      if (!voulue && /karaoke|tribute|made popular|in the style of|cover version|rendu celebre par|dans le style de|hommage a/
+            .test(etiquette)) n -= 20;
 
       /* …et toutes les versions alternatives : un remix ou une version acoustique
          est méconnaissable en blind test. La pénalité n'exclut pas, elle
          rétrograde : si Apple n'a que ça, le morceau est quand même joué. */
-      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo-fi)\b/i
-            .test((r.trackName || '') + ' ' + (r.collectionName || ''))) n -= 12;
+      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi)\b/
+            .test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
       return { r: r, n: n };
     });
 
     note.sort(function (a, b) { return b.n - a.n; });
-    return note[0].n > 0 ? note[0].r : candidats[0];
+
+    /* Même quand rien ne colle vraiment, on rend le candidat le mieux noté et
+       non le premier venu : sinon les pénalités ne servaient à rien dans ce
+       cas-là, et un karaoké l'emportait sur un enregistrement honnête. */
+    return note[0].r;
   }
 
   /* Résout un morceau de playlist en extrait jouable.

@@ -473,7 +473,8 @@ var Playlists = (function () {
       desc: "D'IAM à Aya Nakamura, trente ans de classiques.",
       labelA: "Artiste",
       pistes: [
-        { t: "Laisse pas traîner ton fils", a: "Suprême NTM", altA: ["NTM"] },
+        // « Laisse pas traîner ton fils » retiré : Apple France n'a pas le
+        // morceau, seulement un karaoké. « Ma Benz » reste.
         { t: "Ma Benz", a: "Suprême NTM", altA: ["NTM"] },
         { t: "Petit Frère", a: "IAM" },
         { t: "Demain c'est loin", a: "IAM" },
@@ -482,7 +483,6 @@ var Playlists = (function () {
         { t: "Tonton du bled", a: "113" },
         { t: "Basique", a: "Orelsan" },
         { t: "La Pluie", a: "Orelsan" },
-        { t: "Tout va bien", a: "Orelsan" },
         { t: "Djadja", a: "Aya Nakamura" },
         { t: "Copines", a: "Aya Nakamura" },
         { t: "Bella", a: "Maître Gims", altA: ["Gims"] },
@@ -493,7 +493,29 @@ var Playlists = (function () {
         // « Bande organisée » retiré : quelle que soit la formulation, Apple ne
         // remonte que des parodies Mario Kart. « Au DD » retiré aussi, il
         // renvoyait « Onizuka », un autre titre de PNL.
-        { t: "Tchikita", a: "Jul" }
+        { t: "Tchikita", a: "Jul" },
+
+        /* Ajouts demandés par Audrey : la catégorie était trop petite, donc les
+           artistes présents deux fois revenaient à presque chaque partie. */
+        { t: "La Boulette", a: "Diam's", q: "Diam's La boulette Génération nan nan" },
+        { t: "Gravé dans la roche", a: "Sniper" },
+        { t: "L'amour du risque", a: "Fonky Family", q: "Fonky Family L'amour du risque Taxi" },
+        { t: "Nirvana", a: "Doc Gynéco" },
+        { t: "Femme Like U", a: "K-Maro", altA: ["K.Maro", "K Maro"] },
+        { t: "Parce qu'on vient de loin", a: "Corneille" },
+        { t: "Ma philosophie", a: "Amel Bent" },
+        { t: "Du ferme", a: "La Fouine" },
+        { t: "La Puissance", a: "Rohff" },
+        { t: "Banlieusards", a: "Kery James" },
+        { t: "Désolé", a: "Sexion d'Assaut" },
+        { t: "Dreamin'", a: "Youssoupha", q: "Youssoupha Dreamin Indila" },
+        { t: "Sur ma route", a: "Black M" },
+        { t: "On verra", a: "Nekfeu" },
+        { t: "Reine", a: "Dadju" },
+        { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
+        { t: "La vie qu'on mène", a: "Ninho", q: "Ninho La vie qu'on mène Destin" },
+        { t: "La Kiffance", a: "Naps" },
+        { t: "Ça va ça vient", a: "Vitaa & Slimane", altA: ["Vitaa", "Slimane"] }
       ]
     },
     {
