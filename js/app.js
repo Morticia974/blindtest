@@ -303,7 +303,12 @@
   }
 
   function jouerSacre() {
-    if (sacreEnCours || !sacreVoulu()) return;
+    if (!sacreVoulu()) return;
+    if (sacreEnCours) {
+      // Déjà lancé : on se contente de le relancer s'il s'est arrêté.
+      if (lecteur.paused && lecteur.src) lecteur.play().catch(function () {});
+      return;
+    }
     sacreEnCours = true;
     Itunes.resoudre(SACRE).then(function (piste) {
       // Apple met un instant a repondre : entre-temps on a pu quitter l'ecran
@@ -696,7 +701,11 @@
       rendreJeu();
     } else if (etat.meta.statut === 'fini') {
       montrer('fin');
-      arreterExtrait();
+      /* Cette branche est rejouée à chaque rafraîchissement du salon. Couper le
+         son sans condition arrêtait Barry White au bout de quelques secondes,
+         et jouerSacre() refusait ensuite de le relancer puisqu'il se croyait
+         déjà lancé. */
+      if (!sacreEnCours) arreterExtrait();
       rendreFin();
     }
   }
