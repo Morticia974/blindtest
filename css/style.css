@@ -641,11 +641,13 @@ button, input, select { font: inherit; color: inherit; }
    zone d'au moins 200 px de côté et interdisent de poser quoi que ce soit
    devant : d'où cette largeur minimale et l'absence de superposition. */
 .scene-sacre {
-  width: min(420px, 100%);
-  margin: 22px auto 0;
-  aspect-ratio: 16 / 9;
-  min-height: 210px;
-  border-radius: 16px;
+  /* Les règles de YouTube imposent au moins 200 px sur CHACUN des deux côtés.
+     Un carré de 220 est donc le format le plus discret autorisé : la vidéo s'y
+     affiche en bandeau, et rien n'est posé par-dessus. */
+  width: 220px;
+  height: 220px;
+  margin: 12px auto 0;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--bord);
   background: #000;
