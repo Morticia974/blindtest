@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Où démarrer Barry ?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap">
+<style>
+  :root { --vert:#8CFF4A; --encre:#06140F; --ambre:#FFC247; --doux:#9DB5A8; --bord:rgba(140,255,74,.22); }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; padding:26px 16px 60px; min-height:100vh;
+    background:radial-gradient(1100px 700px at 50% -10%, #0d2b1d 0%, var(--encre) 60%);
+    color:#EAFBF1; font-family:Figtree,system-ui,sans-serif;
+  }
+  .enveloppe { max-width:620px; margin:0 auto; }
+  h1 { font-family:'Bricolage Grotesque',system-ui,sans-serif; font-size:clamp(26px,6vw,36px); margin:0 0 6px; color:var(--vert); }
+  .sous { color:var(--doux); margin:0 0 24px; font-size:15px; line-height:1.5; }
+  .grille { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
+  button.pt {
+    padding:16px 10px; border-radius:14px; cursor:pointer;
+    border:1px solid var(--bord); background:rgba(4,14,10,.6); color:#EAFBF1;
+    font-family:inherit; font-size:16px; font-weight:700;
+    transition:border-color .15s, transform .1s;
+  }
+  button.pt:hover { border-color:var(--vert); }
+  button.pt:active { transform:scale(.97); }
+  button.pt.actif { border-color:var(--ambre); color:var(--ambre); }
+  button.pt small { display:block; font-weight:400; font-size:12px; color:var(--doux); margin-top:3px; }
+  .barre { display:flex; gap:10px; align-items:center; margin:22px 0 10px; flex-wrap:wrap; }
+  button.stop { padding:12px 18px; border-radius:12px; border:1px solid var(--bord); background:rgba(4,14,10,.6); color:#EAFBF1; font-family:inherit; cursor:pointer; }
+  #etat { color:var(--ambre); font-weight:700; min-height:24px; margin-top:14px; }
+  .note { color:var(--doux); font-size:14px; margin-top:26px; line-height:1.55; }
+</style>
+</head>
+<body>
+<div class="enveloppe">
+
+  <h1>Où démarrer Barry ? 🎺</h1>
+  <p class="sous">
+    Clique sur un chiffre : le morceau démarre à cet endroit et s'arrête au bout
+    de 8&nbsp;secondes. Dis-moi ensuite lequel contient ton «&nbsp;haaan ouaiiis&nbsp;».
+  </p>
+
+  <div class="grille" id="points"></div>
+
+  <div class="barre">
+    <button class="stop" id="stop">⏹ Arrêter</button>
+    <label style="display:flex;align-items:center;gap:8px;flex:1;min-width:180px">
+      <span style="font-size:14px;color:var(--doux)">Volume</span>
+      <input id="vol" type="range" min="0" max="100" value="70" style="flex:1;accent-color:var(--vert)">
+    </label>
+  </div>
+
+  <div id="etat">Chargement de l'extrait…</div>
+
+  <p class="note">
+    L'extrait dure 30&nbsp;secondes en tout. Actuellement le jeu démarre à
+    <b>18&nbsp;s</b>, et tu le trouves trop tardif.
+  </p>
+
+</div>
+
+<audio id="a" crossorigin="anonymous"></audio>
+
+<script>
+(function () {
+  var POINTS = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 23];
+  var DUREE = 8;
+  var a = document.getElementById('a');
+  var etat = document.getElementById('etat');
+  var minuteur = null;
+
+  document.getElementById('vol').addEventListener('input', function () {
+    a.volume = this.value / 100;
+  });
+  a.volume = 0.7;
+
+  fetch('https://itunes.apple.com/search?' + new URLSearchParams({
+    term: 'Barry White Let the Music Play', media: 'music', entity: 'song',
+    limit: 8, country: 'FR'
+  }))
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var bon = (d.results || []).filter(function (x) {
+        return x.previewUrl && /barry white/i.test(x.artistName) &&
+               /let the music play/i.test(x.trackName);
+      })[0];
+      if (!bon) { etat.textContent = 'Extrait introuvable — réessaie dans une minute.'; return; }
+      a.src = bon.previewUrl;
+      etat.textContent = 'Prêt. Clique sur un chiffre.';
+      dessiner();
+    })
+    .catch(function () { etat.textContent = 'Apple ne répond pas — réessaie dans une minute.'; });
+
+  function dessiner() {
+    var boite = document.getElementById('points');
+    POINTS.forEach(function (s) {
+      var b = document.createElement('button');
+      b.className = 'pt';
+      b.innerHTML = s + ' s' + (s === 18 ? '<small>actuel</small>' : '<small>&nbsp;</small>');
+      b.addEventListener('click', function () {
+        [].forEach.call(boite.children, function (x) { x.classList.remove('actif'); });
+        b.classList.add('actif');
+        jouer(s);
+      });
+      boite.appendChild(b);
+    });
+  }
+
+  function jouer(depart) {
+    clearTimeout(minuteur);
+    try { a.currentTime = depart; } catch (e) {}
+    a.play().then(function () {
+      etat.textContent = '▶ lecture à partir de ' + depart + ' s';
+      minuteur = setTimeout(function () {
+        a.pause();
+        etat.textContent = 'Fini pour ' + depart + ' s — essaie un autre chiffre.';
+      }, DUREE * 1000);
+    }).catch(function () {
+      etat.textContent = 'Le navigateur bloque le son : reclique sur le chiffre.';
+    });
+  }
+
+  document.getElementById('stop').addEventListener('click', function () {
+    clearTimeout(minuteur);
+    a.pause();
+    etat.textContent = 'Arrêté.';
+  });
+})();
+</script>
+</body>
+</html>
