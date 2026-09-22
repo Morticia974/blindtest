@@ -403,7 +403,52 @@ var Playlists = (function () {
         { t: "Woke Up This Morning", a: "Les Soprano", q: "Woke Up This Morning Alabama 3", altA: ["The Sopranos"] },
         { t: "Stranger Things", a: "Stranger Things", q: "Stranger Things Theme Kyle Dixon Michael Stein" },
         { t: "Red Right Hand", a: "Peaky Blinders", q: "Red Right Hand Nick Cave and the Bad Seeds" },
-        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" }
+        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" },
+
+        /* ---- enregistrements officiels ---- */
+        { t: "Yo Home to Bel-Air", a: "Le Prince de Bel-Air", q: "Fresh Prince of Bel Air theme Will Smith Yo Home to Bel Air", altA: ["Fresh Prince"] },
+        { t: "Boss of Me", a: "Malcolm", q: "They Might Be Giants Boss of Me Mink Car", altA: ["Malcolm in the Middle"] },
+        { t: "Superman", a: "Scrubs", q: "Superman Lazlo Bane All the Time in the World" },
+        { t: "Hey Beautiful", a: "How I Met Your Mother", q: "Hey Beautiful The Solids How I Met Your Mother" },
+        { t: "Big Bang Theory Theme", a: "The Big Bang Theory", q: "Barenaked Ladies Big Bang Theory Theme" },
+        { t: "Desperate Housewives Theme", a: "Desperate Housewives", q: "Desperate Housewives Main Title Danny Elfman" },
+        { t: "Teardrop", a: "Dr House", q: "Teardrop Massive Attack Mezzanine", altA: ["House", "House M.D."] },
+        { t: "Secret", a: "Pretty Little Liars", q: "Secret The Pierces Thirteen Tales of Love and Revenge" },
+        { t: "You've Got Time", a: "Orange Is the New Black", q: "You've Got Time Regina Spektor" },
+        { t: "Toss a Coin to Your Witcher", a: "The Witcher", q: "Toss a Coin to Your Witcher Sonya Belousova Joey Batey" },
+        { t: "Theme from the Walking Dead", a: "The Walking Dead", q: "Bear McCreary Theme from the Walking Dead Original Television Soundtrack" },
+        { t: "Goo Goo Muck", a: "Mercredi", q: "Goo Goo Muck The Cramps Psychedelic Jungle", altA: ["Wednesday"] },
+        { t: "Theme from Beverly Hills, 90210", a: "Beverly Hills 90210", q: "Theme from Beverly Hills 90210 John Davis Soundtrack", altA: ["90210"] },
+        { t: "Dexter Main Title", a: "Dexter", q: "Rolfe Kent Dexter Main Title" },
+        { t: "Main Title Season 3", a: "Prison Break", q: "Ramin Djawadi Prison Break Seasons 3 & 4 Original Television Soundtrack", altT: ["Prison Break Theme"] },
+        { t: "Life and Death", a: "Lost", q: "Michael Giacchino Lost Season 1 Original Television Soundtrack Life and Death" },
+        { t: "Breaking Bad (Main Title Theme)", a: "Breaking Bad", q: "Dave Porter Breaking Bad Main Title Theme Music from the Original TV Series" },
+        { t: "It's a Jungle Out There", a: "Monk", q: "Randy Newman It's a Jungle Out There" },
+        { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"] },
+        { t: "Rick and Morty Theme", a: "Rick et Morty", q: "Ryan Elder Rick and Morty Theme", altA: ["Rick and Morty"] },
+        { t: "Futurama Main Theme", a: "Futurama", q: "Christopher Tyng Futurama Main Theme" },
+        // Trouvé au troisième essai seulement : la version officielle existe, sur
+        // l'album « Testify » de la série. Les requêtes évidentes ne sortaient
+        // que des arrangements pour orchestre de chambre.
+        { t: "The Simpsons Main Title Theme", a: "Les Simpson", q: "Simpsons Main Title Theme Testify original music television series", altA: ["The Simpsons"] },
+        { t: "Enemy", a: "Arcane", q: "Enemy Imagine Dragons JID Arcane League of Legends" },
+        { t: "Main Title", a: "Battlestar Galactica", q: "Battlestar Galactica Main Title John Williams Boston Pops" },
+        { t: "The Mandalorian", a: "The Mandalorian", q: "Ludwig Goransson The Mandalorian Chapter 1 Original Score" },
+        { t: "Justice League Unlimited Theme", a: "La Ligue des justiciers", q: "Justice League Unlimited Theme Michael McCuistion Music of DC Comics", altA: ["Justice League"] },
+        { t: "This Life", a: "Sons of Anarchy", q: "This Life Curtis Stigers Forest Rangers Songs of Anarchy" },
+        { t: "Arthur à la Tour", a: "Kaamelott", q: "Kaamelott Premier Volet Alexandre Astier bande originale" },
+
+        /* ---- reprises instrumentales fidèles ----
+           Ces génériques-là ne sont jamais sortis en disque. On garde une
+           reprise fidèle : ici on devine la série à la mélodie, et la mélodie
+           est la même. C'est le choix déjà fait pour les jeux Nintendo. */
+        { t: "The A-Team - Theme from the TV Series", a: "L'Agence tous risques", q: "Dominik Hauser The A-Team Theme from the Television Series single", altT: ["The A-Team"], altA: ["A-Team"] },
+        { t: "Magnum P.I. Theme", a: "Magnum", q: "Dominik Hauser Magnum P.I. Theme from the Television Series", altA: ["Magnum P.I."] },
+        { t: "South Park - Theme from the TV Series", a: "South Park", q: "Dominik Hauser South Park Theme from the Television Series", altT: ["South Park Theme"] },
+        { t: "Buffy the Vampire Slayer", a: "Buffy contre les vampires", q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's", altA: ["Buffy"] },
+        { t: "The Office", a: "The Office", q: "The Office Scranton Crew TV Generation" },
+        { t: "Mystery Movie Theme", a: "Columbo", q: "Mystery Movie Theme Columbo Geek Music" },
+        { t: "Criminal Minds", a: "Esprits criminels", q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes", altA: ["Criminal Minds"] }
       ]
     },
     {
