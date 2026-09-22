@@ -262,7 +262,6 @@ var Playlists = (function () {
         { t: "Hey Jude", a: "The Beatles" },
         { t: "Wind of Change", a: "Scorpions" },
         { t: "I Don't Want to Miss a Thing", a: "Aerosmith" },
-        { t: "American Idiot", a: "Green Day" },
         { t: "All the Small Things", a: "blink-182" },
         { t: "Uprising", a: "Muse" },
         { t: "Do I Wanna Know?", a: "Arctic Monkeys" },
@@ -392,14 +391,43 @@ var Playlists = (function () {
         { t: "One-Winged Angel", a: "Final Fantasy VII", q: "One Winged Angel Final Fantasy VII", altA: ["Final Fantasy"] },
         // Nintendo n'est pas sur Apple Music : ces trois-là sont des versions
         // orchestrales. La mélodie est identique, c'est tout ce qui compte ici.
-        { t: "Thème principal", a: "The Legend of Zelda", q: "Zelda Main Theme", altT: ["Zelda Main Theme", "Thème de Zelda"], altA: ["Zelda"] },
-        { t: "Song of Storms", a: "The Legend of Zelda: Ocarina of Time", q: "Song of Storms Zelda Ocarina of Time", altA: ["Zelda", "Ocarina of Time"] },
-        { t: "Thème principal", a: "Super Mario Bros.", q: "Super Mario Bros Theme London Philharmonic", altT: ["Super Mario Bros Theme"], altA: ["Mario", "Super Mario"] },
-        { t: "Halo Theme", a: "Halo", q: "Halo Theme Martin O'Donnell" },
+        { t: "Main Theme", a: "The Legend of Zelda", q: "Main Theme The Legend of Zelda London Music Works Scott Buckley", altT: ["Thème principal", "Thème de Zelda"], altA: ["Zelda"] },
+        { t: "Song of Storms", a: "The Legend of Zelda: Ocarina of Time", q: "Song of Storms Marcus Hedges Trend Orchestra Zelda", altA: ["Zelda", "Ocarina of Time"] },
+        { t: "Super Mario Bros: Theme", a: "Super Mario Bros.", q: "Super Mario Bros Theme Orchestre Philharmonique de Londres", altT: ["Thème principal"], altA: ["Mario", "Super Mario"] },
+        { t: "Halo", a: "Halo", q: "Halo Martin O'Donnell Michael Salvatori Combat Evolved", altT: ["Halo Theme"] },
         { t: "Rip & Tear", a: "Doom", q: "Rip and Tear Mick Gordon Doom" },
         { t: "Geralt of Rivia", a: "The Witcher 3", q: "Geralt of Rivia Marcin Przybylowicz Witcher 3", altA: ["The Witcher"] },
-        { t: "I Really Want to Stay at Your House", a: "Cyberpunk 2077", q: "I Really Want to Stay at Your House Rosa Walton", altA: ["Cyberpunk"] },
+        // L'original de Rosa Walton est absent d'Apple FR : on jouait une reprise.
+        { t: "Chippin' In", a: "Cyberpunk 2077", q: "Chippin In Refused Cyberpunk 2077", altA: ["Cyberpunk"] },
         { t: "Build That Wall", a: "Bastion", q: "Build That Wall Darren Korb Bastion" },
+
+        /* Ajoutés sur proposition d'Audrey. Beaucoup d'éditeurs — Nintendo, Valve,
+           Rockstar, FromSoftware — ne déposent pas leurs bandes-son chez Apple.
+           Quand l'original manque, on prend la reprise la plus fidèle : la mélodie
+           est la même, et c'est elle qu'on reconnaît en blind test. */
+        { t: "Official Theme Song", a: "GTA San Andreas", q: "Grand Theft Auto San Andreas Official Theme Song Michael Hunter", altA: ["GTA", "Grand Theft Auto", "San Andreas", "Grand Theft Auto San Andreas"] },
+        { t: "Elden Ring", a: "Elden Ring", q: "Elden Ring London Music Works" },
+        { t: "Unshaken", a: "Red Dead Redemption 2", q: "Unshaken D'Angelo Red Dead Redemption 2", altA: ["Red Dead Redemption", "Red Dead"] },
+        { t: "Animal Crossing: New Horizons", a: "Animal Crossing", q: "Animal Crossing New Horizons Theme Blue Brew Music", altA: ["Animal Crossing New Horizons"] },
+        { t: "Buy Mode", a: "Les Sims", q: "Buy Mode The Sims Power Up Orchestra", altA: ["The Sims", "Sims"] },
+        { t: "Pokemon Red/Blue (Battle Theme)", a: "Pokémon", q: "Pokemon Red Blue Battle Theme Pxls" },
+        { t: "Fortnite (Battle Royale Theme)", a: "Fortnite", q: "Fortnite Battle Royale Theme Arcade Player" },
+        { t: "Legends of Azeroth", a: "World of Warcraft", q: "Legends of Azeroth Main Title Jason Hayes", altA: ["WoW", "Warcraft"] },
+        { t: "POP/STARS", a: "League of Legends", q: "POP STARS K/DA Madison Beer", altA: ["LoL", "League"] },
+        { t: "Lumière", a: "Clair Obscur: Expedition 33", q: "Lumière Lorien Testard Clair Obscur Expedition 33", altA: ["Expedition 33", "Clair Obscur"] },
+        { t: "Title Theme", a: "Fable", q: "Title Theme Russell Shaw Fable Legends", altA: ["Fable Legends"] },
+        { t: "The Last of Us", a: "The Last of Us", q: "The Last of Us Gustavo Santaolalla" },
+        { t: "God of War", a: "God of War", q: "God of War Bear McCreary PlayStation Soundtrack" },
+        { t: "Tristram", a: "Diablo", q: "Tristram Matt Uelmen Diablo" },
+        { t: "Counter-Strike: Global Offensive Main Theme", a: "Counter-Strike", q: "Counter-Strike Global Offensive Main Theme XG Stephen", altA: ["CS", "CS GO", "Counter Strike Global Offensive"] },
+        { t: "Rocket League (2015) - Theme", a: "Rocket League", q: "Rocket League 2015 Theme Geek Music" },
+        { t: "Among Us Drip Theme", a: "Among Us", q: "Among Us Drip Theme Dario D'Aversa" },
+        { t: "Rainbow Road", a: "Mario Kart", q: "Rainbow Road Mario Kart 64 Qumu", altA: ["Mario Kart 64"] },
+        { t: "Fallout 4 Main Theme", a: "Fallout", q: "Fallout 4 Main Theme Inon Zur", altA: ["Fallout 4"] },
+        { t: "Gwyn, Lord of Cinder", a: "Dark Souls", q: "Gwyn Lord of Cinder Motoi Sakuraba Dark Souls" },
+        { t: "Call of Duty Modern Warfare 2: Theme", a: "Call of Duty", q: "Call of Duty Modern Warfare 2 Theme Orchestre Philharmonique de Londres", altA: ["COD", "Modern Warfare"] },
+        { t: "Pac Man Theme", a: "Pac-Man", q: "Pac Man Theme Theme Mania Video Games Themes Collection", altA: ["Pacman"] },
+        { t: "Tetris Theme (Korobeiniki)", a: "Tetris", q: "Tetris Theme Korobeiniki Orchestre Philharmonique de Londres", altT: ["Korobeiniki"] },
       ]
     },
     {
