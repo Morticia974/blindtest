@@ -74,6 +74,16 @@
 
   /* ================= audio ================= */
 
+  /* Affiche la version en bas de l'accueil. Elle est lue sur l'adresse du
+     script, donc elle correspond toujours au fichier réellement chargé : si le
+     navigateur ressert une vieille version gardée en cache, ça se voit. */
+  (function afficherVersion() {
+    var marque = document.querySelector('script[src*="app.js"]');
+    var v = marque && (marque.getAttribute('src').match(/v=(\d+)/) || [])[1];
+    var coin = $('version');
+    if (coin && v) coin.textContent = 'version ' + v;
+  })();
+
   var lecteur = $('lecteur');
   var contexte = null, analyseur = null, source = null, donneesFreq = null;
   var gain = null;
@@ -186,10 +196,15 @@
   /* On ne garde pas tout en mémoire indéfiniment : au-delà d'une dizaine
      d'extraits, on libère les plus anciens. */
   function rangerExtraits() {
+    /* On compare à ce que le lecteur utilise vraiment. La version précédente
+       comparait l'adresse « blob: » à dernierePisteJouee, qui contient
+       l'adresse Apple : les deux ne sont jamais égales, donc la garde ne
+       protégeait rien et le ménage pouvait libérer l'extrait en cours de
+       lecture — le son se coupait net. */
     var urls = Object.keys(extraits);
-    while (urls.length > 10) {
+    while (urls.length > 16) {
       var vieille = urls.shift();
-      if (extraits[vieille] !== dernierePisteJouee) {
+      if (extraits[vieille] !== lecteur.src) {
         try { URL.revokeObjectURL(extraits[vieille]); } catch (e) {}
         delete extraits[vieille];
       }
