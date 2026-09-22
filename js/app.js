@@ -40,7 +40,7 @@
   /* ================= écrans ================= */
 
   function montrer(nom) {
-    if (nom !== 'fin') arreterSacre();
+    if (nom !== 'fin') { arreterSacre(); arreterSacreVideo(); }
     ['accueil', 'salon', 'jeu', 'fin'].forEach(function (e) {
       $('ecran-' + e).classList.toggle('actif', e === nom);
     });
@@ -112,6 +112,11 @@
       b.setAttribute('title', dit);
     });
     curseursSon().forEach(function (c) { c.value = Math.round(volume * 100); });
+
+    // Le sacre peut passer par YouTube : il a son propre réglage de volume.
+    if (lecteurVideo && videoPrete) {
+      try { lecteurVideo.setVolume(Math.round(volume * 100)); } catch (e) {}
+    }
   }
 
   function boutonsSon() {
@@ -304,6 +309,99 @@
      seconde. On garde le réglage, il resservira si on change de morceau. */
   var DEPART_SACRE = 0;
 
+  /* ---- le sacre par YouTube ----
+
+     Trente secondes d'extrait ne suffisaient pas : le moment qu'Audrey voulait
+     n'y est pas. Sur l'écran de fin, la partie est finie et il n'y a plus rien
+     à cacher, donc un lecteur vidéo visible ne dérange personne — c'est la
+     seule page du jeu où ce serait acceptable.
+
+     Les règles de YouTube sont respectées : le lecteur reste visible, rien
+     n'est posé devant, et sa zone dépasse 200 px de côté.
+
+     Si la vidéo devient indisponible ou si l'API ne se charge pas, on retombe
+     sur l'extrait Apple plutôt que de rester muet. */
+  var VIDEO_SACRE = 'V3eOuK_-c34';   // Barry White — Let The Music Play (lien donné par Audrey)
+  var DEPART_VIDEO = 19;             // le « haaan ouaiiis », repéré à l'oreille par Audrey
+
+  var lecteurVideo = null;
+  var videoPrete = false;
+  var videoAbandonnee = false;
+
+  /* Charge l'API de YouTube une seule fois. `suite` est appelée quand elle est
+     prête, ou jamais si elle ne vient pas — d'où le garde-fou de 6 secondes. */
+  function chargerApiVideo(suite) {
+    if (window.YT && window.YT.Player) { suite(true); return; }
+    if (!document.getElementById('api-youtube')) {
+      var s = document.createElement('script');
+      s.id = 'api-youtube';
+      s.src = 'https://www.youtube.com/iframe_api';
+      s.onerror = function () { videoAbandonnee = true; };
+      document.head.appendChild(s);
+    }
+    var debut = Date.now();
+    var attendre = setInterval(function () {
+      if (window.YT && window.YT.Player) { clearInterval(attendre); suite(true); }
+      else if (videoAbandonnee || Date.now() - debut > 6000) {
+        clearInterval(attendre);
+        videoAbandonnee = true;
+        suite(false);
+      }
+    }, 150);
+  }
+
+  function jouerSacreVideo(siEchec) {
+    if (videoAbandonnee) { siEchec(); return; }
+
+    chargerApiVideo(function (dispo) {
+      if (!dispo) { siEchec(); return; }
+
+      var scene = $('scene-sacre');
+      if (scene) scene.hidden = false;
+
+      if (lecteurVideo && videoPrete) {
+        try {
+          lecteurVideo.seekTo(DEPART_VIDEO, true);
+          lecteurVideo.setVolume(Math.round(volume * 100));
+          lecteurVideo.playVideo();
+        } catch (e) {}
+        return;
+      }
+
+      try {
+        lecteurVideo = new YT.Player('lecteur-sacre', {
+          videoId: VIDEO_SACRE,
+          playerVars: { autoplay: 1, start: DEPART_VIDEO, rel: 0, playsinline: 1 },
+          events: {
+            onReady: function (e) {
+              videoPrete = true;
+              try {
+                e.target.setVolume(Math.round(volume * 100));
+                e.target.playVideo();
+              } catch (err) {}
+            },
+            /* Vidéo supprimée, privée, ou bloquée dans le pays : on revient à
+               l'extrait Apple plutôt que de laisser le podium muet. */
+            onError: function () {
+              videoAbandonnee = true;
+              if (scene) scene.hidden = true;
+              siEchec();
+            }
+          }
+        });
+      } catch (e) {
+        videoAbandonnee = true;
+        siEchec();
+      }
+    });
+  }
+
+  function arreterSacreVideo() {
+    if (lecteurVideo && videoPrete) { try { lecteurVideo.pauseVideo(); } catch (e) {} }
+    var scene = $('scene-sacre');
+    if (scene) scene.hidden = true;
+  }
+
   /* Cherche le morceau du sacre et le garde sous la main. Appelé dès le début
      de la partie : au moment du podium, il est déjà prêt.
 
@@ -356,6 +454,11 @@
     }
     sacreEnCours = true;
 
+    // La vidéo d'abord ; l'extrait Apple si elle ne répond pas.
+    jouerSacreVideo(function () { jouerSacreApple(); });
+  }
+
+  function jouerSacreApple() {
     trouverSacre().then(function (piste) {
       /* Apple met un instant à répondre : entre-temps on a pu quitter l'écran
          ou couper le sacre. On vérifie avant de lancer quoi que ce soit. */
@@ -395,6 +498,7 @@
     if (!sacreEnCours) return;
     sacreEnCours = false;
     lecteur.loop = false;
+    arreterSacreVideo();
     arreterExtrait();
   }
 
