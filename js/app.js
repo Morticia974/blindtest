@@ -290,6 +290,30 @@
     q: "Barry White Let the Music Play"
   };
   var sacreEnCours = false;
+  var sacrePiste = null;      // le morceau du sacre, une fois trouvé
+
+  /* Cherche le morceau du sacre et le garde sous la main. Appelé dès le début
+     de la partie : au moment du podium, il est déjà prêt.
+
+     Le second essai passe par une recherche directe, car resoudre() mémorise
+     ses échecs pendant une heure : si Apple nous bride au mauvais moment, Barry
+     resterait muet toute l'heure sur ce navigateur — et fonctionnerait très
+     bien sur celui du voisin. C'est précisément ce qui est arrivé. */
+  function trouverSacre() {
+    if (sacrePiste) return Promise.resolve(sacrePiste);
+    return Itunes.resoudre(SACRE).then(function (piste) {
+      if (piste && piste.apercu) return piste;
+      return Itunes.chercher(SACRE.q, 5).then(function (liste) {
+        for (var i = 0; i < liste.length; i++) {
+          if (liste[i] && liste[i].apercu) return Itunes.habiller(liste[i], SACRE);
+        }
+        return null;
+      });
+    }).then(function (piste) {
+      if (piste) { sacrePiste = piste; precharger(piste); }
+      return piste;
+    }).catch(function () { return null; });
+  }
 
   function sacreVoulu() {
     try { return localStorage.getItem('bt.sacre') !== '0'; } catch (e) { return true; }
@@ -302,18 +326,33 @@
       : '🔇 Barry White : non';
   }
 
+  /* Le lecteur est-il bien en train de tenir le morceau du sacre ? Sert à ne
+     relancer que lui, et surtout pas le dernier morceau de la partie. */
+  function lecteurSurLeSacre() {
+    if (!sacrePiste) return false;
+    return lecteur.src === sacrePiste.apercu ||
+           lecteur.src === extraits[sacrePiste.apercu];
+  }
+
   function jouerSacre() {
     if (!sacreVoulu()) return;
+
     if (sacreEnCours) {
-      // Déjà lancé : on se contente de le relancer s'il s'est arrêté.
-      if (lecteur.paused && lecteur.src) lecteur.play().catch(function () {});
+      // Déjà lancé : on le relance s'il s'est arrêté, et lui seul.
+      if (lecteur.paused && lecteurSurLeSacre()) lecteur.play().catch(function () {});
       return;
     }
     sacreEnCours = true;
-    Itunes.resoudre(SACRE).then(function (piste) {
-      // Apple met un instant a repondre : entre-temps on a pu quitter l'ecran
-      // ou couper le sacre. On verifie avant de lancer quoi que ce soit.
-      if (!sacreEnCours || !piste || !piste.apercu) return;
+
+    trouverSacre().then(function (piste) {
+      /* Apple met un instant à répondre : entre-temps on a pu quitter l'écran
+         ou couper le sacre. On vérifie avant de lancer quoi que ce soit. */
+      if (!sacreEnCours) return;
+      if (!piste || !piste.apercu) {
+        // Rien trouvé : on se remet en état de réessayer au prochain passage.
+        sacreEnCours = false;
+        return;
+      }
       dernierePisteJouee = piste.apercu;
       lecteur.src = extraits[piste.apercu] || piste.apercu;
       lecteur.loop = true;
@@ -699,6 +738,8 @@
     } else if (etat.meta.statut === 'jeu') {
       montrer('jeu');
       rendreJeu();
+      // Barry sera prêt bien avant le podium.
+      if (sacreVoulu()) trouverSacre();
     } else if (etat.meta.statut === 'fini') {
       montrer('fin');
       /* Cette branche est rejouée à chaque rafraîchissement du salon. Couper le
