@@ -131,6 +131,16 @@ var Jeu = (function () {
       });
     }
 
+    /* Ce morceau a-t-il déjà été placé dans cette partie ? On compare l'extrait
+       lui-même : deux entrées de playlist différentes peuvent tomber sur le même
+       enregistrement chez Apple. */
+    function dejaPassee(resolue) {
+      return Object.keys(etat.pistes).some(function (k) {
+        var p = etat.pistes[k];
+        return p && p.apercu === resolue.apercu;
+      });
+    }
+
     /* Remplit l'emplacement i en piochant dans la réserve. On ne tente qu'un
        nombre limité de morceaux d'affilée : sinon un catalogue injoignable
        consomme toute la réserve en quelques secondes.
@@ -141,7 +151,12 @@ var Jeu = (function () {
 
       var piste = reserve[curseurReserve++];
       return Itunes.resoudre(piste).then(function (resolue) {
-        if (!resolue || !resolue.apercu) return resoudreEmplacement(i, restants - 1);
+        // Introuvable, ou déjà passé dans cette partie : on prend le suivant.
+        // Le second cas compte : quand la réserve est épuisée on la reparcourt
+        // depuis le début, et sans ce garde-fou un titre pourrait tomber deux fois.
+        if (!resolue || !resolue.apercu || dejaPassee(resolue)) {
+          return resoudreEmplacement(i, restants - 1);
+        }
         etat.pistes[i] = resolue;
         return net.ecrire(racine + '/pistes/' + i, resolue).then(function () { return true; });
       }).catch(function () { return false; });
