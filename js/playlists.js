@@ -383,7 +383,10 @@ var Playlists = (function () {
         { t: "Come and Get Your Love", a: "Les Gardiens de la Galaxie", q: "Come and Get Your Love Redbone" },
         { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer" },
         /* Celui-là s'imposait : le nom du site vient de Fatal Bazooka. */
-        { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"] }
+        { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"] },
+        // Demandé par une amie d'Audrey. La bande originale de Harry Manfredini
+        // est chez Apple : c'est bien le générique d'origine, pas une reprise.
+        { t: "Overlay of Evil / Main Title", a: "Vendredi 13", q: "Harry Manfredini Friday the 13th Overlay of Evil Main Title Original Motion Picture Soundtrack", altA: ["Friday the 13th"] }
       ]
     },
     {
