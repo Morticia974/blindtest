@@ -6,7 +6,10 @@ var Itunes = (function () {
   'use strict';
 
   var PAYS = 'FR';
-  var CLE_CACHE = 'bt.cache.itunes.v1';
+  /* En changeant ce numéro, on force tous les joueurs à réinterroger Apple :
+     les morceaux mémorisés avec l'ancienne logique de choix (qui laissait
+     passer des remixes) sont oubliés. */
+  var CLE_CACHE = 'bt.cache.itunes.v2';
   var DUREE_CACHE = 1000 * 60 * 60 * 24 * 30; // 30 jours pour un morceau trouvé
   var DUREE_CACHE_VIDE = 1000 * 60 * 60;      // 1 heure seulement pour un échec
   var ENTRE_APPELS = 320;                     // ms entre deux requêtes
@@ -85,9 +88,15 @@ var Itunes = (function () {
       if (Match.correspond(r.trackName, vTitre)) n += 10;
       else if (Match.normaliser(r.trackName).indexOf(Match.normaliser(piste.t)) !== -1) n += 5;
       if (vArtiste.length && Match.correspond(r.artistName, vArtiste)) n += 6;
-      // On évite les reprises et les versions karaoké déguisées.
+      // On écarte les reprises et les karaokés déguisés…
       if (/karaoke|tribute|made popular|in the style of|cover version/i.test(
             (r.artistName || '') + ' ' + (r.collectionName || ''))) n -= 20;
+
+      /* …et toutes les versions alternatives : un remix ou une version acoustique
+         est méconnaissable en blind test. La pénalité n'exclut pas, elle
+         rétrograde : si Apple n'a que ça, le morceau est quand même joué. */
+      if (/\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo-fi)\b/i
+            .test((r.trackName || '') + ' ' + (r.collectionName || ''))) n -= 12;
       return { r: r, n: n };
     });
 
