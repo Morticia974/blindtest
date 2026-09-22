@@ -463,7 +463,9 @@ var Playlists = (function () {
         // Audrey a écouté les cinq candidats et retenu celui-ci : la reprise
         // au piano, moins marquée par le tube d'origine que celles au quatuor.
         { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] },
-        { t: "American Horror Story Theme", a: "American Horror Story", q: "American Horror Story Theme Cesar Davila-Irizarry Charlie Clouser", altA: ["AHS"] }
+        { t: "American Horror Story Theme", a: "American Horror Story", q: "American Horror Story Theme Cesar Davila-Irizarry Charlie Clouser", altA: ["AHS"] },
+        // Laurie Johnson, depuis la bande originale officielle de la série.
+        { t: "Main Titles Theme", a: "Chapeau melon et bottes de cuir", q: "Laurie Johnson Main Titles Theme The Avengers 1968-1969 Soundtrack from the TV Series", altA: ["The Avengers"] }
       ]
     },
     {
