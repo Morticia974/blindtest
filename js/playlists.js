@@ -273,10 +273,16 @@ var Playlists = (function () {
       id: 'disney',
       nom: "Disney et compagnie",
       emoji: "🏰",
-      desc: "En français. Ici on devine la chanson et le film.",
+      desc: "Ici on devine le film.",
+      /* Une seule réponse : le film. Le titre de la chanson ne compte plus —
+         la catégorie mélange du français et de l'anglais, et personne n'a envie
+         d'écrire « Hawaiian Roller Coaster Ride » pour reconnaître Lilo & Stitch.
+         Il est quand même révélé à la fin, pour l'anecdote. */
+      solo: 'artiste',
       // Comme pour les génériques et les animes : c'est le film qu'on cherche,
       // donc le nom du chanteur relevé chez Apple ne vaut pas réponse.
       strict: true,
+      labelT: "Chanson",
       labelA: "Film",
       pistes: [
         { t: "Libérée, délivrée", a: "La Reine des neiges", q: "Libérée délivrée Anaïs Delva" },
@@ -287,7 +293,9 @@ var Playlists = (function () {
         { t: "Hakuna Matata", a: "Le Roi Lion", q: "Hakuna Matata Le Roi Lion" },
         { t: "L'Histoire de la vie", a: "Le Roi Lion", q: "L'Histoire de la vie Le Roi Lion" },
         { t: "Comme un homme", a: "Mulan", q: "Comme un homme Mulan" },
-        { t: "L'Air du vent", a: "Pocahontas", q: "L'Air du vent Pocahontas" },
+        // Sans le nom de Laura Mayne, Apple sert la reprise de Jenifer (We Love
+        // Disney) à la place de la bande originale du film.
+        { t: "L'Air du vent", a: "Pocahontas", q: "Laura Mayne L'Air du vent Pocahontas" },
         { t: "De zéro en héros", a: "Hercule", q: "De zéro en héros Hercule" },
         { t: "Tout le monde veut devenir un cat", a: "Les Aristochats", q: "Tout le monde veut devenir un cat Aristochats" },
         { t: "Quand on prie la bonne étoile", a: "Pinocchio", q: "Quand on prie la bonne étoile Pinocchio" },
@@ -1348,6 +1356,26 @@ var Playlists = (function () {
       var m = parId(id);
       if (!m) return [];
       source = m.pistes.map(function (p) { return habillerPiste(p, m); });
+
+      /* Catégorie à réponse unique : la réponse est l'œuvre, pas le morceau.
+         Trois chansons du Roi Lion donneraient donc trois fois la même réponse
+         dans la même partie. On mélange d'abord, puis on ne garde qu'un morceau
+         par œuvre — celui qui sort en tête. Le tirage change à chaque partie,
+         donc ce n'est pas toujours « Hakuna Matata » qui représente le film. */
+      if (m.solo) {
+        var melange = melangerAvecGraine(source, graine);
+        var vues = {};
+        source = [];
+        melange.forEach(function (p) {
+          var oeuvre = cleOeuvre(p, m);
+          if (oeuvre) {
+            if (vues[oeuvre]) return;
+            vues[oeuvre] = 1;
+          }
+          source.push(p);
+        });
+        return source.slice(0, nombre);
+      }
     }
     return melangerAvecGraine(source, graine).slice(0, nombre);
   }
