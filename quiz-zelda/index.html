@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f2a22">
+<style>body{margin:0}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}</style>
+<title>Le Grand Quiz d'Hyrule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Nunito:wght@600;800;900&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --forest: #0f2a22;
+    --forest-2: #163a2e;
+    --moss: #2f5d43;
+    --parch: #f3ead2;
+    --parch-2: #e6d8b3;
+    --rim: #c9b47f;
+    --ink: #2b2417;
+    --ink-soft: #6b5d44;
+    --sheikah: #4fd3e8;
+    --gold: #e8b93c;
+    --good: #4f9e3f;
+    --bad: #c8553d;
+    --leaf: #9ccc4f;
+    --display: "Cinzel", "Trajan Pro", Georgia, serif;
+    --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+    --fs-q: clamp(18px, 2.1vmin + 1.1vw, 40px);
+    --fs-a: clamp(15px, 1.5vmin + 0.8vw, 28px);
+    --fs-s: clamp(13px, 1.1vmin + 0.6vw, 21px);
+  }
+  html, body { height: 100%; }
+  body {
+    background: var(--forest);
+    color: var(--parch);
+    font-family: var(--body);
+    font-size: var(--fs-s);
+    line-height: 1.4;
+    overflow: hidden;
+  }
+  canvas#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  .app {
+    position: relative; z-index: 1;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-inline: max(16px, env(safe-area-inset-left, 0px));
+    box-sizing: border-box;
+  }
+
+  /* ---------- top bar ---------- */
+  .bar { display: flex; align-items: center; gap: 10px; padding-block: 8px 4px; min-width: 0; }
+  .brand { font-family: var(--display); font-weight: 800; color: var(--gold); font-size: clamp(15px, 1.2vmin + 1vw, 26px); text-shadow: 0 2px 6px #000a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+  .hud { flex: 1; display: grid; gap: 4px; min-width: 0; }
+  .hud-top { display: flex; justify-content: space-between; gap: 8px; font-weight: 900; text-shadow: 0 1px 4px #000c; }
+  .hud-top .lv { font-family: var(--display); color: var(--gold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hud-top .sc { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .seeds { display: grid; grid-template-columns: repeat(25, 1fr); gap: 3px; }
+  .seed { height: clamp(6px, 1.1vmin, 12px); border-radius: 6px 6px 6px 1px; background: #ffffff30; transition: background .3s; }
+  .seed.now { background: var(--sheikah); box-shadow: 0 0 8px var(--sheikah); }
+  .seed.ok { background: var(--leaf); }
+  .seed.ko { background: var(--bad); }
+  .tools { display: flex; gap: 6px; flex: none; }
+  .tool {
+    width: clamp(38px, 5vmin, 54px); height: clamp(38px, 5vmin, 54px); border-radius: 50%;
+    border: 0; background: #0b1f19cc; color: var(--gold); font-size: clamp(17px, 2.4vmin, 26px);
+    box-shadow: inset 0 0 0 2px var(--gold); display: grid; place-items: center; padding: 0; cursor: pointer;
+  }
+  .tool.off { color: #8a8a7a; box-shadow: inset 0 0 0 2px #8a8a7a; }
+  .tool:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 2px; }
+
+  /* ---------- stage & parchment ---------- */
+  .stage { min-height: 0; overflow-y: auto; display: grid; place-items: center; padding-block: 6px max(12px, env(safe-area-inset-bottom, 0px)); }
+  .card {
+    width: min(100%, 1060px);
+    box-sizing: border-box;
+    background: linear-gradient(180deg, #f6eed8f2 0%, #e8dbb8f2 100%);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: clamp(14px, 2.4vmin, 30px);
+    box-shadow: 0 14px 40px #000000aa, inset 0 0 0 2px var(--rim), inset 0 0 0 5px #f6eed8, inset 0 0 0 6px var(--rim);
+    display: grid;
+    gap: clamp(10px, 1.8vmin, 20px);
+  }
+  .card h2 { font-family: var(--display); font-size: clamp(20px, 2vmin + 1.2vw, 42px); margin: 0; line-height: 1.15; text-wrap: balance; }
+  .card p { margin: 0; }
+
+  button { font: inherit; cursor: pointer; }
+  .btn {
+    font-family: var(--display); font-weight: 800; font-size: clamp(17px, 1.6vmin + 0.9vw, 30px); letter-spacing: .04em;
+    padding: .7em 1.2em; border: 0; border-radius: 12px;
+    background: var(--forest-2); color: var(--gold);
+    box-shadow: 0 4px 0 #071711, inset 0 0 0 2px var(--gold);
+    transition: transform .08s;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #071711, inset 0 0 0 2px var(--gold); }
+  .btn:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 3px; }
+
+  /* ---------- start ---------- */
+  .start { grid-template-columns: 1fr; }
+  .start .hero { display: grid; gap: 10px; align-content: center; }
+  .start .title { font-family: var(--display); font-weight: 800; color: var(--forest-2); font-size: clamp(26px, 3.2vmin + 2vw, 64px); line-height: 1.05; text-wrap: balance; }
+  .start .side { display: grid; gap: 12px; align-content: center; }
+  .levels { display: grid; gap: 8px; }
+  .lvl { display: flex; gap: 12px; align-items: center; }
+  .lvl .badge { flex: none; width: clamp(36px, 5vmin, 56px); height: clamp(36px, 5vmin, 56px); border-radius: 50%; display: grid; place-items: center; font-size: clamp(18px, 2.6vmin, 30px); background: var(--forest-2); box-shadow: inset 0 0 0 2px var(--gold); }
+  .lvl b { display: block; font-family: var(--display); }
+  .lvl span { color: var(--ink-soft); }
+  label.name { display: grid; gap: 4px; font-weight: 900; }
+  input#player { font: inherit; font-weight: 800; padding: 10px 14px; border-radius: 10px; border: 2px solid var(--rim); background: #fffaf0; color: var(--ink); }
+  input#player:focus { outline: 3px solid var(--sheikah); outline-offset: 1px; }
+  .hint { color: var(--ink-soft); font-size: .88em; }
+
+  /* ---------- question ---------- */
+  .qcard { grid-template-areas: "head" "ans" "fb"; }
+  .qhead { grid-area: head; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .qnum { font-family: var(--display); font-size: .85em; letter-spacing: .18em; color: var(--ink-soft); text-transform: uppercase; }
+  .qtext { font-size: var(--fs-q); font-weight: 900; line-height: 1.25; text-wrap: balance; }
+  .medal {
+    width: clamp(58px, 13vmin, 150px); aspect-ratio: 1; max-width: 100%; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #245140, #0c241c 70%);
+    box-shadow: 0 6px 16px #0006, inset 0 0 0 3px var(--gold), inset 0 0 0 7px #0c241c, inset 0 0 0 8px #e8b93c88;
+    color: var(--gold); display: grid; place-items: center;
+    animation: bob 3.2s ease-in-out infinite;
+  }
+  .medal svg { width: 62%; height: 62%; overflow: visible; }
+  @keyframes bob { 50% { transform: translateY(-5px) rotate(-3deg); } }
+  .answers { grid-area: ans; display: grid; gap: clamp(7px, 1.2vmin, 14px); }
+  .ans {
+    display: flex; align-items: center; gap: 12px; text-align: left;
+    padding: clamp(9px, 1.5vmin, 18px) 14px; border-radius: 12px; border: 2px solid var(--rim);
+    background: #fffaf0; color: var(--ink); font-weight: 800; font-size: var(--fs-a); line-height: 1.2;
+    transition: background .15s, border-color .15s, transform .12s;
+  }
+  .ans .l { flex: none; width: 1.7em; height: 1.7em; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 800; background: var(--forest-2); color: var(--gold); font-size: .85em; }
+  .ans:hover:not(:disabled) { border-color: var(--moss); transform: translateY(-2px); }
+  .ans:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 2px; }
+  .ans:disabled { cursor: default; }
+  .ans.right { background: #dcefcb; border-color: var(--good); animation: glowok .9s ease-out; }
+  .ans.right .l { background: var(--good); color: #fff; }
+  .ans.wrong { background: #f6d6cb; border-color: var(--bad); animation: shake .4s; }
+  .ans.wrong .l { background: var(--bad); color: #fff; }
+  .ans.dim { opacity: .5; }
+  @keyframes glowok { 0% { box-shadow: 0 0 0 0 #9ccc4fcc; } 100% { box-shadow: 0 0 0 16px #9ccc4f00; } }
+  @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+  .fb { grid-area: fb; }
+  .fb:empty { display: none; }
+  .feedback { border-radius: 12px; padding: clamp(10px, 1.6vmin, 18px); display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center; background: #fffaf0; border: 2px dashed var(--rim); }
+  .feedback .buddy { grid-row: span 2; width: clamp(52px, 10vmin, 110px); }
+  .feedback .say { font-family: var(--display); font-weight: 800; font-size: var(--fs-a); }
+  .feedback.ok .say { color: #3d7a2a; }
+  .feedback.ko .say { color: var(--bad); }
+  .feedback .fact { color: var(--ink); }
+  .feedback .fact b { color: var(--moss); }
+  .feedback .btn { grid-column: 1 / -1; justify-self: stretch; }
+  .buddy.hop { animation: hop .7s ease-out 2; transform-origin: 50% 100%; }
+  .buddy.sad { animation: droop 1.2s ease-in-out; transform-origin: 50% 100%; }
+  @keyframes hop { 30% { transform: translateY(-18px) rotate(-8deg); } 60% { transform: translateY(0) scale(1.08, .92); } }
+  @keyframes droop { 40% { transform: rotate(8deg) translateY(4px); } }
+
+  /* ---------- interlude & results ---------- */
+  .center { text-align: center; justify-items: center; }
+  .center .medal { width: clamp(90px, 22vmin, 220px); }
+  .kicker { font-family: var(--display); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); font-size: .9em; }
+  .rank { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 2.4vmin + 1.4vw, 48px); color: var(--forest-2); text-wrap: balance; line-height: 1.1; }
+  .score { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 5vmin + 2vw, 96px); color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
+  .score small { font-size: .45em; color: var(--ink-soft); }
+  .breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; width: 100%; }
+  .breakdown div { background: #fffaf0; border: 2px solid var(--rim); border-radius: 10px; padding: 6px 4px; display: grid; gap: 1px; text-align: center; }
+  .breakdown .e { font-size: 1.4em; }
+  .breakdown .n { font-weight: 900; font-variant-numeric: tabular-nums; font-size: 1.15em; }
+  .breakdown .t { font-size: .78em; color: var(--ink-soft); font-weight: 800; }
+  .missed { text-align: left; width: 100%; display: grid; gap: 6px; }
+  .missed h3 { font-family: var(--display); font-size: 1em; margin: 0; }
+  .missed ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; max-height: 34vh; overflow-y: auto; }
+  .missed li { background: #fffaf0; border-radius: 10px; padding: 8px 12px; border-left: 4px solid var(--bad); }
+  .missed li b { color: #3d7a2a; }
+  .res-main, .res-side { display: grid; gap: 10px; justify-items: center; align-content: center; }
+
+  /* ---------- landscape (phone turned sideways, TV, desktop) ---------- */
+  @media (min-aspect-ratio: 5/4) {
+    .start { grid-template-columns: 1.1fr 1fr; gap: clamp(16px, 3vw, 44px); }
+    .qcard { grid-template-columns: 1fr 1.05fr; grid-template-areas: "head ans" "fb ans"; align-items: center; column-gap: clamp(16px, 3vw, 40px); }
+    .qhead { grid-template-columns: 1fr; justify-items: start; }
+    .qcard.answered .qhead .medal { display: none; }
+    .qcard.answered { grid-template-areas: "head ans" "fb ans"; }
+    .result { grid-template-columns: 1fr 1.2fr; text-align: left; }
+    .res-main { justify-items: center; text-align: center; }
+    .missed ul { max-height: 40vh; }
+  }
+  @media (min-aspect-ratio: 5/4) and (max-height: 480px) {
+    .qhead .medal { width: 54px; }
+    .missed ul { max-height: 30vh; }
+  }
+
+  .pop { animation: pop .35s cubic-bezier(.2, 1.4, .5, 1); }
+  @keyframes pop { from { transform: scale(.94) translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .pop, .medal, .buddy.hop, .buddy.sad, .ans.right, .ans.wrong { animation: none; }
+    .ans, .btn, .seed { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="app">
+  <header class="bar" id="bar"></header>
+  <main class="stage" id="stage"></main>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const LEVELS = [
+  { name: "Apprentie aventurière", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 6 },
+  { name: "Héroïne confirmée", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 7 },
+  { name: "Légende d'Hyrule", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 7 },
+  { name: "Sage d'Hyrule", emoji: "🔺", desc: "Questions très difficiles, pour les expertes", scene: "castle", song: "D", icon: "triforce", quick: 5 }
+];
+
+const Q = [
+  { lv:0, sc:"forest", ic:"sprite", q:"Comment s'appellent les petits esprits de la forêt qui se cachent partout en Hyrule ?", o:["Les Kokiris","Les Korogus","Les Gorons","Les Piafs"], a:1,
+    f:"Il y en a <b>900</b> à trouver dans Breath of the Wild… et <b>1 000</b> dans Tears of the Kingdom !" },
+  { lv:0, sc:"forest", ic:"maracas", q:"Qui échange les noix Korogu contre plus de place pour tes armes, en dansant avec ses maracas ?", o:["Terry","Kass","Hestu","Sidon"], a:2,
+    f:"Hestu fait une petite danse à chaque fois qu'il agrandit ton inventaire !" },
+  { lv:0, sc:"forest", ic:"tree", q:"Quel est le nom du grand arbre qui parle et qui garde l'Épée de légende ?", o:["L'Arbre Mojo","Le Chêne sacré","L'Arbre Mojoko","Le Grand Saule"], a:0,
+    f:"L'Arbre Mojo vit au cœur des <b>Bois perdus</b>, dans la forêt Korogu." },
+  { lv:0, sc:"meadow", ic:"glider", q:"Avec quel objet Link plane-t-il dans les airs ?", o:["Une cape","La paravoile","Un parapluie","Des ailes de Rito"], a:1,
+    f:"Dans Breath of the Wild, c'est le vieil homme du Plateau du Prélude qui la donne à Link." },
+  { lv:0, sc:"meadow", ic:"rupee", q:"Comment s'appelle l'argent dans Zelda ?", o:["Les pièces d'or","Les diamants","Les rubis","Les écus"], a:2,
+    f:"Les rubis existent en plusieurs couleurs : vert, bleu, rouge, violet, argent et or !" },
+  { lv:0, sc:"meadow", ic:"horseshoe", q:"Où peut-on enregistrer son cheval ?", o:["À l'écurie royale","Au relais","Au sanctuaire","Au village Cocorico"], a:1,
+    f:"On reconnaît les relais de loin grâce à la grande tête de cheval sur leur toit." },
+  { lv:0, sc:"night", ic:"flame", q:"Comment s'appellent les monstres les plus courants, avec leurs gros nez et leurs massues ?", o:["Les Moblins","Les Bokoblins","Les Lézalfos","Les Hinox"], a:1,
+    f:"Les Bokoblins adorent la viande et font la fête autour de leurs feux de camp." },
+
+  { lv:1, sc:"sheikah", ic:"hourglass", q:"Dans Breath of the Wild, combien de temps Link a-t-il dormi ?", o:["10 ans","50 ans","100 ans","1 000 ans"], a:2,
+    f:"Il se réveille dans le <b>Sanctuaire de la Renaissance</b>, sans aucun souvenir." },
+  { lv:1, sc:"meadow", ic:"crown", q:"Qui est vraiment le vieil homme du Plateau du Prélude ?", o:["Un Sheikah","Le roi Rhoam, le père de Zelda","Ganon déguisé","Le grand-père de Link"], a:1,
+    f:"C'est le fantôme du dernier roi d'Hyrule, venu aider Link." },
+  { lv:1, sc:"sheikah", ic:"tablet", q:"Comment s'appelle l'objet de Link qui sert de carte et d'appareil photo dans Breath of the Wild ?", o:["La tablette Sheikah","La pierre Sheikah","Le Zonaiphone","Le miroir magique"], a:0,
+    f:"Elle permet aussi d'utiliser des pouvoirs comme Cryonis, Magnésis ou Stase." },
+  { lv:1, sc:"zora", ic:"fish", q:"Comment s'appelle le prince Zora, grand, rigolo et toujours souriant ?", o:["Revali","Sidon","Daruk","Yunobo"], a:1,
+    f:"Dans Tears of the Kingdom, Sidon devient le <b>sage de l'eau</b>." },
+  { lv:1, sc:"zora", ic:"drop", q:"Mipha, la prodige Zora, était la grande sœur de qui ?", o:["Sidon","Zelda","Tulin","Riju"], a:0,
+    f:"Mipha avait un pouvoir magique : elle pouvait soigner les blessures." },
+  { lv:1, sc:"rito", ic:"note", q:"Quel instrument joue Kass, le barde Rito ?", o:["La flûte","La harpe","L'accordéon","Le violon"], a:2,
+    f:"Ses chansons cachent souvent des indices pour trouver des sanctuaires secrets." },
+  { lv:1, sc:"meadow", ic:"bag", q:"Comment s'appelle le marchand au gros sac à dos qu'on croise souvent près des relais ?", o:["Terry","Hestu","Bolson","Robbie"], a:0,
+    f:"Terry vend des flèches et plein d'objets utiles… son sac est plus gros que lui !" },
+  { lv:1, sc:"volcano", ic:"paw", q:"Quel est ce monstre très dangereux, moitié lion, moitié cheval ?", o:["Un Hinox","Un Lynel","Un Talus","Un Molduga"], a:1,
+    f:"Le Lynel est un des ennemis les plus forts du jeu. Mieux vaut avoir beaucoup de cœurs !" },
+
+  { lv:2, sc:"castle", ic:"broken", q:"Au début de Tears of the Kingdom, qu'arrive-t-il à l'Épée de légende ?", o:["Elle est volée","Elle se brise","Elle tombe dans un lac","Zelda la cache"], a:1,
+    f:"Elle se brise face à Ganondorf, sous le château d'Hyrule." },
+  { lv:2, sc:"depths", ic:"ascend", q:"Dans Tears of the Kingdom, quel pouvoir permet de traverser un plafond pour se retrouver au-dessus ?", o:["Emprise","Rétrospective","Infiltration","Amalgame"], a:2,
+    f:"Super pratique pour sortir d'une grotte sans refaire tout le chemin !" },
+  { lv:2, sc:"sky", ic:"fuse", q:"Quel pouvoir permet de coller un objet sur ton arme ou ton bouclier ?", o:["Amalgame","Emprise","Schéma","Stase"], a:0,
+    f:"Une corne de monstre sur un bâton, et hop : une arme bien plus puissante !" },
+  { lv:2, sc:"sky", ic:"rewind", q:"Quel pouvoir permet de faire remonter le temps à un objet ?", o:["Infiltration","Rétrospective","Cryonis","Magnésis"], a:1,
+    f:"Tu peux même renvoyer un rocher à celui qui te l'a lancé !" },
+  { lv:2, sc:"sky", ic:"island", q:"Comment s'appelle l'ancien peuple à tête d'animal qui vivait dans les îles célestes ?", o:["Les Sheikahs","Les Zonaïs","Les Gerudos","Les Hyliens"], a:1,
+    f:"Les Zonaïs ont laissé plein d'objets magiques : ventilateurs, roues, ballons, fusées…" },
+  { lv:2, sc:"sky", ic:"hand", q:"Qui est le premier roi d'Hyrule, qui donne son bras à Link ?", o:["Rhoam","Rauru","Ganondorf","Kohga"], a:1,
+    f:"Rauru était un Zonaï, et sa femme s'appelait <b>Sonia</b>." },
+  { lv:2, sc:"sky", ic:"dragon", q:"En quoi Zelda se transforme-t-elle pour sauver l'Épée de légende ?", o:["En fée","En oiseau de lumière","En dragon","En statue"], a:2,
+    f:"Le <b>dragon de lumière</b> a protégé l'épée pendant des milliers d'années." },
+  { lv:2, sc:"meadow", ic:"tear", q:"Que révèlent les larmes de dragon qu'on trouve sur les géoglyphes ?", o:["Des trésors","Les souvenirs de Zelda","Des sanctuaires cachés","Des cartes des Profondeurs"], a:1,
+    f:"Chaque larme raconte un morceau de l'histoire de Zelda dans le passé." },
+  { lv:2, sc:"rito", ic:"feather", q:"Comment s'appelle le petit Rito qui devient le sage du vent et aide Link ?", o:["Teba","Revali","Tulin","Kass"], a:2,
+    f:"Tulin est le fils de Teba, le grand guerrier Rito." },
+  { lv:2, sc:"sheikah", ic:"flask", q:"Pourquoi Purah ressemble-t-elle à une petite fille dans Breath of the Wild ?", o:["C'est sa fille","Elle a raté une expérience pour rajeunir","Une malédiction de Ganon","Elle a mangé un champignon magique"], a:1,
+    f:"Elle voulait rajeunir un tout petit peu… et elle est redevenue une enfant ! Dans Tears of the Kingdom, elle est redevenue adulte." },
+
+  /* ---- épreuve 1, suite ---- */
+  { lv:0, sc:"meadow", ic:"sword", q:"Comment s'appelle le héros en tunique qui part à l'aventure ?", o:["Zelda","Link","Ganon","Sidon"], a:1,
+    f:"Beaucoup de gens se trompent ! <b>Zelda</b>, c'est la princesse d'Hyrule." },
+  { lv:0, sc:"night", ic:"moon", q:"Que se passe-t-il quand la lune de sang se lève ?", o:["Les monstres vaincus reviennent","Il pleut des rubis","Link devient invisible","Les chevaux s'envolent"], a:0,
+    f:"À minuit, la lune devient rouge et tous les monstres battus reviennent à la vie." },
+  { lv:0, sc:"rito", ic:"flame", q:"Link a froid dans la montagne enneigée. Que peut-il cuisiner pour se réchauffer ?", o:["Une pomme","Un plat au piment","Un champignon","Un poisson cru"], a:1,
+    f:"Le piment rouge réchauffe ! Il suffit de le cuisiner dans une marmite." },
+  { lv:0, sc:"forest", ic:"star", q:"À quoi servent les Grandes Fées ?", o:["À soigner les chevaux","À améliorer tes armures","À vendre des flèches","À ouvrir les sanctuaires"], a:1,
+    f:"Il faut leur donner des rubis pour les réveiller, et après elles améliorent tes vêtements." },
+  { lv:0, sc:"sky", ic:"island", q:"Où commence l'aventure de Tears of the Kingdom ?", o:["Dans une grotte","Sur une île dans le ciel","Au château d'Hyrule","Dans la forêt Korogu"], a:1,
+    f:"Link se réveille sur une grande île céleste, avec un nouveau bras magique." },
+
+  /* ---- épreuve 2, suite ---- */
+  { lv:1, sc:"volcano", ic:"rock", q:"Lequel des quatre prodiges était un Goron ?", o:["Daruk","Revali","Urbosa","Mipha"], a:0,
+    f:"Daruk, le grand Goron, pouvait créer un bouclier magique pour se protéger." },
+  { lv:1, sc:"desert", ic:"bolt", q:"Urbosa, la prodige, était la cheffe de quel peuple ?", o:["Les Zoras","Les Gerudos","Les Ritos","Les Sheikahs"], a:1,
+    f:"Urbosa maîtrisait la foudre en claquant des doigts !" },
+  { lv:1, sc:"rito", ic:"feather", q:"Revali, le prodige Rito, était champion de quoi ?", o:["Du tir à l'arc","De la cuisine","De la natation","De l'épée"], a:0,
+    f:"Il pouvait aussi s'envoler très haut d'un seul coup d'ailes." },
+  { lv:1, sc:"castle", ic:"eye", q:"Comment s'appellent les grands robots à pattes qui tirent des lasers ?", o:["Les Talus","Les Gardiens","Les Golems","Les Hinox"], a:1,
+    f:"Astuce de pro : on peut renvoyer leur laser avec un bouclier au bon moment !" },
+  { lv:1, sc:"meadow", ic:"eye", q:"Comment s'appelle le village des Sheikahs où vit Impa ?", o:["Cocorico","Écaraille","Tabanta","Akkala"], a:0,
+    f:"Impa est la grande sœur de Purah, et elle a une petite-fille : Paya." },
+  { lv:1, sc:"desert", ic:"star", q:"Les garçons n'ont pas le droit d'entrer dans la cité Gerudo. Comment fait Link ?", o:["Il passe par les égouts","Il se déguise en fille","Il donne 100 rubis","Il arrive en volant"], a:1,
+    f:"Il met une tenue de danseuse Gerudo… et personne ne le reconnaît !" },
+
+  /* ---- épreuve 3, suite ---- */
+  { lv:2, sc:"volcano", ic:"flame", q:"Quel est le pouvoir de Yunobo, le sage du feu ?", o:["Faire une bulle d'eau","Foncer en boule de feu","Lancer des éclairs","Souffler du vent"], a:1,
+    f:"Yunobo est un descendant de Daruk, le prodige Goron." },
+  { lv:2, sc:"desert", ic:"bolt", q:"Riju, la jeune cheffe Gerudo, maîtrise quel élément ?", o:["L'eau","Le feu","La foudre","La glace"], a:2,
+    f:"Riju se déplace dans le désert sur un phoque des sables !" },
+  { lv:2, sc:"depths", ic:"shield", q:"Quelle sage Zonaïe revient dans un grand corps mécanique pour aider Link ?", o:["Sonia","Mineru","Purah","Paya"], a:1,
+    f:"Mineru est la sœur de Rauru. C'est le <b>sage de l'esprit</b>." },
+  { lv:2, sc:"rito", ic:"feather", q:"Qui est Penn ?", o:["Un Rito journaliste","Un Goron cuisinier","Un Zora pêcheur","Un Korogu musicien"], a:0,
+    f:"Penn aide Link à enquêter sur les rumeurs à propos de la princesse Zelda." },
+  { lv:2, sc:"meadow", ic:"hand", q:"Qui a toujours besoin de ton aide pour faire tenir ses panneaux debout ?", o:["Addison","Terry","Bolson","Kilton"], a:0,
+    f:"Tu peux construire n'importe quoi avec Emprise pour l'aider : même une tour de planches !" },
+
+  /* ---- épreuve 4 : Sage d'Hyrule ---- */
+  { lv:3, sc:"sheikah", ic:"tablet", q:"Combien y a-t-il de sanctuaires dans Breath of the Wild ?", o:["88","100","120","152"], a:2,
+    f:"<b>120</b> sanctuaires… et 16 de plus avec l'extension !" },
+  { lv:3, sc:"sky", ic:"island", q:"Et combien y a-t-il de sanctuaires dans Tears of the Kingdom ?", o:["120","136","152","200"], a:2,
+    f:"<b>152</b> sanctuaires, soit 32 de plus que dans Breath of the Wild !" },
+  { lv:3, sc:"sheikah", ic:"eye", q:"Combien y a-t-il de tours Sheikah dans Breath of the Wild ?", o:["9","12","15","20"], a:2,
+    f:"Chaque tour révèle un morceau de la carte sur la tablette Sheikah." },
+  { lv:3, sc:"forest", ic:"sword", q:"Combien de cœurs faut-il pour retirer l'Épée de légende dans Breath of the Wild ?", o:["7","10","13","20"], a:2,
+    f:"Si tu n'en as pas assez, Link perd ses cœurs un par un en tirant sur l'épée !" },
+  { lv:3, sc:"zora", ic:"fish", q:"Quelle créature divine appartient aux Zoras ?", o:["Vah'Ruta","Vah'Medoh","Vah'Rudania","Vah'Naboris"], a:0,
+    f:"Vah'Ruta ressemble à un éléphant et fait tomber une pluie sans fin." },
+  { lv:3, sc:"rito", ic:"feather", q:"Vah'Medoh, la créature divine des Ritos, ressemble à quel animal ?", o:["Un éléphant","Un oiseau","Une salamandre","Un chameau"], a:1,
+    f:"Vah'Rudania est une salamandre (Gorons) et Vah'Naboris un chameau (Gerudos)." },
+  { lv:3, sc:"sky", ic:"dragon", q:"Farosh est le dragon de quel élément ?", o:["Le feu","La glace","La foudre","Le vent"], a:2,
+    f:"Les deux autres dragons sont <b>Dinraal</b> (le feu) et <b>Naydra</b> (la glace)." },
+  { lv:3, sc:"meadow", ic:"tablet", q:"Quels sont les quatre pouvoirs du Plateau du Prélude dans Breath of the Wild ?", o:["Magnésis, Bombes, Cryonis, Stase","Emprise, Amalgame, Infiltration, Rétrospective","Magnésis, Emprise, Stase, Rétrospective","Cryonis, Bombes, Schéma, Infiltration"], a:0,
+    f:"On les gagne dans les quatre premiers sanctuaires du jeu." },
+  { lv:3, sc:"zora", ic:"crown", q:"Comment s'appelle le roi des Zoras, le papa de Mipha et Sidon ?", o:["Rhoam","Dorephan","Rauru","Kohga"], a:1,
+    f:"Le roi Dorephan est immense : il est bien plus grand que Link !" },
+  { lv:3, sc:"night", ic:"eye", q:"Comment s'appelle le chef du clan Yiga ?", o:["Kohga","Robbie","Kilton","Teba"], a:0,
+    f:"Les Yigas sont des Sheikahs qui ont choisi le camp de Ganon… et ils adorent les bananes !" },
+  { lv:3, sc:"castle", ic:"triforce", q:"Quelle partie de la Triforce Link représente-t-il ?", o:["La Force","La Sagesse","Le Courage","L'Amitié"], a:2,
+    f:"Zelda a la Sagesse, et Ganon a la Force." },
+  { lv:3, sc:"sheikah", ic:"star", q:"Comment s'appelle la petite-fille d'Impa, très timide ?", o:["Paya","Purah","Riju","Sonia"], a:0,
+    f:"Paya garde la maison d'Impa à Cocorico… et elle rougit dès que Link lui parle !" },
+  { lv:3, sc:"sky", ic:"hourglass", q:"En quelle année est sorti Tears of the Kingdom ?", o:["2017","2020","2023","2025"], a:2,
+    f:"Breath of the Wild est sorti en <b>2017</b>, six ans avant." },
+  { lv:3, sc:"sky", ic:"rewind", q:"Sonia, la reine d'Hyrule, avait un pouvoir. Lequel ?", o:["Le pouvoir du temps","Le pouvoir de la foudre","Le pouvoir de l'eau","Le pouvoir du feu"], a:0,
+    f:"Zelda a le même pouvoir… c'est pour ça qu'elle voyage dans le passé !" }
+];
+
+const RANKS = [
+  { min:.9,  name:"Héroïne légendaire d'Hyrule", icon:"crown", msg:"Même Zelda est impressionnée !" },
+  { min:.68, name:"Prodige d'Hyrule", icon:"shield", msg:"Digne de Mipha, Revali, Daruk et Urbosa !" },
+  { min:.36, name:"Chevalière d'Hyrule", icon:"sword", msg:"Encore quelques aventures et tu seras une prodige !" },
+  { min:0,   name:"Petit Korogu", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
+];
+const CHEERS = ["Yahaha ! Bien joué !","Bravo !","Excellent !","Trop forte !","Parfait !","Hestu est fier de toi !"];
+const OOPS = ["Oups…","Presque !","Pas cette fois…","Aïe, raté !"];
+
+/* ================= ICONS (drawn for this quiz) ================= */
+const BUDDY = `<svg class="buddy" viewBox="0 0 100 120" aria-hidden="true">
+  <path d="M40 98 L34 116 M60 98 L66 116" stroke="#6b4a2a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M26 80 L12 70 M74 80 L88 70" stroke="#6b4a2a" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="50" cy="86" r="18" fill="#8a5d34"/>
+  <path d="M50 8 C82 22 90 58 68 78 C60 86 40 86 32 78 C10 58 18 22 50 8Z" fill="#8cc63f" stroke="#3f6f1f" stroke-width="3"/>
+  <path d="M50 14 V36 M50 24 L40 16 M50 24 L60 16" stroke="#3f6f1f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="38" cy="50" r="7" fill="#1d2a12"/><circle cx="62" cy="50" r="7" fill="#1d2a12"/>
+  <circle cx="40" cy="48" r="2" fill="#fff"/><circle cx="64" cy="48" r="2" fill="#fff"/>
+  <ellipse cx="50" cy="66" rx="4" ry="5" fill="#1d2a12"/>
+</svg>`;
+const I = {
+  sprite: BUDDY,
+  maracas: `<ellipse cx="20" cy="20" rx="11" ry="13" fill="#c8553d88"/><ellipse cx="44" cy="20" rx="11" ry="13" fill="#9ccc4f88"/><path d="M24 32 L30 58 M40 32 L34 58 M6 6 l-4 -3 M58 6 l4 -3 M4 20 H0 M60 20 h4"/>`,
+  tree: `<path d="M32 60 V36 M32 46 L24 40 M32 42 L40 36 M16 60 H48"/><circle cx="32" cy="24" r="18" fill="#2f5d43"/><circle cx="26" cy="22" r="2.5" fill="currentColor"/><circle cx="38" cy="22" r="2.5" fill="currentColor"/><path d="M28 30 Q32 33 36 30"/>`,
+  glider: `<path d="M4 30 Q32 6 60 30 Q46 25 32 30 Q18 25 4 30Z" fill="#c8553d99"/><path d="M12 28 L30 48 M52 28 L34 48 M32 30 V48"/><circle cx="32" cy="52" r="5" fill="currentColor"/>`,
+  rupee: `<path d="M32 4 L47 19 V45 L32 60 L17 45 V19Z" fill="#4f9e3f"/><path d="M32 13 L40 21 V43 L32 51 L24 43 V21Z" fill="#9be08a" stroke="none"/><path d="M32 4 L47 19 V45 L32 60 L17 45 V19Z"/>`,
+  horseshoe: `<path d="M17 58 V30 A15 15 0 0 1 47 30 V58" stroke-width="8"/><path d="M17 50 v0 M17 38 v0 M47 50 v0 M47 38 v0 M24 20 v0 M40 20 v0" stroke="#0c241c" stroke-width="4"/>`,
+  flame: `<path d="M32 4 C40 16 48 24 46 38 C45 50 38 54 32 54 C24 54 17 48 18 38 C19 30 24 28 26 18 C30 24 30 28 32 30 C36 22 34 12 32 4Z" fill="#c8553daa"/><path d="M32 36 C36 40 36 48 32 48 C28 48 28 42 32 36Z" fill="currentColor"/><path d="M12 60 L52 52 M12 52 L52 60"/>`,
+  hourglass: `<path d="M16 6 H48 M16 58 H48 M21 6 C21 22 43 26 43 32 C43 38 21 42 21 58 M43 6 C43 22 21 26 21 32 C21 38 43 42 43 58"/><path d="M25 53 H39 L32 44Z" fill="currentColor"/><path d="M27 14 H37 L32 20Z" fill="currentColor"/>`,
+  crown: `<path d="M8 46 L12 16 L23 31 L32 10 L41 31 L52 16 L56 46Z" fill="#e8b93c55"/><path d="M8 54 H56"/><circle cx="32" cy="38" r="3.5" fill="#c8553d" stroke="none"/><circle cx="20" cy="40" r="2.5" fill="#4fd3e8" stroke="none"/><circle cx="44" cy="40" r="2.5" fill="#4fd3e8" stroke="none"/>`,
+  tablet: `<rect x="6" y="14" width="52" height="36" rx="8" fill="#4fd3e822"/><path d="M18 32 Q32 18 46 32 Q32 46 18 32Z" stroke="#4fd3e8"/><circle cx="32" cy="32" r="5" fill="#4fd3e8" stroke="none"/><path d="M32 42 V48" stroke="#4fd3e8"/>`,
+  fish: `<path d="M6 32 C16 14 40 14 48 32 C40 50 16 50 6 32Z" fill="#c8553d66"/><path d="M48 32 L60 18 V46Z" fill="#c8553d66"/><circle cx="18" cy="29" r="3" fill="currentColor"/><path d="M28 22 Q34 32 28 42"/>`,
+  drop: `<path d="M32 4 C40 18 50 28 50 40 A18 18 0 0 1 14 40 C14 28 24 18 32 4Z" fill="#c8553d55"/><path d="M32 30 V50 M22 40 H42" stroke="#fff"/>`,
+  note: `<path d="M24 48 V14 L50 8 V42 M24 22 L50 16"/><ellipse cx="18" cy="48" rx="7" ry="5.5" fill="currentColor"/><ellipse cx="44" cy="42" rx="7" ry="5.5" fill="currentColor"/>`,
+  bag: `<rect x="12" y="16" width="40" height="44" rx="9" fill="#e8b93c44"/><path d="M24 16 V9 H40 V16 M12 32 H52 M27 32 V40 H37 V32"/><path d="M52 24 L60 20 M52 30 L60 30" />`,
+  paw: `<ellipse cx="32" cy="43" rx="14" ry="12" fill="currentColor"/><circle cx="14" cy="26" r="6" fill="currentColor"/><circle cx="25" cy="14" r="6" fill="currentColor"/><circle cx="39" cy="14" r="6" fill="currentColor"/><circle cx="50" cy="26" r="6" fill="currentColor"/>`,
+  broken: `<path d="M32 62 V52 M20 50 H44"/><path d="M28 48 V34 L31 31 L34 34 L36 32 V48Z" fill="#4fd3e844"/><path d="M38 26 L31 24 L35 8 L40 2 L42 9Z" fill="#4fd3e844"/><path d="M8 28 l6 2 M10 18 l6 5 M54 36 l-6 -1" stroke="#4fd3e8"/>`,
+  ascend: `<path d="M4 36 H60" stroke-width="7" stroke="#8a7a5a"/><path d="M32 60 V8 M20 20 L32 8 L44 20" stroke="#9ccc4f" stroke-width="5"/>`,
+  fuse: `<rect x="4" y="26" width="26" height="12" rx="3" fill="#8a5d34"/><circle cx="46" cy="32" r="12" fill="#c8553d88"/><path d="M28 32 H36" stroke="#9ccc4f" stroke-width="6"/><path d="M44 18 l2 -8 M54 22 l6 -5 M38 20 l-3 -7" stroke="#9ccc4f"/>`,
+  rewind: `<path d="M50 34 A18 18 0 1 1 40 16"/><path d="M32 8 L42 16 L32 24" /><path d="M32 22 V34 L41 39" stroke="#9ccc4f"/>`,
+  island: `<ellipse cx="32" cy="28" rx="26" ry="7" fill="#4f9e3f"/><path d="M7 29 L20 42 L32 58 L42 42 L57 29Z" fill="#8a7a5a88"/><path d="M24 24 V12"/><circle cx="24" cy="10" r="6" fill="#2f5d43"/><path d="M40 22 h8 v-6 h-8Z" fill="#e8b93c55"/>`,
+  hand: `<path d="M20 44 V22 a3 3 0 0 1 6 0 V32 V14 a3 3 0 0 1 6 0 V32 V16 a3 3 0 0 1 6 0 V32 V22 a3 3 0 0 1 6 0 V44 C44 54 38 60 32 60 C24 60 20 54 16 46 L11 37 a3 3 0 0 1 5 -3 L20 40" fill="#9ccc4f33" stroke="#9ccc4f"/>`,
+  dragon: `<path d="M4 46 C14 26 24 54 34 34 C40 22 48 26 52 14" stroke-width="7" stroke="#f3ead2"/><path d="M52 14 L60 8 M52 14 L62 16 M22 42 l-4 8 M36 30 l6 4"/><circle cx="50" cy="15" r="1.8" fill="currentColor"/><path d="M10 12 l3 3 M8 14 h6 M58 44 l3 3 M56 46 h6" stroke="#4fd3e8"/>`,
+  tear: `<path d="M32 4 C40 18 48 28 48 40 A16 16 0 0 1 16 40 C16 28 24 18 32 4Z" fill="#4fd3e877" stroke="#4fd3e8"/><circle cx="26" cy="40" r="4" fill="#fff" stroke="none" opacity=".8"/>`,
+  feather: `<path d="M52 6 C24 12 12 36 12 58 C30 54 52 34 52 6Z" fill="#4fd3e844"/><path d="M12 58 L44 18 M22 46 H32 M28 38 H38 M34 30 H42"/>`,
+  flask: `<path d="M24 6 H40 M28 6 V24 L12 52 A4 4 0 0 0 16 58 H48 A4 4 0 0 0 52 52 L36 24 V6"/><path d="M18 44 H46 L50 52 A3 3 0 0 1 47 55 H17 A3 3 0 0 1 14 52Z" fill="#c8553daa" stroke="none"/><circle cx="30" cy="36" r="2.5" fill="#4fd3e8" stroke="none"/><circle cx="38" cy="30" r="1.8" fill="#4fd3e8" stroke="none"/>`,
+  shield: `<path d="M32 4 L54 12 V30 C54 46 44 54 32 60 C20 54 10 46 10 30 V12Z" fill="#2c4a8a"/><path d="M32 18 L39 30 H25Z" fill="currentColor" stroke="none"/><path d="M25 30 L18 42 H32Z M39 30 L46 42 H32Z" fill="currentColor" stroke="none"/>`,
+  moon: `<path d="M40 6 A26 26 0 1 0 58 42 A20 20 0 1 1 40 6Z" fill="#c8553dcc" stroke="#c8553d"/><circle cx="18" cy="14" r="1.5" fill="currentColor"/><circle cx="54" cy="12" r="1.5" fill="currentColor"/>`,
+  star: `<path d="M32 4 L38 26 L60 32 L38 38 L32 60 L26 38 L4 32 L26 26Z" fill="#f3ead2aa"/><path d="M12 10 l4 4 M52 52 l-4 -4 M52 10 l-4 4" stroke="#4fd3e8"/>`,
+  rock: `<path d="M8 52 L14 26 L28 12 L46 16 L58 34 L54 54Z" fill="#8a7a5a"/><path d="M14 26 L30 30 L46 16 M30 30 L34 54"/><circle cx="24" cy="40" r="3" fill="#c8553d" stroke="none"/>`,
+  bolt: `<path d="M36 4 L14 36 H30 L24 60 L50 26 H34Z" fill="#e8b93ccc"/>`,
+  eye: `<path d="M4 30 Q32 6 60 30 Q32 54 4 30Z" fill="#4fd3e822" stroke="#4fd3e8"/><circle cx="32" cy="30" r="9" stroke="#4fd3e8"/><circle cx="32" cy="30" r="4" fill="#4fd3e8" stroke="none"/><path d="M32 44 V60 M26 54 L32 60 L38 54" stroke="#4fd3e8"/>`,
+  triforce: `<path d="M32 6 L44 28 H20Z M20 28 L32 50 H8Z M44 28 L56 50 H32Z" fill="currentColor"/>`,
+  sword: `<path d="M32 4 L37 10 V42 H27 V10Z" fill="#dfe8ee"/><path d="M18 42 H46 M32 42 V56"/><circle cx="32" cy="58" r="3" fill="currentColor"/><circle cx="32" cy="42" r="3" fill="#4fd3e8" stroke="none"/>`
+};
+function medal(key) {
+  if (key === "sprite") return `<div class="medal">${BUDDY}</div>`;
+  return `<div class="medal"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[key]}</svg></div>`;
+}
+
+/* ================= MUSIC (original tunes, Web Audio) ================= */
+const Sound = (() => {
+  let ac = null, bus, sfx, master, on = true, timer = null, next = 0, step = 0, song = "A", pending = null;
+  const SONGS = {
+    A: { bpm: 96,
+      ch: ["D3 F#3 A3","G3 B3 D4","B2 D3 F#3","A2 C#3 E3","D3 F#3 A3","G3 B3 D4","A2 C#3 E3","D3 F#3 A3"],
+      mel: ["F#5 - - A5 D6 - A5 -","B5 - A5 G5 F#5 - E5 -","D5 - F#5 - B5 - A5 F#5","E5 - - - . . C#5 E5",
+            "F#5 - A5 - D6 - E6 -","D6 - B5 - G5 - B5 -","A5 - G5 F#5 E5 - C#5 -","D5 - - - - - . ."] },
+    B: { bpm: 108,
+      ch: ["E3 G3 B3","C3 E3 G3","G2 B2 D3","D3 F#3 A3","E3 G3 B3","C3 E3 G3","D3 F#3 A3","E3 G3 B3"],
+      mel: ["E5 - B4 - E5 G5 B5 -","C6 - B5 - G5 - E5 -","D5 - G5 - B5 - D6 -","F#5 - - E5 D5 - . .",
+            "B5 - - A5 G5 - E5 -","G5 - E5 - C5 - E5 G5","A5 - F#5 - D5 - F#5 A5","E5 - - - - - . ."] },
+    C: { bpm: 84,
+      ch: ["D3 F3 A3","Bb2 D3 F3","F3 A3 C4","C3 E3 G3","D3 F3 A3","Bb2 D3 F3","C3 E3 G3","D3 F3 A3"],
+      mel: ["A5 - - - D6 - - C6","D6 - - - F5 - - -","A5 - C6 - F6 - E6 -","E6 - - D6 C6 - - -",
+            "D6 - F6 - E6 - D6 -","D6 - - - Bb5 - A5 -","G5 - - C6 E6 - G6 -","F6 - E6 - D6 - - -"] },
+    D: { bpm: 116,
+      ch: ["A2 C3 E3","F2 A2 C3","G2 B2 D3","E2 G#2 B2","A2 C3 E3","F2 A2 C3","G2 B2 D3","A2 C3 E3"],
+      mel: ["A5 - E5 - A5 B5 C6 -","C6 - A5 - F5 - A5 -","B5 - D6 - G5 - B5 -","G#5 - - - E5 - . .",
+            "E6 - D6 C6 B5 - A5 -","A5 - C6 - F6 - E6 -","D6 - B5 - G5 - B5 D6","A5 - - - - - . ."] }
+  };
+  const PC = { C:0, D:2, E:4, F:5, G:7, A:9, B:11 };
+  function hz(n) { const m = /^([A-G])(#|b)?(\d)$/.exec(n); const k = PC[m[1]] + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0) + 12 * (+m[3] + 1); return 440 * Math.pow(2, (k - 69) / 12); }
+  for (const s of Object.values(SONGS)) {
+    s.chord = s.ch.map(c => c.split(" ").map(hz));
+    s.seq = [];
+    s.mel.forEach(bar => {
+      const tk = bar.split(" ");
+      tk.forEach((t, i) => {
+        if (t === "-" || t === ".") { s.seq.push(null); return; }
+        let len = 1; while (tk[i + len] === "-") len++;
+        s.seq.push({ f: hz(t), len });
+      });
+    });
+  }
+  function init() {
+    if (ac) { if (ac.state === "suspended") ac.resume(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    ac = new AC();
+    master = ac.createGain(); master.gain.value = on ? 0.8 : 0;
+    const comp = ac.createDynamicsCompressor(); master.connect(comp); comp.connect(ac.destination);
+    bus = ac.createGain(); bus.gain.value = 0.9; bus.connect(master);
+    const dl = ac.createDelay(1), fbk = ac.createGain(), lp = ac.createBiquadFilter(), wet = ac.createGain();
+    dl.delayTime.value = 0.34; fbk.gain.value = 0.3; lp.type = "lowpass"; lp.frequency.value = 2400; wet.gain.value = 0.35;
+    bus.connect(dl); dl.connect(lp); lp.connect(fbk); fbk.connect(dl); lp.connect(wet); wet.connect(master);
+    sfx = ac.createGain(); sfx.gain.value = 1; sfx.connect(master);
+    next = ac.currentTime + 0.1; step = 0;
+    timer = setInterval(sched, 25);
+  }
+  function pluck(f, t, type, vol, dec, out) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.value = f;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dec);
+    o.connect(g); g.connect(out || bus); o.start(t); o.stop(t + dec + 0.05);
+  }
+  function flute(f, t, d, vol) {
+    const o = ac.createOscillator(), o2 = ac.createOscillator(), g = ac.createGain(), l = ac.createOscillator(), lg = ac.createGain();
+    o.type = "sine"; o.frequency.value = f; o2.type = "triangle"; o2.frequency.value = f * 1.002;
+    l.frequency.value = 5.2; lg.gain.value = f * 0.005; l.connect(lg); lg.connect(o.frequency); lg.connect(o2.frequency);
+    const g2 = ac.createGain(); g2.gain.value = 0.35; o2.connect(g2); g2.connect(g);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.05);
+    g.gain.setValueAtTime(vol, t + Math.max(0.06, d - 0.06)); g.gain.linearRampToValueAtTime(0, t + d + 0.12);
+    o.connect(g); g.connect(bus);
+    [o, o2, l].forEach(x => { x.start(t); x.stop(t + d + 0.2); });
+  }
+  const ARP = [0, 1, 2, 3, 2, 1, 2, 1];
+  function sched() {
+    if (!ac) return;
+    while (next < ac.currentTime + 0.15) {
+      if (step % 8 === 0 && pending) { song = pending; pending = null; step = 0; }
+      const S = SONGS[song], dur = 60 / S.bpm / 2, bar = Math.floor(step / 8), s = step % 8, c = S.chord[bar];
+      if (s === 0 || s === 4) pluck(c[0] / 2, next, "sine", 0.16, 1.4);
+      const tones = [c[0] * 2, c[1] * 2, c[2] * 2, c[0] * 4];
+      pluck(tones[ARP[s]], next, "triangle", 0.05, 1.1);
+      const ev = S.seq[step]; if (ev) flute(ev.f, next, ev.len * dur, 0.07);
+      next += dur; step = (step + 1) % 64;
+    }
+  }
+  function play(name) { if (name !== song) pending = name; }
+  function fx(kind) {
+    if (!ac || !on) return;
+    const t = ac.currentTime + 0.02;
+    const seq = {
+      good: [["A5",0],["C#6",.07],["E6",.14],["A6",.21],["E7",.3]],
+      bad: [["E4",0],["C4",.18]],
+      level: [["G4",0],["B4",.1],["D5",.2],["G5",.3],["B5",.45],["D6",.45]],
+      win: [["D5",0],["F#5",.12],["A5",.24],["D6",.36],["A5",.55],["D6",.7],["F#6",.7],["A6",1]],
+      tap: [["D6",0]]
+    }[kind];
+    seq.forEach(([n, d]) => {
+      if (kind === "bad") pluck(hz(n), t + d, "square", 0.05, 0.35, sfx);
+      else pluck(hz(n), t + d, "triangle", kind === "tap" ? 0.06 : 0.14, kind === "tap" ? 0.15 : 0.9, sfx);
+    });
+    if (kind === "good" || kind === "win") pluck(hz("A7"), t + 0.38, "sine", 0.05, 1.2, sfx);
+  }
+  function toggle() { on = !on; if (ac) master.gain.setTargetAtTime(on ? 0.8 : 0, ac.currentTime, 0.05); return on; }
+  return { init, play, fx, toggle, get on() { return on; } };
+})();
+
+/* ================= SCENERY (animated canvas) ================= */
+const cv = document.getElementById("scene"), cx = cv.getContext("2d");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W = 0, H = 0, U = 1, scene = "meadow", prev = null, fadeAt = 0, burstAt = -99;
+function rnd(i) { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+function resize() {
+  const d = Math.min(devicePixelRatio || 1, 1.5);
+  W = cv.width = Math.round(innerWidth * d); H = cv.height = Math.round(innerHeight * d);
+  U = Math.min(W, H) / 500;
+}
+function sky(stops) { const g = cx.createLinearGradient(0, 0, 0, H); stops.forEach(([o, c]) => g.addColorStop(o, c)); cx.fillStyle = g; cx.fillRect(0, 0, W, H); }
+function glow(x, y, r, rgb, a) { const g = cx.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, `rgba(${rgb},${a})`); g.addColorStop(1, `rgba(${rgb},0)`); cx.fillStyle = g; cx.fillRect(x - r, y - r, r * 2, r * 2); }
+function hills(base, amp, freq, col, seed) {
+  cx.fillStyle = col; cx.beginPath(); cx.moveTo(0, H);
+  for (let i = 0; i <= 60; i++) { const x = i / 60 * W, u = i / 60; cx.lineTo(x, base * H - amp * H * (0.55 + 0.3 * Math.sin(u * freq * 6.28 + seed) + 0.15 * Math.sin(u * freq * 2.7 * 6.28 + seed * 3))); }
+  cx.lineTo(W, H); cx.closePath(); cx.fill();
+}
+function canopy(base, rad, col, seed, n) {
+  cx.fillStyle = col; cx.beginPath();
+  for (let i = 0; i <= n; i++) { const x = i / n * W + (rnd(seed + i) - .5) * W / n; const r = rad * H * (0.7 + rnd(seed + i * 2) * 0.6); const y = base * H - r * 0.35 * rnd(seed + i * 3); cx.moveTo(x + r, y); cx.arc(x, y, r, 0, 6.283); }
+  cx.fill(); cx.fillRect(0, base * H, W, H);
+}
+function clouds(t, n, col, yMin, yMax, speed, seed, scale = 1) {
+  cx.fillStyle = col; cx.beginPath();
+  for (let i = 0; i < n; i++) {
+    const s = seed + i, cw = (90 + rnd(s) * 150) * U * scale, span = W + cw * 2;
+    const x = ((rnd(s * 2) * span + t * speed * U * (0.5 + rnd(s * 3))) % span) - cw;
+    const y = (yMin + rnd(s * 4) * (yMax - yMin)) * H;
+    [[0, 0, .5, .17], [-.2, -.08, .25, .16], [.14, -.11, .28, .19]].forEach(([dx, dy, rx, ry]) => { cx.moveTo(x + dx * cw + rx * cw, y + dy * cw); cx.ellipse(x + dx * cw, y + dy * cw, rx * cw, ry * cw, 0, 0, 6.283); });
+  }
+  cx.fill();
+}
+function motes(t, n, rgb, o) {
+  for (let i = 0; i < n; i++) {
+    const s = (o.seed || 1) + i * 1.37, sp = 0.4 + rnd(s * 3);
+    let x = (rnd(s) * W + t * (o.vx || 0) * sp * 30 * U + Math.sin(t * 0.8 + s) * 12 * U) % W; if (x < 0) x += W;
+    let y = (rnd(s * 7) * H + t * (o.vy || 0) * sp * 30 * U) % H; if (y < 0) y += H;
+    const r = (0.8 + rnd(s * 5) * 1.8) * (o.size || 1) * U;
+    const a = (0.35 + 0.65 * Math.abs(Math.sin(t * (o.tw || 1.2) + s))) * (o.a || 1);
+    if (o.halo) glow(x, y, r * 6, rgb, a * 0.25);
+    cx.fillStyle = `rgba(${rgb},${a})`; cx.beginPath(); cx.arc(x, y, r, 0, 6.283); cx.fill();
+  }
+}
+function rays(t, rgb, n) {
+  for (let i = 0; i < n; i++) {
+    const x = (0.1 + i / n * 0.9 + Math.sin(t * 0.2 + i) * 0.02) * W, w = (40 + rnd(i) * 70) * U;
+    cx.fillStyle = `rgba(${rgb},${0.05 + 0.03 * Math.sin(t * 0.5 + i * 2)})`;
+    cx.beginPath(); cx.moveTo(x, 0); cx.lineTo(x + w, 0); cx.lineTo(x + w * 0.2 - H * 0.35, H); cx.lineTo(x - w * 0.6 - H * 0.35, H); cx.closePath(); cx.fill();
+  }
+}
+function castle(x, base, sz, col) {
+  cx.fillStyle = col; const u = sz / 10;
+  const R = (a, b, w, h) => cx.fillRect(x + a * u, base - (b + h) * u, w * u, h * u);
+  const T = (a, b, w, h) => { cx.beginPath(); cx.moveTo(x + a * u, base - b * u); cx.lineTo(x + (a + w / 2) * u, base - (b + h) * u); cx.lineTo(x + (a + w) * u, base - b * u); cx.fill(); };
+  R(-6, 0, 12, 3); R(-4, 3, 8, 3.5); R(-1.2, 6.5, 2.4, 4); T(-1.6, 10.5, 3.2, 3.5);
+  R(-5.4, 3, 1.4, 6); T(-5.8, 9, 2.2, 2.5); R(4, 3, 1.4, 6); T(3.6, 9, 2.2, 2.5);
+  R(-3, 6.5, 1.1, 3); T(-3.3, 9.5, 1.7, 2); R(1.9, 6.5, 1.1, 3); T(1.6, 9.5, 1.7, 2);
+}
+function island(x, y, w, grass, rock) {
+  cx.fillStyle = rock; cx.beginPath(); cx.moveTo(x - w / 2, y); cx.lineTo(x - w * 0.28, y + w * 0.28); cx.lineTo(x - w * 0.05, y + w * 0.55); cx.lineTo(x + w * 0.2, y + w * 0.3); cx.lineTo(x + w / 2, y); cx.closePath(); cx.fill();
+  cx.fillStyle = grass; cx.beginPath(); cx.ellipse(x, y, w / 2, w * 0.09, 0, 0, 6.283); cx.fill();
+  cx.beginPath(); cx.arc(x - w * 0.18, y - w * 0.12, w * 0.1, 0, 6.283); cx.arc(x + w * 0.12, y - w * 0.08, w * 0.07, 0, 6.283); cx.fill();
+}
+function birds(t, n, col, seed) {
+  cx.strokeStyle = col; cx.lineWidth = 2 * U; cx.lineCap = "round";
+  for (let i = 0; i < n; i++) {
+    const s = seed + i, span = W + 100 * U;
+    const x = ((rnd(s) * span + t * (20 + rnd(s * 2) * 20) * U) % span) - 50 * U, y = (0.1 + rnd(s * 3) * 0.3) * H + Math.sin(t + s) * 6 * U;
+    const f = Math.sin(t * 6 + s) * 4 * U, b = (5 + rnd(s * 4) * 4) * U;
+    cx.beginPath(); cx.moveTo(x - b, y - f); cx.quadraticCurveTo(x - b / 3, y - b / 3, x, y); cx.quadraticCurveTo(x + b / 3, y - b / 3, x + b, y - f); cx.stroke();
+  }
+}
+function falls(x, w, top, t, col) {
+  const g = cx.createLinearGradient(0, top * H, 0, H); g.addColorStop(0, col); g.addColorStop(1, "rgba(200,240,255,.9)");
+  cx.fillStyle = g; cx.fillRect(x, top * H, w, H);
+  cx.fillStyle = "rgba(255,255,255,.35)";
+  for (let k = 0; k < 10; k++) { const yy = ((t * 120 * U + k * H / 10) % (H * (1 - top))) + top * H; cx.fillRect(x + (rnd(k) * 0.6) * w, yy, w * 0.25, 22 * U); }
+}
+
+const SCENES = {
+  forest(t) {
+    sky([[0, "#0c2a1f"], [0.45, "#1f5236"], [1, "#081a12"]]);
+    rays(t, "255,245,190", 5);
+    canopy(0.42, 0.2, "#1a4630", 3, 7);
+    canopy(0.6, 0.17, "#12351f", 11, 9);
+    motes(t, 30, "215,255,150", { vx: 0.3, vy: -0.4, size: 1.3, halo: true, seed: 4 });
+    canopy(0.82, 0.14, "#0a2115", 21, 12);
+  },
+  meadow(t) {
+    sky([[0, "#5fb0e0"], [0.55, "#bfe3ef"], [1, "#e9f4e0"]]);
+    glow(W * 0.82, H * 0.14, 180 * U, "255,244,200", 0.8);
+    clouds(t, 6, "rgba(255,255,255,.92)", 0.06, 0.34, 8, 2);
+    hills(0.6, 0.12, 1.2, "#9ab9a8", 1);
+    castle(W * 0.72, H * 0.5, 60 * U, "#7d98a0");
+    hills(0.72, 0.13, 1.6, "#6aa55a", 4);
+    hills(0.9, 0.12, 2.2, "#467f3e", 9);
+    motes(t, 25, "255,255,225", { vx: 0.5, vy: -0.2, size: 1, seed: 8 });
+  },
+  zora(t) {
+    sky([[0, "#0e2f4d"], [0.6, "#2a7197"], [1, "#0c2f45"]]);
+    motes(t, 30, "255,255,255", { size: 0.6, tw: 2, a: .6, seed: 30 });
+    falls(W * 0.06, 34 * U, 0.2, t, "rgba(120,200,240,.55)");
+    falls(W * 0.9, 44 * U, 0.14, t * 1.1, "rgba(120,200,240,.55)");
+    hills(0.62, 0.22, 1.1, "#194a68", 5);
+    glow(W * 0.5, H * 0.6, 260 * U, "120,230,255", 0.25);
+    hills(0.82, 0.14, 1.8, "#113a52", 12);
+    cx.fillStyle = "#1f6a8c"; cx.fillRect(0, H * 0.86, W, H);
+    cx.strokeStyle = "rgba(190,240,255,.4)"; cx.lineWidth = 2 * U;
+    for (let k = 0; k < 14; k++) { const y = H * (0.88 + rnd(k) * 0.1), x = ((rnd(k * 3) * W + t * 20 * U) % W); cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + (30 + rnd(k) * 40) * U, y); cx.stroke(); }
+    motes(t, 25, "170,235,255", { vy: -0.3, size: 1.2, halo: true, seed: 50 });
+  },
+  volcano(t) {
+    sky([[0, "#2a0b08"], [0.5, "#a53a18"], [1, "#240a06"]]);
+    cx.fillStyle = "#2b1210"; cx.beginPath(); cx.moveTo(W * 0.05, H); cx.lineTo(W * 0.42, H * 0.25); cx.lineTo(W * 0.58, H * 0.25); cx.lineTo(W * 0.98, H); cx.fill();
+    glow(W * 0.5, H * 0.24, 140 * U, "255,120,40", 0.7 + 0.2 * Math.sin(t * 2));
+    cx.strokeStyle = "rgba(255,120,40,.85)"; cx.lineWidth = 3 * U;
+    [[0.46, 0.3, 0.36, 0.8], [0.54, 0.3, 0.66, 0.85]].forEach(([a, b, c2, d]) => { cx.beginPath(); cx.moveTo(W * a, H * b); cx.quadraticCurveTo(W * (a + c2) / 2 + Math.sin(t) * 5, H * 0.55, W * c2, H * d); cx.stroke(); });
+    hills(0.86, 0.12, 1.5, "#170806", 3);
+    motes(t, 45, "255,170,70", { vy: -1.6, vx: 0.2, size: 1.2, halo: true, seed: 70 });
+  },
+  rito(t) {
+    sky([[0, "#86b8d8"], [1, "#eef5fa"]]);
+    hills(0.6, 0.25, 1.3, "#c4d4de", 2);
+    clouds(t, 5, "rgba(255,255,255,.85)", 0.05, 0.3, 10, 7);
+    cx.fillStyle = "#6f6a66"; cx.beginPath(); cx.moveTo(W * 0.14, H); cx.lineTo(W * 0.17, H * 0.22); cx.lineTo(W * 0.2, H * 0.16); cx.lineTo(W * 0.25, H * 0.2); cx.lineTo(W * 0.28, H); cx.fill();
+    cx.fillStyle = "#c8553d"; for (let k = 0; k < 4; k++) { const y = H * (0.3 + k * 0.14); cx.beginPath(); cx.ellipse(W * 0.21, y, 42 * U, 8 * U, 0, 0, 6.283); cx.fill(); }
+    birds(t, 6, "#3a4a58", 3);
+    hills(0.9, 0.08, 2, "#dfe9ef", 6);
+    motes(t, 60, "255,255,255", { vy: 0.9, vx: 0.3, size: 1.1, seed: 90 });
+  },
+  sky(t) {
+    sky([[0, "#3d97d6"], [0.7, "#bfe6ff"], [1, "#f4fbff"]]);
+    glow(W * 0.15, H * 0.12, 200 * U, "255,250,220", 0.8);
+    clouds(t, 5, "rgba(255,255,255,.7)", 0.1, 0.4, 6, 3, 0.8);
+    [[0.12, 0.3, 120], [0.85, 0.22, 150], [0.62, 0.5, 90], [0.3, 0.62, 70]].forEach(([x, y, w], i) => island(W * x, H * y + Math.sin(t * 0.8 + i * 1.7) * 8 * U, w * U, "#5aa14a", "#8a7a5a"));
+    birds(t, 4, "#2e5f86", 11);
+    clouds(t * 0.6, 9, "rgba(255,255,255,.95)", 0.86, 1.0, 5, 20, 1.6);
+    motes(t, 25, "255,255,255", { vy: -0.2, size: 1, halo: true, seed: 110 });
+  },
+  desert(t) {
+    sky([[0, "#e07a3c"], [0.5, "#f4c27a"], [1, "#f7dca4"]]);
+    glow(W * 0.78, H * 0.22, 200 * U, "255,240,190", 0.9);
+    cx.fillStyle = "#fff4d6"; cx.beginPath(); cx.arc(W * 0.78, H * 0.22, 34 * U, 0, 6.283); cx.fill();
+    hills(0.62, 0.1, 0.9, "#d9a15c", 2);
+    cx.fillStyle = "#b9824a"; [0.2, 0.26, 0.32].forEach((x, i) => { cx.beginPath(); cx.moveTo(W * x - 20 * U, H * 0.56); cx.lineTo(W * x, H * (0.4 - i * 0.03)); cx.lineTo(W * x + 20 * U, H * 0.56); cx.fill(); });
+    hills(0.76, 0.12, 1.3, "#e6b36a", 5);
+    hills(0.92, 0.1, 1.8, "#c98f4f", 9);
+    motes(t, 60, "255,230,180", { vx: 2.2, vy: 0.1, size: 0.8, a: .7, seed: 260 });
+  },
+  depths(t) {
+    sky([[0, "#040406"], [0.6, "#140912"], [1, "#07060a"]]);
+    for (let k = 0; k < 4; k++) glow(W * (0.2 + k * 0.22) + Math.sin(t * 0.3 + k) * 30 * U, H * (0.45 + 0.1 * Math.sin(k)), 220 * U, "170,20,60", 0.18);
+    hills(0.75, 0.2, 1.4, "#0b0b10", 6);
+    [[0.1, 0.72], [0.34, 0.66], [0.62, 0.7], [0.88, 0.64]].forEach(([x, y], i) => {
+      const a = 0.55 + 0.25 * Math.sin(t * 1.5 + i);
+      glow(W * x, H * y, 90 * U, "255,210,110", a);
+      cx.fillStyle = "#ffe9a8"; cx.beginPath(); cx.arc(W * x, H * y, 5 * U, 0, 6.283); cx.fill();
+    });
+    hills(0.92, 0.1, 2, "#060609", 13);
+    motes(t, 30, "255,210,130", { vy: -0.3, size: 0.9, a: .6, seed: 130 });
+  },
+  castle(t) {
+    sky([[0, "#170c20"], [0.55, "#5a1f3a"], [1, "#b8503b"]]);
+    for (let k = 0; k < 5; k++) glow(W * 0.5 + Math.cos(t * 0.4 + k * 1.3) * W * 0.25, H * 0.4 + Math.sin(t * 0.5 + k) * H * 0.12, 160 * U, k % 2 ? "200,30,70" : "120,30,160", 0.25);
+    castle(W * 0.5, H * 0.72, 190 * U, "#140a14");
+    hills(0.8, 0.1, 1.5, "#1a0c12", 2);
+    motes(t, 40, "255,80,120", { vy: -0.7, vx: 0.2, size: 1, halo: true, seed: 150 });
+  },
+  sheikah(t) {
+    sky([[0, "#05101a"], [0.7, "#0f2c3f"], [1, "#081820"]]);
+    motes(t, 70, "255,255,255", { size: 0.6, tw: 1.8, a: .8, seed: 170 });
+    cx.save(); cx.translate(W * 0.5, H * 0.46); cx.lineWidth = 2 * U;
+    [140, 200, 260].forEach((r, k) => {
+      cx.strokeStyle = `rgba(79,211,232,${0.35 - k * 0.08})`; cx.setLineDash([30 * U, 18 * U]); cx.lineDashOffset = (k % 2 ? -1 : 1) * t * 20 * U;
+      cx.beginPath(); cx.arc(0, 0, r * U, 0, 6.283); cx.stroke();
+    });
+    cx.restore(); cx.setLineDash([]);
+    glow(W * 0.5, H * 0.46, 180 * U, "79,211,232", 0.2 + 0.08 * Math.sin(t * 1.5));
+    hills(0.82, 0.12, 1.4, "#07161f", 4);
+    motes(t, 30, "79,211,232", { vy: -0.4, size: 1.1, halo: true, seed: 190 });
+  },
+  night(t) {
+    sky([[0, "#0a0f24"], [0.7, "#243b55"], [1, "#101c24"]]);
+    motes(t, 80, "255,255,255", { size: 0.6, tw: 1.5, a: .9, seed: 210 });
+    glow(W * 0.8, H * 0.16, 90 * U, "240,240,210", 0.6);
+    cx.fillStyle = "#f4f0d8"; cx.beginPath(); cx.arc(W * 0.8, H * 0.16, 22 * U, 0, 6.283); cx.fill();
+    hills(0.7, 0.14, 1.3, "#132430", 3);
+    hills(0.88, 0.1, 2, "#0b161c", 8);
+    const fx = W * 0.14, fy = H * 0.9, fl = 1 + 0.15 * Math.sin(t * 9) + 0.1 * Math.sin(t * 13);
+    glow(fx, fy, 180 * U * fl, "255,140,50", 0.55);
+    cx.fillStyle = "#ffb347"; cx.beginPath(); cx.moveTo(fx - 16 * U, fy); cx.quadraticCurveTo(fx - 10 * U, fy - 40 * U * fl, fx, fy - 50 * U * fl); cx.quadraticCurveTo(fx + 12 * U, fy - 30 * U * fl, fx + 16 * U, fy); cx.fill();
+    motes(t, 20, "255,190,90", { vy: -1.4, size: 0.8, seed: 230 });
+  }
+};
+function draw(now) {
+  const t = reduce ? 0 : now / 1000;
+  if (prev && now - fadeAt < 900) { SCENES[prev](t); cx.globalAlpha = (now - fadeAt) / 900; SCENES[scene](t); cx.globalAlpha = 1; }
+  else { prev = null; SCENES[scene](t); }
+  const b = (now - burstAt) / 1000;
+  if (b < 2.5 && !reduce) {
+    for (let i = 0; i < 80; i++) {
+      const a = rnd(i) * 6.283, sp = (150 + rnd(i * 2) * 350) * U, x = W / 2 + Math.cos(a) * sp * b, y = H * 0.45 + Math.sin(a) * sp * b + 120 * U * b * b;
+      cx.fillStyle = `rgba(${["232,185,60", "156,204,79", "79,211,232"][i % 3]},${1 - b / 2.5})`;
+      cx.beginPath(); cx.arc(x, y, (2 + rnd(i * 3) * 3) * U, 0, 6.283); cx.fill();
+    }
+  }
+  if (!reduce || prev || b < 2.5) requestAnimationFrame(draw); else idle = true;
+}
+let idle = false;
+function setScene(s) {
+  if (s === scene) return;
+  prev = scene; scene = s; fadeAt = performance.now();
+  if (idle) { idle = false; requestAnimationFrame(draw); }
+}
+function burst() { burstAt = performance.now(); if (idle) { idle = false; requestAnimationFrame(draw); } }
+resize(); addEventListener("resize", () => { resize(); if (idle) requestAnimationFrame(draw); });
+requestAnimationFrame(draw);
+
+/* ================= APP ================= */
+const bar = document.getElementById("bar"), stage = document.getElementById("stage");
+let st = null, wake = null;
+
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+function shuffle(arr) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+const canFS = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+
+function tools() {
+  return `<div class="tools">
+    <button class="tool${Sound.on ? "" : " off"}" id="snd" aria-label="Musique">${Sound.on ? "🔊" : "🔇"}</button>
+    ${canFS ? `<button class="tool" id="fs" aria-label="Plein écran">⛶</button>` : ""}
+  </div>`;
+}
+function wireTools() {
+  const s = document.getElementById("snd");
+  s.onclick = () => { Sound.init(); const on = Sound.toggle(); s.textContent = on ? "🔊" : "🔇"; s.classList.toggle("off", !on); };
+  const f = document.getElementById("fs");
+  if (f) f.onclick = () => {
+    const d = document, el = d.documentElement;
+    try {
+      if (d.fullscreenElement || d.webkitFullscreenElement) (d.exitFullscreen || d.webkitExitFullscreen).call(d);
+      else { const p = (el.requestFullscreen || el.webkitRequestFullscreen).call(el); if (p && p.catch) p.catch(() => {}); }
+    } catch (e) {}
+  };
+}
+function setBar(inner) { bar.innerHTML = inner + tools(); wireTools(); }
+function hud() {
+  const q = st.qs[st.i];
+  const seeds = st.qs.map((_, k) => { const r = st.results[k]; return `<div class="seed ${r === true ? "ok" : r === false ? "ko" : k === st.i ? "now" : ""}"></div>`; }).join("");
+  return `<div class="hud"><div class="hud-top"><span class="lv">${LEVELS[q.lv].emoji} ${LEVELS[q.lv].name}</span><span class="sc">🌰 ${st.score}</span></div>
+    <div class="seeds" style="grid-template-columns: repeat(${st.qs.length}, 1fr)" aria-label="Question ${st.i + 1} sur ${st.qs.length}">${seeds}</div></div>`;
+}
+function keepAwake() {
+  try { if (navigator.wakeLock && !wake) navigator.wakeLock.request("screen").then(l => { wake = l; l.addEventListener("release", () => wake = null); }).catch(() => {}); } catch (e) {}
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && st) keepAwake(); });
+
+function start() {
+  setScene("meadow"); Sound.play("A");
+  setBar(`<div class="brand">The Legend of Zelda</div>`);
+  const name = store("hyrule-name") || "Mélina";
+  const quickN = LEVELS.reduce((s, l) => s + l.quick, 0);
+  const bq = store("hyrule-best-quick"), bg = store("hyrule-best-grand");
+  stage.innerHTML = `
+    <section class="card start pop">
+      <div class="hero">
+        <div class="kicker">Breath of the Wild · Tears of the Kingdom</div>
+        <div class="title">Le Grand Quiz d'Hyrule</div>
+        <p>${Q.length} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse te rapporte une noix Korogu&nbsp;!</p>
+        ${bq || bg ? `<p class="hint">🏆 Records : ${bq ? `partie rapide <b>${esc(bq)}/${quickN}</b>` : ""}${bq && bg ? " · " : ""}${bg ? `grande aventure <b>${esc(bg)}/${Q.length}</b>` : ""}</p>` : ""}
+        <div class="levels">${LEVELS.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
+      </div>
+      <div class="side">
+        <label class="name" for="player">Nom de l'héroïne
+          <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
+        </label>
+        <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
+        <button class="btn" id="grand">Grande aventure · ${Q.length} questions</button>
+        <p class="hint">Les questions de la partie rapide sont tirées au hasard : chaque partie est différente !</p>
+        <p class="hint">📺 Pour la télé : tourne le téléphone en mode paysage avant de lancer la diffusion.</p>
+      </div>
+    </section>`;
+  const begin = mode => {
+    Sound.init(); Sound.fx("tap"); keepAwake();
+    const n = document.getElementById("player").value.trim() || "Mélina";
+    store("hyrule-name", n);
+    const pool = LEVELS.flatMap((l, lv) => {
+      const qs = Q.filter(q => q.lv === lv);
+      return mode === "quick" ? shuffle(qs).slice(0, l.quick) : qs;
+    });
+    st = { name: n, mode, i: 0, score: 0, results: [],
+      qs: pool.map(q => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map(k => q.o[k]), right: order.indexOf(q.a) }; }) };
+    interlude(0);
+  };
+  document.getElementById("quick").onclick = () => begin("quick");
+  document.getElementById("grand").onclick = () => begin("grand");
+}
+
+function interlude(lv) {
+  const l = LEVELS[lv];
+  setScene(l.scene); Sound.play(l.song); Sound.fx("level");
+  const n = st.qs.filter(q => q.lv === lv).length;
+  setBar(`<div class="brand">Épreuve ${lv + 1} sur ${LEVELS.length}</div>`);
+  stage.innerHTML = `
+    <section class="card center pop">
+      ${medal(l.icon)}
+      <div class="kicker">${lv === 0 ? `C'est parti, ${esc(st.name)} !` : lv === 3 ? "Attention, ça devient très dur !" : "Épreuve réussie !"}</div>
+      <h2>Épreuve ${lv + 1} : ${l.name}</h2>
+      <p>${n} questions · ${l.desc}</p>
+      <button class="btn" id="go">J'y vais !</button>
+    </section>`;
+  const g = document.getElementById("go"); g.onclick = () => { Sound.fx("tap"); ask(); }; g.focus({ preventScroll: true });
+}
+
+function ask() {
+  const q = st.qs[st.i];
+  setScene(q.sc);
+  setBar(hud());
+  stage.innerHTML = `
+    <section class="card qcard pop" id="qc">
+      <div class="qhead">
+        ${medal(q.ic)}
+        <div>
+          <div class="qnum">Question ${st.i + 1} / ${st.qs.length}</div>
+          <div class="qtext">${esc(q.q)}</div>
+        </div>
+      </div>
+      <div class="answers">
+        ${q.opts.map((o, k) => `<button class="ans" data-k="${k}"><span class="l">${"ABCD"[k]}</span><span>${esc(o)}</span></button>`).join("")}
+      </div>
+      <div class="fb" id="fb"></div>
+    </section>`;
+  stage.scrollTop = 0;
+  stage.querySelectorAll(".ans").forEach(b => b.onclick = () => answer(+b.dataset.k));
+}
+
+function answer(k) {
+  const q = st.qs[st.i], ok = k === q.right;
+  st.results[st.i] = ok; if (ok) st.score++;
+  Sound.fx(ok ? "good" : "bad");
+  document.getElementById("qc").classList.add("answered");
+  stage.querySelectorAll(".ans").forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.right) b.classList.add("right"); else if (j === k) b.classList.add("wrong"); else b.classList.add("dim");
+  });
+  setBar(hud());
+  const last = st.i === st.qs.length - 1, fb = document.getElementById("fb");
+  fb.innerHTML = `<div class="feedback pop ${ok ? "ok" : "ko"}">
+    ${BUDDY}
+    <div class="say">${ok ? pick(CHEERS) : pick(OOPS) + " C'était : " + esc(q.opts[q.right])}</div>
+    <div class="fact">💡 ${q.f}</div>
+    <button class="btn" id="next">${last ? "Voir mon score" : "Question suivante"}</button>
+  </div>`;
+  fb.querySelector(".buddy").classList.add(ok ? "hop" : "sad");
+  const next = document.getElementById("next");
+  next.onclick = () => {
+    Sound.fx("tap"); st.i++;
+    if (st.i >= st.qs.length) return finish();
+    if (st.qs[st.i].lv !== st.qs[st.i - 1].lv) return interlude(st.qs[st.i].lv);
+    ask();
+  };
+  next.focus({ preventScroll: true });
+  fb.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "nearest" });
+}
+
+function finish() {
+  const N = st.qs.length, rank = RANKS.find(r => st.score / N >= r.min);
+  const key = "hyrule-best-" + st.mode;
+  const prevBest = parseInt(store(key) || "0", 10), record = st.score > prevBest;
+  if (record) store(key, String(st.score));
+  const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; });
+  const missed = st.qs.filter((q, k) => !st.results[k]);
+  setScene(st.score / N >= .68 ? "sky" : "meadow"); Sound.play("A"); Sound.fx("win"); burst();
+  setBar(`<div class="brand">Fin de l'aventure</div>`);
+  stage.innerHTML = `
+    <section class="card result pop">
+      <div class="res-main">
+        ${medal(rank.icon)}
+        <div class="kicker">${esc(st.name)}, tu es…</div>
+        <div class="rank">${rank.name}</div>
+        <div class="score">${st.score}<small> / ${N}</small></div>
+        <p>${rank.msg}${record && prevBest > 0 ? " <b>Nouveau record !</b>" : ""}</p>
+      </div>
+      <div class="res-side">
+        <div class="breakdown">${per.map(p => `<div><span class="e">${p.l.emoji}</span><span class="n">${p.got}/${p.of}</span><span class="t">${p.l.name}</span></div>`).join("")}</div>
+        ${missed.length ? `<div class="missed"><h3>Les réponses à retenir</h3><ul>${missed.map(q => `<li>${esc(q.q)}<br>→ <b>${esc(q.o[q.a])}</b></li>`).join("")}</ul></div>` : `<p>Un sans-faute ! 🎉</p>`}
+        <button class="btn" id="again">Rejouer</button>
+      </div>
+    </section>`;
+  stage.scrollTop = 0;
+  document.getElementById("again").onclick = () => { Sound.fx("tap"); start(); };
+}
+
+start();
+</script>
+</body>
+</html>
