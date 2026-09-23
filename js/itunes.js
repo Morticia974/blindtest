@@ -201,6 +201,7 @@ var Itunes = (function () {
       artiste: artisteAffiche,
       apercu: resolue.apercu,
       pochette: resolue.pochette,
+      categorie: piste.categorie || '',
       labelA: piste.labelA || 'Artiste',
       labelT: piste.labelT || 'Titre',
       solo: piste.solo || null,

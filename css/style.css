@@ -425,6 +425,22 @@ button, input, select { font: inherit; color: inherit; }
 
 .zone-reponse { margin-top: 18px; }
 
+/* Grand mélange : d'où sort ce morceau. Placé là où on tape, pas en haut de
+   page — c'est au moment d'écrire qu'on a besoin de savoir si on cherche un
+   jeu vidéo ou une chanson des années 80. */
+.badge-categorie {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 11px;
+  border: 1px solid var(--bord);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--vert);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
 .paire-reponses { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
 .paire-reponses.solo { grid-template-columns: 1fr; }
 

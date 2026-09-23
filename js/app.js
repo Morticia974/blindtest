@@ -729,6 +729,16 @@
     $('compteur-manche').textContent = 'Titre ' + (tour.index + 1) + ' / ' + etat.meta.nbTitres;
     var m = Playlists.parId(etat.meta.manche);
     $('nom-manche').textContent = m ? m.emoji + ' ' + m.nom : '🎲 Grand mélange';
+
+    /* Dans une manche normale la catégorie est déjà écrite en haut ; dans le
+       Grand mélange elle change à chaque morceau, on l'affiche donc ici. */
+    var badge = $('badge-categorie');
+    if (!m && piste && piste.categorie) {
+      badge.textContent = piste.categorie;
+      badge.hidden = false;
+    } else {
+      badge.hidden = true;
+    }
     $('label-titre').textContent = (piste && piste.labelT) || 'Titre';
     $('label-artiste').textContent = (piste && piste.labelA) || 'Artiste';
 

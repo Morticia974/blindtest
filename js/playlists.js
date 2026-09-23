@@ -1302,7 +1302,10 @@ var Playlists = (function () {
       labelA: m.labelA || 'Artiste',
       labelT: m.labelT || 'Titre',
       solo: m.solo || null,
-      strict: !!m.strict
+      strict: !!m.strict,
+      // D'où vient le morceau. Sert au Grand mélange, où l'en-tête ne peut pas
+      // le dire : sans ça on ne sait pas si on cherche un jeu ou un Disney.
+      categorie: m.emoji + ' ' + m.nom
     });
   }
 
