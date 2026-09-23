@@ -797,10 +797,23 @@ function start() {
     Sound.init(); Sound.fx("tap"); keepAwake();
     const n = document.getElementById("player").value.trim() || "Mélina";
     store("hyrule-name", n);
-    const pool = LEVELS.flatMap((l, lv) => {
-      const qs = Q.filter(q => q.lv === lv);
-      return mode === "quick" ? shuffle(qs).slice(0, l.quick) : qs;
+    let seen = [];
+    try { seen = JSON.parse(store("hyrule-seen") || "[]"); } catch (e) { seen = []; }
+    if (!Array.isArray(seen)) seen = [];
+    const picked = [];
+    LEVELS.forEach((l, lv) => {
+      const qs = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === lv));
+      if (mode !== "quick") { picked.push(...qs); return; }
+      let fresh = qs.filter(k => !seen.includes(k));
+      if (fresh.length < l.quick) {
+        seen = seen.filter(k => !Q[k] || Q[k].lv !== lv);
+        fresh = fresh.concat(qs.filter(k => !fresh.includes(k)));
+      }
+      const take = fresh.slice(0, l.quick);
+      seen.push(...take); picked.push(...take);
     });
+    if (mode === "quick") store("hyrule-seen", JSON.stringify(seen));
+    const pool = picked.map(k => Q[k]);
     st = { name: n, mode, i: 0, score: 0, results: [],
       qs: pool.map(q => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map(k => q.o[k]), right: order.indexOf(q.a) }; }) };
     interlude(0);
