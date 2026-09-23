@@ -158,6 +158,9 @@ var Playlists = (function () {
         // Le nom de l'album dans la recherche : sans lui, « Dernière danse »
         // tombe sur celle d'Indila, qui est déjà dans les années 2010.
         { t: "Dernière danse", a: "Kyo", q: "Kyo Dernière danse Le chemin" },
+        // L'album « Schrei » n'est pas sur Apple France : c'est le Best of qui
+        // sert l'enregistrement, et sa pochette reste une pochette du groupe.
+        { t: "Durch den Monsun", a: "Tokio Hotel", q: "Tokio Hotel Durch den Monsun Best of" },
         { t: "La Boulette", a: "Diam's" },
         { t: "En apesanteur", a: "Calogero" },
         { t: "Butterfly", a: "Superbus" },
@@ -650,7 +653,10 @@ var Playlists = (function () {
         /* « Rage Against Power Machines » : un groupe hommage remontait avant
            l'original. On épingle l'album. */
         { t: "Killing in the Name", a: "Rage Against the Machine", q: "Rage Against the Machine Killing in the Name 1992 album", altA: ["RATM"] },
-        { t: "Lambé An Dro", a: "Matmatah" }
+        { t: "Lambé An Dro", a: "Matmatah" },
+        // « Brand New Eyes » plutôt que la B.O. de Twilight : même
+        // enregistrement, mais la pochette est celle du groupe.
+        { t: "Decode", a: "Paramore", q: "Paramore Decode Brand New Eyes" }
       ]
     },
     {
