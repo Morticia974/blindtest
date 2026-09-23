@@ -404,22 +404,22 @@ function medal(key) {
 const Sound = (() => {
   let ac = null, bus, sfx, master, mus, musicOn = store("beurk-music") !== "off", fxOn = store("beurk-fx") !== "off", timer = null, next = 0, step = 0, song = "A", pending = null;
   const SONGS = {
-    A: { bpm: 150, spb: 6, arp: [0, 1, 2, 3, 2, 1],
-      ch: ["D3 F#3 A3","C3 E3 G3","D3 F#3 A3","G2 B2 D3","D3 F#3 A3","C3 E3 G3","G2 B2 D3","D3 F#3 A3"],
-      mel: ["D5 - A5 A5 - F#5","G5 - E5 C5 - E5","F#5 - D5 A5 - B5","A5 - G5 F#5 - E5",
-            "D5 - A5 D6 - C6","B5 - G5 C6 - E5","G5 - B5 A5 - G5","F#5 - E5 D5 - -"] },
-    B: { bpm: 100,
-      ch: ["G2 B2 D3","D3 F#3 A3","E3 G3 B3","C3 E3 G3","G2 B2 D3","D3 F#3 A3","C3 E3 G3","D3 F#3 A3"],
-      mel: ["B5 - - D6 B5 - A5 G5","A5 - - - F#5 - D5 -","E5 - G5 - B5 - E6 -","D6 - C6 B5 C6 - - -",
-            "B5 - D6 - G6 - F#6 E6","D6 - A5 - F#5 - A5 -","G5 - E5 - C6 - B5 A5","A5 - - - - - . ."] },
-    C: { bpm: 88,
-      ch: ["A2 C3 E3","F2 A2 C3","C3 E3 G3","G2 B2 D3","A2 C3 E3","F2 A2 C3","G2 B2 D3","A2 C3 E3"],
-      mel: ["E5 - - A5 C6 - B5 -","A5 - - - F5 - - -","G5 - C6 - E6 - D6 -","D6 - - C6 B5 - - -",
-            "C6 - E6 - A6 - G6 -","F6 - E6 - C6 - A5 -","B5 - - D6 G6 - F6 -","E6 - - - - - . ."] },
-    D: { bpm: 120,
-      ch: ["D3 F3 A3","Bb2 D3 F3","C3 E3 G3","A2 C#3 E3","D3 F3 A3","Bb2 D3 F3","G2 Bb2 D3","A2 C#3 E3"],
-      mel: ["D5 - A5 - D6 - E6 F6","E6 - D6 - Bb5 - - -","C6 - G5 - C6 - E6 -","C#6 - - - A5 - . .",
-            "D6 - F6 - A6 - G6 F6","F6 - D6 - Bb5 - D6 -","G6 - F6 - E6 - D6 -","C#6 - - - A5 - . ."] }
+    A: { bpm: 140, spb: 6, arp: [0, 1, 2, 3, 2, 1], drum: [1, 0, 2, 1, 0, 2],
+      ch: ["D3 F3 A3","C3 E3 G3","D3 F3 A3","A2 C3 E3","D3 F3 A3","C3 E3 G3","G2 B2 D3","D3 F3 A3"],
+      mel: ["D5 - F5 A5 - F5","E5 - C5 G5 - E5","D5 - A5 D6 - C6","A5 - G5 E5 - -",
+            "F5 - A5 D6 - E6","C6 - G5 E5 - G5","B5 - A5 G5 - B5","A5 - F5 D5 - -"] },
+    B: { bpm: 96, drum: [1, 0, 0, 2, 1, 0, 2, 0],
+      ch: ["E3 G3 B3","C3 E3 G3","D3 F#3 A3","E3 G3 B3","E3 G3 B3","C3 E3 G3","B2 D#3 F#3","E3 G3 B3"],
+      mel: ["E5 - - G5 B5 - A5 G5","E5 - - - C5 - D5 E5","F#5 - A5 - D6 - C6 B5","B5 - - - . . E5 G5",
+            "B5 - E6 - D6 - B5 -","C6 - B5 A5 G5 - E5 -","F#5 - G5 A5 F#5 - D#5 -","E5 - - - - - . ."] },
+    C: { bpm: 76, drum: [1, 0, 0, 0, 2, 0, 0, 0],
+      ch: ["A2 C3 E3","G2 B2 D3","F2 A2 C3","G2 B2 D3","A2 C3 E3","E2 G2 B2","F2 A2 C3","A2 C3 E3"],
+      mel: ["A5 - - - E5 - G5 -","G5 - - - D5 - - -","F5 - A5 - C6 - B5 A5","B5 - - - . . . .",
+            "C6 - - B5 A5 - E5 -","G5 - - - B4 - D5 E5","F5 - E5 - C5 - D5 -","A4 - - - - - . ."] },
+    D: { bpm: 126, drum: [1, 2, 1, 2, 1, 2, 1, 1],
+      ch: ["D3 F3 A3","Bb2 D3 F3","C3 E3 G3","D3 F3 A3","D3 F3 A3","Bb2 D3 F3","C3 E3 G3","A2 C#3 E3"],
+      mel: ["D5 - D5 F5 A5 - D6 -","D6 - C6 Bb5 F5 - - -","G5 - C6 - E6 - C6 -","D6 - - - A5 - . .",
+            "F6 - E6 D6 C6 - A5 -","Bb5 - A5 G5 F5 - D5 -","E5 - G5 - C6 - E6 -","C#6 - - - A5 - . ."] }
   };
   const PC = { C:0, D:2, E:4, F:5, G:7, A:9, B:11 };
   function hz(n) { const m = /^([A-G])(#|b)?(\d)$/.exec(n); const k = PC[m[1]] + (m[2] === "#" ? 1 : m[2] === "b" ? -1 : 0) + 12 * (+m[3] + 1); return 440 * Math.pow(2, (k - 69) / 12); }
@@ -466,16 +466,57 @@ const Sound = (() => {
     o.connect(g); g.connect(bus);
     [o, o2, l].forEach(x => { x.start(t); x.stop(t + d + 0.2); });
   }
+  let noise = null;
+  function fiddle(f, t, d, vol) {
+    const o = ac.createOscillator(), o2 = ac.createOscillator(), lp = ac.createBiquadFilter(), g = ac.createGain(), l = ac.createOscillator(), lg = ac.createGain();
+    o.type = "sawtooth"; o2.type = "sawtooth"; o.frequency.value = f; o2.frequency.value = f * 1.004;
+    l.frequency.value = 5.5; lg.gain.value = f * 0.006; l.connect(lg); lg.connect(o.frequency); lg.connect(o2.frequency);
+    lp.type = "lowpass"; lp.frequency.value = 2300; lp.Q.value = 2;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.04);
+    g.gain.setValueAtTime(vol * 0.85, t + Math.max(0.05, d - 0.05)); g.gain.linearRampToValueAtTime(0, t + d + 0.1);
+    o.connect(lp); o2.connect(lp); lp.connect(g); g.connect(bus);
+    [o, o2, l].forEach(x => { x.start(t); x.stop(t + d + 0.15); });
+  }
+  function drone(f, t, d) {
+    [f / 2, f * 0.75].forEach(fr => {
+      const o = ac.createOscillator(), lp = ac.createBiquadFilter(), g = ac.createGain();
+      o.type = "sawtooth"; o.frequency.value = fr; lp.type = "lowpass"; lp.frequency.value = 520;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.028, t + 0.15);
+      g.gain.setValueAtTime(0.028, t + d - 0.08); g.gain.linearRampToValueAtTime(0, t + d + 0.05);
+      o.connect(lp); lp.connect(g); g.connect(bus); o.start(t); o.stop(t + d + 0.1);
+    });
+  }
+  function boom(t, out) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = "sine"; o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.22);
+    g.gain.setValueAtTime(0.5, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+    o.connect(g); g.connect(out || bus); o.start(t); o.stop(t + 0.5);
+  }
+  function tap(t) {
+    if (!noise) { noise = ac.createBuffer(1, ac.sampleRate * 0.2, ac.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
+    const n = ac.createBufferSource(), bp = ac.createBiquadFilter(), g = ac.createGain();
+    n.buffer = noise; bp.type = "bandpass"; bp.frequency.value = 1400; bp.Q.value = 1.2;
+    g.gain.setValueAtTime(0.18, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.09);
+    n.connect(bp); bp.connect(g); g.connect(bus); n.start(t); n.stop(t + 0.12);
+  }
+  function horn(f, t, d) {
+    const o = ac.createOscillator(), lp = ac.createBiquadFilter(), g = ac.createGain();
+    o.type = "sawtooth"; o.frequency.value = f; lp.type = "lowpass"; lp.frequency.setValueAtTime(400, t); lp.frequency.linearRampToValueAtTime(1300, t + 0.15);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.12, t + 0.08); g.gain.setValueAtTime(0.12, t + d - 0.1); g.gain.linearRampToValueAtTime(0, t + d + 0.2);
+    o.connect(lp); lp.connect(g); g.connect(sfx); o.start(t); o.stop(t + d + 0.25);
+  }
   const ARP = [0, 1, 2, 3, 2, 1, 2, 1];
   function sched() {
     if (!ac) return;
     while (next < ac.currentTime + 0.15) {
       if (step % SONGS[song].spb === 0 && pending) { song = pending; pending = null; step = 0; }
       const S = SONGS[song], dur = 60 / S.bpm / 2, bar = Math.floor(step / S.spb), s = step % S.spb, c = S.chord[bar];
-      if (s === 0 || s === S.spb / 2) pluck(c[0] / 2, next, "sine", 0.16, 1.4);
+      if (s === 0 || s === S.spb / 2) pluck(c[0] / 2, next, "sine", 0.12, 1.2);
+      if (s === 0) drone(c[0], next, dur * S.spb);
+      if (S.drum[s] === 1) boom(next); else if (S.drum[s] === 2) tap(next);
       const tones = [c[0] * 2, c[1] * 2, c[2] * 2, c[0] * 4];
-      pluck(tones[S.arp[s]], next, "triangle", 0.05, 1.1);
-      const ev = S.seq[step]; if (ev) flute(ev.f, next, ev.len * dur, 0.07);
+      pluck(tones[S.arp[s]], next, "triangle", 0.035, 0.9);
+      const ev = S.seq[step]; if (ev) fiddle(ev.f, next, ev.len * dur, 0.045);
       next += dur; step = (step + 1) % (S.chord.length * S.spb);
     }
   }
@@ -494,6 +535,7 @@ const Sound = (() => {
       if (kind === "bad") pluck(hz(n), t + d, "square", 0.05, 0.35, sfx);
       else pluck(hz(n), t + d, "triangle", kind === "tap" ? 0.06 : 0.14, kind === "tap" ? 0.15 : 0.9, sfx);
     });
+    if (kind === "level" || kind === "win") { [["D4", 0], ["A4", 0.3], ["D5", 0.6]].forEach(([n, d]) => horn(hz(n), t + d, 0.45)); boom(t, sfx); boom(t + 0.6, sfx); }
     if (kind === "good" || kind === "win") pluck(hz("A7"), t + 0.38, "sine", 0.05, 1.2, sfx);
   }
   function toggleMusic() { musicOn = !musicOn; store("beurk-music", musicOn ? "on" : "off"); if (ac) mus.gain.setTargetAtTime(musicOn ? 1 : 0, ac.currentTime, 0.05); return musicOn; }
