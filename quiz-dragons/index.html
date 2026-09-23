@@ -471,7 +471,7 @@ const Sound = (() => {
     const o = ac.createOscillator(), o2 = ac.createOscillator(), lp = ac.createBiquadFilter(), g = ac.createGain(), l = ac.createOscillator(), lg = ac.createGain();
     o.type = "sawtooth"; o2.type = "sawtooth"; o.frequency.value = f; o2.frequency.value = f * 1.004;
     l.frequency.value = 5.5; lg.gain.value = f * 0.006; l.connect(lg); lg.connect(o.frequency); lg.connect(o2.frequency);
-    lp.type = "lowpass"; lp.frequency.value = 2300; lp.Q.value = 2;
+    lp.type = "lowpass"; lp.frequency.value = 1300; lp.Q.value = 0.8;
     g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.04);
     g.gain.setValueAtTime(vol * 0.85, t + Math.max(0.05, d - 0.05)); g.gain.linearRampToValueAtTime(0, t + d + 0.1);
     o.connect(lp); o2.connect(lp); lp.connect(g); g.connect(bus);
@@ -495,7 +495,7 @@ const Sound = (() => {
   function tap(t) {
     if (!noise) { noise = ac.createBuffer(1, ac.sampleRate * 0.2, ac.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
     const n = ac.createBufferSource(), bp = ac.createBiquadFilter(), g = ac.createGain();
-    n.buffer = noise; bp.type = "bandpass"; bp.frequency.value = 1400; bp.Q.value = 1.2;
+    n.buffer = noise; bp.type = "bandpass"; bp.frequency.value = 700; bp.Q.value = 1;
     g.gain.setValueAtTime(0.18, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.09);
     n.connect(bp); bp.connect(g); g.connect(bus); n.start(t); n.stop(t + 0.12);
   }
@@ -514,9 +514,9 @@ const Sound = (() => {
       if (s === 0 || s === S.spb / 2) pluck(c[0] / 2, next, "sine", 0.12, 1.2);
       if (s === 0) drone(c[0], next, dur * S.spb);
       if (S.drum[s] === 1) boom(next); else if (S.drum[s] === 2) tap(next);
-      const tones = [c[0] * 2, c[1] * 2, c[2] * 2, c[0] * 4];
+      const tones = [c[0], c[1], c[2], c[0] * 2];
       pluck(tones[S.arp[s]], next, "triangle", 0.035, 0.9);
-      const ev = S.seq[step]; if (ev) fiddle(ev.f, next, ev.len * dur, 0.045);
+      const ev = S.seq[step]; if (ev) fiddle(ev.f / 2, next, ev.len * dur, 0.05);
       next += dur; step = (step + 1) % (S.chord.length * S.spb);
     }
   }
@@ -525,18 +525,17 @@ const Sound = (() => {
     if (!ac || !fxOn) return;
     const t = ac.currentTime + 0.02;
     const seq = {
-      good: [["A5",0],["C#6",.07],["E6",.14],["A6",.21],["E7",.3]],
-      bad: [["E4",0],["C4",.18]],
-      level: [["G4",0],["B4",.1],["D5",.2],["G5",.3],["B5",.45],["D6",.45]],
-      win: [["D5",0],["F#5",.12],["A5",.24],["D6",.36],["A5",.55],["D6",.7],["F#6",.7],["A6",1]],
-      tap: [["D6",0]]
+      good: [["D4",0],["F#4",.08],["A4",.16],["D5",.26]],
+      bad: [["E3",0],["C3",.18]],
+      level: [],
+      win: [["D4",0],["F#4",.12],["A4",.24],["D5",.36],["A4",.55],["D5",.7],["F#5",.7],["A5",1]],
+      tap: [["D5",0]]
     }[kind];
     seq.forEach(([n, d]) => {
       if (kind === "bad") pluck(hz(n), t + d, "square", 0.05, 0.35, sfx);
       else pluck(hz(n), t + d, "triangle", kind === "tap" ? 0.06 : 0.14, kind === "tap" ? 0.15 : 0.9, sfx);
     });
     if (kind === "level" || kind === "win") { [["D4", 0], ["A4", 0.3], ["D5", 0.6]].forEach(([n, d]) => horn(hz(n), t + d, 0.45)); boom(t, sfx); boom(t + 0.6, sfx); }
-    if (kind === "good" || kind === "win") pluck(hz("A7"), t + 0.38, "sine", 0.05, 1.2, sfx);
   }
   function toggleMusic() { musicOn = !musicOn; store("beurk-music", musicOn ? "on" : "off"); if (ac) mus.gain.setTargetAtTime(musicOn ? 1 : 0, ac.currentTime, 0.05); return musicOn; }
   function toggleFx() { fxOn = !fxOn; store("beurk-fx", fxOn ? "on" : "off"); return fxOn; }
