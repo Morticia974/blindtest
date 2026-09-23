@@ -216,14 +216,14 @@
 <script>
 /* ================= DATA ================= */
 const LEVELS = [
-  { name: "Apprentie viking", emoji: "🪓", desc: "Pour s'échauffer à Beurk", scene: "berk", song: "A", icon: "helmet", quick: 6 },
-  { name: "Dragonnière de Beurk", emoji: "🐉", desc: "Les dragons et leurs dragonniers", scene: "sky", song: "B", icon: "wing", quick: 7 },
-  { name: "Cavalière du ciel", emoji: "🌙", desc: "Les secrets des trois films", scene: "night", song: "C", icon: "eye", quick: 7 },
-  { name: "Maîtresse des dragons", emoji: "🔥", desc: "Les petits détails des films, pour les expertes", scene: "hidden", song: "D", icon: "flame", quick: 5 }
+  { name: "Premiers pas à Beurk", emoji: "🪓", desc: "Pour s'échauffer à Beurk", scene: "berk", song: "A", icon: "helmet", quick: 6 },
+  { name: "L'école des dragons", emoji: "🐉", desc: "Les dragons et leurs dragonniers", scene: "sky", song: "B", icon: "wing", quick: 7 },
+  { name: "Envol dans le ciel", emoji: "🌙", desc: "Les secrets des trois films", scene: "night", song: "C", icon: "eye", quick: 7 },
+  { name: "Le défi du Furie Nocturne", emoji: "🔥", desc: "Les petits détails des films, pour les pros", scene: "hidden", song: "D", icon: "flame", quick: 5 }
 ];
 
 const Q = [
-  /* ---- épreuve 1 : Apprentie viking ---- */
+  /* ---- épreuve 1 : Premiers pas à Beurk ---- */
   { lv:0, sc:"cove", ic:"sprite", q:"Comment s'appelle le dragon de Harold ?", o:["Tempête","Krokmou","Krochefer","Bouledogre"], a:1,
     f:"Harold l'appelle Krokmou parce que ses dents rentrent et sortent : il a des <b>dents rétractables</b> !" },
   { lv:0, sc:"night", ic:"eye", q:"De quelle espèce est Krokmou ?", o:["Un Cauchemar Monstrueux","Un Furie Nocturne","Un Gronk","Un Terreur Terrible"], a:1,
@@ -249,7 +249,7 @@ const Q = [
   { lv:0, sc:"sky", ic:"heads", q:"Le dragon des jumeaux a deux têtes. Comment s'appelle-t-il ?", o:["Prout et Pète","Krochefer","Tempête","Double-Croc"], a:0,
     f:"Une tête crache du gaz, l'autre fait une étincelle pour l'allumer. Chaque jumeau dirige une tête !" },
 
-  /* ---- épreuve 2 : Dragonnière de Beurk ---- */
+  /* ---- épreuve 2 : L'école des dragons ---- */
   { lv:1, sc:"night", ic:"heart", q:"Comment s'appelle la dragonne blanche dont Krokmou tombe amoureux ?", o:["La Mort Rouge","Tempête","La Furie Éclair","La Furie Blanche"], a:2,
     f:"Elle apparaît dans Dragons 3. Ses écailles brillent et elle peut devenir invisible !" },
   { lv:1, sc:"ice", ic:"shield", q:"Qui est la maman de Harold, qu'il retrouve dans Dragons 2 ?", o:["Astrid","Valka","Kognedur","Gueulfor"], a:1,
@@ -279,7 +279,7 @@ const Q = [
   { lv:1, sc:"hidden", ic:"heart", q:"Que se passe-t-il entre Harold et Astrid dans Dragons 3 ?", o:["Ils se disputent pour toujours","Ils se marient","Astrid part vivre ailleurs","Ils deviennent des dragons"], a:1,
     f:"À la fin du film, ils ont même des enfants !" },
 
-  /* ---- épreuve 3 : Cavalière du ciel ---- */
+  /* ---- épreuve 3 : Envol dans le ciel ---- */
   { lv:2, sc:"night", ic:"sun", q:"Comment Harold attrape-t-il un Terreur Terrible pendant l'entraînement ?", o:["Avec un filet","Avec le reflet d'un miroir","Avec un poisson","En sifflant"], a:1,
     f:"Le petit dragon court après la tache de lumière, comme un chat… et finit dans une cage !" },
   { lv:2, sc:"cove", ic:"tail", q:"Quel côté de la queue Krokmou a-t-il perdu ?", o:["Le côté gauche","Le côté droit","Les deux","Aucun"], a:0,
@@ -311,7 +311,7 @@ const Q = [
   { lv:2, sc:"ice", ic:"wing", q:"Qui a emmené Valka loin de Beurk quand Harold était bébé ?", o:["Des pirates","Un dragon","Drago Poing-Sanglant","Grimmel le Grave"], a:1,
     f:"Le dragon ne lui a fait aucun mal : Valka a vu que les dragons pouvaient être gentils, et elle est restée vivre avec eux." },
 
-  /* ---- épreuve 4 : Maîtresse des dragons ---- */
+  /* ---- épreuve 4 : Le défi du Furie Nocturne ---- */
   { lv:3, sc:"nest", ic:"eyes", q:"Combien d'yeux a la Mort Rouge ?", o:["2","4","6","8"], a:2,
     f:"Trois paires d'yeux… et pourtant, Harold et Krokmou arrivent à la battre !" },
   { lv:3, sc:"sea", ic:"map", q:"Où se trouve l'entrée du Monde caché ?", o:["Dans un volcan","Au bout du monde, dans une immense cascade de l'océan","Sous la maison de Harold","Dans la forêt de Beurk"], a:1,
@@ -343,12 +343,12 @@ const Q = [
 ];
 
 const RANKS = [
-  { min:.9,  name:"Grande maîtresse des dragons", icon:"crown", msg:"Même Krokmou est impressionné !" },
-  { min:.68, name:"Cheffe des dragonniers", icon:"shield", msg:"Digne de Harold et Astrid !" },
-  { min:.36, name:"Dragonnière de Beurk", icon:"wing", msg:"Encore quelques vols et tu seras une vraie cheffe !" },
-  { min:0,   name:"Petite Terreur Terrible", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
+  { min:.9,  name:"Légende de Beurk", icon:"crown", msg:"Même Krokmou est impressionné !" },
+  { min:.68, name:"Pilote de Furie Nocturne", icon:"shield", msg:"Digne de Harold et Astrid !" },
+  { min:.36, name:"Recrue de l'école des dragons", icon:"wing", msg:"Encore quelques vols et tu voleras comme Harold !" },
+  { min:0,   name:"Bébé Terreur Terrible", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
 ];
-const CHEERS = ["Bravo, dragonnière !","Bien joué !","Excellent !","Trop forte !","Parfait !","Krokmou est fier de toi !"];
+const CHEERS = ["Bravo !","Bien joué !","Excellent !","Incroyable !","Parfait !","Krokmou est fier de toi !"];
 const OOPS = ["Oups…","Presque !","Pas cette fois…","Aïe, raté !"];
 
 /* ================= ICONS (drawn for this quiz) ================= */
@@ -853,7 +853,7 @@ function start() {
         <div class="levels">${LEVELS.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
       </div>
       <div class="side">
-        <label class="name" for="player">Nom de la dragonnière
+        <label class="name" for="player">Ton prénom
           <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
         </label>
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>

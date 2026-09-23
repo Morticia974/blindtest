@@ -216,10 +216,10 @@
 <script>
 /* ================= DATA ================= */
 const LEVELS = [
-  { name: "Apprentie aventurière", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 6 },
-  { name: "Héroïne confirmée", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 7 },
-  { name: "Légende d'Hyrule", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 7 },
-  { name: "Sage d'Hyrule", emoji: "🔺", desc: "Questions très difficiles, pour les expertes", scene: "castle", song: "D", icon: "triforce", quick: 5 }
+  { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 6 },
+  { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 7 },
+  { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 7 },
+  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 5 }
 ];
 
 const Q = [
@@ -346,12 +346,12 @@ const Q = [
 ];
 
 const RANKS = [
-  { min:.9,  name:"Héroïne légendaire d'Hyrule", icon:"crown", msg:"Même Zelda est impressionnée !" },
+  { min:.9,  name:"Légende d'Hyrule", icon:"crown", msg:"Même Zelda est impressionnée !" },
   { min:.68, name:"Prodige d'Hyrule", icon:"shield", msg:"Digne de Mipha, Revali, Daruk et Urbosa !" },
-  { min:.36, name:"Chevalière d'Hyrule", icon:"sword", msg:"Encore quelques aventures et tu seras une prodige !" },
-  { min:0,   name:"Petit Korogu", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
+  { min:.36, name:"Garde royale d'Hyrule", icon:"sword", msg:"Encore quelques aventures et tu rejoindras les Prodiges !" },
+  { min:0,   name:"Graine de Korogu", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
 ];
-const CHEERS = ["Yahaha ! Bien joué !","Bravo !","Excellent !","Trop forte !","Parfait !","Noïa est fier de toi !"];
+const CHEERS = ["Yahaha ! Bien joué !","Bravo !","Excellent !","Incroyable !","Parfait !","Noïa est fier de toi !"];
 const OOPS = ["Oups…","Presque !","Pas cette fois…","Aïe, raté !"];
 
 /* ================= ICONS (drawn for this quiz) ================= */
@@ -783,7 +783,7 @@ function start() {
         <div class="levels">${LEVELS.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
       </div>
       <div class="side">
-        <label class="name" for="player">Nom de l'héroïne
+        <label class="name" for="player">Ton prénom
           <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
         </label>
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
