@@ -68,7 +68,8 @@
     border: 0; background: #0b1f19cc; color: var(--gold); font-size: clamp(17px, 2.4vmin, 26px);
     box-shadow: inset 0 0 0 2px var(--gold); display: grid; place-items: center; padding: 0; cursor: pointer;
   }
-  .tool.off { color: #8a8a7a; box-shadow: inset 0 0 0 2px #8a8a7a; }
+  .tool.off { color: #8a8a7a; box-shadow: inset 0 0 0 2px #8a8a7a; filter: grayscale(1); opacity: .6; position: relative; }
+  .tool.off::after { content: ""; position: absolute; left: 22%; right: 22%; top: 50%; height: 3px; background: #c8553d; transform: rotate(-45deg); border-radius: 2px; }
   .tool:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 2px; }
 
   /* ---------- stage & parchment ---------- */
@@ -224,11 +225,11 @@ const LEVELS = [
 const Q = [
   { lv:0, sc:"forest", ic:"sprite", q:"Comment s'appellent les petits esprits de la forêt qui se cachent partout en Hyrule ?", o:["Les Kokiris","Les Korogus","Les Gorons","Les Piafs"], a:1,
     f:"Il y en a <b>900</b> à trouver dans Breath of the Wild… et <b>1 000</b> dans Tears of the Kingdom !" },
-  { lv:0, sc:"forest", ic:"maracas", q:"Qui échange les noix Korogu contre plus de place pour tes armes, en dansant avec ses maracas ?", o:["Terry","Kass","Hestu","Sidon"], a:2,
-    f:"Hestu fait une petite danse à chaque fois qu'il agrandit ton inventaire !" },
+  { lv:0, sc:"forest", ic:"maracas", q:"Qui échange les noix Korogu contre plus de place pour tes armes, en dansant avec ses maracas ?", o:["Terry","Asarim","Noïa","Sidon"], a:2,
+    f:"Noïa fait une petite danse à chaque fois qu'il agrandit ton inventaire !" },
   { lv:0, sc:"forest", ic:"tree", q:"Quel est le nom du grand arbre qui parle et qui garde l'Épée de légende ?", o:["L'Arbre Mojo","Le Chêne sacré","L'Arbre Mojoko","Le Grand Saule"], a:0,
     f:"L'Arbre Mojo vit au cœur des <b>Bois perdus</b>, dans la forêt Korogu." },
-  { lv:0, sc:"meadow", ic:"glider", q:"Avec quel objet Link plane-t-il dans les airs ?", o:["Une cape","La paravoile","Un parapluie","Des ailes de Rito"], a:1,
+  { lv:0, sc:"meadow", ic:"glider", q:"Avec quel objet Link plane-t-il dans les airs ?", o:["Une cape","La paravoile","Un parapluie","Des ailes de Piaf"], a:1,
     f:"Dans Breath of the Wild, c'est le vieil homme du Plateau du Prélude qui la donne à Link." },
   { lv:0, sc:"meadow", ic:"rupee", q:"Comment s'appelle l'argent dans Zelda ?", o:["Les pièces d'or","Les diamants","Les rubis","Les écus"], a:2,
     f:"Les rubis existent en plusieurs couleurs : vert, bleu, rouge, violet, argent et or !" },
@@ -241,38 +242,38 @@ const Q = [
     f:"Il se réveille dans le <b>Sanctuaire de la Renaissance</b>, sans aucun souvenir." },
   { lv:1, sc:"meadow", ic:"crown", q:"Qui est vraiment le vieil homme du Plateau du Prélude ?", o:["Un Sheikah","Le roi Rhoam, le père de Zelda","Ganon déguisé","Le grand-père de Link"], a:1,
     f:"C'est le fantôme du dernier roi d'Hyrule, venu aider Link." },
-  { lv:1, sc:"sheikah", ic:"tablet", q:"Comment s'appelle l'objet de Link qui sert de carte et d'appareil photo dans Breath of the Wild ?", o:["La tablette Sheikah","La pierre Sheikah","Le Zonaiphone","Le miroir magique"], a:0,
-    f:"Elle permet aussi d'utiliser des pouvoirs comme Cryonis, Magnésis ou Stase." },
+  { lv:1, sc:"sheikah", ic:"tablet", q:"Comment s'appelle l'objet de Link qui sert de carte et d'appareil photo dans Breath of the Wild ?", o:["La tablette Sheikah","La pierre Sheikah","La tablette Pru'Ha","Le miroir magique"], a:0,
+    f:"Elle permet aussi d'utiliser des pouvoirs comme Cryonis, Magnesis ou Cinetis." },
   { lv:1, sc:"zora", ic:"fish", q:"Comment s'appelle le prince Zora, grand, rigolo et toujours souriant ?", o:["Revali","Sidon","Daruk","Yunobo"], a:1,
     f:"Dans Tears of the Kingdom, Sidon devient le <b>sage de l'eau</b>." },
-  { lv:1, sc:"zora", ic:"drop", q:"Mipha, la prodige Zora, était la grande sœur de qui ?", o:["Sidon","Zelda","Tulin","Riju"], a:0,
+  { lv:1, sc:"zora", ic:"drop", q:"Mipha, la prodige Zora, était la grande sœur de qui ?", o:["Sidon","Zelda","Babil","Riju"], a:0,
     f:"Mipha avait un pouvoir magique : elle pouvait soigner les blessures." },
-  { lv:1, sc:"rito", ic:"note", q:"Quel instrument joue Kass, le barde Rito ?", o:["La flûte","La harpe","L'accordéon","Le violon"], a:2,
+  { lv:1, sc:"rito", ic:"note", q:"Quel instrument joue Asarim, le barde piaf ?", o:["La flûte","La harpe","L'accordéon","Le violon"], a:2,
     f:"Ses chansons cachent souvent des indices pour trouver des sanctuaires secrets." },
-  { lv:1, sc:"meadow", ic:"bag", q:"Comment s'appelle le marchand au gros sac à dos qu'on croise souvent près des relais ?", o:["Terry","Hestu","Bolson","Robbie"], a:0,
+  { lv:1, sc:"meadow", ic:"bag", q:"Comment s'appelle le marchand au gros sac à dos qu'on croise souvent près des relais ?", o:["Terry","Noïa","Kilton","Asarim"], a:0,
     f:"Terry vend des flèches et plein d'objets utiles… son sac est plus gros que lui !" },
-  { lv:1, sc:"volcano", ic:"paw", q:"Quel est ce monstre très dangereux, moitié lion, moitié cheval ?", o:["Un Hinox","Un Lynel","Un Talus","Un Molduga"], a:1,
+  { lv:1, sc:"volcano", ic:"paw", q:"Quel est ce monstre très dangereux, moitié lion, moitié cheval ?", o:["Un Hinox","Un Lynel","Un Lithorok","Un Moldarquor"], a:1,
     f:"Le Lynel est un des ennemis les plus forts du jeu. Mieux vaut avoir beaucoup de cœurs !" },
 
   { lv:2, sc:"castle", ic:"broken", q:"Au début de Tears of the Kingdom, qu'arrive-t-il à l'Épée de légende ?", o:["Elle est volée","Elle se brise","Elle tombe dans un lac","Zelda la cache"], a:1,
     f:"Elle se brise face à Ganondorf, sous le château d'Hyrule." },
   { lv:2, sc:"depths", ic:"ascend", q:"Dans Tears of the Kingdom, quel pouvoir permet de traverser un plafond pour se retrouver au-dessus ?", o:["Emprise","Rétrospective","Infiltration","Amalgame"], a:2,
     f:"Super pratique pour sortir d'une grotte sans refaire tout le chemin !" },
-  { lv:2, sc:"sky", ic:"fuse", q:"Quel pouvoir permet de coller un objet sur ton arme ou ton bouclier ?", o:["Amalgame","Emprise","Schéma","Stase"], a:0,
+  { lv:2, sc:"sky", ic:"fuse", q:"Quel pouvoir permet de coller un objet sur ton arme ou ton bouclier ?", o:["Amalgame","Emprise","Cinetis","Infiltration"], a:0,
     f:"Une corne de monstre sur un bâton, et hop : une arme bien plus puissante !" },
-  { lv:2, sc:"sky", ic:"rewind", q:"Quel pouvoir permet de faire remonter le temps à un objet ?", o:["Infiltration","Rétrospective","Cryonis","Magnésis"], a:1,
+  { lv:2, sc:"sky", ic:"rewind", q:"Quel pouvoir permet de faire remonter le temps à un objet ?", o:["Infiltration","Rétrospective","Cryonis","Magnesis"], a:1,
     f:"Tu peux même renvoyer un rocher à celui qui te l'a lancé !" },
-  { lv:2, sc:"sky", ic:"island", q:"Comment s'appelle l'ancien peuple à tête d'animal qui vivait dans les îles célestes ?", o:["Les Sheikahs","Les Zonaïs","Les Gerudos","Les Hyliens"], a:1,
-    f:"Les Zonaïs ont laissé plein d'objets magiques : ventilateurs, roues, ballons, fusées…" },
+  { lv:2, sc:"sky", ic:"island", q:"Comment s'appelle l'ancien peuple à tête d'animal qui vivait dans les îles célestes ?", o:["Les Sheikahs","Les Soneaus","Les Gerudos","Les Hyliens"], a:1,
+    f:"Les Soneaus ont laissé plein d'objets magiques : ventilateurs, roues, ballons, fusées…" },
   { lv:2, sc:"sky", ic:"hand", q:"Qui est le premier roi d'Hyrule, qui donne son bras à Link ?", o:["Rhoam","Rauru","Ganondorf","Kohga"], a:1,
-    f:"Rauru était un Zonaï, et sa femme s'appelait <b>Sonia</b>." },
+    f:"Rauru était un Soneau, et sa femme s'appelait la <b>reine Sonia</b>." },
   { lv:2, sc:"sky", ic:"dragon", q:"En quoi Zelda se transforme-t-elle pour sauver l'Épée de légende ?", o:["En fée","En oiseau de lumière","En dragon","En statue"], a:2,
-    f:"Le <b>dragon de lumière</b> a protégé l'épée pendant des milliers d'années." },
+    f:"Le <b>Dragon Blanc</b> a protégé l'épée pendant des milliers d'années." },
   { lv:2, sc:"meadow", ic:"tear", q:"Que révèlent les larmes de dragon qu'on trouve sur les géoglyphes ?", o:["Des trésors","Les souvenirs de Zelda","Des sanctuaires cachés","Des cartes des Profondeurs"], a:1,
     f:"Chaque larme raconte un morceau de l'histoire de Zelda dans le passé." },
-  { lv:2, sc:"rito", ic:"feather", q:"Comment s'appelle le petit Rito qui devient le sage du vent et aide Link ?", o:["Teba","Revali","Tulin","Kass"], a:2,
-    f:"Tulin est le fils de Teba, le grand guerrier Rito." },
-  { lv:2, sc:"sheikah", ic:"flask", q:"Pourquoi Purah ressemble-t-elle à une petite fille dans Breath of the Wild ?", o:["C'est sa fille","Elle a raté une expérience pour rajeunir","Une malédiction de Ganon","Elle a mangé un champignon magique"], a:1,
+  { lv:2, sc:"rito", ic:"feather", q:"Comment s'appelle le petit Piaf qui devient le sage du vent et aide Link ?", o:["Teba","Revali","Babil","Asarim"], a:2,
+    f:"Babil est le fils de Teba, le grand guerrier piaf." },
+  { lv:2, sc:"sheikah", ic:"flask", q:"Pourquoi Pru'Ha ressemble-t-elle à une petite fille dans Breath of the Wild ?", o:["C'est sa fille","Elle a raté une expérience pour rajeunir","Une malédiction de Ganon","Elle a mangé un champignon magique"], a:1,
     f:"Elle voulait rajeunir un tout petit peu… et elle est redevenue une enfant ! Dans Tears of the Kingdom, elle est redevenue adulte." },
 
   /* ---- épreuve 1, suite ---- */
@@ -290,14 +291,14 @@ const Q = [
   /* ---- épreuve 2, suite ---- */
   { lv:1, sc:"volcano", ic:"rock", q:"Lequel des quatre prodiges était un Goron ?", o:["Daruk","Revali","Urbosa","Mipha"], a:0,
     f:"Daruk, le grand Goron, pouvait créer un bouclier magique pour se protéger." },
-  { lv:1, sc:"desert", ic:"bolt", q:"Urbosa, la prodige, était la cheffe de quel peuple ?", o:["Les Zoras","Les Gerudos","Les Ritos","Les Sheikahs"], a:1,
+  { lv:1, sc:"desert", ic:"bolt", q:"Urbosa, la prodige, était la cheffe de quel peuple ?", o:["Les Zoras","Les Gerudos","Les Piafs","Les Sheikahs"], a:1,
     f:"Urbosa maîtrisait la foudre en claquant des doigts !" },
-  { lv:1, sc:"rito", ic:"feather", q:"Revali, le prodige Rito, était champion de quoi ?", o:["Du tir à l'arc","De la cuisine","De la natation","De l'épée"], a:0,
+  { lv:1, sc:"rito", ic:"feather", q:"Revali, le prodige piaf, était champion de quoi ?", o:["Du tir à l'arc","De la cuisine","De la natation","De l'épée"], a:0,
     f:"Il pouvait aussi s'envoler très haut d'un seul coup d'ailes." },
-  { lv:1, sc:"castle", ic:"eye", q:"Comment s'appellent les grands robots à pattes qui tirent des lasers ?", o:["Les Talus","Les Gardiens","Les Golems","Les Hinox"], a:1,
+  { lv:1, sc:"castle", ic:"eye", q:"Comment s'appellent les grands robots à pattes qui tirent des lasers ?", o:["Les Lithoroks","Les Gardiens","Les Golems","Les Hinox"], a:1,
     f:"Astuce de pro : on peut renvoyer leur laser avec un bouclier au bon moment !" },
   { lv:1, sc:"meadow", ic:"eye", q:"Comment s'appelle le village des Sheikahs où vit Impa ?", o:["Cocorico","Écaraille","Tabanta","Akkala"], a:0,
-    f:"Impa est la grande sœur de Purah, et elle a une petite-fille : Paya." },
+    f:"Impa est la grande sœur de Pru'Ha, et elle a une petite-fille : Pahya." },
   { lv:1, sc:"desert", ic:"star", q:"Les garçons n'ont pas le droit d'entrer dans la cité Gerudo. Comment fait Link ?", o:["Il passe par les égouts","Il se déguise en fille","Il donne 100 rubis","Il arrive en volant"], a:1,
     f:"Il met une tenue de danseuse Gerudo… et personne ne le reconnaît !" },
 
@@ -306,12 +307,12 @@ const Q = [
     f:"Yunobo est un descendant de Daruk, le prodige Goron." },
   { lv:2, sc:"desert", ic:"bolt", q:"Riju, la jeune cheffe Gerudo, maîtrise quel élément ?", o:["L'eau","Le feu","La foudre","La glace"], a:2,
     f:"Riju se déplace dans le désert sur un phoque des sables !" },
-  { lv:2, sc:"depths", ic:"shield", q:"Quelle sage Zonaïe revient dans un grand corps mécanique pour aider Link ?", o:["Sonia","Mineru","Purah","Paya"], a:1,
+  { lv:2, sc:"depths", ic:"shield", q:"Quelle sage Soneau revient dans un grand corps mécanique pour aider Link ?", o:["Sonia","Mineru","Pru'Ha","Pahya"], a:1,
     f:"Mineru est la sœur de Rauru. C'est le <b>sage de l'esprit</b>." },
-  { lv:2, sc:"rito", ic:"feather", q:"Qui est Penn ?", o:["Un Rito journaliste","Un Goron cuisinier","Un Zora pêcheur","Un Korogu musicien"], a:0,
+  { lv:2, sc:"rito", ic:"feather", q:"Qui est Penn ?", o:["Un Piaf journaliste","Un Goron cuisinier","Un Zora pêcheur","Un Korogu musicien"], a:0,
     f:"Penn aide Link à enquêter sur les rumeurs à propos de la princesse Zelda." },
-  { lv:2, sc:"meadow", ic:"hand", q:"Qui a toujours besoin de ton aide pour faire tenir ses panneaux debout ?", o:["Addison","Terry","Bolson","Kilton"], a:0,
-    f:"Tu peux construire n'importe quoi avec Emprise pour l'aider : même une tour de planches !" },
+  { lv:2, sc:"desert", ic:"rock", q:"Comment s'appellent les énormes monstres qui nagent sous le sable du désert Gerudo ?", o:["Les Lithoroks","Les Moldarquors","Les Hinox","Les Lynels"], a:1,
+    f:"Astuce : lance une bombe sur le sable, ils sautent dessus… et hop, ils sont sonnés !" },
 
   /* ---- épreuve 4 : Sage d'Hyrule ---- */
   { lv:3, sc:"sheikah", ic:"tablet", q:"Combien y a-t-il de sanctuaires dans Breath of the Wild ?", o:["88","100","120","152"], a:2,
@@ -324,20 +325,20 @@ const Q = [
     f:"Si tu n'en as pas assez, Link perd ses cœurs un par un en tirant sur l'épée !" },
   { lv:3, sc:"zora", ic:"fish", q:"Quelle créature divine appartient aux Zoras ?", o:["Vah'Ruta","Vah'Medoh","Vah'Rudania","Vah'Naboris"], a:0,
     f:"Vah'Ruta ressemble à un éléphant et fait tomber une pluie sans fin." },
-  { lv:3, sc:"rito", ic:"feather", q:"Vah'Medoh, la créature divine des Ritos, ressemble à quel animal ?", o:["Un éléphant","Un oiseau","Une salamandre","Un chameau"], a:1,
+  { lv:3, sc:"rito", ic:"feather", q:"Vah'Medoh, la créature divine des Piafs, ressemble à quel animal ?", o:["Un éléphant","Un oiseau","Une salamandre","Un chameau"], a:1,
     f:"Vah'Rudania est une salamandre (Gorons) et Vah'Naboris un chameau (Gerudos)." },
-  { lv:3, sc:"sky", ic:"dragon", q:"Farosh est le dragon de quel élément ?", o:["Le feu","La glace","La foudre","Le vent"], a:2,
-    f:"Les deux autres dragons sont <b>Dinraal</b> (le feu) et <b>Naydra</b> (la glace)." },
-  { lv:3, sc:"meadow", ic:"tablet", q:"Quels sont les quatre pouvoirs du Plateau du Prélude dans Breath of the Wild ?", o:["Magnésis, Bombes, Cryonis, Stase","Emprise, Amalgame, Infiltration, Rétrospective","Magnésis, Emprise, Stase, Rétrospective","Cryonis, Bombes, Schéma, Infiltration"], a:0,
+  { lv:3, sc:"sky", ic:"dragon", q:"Rordrac est le dragon de quel élément ?", o:["Le feu","La glace","La foudre","Le vent"], a:2,
+    f:"Les deux autres dragons sont <b>Ordrac</b> (le feu) et <b>Nedrac</b> (la glace)." },
+  { lv:3, sc:"meadow", ic:"tablet", q:"Quels sont les quatre pouvoirs du Plateau du Prélude dans Breath of the Wild ?", o:["Magnesis, Bombes à distance, Cryonis, Cinetis","Emprise, Amalgame, Infiltration, Rétrospective","Magnesis, Emprise, Cinetis, Rétrospective","Cryonis, Polaris, Amalgame, Infiltration"], a:0,
     f:"On les gagne dans les quatre premiers sanctuaires du jeu." },
-  { lv:3, sc:"zora", ic:"crown", q:"Comment s'appelle le roi des Zoras, le papa de Mipha et Sidon ?", o:["Rhoam","Dorephan","Rauru","Kohga"], a:1,
-    f:"Le roi Dorephan est immense : il est bien plus grand que Link !" },
-  { lv:3, sc:"night", ic:"eye", q:"Comment s'appelle le chef du clan Yiga ?", o:["Kohga","Robbie","Kilton","Teba"], a:0,
+  { lv:3, sc:"zora", ic:"crown", q:"Comment s'appelle le roi des Zoras, le papa de Mipha et Sidon ?", o:["Rhoam","Dorefah","Rauru","Le Grand Kohga"], a:1,
+    f:"Le roi Dorefah est immense : il est bien plus grand que Link !" },
+  { lv:3, sc:"night", ic:"eye", q:"Comment s'appelle le chef du clan Yiga ?", o:["Le Grand Kohga","Pru'Ha","Kilton","Teba"], a:0,
     f:"Les Yigas sont des Sheikahs qui ont choisi le camp de Ganon… et ils adorent les bananes !" },
   { lv:3, sc:"castle", ic:"triforce", q:"Quelle partie de la Triforce Link représente-t-il ?", o:["La Force","La Sagesse","Le Courage","L'Amitié"], a:2,
     f:"Zelda a la Sagesse, et Ganon a la Force." },
-  { lv:3, sc:"sheikah", ic:"star", q:"Comment s'appelle la petite-fille d'Impa, très timide ?", o:["Paya","Purah","Riju","Sonia"], a:0,
-    f:"Paya garde la maison d'Impa à Cocorico… et elle rougit dès que Link lui parle !" },
+  { lv:3, sc:"sheikah", ic:"star", q:"Comment s'appelle la petite-fille d'Impa, très timide ?", o:["Pahya","Pru'Ha","Riju","Sonia"], a:0,
+    f:"Pahya garde la maison d'Impa à Cocorico… et elle rougit dès que Link lui parle !" },
   { lv:3, sc:"sky", ic:"hourglass", q:"En quelle année est sorti Tears of the Kingdom ?", o:["2017","2020","2023","2025"], a:2,
     f:"Breath of the Wild est sorti en <b>2017</b>, six ans avant." },
   { lv:3, sc:"sky", ic:"rewind", q:"Sonia, la reine d'Hyrule, avait un pouvoir. Lequel ?", o:["Le pouvoir du temps","Le pouvoir de la foudre","Le pouvoir de l'eau","Le pouvoir du feu"], a:0,
@@ -350,7 +351,7 @@ const RANKS = [
   { min:.36, name:"Chevalière d'Hyrule", icon:"sword", msg:"Encore quelques aventures et tu seras une prodige !" },
   { min:0,   name:"Petit Korogu", icon:"sprite", msg:"Tout le monde commence petit… rejoue pour grandir !" }
 ];
-const CHEERS = ["Yahaha ! Bien joué !","Bravo !","Excellent !","Trop forte !","Parfait !","Hestu est fier de toi !"];
+const CHEERS = ["Yahaha ! Bien joué !","Bravo !","Excellent !","Trop forte !","Parfait !","Noïa est fier de toi !"];
 const OOPS = ["Oups…","Presque !","Pas cette fois…","Aïe, raté !"];
 
 /* ================= ICONS (drawn for this quiz) ================= */
@@ -406,7 +407,7 @@ function medal(key) {
 
 /* ================= MUSIC (original tunes, Web Audio) ================= */
 const Sound = (() => {
-  let ac = null, bus, sfx, master, on = true, timer = null, next = 0, step = 0, song = "A", pending = null;
+  let ac = null, bus, sfx, master, mus, musicOn = store("hyrule-music") !== "off", fxOn = store("hyrule-fx") !== "off", timer = null, next = 0, step = 0, song = "A", pending = null;
   const SONGS = {
     A: { bpm: 96,
       ch: ["D3 F#3 A3","G3 B3 D4","B2 D3 F#3","A2 C#3 E3","D3 F#3 A3","G3 B3 D4","A2 C#3 E3","D3 F#3 A3"],
@@ -443,12 +444,13 @@ const Sound = (() => {
     if (ac) { if (ac.state === "suspended") ac.resume(); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
     ac = new AC();
-    master = ac.createGain(); master.gain.value = on ? 0.8 : 0;
+    master = ac.createGain(); master.gain.value = 0.8;
+    mus = ac.createGain(); mus.gain.value = musicOn ? 1 : 0; mus.connect(master);
     const comp = ac.createDynamicsCompressor(); master.connect(comp); comp.connect(ac.destination);
-    bus = ac.createGain(); bus.gain.value = 0.9; bus.connect(master);
+    bus = ac.createGain(); bus.gain.value = 0.9; bus.connect(mus);
     const dl = ac.createDelay(1), fbk = ac.createGain(), lp = ac.createBiquadFilter(), wet = ac.createGain();
     dl.delayTime.value = 0.34; fbk.gain.value = 0.3; lp.type = "lowpass"; lp.frequency.value = 2400; wet.gain.value = 0.35;
-    bus.connect(dl); dl.connect(lp); lp.connect(fbk); fbk.connect(dl); lp.connect(wet); wet.connect(master);
+    bus.connect(dl); dl.connect(lp); lp.connect(fbk); fbk.connect(dl); lp.connect(wet); wet.connect(mus);
     sfx = ac.createGain(); sfx.gain.value = 1; sfx.connect(master);
     next = ac.currentTime + 0.1; step = 0;
     timer = setInterval(sched, 25);
@@ -484,7 +486,7 @@ const Sound = (() => {
   }
   function play(name) { if (name !== song) pending = name; }
   function fx(kind) {
-    if (!ac || !on) return;
+    if (!ac || !fxOn) return;
     const t = ac.currentTime + 0.02;
     const seq = {
       good: [["A5",0],["C#6",.07],["E6",.14],["A6",.21],["E7",.3]],
@@ -499,8 +501,9 @@ const Sound = (() => {
     });
     if (kind === "good" || kind === "win") pluck(hz("A7"), t + 0.38, "sine", 0.05, 1.2, sfx);
   }
-  function toggle() { on = !on; if (ac) master.gain.setTargetAtTime(on ? 0.8 : 0, ac.currentTime, 0.05); return on; }
-  return { init, play, fx, toggle, get on() { return on; } };
+  function toggleMusic() { musicOn = !musicOn; store("hyrule-music", musicOn ? "on" : "off"); if (ac) mus.gain.setTargetAtTime(musicOn ? 1 : 0, ac.currentTime, 0.05); return musicOn; }
+  function toggleFx() { fxOn = !fxOn; store("hyrule-fx", fxOn ? "on" : "off"); return fxOn; }
+  return { init, play, fx, toggleMusic, toggleFx, get musicOn() { return musicOn; }, get fxOn() { return fxOn; } };
 })();
 
 /* ================= SCENERY (animated canvas) ================= */
@@ -733,13 +736,16 @@ const canFS = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled)
 
 function tools() {
   return `<div class="tools">
-    <button class="tool${Sound.on ? "" : " off"}" id="snd" aria-label="Musique">${Sound.on ? "🔊" : "🔇"}</button>
+    <button class="tool${Sound.musicOn ? "" : " off"}" id="snd" aria-label="Musique" title="Musique">🎵</button>
+    <button class="tool${Sound.fxOn ? "" : " off"}" id="sfx" aria-label="Bruitages" title="Bruitages">🔔</button>
     ${canFS ? `<button class="tool" id="fs" aria-label="Plein écran">⛶</button>` : ""}
   </div>`;
 }
 function wireTools() {
   const s = document.getElementById("snd");
-  s.onclick = () => { Sound.init(); const on = Sound.toggle(); s.textContent = on ? "🔊" : "🔇"; s.classList.toggle("off", !on); };
+  s.onclick = () => { Sound.init(); s.classList.toggle("off", !Sound.toggleMusic()); };
+  const x = document.getElementById("sfx");
+  x.onclick = () => { Sound.init(); x.classList.toggle("off", !Sound.toggleFx()); Sound.fx("tap"); };
   const f = document.getElementById("fs");
   if (f) f.onclick = () => {
     const d = document, el = d.documentElement;
@@ -783,6 +789,7 @@ function start() {
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
         <button class="btn" id="grand">Grande aventure · ${Q.length} questions</button>
         <p class="hint">Les questions de la partie rapide sont tirées au hasard : chaque partie est différente !</p>
+        <p class="hint">🎵 coupe la musique du quiz, 🔔 coupe les bruitages.</p>
         <p class="hint">📺 Pour la télé : tourne le téléphone en mode paysage avant de lancer la diffusion.</p>
       </div>
     </section>`;
