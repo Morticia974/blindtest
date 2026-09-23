@@ -216,10 +216,10 @@
 <script>
 /* ================= DATA ================= */
 const LEVELS = [
-  { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 6 },
-  { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 7 },
-  { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 7 },
-  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 5 }
+  { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 5 },
+  { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 6 },
+  { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 8 },
+  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 6 }
 ];
 
 const Q = [
@@ -342,7 +342,61 @@ const Q = [
   { lv:3, sc:"sky", ic:"hourglass", q:"En quelle année est sorti Tears of the Kingdom ?", o:["2017","2020","2023","2025"], a:2,
     f:"Breath of the Wild est sorti en <b>2017</b>, six ans avant." },
   { lv:3, sc:"sky", ic:"rewind", q:"Sonia, la reine d'Hyrule, avait un pouvoir. Lequel ?", o:["Le pouvoir du temps","Le pouvoir de la foudre","Le pouvoir de l'eau","Le pouvoir du feu"], a:0,
-    f:"Zelda a le même pouvoir… c'est pour ça qu'elle voyage dans le passé !" }
+    f:"Zelda a le même pouvoir… c'est pour ça qu'elle voyage dans le passé !" },
+  /* ---- nouvelles questions (80) ---- */
+  { lv:0, sc:"meadow", ic:"sword", q:"Dans Breath of the Wild, que se passe-t-il quand on utilise une arme trop longtemps ?", o:["Elle devient plus forte","Elle se casse","Elle change de couleur","Elle rétrécit"], a:1,
+    f:"Il faut toujours garder des armes de rechange dans son inventaire !" },
+  { lv:0, sc:"castle", ic:"shield", q:"De quelle couleur est la tunique de Prodige de Link ?", o:["Verte","Rouge","Bleue","Noire"], a:2,
+    f:"Les quatre prodiges portaient aussi du tissu bleu. Dans Tears of the Kingdom, Link en retrouve une nouvelle version." },
+  { lv:0, sc:"sheikah", ic:"eye", q:"Combien y a-t-il de créatures divines dans Breath of the Wild ?", o:["2","4","6","8"], a:1,
+    f:"Vah'Ruta, Vah'Medoh, Vah'Rudania et Vah'Naboris : une pour chaque prodige." },
+
+  { lv:1, sc:"forest", ic:"eye", q:"Quel est le point faible d'un Hinox ?", o:["Son œil","Ses pieds","Son ventre","Sa massue"], a:0,
+    f:"Une flèche dans l'œil l'étourdit… c'est le moment d'attaquer !" },
+  { lv:1, sc:"rito", ic:"shield", q:"Que peut faire Link avec son bouclier en descendant une pente ?", o:["S'en servir de parachute","Faire du surf dessus","Le lancer comme un boomerang","Creuser un trou"], a:1,
+    f:"Attention : ça abîme un peu le bouclier à chaque glissade !" },
+  { lv:1, sc:"rito", ic:"feather", q:"Dans Tears of the Kingdom, qui accompagne Link jusqu'au temple du Vent ?", o:["Teba","Babil","Asarim","Kaï"], a:1,
+    f:"Babil crée des rafales de vent qui permettent à Link de planer plus loin." },
+  { lv:1, sc:"castle", ic:"moon", q:"Contre qui Link se bat-il à la fin de Breath of the Wild ?", o:["Ganon, le Fléau","Le Grand Kohga","Un Lynel","Un Hinox noir"], a:0,
+    f:"Zelda le retenait prisonnier dans le château depuis 100 ans." },
+  { lv:1, sc:"sky", ic:"tablet", q:"Dans Tears of the Kingdom, comment s'appelle la tablette de Link ?", o:["La tablette Sheikah","La tablette Pru'Ha","La tablette Soneau","La tablette royale"], a:1,
+    f:"C'est Pru'Ha qui l'a fabriquée pour Link." },
+  { lv:1, sc:"night", ic:"moon", q:"À quelle heure se lève la lune de sang ?", o:["À midi","Au coucher du soleil","À minuit","Au lever du soleil"], a:2,
+    f:"Juste avant, le ciel devient tout rouge et des braises flottent dans l'air." },
+
+  { lv:2, sc:"meadow", ic:"flask", q:"Dans quel village se trouve le laboratoire de Pru'Ha dans Breath of the Wild ?", o:["Cocorico","Elimith","Écaraille","Euzero"], a:1,
+    f:"C'est aussi à Elimith que Link peut acheter sa propre maison !" },
+  { lv:2, sc:"volcano", ic:"rock", q:"Où faut-il frapper un Lithorok pour le battre ?", o:["Sur ses pieds","Sur le minerai sur son dos","Sur sa tête","Dans son ventre"], a:1,
+    f:"Il faut grimper sur lui ! Un marteau ou une arme lourde, c'est encore mieux." },
+  { lv:2, sc:"castle", ic:"eye", q:"Où faut-il viser un Gardien avec une flèche pour l'arrêter un moment ?", o:["Dans son œil","Sur ses pattes","Sur sa tête","Dans son dos"], a:0,
+    f:"Une flèche dans l'œil et le Gardien arrête de viser Link pendant quelques secondes." },
+  { lv:2, sc:"forest", ic:"flask", q:"Que faut-il cuisiner ensemble pour fabriquer un élixir ?", o:["Des fruits et du lait","Des insectes et des morceaux de monstres","Des champignons et du riz","Du poisson et du sel"], a:1,
+    f:"Ça n'a pas l'air très bon… mais ça donne des super pouvoirs à Link !" },
+  { lv:2, sc:"meadow", ic:"glider", q:"Que demande le vieil homme du Plateau du Prélude en échange de sa paravoile ?", o:["100 rubis","Les trésors des quatre sanctuaires","Une épée","Un champignon rare"], a:1,
+    f:"Link doit d'abord réussir les quatre sanctuaires du plateau." },
+  { lv:2, sc:"volcano", ic:"flame", q:"Vah'Rudania, la créature divine des Gorons, ressemble à quel animal ?", o:["Un chameau","Un oiseau","Une salamandre","Un éléphant"], a:2,
+    f:"Elle se promène sur les pentes de la Montagne de la Mort." },
+  { lv:2, sc:"sky", ic:"hand", q:"Quel pouvoir sert à construire un véhicule en collant des planches et des roues ?", o:["Emprise","Amalgame","Infiltration","Rétrospective"], a:0,
+    f:"Avec Emprise, on peut construire des voitures, des bateaux… et même des avions !" },
+
+  { lv:3, sc:"meadow", ic:"crown", q:"Comment s'appelle le village que Link aide à construire dans Breath of the Wild ?", o:["Elimith","Euzero","Écaraille","Cocorico"], a:1,
+    f:"Pour le terminer, Link doit trouver des habitants de plusieurs peuples différents." },
+  { lv:3, sc:"zora", ic:"fish", q:"Comment s'appelle le village de pêcheurs au bord de la mer, dans le sud-est d'Hyrule ?", o:["Écaraille","Elimith","Euzero","Cocorico"], a:0,
+    f:"On y trouve des palmiers, des plages… et des monstres pirates !" },
+  { lv:3, sc:"rito", ic:"flame", q:"Que cuisine Link pour le vieil homme, en échange d'un vêtement chaud ?", o:["Une soupe de citrouille","Un sauté épicé de viande et de poisson","Une tarte aux pommes","Des brochettes de champignons"], a:1,
+    f:"Il faut du piment, de la viande et du poisson. Le vieil homme en parle dans son journal !" },
+  { lv:3, sc:"sky", ic:"fish", q:"Dans Tears of the Kingdom, où se trouve le temple de l'Eau ?", o:["Sous le Domaine Zora","Dans le ciel, au-dessus du Domaine Zora","Au fond d'un lac","Dans les Profondeurs"], a:1,
+    f:"Sidon et Link doivent monter tout là-haut pour arrêter la boue qui tombe du ciel." },
+  { lv:3, sc:"rito", ic:"feather", q:"Comment s'appelle le vieux doyen du village Piaf ?", o:["Teba","Kaï","Asarim","Babil"], a:1,
+    f:"C'est lui qui dirige le village Piaf." },
+  { lv:3, sc:"volcano", ic:"rock", q:"Dans Breath of the Wild, comment s'appelle le chef des Gorons ?", o:["Daruk","Buldo","Dorefah","Teba"], a:1,
+    f:"Buldo est un Goron costaud… qui a souvent mal au dos !" },
+  { lv:3, sc:"night", ic:"eye", q:"Que vend Kilton dans sa boutique, l'Antre des Monstres ?", o:["Des armes légendaires","Des objets et déguisements de monstres","Des chevaux","Des plats cuisinés"], a:1,
+    f:"Sa boutique n'ouvre que la nuit !" },
+  { lv:3, sc:"forest", ic:"star", q:"Combien de Grandes Fées Link peut-il trouver dans Breath of the Wild ?", o:["2","4","7","12"], a:1,
+    f:"Chacune améliore les vêtements de Link… si on lui donne assez de rubis !" },
+  { lv:3, sc:"zora", ic:"crown", q:"Dans quelle province se trouve le Domaine Zora ?", o:["La province de Lanelle","La province d'Akkala","La province de Tabanta","La province d'Hébra"], a:0,
+    f:"C'est une province pleine de rivières, de cascades… et de pluie !" }
 ];
 
 const RANKS = [

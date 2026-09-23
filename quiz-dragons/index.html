@@ -216,10 +216,10 @@
 <script>
 /* ================= DATA ================= */
 const LEVELS = [
-  { name: "Premiers pas à Beurk", emoji: "🪓", desc: "Pour s'échauffer à Beurk", scene: "berk", song: "A", icon: "helmet", quick: 6 },
-  { name: "L'école des dragons", emoji: "🐉", desc: "Les dragons et leurs dragonniers", scene: "sky", song: "B", icon: "wing", quick: 7 },
-  { name: "Envol dans le ciel", emoji: "🌙", desc: "Les secrets des trois films", scene: "night", song: "C", icon: "eye", quick: 7 },
-  { name: "Le défi du Furie Nocturne", emoji: "🔥", desc: "Les petits détails des films, pour les pros", scene: "hidden", song: "D", icon: "flame", quick: 5 }
+  { name: "Premiers pas à Beurk", emoji: "🪓", desc: "Pour s'échauffer à Beurk", scene: "berk", song: "A", icon: "helmet", quick: 5 },
+  { name: "L'école des dragons", emoji: "🐉", desc: "Les dragons et leurs dragonniers", scene: "sky", song: "B", icon: "wing", quick: 6 },
+  { name: "Envol dans le ciel", emoji: "🌙", desc: "Les secrets des trois films", scene: "night", song: "C", icon: "eye", quick: 8 },
+  { name: "Le défi du Furie Nocturne", emoji: "🔥", desc: "Les petits détails des films, pour les pros", scene: "hidden", song: "D", icon: "flame", quick: 6 }
 ];
 
 const Q = [
@@ -339,7 +339,61 @@ const Q = [
   { lv:3, sc:"hidden", ic:"heart", q:"À la fin de Dragons 3, pourquoi Krokmou part-il vivre dans le Monde caché ?", o:["Il est fâché contre Harold","Pour protéger les dragons des chasseurs, avec la Furie Éclair","Il a froid à Beurk","Parce que Stoïk le lui demande"], a:1,
     f:"Harold comprend que le monde n'est pas encore prêt pour les dragons. C'est un au revoir très triste… mais ils se retrouvent à la fin !" },
   { lv:3, sc:"storm", ic:"claw", q:"Dans Dragons 3, qui se sert de la Furie Éclair pour attirer Krokmou dans un piège ?", o:["Drago Poing-Sanglant","Grimmel le Grave","Rustik","Eret, fils d'Eret"], a:1,
-    f:"Grimmel veut attraper Krokmou, le dernier Furie Nocturne." }
+    f:"Grimmel veut attraper Krokmou, le dernier Furie Nocturne." },
+  /* ---- nouvelles questions (80) ---- */
+  { lv:0, sc:"berk", ic:"shield", q:"Au début du premier film, qu'est-ce que les dragons volent aux Vikings de Beurk ?", o:["Leurs moutons","Leurs bateaux","Leurs casques","Leurs enfants"], a:0,
+    f:"Et les Vikings passent leur temps à les chasser !" },
+  { lv:0, sc:"night", ic:"eye", q:"De quelle couleur sont les yeux de Krokmou ?", o:["Rouges","Bleus","Verts","Jaunes"], a:2,
+    f:"De grands yeux verts qui deviennent tout ronds quand il est content… ou tout fins quand il se méfie !" },
+  { lv:0, sc:"berk", ic:"helmet", q:"Où les jeunes Vikings s'entraînent-ils à combattre les dragons ?", o:["Dans l'arène","Dans la forêt","Sur un bateau","Dans la forge"], a:0,
+    f:"C'est une grande arène fermée par une grille, au bord de la falaise." },
+
+  { lv:1, sc:"berk", ic:"sprite", q:"Quel dragon est si petit qu'il peut se poser sur une épaule ?", o:["Le Gronk","Le Terreur Terrible","Le Cauchemar Monstrueux","Le Dragon Vipère"], a:1,
+    f:"Tout petit… mais il crache quand même du feu !" },
+  { lv:1, sc:"berk", ic:"hammer", q:"Qui entraîne les jeunes Vikings contre les dragons dans le premier film ?", o:["Stoïk","Gueulfor","Astrid","Valka"], a:1,
+    f:"Sa devise : un dragon essaiera toujours de vous tuer… Harold va lui prouver le contraire !" },
+  { lv:1, sc:"berk", ic:"crown", q:"Qui gagne l'entraînement des jeunes Vikings dans le premier film ?", o:["Astrid","Rustik","Harold","Varek"], a:2,
+    f:"Tout le monde pensait que ce serait Astrid… mais Harold connaît les dragons grâce à Krokmou !" },
+  { lv:1, sc:"sky", ic:"spikes", q:"De quelle couleur est surtout Tempête, la dragonne d'Astrid ?", o:["Rouge","Noire","Bleue","Verte"], a:2,
+    f:"Bleue avec du jaune… et plein d'épines sur la queue !" },
+  { lv:1, sc:"nest", ic:"flame", q:"De quelle couleur est Krochefer, le dragon de Rustik ?", o:["Rouge","Bleu","Blanc","Vert"], a:0,
+    f:"Rouge comme le feu dont il se couvre !" },
+  { lv:1, sc:"sky", ic:"map", q:"Au début de Dragons 2, que fait Harold en volant avec Krokmou ?", o:["Il cherche Astrid","Il dessine une carte des nouvelles terres","Il chasse des moutons","Il fuit Drago"], a:1,
+    f:"Il veut découvrir le monde au-delà de Beurk… et c'est comme ça qu'il rencontre des trappeurs de dragons." },
+  { lv:1, sc:"berk", ic:"shield", q:"Au début de Dragons 2, à quel jeu jouent les dragonniers de Beurk ?", o:["À cache-cache","À une course de dragons avec des moutons","Au football","À la pêche"], a:1,
+    f:"Il faut attraper des moutons en vol et les lancer dans des paniers. Astrid est très forte !" },
+  { lv:1, sc:"nest", ic:"wing", q:"À la fin du premier film, qui protège Harold quand il tombe dans le feu ?", o:["Astrid","Stoïk","Krokmou","Tempête"], a:2,
+    f:"Krokmou l'enveloppe dans ses ailes pour le protéger." },
+
+  { lv:2, sc:"cove", ic:"sword", q:"Avec quoi Harold abat-il Krokmou au début du premier film ?", o:["Une épée","Un lance-bolas qu'il a inventé","Un arc","Une catapulte de Gueulfor"], a:1,
+    f:"Personne ne le croit… alors il part tout seul chercher le dragon dans la forêt." },
+  { lv:2, sc:"sky", ic:"tail", q:"Comment Harold dirige-t-il la queue de Krokmou en vol ?", o:["Avec des rênes","Avec une pédale sous son pied","Avec sa voix","Avec un bâton"], a:1,
+    f:"Harold et Krokmou doivent bouger ensemble, comme une seule personne !" },
+  { lv:2, sc:"cove", ic:"sun", q:"Comme un chat, qu'est-ce que Krokmou adore pourchasser ?", o:["Une pelote de laine","Une tache de lumière","Une souris","Sa propre queue"], a:1,
+    f:"Harold s'en sert pour le faire tourner en rond !" },
+  { lv:2, sc:"nest", ic:"skull", q:"Comment Krokmou bat-il la Mort Rouge ?", o:["Il lui mord la queue","Il tire dans sa bouche quand elle va cracher du feu","Il l'attache avec des cordes","Il l'endort"], a:1,
+    f:"Le feu explose à l'intérieur de la Mort Rouge… et elle s'écrase au sol !" },
+  { lv:2, sc:"cove", ic:"rock", q:"Avec quelle plante Harold calme-t-il un Gronk pendant l'entraînement ?", o:["De l'herbe aux dragons","Des orties","Des fleurs bleues","Du trèfle"], a:0,
+    f:"Le Gronk se roule dedans, tout content, comme un chat avec de l'herbe à chat !" },
+  { lv:2, sc:"ice", ic:"shield", q:"Dans Dragons 2, où Valka cache-t-elle les dragons qu'elle a sauvés ?", o:["Dans une forêt","Dans une montagne de glace","Sous la mer","À Beurk"], a:1,
+    f:"Un refuge secret, caché derrière des murs de glace." },
+  { lv:2, sc:"ice", ic:"crown", q:"Qui protège le refuge de Valka ?", o:["Un dragon géant qui crache de la glace","Drago Poing-Sanglant","Une armée de Vikings","La Mort Rouge"], a:0,
+    f:"C'est l'Alpha, le roi des dragons… jusqu'à ce que celui de Drago arrive." },
+  { lv:2, sc:"berk", ic:"heart", q:"Que font Stoïk et Valka quand ils se retrouvent dans Dragons 2 ?", o:["Ils se disputent","Ils chantent et dansent ensemble","Ils partent en bateau","Ils font la course"], a:1,
+    f:"Gueulfor les accompagne en chantant… et Stoïk n'avait pas oublié les paroles !" },
+  { lv:2, sc:"sky", ic:"tail", q:"Dans Dragons 3, qu'invente Harold pour que Krokmou puisse voler sans lui ?", o:["Une queue qui marche toute seule","Des ailes en métal","Un ballon","Un cerf-volant"], a:0,
+    f:"Grâce à elle, Krokmou peut rejoindre la Furie Éclair tout seul." },
+  { lv:2, sc:"hidden", ic:"map", q:"Dans Dragons 3, où Harold veut-il emmener tout le village pour être à l'abri ?", o:["Au Nid des dragons","Au Monde caché","Chez Drago","Au refuge de Valka"], a:1,
+    f:"Son père Stoïk lui en parlait quand il était petit : un lieu secret où les dragons sont en sécurité." },
+
+  { lv:3, sc:"ice", ic:"skull", q:"Dans Dragons 2, qu'arrive-t-il au dragon géant qui protégeait le refuge de Valka ?", o:["Il s'endort","Il est vaincu par le dragon géant de Drago","Il s'envole au Monde caché","Il devient ami avec Drago"], a:1,
+    f:"Le dragon de Drago devient alors l'Alpha… jusqu'à ce que Krokmou le défie !" },
+  { lv:3, sc:"hidden", ic:"heart", q:"Dans Dragons 3, qui essaie sans arrêt d'impressionner Valka ?", o:["Varek","Gueulfor","Rustik","Eret, fils d'Eret"], a:2,
+    f:"Rustik fait le malin devant elle… sans grand succès !" },
+  { lv:3, sc:"storm", ic:"heads", q:"Dans Dragons 3, pourquoi Grimmel relâche-t-il Kognedur après l'avoir capturée ?", o:["Elle s'est échappée","Elle parle tellement qu'il n'en peut plus","Astrid est venue la chercher","Il la prend pour Kranedur"], a:1,
+    f:"Elle est si bavarde que le terrible Grimmel finit par la laisser partir !" },
+  { lv:3, sc:"night", ic:"heart", q:"Comment la Furie Éclair devient-elle invisible ?", o:["Elle se couvre de boue","Elle s'entoure de son propre feu","Elle vole très vite","Elle se cache dans les nuages"], a:1,
+    f:"Son feu fait briller ses écailles, et elle disparaît dans le ciel !" }
 ];
 
 const RANKS = [
