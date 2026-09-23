@@ -155,6 +155,9 @@ var Playlists = (function () {
         { t: "Viva la Vida", a: "Coldplay" },
         { t: "Seven Nation Army", a: "The White Stripes" },
         { t: "Le Chemin", a: "Kyo" },
+        // Le nom de l'album dans la recherche : sans lui, « Dernière danse »
+        // tombe sur celle d'Indila, qui est déjà dans les années 2010.
+        { t: "Dernière danse", a: "Kyo", q: "Kyo Dernière danse Le chemin" },
         { t: "La Boulette", a: "Diam's" },
         { t: "En apesanteur", a: "Calogero" },
         { t: "Butterfly", a: "Superbus" },
