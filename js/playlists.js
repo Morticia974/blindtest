@@ -1226,7 +1226,9 @@ var Playlists = (function () {
         { t: "Je suis malade", a: "Serge Lama" },
         { t: "Waterloo", a: "ABBA" },
         { t: "September", a: "Earth, Wind & Fire" },
-        { t: "Le Téléfon", a: "Nino Ferrer" }
+        { t: "Le Téléfon", a: "Nino Ferrer" },
+        // Pour la maman d'Audrey. Sortie en 1974, donc elle a sa place ici.
+        { t: "La Bonne du curé", a: "Annie Cordy" }
       ]
     },
     {
