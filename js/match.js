@@ -16,6 +16,30 @@ var Match = (function () {
 
   /* Ramène une chaîne à sa forme comparable : minuscules, sans accents,
      sans ponctuation, espaces tassés. */
+  /* Les nombres écrits en lettres deviennent des chiffres. Les deux côtés
+     passent par ici, donc « Il est cinq heures » et « Il est 5 heures »
+     finissent pareil.
+
+     « un / une / one » sont volontairement absents : ce sont aussi des
+     articles, et « Une belle histoire » n'a rien d'un nombre. */
+  var NOMBRES = {
+    deux: 2, trois: 3, quatre: 4, cinq: 5, six: 6, sept: 7, huit: 8, neuf: 9,
+    dix: 10, onze: 11, douze: 12, treize: 13, quatorze: 14, quinze: 15,
+    seize: 16, vingt: 20, trente: 30, quarante: 40, cinquante: 50,
+    soixante: 60, cent: 100, mille: 1000,
+    two: 2, three: 3, four: 4, five: 5, seven: 7, eight: 8, nine: 9,
+    ten: 10, eleven: 11, twelve: 12
+  };
+
+  function chiffrer(t) {
+    t = t.replace(/[a-z]+/g, function (mot) {
+      return NOMBRES[mot] !== undefined ? String(NOMBRES[mot]) : mot;
+    });
+    /* L'heure abrégée vaut l'heure écrite : « 5h » comme « cinq heures ».
+       Le « h » doit être un mot à lui seul, donc « 2 hours » n'est pas touché. */
+    return t.replace(/(\d{1,2}) ?h\b/g, '$1 heures');
+  }
+
   function normaliser(s) {
     if (!s) return '';
     var t = sansAccents(String(s).toLowerCase());
@@ -25,7 +49,7 @@ var Match = (function () {
     t = t.replace(/[’`´]/g, "'");
     t = t.replace(/[^a-z0-9']+/g, ' ');
     t = t.replace(/'/g, '');
-    return t.replace(/\s+/g, ' ').trim();
+    return chiffrer(t.replace(/\s+/g, ' ').trim());
   }
 
   /* Retire les parenthèses, crochets et suffixes après tiret qui ne contiennent

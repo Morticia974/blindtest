@@ -1182,7 +1182,7 @@ var Playlists = (function () {
         { t: "Poupée de cire, poupée de son", a: "France Gall" },
         // « Intime » (2014) est un réenregistrement : on épingle 1965.
         { t: "Aline", a: "Christophe", q: "Christophe Aline 2013 Remaster 1965" },
-        { t: "Il est cinq heures, Paris s'éveille", a: "Jacques Dutronc" },
+        { t: "Il est cinq heures, Paris s'éveille", a: "Jacques Dutronc", altT: ["Paris s'éveille", "Il est cinq heures"] },
         { t: "Je t'aime... moi non plus", a: "Jane Birkin & Serge Gainsbourg", altA: ["Serge Gainsbourg", "Jane Birkin"] },
         { t: "Le Pénitencier", a: "Johnny Hallyday" },
         { t: "La Maladie d'amour", a: "Michel Sardou" },
