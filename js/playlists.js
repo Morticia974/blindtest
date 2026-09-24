@@ -248,7 +248,9 @@ var Playlists = (function () {
         { t: "Dernière danse", a: "Indila" },
         { t: "Papaoutai", a: "Stromae" },
 
-        { t: "Ne me quitte pas", a: "Jacques Brel" },
+        // « Ne me quitte pas » est parti dans les annees 60-70, a la demande
+        // d'Audrey. Brel reste ici avec un autre titre.
+        { t: "Vesoul", a: "Jacques Brel", q: "Jacques Brel Vesoul Infiniment" },
         { t: "Le Gorille", a: "Georges Brassens" },
         /* Sans l'album, Apple servait la reprise de La Grande Sophie. */
         { t: "Comme un arbre dans la ville", a: "Maxime Le Forestier", q: "Maxime Le Forestier Comme un arbre dans la ville Mon frere" },
@@ -1204,17 +1206,13 @@ var Playlists = (function () {
         { t: "I Feel Love", a: "Donna Summer" },
 
         { t: "Sympathy for the Devil", a: "The Rolling Stones" },
-        { t: "Good Vibrations", a: "The Beach Boys" },
         { t: "The House of the Rising Sun", a: "The Animals" },
         { t: "Respect", a: "Aretha Franklin" },
         { t: "I Want You Back", a: "The Jackson 5", altA: ["Jackson 5", "Michael Jackson"] },
-        { t: "My Girl", a: "The Temptations" },
-        { t: "What's Going On", a: "Marvin Gaye" },
         { t: "Imagine", a: "John Lennon" },
         { t: "Killing Me Softly with His Song", a: "Roberta Flack" },
         { t: "Le Freak", a: "CHIC" },
         { t: "Born to Be Alive", a: "Patrick Hernandez" },
-        { t: "Ring My Bell", a: "Anita Ward" },
         { t: "Le Métèque", a: "Georges Moustaki" },
         { t: "Mamy Blue", a: "Nicoletta" },
         { t: "Capri c'est fini", a: "Hervé Vilard" },
@@ -1224,11 +1222,17 @@ var Playlists = (function () {
         { t: "Nathalie", a: "Gilbert Bécaud" },
         { t: "Belles belles belles", a: "Claude François" },
         { t: "Je suis malade", a: "Serge Lama" },
-        { t: "Waterloo", a: "ABBA" },
-        { t: "September", a: "Earth, Wind & Fire" },
         { t: "Le Téléfon", a: "Nino Ferrer" },
         // Pour la maman d'Audrey. Sortie en 1974, donc elle a sa place ici.
-        { t: "La Bonne du curé", a: "Annie Cordy" }
+        { t: "La Bonne du curé", a: "Annie Cordy" },
+
+        /* Audrey a voulu plus de francophone ici : six titres internationaux
+           sont partis pour leur faire de la place. */
+        { t: "Ne me quitte pas", a: "Jacques Brel", q: "Jacques Brel Ne me quitte pas Infiniment" },
+        { t: "Laisse béton", a: "Renaud", q: "Renaud Laisse béton" },
+        { t: "Les Cactus", a: "Jacques Dutronc", q: "Jacques Dutronc Les cactus En vogue" },
+        { t: "Ma préférence", a: "Julien Clerc", q: "Julien Clerc Ma préférence" },
+        { t: "Laisse-moi t'aimer", a: "Mike Brant", q: "Mike Brant Laisse moi t'aimer Qui saura" }
       ]
     },
     {
