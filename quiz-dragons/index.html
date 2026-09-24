@@ -97,6 +97,7 @@
     transition: transform .08s;
   }
   .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #06090d, inset 0 0 0 2px var(--gold); }
+  .btn.expert { background: #3a1414; color: #ffd9a0; box-shadow: 0 4px 0 #1a0606, inset 0 0 0 2px #e0603c; }
   .btn:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 3px; }
 
   /* ---------- start ---------- */
@@ -215,11 +216,13 @@
 
 <script>
 /* ================= DATA ================= */
+const EXPERT_N = 25;
 const LEVELS = [
   { name: "Premiers pas à Beurk", emoji: "🪓", desc: "Pour s'échauffer à Beurk", scene: "berk", song: "A", icon: "helmet", quick: 5 },
   { name: "L'école des dragons", emoji: "🐉", desc: "Les dragons et leurs dragonniers", scene: "sky", song: "B", icon: "wing", quick: 6 },
   { name: "Envol dans le ciel", emoji: "🌙", desc: "Les secrets des trois films", scene: "night", song: "C", icon: "eye", quick: 8 },
-  { name: "Le défi du Furie Nocturne", emoji: "🔥", desc: "Les petits détails des films, pour les pros", scene: "hidden", song: "D", icon: "flame", quick: 6 }
+  { name: "Le défi du Furie Nocturne", emoji: "🔥", desc: "Les petits détails des films, pour les pros", scene: "hidden", song: "D", icon: "flame", quick: 6 },
+  { name: "Mode Expert", emoji: "💀", desc: "Uniquement des questions très difficiles", scene: "storm", song: "D", icon: "skull", quick: 0, expert: true }
 ];
 
 const Q = [
@@ -393,7 +396,48 @@ const Q = [
   { lv:3, sc:"storm", ic:"heads", q:"Dans Dragons 3, pourquoi Grimmel relâche-t-il Kognedur après l'avoir capturée ?", o:["Elle s'est échappée","Elle parle tellement qu'il n'en peut plus","Astrid est venue la chercher","Il la prend pour Kranedur"], a:1,
     f:"Elle est si bavarde que le terrible Grimmel finit par la laisser partir !" },
   { lv:3, sc:"night", ic:"heart", q:"Comment la Furie Éclair devient-elle invisible ?", o:["Elle se couvre de boue","Elle s'entoure de son propre feu","Elle vole très vite","Elle se cache dans les nuages"], a:1,
-    f:"Son feu fait briller ses écailles, et elle disparaît dans le ciel !" }
+    f:"Son feu fait briller ses écailles, et elle disparaît dans le ciel !" },
+  /* ---- mode Expert (lv 4) ---- */
+  { lv:4, sc:"sky", ic:"sword", q:"Quelle arme Astrid utilise-t-elle ?", o:["Une épée","Une hache","Un arc","Une lance"], a:1,
+    f:"Elle ne la lâche jamais… même pendant l'entraînement !" },
+  { lv:4, sc:"berk", ic:"book", q:"Dans quel livre Harold cherche-t-il des informations sur les dragons ?", o:["Le Livre des Vikings","Le Manuel des Dragons","Le Grand Grimoire","Le Carnet de Gueulfor"], a:1,
+    f:"Et pour le Furie Nocturne, il n'y a presque rien d'écrit !" },
+  { lv:4, sc:"sea", ic:"ship", q:"Au début du premier film, où Stoïk part-il avec ses bateaux ?", o:["Chercher le Nid des dragons","Pêcher des anguilles","Chercher Valka","Combattre Drago"], a:0,
+    f:"Il ne l'a jamais trouvé… avant d'utiliser Krokmou pour y aller." },
+  { lv:4, sc:"nest", ic:"sprite", q:"Comment Stoïk trouve-t-il enfin le Nid des dragons ?", o:["Avec une carte d'Harold","En suivant Krokmou enchaîné sur son bateau","Grâce à Gueulfor","En suivant Tempête"], a:1,
+    f:"Krokmou sent le chemin vers le Nid, comme tous les dragons." },
+  { lv:4, sc:"sea", ic:"helmet", q:"Qui plonge dans la mer pour libérer Krokmou enchaîné, à la fin du premier film ?", o:["Harold","Astrid","Stoïk","Gueulfor"], a:2,
+    f:"C'est le moment où Stoïk comprend enfin que Krokmou est l'ami de son fils." },
+  { lv:4, sc:"cove", ic:"eye", q:"Pourquoi Harold ne tue-t-il pas Krokmou quand il le trouve ligoté dans la forêt ?", o:["Il a peur","Il voit que Krokmou a peur, comme lui","Astrid l'en empêche","Son couteau est cassé"], a:1,
+    f:"Il se reconnaît en lui : ils ont peur tous les deux." },
+  { lv:4, sc:"cove", ic:"eel", q:"Dans le panier de poissons, quel poisson Krokmou refuse-t-il de manger ?", o:["Le saumon","La morue","L'anguille","Le hareng"], a:2,
+    f:"Il a une peur bleue des anguilles, comme tous les dragons !" },
+  { lv:4, sc:"berk", ic:"rock", q:"Contre quel dragon se passe le tout premier cours d'entraînement dans l'arène ?", o:["Un Gronk","Un Dragon Vipère","Un Terreur Terrible","Un Cauchemar Monstrueux"], a:0,
+    f:"Harold perd son bouclier et le Gronk manque de le brûler… Gueulfor arrive juste à temps !" },
+  { lv:4, sc:"night", ic:"heart", q:"Que fait Astrid à Harold après son premier vol sur Krokmou ?", o:["Elle le pousse dans l'eau","Elle lui donne un coup de poing puis un bisou","Elle part en courant","Elle lui offre sa hache"], a:1,
+    f:"Le coup de poing, c'est pour l'avoir « enlevée »… et le bisou, pour tout le reste !" },
+  { lv:4, sc:"ice", ic:"shield", q:"Quand Harold rencontre Valka pour la première fois dans Dragons 2, que porte-t-elle ?", o:["Une couronne","Un masque","Une armure en or","Une cape rouge"], a:1,
+    f:"Harold ne sait pas encore que c'est sa mère !" },
+  { lv:4, sc:"ice", ic:"hand", q:"Quel objet Valka tient-elle toujours dans sa main ?", o:["Une épée","Un grand bâton","Un arc","Un bouclier"], a:1,
+    f:"Elle s'en sert pour guider les dragons… et pour se battre !" },
+  { lv:4, sc:"storm", ic:"skull", q:"Qu'est-il arrivé au bras de Drago Poing-Sanglant ?", o:["Il l'a perdu à cause d'un dragon","Il est en or","Il est magique","Rien du tout"], a:0,
+    f:"Il porte un bras de métal sous sa grande cape." },
+  { lv:4, sc:"sea", ic:"ship", q:"Pour qui Eret, fils d'Eret, capture-t-il des dragons au début de Dragons 2 ?", o:["Pour Stoïk","Pour Drago Poing-Sanglant","Pour Grimmel","Pour lui-même"], a:1,
+    f:"Il change de camp plus tard et devient ami avec les dragonniers." },
+  { lv:4, sc:"ice", ic:"crown", q:"Comment Krokmou se libère-t-il du contrôle du dragon géant de Drago ?", o:["Grâce à son amitié avec Harold","En mangeant de l'herbe aux dragons","Valka le soigne","Il s'endort"], a:0,
+    f:"Le lien entre Harold et Krokmou est plus fort que tout !" },
+  { lv:4, sc:"ice", ic:"flame", q:"Quand Krokmou devient l'Alpha dans Dragons 2, qu'est-ce qui change sur lui ?", o:["Il devient blanc","Ses épines s'illuminent en bleu","Il grandit","Il perd ses ailes"], a:1,
+    f:"Tous les dragons s'inclinent alors devant lui." },
+  { lv:4, sc:"storm", ic:"map", q:"Pourquoi Harold décide-t-il de quitter Beurk dans Dragons 3 ?", o:["Il n'aime plus Beurk","Pour protéger les dragons de Grimmel","Parce qu'il y fait trop froid","Pour chercher Valka"], a:1,
+    f:"Il y a aussi trop de dragons à Beurk : le village est plein à craquer !" },
+  { lv:4, sc:"hidden", ic:"wing", q:"À la fin de Dragons 3, qui rattrape Harold quand il tombe dans le vide ?", o:["Tempête","Krokmou","La Furie Éclair","Astrid"], a:2,
+    f:"Krokmou était trop loin… c'est la Furie Éclair qui sauve Harold." },
+  { lv:4, sc:"hidden", ic:"hand", q:"Quel geste Harold et Krokmou refont-ils pour se dire au revoir ?", o:["Un câlin","La main de Harold sur le museau de Krokmou","Un tope-là","Un salut viking"], a:1,
+    f:"C'est le même geste que lors de leur première rencontre dans la crique !" },
+  { lv:4, sc:"sky", ic:"map", q:"Au début de Dragons 2, pourquoi Harold ne veut-il pas devenir chef tout de suite ?", o:["Il préfère explorer avec Krokmou","Il a peur de Stoïk","Il veut devenir forgeron","Il veut partir avec Astrid"], a:0,
+    f:"Il ne se sent pas encore prêt… il se cherche encore !" },
+  { lv:4, sc:"cove", ic:"sword", q:"Que fait Harold quand il retrouve Krokmou ligoté dans la forêt ?", o:["Il appelle son père","Il coupe les cordes et le libère","Il le dessine","Il s'enfuit"], a:1,
+    f:"Krokmou le plaque au sol… puis rugit et s'en va." }
 ];
 
 const RANKS = [
@@ -895,23 +939,26 @@ function start() {
   setScene("berk"); Sound.play("A");
   setBar(`<div class="brand">Dragons</div>`);
   const name = store("beurk-name") || "Mélina";
-  const quickN = LEVELS.reduce((s, l) => s + l.quick, 0);
-  const bq = store("beurk-best-quick"), bg = store("beurk-best-grand");
+  const MAIN = LEVELS.filter(l => !l.expert), nMain = Q.filter(q => !LEVELS[q.lv].expert).length;
+  const quickN = MAIN.reduce((s, l) => s + l.quick, 0);
+  const bq = store("beurk-best-quick"), bg = store("beurk-best-grand"), bx = store("beurk-best-expert");
+  const recs = [bq && `partie rapide <b>${esc(bq)}/${quickN}</b>`, bg && `grande aventure <b>${esc(bg)}/${nMain}</b>`, bx && `mode Expert <b>${esc(bx)}/${EXPERT_N}</b>`].filter(Boolean);
   stage.innerHTML = `
     <section class="card start pop">
       <div class="hero">
         <div class="kicker">Dragons · Dragons 2 · Dragons 3 : Le monde caché</div>
         <div class="title">Le Grand Quiz de Beurk</div>
-        <p>${Q.length} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse rapporte un poisson pour Krokmou&nbsp;!</p>
-        ${bq || bg ? `<p class="hint">🏆 Records : ${bq ? `partie rapide <b>${esc(bq)}/${quickN}</b>` : ""}${bq && bg ? " · " : ""}${bg ? `grande aventure <b>${esc(bg)}/${Q.length}</b>` : ""}</p>` : ""}
-        <div class="levels">${LEVELS.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
+        <p>${nMain} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse rapporte un poisson pour Krokmou&nbsp;!</p>
+        ${recs.length ? `<p class="hint">🏆 Records : ${recs.join(" · ")}</p>` : ""}
+        <div class="levels">${MAIN.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
       </div>
       <div class="side">
         <label class="name" for="player">Ton prénom
           <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
         </label>
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
-        <button class="btn" id="grand">Grande aventure · ${Q.length} questions</button>
+        <button class="btn" id="grand">Grande aventure · ${nMain} questions</button>
+        <button class="btn expert" id="expert">💀 Mode Expert · ${EXPERT_N} questions</button>
         <p class="hint">Les questions de la partie rapide sont tirées au hasard : chaque partie est différente !</p>
         <p class="hint">🎵 coupe la musique du quiz, 🔔 coupe les bruitages.</p>
         <p class="hint">📺 Pour la télé : tourne le téléphone en mode paysage avant de lancer la diffusion.</p>
@@ -925,7 +972,19 @@ function start() {
     try { seen = JSON.parse(store("beurk-seen") || "[]"); } catch (e) { seen = []; }
     if (!Array.isArray(seen)) seen = [];
     const picked = [];
-    LEVELS.forEach((l, lv) => {
+    const xLv = LEVELS.findIndex(l => l.expert);
+    if (mode === "expert") {
+      let xs = [];
+      try { xs = JSON.parse(store("beurk-seen-x") || "[]"); } catch (e) { xs = []; }
+      if (!Array.isArray(xs)) xs = [];
+      const all = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === xLv || Q[k].lv === xLv - 1));
+      let fresh = all.filter(k => !xs.includes(k));
+      if (fresh.length < EXPERT_N) { xs = []; fresh = fresh.concat(all.filter(k => !fresh.includes(k))); }
+      const take = fresh.slice(0, EXPERT_N);
+      xs.push(...take); store("beurk-seen-x", JSON.stringify(xs));
+      picked.push(...take);
+    } else LEVELS.forEach((l, lv) => {
+      if (l.expert) return;
       const qs = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === lv));
       if (mode !== "quick") { picked.push(...qs); return; }
       let fresh = qs.filter(k => !seen.includes(k));
@@ -937,25 +996,26 @@ function start() {
       seen.push(...take); picked.push(...take);
     });
     if (mode === "quick") store("beurk-seen", JSON.stringify(seen));
-    const pool = picked.map(k => Q[k]);
+    const pool = picked.map(k => mode === "expert" ? { ...Q[k], lv: xLv } : Q[k]);
     st = { name: n, mode, i: 0, score: 0, results: [],
       qs: pool.map(q => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map(k => q.o[k]), right: order.indexOf(q.a) }; }) };
-    interlude(0);
+    interlude(st.qs[0].lv);
   };
   document.getElementById("quick").onclick = () => begin("quick");
   document.getElementById("grand").onclick = () => begin("grand");
+  document.getElementById("expert").onclick = () => begin("expert");
 }
 
 function interlude(lv) {
   const l = LEVELS[lv];
   setScene(l.scene); Sound.play(l.song); Sound.fx("level");
   const n = st.qs.filter(q => q.lv === lv).length;
-  setBar(`<div class="brand">Épreuve ${lv + 1} sur ${LEVELS.length}</div>`);
+  setBar(`<div class="brand">${l.expert ? l.name : `Épreuve ${lv + 1} sur ${LEVELS.filter(x => !x.expert).length}`}</div>`);
   stage.innerHTML = `
     <section class="card center pop">
       ${medal(l.icon)}
-      <div class="kicker">${lv === 0 ? `C'est parti, ${esc(st.name)} !` : lv === 3 ? "Attention, ça devient très dur !" : "Épreuve réussie !"}</div>
-      <h2>Épreuve ${lv + 1} : ${l.name}</h2>
+      <div class="kicker">${st.i === 0 ? `C'est parti, ${esc(st.name)} !` : lv === 3 ? "Attention, ça devient très dur !" : "Épreuve réussie !"}</div>
+      <h2>${l.expert ? l.name : `Épreuve ${lv + 1} : ${l.name}`}</h2>
       <p>${n} questions · ${l.desc}</p>
       <button class="btn" id="go">J'y vais !</button>
     </section>`;
@@ -1018,7 +1078,7 @@ function finish() {
   const key = "beurk-best-" + st.mode;
   const prevBest = parseInt(store(key) || "0", 10), record = st.score > prevBest;
   if (record) store(key, String(st.score));
-  const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; });
+  const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; }).filter(p => p.of > 0);
   const missed = st.qs.filter((q, k) => !st.results[k]);
   setScene(st.score / N >= .68 ? "hidden" : "sky"); Sound.play("A"); Sound.fx("win"); burst();
   setBar(`<div class="brand">Fin de l'aventure</div>`);

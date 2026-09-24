@@ -97,6 +97,7 @@
     transition: transform .08s;
   }
   .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #071711, inset 0 0 0 2px var(--gold); }
+  .btn.expert { background: #3a1414; color: #ffd9a0; box-shadow: 0 4px 0 #1a0606, inset 0 0 0 2px #e0603c; }
   .btn:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 3px; }
 
   /* ---------- start ---------- */
@@ -215,11 +216,13 @@
 
 <script>
 /* ================= DATA ================= */
+const EXPERT_N = 25;
 const LEVELS = [
   { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 5 },
   { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 6 },
   { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 8 },
-  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 6 }
+  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 6 },
+  { name: "Mode Expert", emoji: "💀", desc: "Uniquement des questions très difficiles", scene: "castle", song: "D", icon: "moon", quick: 0, expert: true }
 ];
 
 const Q = [
@@ -396,7 +399,54 @@ const Q = [
   { lv:3, sc:"forest", ic:"star", q:"Combien de Grandes Fées Link peut-il trouver dans Breath of the Wild ?", o:["2","4","7","12"], a:1,
     f:"Chacune améliore les vêtements de Link… si on lui donne assez de rubis !" },
   { lv:3, sc:"zora", ic:"crown", q:"Dans quelle province se trouve le Domaine Zora ?", o:["La province de Lanelle","La province d'Akkala","La province de Tabanta","La province d'Hébra"], a:0,
-    f:"C'est une province pleine de rivières, de cascades… et de pluie !" }
+    f:"C'est une province pleine de rivières, de cascades… et de pluie !" },
+  /* ---- mode Expert (lv 4) ---- */
+  { lv:4, sc:"forest", ic:"sprite", q:"Combien de noix Korogu y a-t-il à trouver dans Breath of the Wild ?", o:["500","777","900","1 000"], a:2,
+    f:"Et 1 000 dans Tears of the Kingdom ! Noïa en est très content." },
+  { lv:4, sc:"forest", ic:"sprite", q:"Combien de noix Korogu y a-t-il à trouver dans Tears of the Kingdom ?", o:["900","999","1 000","1 200"], a:2,
+    f:"Cent de plus que dans Breath of the Wild !" },
+  { lv:4, sc:"meadow", ic:"star", q:"Combien de cœurs Link a-t-il au tout début de Breath of the Wild ?", o:["1","3","5","10"], a:1,
+    f:"Seulement trois… il faut vite faire des sanctuaires pour en gagner d'autres !" },
+  { lv:4, sc:"sheikah", ic:"tablet", q:"Combien de sanctuaires faut-il réussir pour gagner un cœur ou un peu d'endurance ?", o:["2","3","4","5"], a:2,
+    f:"Chaque sanctuaire donne une récompense, et il en faut quatre pour l'échanger à une statue de la Déesse." },
+  { lv:4, sc:"zora", ic:"drop", q:"Grâce à quel prodige Link peut-il revenir à la vie quand il n'a plus de cœurs ?", o:["Daruk","Revali","Urbosa","Mipha"], a:3,
+    f:"C'est le pouvoir de soin de Mipha, qu'elle offre à Link après la libération de Vah'Ruta." },
+  { lv:4, sc:"desert", ic:"bolt", q:"Quel pouvoir fait tomber la foudre sur tous les ennemis autour de Link ?", o:["La Colère d'Urbosa","La Rage de Daruk","La Tempête de Revali","L'Éclair de Riju"], a:0,
+    f:"Il se déclenche avec une attaque chargée, après avoir libéré Vah'Naboris." },
+  { lv:4, sc:"sky", ic:"hand", q:"Rauru était le sage de quoi ?", o:["Du Temps","De la Lumière","De l'Esprit","Du Vent"], a:1,
+    f:"Sonia était la sage du Temps, et Mineru la sage de l'Esprit." },
+  { lv:4, sc:"depths", ic:"shield", q:"Mineru est la sage de quoi ?", o:["De l'Esprit","De la Lumière","Du Temps","De la Terre"], a:0,
+    f:"C'est pour ça qu'elle peut vivre dans un corps mécanique, sans son vrai corps." },
+  { lv:4, sc:"castle", ic:"triforce", q:"Combien y avait-il de Sages en tout dans le passé, pour affronter Ganondorf ?", o:["4","5","7","9"], a:2,
+    f:"Les Sept Sages : Rauru, Sonia, Mineru et les sages du Vent, du Feu, de l'Eau et de la Foudre." },
+  { lv:4, sc:"castle", ic:"crown", q:"Quel titre porte Ganondorf dans Tears of the Kingdom ?", o:["Le Roi des Sables","Le Roi Démon","Le Seigneur du Fléau","L'Empereur des Profondeurs"], a:1,
+    f:"C'est le boss final du jeu, dans les Profondeurs sous le château." },
+  { lv:4, sc:"meadow", ic:"moon", q:"Comment s'appelle la toute dernière forme de Ganon, dans la plaine d'Hyrule ?", o:["Ganon, le Fléau","Ganon, Créature Maléfique","Ganon, Roi Démon","Ganon, Bête des Ténèbres"], a:1,
+    f:"Link doit utiliser l'Arc de Lumière que Zelda lui donne pour la vaincre." },
+  { lv:4, sc:"sky", ic:"dragon", q:"Dans Tears of the Kingdom, où Link retrouve-t-il l'Épée de légende ?", o:["Dans les Profondeurs","Sur la tête du Dragon Blanc","Dans la forêt Korogu","Au fond du Temple de l'Eau"], a:1,
+    f:"Il faut sauter depuis le ciel pour atterrir sur le Dragon Blanc !" },
+  { lv:4, sc:"castle", ic:"shield", q:"Dans Breath of the Wild, quel monstre garde le Bouclier Hylien dans le château ?", o:["Un Hinox","Un Lynel","Un Gardien","Un Lithorok"], a:1,
+    f:"Il est caché dans les sous-sols du château d'Hyrule." },
+  { lv:4, sc:"sky", ic:"island", q:"Combien y a-t-il de tours qui propulsent Link dans le ciel dans Tears of the Kingdom ?", o:["10","12","15","20"], a:2,
+    f:"Autant que de tours Sheikah dans Breath of the Wild : 15 !" },
+  { lv:4, sc:"meadow", ic:"horseshoe", q:"Comment obtient-on Épona dans Breath of the Wild ?", o:["En gagnant une course","Avec une figurine amiibo","En la trouvant au Plateau du Prélude","En l'achetant à Terry"], a:1,
+    f:"C'est l'amiibo de Link qui la fait apparaître." },
+  { lv:4, sc:"rito", ic:"note", q:"Combien de filles a Asarim, le barde piaf ?", o:["1","3","5","7"], a:2,
+    f:"Cinq filles… et une chanson pour chacune, peut-être !" },
+  { lv:4, sc:"rito", ic:"feather", q:"Comment s'appelle la femme d'Asarim ?", o:["Camailla","Pahya","Riju","Kornuieh"], a:0,
+    f:"Elle vit au village Piaf avec leurs cinq filles." },
+  { lv:4, sc:"sheikah", ic:"flame", q:"Que doit rapporter Link pour rallumer le four du laboratoire de Pru'Ha ?", o:["Une flamme bleue","Une braise de dragon","Une pierre de lune","Une larme de Korogu"], a:0,
+    f:"Il faut la transporter avec une torche ou une lanterne… sans qu'elle s'éteigne sous la pluie !" },
+  { lv:4, sc:"sheikah", ic:"eye", q:"Quel peuple a construit les créatures divines et les Gardiens il y a 10 000 ans ?", o:["Les Soneaus","Les Sheikahs","Les Gerudos","Les Zoras"], a:1,
+    f:"Ils avaient une technologie très avancée pour combattre Ganon." },
+  { lv:4, sc:"sky", ic:"hourglass", q:"Dans Tears of the Kingdom, à quelle époque Zelda est-elle envoyée ?", o:["100 ans plus tôt","À la fondation du royaume d'Hyrule","Dans le futur","Pendant la guerre contre le Fléau"], a:1,
+    f:"Elle y rencontre le roi Rauru et la reine Sonia, les premiers souverains d'Hyrule." },
+  { lv:4, sc:"castle", ic:"sword", q:"Après le Plateau du Prélude, combien de créatures divines faut-il obligatoirement libérer avant d'affronter Ganon ?", o:["Aucune","Une","Deux","Les quatre"], a:0,
+    f:"On peut foncer au château directement… mais c'est très, très dur !" },
+  { lv:4, sc:"depths", ic:"star", q:"Dans Tears of the Kingdom, où se trouve le temple de Mineru ?", o:["Dans le ciel","Dans les Profondeurs","Dans le désert","Sous le château"], a:1,
+    f:"C'est le seul temple de sage qui se trouve tout en bas, dans le noir." },
+  { lv:4, sc:"desert", ic:"bolt", q:"Dans Tears of the Kingdom, où se trouve le temple de la Foudre ?", o:["Dans le désert Gerudo","Sur la Montagne de la Mort","Au-dessus du Domaine Zora","Dans la forêt Korogu"], a:0,
+    f:"Riju et Link doivent traverser une énorme tempête de sable pour le trouver." }
 ];
 
 const RANKS = [
@@ -825,23 +875,26 @@ function start() {
   setScene("meadow"); Sound.play("A");
   setBar(`<div class="brand">The Legend of Zelda</div>`);
   const name = store("hyrule-name") || "Mélina";
-  const quickN = LEVELS.reduce((s, l) => s + l.quick, 0);
-  const bq = store("hyrule-best-quick"), bg = store("hyrule-best-grand");
+  const MAIN = LEVELS.filter(l => !l.expert), nMain = Q.filter(q => !LEVELS[q.lv].expert).length;
+  const quickN = MAIN.reduce((s, l) => s + l.quick, 0);
+  const bq = store("hyrule-best-quick"), bg = store("hyrule-best-grand"), bx = store("hyrule-best-expert");
+  const recs = [bq && `partie rapide <b>${esc(bq)}/${quickN}</b>`, bg && `grande aventure <b>${esc(bg)}/${nMain}</b>`, bx && `mode Expert <b>${esc(bx)}/${EXPERT_N}</b>`].filter(Boolean);
   stage.innerHTML = `
     <section class="card start pop">
       <div class="hero">
         <div class="kicker">Breath of the Wild · Tears of the Kingdom</div>
         <div class="title">Le Grand Quiz d'Hyrule</div>
-        <p>${Q.length} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse te rapporte une noix Korogu&nbsp;!</p>
-        ${bq || bg ? `<p class="hint">🏆 Records : ${bq ? `partie rapide <b>${esc(bq)}/${quickN}</b>` : ""}${bq && bg ? " · " : ""}${bg ? `grande aventure <b>${esc(bg)}/${Q.length}</b>` : ""}</p>` : ""}
-        <div class="levels">${LEVELS.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
+        <p>${nMain} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse te rapporte une noix Korogu&nbsp;!</p>
+        ${recs.length ? `<p class="hint">🏆 Records : ${recs.join(" · ")}</p>` : ""}
+        <div class="levels">${MAIN.map(l => `<div class="lvl"><div class="badge">${l.emoji}</div><div><b>${l.name}</b><span>${l.desc}</span></div></div>`).join("")}</div>
       </div>
       <div class="side">
         <label class="name" for="player">Ton prénom
           <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
         </label>
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
-        <button class="btn" id="grand">Grande aventure · ${Q.length} questions</button>
+        <button class="btn" id="grand">Grande aventure · ${nMain} questions</button>
+        <button class="btn expert" id="expert">💀 Mode Expert · ${EXPERT_N} questions</button>
         <p class="hint">Les questions de la partie rapide sont tirées au hasard : chaque partie est différente !</p>
         <p class="hint">🎵 coupe la musique du quiz, 🔔 coupe les bruitages.</p>
         <p class="hint">📺 Pour la télé : tourne le téléphone en mode paysage avant de lancer la diffusion.</p>
@@ -855,7 +908,19 @@ function start() {
     try { seen = JSON.parse(store("hyrule-seen") || "[]"); } catch (e) { seen = []; }
     if (!Array.isArray(seen)) seen = [];
     const picked = [];
-    LEVELS.forEach((l, lv) => {
+    const xLv = LEVELS.findIndex(l => l.expert);
+    if (mode === "expert") {
+      let xs = [];
+      try { xs = JSON.parse(store("hyrule-seen-x") || "[]"); } catch (e) { xs = []; }
+      if (!Array.isArray(xs)) xs = [];
+      const all = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === xLv || Q[k].lv === xLv - 1));
+      let fresh = all.filter(k => !xs.includes(k));
+      if (fresh.length < EXPERT_N) { xs = []; fresh = fresh.concat(all.filter(k => !fresh.includes(k))); }
+      const take = fresh.slice(0, EXPERT_N);
+      xs.push(...take); store("hyrule-seen-x", JSON.stringify(xs));
+      picked.push(...take);
+    } else LEVELS.forEach((l, lv) => {
+      if (l.expert) return;
       const qs = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === lv));
       if (mode !== "quick") { picked.push(...qs); return; }
       let fresh = qs.filter(k => !seen.includes(k));
@@ -867,25 +932,26 @@ function start() {
       seen.push(...take); picked.push(...take);
     });
     if (mode === "quick") store("hyrule-seen", JSON.stringify(seen));
-    const pool = picked.map(k => Q[k]);
+    const pool = picked.map(k => mode === "expert" ? { ...Q[k], lv: xLv } : Q[k]);
     st = { name: n, mode, i: 0, score: 0, results: [],
       qs: pool.map(q => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map(k => q.o[k]), right: order.indexOf(q.a) }; }) };
-    interlude(0);
+    interlude(st.qs[0].lv);
   };
   document.getElementById("quick").onclick = () => begin("quick");
   document.getElementById("grand").onclick = () => begin("grand");
+  document.getElementById("expert").onclick = () => begin("expert");
 }
 
 function interlude(lv) {
   const l = LEVELS[lv];
   setScene(l.scene); Sound.play(l.song); Sound.fx("level");
   const n = st.qs.filter(q => q.lv === lv).length;
-  setBar(`<div class="brand">Épreuve ${lv + 1} sur ${LEVELS.length}</div>`);
+  setBar(`<div class="brand">${l.expert ? l.name : `Épreuve ${lv + 1} sur ${LEVELS.filter(x => !x.expert).length}`}</div>`);
   stage.innerHTML = `
     <section class="card center pop">
       ${medal(l.icon)}
-      <div class="kicker">${lv === 0 ? `C'est parti, ${esc(st.name)} !` : lv === 3 ? "Attention, ça devient très dur !" : "Épreuve réussie !"}</div>
-      <h2>Épreuve ${lv + 1} : ${l.name}</h2>
+      <div class="kicker">${st.i === 0 ? `C'est parti, ${esc(st.name)} !` : lv === 3 ? "Attention, ça devient très dur !" : "Épreuve réussie !"}</div>
+      <h2>${l.expert ? l.name : `Épreuve ${lv + 1} : ${l.name}`}</h2>
       <p>${n} questions · ${l.desc}</p>
       <button class="btn" id="go">J'y vais !</button>
     </section>`;
@@ -948,7 +1014,7 @@ function finish() {
   const key = "hyrule-best-" + st.mode;
   const prevBest = parseInt(store(key) || "0", 10), record = st.score > prevBest;
   if (record) store(key, String(st.score));
-  const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; });
+  const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; }).filter(p => p.of > 0);
   const missed = st.qs.filter((q, k) => !st.results[k]);
   setScene(st.score / N >= .68 ? "sky" : "meadow"); Sound.play("A"); Sound.fx("win"); burst();
   setBar(`<div class="brand">Fin de l'aventure</div>`);
