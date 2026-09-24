@@ -248,9 +248,11 @@ var Playlists = (function () {
         { t: "Dernière danse", a: "Indila" },
         { t: "Papaoutai", a: "Stromae" },
 
-        // « Ne me quitte pas » est parti dans les annees 60-70, a la demande
-        // d'Audrey. Brel reste ici avec un autre titre.
-        { t: "Vesoul", a: "Jacques Brel", q: "Jacques Brel Vesoul Infiniment" },
+        /* « Ne me quitte pas » est partie dans les années 60-70, à la demande
+           d'Audrey. Brel reste ici avec Amsterdam, qu'il n'a jamais enregistrée
+           en studio : la seule version qui existe est le live de l'Olympia 1964,
+           d'où le `voulue` qui désarme la pénalité sur les versions live. */
+        { t: "Amsterdam", a: "Jacques Brel", q: "Jacques Brel Amsterdam Olympia 1964", voulue: true },
         { t: "Le Gorille", a: "Georges Brassens" },
         /* Sans l'album, Apple servait la reprise de La Grande Sophie. */
         { t: "Comme un arbre dans la ville", a: "Maxime Le Forestier", q: "Maxime Le Forestier Comme un arbre dans la ville Mon frere" },
