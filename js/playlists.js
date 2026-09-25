@@ -462,7 +462,14 @@ var Playlists = (function () {
         { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"] },
         // Demandé par une amie d'Audrey. La bande originale de Harry Manfredini
         // est chez Apple : c'est bien le générique d'origine, pas une reprise.
-        { t: "Overlay of Evil / Main Title", a: "Vendredi 13", q: "Harry Manfredini Friday the 13th Overlay of Evil Main Title Original Motion Picture Soundtrack", altA: ["Friday the 13th"] }
+        { t: "Overlay of Evil / Main Title", a: "Vendredi 13", q: "Harry Manfredini Friday the 13th Overlay of Evil Main Title Original Motion Picture Soundtrack", altA: ["Friday the 13th"] },
+        /* La chanson de Jean-Claude Dusse. L’album anniversaire contient aussi
+           une reprise du même titre : `interprete` dit au moteur de prendre
+           celle de Michel Blanc. Le premier film, « Les Bronzés », existe aussi
+           chez Apple — c’est une autre œuvre, donc une autre réponse. */
+        { t: "Quand te reverrai-je, pays merveilleux ?", a: "Les Bronzés font du ski",
+          q: "Michel Blanc Quand te reverrai-je pays merveilleux les bronzés font du ski",
+          interprete: "Michel Blanc" }
       ]
     },
     {
