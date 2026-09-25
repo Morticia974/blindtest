@@ -72,7 +72,21 @@ var Playlists = (function () {
         { t: "Les Sunlights des tropiques", a: "Gilbert Montagné" },
         { t: "Partenaire particulier", a: "Partenaire Particulier" },
         { t: "Tchiki boum", a: "Niagara" },
-        { t: "Femme que j'aime", a: "Jean-Luc Lahaye" }
+        { t: "Femme que j'aime", a: "Jean-Luc Lahaye" },
+
+        /* Six remplacants choisis par Audrey, apres le retrait de Duran Duran,
+           Talking Heads, INXS, Kim Wilde, Falco et Nena. */
+        { t: "Elle est d'ailleurs", a: "Pierre Bachelet", q: "Pierre Bachelet Elle est d'ailleurs" },
+        { t: "Boule de flipper", a: "Corynne Charby", q: "Corynne Charby Boule de flipper" },
+        /* Sans le nom precis de l'album, Apple sert Thriller depuis une
+           compilation dont la pochette ne dit rien. */
+        { t: "Thriller", a: "Michael Jackson",
+          q: "Michael Jackson Thriller 25th Anniversary Deluxe Edition" },
+        { t: "You Spin Me Round (Like a Record)", a: "Dead or Alive",
+          q: "Dead or Alive You Spin Me Round Like a Record Youthquake",
+          altT: ["You Spin Me Round"] },
+        { t: "Walk Like an Egyptian", a: "The Bangles", q: "The Bangles Walk Like an Egyptian Different Light" },
+        { t: "Boys (Summertime Love)", a: "Sabrina", q: "Sabrina Boys Summertime Love", altT: ["Boys"] }
       ]
     },
     {
