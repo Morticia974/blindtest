@@ -1509,19 +1509,24 @@ var Playlists = (function () {
       desc: "Salsa, raï, gipsy, afrobeats : les tubes qui font voyager.",
       labelA: "Artiste",
       pistes: [
-        { t: "Chan Chan", a: "Buena Vista Social Club" },
+      /* Treize morceaux retirés après une écoute complète de la catégorie :
+         soit Apple n'en servait qu'une version live ou réenregistrée, soit
+         ils ne faisaient plus vraiment « musique du monde » aux oreilles
+         d'Audrey. */
         { t: "Bamboléo", a: "Gipsy Kings" },
         { t: "Djobi Djoba", a: "Gipsy Kings" },
         { t: "Aïcha", a: "Khaled" },
         { t: "Didi", a: "Khaled" },
-        { t: "Clandestino", a: "Manu Chao" },
         { t: "Me Gustas Tu", a: "Manu Chao" },
         { t: "Bongo Bong", a: "Manu Chao" },
-        { t: "Waka Waka (This Time for Africa)", a: "Shakira", altT: ["Waka Waka"] },
+        { t: "Waka Waka (This Time for Africa)", a: "Shakira",
+          // Apple ne le sert que sur des compilations brésiliennes : on impose
+          // la pochette du single officiel de 2010.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/c4/6e/63/c46e6321-2a8a-dfaa-2c0f-21d4b62450b3/884977620108.jpg/600x600bb.jpg",
+          altT: ["Waka Waka"] },
         { t: "Hips Don't Lie", a: "Shakira" },
         { t: "La Camisa Negra", a: "Juanes" },
         { t: "Suavemente", a: "Elvis Crespo" },
-        { t: "Vivir Mi Vida", a: "Marc Anthony" },
         { t: "Ai Se Eu Te Pego", a: "Michel Teló" },
         { t: "Dragostea Din Tei", a: "O-Zone" },
         { t: "Lambada", a: "Kaoma" },
@@ -1531,30 +1536,29 @@ var Playlists = (function () {
            qu'on reconnait. « voulue » empeche le moteur de lui preferer
            l'originale de Miriam Makeba. */
         { t: "Pata Pata", a: "Miriam Makeba", altA: ["Coumba Gawlo"], voulue: true,
-          q: "Pata Pata Karaoke Coumba Gawlo Universal Sound Machine" },
-        { t: "Soul Makossa", a: "Manu Dibango" },
+          q: "Pata Pata Karaoke Coumba Gawlo Universal Sound Machine",
+          /* L'enregistrement de 1967 existe bien chez Apple — Audrey préfère
+             quand même ce rythme-là. On lui met au moins la pochette de
+             l'album de Miriam Makeba, qui est la réponse attendue. */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/65/8d/ea/658deacc-0f1e-e822-8550-08a1b55b3a8a/4062548001204_3000.jpg/600x600bb.jpg" },
         { t: "Jerusalema", a: "Master KG" },
 
         { t: "Sofia", a: "Alvaro Soler" },
         { t: "Mambo Italiano", a: "Dean Martin" },
         { t: "Guantanamera", a: "Compay Segundo" },
-        { t: "Oye Como Va", a: "Santana" },
-        { t: "Smooth", a: "Santana", altA: ["Rob Thomas"] },
-        { t: "Lady Marmalade", a: "Labelle" },
-        { t: "7 Seconds", a: "Youssou N'Dour", altT: ["Seven Seconds"], altA: ["Neneh Cherry"] },
-        { t: "Sweet Lullaby", a: "Deep Forest" },
+        /* La version de Moulin Rouge, choisie par Audrey. Les quatre chanteuses
+           sont séparées par des « & » et des virgules, donc le moteur accepte
+           n'importe laquelle d'entre elles comme réponse. */
+        { t: "Lady Marmalade", a: "Christina Aguilera, Lil' Kim, Mýa & P!nk",
+          q: "Christina Aguilera Lil Kim Mya Pink Lady Marmalade Moulin Rouge soundtrack",
+          altA: ["Pink", "Moulin Rouge"] },
         { t: "Magic in the Air", a: "Magic System", altA: ["Ahmed Chawki"] },
-        { t: "Zombie", a: "Fela Kuti" },
-        { t: "Mas Que Nada", a: "Sergio Mendes" },
-        { t: "The Girl from Ipanema", a: "Stan Getz & João Gilberto", altA: ["Astrud Gilberto"] },
-        { t: "Bella Ciao", a: "Manu Pilas", altA: ["La Casa de Papel"] },
+        /* « Bella Ciao » retirée : Audrey voulait la version des Ramoneurs de
+           Menhirs, et elle n'est pas chez Apple — leurs cinq albums y sont,
+           mais pas ce morceau-là. */
         /* Sans précision, Apple servait la version « Ao Vivo », enregistrée en
            concert. On demande la version studio. */
         { t: "Balada", a: "Gusttavo Lima", altT: ["Balada Tchê Tcherere Tchê Tchê"], q: "Gusttavo Lima Balada Tche Tcherere Tche Tche" },
-        // Apple France n'a « Tusa » que sur des compilations : la pochette
-        // montree ne dirait rien de Karol G. On prend un titre a elle.
-        { t: "Dákiti", a: "Bad Bunny & Jhay Cortez", q: "Bad Bunny Jhay Cortez Dakiti", altA: ["Bad Bunny", "Jhay Cortez"] },
-        { t: "El Perdón", a: "Nicky Jam & Enrique Iglesias", altA: ["Nicky Jam", "Enrique Iglesias"] },
         { t: "Baila Morena", a: "Zucchero" },
         { t: "Obsesión", a: "Aventura" },
         { t: "La Isla Bonita", a: "Madonna" },
