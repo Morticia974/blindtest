@@ -441,6 +441,16 @@ button, input, select { font: inherit; color: inherit; }
   letter-spacing: .04em;
 }
 
+/* Compteur de visites, en pied de page d'accueil. Discret : c'est une
+   curiosité, pas une information de jeu. */
+.compteur-visites {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--vert);
+  font-weight: 700;
+  font-size: 13px;
+}
+
 .paire-reponses { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
 .paire-reponses.solo { grid-template-columns: 1fr; }
 

@@ -80,6 +80,11 @@ Compte une vingtaine de minutes la première fois.
    Traduction : seules les personnes connectées au jeu peuvent lire et écrire
    dans les salons, et rien d'autre dans la base n'est accessible.
 
+   > Le compteur de visites du pied de page est rangé dans `salons/_compteur`,
+   > pour tenir dans ces mêmes règles sans en ajouter. Les vrais codes de salon
+   > font quatre lettres, donc il n'y a aucun risque de collision. Pour remettre
+   > le compteur à zéro, supprime ce nœud dans l'onglet **Données** de la base.
+
 5. Menu de gauche → **Authentication** → **Commencer** → onglet **Sign-in
    method** → active **Anonyme**.
    C'est ce qui donne une identité à chaque joueur sans lui demander de créer

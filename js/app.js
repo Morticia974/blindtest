@@ -1172,6 +1172,60 @@
     };
   }
 
+  /* ================= compteur de visites =================
+
+     Deux nombres : les visiteurs (un navigateur, compté une seule fois pour
+     toujours) et les visites (une par session — recharger la page ne gonfle
+     pas le score).
+
+     Rangé sous `salons/` parce que c'est le seul endroit que les règles de la
+     base autorisent à écrire. Un « salon » nommé `_compteur` ne gêne personne :
+     les vrais codes font quatre lettres, et rien ne parcourt la liste. */
+  var CHEMIN_COMPTEUR = 'salons/_compteur';
+
+  function compterLaVisite(n) {
+    if (!n || !n.incrementer) return;
+
+    var nouveauVisiteur = false, nouvelleVisite = false;
+    try {
+      nouveauVisiteur = !localStorage.getItem('bt.vu');
+      if (nouveauVisiteur) localStorage.setItem('bt.vu', '1');
+      nouvelleVisite = !sessionStorage.getItem('bt.visite');
+      if (nouvelleVisite) sessionStorage.setItem('bt.visite', '1');
+    } catch (e) {
+      // Navigation privée ou stockage bloqué : on compte la visite, sans plus.
+      nouvelleVisite = true;
+    }
+
+    var travaux = [
+      nouvelleVisite ? n.incrementer(CHEMIN_COMPTEUR + '/visites')
+                     : n.lire(CHEMIN_COMPTEUR + '/visites'),
+      nouveauVisiteur ? n.incrementer(CHEMIN_COMPTEUR + '/visiteurs')
+                      : n.lire(CHEMIN_COMPTEUR + '/visiteurs')
+    ];
+
+    Promise.all(travaux).then(function (r) {
+      afficherCompteur(r[0], r[1]);
+    }).catch(function () {
+      // Un compteur qui ne répond pas ne doit jamais gêner la partie.
+    });
+  }
+
+  function afficherCompteur(visites, visiteurs) {
+    var coin = $('compteur-visites');
+    if (!coin || !visites) return;
+    var morceaux = ['👀 ' + separerMilliers(visites) + ' visite' + (visites > 1 ? 's' : '')];
+    if (visiteurs) {
+      morceaux.push(separerMilliers(visiteurs) + ' visiteur' + (visiteurs > 1 ? 's' : ''));
+    }
+    coin.textContent = morceaux.join(' · ');
+    coin.hidden = false;
+  }
+
+  function separerMilliers(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
+  }
+
   /* ================= démarrage ================= */
 
   function demarrer() {
@@ -1191,6 +1245,7 @@
 
     Net.creer().then(function (n) {
       net = n;
+      compterLaVisite(n);
       var banniere = $('banniere-mode');
 
       if (n.nom === 'local') {
