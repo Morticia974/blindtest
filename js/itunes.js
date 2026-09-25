@@ -127,7 +127,7 @@ var Itunes = (function () {
          « music box », « orgel » et « lullaby » sont arrivés par la bande :
          Apple regorge de berceuses au carillon, et deux génériques d'animes
          étaient tombés dessus. */
-      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit|midi)\b/
+      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit|midi)\b/
             .test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
 
       /* À enregistrement égal, on préfère l'album de l'artiste à une

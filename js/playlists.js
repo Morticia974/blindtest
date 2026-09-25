@@ -612,7 +612,32 @@ var Playlists = (function () {
            chez Apple — c’est une autre œuvre, donc une autre réponse. */
         { t: "Quand te reverrai-je, pays merveilleux ?", a: "Les Bronzés font du ski",
           q: "Michel Blanc Quand te reverrai-je pays merveilleux les bronzés font du ski",
-          interprete: "Michel Blanc" }
+          interprete: "Michel Blanc" },
+
+        /* Quatre films choisis par Audrey pour remplacer les quatre retirés.
+           Tous les quatre ont leur bande originale chez Apple, pochette du
+           film comprise : aucune image à imposer. */
+        { t: "You're the Best", a: "Karaté Kid",
+          q: "Joe Esposito You're the Best The Karate Kid Original Motion Picture Soundtrack",
+          /* Une bonne dizaine de chansons portent ce titre. Apple écrit le nom
+             avec le surnom au milieu, d'où l'orthographe exacte ici. */
+          interprete: 'Joe "Bean" Esposito',
+          altA: ["The Karate Kid", "Karate Kid", "Le Moment de vérité"] },
+        { t: "Catch Me If You Can", a: "Arrête-moi si tu peux",
+          q: "John Williams Catch Me If You Can Motion Picture Soundtrack",
+          interprete: "John Williams", altA: ["Catch Me If You Can"] },
+        /* « Main Title » tout court se dispute avec deux autres morceaux de la
+           catégorie : c'est le nom du compositeur qui départage. */
+        { t: "Main Title (Spider-Man)", a: "Spider-Man",
+          q: "Danny Elfman Spider-Man Original Motion Picture Score main title",
+          interprete: "Danny Elfman", altA: ["Spiderman", "Spider Man"] },
+        { t: "La Folie des grandeurs", a: "La Folie des grandeurs",
+          q: "La folie des grandeurs Michel Polnareff bande originale du film La folie des grandeurs",
+          /* Le même album contient une « version playback » qui portait
+             exactement le même titre. Le moteur la rétrograde maintenant
+             comme les autres versions alternatives, et la requête répète
+             le titre pour faire remonter le bon enregistrement. */
+          interprete: "Michel Polnareff" }
       ]
     },
     {
