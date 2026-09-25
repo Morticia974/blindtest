@@ -1504,9 +1504,9 @@ var Playlists = (function () {
     },
     {
       id: 'monde',
-      nom: "Musiques du monde & latino",
+      nom: "Zouk, reggae, latino & Afrique",
       emoji: "🌍",
-      desc: "Salsa, raï, gipsy, afrobeats : les tubes qui font voyager.",
+      desc: "Zouk, reggae, salsa, raï, afrobeats : les tubes qui font voyager.",
       labelA: "Artiste",
       pistes: [
       /* Treize morceaux retirés après une écoute complète de la catégorie :
@@ -1562,7 +1562,60 @@ var Playlists = (function () {
         { t: "Baila Morena", a: "Zucchero" },
         { t: "Obsesión", a: "Aventura" },
         { t: "La Isla Bonita", a: "Madonna" },
-        { t: "La Bomba", a: "King Africa", altT: ["Bomba"] }
+        { t: "La Bomba", a: "King Africa", altT: ["Bomba"] },
+
+        /* Onze morceaux ajoutés après une écoute complète de la catégorie.
+           Il n'y avait jusque-là aucun zouk et aucun Bob Marley dans tout le
+           jeu — c'est ce qui a motivé le renommage de la catégorie. */
+        { t: "Zouk-La Sé Sèl Médikaman Nou Ni", a: "Kassav'",
+          q: "Kassav Zouk La Se Sel Medikaman Nou Ni",
+          interprete: "Kassav'", altT: ["Zouk la sé sel médikaman nou ni", "Zouk la"],
+          // Apple ne le sert que sur le single de 1981 : pochette du Best Of.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/b1/fd/83/b1fd83d6-f4c1-db50-b64a-a22bb601b690/3596973435293_cover.jpg/600x600bb.jpg" },
+        { t: "Maldòn", a: "Zouk Machine",
+          q: "Zouk Machine Maldon version originale La musique dans la peau",
+          interprete: "Zouk Machine", altT: ["La musique dans la peau"] },
+        /* L'enregistrement de 1990 n'est pas chez Apple : celui-ci date de 1998
+           et ne vit que sur une compilation d'été. La requête nomme Francky
+           Vincent, sinon on tombait sur une des nombreuses reprises. */
+        { t: "Fruit de la passion", a: "Francky Vincent",
+          q: "Francky Vincent Fruit de la passion 100% tubes de l'ete bande son soleil",
+          interprete: "Francky Vincent", altT: ["Vas-y Francky c'est bon"],
+          // La compilation d'été ne dit rien de lui : pochette d'un de ses albums.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/19/13/38/1913383b-4442-195b-d696-de2a44452dfa/cover.jpg/600x600bb.jpg" },
+        { t: "San ou", a: "Dezil'",
+          q: "Dezil San ou Black Queen",
+          interprete: "Dezil'", altA: ["Dez'il", "Dezil"], altT: ["San ou (la rivière)"] },
+        { t: "Turn Me On", a: "Kevin Lyttle",
+          q: "Kevin Lyttle Turn Me On single 2003",
+          interprete: "Kevin Lyttle" },
+        { t: "Unité", a: "Nuttea",
+          q: "Nuttea Unite Un signe du temps",
+          interprete: "Nuttea" },
+        { t: "Chérie Coco", a: "Magic System",
+          q: "Magic System Cherie Coco Soprano Toute kale",
+          interprete: "Magic System", altA: ["Soprano"] },
+        { t: "Né ici", a: "Doc Gynéco",
+          q: "Doc Gyneco Ne ici Premiere consultation" },
+        /* Apple crédite « Bob Marley & The Wailers » : sans `interprete`, le
+           moteur ne reconnaissait pas l'artiste et ne notait que le titre. */
+        { t: "Buffalo Soldier", a: "Bob Marley",
+          q: "Bob Marley and the Wailers Buffalo Soldier Legend",
+          interprete: "Bob Marley & The Wailers", altA: ["The Wailers"],
+          /* Le même enregistrement circule sur « Legend », « Gold » et
+             « Confrontation » : laquelle sort dépend du classement d'Apple,
+             qui bouge. On fixe la pochette de « Legend ». */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3c/c2/0d/3cc20dcc-8f4e-f060-36dd-7de52a7ec8fe/12UMGIM14712.rgb.jpg/600x600bb.jpg" },
+        { t: "Three Little Birds", a: "Bob Marley",
+          q: "Bob Marley and the Wailers Three Little Birds Exodus",
+          interprete: "Bob Marley & The Wailers", altA: ["The Wailers"],
+          /* Pochette de « Kaya » : « Buffalo Soldier » sort déjà avec celle de
+             « Legend », et deux images identiques à la révélation prêteraient
+             à confusion. */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/1a/d4/521ad4e3-9c00-39ad-b5ae-6fc2f144bf98/06UMGIM11277.rgb.jpg/600x600bb.jpg" },
+        { t: "Les champs de roses", a: "Danakil",
+          q: "Danakil Les champs de roses Dialogue de sourds",
+          interprete: "Danakil", altT: ["Le champ des roses"] }
       ]
     }
   ];
