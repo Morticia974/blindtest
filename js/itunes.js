@@ -5,6 +5,10 @@
 var Itunes = (function () {
   'use strict';
 
+  /* Boutique interrogée par défaut. Un morceau peut en viser une autre avec
+     `pays` : le catalogue américain contient des bandes originales de séries
+     US qui n'ont jamais été publiées en France. Les fichiers audio d'Apple,
+     eux, sont accessibles depuis partout. */
   var PAYS = 'FR';
   /* En changeant ce numéro, on force tous les joueurs à réinterroger Apple :
      les morceaux mémorisés avec l'ancienne logique de choix (qui laissait
@@ -83,6 +87,18 @@ var Itunes = (function () {
     var vTitre = Match.variantesTitre(piste.t);
     var vArtiste = piste.a ? Match.variantesArtiste(piste.a) : [];
 
+    /* Dans les catégories strictes, `a` est l'œuvre — « Battlestar Galactica »,
+       « Le Roi Lion » — et le nom de celui qui joue n'apparaît nulle part. Le
+       moteur n'a alors aucun moyen de distinguer le bon enregistrement des
+       vingt reprises qui portent le même nom. `interprete` le lui souffle.
+
+       Il sert UNIQUEMENT à noter les candidats : il n'est jamais ajouté aux
+       réponses acceptées, sinon « Bear McCreary » vaudrait « Battlestar
+       Galactica » au moment de répondre. */
+    var vScore = piste.interprete
+      ? vArtiste.concat(Match.variantesArtiste(piste.interprete))
+      : vArtiste;
+
     /* Certains morceaux ne sont connus QUE par une version alternative : le
        karaoke de Coumba Gawlo pour « Pata Pata », par exemple. La playlist le
        signale avec « voulue », et on lève alors les deux pénalités ci-dessous
@@ -94,7 +110,7 @@ var Itunes = (function () {
       var n = 0;
       if (Match.correspond(r.trackName, vTitre)) n += 10;
       else if (Match.normaliser(r.trackName).indexOf(Match.normaliser(piste.t)) !== -1) n += 5;
-      if (vArtiste.length && Match.correspond(r.artistName, vArtiste)) n += 6;
+      if (vScore.length && Match.correspond(r.artistName, vScore)) n += 6;
       /* On compare sur du texte normalisé — sans accents — sinon « Version
          karaoké » passait entre les mailles du filet et « Laisse pas traîner
          ton fils » jouait un karaoké. Apple étiquette aussi en français :
@@ -137,7 +153,10 @@ var Itunes = (function () {
      Renvoie null si Apple n'a rien de jouable (le jeu passe alors au suivant). */
   function resoudre(piste) {
     var requete = piste.q || ((piste.a ? piste.a + ' ' : '') + piste.t);
-    var cle = Match.normaliser(requete);
+    var pays = piste.pays || PAYS;
+    // La boutique fait partie de la clé : sans ça, une recherche française et
+    // une recherche américaine sur le même texte se marcheraient dessus.
+    var cle = pays + '|' + Match.normaliser(requete);
     var enCache = cache[cle];
     var duree = (enCache && enCache.vide) ? DUREE_CACHE_VIDE : DUREE_CACHE;
 
@@ -146,7 +165,7 @@ var Itunes = (function () {
     }
 
     return enfiler(function () {
-      var params = { term: requete, media: 'music', entity: 'song', limit: 8, country: PAYS };
+      var params = { term: requete, media: 'music', entity: 'song', limit: 8, country: pays };
 
       // Apple coupe le robinet au-delà d'une vingtaine d'appels par minute, et
       // répond alors une liste vide. On retente une fois avant de conclure.
@@ -200,7 +219,10 @@ var Itunes = (function () {
       titre: titreAffiche,
       artiste: artisteAffiche,
       apercu: resolue.apercu,
-      pochette: resolue.pochette,
+      /* `pochette` dans la playlist remplace celle de l'album. Sert quand le
+         seul enregistrement disponible vit sur une compilation dont l'image ne
+         dit rien de la réponse. */
+      pochette: piste.pochette || resolue.pochette,
       categorie: piste.categorie || '',
       labelA: piste.labelA || 'Artiste',
       labelT: piste.labelT || 'Titre',

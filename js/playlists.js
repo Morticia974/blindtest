@@ -513,7 +513,13 @@ var Playlists = (function () {
         // que des arrangements pour orchestre de chambre.
         { t: "The Simpsons Main Title Theme", a: "Les Simpson", q: "Simpsons Main Title Theme Testify original music television series", altA: ["The Simpsons"] },
         { t: "Enemy", a: "Arcane", q: "Enemy Imagine Dragons JID Arcane League of Legends" },
-        { t: "Main Title", a: "Battlestar Galactica", q: "Battlestar Galactica Main Title John Williams Boston Pops" },
+        /* La série de 2004, pas celle de 1978 : le générique des saisons 2 à 4,
+           par Bear McCreary. Les bandes originales de la série n'existent que
+           dans la boutique américaine d'Apple — d'où `pays`. */
+        { t: "Main Title", a: "Battlestar Galactica",
+          q: "Battlestar Galactica Season 2 Original Soundtrack from the TV Series",
+          pays: "US", interprete: "Bear McCreary",
+          altT: ["Battlestar Galactica Main Title", "Générique"] },
         { t: "The Mandalorian", a: "The Mandalorian", q: "Ludwig Goransson The Mandalorian Chapter 1 Original Score" },
         { t: "Justice League Unlimited Theme", a: "La Ligue des justiciers", q: "Justice League Unlimited Theme Michael McCuistion Music of DC Comics", altA: ["Justice League"] },
         { t: "This Life", a: "Sons of Anarchy", q: "This Life Curtis Stigers Forest Rangers Songs of Anarchy" },
@@ -833,7 +839,15 @@ var Playlists = (function () {
         { t: "One-Winged Angel", a: "Final Fantasy VII", q: "One Winged Angel Final Fantasy VII", altA: ["Final Fantasy"] },
         // Nintendo n'est pas sur Apple Music : ces trois-là sont des versions
         // orchestrales. La mélodie est identique, c'est tout ce qui compte ici.
-        { t: "Main Theme", a: "The Legend of Zelda", q: "Main Theme The Legend of Zelda London Music Works Scott Buckley", altT: ["Thème principal", "Thème de Zelda"], altA: ["Zelda"] },
+        /* Nintendo ne publie rien sur Apple : tout Zelda y est une reprise.
+           Audrey a choisi la suite de l'Orchestre Philharmonique de Londres,
+           mais elle vit sur une compilation de musiques de jeux dont la
+           pochette ne dit rien de Zelda — d'où l'image imposée, celle de
+           l'« Epic Collection », qui porte le logo du jeu. */
+        { t: "Main Theme", a: "The Legend of Zelda",
+          q: "Orchestre Philharmonique de Londres Legend of Zelda Suite meilleure musique de jeu video",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/91/fe/ad/91fead15-6e40-5de1-06c1-7acfa34b5792/The_Legend_of_Zelda_-_Epic_Collection.jpg/600x600bb.jpg",
+          altT: ["Thème principal", "Thème de Zelda", "Legend of Zelda: Suite"], altA: ["Zelda"] },
         { t: "Song of Storms", a: "The Legend of Zelda: Ocarina of Time", q: "Song of Storms Marcus Hedges Trend Orchestra Zelda", altA: ["Zelda", "Ocarina of Time"] },
         { t: "Super Mario Bros: Theme", a: "Super Mario Bros.", q: "Super Mario Bros Theme Orchestre Philharmonique de Londres", altT: ["Thème principal"], altA: ["Mario", "Super Mario"] },
         { t: "Halo", a: "Halo", q: "Halo Martin O'Donnell Michael Salvatori Combat Evolved", altT: ["Halo Theme"] },
