@@ -453,7 +453,33 @@ var Playlists = (function () {
           interprete: "Fall Out Boy", altA: ["Big Hero 6"] },
         { t: "Lead the Way", a: "Raya et le dernier dragon",
           q: "Jhené Aiko Lead the Way Raya and the Last Dragon",
-          interprete: "Jhené Aiko", altA: ["Raya"] }
+          interprete: "Jhené Aiko", altA: ["Raya"] },
+
+        /* Six films de plus. Trois enregistrements ne vivent que dans la
+           boutique américaine d'Apple, d'où le `pays`. */
+        { t: "Bienvenue à Halloween", a: "L'Étrange Noël de monsieur Jack",
+          q: "L'Étrange Noël de monsieur Jack bande originale française Bienvenue à Halloween",
+          interprete: "Richard Darbois",
+          altT: ["This Is Halloween"],
+          altA: ["L'Étrange Noël de Mr Jack", "The Nightmare Before Christmas"] },
+        { t: "Je défendrai ma vie", a: "Spirit, l'étalon des plaines",
+          q: "Spirit l'étalon des plaines Je défendrai ma vie Bryan Adams French Version",
+          interprete: "Bryan Adams", altA: ["Spirit"] },
+        { t: "Kung Fu Fighting", a: "Kung Fu Panda",
+          q: "Kung Fu Panda Original Motion Picture Soundtrack Cee-Lo Jack Black Kung Fu Fighting",
+          pays: "US", interprete: "Cee-Lo" },
+        { t: "Victor's Piano Solo", a: "Les Noces funèbres",
+          q: "Corpse Bride Danny Elfman Victor's Piano Solo",
+          pays: "US", interprete: "Danny Elfman", altA: ["Corpse Bride"] },
+        { t: "Nemo Egg", a: "Le Monde de Nemo",
+          q: "Le Monde de Nemo Finding Nemo Thomas Newman Main Title Nemo Egg",
+          interprete: "Thomas Newman",
+          altT: ["Main Title: Nemo Egg"], altA: ["Finding Nemo"] },
+        /* La bande originale du premier Madagascar n'est pas chez Apple : c'est
+           la version du deuxième film, validée par Audrey. */
+        { t: "I Like to Move It", a: "Madagascar",
+          q: "will.i.am I Like to Move It Madagascar Escape 2 Africa Music from the Motion Picture",
+          pays: "US", interprete: "will.i.am", altA: ["Madagascar 2"] }
       ]
     },
     {
