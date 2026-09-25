@@ -652,42 +652,79 @@ var Playlists = (function () {
       labelT: "Titre du morceau",
       labelA: "Série",
       pistes: [
-        { t: "I'll Be There for You", a: "Friends", q: "I'll Be There for You The Rembrandts" },
+        { t: "I'll Be There for You", a: "Friends",
+          q: "I'll Be There for You The Rembrandts",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/24/fd/3b/mzi.mwaebzpb.jpg/600x600bb.jpg" },
         { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"] },
         { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
         { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold" },
-        { t: "Woke Up This Morning", a: "Les Soprano", q: "Woke Up This Morning Alabama 3", altA: ["The Sopranos"] },
         { t: "Stranger Things", a: "Stranger Things", q: "Stranger Things Theme Kyle Dixon Michael Stein" },
-        { t: "Red Right Hand", a: "Peaky Blinders", q: "Red Right Hand Nick Cave and the Bad Seeds" },
-        { t: "Twin Peaks Theme", a: "Twin Peaks", q: "Twin Peaks Theme Angelo Badalamenti" },
+        /* L'enregistrement de 1994, celui de la série. Sans requête épinglée,
+           Apple sortait la « Scream 3 Version », un réenregistrement.
+           `voulue` empêche le moteur de rétrograder ce remaster de 2011 :
+           c'est bien la prise d'origine, seulement remise au propre. */
+        { t: "Red Right Hand", a: "Peaky Blinders",
+          q: "Nick Cave Red Right Hand Theme from Peaky Blinders single",
+          voulue: true, interprete: "Nick Cave & The Bad Seeds",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/62/d0/6462d048-881a-76f5-77da-dfa97d4c2d90/5414939860171.jpg/600x600bb.jpg" },
+        /* « Les Soprano » et « Twin Peaks » retirés après une écoute
+           complète de la catégorie. */
 
         /* ---- enregistrements officiels ---- */
         { t: "Yo Home to Bel-Air", a: "Le Prince de Bel-Air", q: "Fresh Prince of Bel Air theme Will Smith Yo Home to Bel Air", altA: ["Fresh Prince"] },
-        { t: "Boss of Me", a: "Malcolm", q: "They Might Be Giants Boss of Me Mink Car", altA: ["Malcolm in the Middle"] },
-        { t: "Superman", a: "Scrubs", q: "Superman Lazlo Bane All the Time in the World" },
+        { t: "Boss of Me", a: "Malcolm",
+          q: "They Might Be Giants Boss of Me Mink Car",
+          // Apple n'a aucun album de la série : pochette d'un single du générique.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/70/75/097075be-0784-95c3-9874-4bc8349b1252/46b5093f-3e13-49f0-9f92-a44e97804c59.jpg/600x600bb.jpg",
+          altA: ["Malcolm in the Middle"] },
+        { t: "Superman", a: "Scrubs",
+          q: "Superman Lazlo Bane All the Time in the World",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/55/7f/db/557fdb12-57c5-7ec0-cb44-a596afdd228d/00720616235329.rgb.jpg/600x600bb.jpg" },
         { t: "Hey Beautiful", a: "How I Met Your Mother", q: "Hey Beautiful The Solids How I Met Your Mother" },
-        { t: "Big Bang Theory Theme", a: "The Big Bang Theory", q: "Barenaked Ladies Big Bang Theory Theme" },
+        { t: "Big Bang Theory Theme", a: "The Big Bang Theory",
+          q: "Barenaked Ladies Big Bang Theory Theme",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/16/4f/9c/164f9c46-270e-fa3a-87e2-c445d578616b/794043204791.jpg/600x600bb.jpg" },
         { t: "Desperate Housewives Theme", a: "Desperate Housewives", q: "Desperate Housewives Main Title Danny Elfman" },
         { t: "Teardrop", a: "Dr House", q: "Teardrop Massive Attack Mezzanine", altA: ["House", "House M.D."] },
         { t: "Secret", a: "Pretty Little Liars", q: "Secret The Pierces Thirteen Tales of Love and Revenge" },
-        { t: "You've Got Time", a: "Orange Is the New Black", q: "You've Got Time Regina Spektor" },
+        { t: "You've Got Time", a: "Orange Is the New Black",
+          q: "You've Got Time Regina Spektor",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/e6/3a/64e63a1c-2238-5477-e27e-9f61f7368e88/00030206731408.rgb.jpg/600x600bb.jpg" },
         { t: "Toss a Coin to Your Witcher", a: "The Witcher", q: "Toss a Coin to Your Witcher Sonya Belousova Joey Batey" },
         { t: "Theme from the Walking Dead", a: "The Walking Dead", q: "Bear McCreary Theme from the Walking Dead Original Television Soundtrack" },
-        { t: "Goo Goo Muck", a: "Mercredi", q: "Goo Goo Muck The Cramps Psychedelic Jungle", altA: ["Wednesday"] },
+        { t: "Goo Goo Muck", a: "Mercredi",
+          q: "Goo Goo Muck The Cramps Psychedelic Jungle",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1f/ec/ab/1fecab29-fa10-0abd-6097-6909e1534708/wednesday_3000.jpg/600x600bb.jpg",
+          altA: ["Wednesday"] },
         { t: "Theme from Beverly Hills, 90210", a: "Beverly Hills 90210", q: "Theme from Beverly Hills 90210 John Davis Soundtrack", altA: ["90210"] },
         { t: "Dexter Main Title", a: "Dexter", q: "Rolfe Kent Dexter Main Title" },
         { t: "Main Title Season 3", a: "Prison Break", q: "Ramin Djawadi Prison Break Seasons 3 & 4 Original Television Soundtrack", altT: ["Prison Break Theme"] },
         { t: "Life and Death", a: "Lost", q: "Michael Giacchino Lost Season 1 Original Television Soundtrack Life and Death" },
         { t: "Breaking Bad (Main Title Theme)", a: "Breaking Bad", q: "Dave Porter Breaking Bad Main Title Theme Music from the Original TV Series" },
-        { t: "It's a Jungle Out There", a: "Monk", q: "Randy Newman It's a Jungle Out There" },
+        /* Apple n'a pas la prise de Randy Newman entendue dans la série : la
+           seule qui existe vient de son album de 2017. On prend le thème
+           instrumental de Jeff Beal, sur la bande originale officielle — elle
+           ne vit que dans la boutique américaine. Le titre est écrit en entier
+           parce que l'album contient aussi une version longue et une version
+           pilote, qui portent presque le même nom. */
+        { t: "Monk Theme (Series Version)", a: "Monk",
+          q: "Monk Jeff Beal Original Television Soundtrack Monk Theme Series Version",
+          pays: "US", interprete: "Jeff Beal",
+          altT: ["Monk Theme", "It's a Jungle Out There"] },
         { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"] },
         { t: "Rick and Morty Theme", a: "Rick et Morty", q: "Ryan Elder Rick and Morty Theme", altA: ["Rick and Morty"] },
-        { t: "Futurama Main Theme", a: "Futurama", q: "Christopher Tyng Futurama Main Theme" },
+        // La requête vise la « TV Version » : sans elle, Apple sortait la
+        // version longue, méconnaissable au premier accord.
+        { t: "Futurama Main Theme", a: "Futurama",
+          q: "Christopher Tyng Futurama Main Theme TV Version",
+          interprete: "Christopher Tyng" },
         // Trouvé au troisième essai seulement : la version officielle existe, sur
         // l'album « Testify » de la série. Les requêtes évidentes ne sortaient
         // que des arrangements pour orchestre de chambre.
         { t: "The Simpsons Main Title Theme", a: "Les Simpson", q: "Simpsons Main Title Theme Testify original music television series", altA: ["The Simpsons"] },
-        { t: "Enemy", a: "Arcane", q: "Enemy Imagine Dragons JID Arcane League of Legends" },
+        { t: "Enemy", a: "Arcane",
+          q: "Enemy Imagine Dragons JID Arcane League of Legends",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/cf/da/60cfdaed-e33d-4f11-dae6-12ab04b75a8c/00196922993985_Cover.jpg/600x600bb.jpg" },
         /* La série de 2004, pas celle de 1978 : le générique des saisons 2 à 4,
            par Bear McCreary. Les bandes originales de la série n'existent que
            dans la boutique américaine d'Apple — d'où `pays`. */
@@ -707,10 +744,16 @@ var Playlists = (function () {
         { t: "The A-Team - Theme from the TV Series", a: "L'Agence tous risques", q: "Dominik Hauser The A-Team Theme from the Television Series single", altT: ["The A-Team"], altA: ["A-Team"] },
         { t: "Magnum P.I. Theme", a: "Magnum", q: "Dominik Hauser Magnum P.I. Theme from the Television Series", altA: ["Magnum P.I."] },
         { t: "South Park - Theme from the TV Series", a: "South Park", q: "Dominik Hauser South Park Theme from the Television Series", altT: ["South Park Theme"] },
-        { t: "Buffy the Vampire Slayer", a: "Buffy contre les vampires", q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's", altA: ["Buffy"] },
+        { t: "Buffy the Vampire Slayer", a: "Buffy contre les vampires",
+          q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/6e/90/0e/mzi.tgiwivqf.jpg/600x600bb.jpg",
+          altA: ["Buffy"] },
         { t: "The Office", a: "The Office", q: "The Office Scranton Crew TV Generation" },
         { t: "Mystery Movie Theme", a: "Columbo", q: "Mystery Movie Theme Columbo Geek Music" },
-        { t: "Criminal Minds", a: "Esprits criminels", q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes", altA: ["Criminal Minds"] },
+        { t: "Criminal Minds", a: "Esprits criminels",
+          q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5f/2b/72/5f2b7226-09e9-ead6-2880-b624c7cf12ba/191079428618_cover.jpg/600x600bb.jpg",
+          altA: ["Criminal Minds"] },
 
         /* Rattrapées après coup : je n'avais cherché que le générique, alors
            qu'il fallait fouiller le catalogue des interprètes. */
@@ -726,10 +769,12 @@ var Playlists = (function () {
         /* La chanson du récapitulatif de chaque fin de saison. C'est un titre de
            Kansas, mais la catégorie demande explicitement une série : personne ne
            répondra « Kansas ». Le groupe n'est nulle part ailleurs dans le jeu. */
-        { t: "Carry On Wayward Son", a: "Supernatural", q: "Kansas Carry On Wayward Son Leftoverture" },
-        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] },
-        // Le thème de 1996, celui de la musique officielle de RTL.
-        { t: "Original Theme 1996", a: "Alerte Cobra", q: "Reinhard Scheuregger Original Theme 1996 Alarm für Cobra 11 Originalmusik RTL Serie", altA: ["Alarm für Cobra 11", "Cobra 11"] }
+        { t: "Carry On Wayward Son", a: "Supernatural",
+          q: "Kansas Carry On Wayward Son Leftoverture",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/0b/a3/6f0ba3d7-9896-e833-d95f-12ffa8a70660/794043145414.jpg/600x600bb.jpg" },
+        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] }
+        /* « Alerte Cobra » retirée : aucune des pochettes d'Apple ne parle
+           de la série telle qu'on la connaît en France. */
       ]
     },
     {
