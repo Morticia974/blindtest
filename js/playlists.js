@@ -508,20 +508,32 @@ var Playlists = (function () {
         { t: "Ghostbusters", a: "SOS Fantômes", q: "Ghostbusters Ray Parker Jr", altA: ["Ghostbusters"] },
         // Déplacé depuis les Années 90 : c'est le thème de Titanic avant d'être
         // une chanson de Céline Dion, et ici c'est le film qu'on devine.
-        { t: "My Heart Will Go On", a: "Titanic", q: "My Heart Will Go On Céline Dion" },
+        { t: "My Heart Will Go On", a: "Titanic", q: "My Heart Will Go On Céline Dion",
+          // Apple ne sert plus cet enregistrement que sur la bande du
+          // documentaire « Je suis : Céline Dion ». Pochette du film imposée.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ed/9b/75/ed9b75fd-e5af-64aa-1452-4c5390a6991b/5099706321323.jpg/600x600bb.jpg" },
         { t: "The Time of My Life", a: "Dirty Dancing", q: "I've Had The Time of My Life Bill Medley" },
         { t: "You're the One That I Want", a: "Grease", q: "You're the One That I Want Grease" },
         { t: "Danger Zone", a: "Top Gun", q: "Danger Zone Kenny Loggins" },
         { t: "Skyfall", a: "Skyfall", q: "Skyfall Adele", altA: ["James Bond", "007"] },
-        { t: "Comptine d'un autre été", a: "Le Fabuleux Destin d'Amélie Poulain", q: "Comptine d'un autre été Yann Tiersen" },
+        /* Le titre exact chez Apple porte « l'après-midi » : sans ça, une
+           reprise au piano sortie en single passait devant Yann Tiersen. */
+        { t: "Comptine d'un autre été, l'après-midi", a: "Le Fabuleux Destin d'Amélie Poulain",
+          q: "Yann Tiersen Comptine d'un autre été l'après-midi Le Fabuleux destin d'Amélie Poulain bande originale",
+          interprete: "Yann Tiersen", altT: ["Comptine d'un autre été"] },
         // « Circle of Life » retiré : c'est la version anglaise de « L'Histoire
         // de la vie », déjà dans la catégorie Disney & dessins animés.
         // « Dragons » déplacé vers Disney & dessins animés : c'est un DreamWorks.
         { t: "Now We Are Free", a: "Gladiator", q: "Now We Are Free Hans Zimmer" },
         { t: "Back to the Future", a: "Retour vers le futur", q: "Back to the Future Theme Alan Silvestri" },
-        { t: "The Imperial March", a: "Star Wars, épisode V : L'Empire contre-attaque", q: "Imperial March John Williams", altT: ["Marche impériale"], altA: ["Star Wars", "La Guerre des étoiles"] },
         // « Là-haut » retiré : c'est un Pixar, sa place est dans la catégorie
         // Disney & dessins animés, pas parmi les films.
+
+        /* Quatre films retirés après une écoute complète de la catégorie :
+           l'Empire contre-attaque (Star Wars était déjà représenté par le
+           quatrième épisode), la Panthère rose, les Chariots de feu et Shining
+           - Apple ne propose pour eux que des réenregistrements ou des
+           versions de scène, pas la bande du film. */
 
         /* Abandonnés : Les Simpson (Apple France n'a que des arrangements pour
            orchestre de chambre), E.T. (uniquement en medley) et 2001 (Apple ne
@@ -532,18 +544,24 @@ var Playlists = (function () {
         { t: "Halloween Theme", a: "Halloween", q: "Halloween Theme John Carpenter" },
         { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore" },
         { t: "Lux Aeterna", a: "Requiem for a Dream", q: "Lux Aeterna Clint Mansell" },
-        { t: "The Pink Panther Theme", a: "La Panthère rose", q: "Pink Panther Theme Henry Mancini" },
         { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone" },
-        { t: "Chariots of Fire", a: "Les Chariots de feu", q: "Vangelis Chariots of Fire" },
 
         /* Vingt-six films cités par Audrey. Huit d'entre eux sortaient sur une
            reprise et ont demandé une requête épinglée : Matrix arrivait en
            quatuor à cordes, OSS 117 en fanfare, Rabbi Jacob en version
            classique, « Laid » chez un autre artiste que James. */
-        { t: "The Godfather Waltz", a: "Le Parrain", q: "The Godfather Waltz Nino Rota" },
+        /* La trompette seule du tout début : c'est le morceau que tout le monde
+           reconnaît. « The Godfather Waltz » tout court est un autre morceau de
+           la même bande, beaucoup moins parlant. */
+        { t: "Main Title (The Godfather Waltz)", a: "Le Parrain",
+          q: "The Godfather Soundtrack from the Motion Picture Nino Rota Main Title Godfather Waltz",
+          interprete: "Nino Rota", altT: ["The Godfather Waltz"] },
         // « Clubbed to Death » n'existe chez Apple qu'en reprise : on prend
         // l'autre morceau emblématique du film, la scène du hall.
-        { t: "Spybreak!", a: "Matrix", q: "Propellerheads Spybreak Decksandrumsandrockandroll" },
+        { t: "Spybreak!", a: "Matrix",
+          q: "Propellerheads Spybreak Decksandrumsandrockandroll",
+          // Le morceau vit sur l'album des Propellerheads : pochette du film imposée.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/09/41/80/094180a7-fe91-3766-72f4-fd961f084f30/00030206602692.rgb.jpg/600x600bb.jpg" },
         { t: "Time", a: "Inception", q: "Time Hans Zimmer Inception" },
         { t: "Cornfield Chase", a: "Interstellar", q: "Cornfield Chase Hans Zimmer Interstellar" },
         { t: "The Diva Dance", a: "Le Cinquième Élément", q: "Eric Serra Diva Dance Fifth Element Original Motion Picture Soundtrack", altA: ["Le 5e Élément"] },
@@ -551,22 +569,37 @@ var Playlists = (function () {
         { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction" },
         { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
         { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
-        { t: "Main Title (The Shining)", a: "Shining", q: "The Shining Main Title Wendy Carlos" },
         { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore" },
-        { t: "C'era una volta il West", a: "Il était une fois dans l'Ouest", q: "Ennio Morricone C'era una volta il West" },
+        /* Le thème du duel final, choisi par Audrey. Apple n'a pas la bande
+           originale du film en album : l'enregistrement de Morricone n'existe
+           que sur des compilations, d'où la pochette imposée (le single
+           français de 1972). */
+        { t: "L'uomo dell'armonica", a: "Il était une fois dans l'Ouest",
+          q: "Ennio Morricone Film Music Collection Original Versions uomo armonica",
+          interprete: "Ennio Morricone",
+          altT: ["L'homme à l'harmonica", "C'era una volta il West"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d7/68/63/d7686395-d71e-b329-e8af-6ce84be9b5cc/dj.dshazwos.png/600x600bb.jpg" },
         { t: "Main Title", a: "Braveheart", q: "Braveheart Main Title James Horner" },
-        { t: "The Big Blue (Overture)", a: "Le Grand Bleu", q: "The Big Blue Overture Eric Serra" },
+        { t: "Homo Delphinus", a: "Le Grand Bleu",
+          q: "Eric Serra Homo Delphinus The Big Blue Original Motion Picture Soundtrack",
+          interprete: "Eric Serra", altA: ["The Big Blue"] },
         { t: "Enae Volare", a: "Les Visiteurs", q: "Les Visiteurs Eric Levi bande originale" },
         { t: "Reality", a: "La Boum", q: "Reality Richard Sanderson La Boum" },
         { t: "Oss 117 thème", a: "OSS 117", q: "Ludovic Bource OSS 117 Le Caire nid d'espions bande originale du film" },
         { t: "I'm Just Ken", a: "Barbie", q: "I'm Just Ken Ryan Gosling Barbie" },
         { t: "Laid", a: "American Pie", q: "James Laid Laid album" },
-        { t: "I See You", a: "Avatar", q: "I See You Leona Lewis Avatar" },
+        { t: "Becoming One of the People", a: "Avatar",
+          q: "James Horner Avatar Becoming One of The People Becoming One With Neytiri",
+          interprete: "James Horner",
+          altT: ["Becoming One of The People Becoming One With Neytiri"] },
         { t: "Astérix et Obélix: Mission Cléopâtre", a: "Astérix et Obélix : Mission Cléopâtre", q: "Asterix Obelix Mission Cleopatre bande originale Philippe Chany", altA: ["Mission Cléopâtre", "Astérix et Obélix"] },
         { t: "La Carioca", a: "La Cité de la peur", q: "La Carioca La Cite de la peur Les Nuls" },
         { t: "The Addams Family - Main Theme", a: "La Famille Addams", q: "Vic Mizzy Addams Family Original Music From The T.V. Show", altT: ["The Addams Family"] },
         { t: "Rabbi Jacob", a: "Les Aventures de Rabbi Jacob", q: "Vladimir Cosma Rabbi Jacob bande originale du film", altA: ["Rabbi Jacob"] },
-        { t: "Come and Get Your Love", a: "Les Gardiens de la Galaxie", q: "Come and Get Your Love Redbone" },
+        { t: "Come and Get Your Love", a: "Les Gardiens de la Galaxie",
+          q: "Come and Get Your Love Redbone",
+          // Apple sert le morceau sur le single de Redbone : pochette du film imposée.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/68/93/3a6893ed-7882-9d3c-c154-a96f6b5a4b50/14DMGIM05420.rgb.jpg/600x600bb.jpg" },
         { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer" },
         /* Celui-là s'imposait : le nom du site vient de Fatal Bazooka. */
         { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"] },
