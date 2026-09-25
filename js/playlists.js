@@ -1609,16 +1609,27 @@ var Playlists = (function () {
     return Match.normaliser(String(p.a).split(/[:,]/)[0]);
   }
 
+  /* « perso:rock,disney » : la sélection libre d'un salon. Renvoie les manches
+     cochées, ou null quand l'identifiant n'est pas une sélection. Une
+     sélection vide renvoie un tableau vide — c'est au salon d'empêcher de
+     lancer une partie sans rien dedans. */
+  function manchesChoisies(id) {
+    if (String(id).indexOf('perso:') !== 0) return null;
+    return String(id).slice(6).split(',').map(parId).filter(Boolean);
+  }
+
   function parId(id) {
     for (var i = 0; i < manches.length; i++) if (manches[i].id === id) return manches[i];
     return null;
   }
 
-  /* Sélection tirée au sort pour une partie. `melange` = toutes manches confondues. */
+  /* Sélection tirée au sort pour une partie. `melange` = toutes manches
+     confondues, `perso:a,b,c` = celles que le salon a cochées. */
   function tirage(id, nombre, graine) {
     var source;
-    if (id === 'melange') {
-      /* Deux filtres pour que le Grand mélange reste varié :
+    var choisies = id === 'melange' ? manches : manchesChoisies(id);
+    if (choisies) {
+      /* Deux filtres pour que le mélange reste varié :
          1. le même morceau listé dans deux catégories (« Wonderwall » est à la
             fois dans Années 90 et Karaoké) ;
          2. deux morceaux différents tirés de la même œuvre — le générique de
@@ -1627,7 +1638,7 @@ var Playlists = (function () {
          titres d'un même chanteur. */
       var vus = {}, vuesOeuvres = {};
       source = [];
-      manches.forEach(function (m) {
+      choisies.forEach(function (m) {
         m.pistes.forEach(function (p) {
           var cle = Match.normaliser(p.t) + '|' + Match.normaliser(p.a);
           if (vus[cle]) return;
@@ -1673,6 +1684,7 @@ var Playlists = (function () {
   return {
     manches: manches,
     parId: parId,
+    manchesChoisies: manchesChoisies,
     tirage: tirage,
     melangerAvecGraine: melangerAvecGraine
   };

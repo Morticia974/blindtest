@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=111">
+<link rel="stylesheet" href="css/style.css?v=112">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -114,6 +114,10 @@
     <div class="carte" style="margin-top:16px">
       <span class="etiquette">La manche</span>
       <div id="grille-manches" class="grille-manches"></div>
+      <div id="choix-perso" class="choix-perso" hidden>
+        <p class="aide-perso">Coche les catégories à mélanger&nbsp;: <b id="compte-perso"></b></p>
+        <div id="cases-perso" class="cases-perso"></div>
+      </div>
     </div>
 
     <div class="carte" style="margin-top:16px">
@@ -253,16 +257,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=111 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=112 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=111 à ?v=112. -->
-<script src="js/config.js?v=111"></script>
-<script src="js/match.js?v=111"></script>
-<script src="js/playlists.js?v=111"></script>
-<script src="js/itunes.js?v=111"></script>
-<script src="js/net.js?v=111"></script>
-<script src="js/game.js?v=111"></script>
-<script src="js/app.js?v=111"></script>
+     le changement ne s'affiche pas, passe tous les ?v=112 à ?v=113. -->
+<script src="js/config.js?v=112"></script>
+<script src="js/match.js?v=112"></script>
+<script src="js/playlists.js?v=112"></script>
+<script src="js/itunes.js?v=112"></script>
+<script src="js/net.js?v=112"></script>
+<script src="js/game.js?v=112"></script>
+<script src="js/app.js?v=112"></script>
 
 </body>
 </html>

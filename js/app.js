@@ -34,6 +34,10 @@
   var partie = null;          // la session de jeu en cours
   var profil = { nom: '', emoji: '🎤' };
   var mancheChoisie = 'melange';
+  /* Les catégories cochées dans « Personnaliser ». La manche choisie devient
+     alors « perso:rock,disney » : une seule chaîne, donc elle voyage dans
+     `meta.manche` comme n'importe quelle autre manche et tout le salon la voit. */
+  var persoChoisies = [];
   var historique = [];        // les extraits déjà passés, pour le récap final
   var dernierePisteJouee = null;
 
@@ -637,6 +641,13 @@
 
   /* ================= rendu du salon ================= */
 
+  function estPerso(id) { return String(id).indexOf('perso:') === 0; }
+  function idPerso() { return 'perso:' + persoChoisies.join(','); }
+
+  function diffuserManche() {
+    if (partie) net.maj('salons/' + partie.code + '/meta', { manche: mancheChoisie });
+  }
+
   function rendreManches() {
     var grille = $('grille-manches');
     grille.innerHTML = '';
@@ -644,24 +655,75 @@
     var choix = [{
       id: 'melange', emoji: '🎲', nom: 'Grand mélange',
       desc: 'Un peu de tout, toutes époques.'
-    }].concat(Playlists.manches);
+    }].concat(Playlists.manches).concat([{
+      id: 'perso', emoji: '🎛️', nom: 'Personnaliser',
+      desc: 'Un mélange, mais seulement des catégories que tu choisis.'
+    }]);
 
     choix.forEach(function (m) {
+      var actif = m.id === 'perso' ? estPerso(mancheChoisie) : m.id === mancheChoisie;
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'vignette-manche';
-      b.setAttribute('aria-pressed', String(m.id === mancheChoisie));
+      b.setAttribute('aria-pressed', String(actif));
       b.innerHTML = '<span class="emoji">' + m.emoji + '</span>' +
                     '<span class="nom"></span><span class="desc"></span>';
       b.querySelector('.nom').textContent = m.nom;
       b.querySelector('.desc').textContent = m.desc;
       b.addEventListener('click', function () {
-        mancheChoisie = m.id;
-        if (partie) net.maj('salons/' + partie.code + '/meta', { manche: m.id });
+        mancheChoisie = m.id === 'perso' ? idPerso() : m.id;
+        diffuserManche();
         rendreManches();
+        if (partie) rendreSalon();
       });
       grille.appendChild(b);
     });
+
+    rendrePerso();
+  }
+
+  /* Le panneau de cases à cocher, visible seulement en mode « Personnaliser ». */
+  function rendrePerso() {
+    var panneau = $('choix-perso');
+    panneau.hidden = !estPerso(mancheChoisie);
+    if (panneau.hidden) return;
+
+    var boite = $('cases-perso');
+    boite.innerHTML = '';
+    Playlists.manches.forEach(function (m) {
+      var coche = persoChoisies.indexOf(m.id) !== -1;
+      var etiquette = document.createElement('label');
+      etiquette.className = 'case-perso' + (coche ? ' cochee' : '');
+      etiquette.innerHTML = '<input type="checkbox"><span></span>';
+      var case_ = etiquette.querySelector('input');
+      case_.checked = coche;
+      etiquette.querySelector('span').textContent = m.emoji + ' ' + m.nom;
+      /* On ne reconstruit pas la liste à chaque clic : on retouche juste la case
+         touchée. Sinon la case disparaissait sous le doigt au moment même où on
+         la cochait. */
+      case_.addEventListener('change', function () {
+        var i = persoChoisies.indexOf(m.id);
+        if (this.checked && i === -1) persoChoisies.push(m.id);
+        if (!this.checked && i !== -1) persoChoisies.splice(i, 1);
+        etiquette.classList.toggle('cochee', this.checked);
+        mancheChoisie = idPerso();
+        diffuserManche();
+        majComptePerso();
+        if (partie) rendreSalon();
+      });
+      boite.appendChild(etiquette);
+    });
+
+    majComptePerso();
+  }
+
+  /* On annonce le nombre de morceaux réellement jouables : le tirage écarte les
+     doublons entre catégories et ne garde qu'un titre par œuvre, donc
+     additionner les catégories donnerait un chiffre trop optimiste. */
+  function majComptePerso() {
+    $('compte-perso').textContent = persoChoisies.length
+      ? Playlists.tirage(idPerso(), 99999, 1).length + ' morceaux'
+      : 'aucune catégorie cochée';
   }
 
   function rendreSalon() {
@@ -693,6 +755,10 @@
 
     if (etat.meta && etat.meta.manche && etat.meta.manche !== mancheChoisie) {
       mancheChoisie = etat.meta.manche;
+      // Un autre joueur a coché ou décoché : on remet nos cases d'aplomb.
+      if (estPerso(mancheChoisie)) {
+        persoChoisies = mancheChoisie.slice(6).split(',').filter(Boolean);
+      }
       rendreManches();
     }
 
@@ -703,6 +769,13 @@
       note.classList.remove('invisible');
       $('bouton-lancer').disabled = true;
       $('bouton-lancer').textContent = 'En attente de l\'hôte…';
+    } else if (estPerso(mancheChoisie) && !persoChoisies.length) {
+      // Sans une seule catégorie cochée, il n'y aurait rien à jouer du tout.
+      note.innerHTML = '<span><b>Coche au moins une catégorie</b> dans ' +
+        '« Personnaliser », sinon il n\'y a rien à mettre dans la partie.</span>';
+      note.classList.remove('invisible');
+      $('bouton-lancer').disabled = true;
+      $('bouton-lancer').textContent = 'Aucune catégorie cochée';
     } else {
       note.classList.add('invisible');
       $('bouton-lancer').disabled = false;
@@ -739,7 +812,8 @@
 
     $('compteur-manche').textContent = 'Titre ' + (tour.index + 1) + ' / ' + etat.meta.nbTitres;
     var m = Playlists.parId(etat.meta.manche);
-    $('nom-manche').textContent = m ? m.emoji + ' ' + m.nom : '🎲 Grand mélange';
+    $('nom-manche').textContent = m ? m.emoji + ' ' + m.nom
+      : (estPerso(etat.meta.manche) ? '🎛️ Sélection maison' : '🎲 Grand mélange');
 
     /* Dans une manche normale la catégorie est déjà écrite en haut ; dans le
        Grand mélange elle change à chaque morceau, on l'affiche donc ici. */

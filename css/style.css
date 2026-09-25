@@ -299,6 +299,38 @@ button, input, select { font: inherit; color: inherit; }
 .vignette-manche .nom { font-family: var(--display); font-weight: 700; font-size: 16px; display: block; }
 .vignette-manche .desc { font-size: 12.5px; color: var(--doux); display: block; margin-top: 3px; }
 
+/* Le panneau qui s'ouvre sous les vignettes quand on choisit « Personnaliser ». */
+.choix-perso {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--bord);
+}
+.aide-perso { font-size: 13px; color: var(--doux); margin: 0 0 11px; }
+.aide-perso b { font-family: var(--mono); color: var(--ambre); font-weight: 700; }
+.cases-perso {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+  gap: 8px;
+}
+.case-perso {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.45);
+  cursor: pointer;
+  font-size: 14px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.case-perso:hover { border-color: var(--vert); }
+.case-perso.cochee {
+  border-color: var(--vert);
+  background: linear-gradient(180deg, rgba(140,255,74,.20), rgba(140,255,74,.05));
+}
+.case-perso input { accent-color: var(--vert); width: 17px; height: 17px; flex: none; }
+
 .reglages { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .reglage span { display: block; margin-bottom: 6px; }
 .reglage input[type="range"] { width: 100%; accent-color: var(--vert); }
