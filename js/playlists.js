@@ -392,9 +392,17 @@ var Playlists = (function () {
         { t: "Down to Earth", a: "Wall-E", q: "Peter Gabriel Down to Earth Wall-E" },
         { t: "The Glory Days", a: "Les Indestructibles", q: "Michael Giacchino The Glory Days The Incredibles", altA: ["The Incredibles"] },
         { t: "Bundle of Joy", a: "Vice-versa", q: "Michael Giacchino Bundle of Joy Inside Out", altA: ["Inside Out"] },
-        { t: "Touch the Sky", a: "Rebelle", q: "Julie Fowlis Touch the Sky Brave", altA: ["Brave"] },
+        { t: "Vers le ciel", a: "Rebelle",
+          q: "Vers le Ciel Maeva Méline Rebelle Bande Originale du Film",
+          interprete: "Maeva Méline", altT: ["Touch the Sky"], altA: ["Brave"] },
         { t: "Hawaiian Roller Coaster Ride", a: "Lilo & Stitch", q: "Hawaiian Roller Coaster Ride Lilo and Stitch Original Motion Picture Soundtrack" },
-        { t: "I'm Still Here (Jim's Theme)", a: "La Planète au trésor", q: "John Rzeznik I'm Still Here Jim's Theme Treasure Planet", altT: ["I'm Still Here"] },
+        /* La bande originale française du film n'est pas chez Apple : la seule
+           version chantée en français est une reprise, validée par Audrey à
+           l'écoute. Pochette du film imposée, la reprise ayant la sienne. */
+        { t: "Un homme libre", a: "La Planète au trésor",
+          q: "Han Jones Chante Disney Un homme libre", interprete: "Han Jones",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/3e/55/00/3e550053-0a12-8c28-7a11-47b553d28c11/00094638584650.jpg/600x600bb.jpg",
+          altT: ["I'm Still Here", "Jim's Theme"] },
         { t: "L'Apprenti sorcier", a: "Fantasia", q: "L'apprenti sorcier Philadelphia Orchestra Leopold Stokowski" },
         { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"] },
         { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack" },
@@ -412,7 +420,15 @@ var Playlists = (function () {
            vient des films cultes, où il n'avait rien à faire. */
         { t: "Married Life", a: "Là-haut", q: "Michael Giacchino Married Life Up Soundtrack from the Motion Picture", altA: ["Up"] },
         { t: "Life Is a Highway", a: "Cars", q: "Rascal Flatts Life Is a Highway Cars Original Motion Picture Soundtrack" },
-        { t: "If I Didn't Have You", a: "Monstres & Cie", q: "Billy Crystal John Goodman If I Didn't Have You Monsters Inc Original Soundtrack", altA: ["Monstres et Cie", "Monstres et compagnie", "Monsters, Inc."] }
+        /* La VF, par Eric Métayer et Jacques Frantz — les voix de Bob et Sulli.
+           Elle n'existe que sur une compilation, d'où la pochette imposée : celle
+           de la bande originale du film. */
+        { t: "Si je ne t'avais pas", a: "Monstres & Cie",
+          q: "Si je ne t'avais pas Monstres et Cie Disney 100% Disney",
+          interprete: "Eric Métayer",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bd/e1/57/bde1574b-5f3d-7091-a355-8dfbc2adedf7/00094635323658.jpg/600x600bb.jpg",
+          altT: ["If I Didn't Have You", "Si je n'avais pas toi"],
+          altA: ["Monstres et Cie", "Monstres et compagnie", "Monsters, Inc."] }
       ]
     },
     {
