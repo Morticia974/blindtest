@@ -1042,6 +1042,7 @@
       var self = this;
 
       Jeu.creerSalon(net, p, reglagesActuels()).then(function (s) {
+        noterJoueur(p);
         brancherPartie(s);
       }).catch(function (e) {
         erreurAccueil("Impossible de créer le salon : " + e.message);
@@ -1062,6 +1063,7 @@
       var self = this;
 
       Jeu.rejoindreSalon(net, code, p).then(function (s) {
+        noterJoueur(p);
         brancherPartie(s);
       }).catch(function (e) {
         erreurAccueil(e.message);
@@ -1082,6 +1084,7 @@
       amorcerAudio();
       this.disabled = true;
       this.innerHTML = '<span class="chargement"></span> Préparation des extraits…';
+      noterPartie();
       partie.lancerPartie(mancheChoisie, reglagesActuels());
     });
 
@@ -1172,16 +1175,20 @@
     };
   }
 
-  /* ================= compteur de visites =================
+  /* ================= journal de bord (privé) =================
 
-     Deux nombres : les visiteurs (un navigateur, compté une seule fois pour
-     toujours) et les visites (une par session — recharger la page ne gonfle
-     pas le score).
+     Rien de tout ça ne s'affiche sur le site : c'est pour Audrey seule, qui
+     le consulte sur `journal.html`. On garde trois choses :
+
+       visites / visiteurs — combien de fois, et par combien de navigateurs
+       joueurs/<id>        — un pseudo, sa première venue, sa dernière, son
+                             nombre d'entrées en salon
+       parties             — combien de parties ont été lancées
 
      Rangé sous `salons/` parce que c'est le seul endroit que les règles de la
-     base autorisent à écrire. Un « salon » nommé `_compteur` ne gêne personne :
+     base autorisent à écrire. Un « salon » nommé `_prive` ne gêne personne :
      les vrais codes font quatre lettres, et rien ne parcourt la liste. */
-  var CHEMIN_COMPTEUR = 'salons/_compteur';
+  var JOURNAL = 'salons/_prive';
 
   function compterLaVisite(n) {
     if (!n || !n.incrementer) return;
@@ -1197,33 +1204,38 @@
       nouvelleVisite = true;
     }
 
-    var travaux = [
-      nouvelleVisite ? n.incrementer(CHEMIN_COMPTEUR + '/visites')
-                     : n.lire(CHEMIN_COMPTEUR + '/visites'),
-      nouveauVisiteur ? n.incrementer(CHEMIN_COMPTEUR + '/visiteurs')
-                      : n.lire(CHEMIN_COMPTEUR + '/visiteurs')
-    ];
-
-    Promise.all(travaux).then(function (r) {
-      afficherCompteur(r[0], r[1]);
-    }).catch(function () {
-      // Un compteur qui ne répond pas ne doit jamais gêner la partie.
-    });
+    if (nouvelleVisite) sansBruit(n.incrementer(JOURNAL + '/visites'));
+    if (nouveauVisiteur) sansBruit(n.incrementer(JOURNAL + '/visiteurs'));
   }
 
-  function afficherCompteur(visites, visiteurs) {
-    var coin = $('compteur-visites');
-    if (!coin || !visites) return;
-    var morceaux = ['👀 ' + separerMilliers(visites) + ' visite' + (visites > 1 ? 's' : '')];
-    if (visiteurs) {
-      morceaux.push(separerMilliers(visiteurs) + ' visiteur' + (visiteurs > 1 ? 's' : ''));
-    }
-    coin.textContent = morceaux.join(' · ');
-    coin.hidden = false;
+  /* Quelqu'un entre dans un salon : on note son pseudo. La même personne qui
+     revient met à jour sa ligne au lieu d'en créer une nouvelle. */
+  function noterJoueur(profil) {
+    if (!net || !net.maj || !profil) return;
+    var id = Jeu.identifiant();
+    var chemin = JOURNAL + '/joueurs/' + id;
+
+    sansBruit(net.lire(chemin).then(function (avant) {
+      var maintenant = Date.now();
+      return net.maj(chemin, {
+        pseudo: profil.nom || 'Anonyme',
+        emoji: profil.emoji || '',
+        premiere: (avant && avant.premiere) || maintenant,
+        derniere: maintenant,
+        fois: ((avant && avant.fois) || 0) + 1
+      });
+    }));
   }
 
-  function separerMilliers(n) {
-    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
+  function noterPartie() {
+    if (!net || !net.incrementer) return;
+    sansBruit(net.incrementer(JOURNAL + '/parties'));
+  }
+
+  /* Le journal ne doit jamais faire de vagues : s'il échoue, la partie
+     continue comme si de rien n'était. */
+  function sansBruit(promesse) {
+    if (promesse && promesse.catch) promesse.catch(function () {});
   }
 
   /* ================= démarrage ================= */

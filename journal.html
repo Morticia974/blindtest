@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Journal de bord — Ok Balance le Son Papa</title>
+
+<!-- Page volontairement absente des moteurs de recherche et de la navigation
+     du site : c'est le tableau de bord privé d'Audrey. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#06140F">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css?v=88">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📓</text></svg>">
+
+<style>
+  .journal { max-width: 860px; margin: 0 auto; padding: 28px 16px 60px; }
+
+  .journal h1 {
+    font-family: var(--display);
+    font-size: clamp(28px, 6vw, 44px);
+    margin: 0 0 4px;
+    color: var(--vert);
+  }
+  .journal .sous-titre { color: var(--doux); margin: 0 0 26px; font-size: 14px; }
+
+  .chiffres {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  @media (max-width: 520px) { .chiffres { grid-template-columns: 1fr; } }
+
+  .chiffre {
+    background: var(--surface);
+    border: 1px solid var(--bord);
+    border-radius: var(--rayon);
+    padding: 16px 18px;
+  }
+  .chiffre .nombre {
+    display: block;
+    font-family: var(--display);
+    font-size: 34px;
+    line-height: 1.1;
+    color: var(--vert);
+  }
+  .chiffre .quoi {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--doux);
+  }
+
+  .journal table { width: 100%; border-collapse: collapse; }
+  .journal th {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--doux);
+    padding: 0 10px 8px;
+    font-weight: 600;
+  }
+  .journal td {
+    padding: 11px 10px;
+    border-top: 1px solid var(--bord);
+    font-size: 15px;
+  }
+  .journal tbody tr:hover { background: rgba(255,255,255,.03); }
+  .journal .pseudo { font-weight: 700; }
+  .journal .quand { color: var(--doux); font-size: 13px; font-family: var(--mono); }
+  .journal .nombre-fois { text-align: right; font-family: var(--mono); color: var(--vert); }
+  .journal th.a-droite { text-align: right; }
+
+  /* Sur téléphone, quatre colonnes ne tiennent pas : « première venue » saute
+     (c'est la moins regardée) et les en-têtes raccourcissent. */
+  @media (max-width: 560px) {
+    .journal th:nth-child(2), .journal td:nth-child(2) { display: none; }
+    .journal th, .journal td { padding-left: 6px; padding-right: 6px; }
+    .journal td { font-size: 14px; }
+    .journal .long { display: none; }
+  }
+
+  .message { color: var(--doux); padding: 22px 2px; }
+  .message.souci { color: var(--corail); }
+
+  .bas {
+    margin-top: 34px;
+    padding-top: 18px;
+    border-top: 1px solid var(--bord);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bas p { margin: 0; color: var(--doux); font-size: 12.5px; max-width: 54ch; }
+  .bouton-vider {
+    background: transparent;
+    border: 1px solid var(--bord);
+    color: var(--doux);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .bouton-vider:hover { border-color: var(--corail); color: var(--corail); }
+</style>
+</head>
+<body>
+
+<main class="journal">
+  <h1>📓 Journal de bord</h1>
+  <p class="sous-titre">Qui est passé sur « Ok Balance le Son Papa ». Cette page n'est liée nulle part sur le site.</p>
+
+  <div class="chiffres">
+    <div class="chiffre"><span class="nombre" id="n-visiteurs">—</span><span class="quoi">visiteurs</span></div>
+    <div class="chiffre"><span class="nombre" id="n-visites">—</span><span class="quoi">visites</span></div>
+    <div class="chiffre"><span class="nombre" id="n-parties">—</span><span class="quoi">parties lancées</span></div>
+  </div>
+
+  <div id="message" class="message">Connexion à la base…</div>
+
+  <table id="tableau" hidden>
+    <thead>
+      <tr>
+        <th>Pseudo</th>
+        <th>Première venue</th>
+        <th>Vu <span class="long">pour la dernière fois</span></th>
+        <th class="a-droite">Parties <span class="long">rejointes</span></th>
+      </tr>
+    </thead>
+    <tbody id="lignes"></tbody>
+  </table>
+
+  <div class="bas">
+    <p>
+      Page discrète, pas secrète : elle n'est liée nulle part et les moteurs de
+      recherche l'ignorent, mais quelqu'un qui connaîtrait l'adresse pourrait
+      l'ouvrir. Ce ne sont que des pseudos de jeu et des dates.
+    </p>
+    <button type="button" class="bouton-vider" id="bouton-vider">Vider le journal</button>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="js/config.js?v=88"></script>
+<script src="js/net.js?v=88"></script>
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var JOURNAL = 'salons/_prive';
+  var reseau = null;
+
+  /* « hier », « il y a 3 jours », sinon la date. Plus parlant qu'un horodatage
+     brut quand on regarde qui est passé récemment. */
+  function quand(ms) {
+    if (!ms) return '—';
+    var d = new Date(ms);
+    var jours = Math.floor((Date.now() - ms) / 86400000);
+    if (jours <= 0) return "aujourd'hui";
+    if (jours === 1) return 'hier';
+    if (jours < 7) return 'il y a ' + jours + ' jours';
+    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: '2-digit' });
+  }
+
+  function nombre(n) {
+    return String(n || 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function afficher(donnees) {
+    donnees = donnees || {};
+    $('n-visiteurs').textContent = nombre(donnees.visiteurs);
+    $('n-visites').textContent = nombre(donnees.visites);
+    $('n-parties').textContent = nombre(donnees.parties);
+
+    var joueurs = donnees.joueurs || {};
+    var liste = Object.keys(joueurs).map(function (id) { return joueurs[id]; })
+                      .filter(function (j) { return j && j.pseudo; });
+    // Les derniers vus en haut : c'est ce qu'on regarde en premier.
+    liste.sort(function (a, b) { return (b.derniere || 0) - (a.derniere || 0); });
+
+    var corps = $('lignes');
+    corps.innerHTML = '';
+
+    if (!liste.length) {
+      $('tableau').hidden = true;
+      $('message').className = 'message';
+      $('message').textContent = donnees.visites
+        ? 'Des visites, mais personne n’a encore ouvert de salon.'
+        : 'Personne n’est encore passé. Reviens après ta prochaine partie 😉';
+      return;
+    }
+
+    liste.forEach(function (j) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td class="pseudo"></td><td class="quand"></td>' +
+                     '<td class="quand"></td><td class="nombre-fois"></td>';
+      tr.children[0].textContent = (j.emoji ? j.emoji + ' ' : '') + j.pseudo;
+      tr.children[1].textContent = quand(j.premiere);
+      tr.children[2].textContent = quand(j.derniere);
+      tr.children[3].textContent = j.fois || 1;
+      corps.appendChild(tr);
+    });
+
+    $('message').textContent = '';
+    $('message').className = 'message';
+    $('tableau').hidden = false;
+  }
+
+  function souci(texte) {
+    $('tableau').hidden = true;
+    $('message').className = 'message souci';
+    $('message').textContent = texte;
+  }
+
+  Net.creer().then(function (n) {
+    reseau = n;
+    if (n.nom === 'local') {
+      souci("Firebase n'a pas répondu, cette page ne peut rien afficher. " +
+            (n.erreurFirebase || ''));
+      return;
+    }
+    // On reste à l'écoute : la page se met à jour pendant que les gens jouent.
+    n.ecouter(JOURNAL, afficher);
+  }).catch(function (e) {
+    souci('Connexion impossible : ' + e.message);
+  });
+
+  $('bouton-vider').addEventListener('click', function () {
+    if (!reseau || reseau.nom === 'local') return;
+    var sur = window.confirm(
+      'Effacer tout le journal ?\n\n' +
+      'Les compteurs repartent à zéro et la liste des pseudos est perdue. ' +
+      'C’est définitif, il n’y a pas de retour en arrière.');
+    if (!sur) return;
+    reseau.supprimer(JOURNAL).then(function () {
+      afficher({});
+    }).catch(function (e) {
+      souci('Impossible de vider : ' + e.message);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

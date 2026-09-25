@@ -80,10 +80,20 @@ Compte une vingtaine de minutes la première fois.
    Traduction : seules les personnes connectées au jeu peuvent lire et écrire
    dans les salons, et rien d'autre dans la base n'est accessible.
 
-   > Le compteur de visites du pied de page est rangé dans `salons/_compteur`,
-   > pour tenir dans ces mêmes règles sans en ajouter. Les vrais codes de salon
-   > font quatre lettres, donc il n'y a aucun risque de collision. Pour remettre
-   > le compteur à zéro, supprime ce nœud dans l'onglet **Données** de la base.
+   > **Journal de bord.** Le site enregistre discrètement qui passe : nombre de
+   > visites, de visiteurs, de parties lancées, et le pseudo de chaque personne
+   > entrée dans un salon. Rien ne s'affiche sur le site ; ça se consulte sur
+   > **`journal.html`**, une page qui n'est liée nulle part.
+   >
+   > Ces données sont rangées dans `salons/_prive`, pour tenir dans les règles
+   > ci-dessus sans en ajouter. Les vrais codes de salon font quatre lettres,
+   > donc aucun risque de collision. Le bouton « Vider le journal » de la page
+   > remet tout à zéro ; on peut aussi supprimer le nœud à la main dans l'onglet
+   > **Données** de la base.
+   >
+   > ⚠️ Page discrète, pas secrète : elle n'est liée nulle part et les moteurs de
+   > recherche l'ignorent, mais quelqu'un qui connaîtrait l'adresse pourrait
+   > l'ouvrir. Ce ne sont que des pseudos de jeu et des dates.
 
 5. Menu de gauche → **Authentication** → **Commencer** → onglet **Sign-in
    method** → active **Anonyme**.
