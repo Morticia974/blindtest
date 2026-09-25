@@ -1504,9 +1504,9 @@ var Playlists = (function () {
     },
     {
       id: 'monde',
-      nom: "Zouk, reggae, latino & Afrique",
+      nom: "Zouk, reggae, latino, Afrique & Bretagne",
       emoji: "🌍",
-      desc: "Zouk, reggae, salsa, raï, afrobeats : les tubes qui font voyager.",
+      desc: "Zouk, reggae, raï, afrobeats et bagadoù : les tubes qui font voyager.",
       labelA: "Artiste",
       pistes: [
       /* Treize morceaux retirés après une écoute complète de la catégorie :
@@ -1615,7 +1615,31 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/1a/d4/521ad4e3-9c00-39ad-b5ae-6fc2f144bf98/06UMGIM11277.rgb.jpg/600x600bb.jpg" },
         { t: "Les champs de roses", a: "Danakil",
           q: "Danakil Les champs de roses Dialogue de sourds",
-          interprete: "Danakil", altT: ["Le champ des roses"] }
+          interprete: "Danakil", altT: ["Le champ des roses"] },
+
+        /* La Bretagne, où vit Audrey — elle n'était représentée que par
+           « La Tribu de Dana » et « Lambé An Dro », rangés ailleurs. C'est ce
+           qui a fait entrer « Bretagne » dans le nom de la catégorie. */
+        { t: "La Jument de Michao", a: "Tri Yann",
+          q: "Tri Yann La Jument de Michao La decouverte ou l'ignorance",
+          interprete: "Tri Yann", altT: ["Le Loup, le Renard et la Belette"] },
+        { t: "Pelot d'Hennebont", a: "Tri Yann",
+          q: "Tri Yann Pelot d'Hennebont",
+          interprete: "Tri Yann", altT: ["Le Pelot d'Hennebont"] },
+        { t: "Du rhum, des femmes", a: "Soldat Louis",
+          q: "Soldat Louis Du rhum des femmes Premiere bordee",
+          interprete: "Soldat Louis" },
+        { t: "L'Apologie", a: "Matmatah",
+          q: "Matmatah L'apologie La ouache",
+          interprete: "Matmatah" },
+        /* Les points du sigle deviennent des espaces à la normalisation, donc
+           « Bell'A.R.B. » se compare comme « bella r b ». « Bellarb », qu'on
+           écrit spontanément, passe déjà à deux fautes près — on l'ajoute
+           quand même en clair, demandé par Audrey. */
+        { t: "Bell'A.R.B.", a: "Les Ramoneurs de Menhirs",
+          q: "Les Ramoneurs de menhirs Bell A.R.B. Dans an diaoul",
+          interprete: "Les Ramoneurs de menhirs",
+          altT: ["Bellarb", "Bell ARB"], altA: ["Ramoneurs de Menhirs"] }
       ]
     }
   ];
