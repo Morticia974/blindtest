@@ -158,7 +158,8 @@ var Playlists = (function () {
         { t: "Tu m'oublieras", a: "Larusso", q: "Larusso Tu m'oublieras Simplement 1999" },
         // Sur son album de 1996 plutôt que sur la compilation « Soon ».
         { t: "Dieu m'a donné la foi", a: "Ophélie Winter",
-          q: "Ophélie Winter Dieu m'a donné la foi No Soucy" }
+          q: "Ophélie Winter Dieu m'a donné la foi No Soucy" },
+        { t: "Lucie", a: "Pascal Obispo", q: "Pascal Obispo Lucie Superflu" }
       ]
     },
     {
