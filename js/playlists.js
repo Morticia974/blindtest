@@ -136,7 +136,18 @@ var Playlists = (function () {
         { t: "Over the Rainbow", a: "Israel Kamakawiwo'ole", altT: ["Somewhere Over the Rainbow"], altA: ["IZ", "Kamakawiwo'ole"] },
         { t: "Baby Come Back", a: "Worlds Apart" },
         { t: "Partir un jour", a: "2 Be 3" },
-        { t: "Te garder près de moi", a: "Alliage" }
+        { t: "Te garder près de moi", a: "Alliage" },
+
+        /* Sept ajouts choisis par Audrey pour étoffer la catégorie. */
+        { t: "Sensualité", a: "Axelle Red", q: "Axelle Red Sensualité Sans plus attendre" },
+        { t: "Osez Joséphine", a: "Alain Bashung", q: "Alain Bashung Osez Joséphine" },
+        { t: "Le Chat", a: "Pow Wow", q: "Pow Wow Le chat Regagner les plaines" },
+        { t: "Alors regarde", a: "Patrick Bruel", q: "Patrick Bruel Alors regarde" },
+        { t: "(Everything I Do) I Do It for You", a: "Bryan Adams",
+          q: "Bryan Adams Everything I Do I Do It for You Waking Up the Neighbours",
+          altT: ["Everything I Do", "I Do It for You"] },
+        { t: "Kiss from a Rose", a: "Seal", q: "Seal Kiss from a Rose Seal II" },
+        { t: "No Scrubs", a: "TLC", q: "TLC No Scrubs Fanmail" }
       ]
     },
     {
