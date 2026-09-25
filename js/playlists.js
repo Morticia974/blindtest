@@ -147,7 +147,18 @@ var Playlists = (function () {
           q: "Bryan Adams Everything I Do I Do It for You Waking Up the Neighbours",
           altT: ["Everything I Do", "I Do It for You"] },
         { t: "Kiss from a Rose", a: "Seal", q: "Seal Kiss from a Rose Seal II" },
-        { t: "No Scrubs", a: "TLC", q: "TLC No Scrubs Fanmail" }
+        { t: "No Scrubs", a: "TLC", q: "TLC No Scrubs Fanmail" },
+
+        /* Deux titres de la liste d'Audrey. Le single de 1993 de Billy Ze Kick
+           n'est pas chez Apple France : seul le ragga mix y est, et elle l'a
+           validé à l'écoute — d'où `voulue`, qui lève la pénalité sur les mix. */
+        { t: "Mangez-moi ! Mangez-moi !", a: "Billy Ze Kick",
+          q: "Billy Ze Kick et les Gamins en Folie Mangez-moi", voulue: true,
+          altT: ["Mangez-moi"], altA: ["Billy Ze Kick et les Gamins en Folie"] },
+        { t: "Tu m'oublieras", a: "Larusso", q: "Larusso Tu m'oublieras Simplement 1999" },
+        // Sur son album de 1996 plutôt que sur la compilation « Soon ».
+        { t: "Dieu m'a donné la foi", a: "Ophélie Winter",
+          q: "Ophélie Winter Dieu m'a donné la foi No Soucy" }
       ]
     },
     {
