@@ -772,7 +772,38 @@ var Playlists = (function () {
         { t: "Carry On Wayward Son", a: "Supernatural",
           q: "Kansas Carry On Wayward Son Leftoverture",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/0b/a3/6f0ba3d7-9896-e833-d95f-12ffa8a70660/794043145414.jpg/600x600bb.jpg" },
-        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] }
+        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] },
+
+        /* Cinq séries choisies par Audrey pour remplacer celles qu'on a
+           retirées. Trois d'entre elles n'ont jamais sorti leur générique en
+           disque : on garde une reprise fidèle, comme pour Magnum ou Columbo.
+           « Charmed » manque à l'appel : la version de la série est celle de
+           Love Spit Love, et elle n'est pas chez Apple. */
+        { t: "Sex and the City Main Theme", a: "Sex and the City",
+          q: "Sex And The City Main Theme Cover Version Geek Music",
+          /* Le mot « cover » est écrit noir sur blanc dans le titre ET dans le
+             nom de l'album : sans `voulue`, le moteur rétrogradait le seul
+             enregistrement disponible. */
+          voulue: true, interprete: "Geek Music",
+          altA: ["Sex & the City"] },
+        { t: "The Vampire Diaries - Main Theme", a: "Vampire Diaries",
+          q: "The Vampire Diaries Main Theme Geek Music single",
+          interprete: "Geek Music", altA: ["The Vampire Diaries"] },
+        { t: "I Don't Want to Be", a: "Les Frères Scott",
+          q: "Gavin DeGraw I Don't Want to Be Chariot",
+          // La version studio vit sur l'album de Gavin DeGraw : on impose la
+          // pochette de la bande originale de la série.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d4/c7/ee/d4c7ee2d-a6c2-ed07-ac36-611ab2695d81/s06.mydywsyz.jpg/600x600bb.jpg",
+          interprete: "Gavin DeGraw", altA: ["One Tree Hill"] },
+        { t: "Once Upon a Time - Main Theme", a: "Once Upon a Time",
+          q: "Once Upon a Time Main Theme Geek Music single",
+          interprete: "Geek Music" },
+        // Le même thème ouvre les quatre saisons, chacune avec sa pochette :
+        // on fixe celle de la première.
+        { t: "Main Title Theme", a: "Westworld",
+          q: "Ramin Djawadi Main Title Theme Westworld Season 1 Music from the HBO Series",
+          interprete: "Ramin Djawadi",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/09/b9/dc/09b9dcef-70c1-d41f-2f4b-aee1973cdfd8/794043191107.jpg/600x600bb.jpg" }
         /* « Alerte Cobra » retirée : aucune des pochettes d'Apple ne parle
            de la série telle qu'on la connaît en France. */
       ]
