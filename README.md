@@ -52,6 +52,18 @@ ait une adresse).
 
 Compte une vingtaine de minutes la première fois.
 
+### Le catalogue en fichier texte
+
+Après chaque ajout ou retrait de morceau, relancer :
+
+```
+python outils/catalogue.py
+```
+
+Ça réécrit `Documents\ClaudeAI\Catalogue blind test.txt` — la liste complète
+des titres avec leur artiste et leur catégorie, pour Audrey. Le script relit
+`js/playlists.js` et `index.html`, donc le document suit toujours le jeu.
+
 ### Étape 1 — La base de données (Firebase)
 
 1. Va sur **console.firebase.google.com** et connecte-toi avec un compte Google.
