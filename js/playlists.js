@@ -286,7 +286,10 @@ var Playlists = (function () {
         { t: "Amsterdam", a: "Jacques Brel", q: "Jacques Brel Amsterdam Olympia 1964", voulue: true },
         { t: "Le Gorille", a: "Georges Brassens" },
         /* Sans l'album, Apple servait la reprise de La Grande Sophie. */
-        { t: "Comme un arbre dans la ville", a: "Maxime Le Forestier", q: "Maxime Le Forestier Comme un arbre dans la ville Mon frere" },
+        // Beaucoup l'appellent « la maison bleue » : les deux sont acceptés.
+        { t: "San Francisco", a: "Maxime Le Forestier",
+          q: "Maxime Le Forestier San Francisco Mon frère",
+          altT: ["La Maison bleue", "Maison bleue"] },
         { t: "Ella, elle l'a", a: "France Gall" },
         { t: "Dis, quand reviendras-tu ?", a: "Barbara" },
         { t: "Requiem pour un fou", a: "Johnny Hallyday" },
