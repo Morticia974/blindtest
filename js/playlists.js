@@ -357,7 +357,16 @@ var Playlists = (function () {
         /* Apple France n'a rien d'utilisable pour Dumbo, Coco, Le Prince
            d'Égypte, Kuzco, Oliver et Compagnie ni Rox et Rouky : que des
            versions piano, anglaises, ou un autre film entièrement. */
-        { t: "Bibbidi-Bobbidi-Boo", a: "Cendrillon", q: "Cendrillon Bibbidi Bobbidi Boo Bande Originale Française" },
+        /* Attention : Apple a DEUX albums au nom presque identique, qui ne
+           different que par une majuscule. « Bande Originale Française » est
+           le film live de 2015 (Helena Bonham Carter), « Bande Originale
+           française » le dessin anime de 1950. Cette recherche-ci ne renvoie
+           qu'un seul resultat : la bonne version, par la voix francaise de
+           la marraine. */
+        { t: "Chanson magique", a: "Cendrillon",
+          q: "Cendrillon bande originale française du film Claude Chantal",
+          interprete: "Claude Chantal",
+          altT: ["Bibbidi-Bobbidi-Boo", "Où ai-je mis cette chose"] },
         { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews" },
         { t: "J'en ai rêvé", a: "La Belle au bois dormant", q: "La Belle au bois dormant J'en ai rêvé bande originale française" },
         { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française" },
