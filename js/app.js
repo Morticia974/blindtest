@@ -39,12 +39,23 @@
 
   /* ================= écrans ================= */
 
+  var ecranAffiche = null;
+
   function montrer(nom) {
     if (nom !== 'fin') { arreterSacre(); arreterSacreVideo(); }
     ['accueil', 'salon', 'jeu', 'fin'].forEach(function (e) {
       $('ecran-' + e).classList.toggle('actif', e === nom);
     });
-    window.scrollTo(0, 0);
+
+    /* Remonter en haut de page SEULEMENT quand on change vraiment d'écran.
+       montrer('salon') est rejoué à chaque rafraîchissement du salon — arrivée
+       d'un joueur, battement de présence, changement de réglage — et sans ce
+       garde-fou la page remontait toute seule pendant qu'on réglait la partie
+       en bas. */
+    if (nom !== ecranAffiche) {
+      ecranAffiche = nom;
+      window.scrollTo(0, 0);
+    }
   }
 
   function erreurAccueil(message) {
