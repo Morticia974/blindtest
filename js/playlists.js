@@ -389,7 +389,6 @@ var Playlists = (function () {
            n'y est pas, seulement l'original de Carl Douglas, qui ferait répondre
            « Kung Fu Fighting » plutôt que le nom du film. */
         { t: "Le Festin", a: "Ratatouille", q: "Camille Le Festin Ratatouille" },
-        { t: "Down to Earth", a: "Wall-E", q: "Peter Gabriel Down to Earth Wall-E" },
         { t: "The Glory Days", a: "Les Indestructibles", q: "Michael Giacchino The Glory Days The Incredibles", altA: ["The Incredibles"] },
         { t: "Bundle of Joy", a: "Vice-versa", q: "Michael Giacchino Bundle of Joy Inside Out", altA: ["Inside Out"] },
         { t: "Vers le ciel", a: "Rebelle",
@@ -406,9 +405,7 @@ var Playlists = (function () {
         { t: "L'Apprenti sorcier", a: "Fantasia", q: "L'apprenti sorcier Philadelphia Orchestra Leopold Stokowski" },
         { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"] },
         { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack" },
-        { t: "Can't Stop the Feeling!", a: "Les Trolls", q: "Justin Timberlake Can't Stop the Feeling Trolls Original Motion Picture Soundtrack", altA: ["Trolls"] },
         { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"] },
-        { t: "Winnie l'ourson", a: "Winnie l'ourson", q: "Winnie l'Ourson Nicole Croisille 100% Disney" },
         // La version française d'« Oo-De-Lally », par Pierre Vassiliu. Apple
         // France n'a pas la bande originale française du film : le seul endroit
         // où elle se trouve est une compilation, dont la pochette est donc
@@ -428,7 +425,35 @@ var Playlists = (function () {
           interprete: "Eric Métayer",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bd/e1/57/bde1574b-5f3d-7091-a355-8dfbc2adedf7/00094635323658.jpg/600x600bb.jpg",
           altT: ["If I Didn't Have You", "Si je n'avais pas toi"],
-          altA: ["Monstres et Cie", "Monstres et compagnie", "Monsters, Inc."] }
+          altA: ["Monstres et Cie", "Monstres et compagnie", "Monsters, Inc."] },
+
+        /* Sept films demandés par Audrey. Quand la version française chantée
+           existe, c'est elle qui est prise. Les Mondes de Ralph n'a aucune
+           chanson : c'est sa musique de film. Raya n'en a pas en français :
+           c'est le générique de fin, qu'Audrey a validé à l'écoute. */
+        { t: "Joyeux non-anniversaire", a: "Alice au pays des merveilles",
+          q: "Joyeux non anniversaire Cast of Alice in Wonderland Disney 50 plus belles",
+          // La VF ne vit que sur une compilation : pochette du film imposée.
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/a4/41/b1/a441b16b-b833-d7ab-a1e8-6f872b1f2eaf/00050086070077.rgb.jpg/600x600bb.jpg",
+          altT: ["Un joyeux non-anniversaire"], altA: ["Alice"] },
+        { t: "En chemin", a: "Frère des ours",
+          q: "Frère des ours bande originale de film En chemin Phil Collins version française",
+          interprete: "Phil Collins", altA: ["Frères des ours"] },
+        { t: "Un Poco Loco", a: "Coco",
+          q: "Coco Bande Originale du Film Disney Pixar Un Poco Loco",
+          interprete: "Andrea Santamaria" },
+        { t: "Je fais le vœu", a: "Wish",
+          q: "Wish Asha et la bonne étoile Je fais le vœu Océane Demontis",
+          interprete: "Océane Demontis", altA: ["Wish : Asha et la bonne étoile"] },
+        { t: "Wreck-It Ralph", a: "Les Mondes de Ralph",
+          q: "Wreck-It Ralph Original Score Henry Jackman",
+          interprete: "Henry Jackman", altA: ["Ralph"] },
+        { t: "Immortals", a: "Les Nouveaux Héros",
+          q: "Fall Out Boy Immortals Big Hero 6 Original Motion Picture Soundtrack",
+          interprete: "Fall Out Boy", altA: ["Big Hero 6"] },
+        { t: "Lead the Way", a: "Raya et le dernier dragon",
+          q: "Jhené Aiko Lead the Way Raya and the Last Dragon",
+          interprete: "Jhené Aiko", altA: ["Raya"] }
       ]
     },
     {
