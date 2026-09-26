@@ -69,6 +69,16 @@
     box-shadow: inset 0 0 0 2px var(--gold); display: grid; place-items: center; padding: 0; cursor: pointer;
   }
   .tool.off { color: #8a8a7a; box-shadow: inset 0 0 0 2px #8a8a7a; filter: grayscale(1); opacity: .6; position: relative; }
+  .tools { position: relative; }
+  .tool.on { background: var(--gold); color: var(--forest); }
+  .volpanel {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 10;
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px;
+    background: var(--forest-2); color: var(--parch); box-shadow: 0 8px 24px #000a, inset 0 0 0 2px var(--gold);
+    font-weight: 800; white-space: nowrap;
+  }
+  .volpanel input { width: clamp(120px, 30vw, 220px); accent-color: var(--gold); }
+  .volpanel span { min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
   .tool.off::after { content: ""; position: absolute; left: 22%; right: 22%; top: 50%; height: 3px; background: #c8553d; transform: rotate(-45deg); border-radius: 2px; }
   .tool:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 2px; }
 
@@ -532,7 +542,7 @@ function medal(key) {
 
 /* ================= MUSIC (original tunes, Web Audio) ================= */
 const Sound = (() => {
-  let ac = null, bus, sfx, master, mus, musicOn = store("beurk-music") !== "off", fxOn = store("beurk-fx") !== "off", timer = null, next = 0, step = 0, song = "A", pending = null;
+  let ac = null, bus, sfx, master, mus, musicOn = store("beurk-music") !== "off", fxOn = store("beurk-fx") !== "off", vol = (() => { const v = parseFloat(store("beurk-vol")); return isNaN(v) ? 0.8 : Math.min(1, Math.max(0, v)); })(), timer = null, next = 0, step = 0, song = "A", pending = null;
   const SONGS = {
     A: { bpm: 140, spb: 6, arp: [0, 1, 2, 3, 2, 1], drum: [1, 0, 2, 1, 0, 2],
       ch: ["D3 F3 A3","C3 E3 G3","D3 F3 A3","A2 C3 E3","D3 F3 A3","C3 E3 G3","G2 B2 D3","D3 F3 A3"],
@@ -569,7 +579,7 @@ const Sound = (() => {
     if (ac) { if (ac.state === "suspended") ac.resume(); return; }
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
     ac = new AC();
-    master = ac.createGain(); master.gain.value = 0.8;
+    master = ac.createGain(); master.gain.value = vol;
     mus = ac.createGain(); mus.gain.value = musicOn ? 1 : 0; mus.connect(master);
     const comp = ac.createDynamicsCompressor(); master.connect(comp); comp.connect(ac.destination);
     bus = ac.createGain(); bus.gain.value = 0.9; bus.connect(mus);
@@ -669,7 +679,8 @@ const Sound = (() => {
   }
   function toggleMusic() { musicOn = !musicOn; store("beurk-music", musicOn ? "on" : "off"); if (ac) mus.gain.setTargetAtTime(musicOn ? 1 : 0, ac.currentTime, 0.05); return musicOn; }
   function toggleFx() { fxOn = !fxOn; store("beurk-fx", fxOn ? "on" : "off"); return fxOn; }
-  return { init, play, fx, toggleMusic, toggleFx, get musicOn() { return musicOn; }, get fxOn() { return fxOn; } };
+  function setVolume(v) { vol = Math.min(1, Math.max(0, v)); store("beurk-vol", String(vol)); if (ac) master.gain.setTargetAtTime(vol, ac.currentTime, 0.03); }
+  return { init, play, fx, toggleMusic, toggleFx, setVolume, get musicOn() { return musicOn; }, get fxOn() { return fxOn; }, get volume() { return vol; } };
 })();
 
 
@@ -926,7 +937,7 @@ requestAnimationFrame(draw);
 
 /* ================= APP ================= */
 const bar = document.getElementById("bar"), stage = document.getElementById("stage");
-let st = null, wake = null;
+let st = null, wake = null, volOpen = false;
 
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
@@ -936,12 +947,22 @@ const canFS = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled)
 
 function tools() {
   return `<div class="tools">
+    <button class="tool${volOpen ? " on" : ""}" id="vol" aria-label="Volume" title="Volume" aria-expanded="${volOpen}">🔊</button>
     <button class="tool${Sound.musicOn ? "" : " off"}" id="snd" aria-label="Musique" title="Musique">🎵</button>
     <button class="tool${Sound.fxOn ? "" : " off"}" id="sfx" aria-label="Bruitages" title="Bruitages">🔔</button>
     ${canFS ? `<button class="tool" id="fs" aria-label="Plein écran">⛶</button>` : ""}
+    <div class="volpanel" id="volpanel"${volOpen ? "" : " hidden"}>
+      <label for="volume">Volume</label>
+      <input id="volume" type="range" min="0" max="100" step="5" value="${Math.round(Sound.volume * 100)}">
+      <span id="volval">${Math.round(Sound.volume * 100)}&nbsp;%</span>
+    </div>
   </div>`;
 }
 function wireTools() {
+  const vb = document.getElementById("vol"), vp = document.getElementById("volpanel"), vr = document.getElementById("volume"), vv = document.getElementById("volval");
+  vb.onclick = () => { volOpen = !volOpen; vp.hidden = !volOpen; vb.classList.toggle("on", volOpen); vb.setAttribute("aria-expanded", volOpen); if (volOpen) Sound.init(); };
+  vr.oninput = () => { Sound.setVolume(vr.value / 100); vv.innerHTML = vr.value + "&nbsp;%"; };
+  vr.onchange = () => Sound.fx("tap");
   const s = document.getElementById("snd");
   s.onclick = () => { Sound.init(); s.classList.toggle("off", !Sound.toggleMusic()); };
   const x = document.getElementById("sfx");
