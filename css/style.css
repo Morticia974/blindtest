@@ -222,6 +222,31 @@ button, input, select { font: inherit; color: inherit; }
 }
 .choix-emoji:hover { border-color: var(--vert); }
 
+/* La grille des avatars, repliée par défaut sous le bouton. */
+.choix-avatars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bord);
+  background: rgba(4,14,10,.45);
+  max-height: 208px;
+  overflow-y: auto;
+}
+.avatar {
+  font-size: 22px;
+  line-height: 1;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+.avatar:hover { border-color: var(--vert); background: rgba(140,255,74,.10); }
+.avatar.choisi { border-color: var(--vert); background: rgba(140,255,74,.20); }
+
 /* La palette des joueurs. Les pastilles prises restent affichées mais éteintes :
    on voit ainsi que la couleur existe, et qu'elle est occupée. */
 .palette { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }

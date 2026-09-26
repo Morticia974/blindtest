@@ -88,7 +88,27 @@
     el.style.color = encreSur(v);
   }
 
-  var EMOJIS = ['🎤','🎧','🎸','🥁','🎹','🎺','🕺','💃','🦩','🐙','🦊','🐸','👽','🤖','🍕','🌮','⚡','🌈','🔥','🦄'];
+  /* Les avatars. Rangés par familles pour que la grille reste lisible : on
+     repère « les animaux » d'un coup d'œil au lieu de lire soixante dessins.
+     Rien de trop récent dans la liste — un emoji sorti l'an dernier s'affiche
+     en carré vide sur un téléphone qui n'a pas suivi. */
+  var EMOJIS = [
+    // musique
+    '🎤','🎧','🎸','🥁','🎹','🎺','🎷','🎻','📻','💿','🔊','🎙️',
+    // fête, et les cornes du métal — réclamées nommément par Audrey
+    '🤘','🕺','💃','🪩','🎉','🎊','🥳','🍾','🎁',
+    // animaux
+    '🦊','🐙','🐸','🦩','🦄','🐼','🐨','🦁','🐯','🐺','🦝','🐧',
+    '🦉','🦆','🐢','🐳','🦈','🐝','🦋','🐰','🐹','🐷','🐵','🐶',
+    // le serpent est pour Audrey : Morticia, et Serpentard
+    '🐍',
+    // créatures
+    '👽','🤖','👻','🎃','💀','🦇','🖤','🐉','🦖','🧙','🧛',
+    // nourriture
+    '🍕','🌮','🍔','🍟','🍩','🍪','🧁','🍉','🍒','🥑','🍺',
+    // symboles
+    '⚡','🌈','🔥','⭐','🌙','🍀','💎','🎯','🚀','🛸','⚓','🎲'
+  ];
 
   // Petites piques quand la réponse est fausse — histoire que ça ne soit pas
   // toujours le même « Pas ça… » sec.
@@ -164,6 +184,34 @@
     $('champ-pseudo').value = profil.nom || '';
     $('bouton-emoji').textContent = profil.emoji;
     rendrePalette('palette-accueil', {});
+    rendreAvatars();
+  }
+
+  /* La grille des avatars. Elle reste repliée : soixante dessins ouverts en
+     permanence mangeraient tout l'écran d'accueil sur un téléphone. */
+  function rendreAvatars() {
+    var boite = $('choix-avatars');
+    if (!boite) return;
+    boite.innerHTML = '';
+
+    EMOJIS.forEach(function (e) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'avatar' + (e === profil.emoji ? ' choisi' : '');
+      b.textContent = e;
+      b.setAttribute('aria-pressed', String(e === profil.emoji));
+      b.addEventListener('click', function () {
+        profil.emoji = e;
+        try { localStorage.setItem('bt.profil', JSON.stringify(profil)); } catch (err) {}
+        $('bouton-emoji').textContent = e;
+        if (partie) {
+          net.maj('salons/' + partie.code + '/joueurs/' + partie.moi, { emoji: e });
+        }
+        rendreAvatars();
+        boite.hidden = true;
+      });
+      boite.appendChild(b);
+    });
   }
 
   /* Dessine une palette de pastilles. `prises` recense les couleurs déjà
@@ -1172,9 +1220,10 @@
   function poserEvenements() {
 
     $('bouton-emoji').addEventListener('click', function () {
-      var i = EMOJIS.indexOf(profil.emoji);
-      profil.emoji = EMOJIS[(i + 1) % EMOJIS.length];
-      this.textContent = profil.emoji;
+      var boite = $('choix-avatars');
+      boite.hidden = !boite.hidden;
+      this.setAttribute('aria-expanded', String(!boite.hidden));
+      if (!boite.hidden) rendreAvatars();
     });
 
     curseursSon().forEach(function (c) {
