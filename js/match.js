@@ -234,6 +234,40 @@ var Match = (function () {
     return partiel;
   }
 
+  /* Tous les morceaux d'affilée d'une proposition, du plus long au plus court.
+     « amoureux solitaires lio » donne « amoureux solitaires lio », puis
+     « amoureux solitaires », puis « solitaires lio », etc. */
+  function tranches(proposition) {
+    var mots = normaliser(proposition).split(' ').filter(Boolean);
+    var out = [];
+    for (var taille = mots.length; taille >= 1; taille--) {
+      for (var d = 0; d + taille <= mots.length; d++) {
+        out.push(mots.slice(d, d + taille).join(' '));
+      }
+    }
+    return out;
+  }
+
+  /* La réponse se cache-t-elle quelque part dans ce qui a été tapé ?
+
+     Sert uniquement à savoir s'il faut se taire : une proposition qui contient
+     la bonne réponse ne part pas dans le fil commun, même si le jeu n'a pas su
+     la compter. Sinon un joueur qui écrit juste mais que le moteur rate
+     afficherait la réponse à toute la table.
+
+     Quatre lettres au minimum : sans ce garde-fou, un artiste nommé « Lio »
+     ferait taire toutes les bêtises contenant « lio ». */
+  function contientReponse(proposition, piste) {
+    var vTitre = piste.variantesTitre || variantesTitre(piste.titre);
+    var vArtiste = piste.variantesArtiste || variantesArtiste(piste.artiste);
+    var bouts = tranches(proposition);
+    for (var i = 0; i < bouts.length; i++) {
+      if (bouts[i].length < 4) continue;
+      if (correspond(bouts[i], vTitre) || correspond(bouts[i], vArtiste)) return true;
+    }
+    return false;
+  }
+
   /* Point d'entrée du jeu : que vient de trouver ce joueur ?
      Renvoie {titre: bool, artiste: bool}. */
   function evaluer(proposition, piste) {
@@ -244,9 +278,22 @@ var Match = (function () {
       titre: correspond(proposition, vTitre),
       artiste: correspond(proposition, vArtiste)
     };
-    if (res.titre || res.artiste) return res;
+    if (res.titre && res.artiste) return res;
 
-    return decouper(proposition, vTitre, vArtiste) || res;
+    /* Une moitié seulement — ou rien du tout : on essaie quand même de couper
+       la phrase en deux.
+
+       Ce n'était pas fait tant qu'une moitié suffisait, et ça coûtait des
+       points : la tolérance aux fautes de frappe grandit avec la longueur de
+       la réponse, si bien que « Amoureux solitaires Lio » ressemblait déjà
+       assez à « Amoureux solitaires » pour être pris pour le titre seul. Le
+       nom de l'artiste passait alors à la trappe, alors qu'il était écrit. */
+    var coupe = decouper(proposition, vTitre, vArtiste);
+    if (!coupe) return res;
+    return {
+      titre: res.titre || coupe.titre,
+      artiste: res.artiste || coupe.artiste
+    };
   }
 
   return {
@@ -256,6 +303,7 @@ var Match = (function () {
     variantesArtiste: variantesArtiste,
     correspond: correspond,
     decouper: decouper,
+    contientReponse: contientReponse,
     evaluer: evaluer,
     distance: distance
   };

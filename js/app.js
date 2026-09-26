@@ -992,9 +992,10 @@
   }
 
   /* Le fil des propositions ratées. Il vit sous `tour`, donc il repart de zéro
-     à chaque morceau. On n'affiche que les dernières : au-delà, la liste
-     pousserait la page vers le bas en pleine écoute. */
-  var FIL_VISIBLE = 5;
+     à chaque morceau. On en garde vingt : à six ou huit joueurs, cinq lignes
+     s'effaçaient avant qu'on ait eu le temps de lire les bêtises. La boîte a sa
+     propre barre de défilement et se recale toute seule sur la dernière. */
+  var FIL_VISIBLE = 20;
 
   function rendreFil() {
     var etat = partie.etat;
@@ -1020,6 +1021,9 @@
       li.querySelector('.mot').textContent = m.mot;
       boite.appendChild(li);
     });
+
+    // Toujours sur la dernière ligne : c'est celle qui vient d'arriver.
+    boite.scrollTop = boite.scrollHeight;
   }
 
   function rendreScores() {

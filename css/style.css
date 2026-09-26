@@ -633,8 +633,11 @@ button, input, select { font: inherit; color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 5px;
-  max-height: 132px;
-  overflow: hidden;
+  /* Assez haut pour suivre une tablée entière, et jamais plus de la moitié de
+     l'écran : le chrono et les cases de réponse restent visibles. */
+  max-height: min(50vh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .fil-propositions li {
   font-size: 13.5px;

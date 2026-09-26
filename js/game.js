@@ -328,9 +328,14 @@ var Jeu = (function () {
 
       /* Rien de juste : la proposition part dans le fil commun. Ce test vient
          AVANT celui du joueur qui a déjà tout trouvé, pour qu'une bonne réponse
-         retapée une deuxième fois ne s'affiche jamais et ne vende la mèche. */
+         retapée une deuxième fois ne s'affiche jamais et ne vende la mèche.
+
+         `contientReponse` est la ceinture de sécurité : si la bonne réponse est
+         écrite quelque part dans la phrase, on se tait, même quand le jeu n'a
+         pas su la compter. Le pire des cas devient « ça n'a pas marché »,
+         jamais « tout le monde a vu la réponse ». */
       if (!res.titre && !res.artiste) {
-        publierAuFil(texte);
+        if (!Match.contientReponse(texte, piste)) publierAuFil(texte);
         return vide;
       }
 
