@@ -127,11 +127,6 @@
       b.setAttribute('title', dit);
     });
     curseursSon().forEach(function (c) { c.value = Math.round(volume * 100); });
-
-    // Le sacre peut passer par YouTube : il a son propre réglage de volume.
-    if (lecteurVideo && videoPrete) {
-      try { lecteurVideo.setVolume(Math.round(volume * 100)); } catch (e) {}
-    }
   }
 
   function boutonsSon() {
@@ -304,18 +299,19 @@
   /* Le podium ne se devoile pas en silence : Barry White entre en scene.
      Le morceau tourne en boucle tant qu'on reste sur l'ecran de fin, et chacun
      peut le couper - le choix est retenu d'une partie a l'autre. */
-  /* Chaque édition de l'album découpe ses trente secondes ailleurs, et on était
-     tombés sur la plus molle : « Let The Music Play » traîne à 31 % de niveau
-     sonore pendant vingt secondes, d'où l'entrée retardée à 18 s.
+  /* Apple possède vingt-cinq éditions distinctes de ce morceau. Audrey les a
+     toutes écoutées le 26/09/2026 et a retenu la « Promo Single Version » de
+     la compilation « Gold ». Les niveaux sonores des éditions candidates ont
+     été mesurés : elles tiennent toutes entre 14 et 21 % de niveau moyen,
+     celle-ci comprise, donc le choix ne coûte rien en puissance.
 
-     Cette requête sort la version single des compilations 20th Century, mesurée
-     à 79, 78, 98, 89, 95, 90 % sur ses quatre premières secondes : elle est dans
-     le vif immédiatement. Audrey a écouté les six éditions candidates et les
-     trouve très proches à l'oreille, donc le choix se fait sur ce critère. */
+     Le titre est écrit en entier pour qu'Apple ne renvoie pas une des autres
+     éditions, qui portent toutes le même nom une fois les parenthèses ôtées. */
   var SACRE = {
-    t: "Let the Music Play",
+    t: "Let the Music Play (Promo Single Version)",
     a: "Barry White",
-    q: "Barry White Let the Music Play Love's Theme Best of the 20th Century Records Singles"
+    q: "Barry White Let the Music Play Promo Single Version Gold",
+    altT: ["Let the Music Play"]
   };
   var sacreEnCours = false;
   var sacrePiste = null;      // le morceau du sacre, une fois trouvé
@@ -324,121 +320,11 @@
      seconde. On garde le réglage, il resservira si on change de morceau. */
   var DEPART_SACRE = 0;
 
-  /* ---- le sacre par YouTube ----
-
-     Trente secondes d'extrait ne suffisaient pas : le moment qu'Audrey voulait
-     n'y est pas. Sur l'écran de fin, la partie est finie et il n'y a plus rien
-     à cacher, donc un lecteur vidéo visible ne dérange personne — c'est la
-     seule page du jeu où ce serait acceptable.
-
-     Les règles de YouTube sont respectées : le lecteur reste visible, rien
-     n'est posé devant, et sa zone dépasse 200 px de côté.
-
-     Si la vidéo devient indisponible ou si l'API ne se charge pas, on retombe
-     sur l'extrait Apple plutôt que de rester muet. */
-  var VIDEO_SACRE = 'V3eOuK_-c34';   // Barry White — Let The Music Play (lien donné par Audrey)
-  /* La fenêtre choisie par Audrey à l'oreille : le « haaan ouaiiis » tombe à
-     19 s, et le passage tient jusqu'à 58 s. */
-  var DEPART_VIDEO = 19;
-  var FIN_VIDEO = 58;
-
-  /* On ne télécharge ni ne redécoupe quoi que ce soit : c'est le lecteur de
-     YouTube qui lit, on lui demande simplement de revenir en arrière quand il
-     dépasse la fenêtre voulue. */
-  var boucleVideo = null;
-
-  function surveillerBoucleVideo() {
-    clearInterval(boucleVideo);
-    boucleVideo = setInterval(function () {
-      if (!lecteurVideo || !videoPrete) return;
-      try {
-        if (lecteurVideo.getCurrentTime() >= FIN_VIDEO) {
-          lecteurVideo.seekTo(DEPART_VIDEO, true);
-        }
-      } catch (e) {}
-    }, 400);
-  }
-
-  var lecteurVideo = null;
-  var videoPrete = false;
-  var videoAbandonnee = false;
-
-  /* Charge l'API de YouTube une seule fois. `suite` est appelée quand elle est
-     prête, ou jamais si elle ne vient pas — d'où le garde-fou de 6 secondes. */
-  function chargerApiVideo(suite) {
-    if (window.YT && window.YT.Player) { suite(true); return; }
-    if (!document.getElementById('api-youtube')) {
-      var s = document.createElement('script');
-      s.id = 'api-youtube';
-      s.src = 'https://www.youtube.com/iframe_api';
-      s.onerror = function () { videoAbandonnee = true; };
-      document.head.appendChild(s);
-    }
-    var debut = Date.now();
-    var attendre = setInterval(function () {
-      if (window.YT && window.YT.Player) { clearInterval(attendre); suite(true); }
-      else if (videoAbandonnee || Date.now() - debut > 6000) {
-        clearInterval(attendre);
-        videoAbandonnee = true;
-        suite(false);
-      }
-    }, 150);
-  }
-
-  function jouerSacreVideo(siEchec) {
-    if (videoAbandonnee) { siEchec(); return; }
-
-    chargerApiVideo(function (dispo) {
-      if (!dispo) { siEchec(); return; }
-
-      var scene = $('scene-sacre');
-      if (scene) scene.hidden = false;
-
-      if (lecteurVideo && videoPrete) {
-        try {
-          lecteurVideo.seekTo(DEPART_VIDEO, true);
-          lecteurVideo.setVolume(Math.round(volume * 100));
-          lecteurVideo.playVideo();
-          surveillerBoucleVideo();
-        } catch (e) {}
-        return;
-      }
-
-      try {
-        lecteurVideo = new YT.Player('lecteur-sacre', {
-          videoId: VIDEO_SACRE,
-          playerVars: { autoplay: 1, start: DEPART_VIDEO, rel: 0, playsinline: 1 },
-          events: {
-            onReady: function (e) {
-              videoPrete = true;
-              try {
-                e.target.setVolume(Math.round(volume * 100));
-                e.target.playVideo();
-                surveillerBoucleVideo();
-              } catch (err) {}
-            },
-            /* Vidéo supprimée, privée, ou bloquée dans le pays : on revient à
-               l'extrait Apple plutôt que de laisser le podium muet. */
-            onError: function () {
-              videoAbandonnee = true;
-              if (scene) scene.hidden = true;
-              siEchec();
-            }
-          }
-        });
-      } catch (e) {
-        videoAbandonnee = true;
-        siEchec();
-      }
-    });
-  }
-
-  function arreterSacreVideo() {
-    clearInterval(boucleVideo);
-    if (lecteurVideo && videoPrete) { try { lecteurVideo.pauseVideo(); } catch (e) {} }
-    var scene = $('scene-sacre');
-    if (scene) scene.hidden = true;
-  }
+  /* Le sacre est passé par un lecteur YouTube pendant un temps : trente
+     secondes ne suffisaient pas à atteindre le moment voulu. Les publicités
+     gâchaient l'arrivée du podium, et Audrey a trouvé une édition dont
+     l'extrait Apple part au bon endroit. Le lecteur vidéo est donc retiré :
+     plus d'iframe, plus d'API externe, plus de publicité. */
 
   /* Cherche le morceau du sacre et le garde sous la main. Appelé dès le début
      de la partie : au moment du podium, il est déjà prêt.
@@ -491,9 +377,7 @@
       return;
     }
     sacreEnCours = true;
-
-    // La vidéo d'abord ; l'extrait Apple si elle ne répond pas.
-    jouerSacreVideo(function () { jouerSacreApple(); });
+    jouerSacreApple();
   }
 
   function jouerSacreApple() {
@@ -536,7 +420,6 @@
     if (!sacreEnCours) return;
     sacreEnCours = false;
     lecteur.loop = false;
-    arreterSacreVideo();
     arreterExtrait();
   }
 

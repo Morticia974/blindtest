@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=115">
+<link rel="stylesheet" href="css/style.css?v=116">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -219,14 +219,6 @@
       <h1 style="font-size:clamp(30px,8vw,46px);margin-top:8px" id="titre-fin">Et le gagnant est…</h1>
       <button type="button" id="bouton-sacre" class="bouton discret" style="margin-top:12px">🎺 Barry White : oui</button>
 
-      <!-- Le sacre en vidéo, réduit au plus petit format autorisé. Il reste
-           visible et rien n'est posé devant, comme l'exigent les règles des
-           lecteurs YouTube intégrés. Sur cet écran la partie est finie : il n'y
-           a plus aucune réponse à protéger. -->
-      <div class="scene-sacre" id="scene-sacre" hidden>
-        <div id="lecteur-sacre"></div>
-      </div>
-
       <div class="reglage-son">
         <button type="button" id="bouton-muet-fin" class="bouton-son"
                 aria-label="Couper le son" title="Couper le son">🔊</button>
@@ -257,16 +249,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=115 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=116 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=115 à ?v=116. -->
-<script src="js/config.js?v=115"></script>
-<script src="js/match.js?v=115"></script>
-<script src="js/playlists.js?v=115"></script>
-<script src="js/itunes.js?v=115"></script>
-<script src="js/net.js?v=115"></script>
-<script src="js/game.js?v=115"></script>
-<script src="js/app.js?v=115"></script>
+     le changement ne s'affiche pas, passe tous les ?v=116 à ?v=117. -->
+<script src="js/config.js?v=116"></script>
+<script src="js/match.js?v=116"></script>
+<script src="js/playlists.js?v=116"></script>
+<script src="js/itunes.js?v=116"></script>
+<script src="js/net.js?v=116"></script>
+<script src="js/game.js?v=116"></script>
+<script src="js/app.js?v=116"></script>
 
 </body>
 </html>
