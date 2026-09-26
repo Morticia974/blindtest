@@ -486,15 +486,17 @@ var Playlists = (function () {
       id: 'generiques',
       nom: "Films cultes",
       emoji: "🍿",
-      desc: "Films et séries. Ici on devine l'œuvre.",
-      // Une seule réponse : le film ou la série, pas le titre du morceau.
+      desc: "Les musiques qui font le cinéma. Ici on devine le film.",
+      /* Une seule réponse : le film, pas le titre du morceau. La catégorie a
+         contenu des séries à ses débuts ; elles sont toutes parties dans
+         « Séries cultes », d'où l'intitulé qui ne parle plus que de films. */
       solo: 'artiste',
       // `strict` : seuls les titres listés ici comptent. Sans ça, le jeu
       // accepterait aussi le nom du compositeur trouvé chez Apple, et on
       // pourrait marquer sans jamais donner le titre du film.
       strict: true,
       labelT: "Titre du morceau",
-      labelA: "Film ou série",
+      labelA: "Film",
       pistes: [
         // Le titre du film doit être écrit en entier — mais le nom de la
         // licence est toujours accepté : « Star Wars » vaut pour la Marche
