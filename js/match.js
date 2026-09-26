@@ -169,14 +169,29 @@ var Match = (function () {
   function correspond(proposition, variantes) {
     var g = normaliser(proposition);
     if (!g || g.length < 2) return false;
-    for (var i = 0; i < variantes.length; i++) {
-      var v = variantes[i];
-      if (!v) continue;
-      if (g === v) return true;
-      var tol = tolerance(v.length);
-      if (tol > 0 && distance(g, v, tol) <= tol) return true;
-      // Réponse partielle mais franche : "bohemian" pour "bohemian rhapsody"
-      if (v.length >= 10 && g.length >= Math.ceil(v.length * 0.6) && v.indexOf(g) === 0) return true;
+
+    /* On essaie aussi la proposition privée de son article de tête.
+
+       Les articles étaient retirés de la bonne réponse, jamais de ce que tape
+       le joueur : la seule forme acceptée pour « Lambada » était « lambada »,
+       et « la Lambada » — comme tout le monde l'appelle — tombait à côté.
+       Pire, ça faisait échouer la coupe en deux : « la lambada Kaoma » ne
+       valait plus rien du tout et partait dans le fil des bêtises. */
+    var formes = [g];
+    var court = g.replace(ARTICLES, '');
+    if (court && court !== g && court.length >= 2) formes.push(court);
+
+    for (var f = 0; f < formes.length; f++) {
+      var p = formes[f];
+      for (var i = 0; i < variantes.length; i++) {
+        var v = variantes[i];
+        if (!v) continue;
+        if (p === v) return true;
+        var tol = tolerance(v.length);
+        if (tol > 0 && distance(p, v, tol) <= tol) return true;
+        // Réponse partielle mais franche : "bohemian" pour "bohemian rhapsody"
+        if (v.length >= 10 && p.length >= Math.ceil(v.length * 0.6) && v.indexOf(p) === 0) return true;
+      }
     }
     return false;
   }

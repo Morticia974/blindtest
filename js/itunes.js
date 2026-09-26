@@ -198,15 +198,25 @@ var Itunes = (function () {
     var vA = Match.variantesArtiste(artisteAffiche);
 
     /* Catégories strictes (films, animes, jeux) : la réponse attendue est le nom
-       de l'œuvre, et seules les formes écrites dans la playlist comptent. Ailleurs,
-       on accepte aussi l'artiste tel qu'Apple l'orthographie, et les invités cachés
-       dans le titre — "Uptown Funk (feat. Bruno Mars)" — que les joueurs citent
-       souvent à la place de l'artiste principal. */
+       de l'œuvre, et seules les formes écrites dans la playlist comptent.
+
+       Ailleurs, on suit Apple sur l'orthographe — mais seulement quand il parle
+       bien du même artiste que la playlist. Apple crédite souvent plus de monde :
+       « Ce soir ne sors pas » lui revient en « Lacrim & Maître Gims », et chaque
+       nom pris isolément devenait une réponse juste. Toute la table tapait
+       « Gims », le jeu disait bravo, puis affichait « Lacrim ».
+
+       La règle est maintenant celle qu'on lit à l'écran : la bonne réponse est
+       l'artiste affiché. La mention complète telle qu'Apple l'écrit reste
+       acceptée — la taper en entier, c'est avoir tout donné — mais l'invité
+       seul, non. */
     if (!piste.strict) {
-      vA = vA.concat(Match.variantesArtiste(resolue.artiste));
-      var invite = String(resolue.titre).match(
-        /[\(\[]\s*(?:feat\.?|ft\.?|featuring|avec|with|and)\s+([^\)\]]+)[\)\]]/i);
-      if (invite) vA = vA.concat(Match.variantesArtiste(invite[1]));
+      if (Match.correspond(resolue.artiste, vA)) {
+        vA = vA.concat(Match.variantesArtiste(resolue.artiste));
+      } else {
+        var entier = Match.normaliser(resolue.artiste);
+        if (entier) vA.push(entier);
+      }
     }
 
     (piste.altT || []).forEach(function (x) { vT = vT.concat(Match.variantesTitre(x)); });
