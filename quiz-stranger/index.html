@@ -637,8 +637,8 @@ const Sound = (() => {
       if (s === 0) drone(c[0], next, dur * S.spb);
       if (S.drum[s] === 1) boom(next); else if (S.drum[s] === 2) tap(next);
       const tones = [c[0], c[1], c[2], c[0] * 2];
-      pluck(tones[S.arp[s]], next, "square", 0.022, 0.3);
-      const ev = S.seq[step]; if (ev) fiddle(ev.f / 2, next, ev.len * dur, 0.05);
+      pluck(tones[S.arp[s]], next, "square", 0.011, 0.3);
+      const ev = S.seq[step]; if (ev) fiddle(ev.f / 2, next, ev.len * dur, 0.036);
       next += dur; step = (step + 1) % (S.chord.length * S.spb);
     }
   }
