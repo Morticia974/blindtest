@@ -415,8 +415,45 @@ button, input, select { font: inherit; color: inherit; }
   grid-template-columns: 1fr;
   align-items: start;
 }
+/* Sur petit écran, tout s'empile : le jeu, puis les propositions — qu'on veut
+   lire tout de suite après avoir tapé — puis les scores. */
+.carte-fil { order: 2; }
+.tableau-scores { order: 3; }
+
 @media (min-width: 900px) {
-  .scene { grid-template-columns: 1fr 268px; }
+  /* Le plateau tient toute la hauteur à gauche ; à droite les scores, puis les
+     propositions qui occupent le grand vide en dessous. La colonne est passée
+     de 268 à 340 px : les pseudos un peu longs y tiennent enfin en entier. */
+  .scene {
+    grid-template-columns: 1fr 340px;
+    grid-template-areas: "jeu scores" "jeu fil";
+    align-content: start;
+  }
+  .zone-jeu       { grid-area: jeu; }
+  .tableau-scores { grid-area: scores; }
+  .carte-fil      { grid-area: fil; }
+
+  /* Tout se cale à gauche au lieu de flotter au milieu de sa colonne : le
+     disque, le volume, et les cases de réponse. Sur petit écran le centrage
+     reste la bonne réponse, d'où le passage par ce seul palier.
+
+     Le sélecteur passe par #ecran-jeu parce que ces règles sont écrites plus
+     haut dans la feuille que celles du plateau : à force égale, c'est la
+     dernière qui gagne. L'identifiant tranche — et il dit juste, en plus :
+     le plateau ne sert que sur l'écran de jeu. */
+  #ecran-jeu .plateau {
+    width: min(360px, 100%);
+    margin: 4px auto 0 0;
+  }
+  #ecran-jeu .reglage-son  { width: min(360px, 100%); margin: 16px auto 0 0; }
+  #ecran-jeu .zone-reponse { max-width: 640px; }
+}
+
+/* L'écran de jeu, et lui seul, respire plus large que le reste du site : il a
+   deux colonnes à loger, alors que l'accueil n'a qu'une carte à centrer.
+   Sans ça, un écran de 1440 px laissait 250 px de vide de chaque côté. */
+@media (min-width: 1120px) {
+  #ecran-jeu .enveloppe { max-width: 1120px; }
 }
 
 .barre-progression {
@@ -626,16 +663,20 @@ button, input, select { font: inherit; color: inherit; }
 /* Le fil des propositions ratées. Volontairement discret : c'est un décor de
    soirée, pas un élément de jeu, et il ne doit pas voler l'attention au
    chrono ni aux cases de réponse. */
+.carte-fil { padding: 16px 16px 12px; }
+.carte-fil h3 { font-size: 15px; margin-bottom: 10px; }
+
 .fil-propositions {
   list-style: none;
-  margin: 10px 0 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  /* Assez haut pour suivre une tablée entière, et jamais plus de la moitié de
-     l'écran : le chrono et les cases de réponse restent visibles. */
-  max-height: min(50vh, 420px);
+  /* Dans sa colonne, la liste peut s'allonger : elle ne pousse plus rien vers
+     le bas. On garde un plafond pour qu'une soirée bavarde ne fasse pas défiler
+     la page à l'infini — au-delà, c'est la boîte qui défile. */
+  max-height: min(62vh, 560px);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -680,10 +721,10 @@ button, input, select { font: inherit; color: inherit; }
 
 .ligne-score {
   display: grid;
-  grid-template-columns: 26px 1fr auto;
-  gap: 10px;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  gap: 8px;
   align-items: center;
-  padding: 9px 10px;
+  padding: 9px 8px;
   border-radius: 11px;
   transition: background .3s ease;
 }

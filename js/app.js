@@ -1008,7 +1008,10 @@
       .sort(function (a, b) { return (a.a || 0) - (b.a || 0); })
       .slice(-FIL_VISIBLE);
 
-    boite.hidden = !lignes.length;
+    // C'est la carte entière qui disparaît quand personne n'a encore rien dit :
+    // un titre « Les propositions » au-dessus du vide ne dit rien à personne.
+    var carte = $('carte-fil');
+    if (carte) carte.hidden = !lignes.length;
     boite.innerHTML = '';
 
     lignes.forEach(function (m) {
