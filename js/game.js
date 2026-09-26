@@ -416,6 +416,8 @@ var Jeu = (function () {
 
       return net.maj(racine + '/joueurs/' + moi, {
         nom: profil.nom, emoji: profil.emoji,
+        // La couleur voyage avec le pseudo : tout le salon la voit.
+        couleur: profil.couleur || null,
         score: (etat.joueurs[moi] && etat.joueurs[moi].score) || 0,
         rejointA: (etat.joueurs[moi] && etat.joueurs[moi].rejointA) || net.maintenant(),
         vuA: net.maintenant()

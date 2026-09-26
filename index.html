@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=120">
+<link rel="stylesheet" href="css/style.css?v=122">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -49,6 +49,8 @@
           <button type="button" id="bouton-emoji" class="choix-emoji" title="Changer d'avatar" aria-label="Changer d'avatar">🎤</button>
           <input id="champ-pseudo" class="champ" maxlength="18" placeholder="Audrey" autocomplete="nickname">
         </div>
+        <p class="etiquette" style="margin-top:14px">Ta couleur</p>
+        <div class="palette" id="palette-accueil" role="group" aria-label="Ta couleur"></div>
       </div>
 
       <div class="carte">
@@ -109,6 +111,8 @@
     <div class="carte" style="margin-top:16px">
       <span class="etiquette">Joueurs dans la place</span>
       <ul id="liste-joueurs" class="liste-joueurs" style="margin-top:11px"></ul>
+      <p class="etiquette" style="margin-top:16px">Ta couleur <span style="font-weight:400;text-transform:none;letter-spacing:0">— les pastilles éteintes sont déjà prises</span></p>
+      <div class="palette" id="palette-salon" role="group" aria-label="Ta couleur"></div>
     </div>
 
     <div class="carte" style="margin-top:16px">
@@ -252,16 +256,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=120 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=122 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=120 à ?v=121. -->
-<script src="js/config.js?v=120"></script>
-<script src="js/match.js?v=120"></script>
-<script src="js/playlists.js?v=120"></script>
-<script src="js/itunes.js?v=120"></script>
-<script src="js/net.js?v=120"></script>
-<script src="js/game.js?v=120"></script>
-<script src="js/app.js?v=120"></script>
+     le changement ne s'affiche pas, passe tous les ?v=122 à ?v=123. -->
+<script src="js/config.js?v=122"></script>
+<script src="js/match.js?v=122"></script>
+<script src="js/playlists.js?v=122"></script>
+<script src="js/itunes.js?v=122"></script>
+<script src="js/net.js?v=122"></script>
+<script src="js/game.js?v=122"></script>
+<script src="js/app.js?v=122"></script>
 
 </body>
 </html>

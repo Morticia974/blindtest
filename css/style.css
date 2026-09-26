@@ -222,6 +222,44 @@ button, input, select { font: inherit; color: inherit; }
 }
 .choix-emoji:hover { border-color: var(--vert); }
 
+/* La palette des joueurs. Les pastilles prises restent affichées mais éteintes :
+   on voit ainsi que la couleur existe, et qu'elle est occupée. */
+.palette { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; }
+.pastille {
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.45) inset;
+  cursor: pointer;
+  transition: transform .12s ease, border-color .12s ease;
+}
+.pastille:hover:not(:disabled) { transform: scale(1.12); }
+.pastille.choisie { border-color: var(--texte); transform: scale(1.12); }
+.pastille:disabled { opacity: .22; cursor: not-allowed; }
+.pastille:disabled.choisie { opacity: 1; }
+
+/* Le pseudo en étiquette. Tous les joueurs en portent une, y compris ceux qui
+   n'ont pas encore de couleur : sinon l'écran serait bancal entre deux styles.
+   Le fond par défaut reste neutre. */
+.etiquette-joueur {
+  display: inline-block;
+  /* Dans le tableau des scores, l'étiquette est une case de grille : sans
+     ça elle s'étirait sur toute la colonne au lieu d'épouser le pseudo. */
+  justify-self: start;
+  width: fit-content;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(235,252,243,.10);
+  color: var(--texte);
+  line-height: 1.35;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .saisie-code {
   font-family: var(--mono);
   font-size: 26px;

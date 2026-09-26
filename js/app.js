@@ -8,6 +8,86 @@
 
   var $ = function (id) { return document.getElementById(id); };
 
+  /* La palette des joueurs : douze teintes, deux nuances chacune. Les deux
+     nuances sont claires ou franches, jamais sombres — le fond du site est
+     presque noir, et un bleu marine y serait illisible. C'est pour ça qu'on
+     lit « bleu clair » et « bleu franc » plutôt que « clair » et « foncé ». */
+  var COULEURS = [
+    { id: 'rouge-c',     nom: 'Rouge clair',      v: '#FF8A80' },
+    { id: 'rouge-f',     nom: 'Rouge franc',      v: '#F4483C' },
+    { id: 'orange-c',    nom: 'Orange clair',     v: '#FFB870' },
+    { id: 'orange-f',    nom: 'Orange franc',     v: '#FF7A18' },
+    { id: 'ambre-c',     nom: 'Ambre clair',      v: '#FFD98A' },
+    { id: 'ambre-f',     nom: 'Ambre franc',      v: '#FFC247' },
+    { id: 'citron-c',    nom: 'Citron clair',     v: '#EDFF8A' },
+    { id: 'citron-f',    nom: 'Citron franc',     v: '#D4F03A' },
+    { id: 'vert-c',      nom: 'Vert clair',       v: '#A8F57F' },
+    { id: 'vert-f',      nom: 'Vert franc',       v: '#5FD13A' },
+    { id: 'menthe-c',    nom: 'Menthe claire',    v: '#8FF5C8' },
+    { id: 'menthe-f',    nom: 'Menthe franche',   v: '#2FD69A' },
+    { id: 'turquoise-c', nom: 'Turquoise clair',  v: '#8CE8E8' },
+    { id: 'turquoise-f', nom: 'Turquoise franc',  v: '#2FC4C4' },
+    { id: 'ciel-c',      nom: 'Ciel clair',       v: '#8FD0FF' },
+    { id: 'ciel-f',      nom: 'Ciel franc',       v: '#3BA3F0' },
+    { id: 'bleu-c',      nom: 'Bleu clair',       v: '#A6B6FF' },
+    { id: 'bleu-f',      nom: 'Bleu franc',       v: '#5C74F5' },
+    { id: 'violet-c',    nom: 'Violet clair',     v: '#C9A8FF' },
+    { id: 'violet-f',    nom: 'Violet franc',     v: '#9A5CF0' },
+    { id: 'magenta-c',   nom: 'Magenta clair',    v: '#F2A0F0' },
+    { id: 'magenta-f',   nom: 'Magenta franc',    v: '#DA4FD4' },
+    { id: 'rose-c',      nom: 'Rose clair',       v: '#FFA3C4' },
+    { id: 'rose-f',      nom: 'Rose franc',       v: '#FF5C93' },
+
+    /* Les sombres. Elles n'étaient pas envisageables tant que le pseudo
+       s'écrivait en couleur sur le fond du site : un noir sur un fond noir
+       ne se voit pas. Maintenant que le pseudo est une étiquette pleine,
+       elles reviennent — demandées par les amis d'Audrey. */
+    { id: 'noir',        nom: 'Noir',             v: '#111418' },
+    { id: 'anthracite',  nom: 'Anthracite',       v: '#3A4149' },
+    { id: 'ardoise',     nom: 'Ardoise',          v: '#4A5B6B' },
+    { id: 'bordeaux',    nom: 'Bordeaux',         v: '#7A1B2E' },
+    { id: 'rouille',     nom: 'Rouille',          v: '#8C3B16' },
+    { id: 'chocolat',    nom: 'Chocolat',         v: '#5A3A24' },
+    { id: 'olive',       nom: 'Olive',            v: '#556B1E' },
+    { id: 'sapin',       nom: 'Vert sapin',       v: '#1E5236' },
+    { id: 'petrole',     nom: 'Bleu pétrole',     v: '#14545C' },
+    { id: 'marine',      nom: 'Bleu marine',      v: '#1C3170' },
+    { id: 'nuit',        nom: 'Violet nuit',      v: '#3D2270' },
+    { id: 'aubergine',   nom: 'Aubergine',        v: '#5C1E52' }
+  ];
+
+  function teinte(id) {
+    for (var i = 0; i < COULEURS.length; i++) {
+      if (COULEURS[i].id === id) return COULEURS[i].v;
+    }
+    return null;
+  }
+
+  /* Quelle encre poser sur cette couleur ? On calcule la luminance perçue
+     plutôt que de la noter à la main pour chacune : une teinte ajoutée plus
+     tard sera lisible sans qu'on y pense. */
+  function encreSur(hex) {
+    function canal(c) {
+      c = parseInt(c, 16) / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    }
+    var L = 0.2126 * canal(hex.slice(1, 3))
+          + 0.7152 * canal(hex.slice(3, 5))
+          + 0.0722 * canal(hex.slice(5, 7));
+    return L > 0.35 ? '#06140F' : '#EBFCF3';
+  }
+
+  /* Le pseudo s'affiche en étiquette pleine, pas en texte coloré. C'est ce qui
+     rend le noir et les autres teintes sombres utilisables : le fond du site
+     est presque noir, un pseudo écrit en noir dessus serait invisible. */
+  function etiqueter(el, j) {
+    el.classList.add('etiquette-joueur');
+    var v = teinte(j && j.couleur);
+    if (!v) return;             // pas de couleur : étiquette neutre
+    el.style.background = v;
+    el.style.color = encreSur(v);
+  }
+
   var EMOJIS = ['🎤','🎧','🎸','🥁','🎹','🎺','🕺','💃','🦩','🐙','🦊','🐸','👽','🤖','🍕','🌮','⚡','🌈','🔥','🦄'];
 
   // Petites piques quand la réponse est fausse — histoire que ça ne soit pas
@@ -32,7 +112,7 @@
 
   var net = null;
   var partie = null;          // la session de jeu en cours
-  var profil = { nom: '', emoji: '🎤' };
+  var profil = { nom: '', emoji: '🎤', couleur: null };
   var mancheChoisie = 'melange';
   /* Les catégories cochées dans « Personnaliser ». La manche choisie devient
      alors « perso:rock,disney » : une seule chaîne, donc elle voyage dans
@@ -78,8 +158,73 @@
       if (brut) profil = JSON.parse(brut);
     } catch (e) {}
     if (!profil.emoji) profil.emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+    if (!teinte(profil.couleur)) {
+      profil.couleur = COULEURS[Math.floor(Math.random() * COULEURS.length)].id;
+    }
     $('champ-pseudo').value = profil.nom || '';
     $('bouton-emoji').textContent = profil.emoji;
+    rendrePalette('palette-accueil', {});
+  }
+
+  /* Dessine une palette de pastilles. `prises` recense les couleurs déjà
+     portées par quelqu'un d'autre : elles restent visibles mais inertes, pour
+     qu'on comprenne qu'elles existent et qu'elles sont occupées. */
+  function rendrePalette(ouId, prises) {
+    var boite = $(ouId);
+    if (!boite) return;
+    boite.innerHTML = '';
+
+    COULEURS.forEach(function (c) {
+      var pastille = document.createElement('button');
+      pastille.type = 'button';
+      pastille.className = 'pastille' + (c.id === profil.couleur ? ' choisie' : '');
+      pastille.style.background = c.v;
+      pastille.disabled = !!prises[c.id];
+      pastille.title = prises[c.id] ? c.nom + ' — déjà prise' : c.nom;
+      pastille.setAttribute('aria-label', pastille.title);
+      pastille.setAttribute('aria-pressed', String(c.id === profil.couleur));
+      pastille.addEventListener('click', function () {
+        profil.couleur = c.id;
+        try { localStorage.setItem('bt.profil', JSON.stringify(profil)); } catch (e) {}
+        if (partie) {
+          net.maj('salons/' + partie.code + '/joueurs/' + partie.moi, { couleur: c.id });
+        }
+        rendrePalette('palette-accueil', {});
+        if (partie) rendreSalon();
+      });
+      boite.appendChild(pastille);
+    });
+  }
+
+  /* Les couleurs portées par les autres joueurs présents. Un arrivant ne
+     bouscule personne : seules comptent celles des joueurs entrés avant lui. */
+  function couleursPrises(etat, avantMoi) {
+    var prises = {};
+    var mien = etat.joueurs[partie.moi] || {};
+    partie.joueursConnectes().forEach(function (j) {
+      if (j.id === partie.moi || !j.couleur) return;
+      if (avantMoi && (j.rejointA || 0) > (mien.rejointA || 0)) return;
+      prises[j.couleur] = 1;
+    });
+    return prises;
+  }
+
+  /* À l'arrivée dans un salon, deux personnes peuvent porter la même couleur :
+     personne ne savait ce que l'autre avait choisi. Le dernier arrivé glisse
+     sur la première teinte encore libre. */
+  function ajusterCouleur(etat) {
+    var prises = couleursPrises(etat, true);
+    if (profil.couleur && !prises[profil.couleur]) return false;
+    for (var i = 0; i < COULEURS.length; i++) {
+      if (!prises[COULEURS[i].id]) {
+        profil.couleur = COULEURS[i].id;
+        try { localStorage.setItem('bt.profil', JSON.stringify(profil)); } catch (e) {}
+        net.maj('salons/' + partie.code + '/joueurs/' + partie.moi,
+                { couleur: profil.couleur });
+        return true;
+      }
+    }
+    return false;   // palette pleine : on garde la sienne, tant pis
   }
 
   function sauverProfil() {
@@ -644,6 +789,7 @@
       li.innerHTML = '<span class="rond"></span><span class="qui"></span>';
       li.querySelector('.rond').textContent = j.emoji || '🎧';
       li.querySelector('.qui').textContent = j.nom || 'Anonyme';
+      etiqueter(li.querySelector('.qui'), j);
       if (j.id === chef) {
         var r = document.createElement('span');
         r.className = 'role';
@@ -669,6 +815,9 @@
       chefAffiche = etat.jeSuisChef;
       rendreManches();
     }
+
+    ajusterCouleur(etat);
+    rendrePalette('palette-salon', couleursPrises(etat, false));
 
     var note = $('note-chef');
     if (!etat.jeSuisChef) {
@@ -818,6 +967,7 @@
       var li = document.createElement('li');
       li.innerHTML = '<span class="qui"></span> <span class="mot"></span>';
       li.querySelector('.qui').textContent = (j.emoji || '🎧') + ' ' + (j.nom || "Quelqu'un");
+      etiqueter(li.querySelector('.qui'), j);
       // textContent et pas innerHTML : ce que tape un joueur reste du texte.
       li.querySelector('.mot').textContent = m.mot;
       boite.appendChild(li);
@@ -849,6 +999,7 @@
                     '<span class="etat"></span><span class="pts"></span></span>';
       l.querySelector('.rang').textContent = (i + 1);
       l.querySelector('.nom').textContent = (j.emoji || '🎧') + ' ' + (j.nom || 'Anonyme');
+      etiqueter(l.querySelector('.nom'), j);
       l.querySelector('.etat').textContent = marques;
       l.querySelector('.pts').textContent = j.score || 0;
       boite.appendChild(l);
@@ -914,6 +1065,7 @@
       d.innerHTML = '<div class="tete"></div><div class="qui"></div><div class="socle"></div>';
       d.querySelector('.tete').textContent = j.emoji || '🎧';
       d.querySelector('.qui').textContent = j.nom || 'Anonyme';
+      etiqueter(d.querySelector('.qui'), j);
       d.querySelector('.socle').textContent = (j.score || 0) + ' pts';
       podium.appendChild(d);
     });
