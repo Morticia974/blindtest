@@ -291,6 +291,12 @@ button, input, select { font: inherit; color: inherit; }
   transition: border-color .15s ease, background .15s ease, transform .12s ease;
 }
 .vignette-manche:hover { border-color: var(--vert); transform: translateY(-2px); }
+/* Invité : on voit le choix de l'hôte, on n'y touche pas. */
+.grille-manches.en-lecture .vignette-manche,
+.cases-perso.en-lecture .case-perso { cursor: default; opacity: .62; }
+.grille-manches.en-lecture .vignette-manche:hover,
+.cases-perso.en-lecture .case-perso:hover { border-color: var(--bord); transform: none; }
+.grille-manches.en-lecture .vignette-manche[aria-pressed="true"] { opacity: 1; }
 .vignette-manche[aria-pressed="true"] {
   border-color: var(--vert);
   background: linear-gradient(180deg, rgba(140,255,74,.22), rgba(140,255,74,.06));

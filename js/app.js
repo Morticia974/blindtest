@@ -44,6 +44,7 @@
   /* ================= écrans ================= */
 
   var ecranAffiche = null;
+  var chefAffiche = null;     // qui avait la main au dernier rendu du salon
 
   function montrer(nom) {
     if (nom !== 'fin') arreterSacre();
@@ -524,6 +525,14 @@
 
   /* ================= rendu du salon ================= */
 
+  /* Le choix de la manche est partagé par tout le salon. S'il était ouvert à
+     tous, n'importe qui pouvait le changer à la dernière seconde — c'est
+     arrivé pendant une soirée. Il appartient donc à l'hôte, comme le bouton
+     de lancement. Hors salon, il n'y a personne à gêner. */
+  function jePeuxChoisir() {
+    return !partie || !partie.etat || !!partie.etat.jeSuisChef;
+  }
+
   function estPerso(id) { return String(id).indexOf('perso:') === 0; }
   function idPerso() { return 'perso:' + persoChoisies.join(','); }
 
@@ -543,11 +552,16 @@
       desc: 'Un mélange, mais seulement des catégories que tu choisis.'
     }]);
 
+    var maMain = jePeuxChoisir();
+    grille.classList.toggle('en-lecture', !maMain);
+
     choix.forEach(function (m) {
       var actif = m.id === 'perso' ? estPerso(mancheChoisie) : m.id === mancheChoisie;
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'vignette-manche';
+      b.disabled = !maMain;
+      if (!maMain) b.title = "C'est l'hôte qui choisit la manche.";
       b.setAttribute('aria-pressed', String(actif));
       b.innerHTML = '<span class="emoji">' + m.emoji + '</span>' +
                     '<span class="nom"></span><span class="desc"></span>';
@@ -571,7 +585,9 @@
     panneau.hidden = !estPerso(mancheChoisie);
     if (panneau.hidden) return;
 
+    var maMain = jePeuxChoisir();
     var boite = $('cases-perso');
+    boite.classList.toggle('en-lecture', !maMain);
     boite.innerHTML = '';
     Playlists.manches.forEach(function (m) {
       var coche = persoChoisies.indexOf(m.id) !== -1;
@@ -580,6 +596,7 @@
       etiquette.innerHTML = '<input type="checkbox"><span></span>';
       var case_ = etiquette.querySelector('input');
       case_.checked = coche;
+      case_.disabled = !maMain;
       etiquette.querySelector('span').textContent = m.emoji + ' ' + m.nom;
       /* On ne reconstruit pas la liste à chaque clic : on retouche juste la case
          touchée. Sinon la case disparaissait sous le doigt au moment même où on
@@ -638,17 +655,25 @@
 
     if (etat.meta && etat.meta.manche && etat.meta.manche !== mancheChoisie) {
       mancheChoisie = etat.meta.manche;
-      // Un autre joueur a coché ou décoché : on remet nos cases d'aplomb.
+      // L'hôte a changé son choix : on remet notre écran d'aplomb.
       if (estPerso(mancheChoisie)) {
         persoChoisies = mancheChoisie.slice(6).split(',').filter(Boolean);
       }
       rendreManches();
     }
 
+    /* L'hôte est le joueur connecté le plus ancien : si le nôtre s'en va,
+       quelqu'un d'autre hérite de la main en cours de salon. Les vignettes
+       doivent alors redevenir cliquables — ou le contraire. */
+    if (etat.jeSuisChef !== chefAffiche) {
+      chefAffiche = etat.jeSuisChef;
+      rendreManches();
+    }
+
     var note = $('note-chef');
     if (!etat.jeSuisChef) {
-      note.innerHTML = "<span><b>C'est l'hôte qui lance la partie.</b> " +
-        "Tu peux quand même regarder la playlist choisie — installe-toi, ça va commencer.</span>";
+      note.innerHTML = "<span><b>C'est l'hôte qui choisit la manche et lance la " +
+        "partie.</b> Tu vois son choix en direct — installe-toi, ça va commencer.</span>";
       note.classList.remove('invisible');
       $('bouton-lancer').disabled = true;
       $('bouton-lancer').textContent = 'En attente de l\'hôte…';
