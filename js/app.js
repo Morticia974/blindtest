@@ -46,7 +46,7 @@
   var ecranAffiche = null;
 
   function montrer(nom) {
-    if (nom !== 'fin') { arreterSacre(); arreterSacreVideo(); }
+    if (nom !== 'fin') arreterSacre();
     ['accueil', 'salon', 'jeu', 'fin'].forEach(function (e) {
       $('ecran-' + e).classList.toggle('actif', e === nom);
     });
