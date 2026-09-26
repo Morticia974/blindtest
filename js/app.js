@@ -791,6 +791,37 @@
     }
 
     rendreScores();
+    rendreFil();
+  }
+
+  /* Le fil des propositions ratées. Il vit sous `tour`, donc il repart de zéro
+     à chaque morceau. On n'affiche que les dernières : au-delà, la liste
+     pousserait la page vers le bas en pleine écoute. */
+  var FIL_VISIBLE = 5;
+
+  function rendreFil() {
+    var etat = partie.etat;
+    var boite = $('fil-propositions');
+    if (!boite) return;
+
+    var chat = (etat.tour && etat.tour.chat) || {};
+    var lignes = Object.keys(chat).map(function (k) { return chat[k]; })
+      .filter(function (m) { return m && m.mot; })
+      .sort(function (a, b) { return (a.a || 0) - (b.a || 0); })
+      .slice(-FIL_VISIBLE);
+
+    boite.hidden = !lignes.length;
+    boite.innerHTML = '';
+
+    lignes.forEach(function (m) {
+      var j = etat.joueurs[m.qui] || {};
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="qui"></span> <span class="mot"></span>';
+      li.querySelector('.qui').textContent = (j.emoji || '🎧') + ' ' + (j.nom || "Quelqu'un");
+      // textContent et pas innerHTML : ce que tape un joueur reste du texte.
+      li.querySelector('.mot').textContent = m.mot;
+      boite.appendChild(li);
+    });
   }
 
   function rendreScores() {

@@ -300,13 +300,24 @@ var Jeu = (function () {
 
     /* ---------- actions du joueur ---------- */
 
+    /* Le fil des propositions ratées : tout le salon voit ce que les autres
+       ont tapé à côté. Il vit sous `tour`, qui est réécrit en entier à chaque
+       morceau, donc il se vide tout seul et ne laisse aucun historique. */
+    function publierAuFil(texte) {
+      var mot = String(texte || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      if (!mot) return;
+      var envoi = {};
+      envoi[String(net.maintenant()) + '-' + moi] = { qui: moi, mot: mot, a: net.maintenant() };
+      Promise.resolve(net.maj(racine + '/tour/chat', envoi))
+        .catch(function () {});
+    }
+
     /* Soumet une proposition. Renvoie ce qui vient d'être trouvé. */
     function proposer(texte) {
       var vide = { titre: false, artiste: false, deja: false };
       if (!etat.tour || etat.tour.phase !== 'ecoute') return vide;
       var piste = etat.pistes[etat.tour.index];
       if (!piste) return vide;
-      if (motsTrouves.titre && motsTrouves.artiste) return { titre: false, artiste: false, deja: true };
 
       // Manche « solo » : une seule réponse compte. `solo` dit laquelle —
       // 'titre' pour le Club Dorothée (le dessin animé), 'artiste' pour les
@@ -314,6 +325,17 @@ var Jeu = (function () {
       var solo = piste.solo || null;
 
       var res = Match.evaluer(texte, piste);
+
+      /* Rien de juste : la proposition part dans le fil commun. Ce test vient
+         AVANT celui du joueur qui a déjà tout trouvé, pour qu'une bonne réponse
+         retapée une deuxième fois ne s'affiche jamais et ne vende la mèche. */
+      if (!res.titre && !res.artiste) {
+        publierAuFil(texte);
+        return vide;
+      }
+
+      if (motsTrouves.titre && motsTrouves.artiste) return { titre: false, artiste: false, deja: true };
+
       var gagneTitre = res.titre && !motsTrouves.titre && solo !== 'artiste';
       var gagneArtiste = res.artiste && !motsTrouves.artiste && solo !== 'titre';
       if (!gagneTitre && !gagneArtiste) return vide;

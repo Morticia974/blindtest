@@ -560,6 +560,35 @@ button, input, select { font: inherit; color: inherit; }
 .info-saisie.bien { color: var(--menthe-ok); }
 .info-saisie.raté { color: var(--doux); }
 
+/* Le fil des propositions ratées. Volontairement discret : c'est un décor de
+   soirée, pas un élément de jeu, et il ne doit pas voler l'attention au
+   chrono ni aux cases de réponse. */
+.fil-propositions {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 132px;
+  overflow: hidden;
+}
+.fil-propositions li {
+  font-size: 13.5px;
+  color: var(--doux);
+  background: rgba(4,14,10,.5);
+  border: 1px solid var(--bord);
+  border-radius: 11px;
+  padding: 6px 10px;
+  animation: fil-entre .25s ease;
+}
+.fil-propositions .qui { color: var(--ambre); font-weight: 700; }
+.fil-propositions .mot { color: var(--texte); }
+@keyframes fil-entre {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* points qui s'envolent */
 .gain {
   position: fixed;
