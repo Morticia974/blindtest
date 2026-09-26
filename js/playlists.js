@@ -479,7 +479,26 @@ var Playlists = (function () {
            la version du deuxième film, validée par Audrey. */
         { t: "I Like to Move It", a: "Madagascar",
           q: "will.i.am I Like to Move It Madagascar Escape 2 Africa Music from the Motion Picture",
-          pays: "US", interprete: "will.i.am", altA: ["Madagascar 2"] }
+          pays: "US", interprete: "will.i.am", altA: ["Madagascar 2"] },
+
+        /* Le carton de 2025. Audrey a écouté les quatre éditions possibles et
+           a mélangé : « Golden » en version originale, « Soda Pop » en
+           français. Les deux peuvent cohabiter — la catégorie ne garde qu'un
+           morceau par film dans une partie, donc ils ne tombent jamais
+           ensemble.
+
+           `interprete` reprend la liste d'artistes en entier : le moteur
+           compare le nom complet crédité par Apple, pas ses morceaux. Sans
+           ça, « Golden » de Harry Styles et « Soda Pop » de Britney Spears
+           marquaient autant de points que les bons. */
+        { t: "Golden", a: "KPop Demon Hunters",
+          q: "KPop Demon Hunters Golden HUNTR/X Soundtrack from the Netflix Film",
+          interprete: "HUNTR/X, EJAE, AUDREY NUNA, REI AMI & KPop Demon Hunters Cast",
+          altA: ["K-Pop Demon Hunters"] },
+        { t: "Soda Pop (version française)", a: "KPop Demon Hunters",
+          q: "KPop Demon Hunters Soda Pop version francaise bande originale",
+          interprete: "Saja Boys, Doryan Ben, Thomas Bernier, Guillaume Beaujolais, Loaï Rahman, Bastien Jacquemart & KPop Demon Hunters Cast",
+          altT: ["Soda Pop"], altA: ["K-Pop Demon Hunters"] }
       ]
     },
     {
