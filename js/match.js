@@ -174,6 +174,50 @@ var Match = (function () {
     return Object.keys(out);
   }
 
+  /* Une écriture « à l'oreille ».
+
+     Le micro écrit ce qu'il entend, et pas toujours comme le catalogue : il
+     rend « téléphone » quand la chanson s'appelle « Le Téléfon », et
+     « téléfon » quand le groupe s'appelle Téléphone. Trois corrections
+     d'écart — bien trop pour la tolérance aux fautes de frappe, alors que
+     c'est le même mot à l'oreille.
+
+     Les deux côtés passent par ici, donc deux orthographes qui se prononcent
+     pareil finissent pareilles. Ce n'est pas de la phonétique sérieuse : juste
+     les confusions d'écriture les plus courantes en français. On travaille sur
+     la forme déjà normalisée — minuscules, sans accents ni ponctuation.
+
+     Les espaces sautent à la fin : le micro hésite souvent sur la découpe des
+     mots, et « télé fon » vaut « téléfon ». */
+  function phonetique(t) {
+    return t.split(' ').map(function (mot) {
+      var m = mot;
+      m = m.replace(/ph/g, 'f');
+      m = m.replace(/ch|sh/g, '#');          // un son à part, sinon « ch » finirait en « k »
+      m = m.replace(/qu|q/g, 'k');
+      m = m.replace(/gu([eiy])/g, 'g$1');
+      m = m.replace(/g([eiy])/g, 'j$1');
+      m = m.replace(/c([eiy])/g, 's$1');
+      m = m.replace(/[ck]/g, 'k');
+      m = m.replace(/h/g, '');
+      m = m.replace(/y/g, 'i');
+      m = m.replace(/eau|au/g, 'o');
+      m = m.replace(/ai|ei/g, 'e');
+      m = m.replace(/x/g, 'ks');
+      m = m.replace(/([aeiou])s([aeiou])/g, '$1z$2');   // « rose » se dit « roze »
+      m = m.replace(/(.)\1+/g, '$1');                   // lettres doublées
+      /* Le « e » final qu'on n'entend pas — mais seulement sur un mot un peu
+         long. Les accents ont déjà sauté à ce stade, donc rien ne distingue le
+         « e » muet de « téléphone » du « é » sonore de « télé » : sur un mot
+         court, mieux vaut le garder.
+
+         On mesure le mot d'origine, pas sa version transformée : « phone » a
+         bien cinq lettres, même s'il n'en garde que quatre une fois devenu
+         « fone ». Sans ça, « télé phone » ne valait pas « téléfon ». */
+      return mot.length > 4 ? m.replace(/e$/, '') : m;
+    }).join('');
+  }
+
   /* Une proposition est-elle acceptée pour l'une de ces variantes ? */
   function correspond(proposition, variantes) {
     var g = normaliser(proposition);
@@ -200,6 +244,9 @@ var Match = (function () {
         if (tol > 0 && distance(p, v, tol) <= tol) return true;
         // Réponse partielle mais franche : "bohemian" pour "bohemian rhapsody"
         if (v.length >= 10 && p.length >= Math.ceil(v.length * 0.6) && v.indexOf(p) === 0) return true;
+        /* Même son, autre orthographe. Réservé aux réponses d'au moins cinq
+           lettres : en dessous, trop de mots différents se prononcent pareil. */
+        if (v.length >= 5 && phonetique(p) === phonetique(v)) return true;
       }
     }
     return false;
@@ -329,6 +376,7 @@ var Match = (function () {
     decouper: decouper,
     contientReponse: contientReponse,
     evaluer: evaluer,
-    distance: distance
+    distance: distance,
+    phonetique: phonetique
   };
 })();
