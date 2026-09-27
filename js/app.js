@@ -1164,6 +1164,8 @@
   var microVoulu = false;       // le choix du joueur, gardé d'une fois sur l'autre
   var relances = 0;             // garde-fou : Chrome se réarrête tout seul
   var derniereRelance = 0;
+  var relanceEnAttente = null;  // le redémarrage programmé, s'il y en a un
+  var brouillon = '';           // ce que le navigateur a entendu sans le valider
 
   function microPossible() { return !!classeReco(); }
 
@@ -1184,10 +1186,25 @@
   /* Coupe la reconnaissance sans toucher au choix du joueur. On détache `onend`
      avant d'arrêter, sinon elle se relancerait toute seule. */
   function stopperReco() {
+    // D'abord la relance programmée : sans ça, le micro ressuscitait tout seul
+    // une fraction de seconde après qu'on lui a demandé de se taire.
+    if (relanceEnAttente) { clearTimeout(relanceEnAttente); relanceEnAttente = null; }
     if (!reco) return;
     var r = reco;
     reco = null;
     try { r.onend = null; r.abort(); } catch (e) {}
+  }
+
+  /* Le micro s'est arrêté pour de bon. On le dit : le pire serait de laisser le
+     bouton allumé au-dessus d'un micro mort — on parle, et rien n'arrive.
+
+     Le choix du joueur n'est pas effacé du navigateur : c'est un accident de
+     parcours, pas un refus. Un clic et ça repart. */
+  function microEnPanne(message) {
+    microVoulu = false;
+    stopperReco();
+    majBoutonMicro();
+    info(message, 'raté');
   }
 
   function demarrerReco() {
@@ -1198,7 +1215,11 @@
     reco = r;
     r.lang = 'fr-FR';
     r.continuous = true;
-    r.interimResults = false;
+    /* On demande aussi les résultats provisoires. Un mot court dit une seule
+       fois — « Scrubs », « Friends », « Lost » — n'est pas toujours validé par
+       le navigateur : il n'en reste qu'un brouillon, et sans ça on le perdait
+       entièrement. Le joueur avait parlé, et il ne se passait rien. */
+    r.interimResults = true;
     /* Plusieurs transcriptions par phrase : « Billie Jean », « Billy Jean » et
        « bili jean » sortent souvent ensemble et une seule est la bonne. On les
        essaie toutes, en silence. */
@@ -1206,22 +1227,27 @@
 
     r.onresult = function (ev) {
       for (var i = ev.resultIndex; i < ev.results.length; i++) {
-        if (ev.results[i].isFinal) entendu(ev.results[i]);
+        if (ev.results[i].isFinal) {
+          brouillon = '';
+          entendu(ev.results[i]);
+        } else {
+          brouillon = String((ev.results[i][0] || {}).transcript || '').trim();
+        }
       }
     };
 
     r.onerror = function (ev) {
       if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
-        microVoulu = false;
+        // Un refus d'autorisation, lui, dure : on retient de ne pas réessayer
+        // à chaque partie.
         try { localStorage.setItem('bt.micro', '0'); } catch (e) {}
-        stopperReco();
-        majBoutonMicro();
-        info('Le navigateur bloque le micro. Autorise-le pour répondre à la voix.', 'raté');
+        microEnPanne('Le navigateur bloque le micro. Autorise-le pour répondre à la voix.');
       }
       // 'no-speech', 'aborted', 'network' : onend s'occupe de relancer.
     };
 
     r.onend = function () {
+      if (brouillon) { tenterBrouillon(brouillon); brouillon = ''; }
       if (reco !== r || !microVoulu) return;
       /* Chrome coupe tout seul après un silence. On repart, mais si ça
          recommence dix fois en une seconde c'est que quelque chose cloche :
@@ -1236,10 +1262,22 @@
         info('Le micro ne répond pas. Tape ta réponse pour ce coup-ci.', 'raté');
         return;
       }
-      try { r.start(); } catch (e) {}
+      /* On ne repart pas dans la foulée de `onend` : Chrome refuse parfois un
+         `start()` lancé là, et l'exception passait inaperçue — bouton allumé,
+         micro mort. Un court délai, et l'échec se voit. */
+      relanceEnAttente = setTimeout(function () {
+        relanceEnAttente = null;
+        if (reco !== r || !microVoulu) return;
+        try { r.start(); }
+        catch (e) { microEnPanne('Le micro s\'est arrêté. Rallume-le, ou tape ta réponse.'); }
+      }, 250);
     };
 
-    try { r.start(); } catch (e) { reco = null; }
+    try { r.start(); }
+    catch (e) {
+      reco = null;
+      microEnPanne("Le micro n'a pas pu démarrer. Réessaie, ou tape ta réponse.");
+    }
   }
 
   function synchroniserMicro() {
@@ -1255,6 +1293,23 @@
     var mots = String(texte).split(/\s+/).filter(Boolean);
     if (!mots.length || mots.length > 8 || texte.length > 48) return false;
     return !(typeof confiance === 'number' && confiance > 0 && confiance < 0.55);
+  }
+
+  /* Un brouillon, c'est-à-dire une phrase que le navigateur n'a jamais
+     confirmée. On la tente, mais en silence complet : elle ne part jamais dans
+     le fil commun, et elle ne peut que faire gagner des points, jamais afficher
+     un « pas ça » sur une phrase à moitié entendue.
+
+     On dit quand même au joueur ce qui a été capté : sans ça, parler et ne rien
+     voir arriver donne l'impression que le micro est mort. */
+  function tenterBrouillon(texte) {
+    if (!partie) return;
+    var etat = partie.etat;
+    if (!etat.tour || etat.tour.phase !== 'ecoute') return;
+
+    var res = partie.proposer(texte, { muet: true });
+    if (res.titre || res.artiste) { feterLaTrouvaille(res); return; }
+    if (String(texte).length >= 3) info('Entendu à moitié : « ' + texte + ' »', 'raté');
   }
 
   function entendu(resultat) {
