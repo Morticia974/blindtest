@@ -135,7 +135,11 @@ var Playlists = (function () {
         { t: "Ameno", a: "Era" },
         { t: "Over the Rainbow", a: "Israel Kamakawiwo'ole", altT: ["Somewhere Over the Rainbow"], altA: ["IZ", "Kamakawiwo'ole"] },
         { t: "Baby Come Back", a: "Worlds Apart" },
-        { t: "Partir un jour", a: "2 Be 3" },
+        /* Le nom du groupe est un jeu de mots anglais, et le micro le rend comme
+           il l'entend : « To Be Free » pour « to be three ». On accepte les
+           formes qui sortent vraiment quand on dit le nom à voix haute. */
+        { t: "Partir un jour", a: "2 Be 3",
+          altA: ["To Be Three", "To Be Free", "Toubitri", "Toubifri", "2B3"] },
         { t: "Te garder près de moi", a: "Alliage" },
 
         /* Sept ajouts choisis par Audrey pour étoffer la catégorie. */

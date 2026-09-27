@@ -28,7 +28,7 @@ var Match = (function () {
     seize: 16, vingt: 20, trente: 30, quarante: 40, cinquante: 50,
     soixante: 60, cent: 100, mille: 1000,
     two: 2, three: 3, four: 4, five: 5, seven: 7, eight: 8, nine: 9,
-    ten: 10, eleven: 11, twelve: 12
+    ten: 10, eleven: 11, twelve: 12, fifty: 50
   };
 
   function chiffrer(t) {
