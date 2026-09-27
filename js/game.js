@@ -148,6 +148,13 @@ var Jeu = (function () {
     var attenteReprise = 0;     // avant cette heure, on ne resollicite pas le catalogue
     var reserve = [];   // morceaux de secours si un extrait est introuvable
     var curseurReserve = 0;
+    var graineReserve = null;   // la partie a laquelle cette reserve appartient
+
+    /* Ce qu'on sait de soi, en local. Sert a se reconstruire si la fiche
+       disparait du salon pendant une coupure. */
+    var monProfil = null;
+    var monRejointA = 0;
+    var monScore = 0;
 
     /* ---------- petit émetteur d'événements ---------- */
     function sur(nom, cb) {
@@ -181,10 +188,32 @@ var Jeu = (function () {
 
     /* ---------- préparation des extraits (chef seulement) ---------- */
 
+    /* La liste des morceaux a venir n'existe que dans le navigateur de celui qui
+       a lance la partie. Si le role de chef passe a quelqu'un d'autre - parce
+       que l'hote a ferme son onglet, ou qu'il a eu une coupure - le nouveau chef
+       se retrouvait avec une reserve vide : plus aucun extrait n'arrivait et tout
+       le salon restait sur << preparation... >> jusqu'a la fin des temps.
+
+       On la reconstruit a l'identique : la manche et la graine du tirage sont
+       ecrites dans `meta`, et le tirage est deterministe. Le nouveau chef
+       reparcourt la meme liste depuis le debut ; `dejaPassee` ecarte au passage
+       les morceaux deja tombes. */
+    function assurerReserve() {
+      var m = etat.meta;
+      if (!m || m.graine === undefined || m.graine === null) return false;
+      if (graineReserve === m.graine && reserve.length) return true;
+
+      reserve = Playlists.tirage(m.manche, (m.nbTitres || 12) + 12, m.graine);
+      curseurReserve = 0;
+      graineReserve = m.graine;
+      return reserve.length > 0;
+    }
+
     function preparerSuite() {
       if (!etat.jeSuisChef || !etat.meta || etat.meta.statut !== 'jeu') return;
       if (preparationEnCours) return;
       if (net.maintenant() < attenteReprise) return;   // on laisse le catalogue souffler
+      if (!assurerReserve()) return;
 
       var total = etat.meta.nbTitres;
       var depuis = etat.tour ? etat.tour.index : 0;
@@ -371,8 +400,11 @@ var Jeu = (function () {
         gain += reglages.bonusDouble;
       }
 
-      var scoreActuel = (etat.joueurs[moi] && etat.joueurs[moi].score) || 0;
-      net.maj(racine + '/joueurs/' + moi, { score: scoreActuel + gain });
+      // `monScore` suit la fiche du salon, et prend le relais si elle a disparu
+      // le temps d'une coupure : les points gagnes ne repartent pas de zero.
+      var scoreActuel = etat.joueurs[moi] ? (etat.joueurs[moi].score || 0) : monScore;
+      monScore = scoreActuel + gain;
+      net.maj(racine + '/joueurs/' + moi, { score: monScore });
       net.maj(racine + '/tour/trouve/' + moi, {
         titre: motsTrouves.titre, artiste: motsTrouves.artiste, a: net.maintenant()
       });
@@ -385,6 +417,7 @@ var Jeu = (function () {
       var nb = reglages.nbTitres;
       reserve = Playlists.tirage(manche, nb + 12, graine); // marge pour les introuvables
       curseurReserve = 0;
+      graineReserve = graine;
       etat.pistes = {};
 
       return net.ecrire(racine + '/pistes', null).then(function () {
@@ -417,21 +450,39 @@ var Jeu = (function () {
     /* ---------- branchement ---------- */
 
     function brancher(profil) {
-      net.aLaDeconnexion(racine + '/joueurs/' + moi);
+      monProfil = { nom: profil.nom, emoji: profil.emoji, couleur: profil.couleur || null };
+      monScore = (etat.joueurs[moi] && etat.joueurs[moi].score) || 0;
+      monRejointA = (etat.joueurs[moi] && etat.joueurs[moi].rejointA) || net.maintenant();
+      armerDeconnexion();
 
       return net.maj(racine + '/joueurs/' + moi, {
-        nom: profil.nom, emoji: profil.emoji,
+        nom: monProfil.nom, emoji: monProfil.emoji,
         // La couleur voyage avec le pseudo : tout le salon la voit.
-        couleur: profil.couleur || null,
-        score: (etat.joueurs[moi] && etat.joueurs[moi].score) || 0,
-        rejointA: (etat.joueurs[moi] && etat.joueurs[moi].rejointA) || net.maintenant(),
+        couleur: monProfil.couleur,
+        score: monScore,
+        rejointA: monRejointA,
         vuA: net.maintenant()
       }).then(function () {
         desabonnements.push(net.ecouter(racine + '/meta', function (v) {
           etat.meta = v; recalculer(); rafraichir();
         }));
         desabonnements.push(net.ecouter(racine + '/joueurs', function (v) {
-          etat.joueurs = v || {}; recalculer(); rafraichir();
+          etat.joueurs = v || {};
+
+          var fiche = etat.joueurs[moi];
+          if (fiche) {
+            // Tant que la fiche existe, c'est le salon qui fait foi : une remise
+            // a zero entre deux parties doit etre suivie, pas contredite.
+            monScore = fiche.score || 0;
+            if (fiche.rejointA) monRejointA = fiche.rejointA;
+            // Revenu d'une coupure : la consigne m'a marque parti, je me resignale
+            // tout de suite plutot que d'attendre le prochain battement.
+            if (etat.connecte && !fiche.vuA) signeDeVie();
+          } else if (etat.connecte) {
+            reparerMaFiche();
+          }
+
+          recalculer(); rafraichir();
         }));
         desabonnements.push(net.ecouter(racine + '/tour', function (v) {
           var avant = etat.tour;
@@ -453,9 +504,7 @@ var Jeu = (function () {
 
         etat.connecte = true;
 
-        minuteurs.push(setInterval(function () {
-          net.maj(racine + '/joueurs/' + moi, { vuA: net.maintenant() });
-        }, BATTEMENT));
+        minuteurs.push(setInterval(signeDeVie, BATTEMENT));
 
         minuteurs.push(setInterval(function () {
           recalculer();
@@ -469,6 +518,33 @@ var Jeu = (function () {
 
     function recalculer() {
       etat.jeSuisChef = calculerChef() === moi;
+    }
+
+    /* Rearme la consigne de deconnexion. A refaire regulierement : une fois
+       qu'elle s'est declenchee, le serveur l'oublie, et sans ca la coupure
+       suivante ne marquerait plus personne comme parti. */
+    function armerDeconnexion() {
+      net.aLaDeconnexion(racine + '/joueurs/' + moi, { vuA: 0 });
+    }
+
+    /* Ma fiche s'est volatilisee alors que je suis toujours la : on la reecrit
+       en entier. Sans ca, le battement de coeur la recreait avec sa seule heure
+       de passage - d'ou le joueur qui << revient en Anonyme a zero point >>. */
+    function reparerMaFiche() {
+      if (!monProfil) return;
+      net.maj(racine + '/joueurs/' + moi, {
+        nom: monProfil.nom, emoji: monProfil.emoji,
+        couleur: monProfil.couleur || null,
+        score: monScore, rejointA: monRejointA, vuA: net.maintenant()
+      });
+      armerDeconnexion();
+    }
+
+    /* Le battement de coeur : je suis toujours la. */
+    function signeDeVie() {
+      if (!etat.joueurs[moi]) { reparerMaFiche(); return; }
+      net.maj(racine + '/joueurs/' + moi, { vuA: net.maintenant() });
+      armerDeconnexion();
     }
 
     return {
