@@ -238,6 +238,7 @@ var Itunes = (function () {
       labelT: piste.labelT || 'Titre',
       solo: piste.solo || null,
       strict: !!piste.strict,
+      langue: piste.langue || 'fr',
       variantesTitre: unique(vT),
       variantesArtiste: unique(vA)
     };

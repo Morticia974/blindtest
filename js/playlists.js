@@ -5,7 +5,8 @@
    Format d'un morceau : { t: titre, a: artiste, q: recherche (facultatif),
                            altT: [autres titres acceptés], altA: [autres artistes acceptés] }
    Format d'une manche : { id, nom, emoji, desc, labelA: étiquette de la 2e réponse,
-                           pistes: [...] }                                              */
+                           langue: 'fr' ou 'en' — celle des réponses, pour la voix
+                           du site, pistes: [...] }                                     */
 
 var Playlists = (function () {
   'use strict';
@@ -13,6 +14,7 @@ var Playlists = (function () {
   var manches = [
     {
       id: 'annees80',
+      langue: 'en',
       nom: "Années 80",
       emoji: "🕹️",
       desc: "Synthés, épaulettes et refrains increvables.",
@@ -91,6 +93,7 @@ var Playlists = (function () {
     },
     {
       id: 'annees90',
+      langue: 'en',
       nom: "Années 90",
       emoji: "📼",
       desc: "Eurodance, boys bands et guitares sales.",
@@ -173,6 +176,7 @@ var Playlists = (function () {
     },
     {
       id: 'annees2000',
+      langue: 'en',
       nom: "Années 2000",
       emoji: "💿",
       desc: "L'époque des sonneries polyphoniques.",
@@ -260,6 +264,7 @@ var Playlists = (function () {
     },
     {
       id: 'francaise',
+      langue: 'fr',
       nom: "Variété française",
       emoji: "🥖",
       desc: "De Piaf à Angèle, le patrimoine.",
@@ -324,6 +329,7 @@ var Playlists = (function () {
     },
     {
       id: 'disney',
+      langue: 'fr',
       nom: "Disney et compagnie",
       emoji: "🏰",
       desc: "Ici on devine le film.",
@@ -512,6 +518,7 @@ var Playlists = (function () {
     },
     {
       id: 'generiques',
+      langue: 'fr',
       nom: "Films cultes",
       emoji: "🍿",
       desc: "Les musiques qui font le cinéma. Ici on devine le film.",
@@ -672,6 +679,7 @@ var Playlists = (function () {
     },
     {
       id: 'series',
+      langue: 'en',
       nom: "Séries cultes",
       emoji: "📺",
       desc: "Les génériques qu'on connaît par cœur. Ici on devine la série.",
@@ -840,6 +848,7 @@ var Playlists = (function () {
     },
     {
       id: 'dancefloor',
+      langue: 'en',
       nom: "Dancefloor & tubes d'été",
       emoji: "🕶️",
       desc: "Ceux qui vident la terrasse et remplissent la piste.",
@@ -897,6 +906,7 @@ var Playlists = (function () {
     },
     {
       id: 'rock',
+      langue: 'en',
       nom: "Rock intemporel",
       emoji: "🎸",
       desc: "Les riffs que tout le monde reconnaît en trois notes.",
@@ -957,6 +967,7 @@ var Playlists = (function () {
     },
     {
       id: 'metal',
+      langue: 'en',
       nom: "Métal",
       emoji: "🤘",
       desc: "Riffs, double pédale et cheveux au vent.",
@@ -1028,6 +1039,7 @@ var Playlists = (function () {
     },
     {
       id: 'anime',
+      langue: 'en',
       nom: "OST animés",
       emoji: "🍥",
       desc: "Génériques et musiques d'animes. Ici on devine l'anime.",
@@ -1102,6 +1114,7 @@ var Playlists = (function () {
     },
     {
       id: 'jeuxvideo',
+      langue: 'en',
       nom: "Jeux vidéo",
       emoji: "🎮",
       desc: "Les musiques qui ont bercé des milliers d'heures de manette.",
@@ -1188,6 +1201,7 @@ var Playlists = (function () {
     },
     {
       id: 'clubdo',
+      langue: 'fr',
       nom: "Dessins animés des années 90",
       emoji: "📺",
       desc: "Les génériques français du Club Dorothée. Attention aux frissons.",
@@ -1244,6 +1258,7 @@ var Playlists = (function () {
     },
     {
       id: 'rapfr',
+      langue: 'fr',
       nom: "Rap & R'n'B français",
       emoji: "🎙️",
       desc: "D'IAM à Aya Nakamura, trente ans de classiques.",
@@ -1316,6 +1331,7 @@ var Playlists = (function () {
     },
     {
       id: 'annees2010',
+      langue: 'en',
       nom: "Années 2010-2020",
       emoji: "📱",
       desc: "La décennie des écouteurs blancs et des playlists.",
@@ -1372,6 +1388,7 @@ var Playlists = (function () {
     },
     {
       id: 'karaoke',
+      langue: 'fr',
       nom: "Karaoké",
       emoji: "🍻",
       desc: "Les tubes que tout le monde braille en chœur à 2 h du matin.",
@@ -1421,6 +1438,7 @@ var Playlists = (function () {
     },
     {
       id: 'musicals',
+      langue: 'fr',
       nom: "Comédies musicales",
       emoji: "🎭",
       desc: "Starmania, Notre-Dame, Mozart… On devine le morceau et le spectacle.",
@@ -1473,6 +1491,7 @@ var Playlists = (function () {
     },
     {
       id: 'annees6070',
+      langue: 'fr',
       nom: "Années 60-70",
       emoji: "📻",
       desc: "Yéyé, Woodstock et boule à facettes.",
@@ -1534,6 +1553,7 @@ var Playlists = (function () {
     },
     {
       id: 'monde',
+      langue: 'fr',
       nom: "Zouk, reggae, latino, Afrique & Bretagne",
       emoji: "🌍",
       desc: "Zouk, reggae, raï, afrobeats et bagadoù : les tubes qui font voyager.",
@@ -1701,6 +1721,10 @@ var Playlists = (function () {
       labelT: m.labelT || 'Titre',
       solo: m.solo || null,
       strict: !!m.strict,
+      /* La langue dominante des réponses de cette catégorie. Elle ne sert qu'à
+         départager les textes qui ne donnent aucun indice — « Forever Young »
+         comme « Indochine » — quand le site les annonce à voix haute. */
+      langue: m.langue || 'fr',
       // D'où vient le morceau. Sert au Grand mélange, où l'en-tête ne peut pas
       // le dire : sans ça on ne sait pas si on cherche un jeu ou un Disney.
       categorie: m.emoji + ' ' + m.nom

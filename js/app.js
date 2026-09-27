@@ -145,6 +145,7 @@
 
   var ecranAffiche = null;
   var chefAffiche = null;     // qui avait la main au dernier rendu du salon
+  var finAnnoncee = false;    // le résultat de cette partie a-t-il été dit ?
 
   function montrer(nom) {
     if (nom !== 'fin') arreterSacre();
@@ -163,6 +164,7 @@
       // Le micro ne reste ouvert que sur l'écran de jeu : ailleurs, il n'a rien
       // à écouter, et un micro ouvert pour rien n'a pas à l'être.
       synchroniserMicro();
+      taire();
     }
   }
 
@@ -1102,6 +1104,19 @@
       ? (joueurs[0].emoji || '🎧') + ' ' + (joueurs[0].nom || 'Anonyme') + ' remporte la manche'
       : 'Partie terminée';
 
+    /* Le résultat est le moment où l'on veut le plus savoir. Dit une seule fois
+       par partie : `rendreFin` est rejoué à chaque rafraîchissement du salon.
+
+       Le drapeau se remet à zéro en revenant au salon ou au jeu, et ne se fie
+       pas à l'heure de fin : celle-ci est un horodatage du serveur, d'abord
+       estimé puis corrigé. Elle changeait de valeur, et le résultat était
+       annoncé deux fois de suite. */
+    if (joueurs.length && !finAnnoncee) {
+      finAnnoncee = true;
+      dire('Partie terminée. ' + (joueurs[0].nom || 'Anonyme') +
+           ' gagne avec ' + (joueurs[0].score || 0) + ' points.');
+    }
+
     // Argent, or, bronze — mais on ne dessine que les marches réellement occupées.
     var marches = [
       { rang: 1, classe: 'argent' },
@@ -1303,7 +1318,7 @@
      On dit quand même au joueur ce qui a été capté : sans ça, parler et ne rien
      voir arriver donne l'impression que le micro est mort. */
   function tenterBrouillon(texte) {
-    if (!partie) return;
+    if (!partie || jeParle() || cEstMaVoix(texte)) return;
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;
 
@@ -1313,7 +1328,7 @@
   }
 
   function entendu(resultat) {
-    if (!partie) return;
+    if (!partie || jeParle()) return;   // c'est le site qu'on entend, pas un joueur
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
 
@@ -1322,7 +1337,7 @@
       var mot = String(resultat[i].transcript || '').trim();
       if (mot && essais.indexOf(mot) === -1) essais.push(mot);
     }
-    if (!essais.length) return;
+    if (!essais.length || cEstMaVoix(essais[0])) return;
 
     for (var k = 0; k < essais.length; k++) {
       var res = partie.proposer(essais[k], { muet: true });
@@ -1344,6 +1359,9 @@
     if (res.artiste) quoi.push(avecArticle($('label-artiste').textContent));
     var fanfare = res.titre && res.artiste ? ' 🎉🎉' : ' 🎉';
     info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare, 'bien');
+    /* Dit, mais pas réécrit dans la zone invisible : le message ci-dessus y est
+       déjà annoncé tout seul, et un lecteur d'écran le lirait deux fois. */
+    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.');
     envolerPoints(res.gain);
     rendreJeu();
   }
@@ -1354,23 +1372,241 @@
 
      Dans les catégories où la réponse est une œuvre — un film, une série, un
      jeu — c'est elle qu'on annonce d'abord : c'est ça qu'il fallait trouver. */
-  function phraseDeRevelation(p) {
+  function partiesDeRevelation(p) {
     var solo = p.solo || null;
     var oeuvre = !/artiste/i.test(p.labelA || 'Artiste');
+    var debut = { t: "C'était", l: 'fr-FR' };
+    var d = p.langue || 'fr';
+    function lg(x) { return langueDe(x, d); }
 
-    if (solo === 'artiste') return "C'était " + p.artiste + '.';
-    if (solo === 'titre') return "C'était " + p.titre + '.';
-    if (oeuvre) return "C'était " + p.artiste + '. Musique : ' + p.titre + '.';
-    return "C'était « " + p.titre + " », de " + p.artiste + '.';
+    if (solo === 'artiste') return [debut, { t: p.artiste, l: lg(p.artiste) }];
+    if (solo === 'titre') return [debut, { t: p.titre, l: lg(p.titre) }];
+    if (oeuvre) {
+      return [debut, { t: p.artiste, l: lg(p.artiste) },
+              { t: 'Musique :', l: 'fr-FR' }, { t: p.titre, l: lg(p.titre) }];
+    }
+    return [debut, { t: p.titre, l: lg(p.titre) },
+            { t: 'de', l: 'fr-FR' }, { t: p.artiste, l: lg(p.artiste) }];
   }
 
-  /* Une phrase pour les lecteurs d'écran. On vide d'abord : sans ça, deux
-     annonces identiques d'affilée ne sont pas relues. */
-  function annoncer(texte) {
-    var b = $('annonce');
+  function phraseDeRevelation(p) {
+    return partiesDeRevelation(p).map(function (x) { return x.t; }).join(' ') + '.';
+  }
+
+  /* =========================================================================
+     Dire les choses à voix haute
+
+     Les annonces invisibles ne servent qu'à qui fait tourner un lecteur
+     d'écran. Ici, c'est le site lui-même qui parle — de quoi suivre une partie
+     sans rien voir et sans rien installer.
+
+     On ne parle jamais par-dessus le début d'un extrait : seules la trouvaille
+     et la révélation sont dites. Le numéro du morceau reste écrit dans la zone
+     invisible, pour les lecteurs d'écran qui, eux, savent s'interrompre.
+     ========================================================================= */
+
+  var annoncesVoulues = false;
+  var parleJusqua = 0;     // le micro ignore ce qu'il entend pendant ce temps
+  var dernierDit = '';     // la dernière phrase prononcée, pour la reconnaître
+  var dernierDitA = 0;
+  var remiseMusique = null;   // filet, si la fin de la phrase ne vient jamais
+
+  /* De quelle langue est ce bout de texte ?
+
+     Une voix française qui lit « Born in the U.S.A. » est incompréhensible —
+     et une voix anglaise qui lirait « Mistral gagnant » ne vaudrait pas mieux.
+     On tranche sur des indices : mots-outils de chaque langue, accents, et
+     quelques suites de lettres qui ne se rencontrent guère en français.
+
+     Sans preuve d'anglais on reste en français : c'est la langue du site, et
+     la plupart des noms propres du catalogue le sont. Le « k » a été écarté
+     des indices anglais — il faisait basculer Patrick, Kaamelott et Kassav. */
+  /* « et » n'est pas dans la liste : la normalisation le fabrique à partir de
+     « & » et de « feat. », et il faisait passer « Daft Punk feat. Pharrell
+     Williams » pour du français. */
+  var MOTS_FR = ('le les un une des du de au aux dans sur pour avec sans mon ma mes ton ta tes ' +
+    'sa ses notre votre leur je tu elle nous vous qui que quoi est sont etait suis ont pas plus ' +
+    'rien tres mais comme encore toujours jamais etre avoir fait vais bien deja apres avant chez ' +
+    'vers meme cette ces cet toi moi lui oui non faut veux veut peux peut sais sait aime coeur ' +
+    'amour vie nuit jour temps monde ciel soleil chanson danse petit petite grand grande belle ' +
+    'beau ete pere mere enfant femme homme roi reine rue ville pays').split(' ');
+  var MOTS_EN = ('the of in to for with and you your my we they is are was be do dont cant this ' +
+    'that love heart night girl boy baby never always all like get got want know time way life ' +
+    'man world she he her his from out about into gonna wanna feel make take come go back down ' +
+    'up just only now here there why how what who when where its im ive youre wont aint').split(' ');
+
+  function langueDe(texte, defaut) {
+    var brut = String(texte || '');
+    var t = Match.normaliser(brut);
+    var fr = 0, en = 0;
+    t.split(' ').forEach(function (m) {
+      if (MOTS_FR.indexOf(m) !== -1) fr++;
+      if (MOTS_EN.indexOf(m) !== -1) en++;
+    });
+    /* Ni ä ni ö : ce sont des trémas allemands, pas français. Ils faisaient
+       basculer Motörhead et Blue Öyster Cult du mauvais côté. */
+    if (/[àâéèêëîïôùûüÿçœæ]/i.test(brut)) fr += 3;
+    /* « ill » a été retiré des indices français : il attrapait Billie Jean,
+       Gorillaz, Williams et Still Alive. Les vrais mots français en « ille »
+       arrivent presque toujours accompagnés d'un autre indice. */
+    if (/(eau|oux|ais|ez$|aient|tion$)/.test(t)) fr += 1;
+    if (/(th|wh|oo|ee|ck|sh|ing$|ight|w)/.test(t)) en += 1;
+
+    if (en > fr) return 'en-US';
+    if (fr > en) return 'fr-FR';
+    /* Ni l'un ni l'autre — c'est le cas de près de la moitié du catalogue :
+       « Forever Young », « Indochine », « Nirvana », « Calogero » ne portent
+       aucun indice. On suit alors la langue dominante de la catégorie, ce qui
+       vaut nettement mieux que de tirer à pile ou face. */
+    return defaut === 'en' ? 'en-US' : 'fr-FR';
+  }
+
+  /* La meilleure voix installée pour cette langue. S'il n'y en a pas, on rend
+     la main au navigateur : mieux vaut une voix approximative que le silence. */
+  function voixPour(langue) {
+    var dispo = window.speechSynthesis.getVoices() || [];
+    var court = String(langue).slice(0, 2).toLowerCase();
+    for (var i = 0; i < dispo.length; i++) {
+      if (dispo[i].lang && dispo[i].lang.slice(0, 2).toLowerCase() === court) return dispo[i];
+    }
+    return null;
+  }
+
+  function synthesePossible() {
+    return typeof window.speechSynthesis !== 'undefined' &&
+           typeof window.SpeechSynthesisUtterance !== 'undefined';
+  }
+
+  function majBoutonAnnonces() {
+    var b = $('bouton-annonces');
     if (!b) return;
-    b.textContent = '';
-    setTimeout(function () { b.textContent = texte; }, 60);
+    b.hidden = !synthesePossible();
+    b.classList.toggle('actif', annoncesVoulues);
+    b.setAttribute('aria-pressed', String(annoncesVoulues));
+    b.setAttribute('aria-label', annoncesVoulues
+      ? 'Couper les annonces à voix haute' : 'Annoncer les réponses à voix haute');
+    b.title = annoncesVoulues ? 'Annonces à voix haute : allumées' : 'Annoncer les réponses à voix haute';
+  }
+
+  /* Pendant que le site parle, la musique se met en retrait.
+
+     C'est le seul vrai moyen de « parler plus fort » : la voix de synthèse est
+     déjà à son maximum, et monter le reste ne ferait que tout monter ensemble.
+     On remet le son en repassant par `appliquerVolume`, qui relit le réglage
+     courant — si quelqu'un bouge le curseur pendant l'annonce, c'est sa valeur
+     qui revient, pas celle d'avant. */
+  function baisserLaMusique() {
+    if (gain) gain.gain.value = volume * 0.18;
+    else lecteur.volume = volume * 0.18;
+  }
+
+  function remettreLaMusique() {
+    if (remiseMusique) { clearTimeout(remiseMusique); remiseMusique = null; }
+    appliquerVolume();
+  }
+
+  /* Dit une phrase française. */
+  function dire(texte) {
+    direParties([{ t: texte, l: 'fr-FR' }]);
+  }
+
+  /* Dit une suite de morceaux, chacun dans sa langue : « C'était » en français,
+     puis le titre en anglais s'il l'est. Rien ne s'accumule d'une annonce à
+     l'autre — sinon le site parlerait encore du morceau précédent pendant qu'on
+     écoute le suivant. */
+  function direParties(parties) {
+    if (!annoncesVoulues || !synthesePossible()) return;
+    parties = (parties || []).filter(function (p) { return p && String(p.t || '').trim(); });
+    if (!parties.length) return;
+
+    try {
+      window.speechSynthesis.cancel();
+
+      var entier = parties.map(function (p) { return p.t; }).join(' ');
+      /* Le micro est souvent ouvert en même temps : il entendrait le site
+         parler et prendrait ça pour une réponse.
+
+         On le rend sourd, mais brièvement : rester sourd le temps d'une longue
+         phrase mangeait jusqu'à six secondes d'écoute, et quelqu'un qui vient
+         de trouver le titre veut pouvoir enchaîner sur l'artiste. Le vrai
+         garde-fou est ailleurs — on retient ce qu'on vient de dire, et on le
+         reconnaît quand il nous revient par le micro. */
+      dernierDit = Match.normaliser(entier);
+      dernierDitA = Date.now();
+      var plafond = Math.min(6000, 600 + entier.length * 60);
+      parleJusqua = Date.now() + plafond;
+
+      baisserLaMusique();
+      /* Si la fin de la phrase ne vient jamais — ça arrive —, la musique ne
+         doit pas rester en sourdine pour le reste de la partie. */
+      if (remiseMusique) clearTimeout(remiseMusique);
+      remiseMusique = setTimeout(remettreLaMusique, plafond + 2500);
+
+      parties.forEach(function (p, i) {
+        var u = new SpeechSynthesisUtterance(String(p.t));
+        u.lang = p.l || 'fr-FR';
+        var v = voixPour(u.lang);
+        if (v) u.voice = v;
+        if (i === parties.length - 1) {
+          u.onend = u.onerror = function () {
+            parleJusqua = Date.now() + 500;
+            remettreLaMusique();
+          };
+        }
+        window.speechSynthesis.speak(u);
+      });
+    } catch (e) { remettreLaMusique(); }
+  }
+
+  function taire() {
+    if (synthesePossible()) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+    parleJusqua = 0;
+    remettreLaMusique();
+  }
+
+  /* Vrai quand le site est en train de parler : ce que le micro entend à cet
+     instant, c'est lui-même. */
+  function jeParle() { return Date.now() < parleJusqua; }
+
+  /* Et si la transcription arrive après coup — le navigateur ne rend sa copie
+     qu'une fois la phrase finie — on la reconnaît à ce qu'elle dit. Ce que le
+     site annonce ne contient jamais la réponse attendue : « tu as trouvé le
+     titre », pas le titre lui-même. Aucun risque d'étouffer un vrai joueur. */
+  function cEstMaVoix(texte) {
+    if (!dernierDit || Date.now() - dernierDitA > 12000) return false;
+    var t = Match.normaliser(texte);
+    return t.length >= 4 && dernierDit.indexOf(t) !== -1;
+  }
+
+  /* Une phrase pour les lecteurs d'écran, et pour la voix du site quand elle
+     est allumée. On vide d'abord la zone : sans ça, deux annonces identiques
+     d'affilée ne sont pas relues. */
+  function annoncer(texte, aVoixHaute) {
+    var b = $('annonce');
+    if (b) {
+      b.textContent = '';
+      setTimeout(function () { b.textContent = texte; }, 60);
+    }
+    if (aVoixHaute) dire(texte);
+  }
+
+  /* La même chose, mais en morceaux étiquetés par langue. L'attribut `lang`
+     n'est pas décoratif : un lecteur d'écran qui sait changer de voix le lira
+     « Born in the U.S.A. » à l'anglaise et « de » à la française. */
+  function annoncerParties(parties) {
+    var b = $('annonce');
+    if (b) {
+      b.textContent = '';
+      setTimeout(function () {
+        parties.forEach(function (p, i) {
+          var sp = document.createElement('span');
+          sp.setAttribute('lang', String(p.l || 'fr-FR').slice(0, 2));
+          sp.textContent = (i ? ' ' : '') + p.t;
+          b.appendChild(sp);
+        });
+      }, 60);
+    }
+    direParties(parties);
   }
 
   /* ================= aiguillage selon l'état ================= */
@@ -1380,10 +1616,12 @@
     if (!etat.meta) return;
 
     if (etat.meta.statut === 'attente') {
+      finAnnoncee = false;
       montrer('salon');
       rendreSalon();
       arreterExtrait();
     } else if (etat.meta.statut === 'jeu') {
+      finAnnoncee = false;
       montrer('jeu');
       rendreJeu();
       // Barry sera prêt bien avant le podium.
@@ -1422,10 +1660,17 @@
       if (!etat.tour || !etat.meta) return;
 
       if (phase === 'ecoute') {
-        annoncer('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '. À toi.');
+        dernierDit = '';   // ce qui a été dit au morceau d'avant ne compte plus
+        // Écrit seulement : parler ici couvrirait les premières notes.
+        annoncer('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '. À toi.', false);
       } else if (phase === 'reveal') {
         var p = etat.pistes[etat.tour.index];
-        if (p) annoncer(phraseDeRevelation(p));
+        if (p) {
+          /* Écrit en un bloc pour les lecteurs d'écran — avec la langue de
+             chaque morceau, pour que ceux qui savent changer de voix le
+             fassent — et dit morceau par morceau par la voix du site. */
+          annoncerParties(partiesDeRevelation(p));
+        }
       }
     });
 
@@ -1593,6 +1838,23 @@
     });
 
     $('champ-reponse').addEventListener('focus', function () { clavierVoulu = true; });
+
+    try { annoncesVoulues = localStorage.getItem('bt.annonces') === '1'; } catch (e) {}
+    majBoutonAnnonces();
+    $('bouton-annonces').addEventListener('click', function () {
+      annoncesVoulues = !annoncesVoulues;
+      try { localStorage.setItem('bt.annonces', annoncesVoulues ? '1' : '0'); } catch (e) {}
+      majBoutonAnnonces();
+      if (annoncesVoulues) {
+        /* On répond tout de suite : c'est la seule preuve audible que ça
+           marche, et ce premier clic débloque la voix sur les navigateurs qui
+           l'exigent. */
+        dire('Les annonces sont allumées.');
+      } else {
+        taire();
+      }
+      info(annoncesVoulues ? 'Le site annoncera les réponses à voix haute.' : 'Annonces coupées.', '');
+    });
 
     microVoulu = lireChoixMicro();
     majBoutonMicro();

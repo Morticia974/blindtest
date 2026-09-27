@@ -537,7 +537,16 @@ button, input, select { font: inherit; color: inherit; }
   width: min(260px, 100%);
   margin: 16px auto 0;
 }
-.bouton-son {
+/* Le bouton des annonces vit dans la rangée du son : c'est une histoire de
+   sortie audio, pas de saisie. Il a sa propre classe, et pas `bouton-son` :
+   celle-là désigne les boutons de volume, que le code réécrit tous ensemble —
+   icône comprise. Mon micro-parleur y aurait perdu son dessin. */
+.bouton-dire.actif {
+  border-color: var(--vert);
+  background: rgba(140,255,74,.18);
+}
+
+.bouton-son, .bouton-dire {
   flex: 0 0 auto;
   width: 40px;
   height: 40px;
@@ -549,7 +558,7 @@ button, input, select { font: inherit; color: inherit; }
   cursor: pointer;
   transition: border-color .15s ease, transform .12s ease;
 }
-.bouton-son:hover { border-color: var(--vert); }
+.bouton-son:hover, .bouton-dire:hover { border-color: var(--vert); }
 .bouton-son:active { transform: scale(.94); }
 .bouton-son:focus-visible { outline: 3px solid var(--ambre); outline-offset: 2px; }
 .reglage-son input[type="range"] {
