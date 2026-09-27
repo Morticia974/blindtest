@@ -106,6 +106,23 @@ var Itunes = (function () {
        ne veut pas. */
     var voulue = !!piste.voulue;
 
+    /* Quand la playlist nomme l'interprète et qu'Apple a bel et bien un
+       enregistrement de lui, tout ce qui vient d'un autre est rétrogradé.
+
+       Sans ça, les génériques japonais partaient à la reprise : Apple range
+       « Guren no Yumiya » de Linked Horizon sous son titre en kanji — invisible
+       pour nous —, si bien que la version anglaise d'une youtubeuse gagnait le
+       concours de ressemblance et jouait à sa place. Pareil pour One Punch Man
+       et pour Bleach.
+
+       La pénalité ne s'applique que s'il existe un enregistrement du bon
+       interprète. S'il n'y en a aucun, rien ne change : mieux vaut une reprise
+       que le silence. */
+    var vInterprete = piste.interprete ? Match.variantesArtiste(piste.interprete) : [];
+    var luiMeme = vInterprete.length && candidats.some(function (r) {
+      return Match.correspond(r.artistName, vInterprete);
+    });
+
     var note = candidats.map(function (r) {
       var n = 0;
       if (Match.correspond(r.trackName, vTitre)) n += 10;
@@ -118,8 +135,18 @@ var Itunes = (function () {
       var etiquette = Match.normaliser((r.artistName || '') + ' ' + (r.collectionName || ''));
 
       // On écarte les reprises et les karaokés déguisés…
-      if (!voulue && /karaoke|tribute|made popular|in the style of|cover version|rendu celebre par|dans le style de|hommage a/
+      if (!voulue && /karaoke|tribute|made popular|in the style of|cover version|rendu celebre par|dans le style de|hommage a|animesong collection/
             .test(etiquette)) n -= 20;
+
+      /* …y compris ceux qui ne s'annoncent qu'en japonais. `normaliser` ne garde
+         que les lettres latines : カラオケ (karaoké) et カバー (reprise) y
+         disparaissaient entièrement, et le générique de JoJo s'est retrouvé joué
+         en karaoké sans que rien ne le signale. */
+      if (!voulue && /\u30ab\u30e9\u30aa\u30b1|\u30ab\u30d0\u30fc|\u6b4c\u3063\u3061\u3083\u738b|\u30aa\u30eb\u30b4\u30fc\u30eb/
+            .test(String(r.trackName || '') + ' ' + String(r.artistName || '') + ' ' + String(r.collectionName || ''))) n -= 20;
+
+      /* Et la reprise d'un autre interprète, quand on sait lequel on veut. */
+      if (luiMeme && !Match.correspond(r.artistName, vInterprete)) n -= 25;
 
       /* …et toutes les versions alternatives : un remix ou une version acoustique
          est méconnaissable en blind test. La pénalité n'exclut pas, elle
@@ -165,7 +192,12 @@ var Itunes = (function () {
     }
 
     return enfiler(function () {
-      var params = { term: requete, media: 'music', entity: 'song', limit: 8, country: pays };
+      /* Huit résultats suffisent d'ordinaire. Mais quand la playlist nomme
+         l'interprète, on en demande le double : Apple classe « THE HERO !! »
+         de JAM Project derrière une demi-douzaine de reprises, et il tombait
+         hors de la liste avant même qu'on puisse le préférer. */
+      var params = { term: requete, media: 'music', entity: 'song', country: pays,
+                     limit: piste.interprete ? 16 : 8 };
 
       // Apple coupe le robinet au-delà d'une vingtaine d'appels par minute, et
       // répond alors une liste vide. On retente une fois avant de conclure.

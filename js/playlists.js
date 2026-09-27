@@ -1043,29 +1043,46 @@ var Playlists = (function () {
       nom: "OST animés",
       emoji: "🍥",
       desc: "Génériques et musiques d'animes. Ici on devine l'anime.",
-      // Une seule réponse : l'anime. Personne ne devine « Kaikai Kitan ».
+      /* Une seule réponse : l'anime. Personne ne devine « Kaikai Kitan ».
+
+         Les initiales comptent ici, contrairement aux films : un anime se dit
+         couramment « FMA », « DBZ », « SNK », et les refuser reviendrait à
+         demander un mot de passe plutôt qu'une réponse. */
       solo: 'artiste',
       strict: true,
       labelT: "Titre du morceau",
       labelA: "Anime",
       pistes: [
-        { t: "Cha-La Head-Cha-La", a: "Dragon Ball Z", q: "Cha La Head Cha La Hironobu Kageyama" },
-        { t: "We Are!", a: "One Piece", q: "We Are Hiroshi Kitadani One Piece" },
+        { t: "Cha-La Head-Cha-La", a: "Dragon Ball Z", q: "Cha La Head Cha La Hironobu Kageyama",
+          altA: ["DBZ"] },
+        { t: "We Are!", a: "One Piece", q: "We Are Hiroshi Kitadani One Piece", altA: ["OP"] },
         { t: "Blue Bird", a: "Naruto Shippuden", q: "Blue Bird Ikimonogakari", altA: ["Naruto"] },
-        { t: "Guren no Yumiya", a: "L'Attaque des Titans", q: "Guren no Yumiya Linked Horizon", altT: ["Feuerroter Pfeil und Bogen"], altA: ["Attack on Titan", "Shingeki no Kyojin"] },
-        { t: "Gurenge", a: "Demon Slayer", q: "Gurenge LiSA", altA: ["Kimetsu no Yaiba"] },
+        { t: "Guren no Yumiya", a: "L'Attaque des Titans", q: "Guren no Yumiya Linked Horizon",
+          interprete: "Linked Horizon", altT: ["Feuerroter Pfeil und Bogen"],
+          altA: ["Attack on Titan", "Shingeki no Kyojin", "SNK", "AOT"] },
+        { t: "Gurenge", a: "Demon Slayer", q: "Gurenge LiSA", altA: ["Kimetsu no Yaiba", "KNY"] },
         { t: "Unravel", a: "Tokyo Ghoul", q: "Unravel TK from Ling tosite sigure" },
-        { t: "Again", a: "Fullmetal Alchemist Brotherhood", q: "Again YUI Fullmetal Alchemist", altA: ["Fullmetal Alchemist"] },
+        /* La série de 2003, pas Brotherhood : c'est celle qu'on a vue en France,
+           et « Melissa » est le générique que les gens ont en tête. */
+        { t: "Melissa", a: "Fullmetal Alchemist", q: "Melissa Porno Graffitti",
+          interprete: "Porno Graffitti",
+          /* Celle du single est un fond blanc au nom du groupe : elle ne dit
+             rien de l'anime, et ce nom-là n'a rien à faire sur un écran de
+             salon. On montre la jaquette de la bande originale, où l'on voit
+             Edward et Alphonse. */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/4f/9d/e5/4f9de5b1-9a89-2692-198a-d9100fd09522/4534530136831.jpg/600x600bb.jpg",
+          altA: ["FMA", "Fullmetal Alchemist Brotherhood", "FMAB"] },
         { t: "Tank!", a: "Cowboy Bebop", q: "Tank Seatbelts Cowboy Bebop" },
-        { t: "A Cruel Angel's Thesis", a: "Neon Genesis Evangelion", q: "A Cruel Angel's Thesis Yoko Takahashi", altT: ["Zankoku na Tenshi no These"], altA: ["Evangelion", "Evangelion 1.0"] },
+        { t: "A Cruel Angel's Thesis", a: "Neon Genesis Evangelion", q: "A Cruel Angel's Thesis Yoko Takahashi", altT: ["Zankoku na Tenshi no These"], altA: ["Evangelion", "Evangelion 1.0", "NGE", "Eva"] },
         { t: "Colors", a: "Code Geass", q: "Colors FLOW Code Geass" },
-        { t: "Kaikai Kitan", a: "Jujutsu Kaisen", q: "Kaikai Kitan Eve" },
+        { t: "Kaikai Kitan", a: "Jujutsu Kaisen", q: "Kaikai Kitan Eve", altA: ["JJK"] },
         { t: "Idol", a: "Oshi no Ko", q: "Idol YOASOBI" },
         { t: "Zenzenzense", a: "Your Name", q: "Zenzenzense RADWIMPS", altA: ["Kimi no Na wa"] },
         { t: "Merry-Go-Round of Life", a: "Le Château ambulant", q: "Merry Go Round of Life Joe Hisaishi", altA: ["Howl's Moving Castle"] },
         { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"] },
-        { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu" },
-        { t: "Kick Back", a: "Chainsaw Man", q: "Kick Back Kenshi Yonezu" },
+        { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu",
+          altA: ["MHA", "Boku no Hero Academia", "BNHA"] },
+        { t: "Kick Back", a: "Chainsaw Man", q: "Kick Back Kenshi Yonezu", altA: ["CSM"] },
         { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu JUDY AND MARY The Great Escape", altA: ["Rurouni Kenshin"] },
 
         /* Ajoutés sur proposition d'Audrey : la catégorie manquait de variété. */
@@ -1074,16 +1091,22 @@ var Playlists = (function () {
         { t: "Déjà Vu", a: "Initial D", q: "Deja Vu Dave Rodgers" },
         { t: "The WORLD", a: "Death Note", q: "The World Nightmare Death Note" },
         { t: "Departure!", a: "Hunter x Hunter", q: "Departure Masatoshi Ono Hunter", altA: ["HxH"] },
-        { t: "THE HERO !!", a: "One Punch Man", q: "The Hero JAM Project One Punch Man" },
-        { t: "Asterisk", a: "Bleach", q: "Asterisk Orange Range Bleach" },
+        { t: "THE HERO !!", a: "One Punch Man", q: "The Hero JAM Project One Punch Man",
+          interprete: "JAM Project", altA: ["OPM", "One Punch-Man"] },
+        { t: "Asterisk", a: "Bleach", q: "Asterisk Orange Range Bleach",
+          interprete: "Orange Range" },
         { t: "Re:Re:", a: "Erased", q: "Re Re Asian Kung-Fu Generation", altA: ["Boku dake ga Inai Machi"] },
+        /* Apple n'a de ce générique qu'un karaoké — la bande sans le chant.
+           Gardé quand même : on reconnaît la musique, et c'est ce qui compte.
+           `voulue` empêche le moteur d'aller chercher ailleurs pour rien. */
+        { t: "Sono Chi no Sadame", a: "JoJo's Bizarre Adventure", q: "Sono Chi no Sadame Hiroaki Tommy Tominaga",
+          voulue: true, altA: ["JoJo"] },
         { t: "LEveL", a: "Solo Leveling", q: "LEveL SawanoHiroyuki nZk Tomorrow X Together" },
         { t: "Forces", a: "Berserk", q: "Forces Susumu Hirasawa Berserk" },
         { t: "Snow Fairy", a: "Fairy Tail", q: "Snow Fairy FUNKIST" },
         { t: "Seishun Satsubatsuron", a: "Assassination Classroom", q: "Seishun Satsubatsuron 3-nen E-gumi Utatan", altA: ["Ansatsu Kyoushitsu"] },
-        { t: "Sono Chi no Sadame", a: "JoJo's Bizarre Adventure", q: "Sono Chi no Sadame Hiroaki Tommy Tominaga", altA: ["JoJo"] },
         { t: "Rose", a: "NANA", q: "Rose Anna Tsuchiya NANA" },
-        { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki" },
+        { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki", altA: ["NGNL"] },
         { t: "Grain", a: "Monster", q: "Grain Kuniaki Haishima Monster" },
         /* La requête générique ne donnait rien du tout : la bande originale
            est cataloguée au nom du compositeur, pas de la série. */
@@ -1100,11 +1123,12 @@ var Playlists = (function () {
            direct de THE FIRST TAKE. C'est bien SPYAIR, mais plus dépouillé que
            le générique — l'alternative était une boîte à musique. */
         { t: "Imagination", a: "Haikyu!!", q: "SPYAIR イマジネーション From THE FIRST TAKE", altA: ["Haikyuu"] },
-        { t: "Can Do", a: "Kuroko no Basket", q: "GRANRODEO Can Do Single", altA: ["Kuroko's Basketball"] },
+        { t: "Can Do", a: "Kuroko no Basket", q: "GRANRODEO Can Do Single", altA: ["Kuroko's Basketball", "KNB"] },
         { t: "Cry Baby", a: "Tokyo Revengers", q: "Official HIGE DANDISM Cry Baby Single" },
-        { t: "Mixed Nuts", a: "Spy x Family", q: "OFFICIAL HIGE DANDISM ミックスナッツ Rejoice", altT: ["ミックスナッツ"] },
+        { t: "Mixed Nuts", a: "Spy x Family", q: "OFFICIAL HIGE DANDISM ミックスナッツ Rejoice",
+          altT: ["ミックスナッツ"], altA: ["SxF"] },
         { t: "Clattanoia", a: "Overlord", q: "Clattanoia OxT Overlord" },
-        { t: "Touch off", a: "The Promised Neverland", q: "Touch off UVERworld Promised Neverland", altA: ["Yakusoku no Neverland"] },
+        { t: "Touch off", a: "The Promised Neverland", q: "Touch off UVERworld Promised Neverland", altA: ["Yakusoku no Neverland", "TPN"] },
         { t: "Princesse Mononoké", a: "Princesse Mononoké", q: "Joe Hisaishi Yoshikazu Mera Princesse Mononoké chant Original Soundtrack", altA: ["Mononoke"] },
         { t: "Making of Cyborg", a: "Ghost in the Shell", q: "Kenji Kawai Making of Cyborg Ghost in the Shell Original Soundtrack" },
         { t: "Sincerely", a: "Violet Evergarden", q: "Sincerely TRUE Violet Evergarden Vocal Album" },
