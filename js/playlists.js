@@ -101,7 +101,12 @@ var Playlists = (function () {
         { t: "Zombie", a: "The Cranberries" },
         { t: "Creep", a: "Radiohead" },
         { t: "Under the Bridge", a: "Red Hot Chili Peppers" },
-        { t: "Wannabe", a: "Spice Girls" },
+        /* Apple renvoyait l'enregistrement porté par la bande originale d'un
+           film Netflix, et donc son affiche : une actrice inconnue au lieu des
+           Spice Girls. On force la pochette de « Spice », l'album d'où vient
+           la chanson. */
+        { t: "Wannabe", a: "Spice Girls",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/88/85/6e/88856e99-7323-7737-3634-435da9fcefa0/13UABIM59225.rgb.jpg/600x600bb.jpg" },
         { t: "I Want It That Way", a: "Backstreet Boys" },
         { t: "...Baby One More Time", a: "Britney Spears", altT: ["Baby One More Time"] },
         { t: "Barbie Girl", a: "Aqua" },
