@@ -37,7 +37,16 @@ var Match = (function () {
     });
     /* L'heure abrégée vaut l'heure écrite : « 5h » comme « cinq heures ».
        Le « h » doit être un mot à lui seul, donc « 2 hours » n'est pas touché. */
-    return t.replace(/(\d{1,2}) ?h\b/g, '$1 heures');
+    t = t.replace(/(\d{1,2}) ?h\b/g, '$1 heures');
+
+    /* Le mot qui annonce un numéro ne compte pas. Personne ne dit « Mambo
+       numéro cinq » : on dit « Mambo cinq ». Les deux côtés passent par ici,
+       donc « Mambo No. 5 » et « Mambo 5 » finissent pareil — et « Mambo
+       numéro 5 » aussi.
+
+       Il faut un chiffre derrière, sinon « No Woman No Cry » y perdrait ses
+       « no ». */
+    return t.replace(/\b(?:no|n|nos|num|numero|numeros|nro|number)\s+(\d)/g, '$1');
   }
 
   function normaliser(s) {
@@ -101,7 +110,7 @@ var Match = (function () {
 
   // Plus la bonne réponse est longue, plus on pardonne de fautes de frappe.
   function tolerance(n) {
-    if (n <= 3) return 0;
+    if (n <= 4) return 0;
     if (n <= 6) return 1;
     if (n <= 11) return 2;
     if (n <= 18) return 3;
