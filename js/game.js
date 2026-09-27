@@ -451,17 +451,27 @@ var Jeu = (function () {
 
     function brancher(profil) {
       monProfil = { nom: profil.nom, emoji: profil.emoji, couleur: profil.couleur || null };
-      monScore = (etat.joueurs[moi] && etat.joueurs[moi].score) || 0;
-      monRejointA = (etat.joueurs[moi] && etat.joueurs[moi].rejointA) || net.maintenant();
       armerDeconnexion();
 
-      return net.maj(racine + '/joueurs/' + moi, {
-        nom: monProfil.nom, emoji: monProfil.emoji,
-        // La couleur voyage avec le pseudo : tout le salon la voit.
-        couleur: monProfil.couleur,
-        score: monScore,
-        rejointA: monRejointA,
-        vuA: net.maintenant()
+      /* On lit d'abord la fiche qu'on avait peut-etre deja dans ce salon.
+
+         Sans cette lecture, revenir dans une partie en cours ecrasait le score
+         avec un zero : `etat.joueurs` est encore vide a cet instant, les
+         abonnements ne sont pas posees. Recharger la page en plein jeu — ou
+         revenir apres une coupure — coutait donc tous ses points. */
+      return net.lire(racine + '/joueurs/' + moi).then(function (fiche) {
+        fiche = fiche || {};
+        monScore = fiche.score || 0;
+        monRejointA = fiche.rejointA || net.maintenant();
+
+        return net.maj(racine + '/joueurs/' + moi, {
+          nom: monProfil.nom, emoji: monProfil.emoji,
+          // La couleur voyage avec le pseudo : tout le salon la voit.
+          couleur: monProfil.couleur,
+          score: monScore,
+          rejointA: monRejointA,
+          vuA: net.maintenant()
+        });
       }).then(function () {
         desabonnements.push(net.ecouter(racine + '/meta', function (v) {
           etat.meta = v; recalculer(); rafraichir();
