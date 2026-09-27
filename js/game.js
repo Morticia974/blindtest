@@ -341,8 +341,12 @@ var Jeu = (function () {
         .catch(function () {});
     }
 
-    /* Soumet une proposition. Renvoie ce qui vient d'être trouvé. */
-    function proposer(texte) {
+    /* Soumet une proposition. Renvoie ce qui vient d'être trouvé.
+
+       `options.muet` essaie la réponse sans rien publier dans le fil commun.
+       C'est ce qui permet au micro de tenter plusieurs transcriptions d'une
+       même phrase sans afficher quatre bêtises au salon. */
+    function proposer(texte, options) {
       var vide = { titre: false, artiste: false, deja: false };
       if (!etat.tour || etat.tour.phase !== 'ecoute') return vide;
       var piste = etat.pistes[etat.tour.index];
@@ -364,7 +368,9 @@ var Jeu = (function () {
          pas su la compter. Le pire des cas devient « ça n'a pas marché »,
          jamais « tout le monde a vu la réponse ». */
       if (!res.titre && !res.artiste) {
-        if (!Match.contientReponse(texte, piste)) publierAuFil(texte);
+        if (!(options && options.muet) && !Match.contientReponse(texte, piste)) {
+          publierAuFil(texte);
+        }
         return vide;
       }
 

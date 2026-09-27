@@ -160,6 +160,9 @@
     if (nom !== ecranAffiche) {
       ecranAffiche = nom;
       window.scrollTo(0, 0);
+      // Le micro ne reste ouvert que sur l'écran de jeu : ailleurs, il n'a rien
+      // à écouter, et un micro ouvert pour rien n'a pas à l'être.
+      synchroniserMicro();
     }
   }
 
@@ -1142,6 +1145,179 @@
     jouerSacre();
   }
 
+  /* =========================================================================
+     Répondre à la voix
+
+     Pour celles et ceux qui ne voient pas l'écran, et pour qui tape lentement.
+     Tout passe par le même chemin que la saisie au clavier : le micro ne fait
+     que fabriquer du texte.
+     ========================================================================= */
+
+  /* Cherchée au moment de s'en servir, pas au chargement : l'implémentation
+     est préfixée sur certains navigateurs, absente sur d'autres, et ce détour
+     évite de figer un « non » avant même que la page soit prête. */
+  function classeReco() {
+    return window.SpeechRecognition || window.webkitSpeechRecognition || null;
+  }
+
+  var reco = null;              // la reconnaissance en cours, s'il y en a une
+  var microVoulu = false;       // le choix du joueur, gardé d'une fois sur l'autre
+  var relances = 0;             // garde-fou : Chrome se réarrête tout seul
+  var derniereRelance = 0;
+
+  function microPossible() { return !!classeReco(); }
+
+  function lireChoixMicro() {
+    try { return localStorage.getItem('bt.micro') === '1'; } catch (e) { return false; }
+  }
+
+  function majBoutonMicro() {
+    var b = $('bouton-micro');
+    if (!b) return;
+    b.hidden = !microPossible();
+    b.classList.toggle('actif', microVoulu);
+    b.setAttribute('aria-pressed', String(microVoulu));
+    b.setAttribute('aria-label', microVoulu ? 'Couper le micro' : 'Répondre à la voix');
+    b.title = microVoulu ? 'Micro ouvert : dis ta réponse' : 'Répondre à la voix';
+  }
+
+  /* Coupe la reconnaissance sans toucher au choix du joueur. On détache `onend`
+     avant d'arrêter, sinon elle se relancerait toute seule. */
+  function stopperReco() {
+    if (!reco) return;
+    var r = reco;
+    reco = null;
+    try { r.onend = null; r.abort(); } catch (e) {}
+  }
+
+  function demarrerReco() {
+    var Classe = classeReco();
+    if (!Classe || reco) return;
+
+    var r = new Classe();
+    reco = r;
+    r.lang = 'fr-FR';
+    r.continuous = true;
+    r.interimResults = false;
+    /* Plusieurs transcriptions par phrase : « Billie Jean », « Billy Jean » et
+       « bili jean » sortent souvent ensemble et une seule est la bonne. On les
+       essaie toutes, en silence. */
+    r.maxAlternatives = 5;
+
+    r.onresult = function (ev) {
+      for (var i = ev.resultIndex; i < ev.results.length; i++) {
+        if (ev.results[i].isFinal) entendu(ev.results[i]);
+      }
+    };
+
+    r.onerror = function (ev) {
+      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
+        microVoulu = false;
+        try { localStorage.setItem('bt.micro', '0'); } catch (e) {}
+        stopperReco();
+        majBoutonMicro();
+        info('Le navigateur bloque le micro. Autorise-le pour répondre à la voix.', 'raté');
+      }
+      // 'no-speech', 'aborted', 'network' : onend s'occupe de relancer.
+    };
+
+    r.onend = function () {
+      if (reco !== r || !microVoulu) return;
+      /* Chrome coupe tout seul après un silence. On repart, mais si ça
+         recommence dix fois en une seconde c'est que quelque chose cloche :
+         mieux vaut rendre la main que tourner en boucle. */
+      var maintenant = Date.now();
+      relances = (maintenant - derniereRelance < 900) ? relances + 1 : 0;
+      derniereRelance = maintenant;
+      if (relances > 8) {
+        microVoulu = false;
+        stopperReco();
+        majBoutonMicro();
+        info('Le micro ne répond pas. Tape ta réponse pour ce coup-ci.', 'raté');
+        return;
+      }
+      try { r.start(); } catch (e) {}
+    };
+
+    try { r.start(); } catch (e) { reco = null; }
+  }
+
+  function synchroniserMicro() {
+    var enJeu = $('ecran-jeu') && $('ecran-jeu').classList.contains('actif');
+    if (microVoulu && enJeu) demarrerReco(); else stopperReco();
+    majBoutonMicro();
+  }
+
+  /* Le micro attrape aussi la musique et les conversations de la pièce. On ne
+     publie donc au fil commun que ce qui ressemble à une vraie réponse : le
+     salon n'a pas à lire les hallucinations de la machine. */
+  function meriteLeFil(texte, confiance) {
+    var mots = String(texte).split(/\s+/).filter(Boolean);
+    if (!mots.length || mots.length > 8 || texte.length > 48) return false;
+    return !(typeof confiance === 'number' && confiance > 0 && confiance < 0.55);
+  }
+
+  function entendu(resultat) {
+    if (!partie) return;
+    var etat = partie.etat;
+    if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
+
+    var essais = [];
+    for (var i = 0; i < resultat.length; i++) {
+      var mot = String(resultat[i].transcript || '').trim();
+      if (mot && essais.indexOf(mot) === -1) essais.push(mot);
+    }
+    if (!essais.length) return;
+
+    for (var k = 0; k < essais.length; k++) {
+      var res = partie.proposer(essais[k], { muet: true });
+      if (res.titre || res.artiste) { feterLaTrouvaille(res); return; }
+      if (res.deja) { info('Tu as déjà tout trouvé sur ce titre 😎', 'raté'); return; }
+    }
+
+    // Rien de juste : on montre ce qui a été compris, pour pouvoir répéter.
+    info('Entendu : « ' + essais[0] + ' » — pas ça 😛', 'raté');
+    if (meriteLeFil(essais[0], resultat[0] && resultat[0].confidence)) {
+      partie.proposer(essais[0]);
+    }
+  }
+
+  /* Ce qu'on affiche quand une réponse tombe juste, au clavier comme à la voix. */
+  function feterLaTrouvaille(res) {
+    var quoi = [];
+    if (res.titre) quoi.push(avecArticle($('label-titre').textContent));
+    if (res.artiste) quoi.push(avecArticle($('label-artiste').textContent));
+    var fanfare = res.titre && res.artiste ? ' 🎉🎉' : ' 🎉';
+    info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare, 'bien');
+    envolerPoints(res.gain);
+    rendreJeu();
+  }
+
+  /* La réponse, dite comme on la dirait à voix haute plutôt qu'en recopiant les
+     étiquettes de l'écran : « C'était Titre : Careless Whisper. Artiste :
+     George Michael. » s'entend mal quand c'est la seule chose qu'on reçoit.
+
+     Dans les catégories où la réponse est une œuvre — un film, une série, un
+     jeu — c'est elle qu'on annonce d'abord : c'est ça qu'il fallait trouver. */
+  function phraseDeRevelation(p) {
+    var solo = p.solo || null;
+    var oeuvre = !/artiste/i.test(p.labelA || 'Artiste');
+
+    if (solo === 'artiste') return "C'était " + p.artiste + '.';
+    if (solo === 'titre') return "C'était " + p.titre + '.';
+    if (oeuvre) return "C'était " + p.artiste + '. Musique : ' + p.titre + '.';
+    return "C'était « " + p.titre + " », de " + p.artiste + '.';
+  }
+
+  /* Une phrase pour les lecteurs d'écran. On vide d'abord : sans ça, deux
+     annonces identiques d'affilée ne sont pas relues. */
+  function annoncer(texte) {
+    var b = $('annonce');
+    if (!b) return;
+    b.textContent = '';
+    setTimeout(function () { b.textContent = texte; }, 60);
+  }
+
   /* ================= aiguillage selon l'état ================= */
 
   function surEtat() {
@@ -1182,6 +1358,20 @@
       redonnerLaMain();
       $('pochette').classList.add('invisible');
       arreterExtrait();
+    });
+
+    /* De quoi suivre la partie sans regarder : le morceau qui commence, et la
+       réponse à la révélation. Invisible pour les autres joueurs. */
+    s.sur('phase', function (phase) {
+      var etat = partie.etat;
+      if (!etat.tour || !etat.meta) return;
+
+      if (phase === 'ecoute') {
+        annoncer('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '. À toi.');
+      } else if (phase === 'reveal') {
+        var p = etat.pistes[etat.tour.index];
+        if (p) annoncer(phraseDeRevelation(p));
+      }
     });
 
     s.sur('tic', function () {
@@ -1349,6 +1539,15 @@
 
     $('champ-reponse').addEventListener('focus', function () { clavierVoulu = true; });
 
+    microVoulu = lireChoixMicro();
+    majBoutonMicro();
+    $('bouton-micro').addEventListener('click', function () {
+      microVoulu = !microVoulu;
+      try { localStorage.setItem('bt.micro', microVoulu ? '1' : '0'); } catch (e) {}
+      synchroniserMicro();
+      info(microVoulu ? 'Micro ouvert : dis le titre ou l\'artiste.' : 'Micro coupé.', '');
+    });
+
     $('formulaire-reponse').addEventListener('submit', function (e) {
       e.preventDefault();
       var champ = $('champ-reponse');
@@ -1359,13 +1558,7 @@
       champ.value = '';
 
       if (res.titre || res.artiste) {
-        var quoi = [];
-        if (res.titre) quoi.push(avecArticle($('label-titre').textContent));
-        if (res.artiste) quoi.push(avecArticle($('label-artiste').textContent));
-        var fanfare = res.titre && res.artiste ? ' 🎉🎉' : ' 🎉';
-        info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare, 'bien');
-        envolerPoints(res.gain);
-        rendreJeu();
+        feterLaTrouvaille(res);
       } else if (res.deja) {
         info('Tu as déjà tout trouvé sur ce titre 😎', 'raté');
       } else {
