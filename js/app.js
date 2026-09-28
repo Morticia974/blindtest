@@ -309,8 +309,14 @@
   /* Le volume passe par un nœud de gain, pas par lecteur.volume : sur iPhone,
      régler le volume d'un élément audio en JavaScript est purement ignoré. */
   function appliquerVolume() {
-    if (gain) gain.gain.value = volume;
-    else lecteur.volume = volume;   // repli si le circuit audio n'a pas pu démarrer
+    /* Tant que le site parle, la musique reste en retrait — même si elle vient
+       de démarrer. Sans ça, une annonce un peu longue se faisait recouvrir par
+       les premières notes au lieu de finir sa phrase : le décompte est de durée
+       fixe, la phrase non. Elle finit donc par-dessus une intro en sourdine,
+       et le son revient de lui-même à la dernière syllabe. */
+    var niveau = voixEnCours ? volume * 0.18 : volume;
+    if (gain) gain.gain.value = niveau;
+    else lecteur.volume = niveau;   // repli si le circuit audio n'a pas pu démarrer
 
     /* Le reglage existe en plusieurs exemplaires - un par ecran qui joue du
        son. On les tient tous a jour, sinon celui de l'ecran de fin afficherait
@@ -478,7 +484,9 @@
           if (Math.abs(lecteur.currentTime - position) > 0.8) lecteur.currentTime = position;
         }
       } catch (e) {}
-      if (!gain) lecteur.volume = volume;
+      // Par `appliquerVolume` : si le site est en train de parler, la musique
+      // doit démarrer en retrait et pas lui passer dessus.
+      if (!gain) appliquerVolume();
       lecteur.play().catch(function () {
         info("Touche l'écran pour activer le son 🔊", 'raté');
       });
@@ -603,7 +611,7 @@
           }
         } catch (e) {}
         if (contexte && contexte.state === 'suspended') contexte.resume();
-        if (!gain) lecteur.volume = volume;
+        if (!gain) appliquerVolume();
         lecteur.play().catch(function () {});
       };
       if (lecteur.readyState >= 1) entrerEnScene();
@@ -1541,6 +1549,7 @@
   var dernierDit = '';     // la dernière phrase prononcée, pour la reconnaître
   var dernierDitA = 0;
   var remiseMusique = null;   // filet, si la fin de la phrase ne vient jamais
+  var voixEnCours = false;    // le site est en train de parler : musique en retrait
 
   /* De quelle langue est ce bout de texte ?
 
@@ -1633,12 +1642,13 @@
      courant — si quelqu'un bouge le curseur pendant l'annonce, c'est sa valeur
      qui revient, pas celle d'avant. */
   function baisserLaMusique() {
-    if (gain) gain.gain.value = volume * 0.18;
-    else lecteur.volume = volume * 0.18;
+    voixEnCours = true;
+    appliquerVolume();
   }
 
   function remettreLaMusique() {
     if (remiseMusique) { clearTimeout(remiseMusique); remiseMusique = null; }
+    voixEnCours = false;
     appliquerVolume();
   }
 
@@ -1810,18 +1820,26 @@
         if (avecDecompte || !(etat.meta.dureeDepart > 0)) {
           var pc = etat.pistes[etat.tour.index];
           var cat = categorieDe(etat, pc);
-          var bouts = ['Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.'];
-          /* La catégorie n'est répétée que lorsqu'elle change : dans une manche
-             normale elle est la même du début à la fin, et l'entendre douze fois
-             n'apprendrait rien à personne. Dans le Grand mélange, elle change à
-             chaque morceau, et on la redit à chaque fois. */
+          var bouts = [];
+
+          /* Mesuré à la voix de synthèse : « Morceau 1 sur 12. Dessins animés
+             des années 90. On cherche le dessin animé. À toi. » prend neuf
+             secondes et trois dixièmes. Aucun décompte raisonnable ne tient
+             ça, et la phrase se faisait couper par la musique.
+
+             On ne garde donc que l'essentiel. Quand la catégorie change, c'est
+             elle et la consigne — cinq secondes et demie pour la plus longue du
+             catalogue. Quand elle ne change pas, il n'y a rien à réapprendre :
+             on donne le numéro du morceau, et c'est tout. « À toi » a disparu,
+             il ne disait rien que le silence ne dise. */
           if (cat && cat !== derniereCategorieDite) {
             derniereCategorieDite = cat;
             bouts.push(cat + '.');
             var consigne = consigneDe(pc);
             if (consigne) bouts.push(consigne);
+          } else {
+            bouts.push('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.');
           }
-          bouts.push('À toi.');
           annoncer(bouts.join(' '), avecDecompte);
         }
       } else if (phase === 'reveal') {

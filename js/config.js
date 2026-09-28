@@ -27,7 +27,7 @@ var Config = {
     nombreDeTitres: 12,     // morceaux par partie
     dureeExtrait: 30,       // secondes d'écoute par morceau (30 max chez Apple)
     dureeReponse: 8,        // secondes de révélation entre deux morceaux
-    dureeDepart: 5,         // secondes de décompte avant la musique (0 = pas de décompte)
+    dureeDepart: 6,         // secondes de décompte avant la musique (0 = pas de décompte)
     pointsTitre: 100,       // points pour le titre trouvé
     pointsArtiste: 100,     // points pour l'artiste trouvé
     bonusDouble: 50,        // bonus si on trouve les deux
