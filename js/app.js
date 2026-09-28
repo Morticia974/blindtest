@@ -1283,6 +1283,18 @@
      de raison d'être pris pour une réponse. */
   var ecouteOuverteJusqua = 0;
 
+  /* Le micro répond à la voix : ce qu'il renvoie se dit donc à voix haute, que
+     les annonces soient allumées ou non. Sans écran, c'est le seul retour qui
+     existe — et une réponse fausse qui ne s'entend pas laisse croire que le
+     micro n'a rien reçu.
+
+     L'écrit et le parlé diffèrent d'un cheveu : les émojis restent à l'écran.
+     « Pas ça 😛 » lu en entier donnerait « pas ça, visage tirant la langue ». */
+  function repondreAuMicro(ecrit, parle, genre) {
+    info(ecrit, genre);
+    dire(parle, true);
+  }
+
   function ouvrirLEcoute() {
     ecouteOuverteJusqua = Date.now() + 12000;
     info('J\'écoute…', '');
@@ -1362,7 +1374,9 @@
     microVoulu = false;
     stopperReco();
     majBoutonMicro();
-    info(message, 'raté');
+    /* Dit, lui aussi : un micro qui s'éteint sans le dire laisse parler dans le
+       vide quelqu'un qui n'a aucun moyen de s'en apercevoir. */
+    repondreAuMicro(message, message, 'raté');
   }
 
   function demarrerReco() {
@@ -1476,7 +1490,10 @@
     if (!dit) return;
 
     var res = partie.proposer(dit, { muet: true });
-    if (res.titre || res.artiste) { feterLaTrouvaille(res); return; }
+    if (res.titre || res.artiste) { feterLaTrouvaille(res, true); return; }
+    /* Écrit seulement : un brouillon n'est qu'un morceau de phrase, et la
+       version confirmée arrive juste derrière. La dire reviendrait à parler
+       deux fois de la même chose, la seconde pour se contredire. */
     if (dit.length >= 3) info('Entendu à moitié : « ' + dit + ' »', 'raté');
   }
 
@@ -1508,19 +1525,27 @@
 
     for (var k = 0; k < essais.length; k++) {
       var res = partie.proposer(essais[k], { muet: true });
-      if (res.titre || res.artiste) { feterLaTrouvaille(res); return; }
-      if (res.deja) { info('Tu as déjà tout trouvé sur ce titre 😎', 'raté'); return; }
+      if (res.titre || res.artiste) { feterLaTrouvaille(res, true); return; }
+      if (res.deja) {
+        repondreAuMicro('Tu as déjà tout trouvé sur ce titre 😎',
+                        'Tu as déjà tout trouvé sur ce titre.', 'raté');
+        return;
+      }
     }
 
-    // Rien de juste : on montre ce qui a été compris, pour pouvoir répéter.
-    info('Entendu : « ' + essais[0] + ' » — pas ça 😛', 'raté');
+    // Rien de juste : on répète ce qui a été compris, pour pouvoir corriger.
+    repondreAuMicro('Entendu : « ' + essais[0] + ' » — pas ça 😛',
+                    'Entendu : ' + essais[0] + '. Pas ça.', 'raté');
     if (meriteLeFil(essais[0], resultat[0] && resultat[0].confidence)) {
       partie.proposer(essais[0]);
     }
   }
 
   /* Ce qu'on affiche quand une réponse tombe juste, au clavier comme à la voix. */
-  function feterLaTrouvaille(res) {
+  /* `aLaVoix` : la réponse venait du micro. Le « bravo » se dit alors même si
+     les annonces sont éteintes — sinon les réponses fausses parleraient et les
+     bonnes non, ce qui serait le monde à l'envers. */
+  function feterLaTrouvaille(res, aLaVoix) {
     var quoi = [];
     if (res.titre) quoi.push(avecArticle($('label-titre').textContent));
     if (res.artiste) quoi.push(avecArticle($('label-artiste').textContent));
@@ -1540,7 +1565,8 @@
     info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare + suite, 'bien');
     /* Dit, mais pas réécrit dans la zone invisible : le message ci-dessus y est
        déjà annoncé tout seul, et un lecteur d'écran le lirait deux fois. */
-    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.' + suite);
+    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.' + suite,
+         aLaVoix);
     envolerPoints(res.gain);
     rendreJeu();
   }
