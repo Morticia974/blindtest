@@ -1608,13 +1608,29 @@
       if (!deja.titre) reste.push(avecArticle(piste.labelT || 'Titre'));
       if (!deja.artiste) reste.push(avecArticle(piste.labelA || 'Artiste'));
     }
-    var suite = reste.length ? ' Il reste ' + reste.join(' et ') + '.' : '';
+    var manque = reste.join(' et ');
 
-    info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare + suite, 'bien');
-    /* Dit, mais pas réécrit dans la zone invisible : le message ci-dessus y est
+    info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare +
+         (manque ? ' Il reste ' + manque + '.' : ''), 'bien');
+
+    /* Dit plus court quand il reste quelque chose à trouver.
+
+       « Bravo, tu as trouvé l'artiste. Plus 92 points. Il reste le titre. »
+       prend sept secondes et demie — et tant que le site parle, le micro
+       n'écoute pas. Le titre revenait à l'esprit pendant la phrase, et il était
+       déjà trop tard pour le dire. Les points ne pressent pas : ils sont à
+       l'écran et au tableau des scores. Ce qui presse, c'est de rendre la
+       parole.
+
+       Quand tout est trouvé, plus rien ne court après : on garde la phrase
+       entière, points compris.
+
+       Dit mais pas réécrit dans la zone invisible : le message ci-dessus y est
        déjà annoncé tout seul, et un lecteur d'écran le lirait deux fois. */
-    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.' + suite,
-         aLaVoix);
+    dire(manque
+      ? 'Bravo, ' + quoi.join(' et ') + ' ! Reste ' + manque + '.'
+      : 'Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.',
+      aLaVoix);
     envolerPoints(res.gain);
     rendreJeu();
   }
@@ -1660,8 +1676,13 @@
 
   var annoncesVoulues = false;
   var parleJusqua = 0;     // le micro ignore ce qu'il entend pendant ce temps
-  var dernierDit = '';     // la dernière phrase prononcée, pour la reconnaître
-  var dernierDitA = 0;
+  /* Les dernières phrases prononcées, pour les reconnaître si elles nous
+     reviennent par le micro. Plusieurs, et pas seulement la dernière : le
+     navigateur rend ses transcriptions après coup, et le site a souvent le
+     temps d'en dire une autre entre-temps. « Bravo, l'artiste ! Reste le
+     titre. » suivi d'un « J'écoute » effaçait la première, et la queue de la
+     phrase de réussite revenait se faire prendre pour une réponse. */
+  var ditsRecents = [];    // [{ t: texte normalisé, a: heure }], la plus récente en tête
   var remiseMusique = null;   // filet, si la fin de la phrase ne vient jamais
   var voixEnCours = false;    // le site est en train de parler : musique en retrait
 
@@ -1793,10 +1814,16 @@
          de trouver le titre veut pouvoir enchaîner sur l'artiste. Le vrai
          garde-fou est ailleurs — on retient ce qu'on vient de dire, et on le
          reconnaît quand il nous revient par le micro. */
-      dernierDit = Match.normaliser(entier);
-      dernierDitA = Date.now();
+      ditsRecents.unshift({ t: Match.normaliser(entier), a: Date.now() });
+      ditsRecents = ditsRecents.slice(0, 4);
       var plafond = Math.min(6000, 600 + entier.length * 60);
-      parleJusqua = Date.now() + plafond;
+      /* Deux secondes de surdité au plus, quelle que soit la longueur de la
+         phrase. Au-delà, c'est `cEstMaVoix` qui garde la porte — il reconnaît
+         ce qu'on vient de dire quand ça nous revient par le micro — et le mot
+         convenu fait le reste : une phrase du site ne commence pas par « ok ».
+         Rester sourd le temps d'une longue annonce, c'est prendre la parole à
+         celui qui n'a que ça. */
+      parleJusqua = Date.now() + Math.min(2000, plafond);
 
       baisserLaMusique();
       /* Si la fin de la phrase ne vient jamais — ça arrive —, la musique ne
@@ -1844,9 +1871,15 @@
      site annonce ne contient jamais la réponse attendue : « tu as trouvé le
      titre », pas le titre lui-même. Aucun risque d'étouffer un vrai joueur. */
   function cEstMaVoix(texte) {
-    if (!dernierDit || Date.now() - dernierDitA > 12000) return false;
     var t = Match.normaliser(texte);
-    return t.length >= 4 && dernierDit.indexOf(t) !== -1;
+    if (t.length < 4) return false;
+    var maintenant = Date.now();
+    for (var i = 0; i < ditsRecents.length; i++) {
+      var d = ditsRecents[i];
+      if (maintenant - d.a > 12000) continue;
+      if (d.t.indexOf(t) !== -1) return true;
+    }
+    return false;
   }
 
   /* Une phrase pour les lecteurs d'écran, et pour la voix du site quand elle
@@ -1934,7 +1967,7 @@
       if (!etat.tour || !etat.meta) return;
 
       if (phase === 'depart' || phase === 'ecoute') {
-        dernierDit = '';   // ce qui a été dit au morceau d'avant ne compte plus
+        ditsRecents = [];  // ce qui a été dit au morceau d'avant ne compte plus
         fermerLEcoute();   // et l'oreille ouverte au morceau d'avant non plus
 
         /* L'annonce se fait pendant le décompte, quand il y en a un : là, il n'y
