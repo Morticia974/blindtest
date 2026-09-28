@@ -1095,6 +1095,38 @@
     el.setAttribute('lang', langueDe(texte, defaut).slice(0, 2));
   }
 
+  /* Ce qu'on attend comme réponse, dit en toutes lettres.
+
+     Les deux cases de l'écran portent leur étiquette — « Anime », « Film »,
+     « Dessin animé » — et changent d'une catégorie à l'autre. Qui ne voit pas
+     l'écran entendait « Morceau 3 sur 12. À toi. » et devait deviner s'il
+     fallait donner l'anime, le film ou l'artiste. Dans le Grand mélange, où la
+     catégorie change à chaque morceau, c'était intenable. */
+  function consigneDe(piste) {
+    if (!piste) return '';
+    var solo = piste.solo || null;
+    var t = avecArticle(piste.labelT || 'Titre');
+    var a = avecArticle(piste.labelA || 'Artiste');
+    if (solo === 'artiste') return 'On cherche ' + a + '.';
+    if (solo === 'titre') return 'On cherche ' + t + '.';
+    return 'On cherche ' + t + ' et ' + a + '.';
+  }
+
+  /* La catégorie du morceau : celle de la manche, ou celle du morceau lui-même
+     dans un mélange. Annoncée seulement quand elle change — la répéter douze
+     fois de suite couvrirait le début de chaque chanson pour rien. */
+  var derniereCategorieDite = null;
+
+  function categorieDe(etat, piste) {
+    var m = Playlists.parId(etat.meta.manche);
+    if (m) return m.nom;
+    /* Le morceau porte sa catégorie avec l'émoji devant — « 📼 Années 90 ».
+       À l'écran il fait joli ; à l'oreille, un lecteur d'écran annonce
+       « cassette vidéo » avant la catégorie. On ne garde que les mots. */
+    if (piste && piste.categorie) return String(piste.categorie).replace(/^[^\p{L}\p{N}]+/u, '');
+    return estPerso(etat.meta.manche) ? 'Sélection maison' : 'Grand mélange';
+  }
+
   function info(texte, genre) {
     var b = $('info-saisie');
     b.textContent = texte || '';
@@ -1437,10 +1469,22 @@
     if (res.titre) quoi.push(avecArticle($('label-titre').textContent));
     if (res.artiste) quoi.push(avecArticle($('label-artiste').textContent));
     var fanfare = res.titre && res.artiste ? ' 🎉🎉' : ' 🎉';
-    info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare, 'bien');
+
+    /* Et ce qu'il reste à trouver. Sans ça, celui qui ne voit pas les deux
+       cases ne sait pas si le morceau est plié ou s'il lui manque la moitié. */
+    var deja = partie.motsTrouves();
+    var piste = partie.etat.pistes[partie.etat.tour.index];
+    var reste = [];
+    if (piste && !piste.solo) {
+      if (!deja.titre) reste.push(avecArticle(piste.labelT || 'Titre'));
+      if (!deja.artiste) reste.push(avecArticle(piste.labelA || 'Artiste'));
+    }
+    var suite = reste.length ? ' Il reste ' + reste.join(' et ') + '.' : '';
+
+    info('Bravo, tu as trouvé ' + quoi.join(' et ') + ' ! +' + res.gain + fanfare + suite, 'bien');
     /* Dit, mais pas réécrit dans la zone invisible : le message ci-dessus y est
        déjà annoncé tout seul, et un lecteur d'écran le lirait deux fois. */
-    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.');
+    dire('Bravo, tu as trouvé ' + quoi.join(' et ') + '. Plus ' + res.gain + ' points.' + suite);
     envolerPoints(res.gain);
     rendreJeu();
   }
@@ -1696,6 +1740,8 @@
 
     if (etat.meta.statut === 'attente') {
       finAnnoncee = false;
+      // La catégorie se redit au premier morceau de la partie suivante.
+      derniereCategorieDite = null;
       montrer('salon');
       rendreSalon();
       arreterExtrait();
@@ -1740,8 +1786,15 @@
 
       if (phase === 'ecoute') {
         dernierDit = '';   // ce qui a été dit au morceau d'avant ne compte plus
+        var pc = etat.pistes[etat.tour.index];
+        var cat = categorieDe(etat, pc);
+        var bouts = ['Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.'];
+        if (cat && cat !== derniereCategorieDite) { bouts.push(cat + '.'); derniereCategorieDite = cat; }
+        var consigne = consigneDe(pc);
+        if (consigne) bouts.push(consigne);
+        bouts.push('À toi.');
         // Écrit seulement : parler ici couvrirait les premières notes.
-        annoncer('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '. À toi.', false);
+        annoncer(bouts.join(' '), false);
       } else if (phase === 'reveal') {
         var p = etat.pistes[etat.tour.index];
         if (p) {
