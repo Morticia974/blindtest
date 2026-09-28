@@ -1195,6 +1195,41 @@
      que fabriquer du texte.
      ========================================================================= */
 
+  /* Un micro ouvert dans une pièce entend la pièce.
+
+     Il entendait la conversation des autres et la publiait dans le fil au nom
+     de celui qui écoutait ; il entendait la musique qui sort des enceintes ;
+     et si quelqu'un lâchait la bonne réponse à voix haute, il la validait pour
+     lui — des points qu'il n'avait pas trouvés, et le moment volé.
+
+     Maintenir un bouton réglerait tout ça, mais un bouton se trouve à l'œil.
+     On demande donc un mot, que la voix seule suffit à donner : le micro
+     n'agit que sur ce qui commence par « réponse ». Le reste de la pièce ne
+     commence pas par « réponse ». */
+  var EVEIL = ['reponse', 'ma reponse', 'la reponse', 'balance', 'ok balance'];
+
+  /* Rend ce qui suit le mot convenu, '' si le mot a été dit tout seul, et null
+     si la phrase ne nous était pas adressée. La comparaison passe par
+     `Match.correspond`, qui tolère l'à-peu-près : « repense », « réponses » et
+     « réponse » ouvrent tous la même porte. */
+  function reponseDite(texte) {
+    var mots = String(texte || '').trim().split(/\s+/).filter(Boolean);
+    if (!mots.length) return null;
+    // « ma réponse » avant « réponse », sinon le premier mot mangerait le second.
+    for (var n = Math.min(2, mots.length); n >= 1; n--) {
+      if (Match.correspond(mots.slice(0, n).join(' '), EVEIL)) {
+        return sansAmorce(mots.slice(n).join(' '));
+      }
+    }
+    return null;
+  }
+
+  /* « Réponse, c'est Muse » : on dit rarement le titre tout sec après le mot
+     convenu. Cette amorce-là ne compte pas comme une partie de la réponse. */
+  function sansAmorce(texte) {
+    return String(texte).replace(/^\s*(?:c(?:'|’)?\s*est|ca\s+doit\s+etre|ça\s+doit\s+être)\s+/i, '').trim();
+  }
+
   /* Cherchée au moment de s'en servir, pas au chargement : l'implémentation
      est préfixée sur certains navigateurs, absente sur d'autres, et ce détour
      évite de figer un « non » avant même que la page soit prête. */
@@ -1221,8 +1256,10 @@
     b.hidden = !microPossible();
     b.classList.toggle('actif', microVoulu);
     b.setAttribute('aria-pressed', String(microVoulu));
-    b.setAttribute('aria-label', microVoulu ? 'Couper le micro' : 'Répondre à la voix');
-    b.title = microVoulu ? 'Micro ouvert : dis ta réponse' : 'Répondre à la voix';
+    b.setAttribute('aria-label', microVoulu
+      ? 'Couper le micro. Il est ouvert : dis « réponse », puis ta réponse.'
+      : 'Répondre à la voix');
+    b.title = microVoulu ? 'Micro ouvert : dis « réponse », puis ta réponse' : 'Répondre à la voix';
   }
 
   /* Coupe la reconnaissance sans toucher au choix du joueur. On détache `onend`
@@ -1349,9 +1386,16 @@
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;
 
-    var res = partie.proposer(texte, { muet: true });
+    /* Une phrase à moitié entendue qui ne nous était pas adressée : on ne la
+       tente pas, et surtout on ne l'écrit pas. Cette ligne-là est lue à voix
+       haute par les lecteurs d'écran — elle récitait à son propriétaire la
+       conversation de toute la pièce, par-dessus la musique. */
+    var dit = reponseDite(texte);
+    if (!dit) return;
+
+    var res = partie.proposer(dit, { muet: true });
     if (res.titre || res.artiste) { feterLaTrouvaille(res); return; }
-    if (String(texte).length >= 3) info('Entendu à moitié : « ' + texte + ' »', 'raté');
+    if (dit.length >= 3) info('Entendu à moitié : « ' + dit + ' »', 'raté');
   }
 
   function entendu(resultat) {
@@ -1359,11 +1403,19 @@
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
 
+    /* On ne garde que les transcriptions qui commencent par le mot convenu,
+       débarrassées de ce mot. Tout le reste — la pièce, la musique, la bonne
+       réponse dite par un autre — passe sans laisser de trace. */
     var essais = [];
+    var appele = false;
     for (var i = 0; i < resultat.length; i++) {
-      var mot = String(resultat[i].transcript || '').trim();
-      if (mot && essais.indexOf(mot) === -1) essais.push(mot);
+      var dit = reponseDite(String(resultat[i].transcript || ''));
+      if (dit === null) continue;
+      appele = true;
+      if (dit && essais.indexOf(dit) === -1) essais.push(dit);
     }
+    // Le mot tout seul : il commence sa phrase. On le lui confirme.
+    if (appele && !essais.length) { info('J\'écoute…', ''); return; }
     if (!essais.length || cEstMaVoix(essais[0])) return;
 
     for (var k = 0; k < essais.length; k++) {
@@ -1889,7 +1941,11 @@
       microVoulu = !microVoulu;
       try { localStorage.setItem('bt.micro', microVoulu ? '1' : '0'); } catch (e) {}
       synchroniserMicro();
-      info(microVoulu ? 'Micro ouvert : dis le titre ou l\'artiste.' : 'Micro coupé.', '');
+      /* La consigne d'abord : sans elle, le micro a l'air cassé. C'est écrit
+         dans une zone que les lecteurs d'écran lisent d'eux-mêmes. */
+      info(microVoulu
+        ? 'Micro ouvert. Dis « réponse », puis le titre ou l\'artiste.'
+        : 'Micro coupé.', '');
     });
 
     $('formulaire-reponse').addEventListener('submit', function (e) {
