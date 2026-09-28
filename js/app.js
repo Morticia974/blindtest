@@ -713,6 +713,14 @@
       $('sous-chrono').textContent = tour.index + 1 >= etat.meta.nbTitres ? 'résultats…' : 'au suivant';
       $('piste-temps').setAttribute('stroke-dashoffset', String(CIRCONFERENCE * (1 - reste / pause)));
       $('plateau').classList.remove('presse');
+    } else if (tour.phase === 'depart' && tour.debutA) {
+      var avant = (etat.meta.dureeDepart || 0) * 1000;
+      var quitte = Math.max(0, tour.debutA + avant - maintenant);
+      $('chrono').textContent = Math.max(1, Math.ceil(quitte / 1000));
+      $('sous-chrono').textContent = 'ça arrive';
+      $('piste-temps').setAttribute('stroke-dashoffset',
+        String(CIRCONFERENCE * (1 - (avant ? quitte / avant : 0))));
+      $('plateau').classList.remove('presse');
     } else if (tour.phase === 'attente') {
       $('chrono').textContent = etat.souci ? '⏳' : '···';
       $('sous-chrono').textContent = etat.souci ? etat.souci
@@ -1710,33 +1718,6 @@
   /* Une phrase pour les lecteurs d'écran, et pour la voix du site quand elle
      est allumée. On vide d'abord la zone : sans ça, deux annonces identiques
      d'affilée ne sont pas relues. */
-  /* La consigne du morceau à venir, glissée à la fin de la révélation.
-
-     C'est le seul moment libre : pendant la pause, il n'y a pas de musique à
-     couvrir, et la phrase a le temps de finir avant que la suivante démarre.
-     Au lancement de l'écoute, la même annonce est bien écrite pour les lecteurs
-     d'écran, mais elle n'est pas dite — elle passerait par-dessus l'intro.
-
-     On ne prévient que si quelque chose change : dans une manche normale la
-     catégorie est la même du début à la fin, et l'annoncer douze fois serait
-     du bavardage. Dans le Grand mélange, elle change à chaque morceau. */
-  var derniereCategoriePrevenue = null;   // à ne pas confondre avec celle qu'on écrit
-
-  function partiesDuSuivant(etat) {
-    var i = etat.tour.index + 1;
-    if (i >= etat.meta.nbTitres) return [];
-    var p = etat.pistes[i];
-    if (!p) return [];   // pas encore résolu : on ne promet rien
-
-    var cat = categorieDe(etat, p);
-    if (!cat || cat === derniereCategoriePrevenue) return [];
-    derniereCategoriePrevenue = cat;
-
-    /* Tout en français : la phrase l'est, et seul le nom de la catégorie
-       pourrait ne pas l'être — pas de quoi basculer la voix. */
-    return [{ t: 'Ensuite : ' + cat + '. ' + consigneDe(p), l: 'fr-FR' }];
-  }
-
   function annoncer(texte, aVoixHaute) {
     var b = $('annonce');
     if (b) {
@@ -1775,7 +1756,6 @@
       finAnnoncee = false;
       // La catégorie se redit au premier morceau de la partie suivante.
       derniereCategorieDite = null;
-      derniereCategoriePrevenue = null;
       montrer('salon');
       rendreSalon();
       arreterExtrait();
@@ -1818,30 +1798,39 @@
       var etat = partie.etat;
       if (!etat.tour || !etat.meta) return;
 
-      if (phase === 'ecoute') {
+      if (phase === 'depart' || phase === 'ecoute') {
         dernierDit = '';   // ce qui a été dit au morceau d'avant ne compte plus
-        var pc = etat.pistes[etat.tour.index];
-        var cat = categorieDe(etat, pc);
-        var bouts = ['Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.'];
-        if (cat && cat !== derniereCategorieDite) { bouts.push(cat + '.'); derniereCategorieDite = cat; }
-        var consigne = consigneDe(pc);
-        if (consigne) bouts.push(consigne);
-        bouts.push('À toi.');
-        /* Dit seulement au premier morceau. Après, la consigne du suivant est
-           déjà passée pendant la pause — et la répéter ici couvrirait les
-           premières notes, qui sont souvent tout ce qu'il y a à reconnaître. */
-        annoncer(bouts.join(' '), etat.tour.index === 0);
-        /* Ce qui vient d'être dit compte comme un avertissement : sans ça, la
-           révélation du premier morceau reprendrait la même catégorie sous un
-           « Ensuite : », juste après l'avoir annoncée. */
-        if (etat.tour.index === 0) derniereCategoriePrevenue = cat;
+
+        /* L'annonce se fait pendant le décompte, quand il y en a un : là, il n'y
+           a pas de musique à couvrir, et la phrase a le temps de finir avant la
+           première note. Sans décompte, elle reste écrite pour les lecteurs
+           d'écran mais n'est pas dite — elle passerait par-dessus l'intro, qui
+           est souvent tout ce qu'il y a à reconnaître. */
+        var avecDecompte = phase === 'depart';
+        if (avecDecompte || !(etat.meta.dureeDepart > 0)) {
+          var pc = etat.pistes[etat.tour.index];
+          var cat = categorieDe(etat, pc);
+          var bouts = ['Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.'];
+          /* La catégorie n'est répétée que lorsqu'elle change : dans une manche
+             normale elle est la même du début à la fin, et l'entendre douze fois
+             n'apprendrait rien à personne. Dans le Grand mélange, elle change à
+             chaque morceau, et on la redit à chaque fois. */
+          if (cat && cat !== derniereCategorieDite) {
+            derniereCategorieDite = cat;
+            bouts.push(cat + '.');
+            var consigne = consigneDe(pc);
+            if (consigne) bouts.push(consigne);
+          }
+          bouts.push('À toi.');
+          annoncer(bouts.join(' '), avecDecompte);
+        }
       } else if (phase === 'reveal') {
         var p = etat.pistes[etat.tour.index];
         if (p) {
           /* Écrit en un bloc pour les lecteurs d'écran — avec la langue de
              chaque morceau, pour que ceux qui savent changer de voix le
              fassent — et dit morceau par morceau par la voix du site. */
-          annoncerParties(partiesDeRevelation(p).concat(partiesDuSuivant(etat)));
+          annoncerParties(partiesDeRevelation(p));
         }
       }
     });
@@ -1874,7 +1863,7 @@
           jouerExtrait(piste, etat.tour.debutA);
         }
       }
-      if (etat.tour.phase === 'attente') arreterExtrait();
+      if (etat.tour.phase === 'attente' || etat.tour.phase === 'depart') arreterExtrait();
       rendreScores();
     });
 
@@ -1956,7 +1945,7 @@
       });
     });
 
-    ['titres', 'duree', 'pause'].forEach(function (nom) {
+    ['titres', 'duree', 'pause', 'depart'].forEach(function (nom) {
       var curseur = $('reglage-' + nom);
       curseur.addEventListener('input', function () {
         $('valeur-' + nom).textContent = this.value;
@@ -2075,6 +2064,8 @@
       nbTitres: parseInt($('reglage-titres').value, 10) || d.nombreDeTitres,
       dureeExtrait: parseInt($('reglage-duree').value, 10) || d.dureeExtrait,
       dureeReponse: parseInt($('reglage-pause').value, 10) || d.dureeReponse,
+      /* Pas de `||` ici : zéro est un choix, pas une valeur manquante. */
+      dureeDepart: Math.max(0, parseInt($('reglage-depart').value, 10) || 0),
       pointsTitre: d.pointsTitre,
       pointsArtiste: d.pointsArtiste,
       bonusDouble: d.bonusDouble,
@@ -2161,6 +2152,8 @@
     $('valeur-duree').textContent = Config.partie.dureeExtrait;
     $('reglage-pause').value = Config.partie.dureeReponse;
     $('valeur-pause').textContent = Config.partie.dureeReponse;
+    $('reglage-depart').value = Config.partie.dureeDepart;
+    $('valeur-depart').textContent = Config.partie.dureeDepart;
 
     Net.creer().then(function (n) {
       net = n;

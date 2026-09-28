@@ -289,8 +289,22 @@ var Jeu = (function () {
       var reglages = etat.meta;
 
       if (t.phase === 'attente') {
-        // On attend que l'extrait de ce tour soit prêt, puis on lance l'écoute.
+        // On attend que l'extrait de ce tour soit prêt, puis on lance le décompte.
         if (etat.pistes[t.index]) {
+          net.maj(racine + '/tour', { phase: phaseDeDepart(reglages), debutA: net.horodatage() });
+        }
+        return;
+      }
+
+      /* Le petit compte à rebours avant la musique.
+
+         Il ne sert pas qu'à faire durer le suspense : c'est pendant ce temps-là
+         que le site annonce la catégorie. Qui lit l'écran l'apprend d'un coup
+         d'œil ; qui ne le lit pas l'apprend en même temps, et la musique n'a
+         pas commencé sans lui. Réglé à zéro, il n'existe pas et tout se passe
+         comme avant. */
+      if (t.phase === 'depart' && t.debutA) {
+        if (maintenant >= t.debutA + dureeDepart(reglages) * 1000) {
           net.maj(racine + '/tour', { phase: 'ecoute', debutA: net.horodatage() });
         }
         return;
@@ -318,13 +332,25 @@ var Jeu = (function () {
           } else {
             net.ecrire(racine + '/tour', {
               index: suivant,
-              phase: etat.pistes[suivant] ? 'ecoute' : 'attente',
+              phase: etat.pistes[suivant] ? phaseDeDepart(reglages) : 'attente',
               debutA: etat.pistes[suivant] ? net.horodatage() : null,
               trouve: null
             });
           }
         }
       }
+    }
+
+    /* Les salons ouverts avant l'arrivée du décompte n'ont pas le réglage :
+       sans ce garde-fou, leur partie resterait bloquée sur un décompte sans
+       fin. Absent vaut zéro, c'est-à-dire l'ancien comportement. */
+    function dureeDepart(reglages) {
+      var d = reglages && reglages.dureeDepart;
+      return typeof d === 'number' && d > 0 ? d : 0;
+    }
+
+    function phaseDeDepart(reglages) {
+      return dureeDepart(reglages) > 0 ? 'depart' : 'ecoute';
     }
 
     /* ---------- actions du joueur ---------- */

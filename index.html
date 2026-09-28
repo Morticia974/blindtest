@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=142">
+<link rel="stylesheet" href="css/style.css?v=143">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -150,6 +150,13 @@
           <span>Pause entre deux&nbsp;: <b class="valeur" id="valeur-pause">8</b>&nbsp;s</span>
           <input id="reglage-pause" type="range" min="4" max="15" step="1" value="8">
         </label>
+        <!-- Le décompte avant chaque morceau. C'est pendant ce temps-là que le
+             site annonce la catégorie à voix haute : tout le monde apprend ce
+             qu'on cherche au même moment, qu'on lise l'écran ou non. -->
+        <label class="reglage">
+          <span>Décompte avant la musique&nbsp;: <b class="valeur" id="valeur-depart">5</b>&nbsp;s</span>
+          <input id="reglage-depart" type="range" min="0" max="10" step="1" value="5">
+        </label>
       </div>
     </div>
 
@@ -284,16 +291,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=142 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=143 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=142 à ?v=142. -->
-<script src="js/config.js?v=142"></script>
-<script src="js/match.js?v=142"></script>
-<script src="js/playlists.js?v=142"></script>
-<script src="js/itunes.js?v=142"></script>
-<script src="js/net.js?v=142"></script>
-<script src="js/game.js?v=142"></script>
-<script src="js/app.js?v=142"></script>
+     le changement ne s'affiche pas, passe tous les ?v=143 à ?v=143. -->
+<script src="js/config.js?v=143"></script>
+<script src="js/match.js?v=143"></script>
+<script src="js/playlists.js?v=143"></script>
+<script src="js/itunes.js?v=143"></script>
+<script src="js/net.js?v=143"></script>
+<script src="js/game.js?v=143"></script>
+<script src="js/app.js?v=143"></script>
 
 </body>
 </html>
