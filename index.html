@@ -10,10 +10,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=138">
+<link rel="stylesheet" href="css/style.css?v=139">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
+
+<!-- Invisible à l'œil, lu à voix haute par les lecteurs d'écran : de quoi
+     suivre la partie sans regarder. Hors des quatre écrans, parce que ceux
+     qui ne sont pas à l'affiche sont en display:none — et une zone masquée
+     ne parle plus. Elle se taisait donc pile au moment du podium. -->
+<p class="hors-ecran" id="annonce" role="status" aria-live="polite"></p>
 
 <!-- ===================== ACCUEIL ===================== -->
 <section id="ecran-accueil" class="ecran actif">
@@ -39,7 +45,8 @@
       <p class="accroche" id="accroche">Chacun son téléphone, et que le meilleur gagne.</p>
     </header>
 
-    <div id="banniere-mode" class="banniere invisible" style="margin-top:22px"></div>
+    <div id="banniere-mode" class="banniere invisible" style="margin-top:22px"
+         role="status" aria-live="polite"></div>
 
     <div class="grille-accueil">
 
@@ -69,13 +76,15 @@
           Entre le code à 4 lettres qu'on t'a donné.
         </p>
         <input id="champ-code" class="champ saisie-code" maxlength="4" placeholder="····"
+               aria-label="Code du salon, quatre lettres"
                inputmode="latin" autocomplete="off" spellcheck="false">
         <button id="bouton-rejoindre" class="bouton" style="width:100%;margin-top:10px">Rejoindre la partie</button>
       </div>
 
     </div>
 
-    <div id="erreur-accueil" class="banniere erreur invisible" style="margin-top:18px"></div>
+    <div id="erreur-accueil" class="banniere erreur invisible" style="margin-top:18px"
+         role="alert"></div>
 
     <p class="pied">
       Les extraits viennent du catalogue Apple Music (30&nbsp;secondes, gratuits, sans compte).
@@ -144,7 +153,8 @@
       </div>
     </div>
 
-    <div id="note-chef" class="banniere invisible" style="margin-top:16px"></div>
+    <div id="note-chef" class="banniere invisible" style="margin-top:16px"
+         role="status" aria-live="polite"></div>
 
     <button id="bouton-lancer" class="bouton principal" style="width:100%;margin-top:16px;padding:17px">
       Lancer la partie
@@ -204,6 +214,7 @@
 
           <form id="formulaire-reponse" class="ligne-saisie" autocomplete="off">
             <input id="champ-reponse" class="champ" placeholder="Titre ou artiste…"
+                   aria-label="Ta réponse : le titre ou l'artiste"
                    autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="send">
             <!-- Le micro. Caché tant que le navigateur ne sait pas écouter. -->
             <button type="button" id="bouton-micro" class="bouton-micro" hidden
@@ -213,9 +224,6 @@
           <!-- role=status : les lecteurs d'écran annoncent ce qui s'écrit ici
                sans qu'on ait à aller le chercher. -->
           <div class="info-saisie" id="info-saisie" role="status" aria-live="polite"></div>
-          <!-- Invisible à l'œil, lu à voix haute par les lecteurs d'écran : de
-               quoi suivre la partie sans regarder. -->
-          <p class="hors-ecran" id="annonce" role="status" aria-live="polite"></p>
         </div>
       </div>
 
@@ -242,7 +250,8 @@
   <div class="enveloppe">
     <header style="text-align:center">
       <span class="etiquette">Partie terminée</span>
-      <h1 style="font-size:clamp(30px,8vw,46px);margin-top:8px" id="titre-fin">Et le gagnant est…</h1>
+      <h1 style="font-size:clamp(30px,8vw,46px);margin-top:8px" id="titre-fin"
+          tabindex="-1">Et le gagnant est…</h1>
       <button type="button" id="bouton-sacre" class="bouton discret" style="margin-top:12px">🎺 Barry White : oui</button>
 
       <div class="reglage-son">
@@ -275,16 +284,16 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=138 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=139 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=138 à ?v=138. -->
-<script src="js/config.js?v=138"></script>
-<script src="js/match.js?v=138"></script>
-<script src="js/playlists.js?v=138"></script>
-<script src="js/itunes.js?v=138"></script>
-<script src="js/net.js?v=138"></script>
-<script src="js/game.js?v=138"></script>
-<script src="js/app.js?v=138"></script>
+     le changement ne s'affiche pas, passe tous les ?v=139 à ?v=139. -->
+<script src="js/config.js?v=139"></script>
+<script src="js/match.js?v=139"></script>
+<script src="js/playlists.js?v=139"></script>
+<script src="js/itunes.js?v=139"></script>
+<script src="js/net.js?v=139"></script>
+<script src="js/game.js?v=139"></script>
+<script src="js/app.js?v=139"></script>
 
 </body>
 </html>

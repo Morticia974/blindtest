@@ -948,21 +948,26 @@
     // case Titre (ou « Dessin animé », « Jeu »… selon la catégorie)
     var caseT = $('case-titre');
     caseT.className = 'case-reponse' + (trouves.titre ? ' trouve' : (reveal ? ' revele' : ''));
-    $('contenu-titre').textContent = (trouves.titre || reveal) && piste
-      ? piste.titre : 'à trouver';
+    var txtT = (trouves.titre || reveal) && piste ? piste.titre : 'à trouver';
+    $('contenu-titre').textContent = txtT;
+    etiquetterLangue($('contenu-titre'), txtT, piste && piste.langue);
 
     // case Artiste / Film / Anime…
     var caseA = $('case-artiste');
     caseA.className = 'case-reponse' + (trouves.artiste ? ' trouve' : (reveal ? ' revele' : ''));
-    $('contenu-artiste').textContent = (trouves.artiste || reveal) && piste
-      ? piste.artiste : 'à trouver';
+    var txtA = (trouves.artiste || reveal) && piste ? piste.artiste : 'à trouver';
+    $('contenu-artiste').textContent = txtA;
+    etiquetterLangue($('contenu-artiste'), txtA, piste && piste.langue);
 
     // En solo, le champ non compté est révélé pour l'anecdote, sans points.
     var credit = $('credit-solo');
     if (solo && reveal && piste) {
-      credit.textContent = solo === 'titre'
-        ? piste.labelA.toLowerCase() + ' : ' + piste.artiste
-        : piste.labelT.toLowerCase() + ' : ' + piste.titre;
+      var autre = solo === 'titre' ? piste.artiste : piste.titre;
+      credit.textContent = (solo === 'titre' ? piste.labelA : piste.labelT).toLowerCase() +
+        ' : ' + autre;
+      /* L'étiquette (« film : », « anime : ») est française et le nom ne l'est
+         pas toujours — on suit le nom, qui fait l'essentiel de la phrase. */
+      etiquetterLangue(credit, autre, piste.langue);
       credit.hidden = false;
     } else {
       credit.hidden = true;
@@ -1008,6 +1013,7 @@
     if (!boite) return;
 
     var chat = (etat.tour && etat.tour.chat) || {};
+    var piste = etat.tour && etat.pistes ? etat.pistes[etat.tour.index] : null;
     var lignes = Object.keys(chat).map(function (k) { return chat[k]; })
       .filter(function (m) { return m && m.mot; })
       .sort(function (a, b) { return (a.a || 0) - (b.a || 0); })
@@ -1026,7 +1032,10 @@
       li.querySelector('.qui').textContent = (j.emoji || '🎧') + ' ' + (j.nom || "Quelqu'un");
       etiqueter(li.querySelector('.qui'), j);
       // textContent et pas innerHTML : ce que tape un joueur reste du texte.
-      li.querySelector('.mot').textContent = m.mot;
+      var mot = li.querySelector('.mot');
+      mot.textContent = m.mot;
+      // Les propositions sont presque toujours des titres : même traitement.
+      etiquetterLangue(mot, m.mot, (piste || {}).langue);
       boite.appendChild(li);
     });
 
@@ -1075,6 +1084,17 @@
     return 'le ' + e;
   }
 
+  /* Marque un morceau de texte avec sa langue.
+
+     L'annonce de la révélation était déjà étiquetée ; le tableau, lui, ne
+     l'était pas. Quelqu'un qui parcourt l'écran à la main plutôt que d'attendre
+     l'annonce s'entendait lire « Bohemian Rhapsody » à la française. */
+  function etiquetterLangue(el, texte, defaut) {
+    if (!el) return;
+    if (!texte || texte === 'à trouver') { el.removeAttribute('lang'); return; }
+    el.setAttribute('lang', langueDe(texte, defaut).slice(0, 2));
+  }
+
   function info(texte, genre) {
     var b = $('info-saisie');
     b.textContent = texte || '';
@@ -1113,8 +1133,15 @@
        annoncé deux fois de suite. */
     if (joueurs.length && !finAnnoncee) {
       finAnnoncee = true;
-      dire('Partie terminée. ' + (joueurs[0].nom || 'Anonyme') +
-           ' gagne avec ' + (joueurs[0].score || 0) + ' points.');
+      /* `annoncer` et non `dire` : le résultat passe aussi par la zone lue par
+         les lecteurs d'écran. Dit seulement, il n'existait que pour ceux qui
+         avaient allumé la voix du site — les autres devaient partir à la
+         recherche du podium pour savoir qui avait gagné. */
+      annoncer('Partie terminée. ' + (joueurs[0].nom || 'Anonyme') +
+               ' gagne avec ' + (joueurs[0].score || 0) + ' points.', true);
+      /* Et le curseur du lecteur d'écran se pose sur le titre : de là, le
+         podium se lit de haut en bas. */
+      try { $('titre-fin').focus({ preventScroll: true }); } catch (e) {}
     }
 
     // Argent, or, bronze — mais on ne dessine que les marches réellement occupées.
