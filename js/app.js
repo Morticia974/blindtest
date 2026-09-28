@@ -1252,18 +1252,28 @@
 
      Maintenir un bouton réglerait tout ça, mais un bouton se trouve à l'œil.
      On demande donc un mot, que la voix seule suffit à donner : le micro
-     n'agit que sur ce qui commence par « réponse ». Le reste de la pièce ne
-     commence pas par « réponse ». */
-  var EVEIL = ['reponse', 'ma reponse', 'la reponse', 'balance', 'ok balance'];
+     n'agit que sur ce qui commence par « ok ».
+
+     « ok » est court — deux syllabes de moins que « réponse », et autant de
+     gagné avant de pouvoir répondre. C'est aussi, il faut le dire, un mot qui
+     traîne dans toutes les conversations : « ok attends », « ok c'est bon ».
+     Le micro s'ouvrira donc parfois pour rien. Il ne prendra jamais la phrase
+     entière d'un voisin pour une réponse — il faut que « ok » soit en tête —
+     mais la fenêtre de douze secondes qui suit, elle, peut s'ouvrir à côté.
+     « réponse » reste accepté pour qui préfère un mot qu'on ne dit pas par
+     hasard. */
+  var EVEIL = ['ok', 'okay', 'reponse', 'ma reponse', 'la reponse', 'balance', 'ok balance'];
 
   /* Rend ce qui suit le mot convenu, '' si le mot a été dit tout seul, et null
      si la phrase ne nous était pas adressée. La comparaison passe par
-     `Match.correspond`, qui tolère l'à-peu-près : « repense », « réponses » et
-     « réponse » ouvrent tous la même porte. */
+     `Match.correspond`, qui tolère l'à-peu-près sur les mots longs :
+     « repense », « réponses » et « réponse » ouvrent tous la même porte. Sur
+     « ok », en revanche, la tolérance est nulle — en dessous de cinq lettres,
+     trop de mots différents se ressembleraient. */
   function reponseDite(texte) {
     var mots = String(texte || '').trim().split(/\s+/).filter(Boolean);
     if (!mots.length) return null;
-    // « ma réponse » avant « réponse », sinon le premier mot mangerait le second.
+    // « ok balance » avant « ok », sinon le premier mot mangerait le second.
     for (var n = Math.min(2, mots.length); n >= 1; n--) {
       if (Match.correspond(mots.slice(0, n).join(' '), EVEIL)) {
         return sansAmorce(mots.slice(n).join(' '));
@@ -1272,7 +1282,7 @@
     return null;
   }
 
-  /* Le mot convenu peut aussi être dit seul : « réponse », une pause, puis le
+  /* Le mot convenu peut aussi être dit seul : « ok », une pause, puis le
      titre. C'est même la façon la plus naturelle de s'en servir quand le site
      vient de répondre « J'écoute » — et c'est exactement ce que cette réponse
      invite à faire. La phrase qui suit compte alors comme la réponse, sans
@@ -1306,6 +1316,29 @@
   }
 
   function fermerLEcoute() { ecouteOuverteJusqua = 0; }
+
+  /* Ce qu'on dit sans rien demander.
+
+     « ok » est un mot de conversation autant qu'un mot convenu : « ok
+     attends », « ok c'est bon », « ok ben ». Ces phrases-là partaient au fil du
+     salon comme des réponses ratées, et le site les lisait à voix haute.
+
+     On les reconnaît, mais seulement APRÈS avoir essayé : « bon » vaut une
+     bonne réponse pour « Le Bon, la Brute et le Truand », « nickel » pour
+     Nickelback, « parfait » pour « Le Parrain » — vérifié sur tout le
+     catalogue. Un mot de remplissage qui tombe juste reste donc une réponse ;
+     c'est seulement quand il ne vaut rien qu'on se tait plutôt que de répondre
+     « pas ça ». Et la fenêtre d'écoute reste ouverte : on n'a rien répondu,
+     il peut enchaîner. */
+  var REMPLISSAGE = ('attends|attendez|voila|merci|super|ben|alors|donc|oui|non|ok|bah|euh|allez|bon|' +
+    'parfait|nickel|pardon|' +
+    'quoi|hein|mais|bref|ah|oh|stop|chut|la|ici|ouais|nan|mouais|' +
+    'ca va|daccord|vas y|peut etre|je sais pas|aucune idee|tais toi').split('|');
+
+  function cEstDuRemplissage(texte) {
+    var t = Match.normaliser(texte);
+    return !t || REMPLISSAGE.indexOf(t) !== -1;
+  }
 
   /* Ce que cette phrase nous dit, ou null si elle ne nous était pas adressée. */
   function ceQuOnNousDit(texte) {
@@ -1348,9 +1381,9 @@
     b.classList.toggle('actif', microVoulu);
     b.setAttribute('aria-pressed', String(microVoulu));
     b.setAttribute('aria-label', microVoulu
-      ? 'Couper le micro. Il est ouvert : dis « réponse », puis ta réponse.'
+      ? 'Couper le micro. Il est ouvert : dis « ok », puis ta réponse.'
       : 'Répondre à la voix');
-    b.title = microVoulu ? 'Micro ouvert : dis « réponse », puis ta réponse' : 'Répondre à la voix';
+    b.title = microVoulu ? 'Micro ouvert : dis « ok », puis ta réponse' : 'Répondre à la voix';
   }
 
   /* Coupe la reconnaissance sans toucher au choix du joueur. On détache `onend`
@@ -1490,7 +1523,8 @@
     if (!dit) return;
 
     var res = partie.proposer(dit, { muet: true });
-    if (res.titre || res.artiste) { feterLaTrouvaille(res, true); return; }
+    if (res.titre || res.artiste) { fermerLEcoute(); feterLaTrouvaille(res, true); return; }
+    if (cEstDuRemplissage(dit)) return;
     /* Écrit seulement : un brouillon n'est qu'un morceau de phrase, et la
        version confirmée arrive juste derrière. La dire reviendrait à parler
        deux fois de la même chose, la seconde pour se contredire. */
@@ -1520,22 +1554,31 @@
     if (appele && !essais.length) { ouvrirLEcoute(); return; }
     if (!essais.length) return;
 
-    // Une phrase traitée referme la fenêtre : un « réponse », une réponse.
-    fermerLEcoute();
-
     for (var k = 0; k < essais.length; k++) {
       var res = partie.proposer(essais[k], { muet: true });
-      if (res.titre || res.artiste) { feterLaTrouvaille(res, true); return; }
+      // Une phrase traitée referme la fenêtre : un « ok », une réponse.
+      if (res.titre || res.artiste) { fermerLEcoute(); feterLaTrouvaille(res, true); return; }
       if (res.deja) {
+        fermerLEcoute();
         repondreAuMicro('Tu as déjà tout trouvé sur ce titre 😎',
-                        'Tu as déjà tout trouvé sur ce titre.', 'raté');
+                        'Déjà tout trouvé.', 'raté');
         return;
       }
     }
 
-    // Rien de juste : on répète ce qui a été compris, pour pouvoir corriger.
+    // « ok attends » : on n'a pas été appelé, on ne répond pas.
+    if (cEstDuRemplissage(essais[0])) return;
+    fermerLEcoute();
+
+    /* Rien de juste : on répète ce qui a été compris, pour pouvoir corriger.
+
+       Dit au plus court. Tant que le site parle, le micro n'écoute pas — il
+       s'entendrait lui-même — et chaque mot de trop est du temps où l'on ne
+       peut pas se reprendre. « Entendu : Céline Dion. Pas ça. » prenait trois
+       secondes et neuf dixièmes ; « Céline Dion, pas ça. » en prend deux et
+       demie, pour la même information. */
     repondreAuMicro('Entendu : « ' + essais[0] + ' » — pas ça 😛',
-                    'Entendu : ' + essais[0] + '. Pas ça.', 'raté');
+                    essais[0] + ', pas ça.', 'raté');
     if (meriteLeFil(essais[0], resultat[0] && resultat[0].confidence)) {
       partie.proposer(essais[0]);
     }
@@ -1763,7 +1806,16 @@
         if (v) u.voice = v;
         if (i === parties.length - 1) {
           u.onend = u.onerror = function () {
-            parleJusqua = Date.now() + 500;
+            /* La surdité ne peut que raccourcir, jamais s'allonger.
+
+               L'estimation d'en haut tombe souvent un peu avant la fin réelle
+               de la phrase : le micro redevenait libre, puis se refermait deux
+               dixièmes de plus au moment précis où l'on reprenait la parole.
+               Deux dixièmes suffisent à laisser passer la queue de la phrase,
+               que le navigateur transcrit après coup — et le vrai garde-fou est
+               `cEstMaVoix`, qui reconnaît ce qu'on vient de dire quand ça nous
+               revient par le micro. */
+            parleJusqua = Math.min(parleJusqua, Date.now() + 200);
             remettreLaMusique();
           };
         }
@@ -2109,11 +2161,13 @@
       microVoulu = !microVoulu;
       try { localStorage.setItem('bt.micro', microVoulu ? '1' : '0'); } catch (e) {}
       synchroniserMicro();
-      /* La consigne d'abord : sans elle, le micro a l'air cassé. C'est écrit
-         dans une zone que les lecteurs d'écran lisent d'eux-mêmes. */
-      info(microVoulu
-        ? 'Micro ouvert. Dis « réponse », puis le titre ou l\'artiste.'
-        : 'Micro coupé.', '');
+      /* La consigne d'abord : sans elle, le micro a l'air cassé. Dite autant
+         qu'écrite — une consigne qu'on ne peut que lire ne sert pas à celui qui
+         allume le micro justement parce qu'il ne lit pas l'écran. */
+      repondreAuMicro(
+        microVoulu ? 'Micro ouvert. Dis « ok », puis le titre ou l\'artiste.' : 'Micro coupé.',
+        microVoulu ? 'Micro ouvert. Dis ok, puis le titre ou l\'artiste.' : 'Micro coupé.',
+        '');
     });
 
     $('formulaire-reponse').addEventListener('submit', function (e) {
