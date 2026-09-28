@@ -1272,6 +1272,37 @@
     return null;
   }
 
+  /* Le mot convenu peut aussi être dit seul : « réponse », une pause, puis le
+     titre. C'est même la façon la plus naturelle de s'en servir quand le site
+     vient de répondre « J'écoute » — et c'est exactement ce que cette réponse
+     invite à faire. La phrase qui suit compte alors comme la réponse, sans
+     qu'il faille répéter le mot.
+
+     La fenêtre se referme dès qu'une phrase est traitée, et au bout de douze
+     secondes si rien ne vient : passé ce délai, ce que le micro entend n'a plus
+     de raison d'être pris pour une réponse. */
+  var ecouteOuverteJusqua = 0;
+
+  function ouvrirLEcoute() {
+    ecouteOuverteJusqua = Date.now() + 12000;
+    info('J\'écoute…', '');
+    /* Dit à voix haute même si les annonces sont éteintes : c'est la réponse à
+       une question posée à la voix, pas une annonce de partie. Écrite seule,
+       elle n'existait pas pour qui ne voit pas l'écran — c'est-à-dire pour la
+       personne à qui le micro sert le plus. */
+    dire('J\'écoute', true);
+  }
+
+  function fermerLEcoute() { ecouteOuverteJusqua = 0; }
+
+  /* Ce que cette phrase nous dit, ou null si elle ne nous était pas adressée. */
+  function ceQuOnNousDit(texte) {
+    var dit = reponseDite(texte);
+    if (dit !== null) return dit;
+    if (Date.now() < ecouteOuverteJusqua) return sansAmorce(String(texte).trim());
+    return null;
+  }
+
   /* « Réponse, c'est Muse » : on dit rarement le titre tout sec après le mot
      convenu. Cette amorce-là ne compte pas comme une partie de la réponse. */
   function sansAmorce(texte) {
@@ -1437,8 +1468,11 @@
     /* Une phrase à moitié entendue qui ne nous était pas adressée : on ne la
        tente pas, et surtout on ne l'écrit pas. Cette ligne-là est lue à voix
        haute par les lecteurs d'écran — elle récitait à son propriétaire la
-       conversation de toute la pièce, par-dessus la musique. */
-    var dit = reponseDite(texte);
+       conversation de toute la pièce, par-dessus la musique.
+
+       La fenêtre n'est pas refermée ici : un brouillon n'est qu'un morceau de
+       phrase, et la version confirmée arrive juste après. */
+    var dit = ceQuOnNousDit(texte);
     if (!dit) return;
 
     var res = partie.proposer(dit, { muet: true });
@@ -1451,20 +1485,26 @@
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
 
-    /* On ne garde que les transcriptions qui commencent par le mot convenu,
-       débarrassées de ce mot. Tout le reste — la pièce, la musique, la bonne
+    /* On ne garde que les transcriptions qui nous étaient adressées — celles
+       qui commencent par le mot convenu, ou celles qui arrivent dans la fenêtre
+       ouverte par ce mot. Tout le reste — la pièce, la musique, la bonne
        réponse dite par un autre — passe sans laisser de trace. */
     var essais = [];
     var appele = false;
     for (var i = 0; i < resultat.length; i++) {
-      var dit = reponseDite(String(resultat[i].transcript || ''));
+      var brut = String(resultat[i].transcript || '');
+      if (cEstMaVoix(brut)) return;   // c'est le site qu'on entend, pas un joueur
+      var dit = ceQuOnNousDit(brut);
       if (dit === null) continue;
       appele = true;
       if (dit && essais.indexOf(dit) === -1) essais.push(dit);
     }
-    // Le mot tout seul : il commence sa phrase. On le lui confirme.
-    if (appele && !essais.length) { info('J\'écoute…', ''); return; }
-    if (!essais.length || cEstMaVoix(essais[0])) return;
+    // Le mot tout seul : il commence sa phrase, on ouvre l'oreille et on le dit.
+    if (appele && !essais.length) { ouvrirLEcoute(); return; }
+    if (!essais.length) return;
+
+    // Une phrase traitée referme la fenêtre : un « réponse », une réponse.
+    fermerLEcoute();
 
     for (var k = 0; k < essais.length; k++) {
       var res = partie.proposer(essais[k], { muet: true });
@@ -1652,17 +1692,18 @@
     appliquerVolume();
   }
 
-  /* Dit une phrase française. */
-  function dire(texte) {
-    direParties([{ t: texte, l: 'fr-FR' }]);
+  /* Dit une phrase française. `quandMeme` passe outre le bouton des annonces,
+     pour les quelques phrases qui répondent directement à la voix du joueur. */
+  function dire(texte, quandMeme) {
+    direParties([{ t: texte, l: 'fr-FR' }], quandMeme);
   }
 
   /* Dit une suite de morceaux, chacun dans sa langue : « C'était » en français,
      puis le titre en anglais s'il l'est. Rien ne s'accumule d'une annonce à
      l'autre — sinon le site parlerait encore du morceau précédent pendant qu'on
      écoute le suivant. */
-  function direParties(parties) {
-    if (!annoncesVoulues || !synthesePossible()) return;
+  function direParties(parties, quandMeme) {
+    if ((!annoncesVoulues && !quandMeme) || !synthesePossible()) return;
     parties = (parties || []).filter(function (p) { return p && String(p.t || '').trim(); });
     if (!parties.length) return;
 
@@ -1810,6 +1851,7 @@
 
       if (phase === 'depart' || phase === 'ecoute') {
         dernierDit = '';   // ce qui a été dit au morceau d'avant ne compte plus
+        fermerLEcoute();   // et l'oreille ouverte au morceau d'avant non plus
 
         /* L'annonce se fait pendant le décompte, quand il y en a un : là, il n'y
            a pas de musique à couvrir, et la phrase a le temps de finir avant la
