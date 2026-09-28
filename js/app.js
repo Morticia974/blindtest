@@ -1132,6 +1132,11 @@
      dans un mélange. Annoncée seulement quand elle change — la répéter douze
      fois de suite couvrirait le début de chaque chanson pour rien. */
   var derniereCategorieDite = null;
+  /* Le micro se rallume tout seul d'une partie à l'autre — c'est voulu, on ne
+     va pas redemander à chaque fois. Mais du coup la consigne, qui n'était dite
+     qu'au clic du bouton, n'était jamais dite du tout à celui qui l'avait
+     allumé la veille. On la redonne une fois par partie. */
+  var consigneMicroDite = false;
 
   function categorieDe(etat, piste) {
     var m = Playlists.parId(etat.meta.manche);
@@ -1885,6 +1890,7 @@
       finAnnoncee = false;
       // La catégorie se redit au premier morceau de la partie suivante.
       derniereCategorieDite = null;
+      consigneMicroDite = false;
       montrer('salon');
       rendreSalon();
       arreterExtrait();
@@ -1959,6 +1965,15 @@
             if (consigne) bouts.push(consigne);
           } else {
             bouts.push('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.');
+          }
+          if (!consigneMicroDite && microVoulu && microPossible()) {
+            consigneMicroDite = true;
+            /* Au plus court : ajoutée à la plus longue catégorie du catalogue,
+               la phrase du premier morceau passe de neuf secondes et demie à
+               huit. Le décompte par défaut en dure six — ça déborde, mais la
+               musique reste en retrait tant qu'on parle, donc rien n'est
+               couvert. Et ce n'est qu'au premier morceau. */
+            bouts.push('Dis ok pour répondre.');
           }
           annoncer(bouts.join(' '), avecDecompte);
         }
@@ -2168,6 +2183,8 @@
         microVoulu ? 'Micro ouvert. Dis « ok », puis le titre ou l\'artiste.' : 'Micro coupé.',
         microVoulu ? 'Micro ouvert. Dis ok, puis le titre ou l\'artiste.' : 'Micro coupé.',
         '');
+      // Dite au bouton, elle n'a plus à l'être au morceau suivant.
+      consigneMicroDite = microVoulu;
     });
 
     $('formulaire-reponse').addEventListener('submit', function (e) {
