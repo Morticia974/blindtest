@@ -1571,8 +1571,14 @@
     if (/[àâéèêëîïôùûüÿçœæ]/i.test(brut)) fr += 3;
     /* « ill » a été retiré des indices français : il attrapait Billie Jean,
        Gorillaz, Williams et Still Alive. Les vrais mots français en « ille »
-       arrivent presque toujours accompagnés d'un autre indice. */
-    if (/(eau|oux|ais|ez$|aient|tion$)/.test(t)) fr += 1;
+       arrivent presque toujours accompagnés d'un autre indice.
+
+       « tion » est parti pour la même raison : c'est un faux ami, aussi anglais
+       que français, et il envoyait « Celebration », « Californication »,
+       « Imagination » et « Bastion » à la voix française. Un titre français en
+       -tion ne perd rien au change : sans indice on suit la langue de la
+       catégorie, qui est le français là où il se trouve. */
+    if (/(eau|oux|ais|ez$|aient)/.test(t)) fr += 1;
     if (/(th|wh|oo|ee|ck|sh|ing$|ight|w)/.test(t)) en += 1;
 
     if (en > fr) return 'en-US';
@@ -1704,6 +1710,33 @@
   /* Une phrase pour les lecteurs d'écran, et pour la voix du site quand elle
      est allumée. On vide d'abord la zone : sans ça, deux annonces identiques
      d'affilée ne sont pas relues. */
+  /* La consigne du morceau à venir, glissée à la fin de la révélation.
+
+     C'est le seul moment libre : pendant la pause, il n'y a pas de musique à
+     couvrir, et la phrase a le temps de finir avant que la suivante démarre.
+     Au lancement de l'écoute, la même annonce est bien écrite pour les lecteurs
+     d'écran, mais elle n'est pas dite — elle passerait par-dessus l'intro.
+
+     On ne prévient que si quelque chose change : dans une manche normale la
+     catégorie est la même du début à la fin, et l'annoncer douze fois serait
+     du bavardage. Dans le Grand mélange, elle change à chaque morceau. */
+  var derniereCategoriePrevenue = null;   // à ne pas confondre avec celle qu'on écrit
+
+  function partiesDuSuivant(etat) {
+    var i = etat.tour.index + 1;
+    if (i >= etat.meta.nbTitres) return [];
+    var p = etat.pistes[i];
+    if (!p) return [];   // pas encore résolu : on ne promet rien
+
+    var cat = categorieDe(etat, p);
+    if (!cat || cat === derniereCategoriePrevenue) return [];
+    derniereCategoriePrevenue = cat;
+
+    /* Tout en français : la phrase l'est, et seul le nom de la catégorie
+       pourrait ne pas l'être — pas de quoi basculer la voix. */
+    return [{ t: 'Ensuite : ' + cat + '. ' + consigneDe(p), l: 'fr-FR' }];
+  }
+
   function annoncer(texte, aVoixHaute) {
     var b = $('annonce');
     if (b) {
@@ -1742,6 +1775,7 @@
       finAnnoncee = false;
       // La catégorie se redit au premier morceau de la partie suivante.
       derniereCategorieDite = null;
+      derniereCategoriePrevenue = null;
       montrer('salon');
       rendreSalon();
       arreterExtrait();
@@ -1793,15 +1827,21 @@
         var consigne = consigneDe(pc);
         if (consigne) bouts.push(consigne);
         bouts.push('À toi.');
-        // Écrit seulement : parler ici couvrirait les premières notes.
-        annoncer(bouts.join(' '), false);
+        /* Dit seulement au premier morceau. Après, la consigne du suivant est
+           déjà passée pendant la pause — et la répéter ici couvrirait les
+           premières notes, qui sont souvent tout ce qu'il y a à reconnaître. */
+        annoncer(bouts.join(' '), etat.tour.index === 0);
+        /* Ce qui vient d'être dit compte comme un avertissement : sans ça, la
+           révélation du premier morceau reprendrait la même catégorie sous un
+           « Ensuite : », juste après l'avoir annoncée. */
+        if (etat.tour.index === 0) derniereCategoriePrevenue = cat;
       } else if (phase === 'reveal') {
         var p = etat.pistes[etat.tour.index];
         if (p) {
           /* Écrit en un bloc pour les lecteurs d'écran — avec la langue de
              chaque morceau, pour que ceux qui savent changer de voix le
              fassent — et dit morceau par morceau par la voix du site. */
-          annoncerParties(partiesDeRevelation(p));
+          annoncerParties(partiesDeRevelation(p).concat(partiesDuSuivant(etat)));
         }
       }
     });
