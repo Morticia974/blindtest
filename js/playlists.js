@@ -1254,7 +1254,13 @@ var Playlists = (function () {
         { t: "Call of Duty Modern Warfare 2: Theme", a: "Call of Duty", q: "Call of Duty Modern Warfare 2 Theme Orchestre Philharmonique de Londres", altA: ["COD", "Modern Warfare"] },
         { t: "Pac Man Theme", a: "Pac-Man", q: "Pac Man Theme Theme Mania Video Games Themes Collection", altA: ["Pacman"],
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/f4/ea/f4f4ea18-0582-ca91-7315-99f136df0da2/PA00153385_0_192500_jacket.jpg/600x600bb.jpg" },
-        { t: "Tetris Theme (Korobeiniki)", a: "Tetris", q: "Tetris Theme Korobeiniki Orchestre Philharmonique de Londres", altT: ["Korobeiniki"],
+        /* La vraie version Game Boy de 1989 n'est pas chez Apple — ni Nintendo
+           ni The Tetris Company n'y publient. Celle-ci est la plus proche du
+           souvenir : Audrey a comparé les six que le catalogue propose. */
+        { t: "Tetris Theme", a: "Tetris",
+          q: "La Casa de Ollivander Tetris Theme 8Bit Version Korobeiniki Retro Game Collection",
+          interprete: "La Casa de Ollivander",
+          altT: ["Korobeiniki", "Tetris Theme (Korobeiniki)"],
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/40/f8/5c/40f85c09-a8c3-cd5d-5fa3-54048cc3985e/859737336117_cover.jpg/600x600bb.jpg" },
 
         /* Quatre abandons : Half-Life (Valve ne distribue pas sa musique — la
