@@ -117,7 +117,13 @@ var Itunes = (function () {
 
        La pénalité ne s'applique que s'il existe un enregistrement du bon
        interprète. S'il n'y en a aucun, rien ne change : mieux vaut une reprise
-       que le silence. */
+       que le silence.
+
+       Attention en écrivant `interprete` : il doit reprendre le crédit COMPLET
+       tel qu'Apple l'écrit. « GIMS » au lieu de « GIMS & La Mano 1.9 » suffit à
+       retourner la règle contre le bon disque — celui-ci est alors rétrogradé
+       au profit d'un autre morceau du même artiste, crédité seul. C'est arrivé
+       trois fois d'un coup sur les ajouts du 30 septembre. */
     var vInterprete = piste.interprete ? Match.variantesArtiste(piste.interprete) : [];
     var luiMeme = vInterprete.length && candidats.some(function (r) {
       return Match.correspond(r.artistName, vInterprete);

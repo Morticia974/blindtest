@@ -256,7 +256,11 @@ var Playlists = (function () {
         { t: "La musique (Angelica)", a: "Star Academy", altT: ["La musique"], q: "Star Academy La musique Angelica" },
         { t: "Elle me contrôle", a: "M. Pokora", altA: ["Matt Pokora", "Sweety"] },
         { t: "Parle-moi", a: "Nâdiya", altT: ["Parle moi"] },
-        { t: "Tu seras", a: "Emma Daumas" }
+        { t: "Tu seras", a: "Emma Daumas" },
+        { t: "Dilemma", a: "Nelly feat. Kelly Rowland", q: "Nelly Kelly Rowland Dilemma Nellyville",
+          interprete: "Nelly", altA: ["Nelly", "Kelly Rowland"] },
+        { t: "The Real Slim Shady", a: "Eminem", interprete: "Eminem" },
+        { t: "Lift Me Up", a: "Moby", interprete: "Moby" }
       ]
     },
     {
@@ -670,7 +674,12 @@ var Playlists = (function () {
              exactement le même titre. Le moteur la rétrograde maintenant
              comme les autres versions alternatives, et la requête répète
              le titre pour faire remonter le bon enregistrement. */
-          interprete: "Michel Polnareff" }
+          interprete: "Michel Polnareff" },
+        { t: "Douliou douliou Saint-Tropez", a: "Le Gendarme de Saint-Tropez",
+          q: "Raymond Lefevre Douliou douliou Saint-Tropez gendarme bande originale",
+          interprete: "Raymond Lefevre", altA: ["Le Gendarme", "Le Gendarme de Saint Tropez"] },
+        { t: "Générique", a: "Le Corniaud", q: "Georges Delerue Le corniaud générique bande originale",
+          interprete: "Georges Delerue" }
       ]
     },
     {
@@ -895,7 +904,11 @@ var Playlists = (function () {
         { t: "Be Mine", a: "Ofenbach" },
         { t: "Axel F", a: "Crazy Frog" },
         { t: "Who Let the Dogs Out", a: "Baha Men" },
-        { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"] }
+        { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"] },
+        { t: "Hypnodancer", a: "Little Big", interprete: "Little Big" },
+        { t: "Stamp on the Ground", a: "ItaloBrothers", interprete: "ItaloBrothers",
+          altA: ["Italo Brothers"] },
+        { t: "Temperature", a: "Sean Paul", interprete: "Sean Paul" }
       ]
     },
     {
@@ -956,7 +969,11 @@ var Playlists = (function () {
         { t: "Lambé An Dro", a: "Matmatah" },
         // « Brand New Eyes » plutôt que la B.O. de Twilight : même
         // enregistrement, mais la pochette est celle du groupe.
-        { t: "Decode", a: "Paramore", q: "Paramore Decode Brand New Eyes" }
+        { t: "Decode", a: "Paramore", q: "Paramore Decode Brand New Eyes" },
+        { t: "The Anthem", a: "Good Charlotte", interprete: "Good Charlotte" },
+        { t: "I'm Just a Kid", a: "Simple Plan", interprete: "Simple Plan" },
+        { t: "My Name Is Stain", a: "Shaka Ponk", interprete: "Shaka Ponk" },
+        { t: "In Too Deep", a: "Sum 41", interprete: "Sum 41" }
       ]
     },
     {
@@ -1028,7 +1045,11 @@ var Playlists = (function () {
         { t: "Change (In the House of Flies)", a: "Deftones" },
         { t: "Black Hole Sun", a: "Soundgarden" },
         { t: "Blood and Thunder", a: "Mastodon" },
-        { t: "O Father O Satan O Sun", a: "Behemoth", altT: ["O Father O Satan O Sun!"] }
+        { t: "O Father O Satan O Sun", a: "Behemoth", altT: ["O Father O Satan O Sun!"] },
+        { t: "Behind Blue Eyes", a: "Limp Bizkit", interprete: "Limp Bizkit" },
+        { t: "Rock You Like a Hurricane", a: "Scorpions", interprete: "Scorpions" },
+        { t: "What Have You Done", a: "Within Temptation",
+          q: "Within Temptation What Have You Done Keith Caputo", interprete: "Within Temptation" }
       ]
     },
     {
@@ -1127,7 +1148,11 @@ var Playlists = (function () {
         { t: "Making of Cyborg", a: "Ghost in the Shell", q: "Kenji Kawai Making of Cyborg Ghost in the Shell Original Soundtrack" },
         { t: "Sincerely", a: "Violet Evergarden", q: "Sincerely TRUE Violet Evergarden Vocal Album" },
         { t: "Hikarunara", a: "Your Lie in April", q: "Goose house Hikarunara Milk", altT: ["Hikaru Nara"], altA: ["Shigatsu wa Kimi no Uso"] },
-        { t: "My Soul, Your Beats!", a: "Angel Beats!", q: "My Soul Your Beats Lia Angel Beats", altA: ["Angel Beats"] }
+        { t: "My Soul, Your Beats!", a: "Angel Beats!", q: "My Soul Your Beats Lia Angel Beats", altA: ["Angel Beats"] },
+        { t: "Fairy Tail Main Theme", a: "Fairy Tail", q: "Yasuharu Takanashi Fairy Tail Main Theme",
+          interprete: "Yasuharu Takanashi" },
+        { t: "Sparkle", a: "Your Name", q: "RADWIMPS Sparkle Your Name Human Bloom",
+          interprete: "RADWIMPS", altA: ["Kimi no Na wa"] }
       ]
     },
     {
@@ -1214,7 +1239,10 @@ var Playlists = (function () {
         { t: "Hell March 3", a: "Command & Conquer", q: "Frank Klepacki Hell March 3 Red Alert 3", altT: ["Hell March"], altA: ["Red Alert"] },
         { t: "Nate's Theme", a: "Uncharted", q: "Nate's Theme Greg Edmonson Uncharted Drake's Fortune" },
         { t: "Aloy's Theme", a: "Horizon Zero Dawn", q: "Joris de Man Aloy's Theme Horizon Zero Dawn Original Soundtrack", altA: ["Horizon"] },
-        { t: "Angry Birds Theme", a: "Angry Birds", q: "Angry Birds Theme Ari Pulkkinen" }
+        { t: "Angry Birds Theme", a: "Angry Birds", q: "Angry Birds Theme Ari Pulkkinen" },
+        { t: "Legends Never Die", a: "League of Legends",
+          q: "Legends Never Die Against the Current League of Legends",
+          interprete: "League of Legends Music & Against The Current", altA: ["LoL"] }
       ]
     },
     {
@@ -1271,7 +1299,15 @@ var Playlists = (function () {
         { t: "Les Mondes engloutis", a: "Vladimir Cosma", q: "Les mondes engloutis générique Vladimir Cosma" },
         { t: "Jayce et les Conquérants de la lumière", a: "Nick Carr", q: "Jayce et les conquérants de la lumière générique", altT: ["Jayce"] },
         { t: "Les Entrechats", a: "Noam", q: "Les entrechats sont là générique original du dessin animé", altT: ["Les entrechats sont là !"] },
-        { t: "Les Schtroumpfs", a: "Dorothée", q: "La danse des Schtroumpfs Dorothée", altT: ["La danse des Schtroumpfs"] }
+        { t: "Les Schtroumpfs", a: "Dorothée", q: "La danse des Schtroumpfs Dorothée", altT: ["La danse des Schtroumpfs"] },
+        /* Le générique français n'est pas chez Apple : on joue l'ouverture
+           américaine de 1987, la même musique avec les mêmes paroles. */
+        { t: "Les Tortues Ninja", a: "Teenage Mutant Ninja Turtles",
+          q: "Teenage Mutant Ninja Turtles Cartoon Opening Let's Kick Shell",
+          interprete: "Teenage Mutant Ninja Turtles", altT: ["Tortues Ninja", "Teenage Mutant Ninja Turtles"] },
+        { t: "Batman", a: "Shirley Walker",
+          q: "Shirley Walker Batman The Animated Series Alternate Main Title",
+          interprete: "Shirley Walker", altT: ["Batman la série animée", "Batman, la série animée"] }
       ]
     },
     {
@@ -1335,7 +1371,27 @@ var Playlists = (function () {
         { t: "Femme de couleur", a: "Shy'm", q: "Shy'm Femme de couleur Mes Fantaisies" },
         { t: "Maharaja", a: "Heuss l'Enfoiré", q: "Heuss L'enfoiré Maharaja" },
         { t: "Bazardée", a: "KeBlack", q: "KeBlack Bazardée Premier étage" },
-        { t: "Ce soir ne sors pas", a: "Lacrim", q: "Lacrim Ce soir ne sors pas Maître Gims R.I.P.R.O 3" }
+        { t: "Ce soir ne sors pas", a: "Lacrim", q: "Lacrim Ce soir ne sors pas Maître Gims R.I.P.R.O 3" },
+        { t: "Bye bye", a: "Ménélik", q: "Ménélik Bye bye Je me souviens", interprete: "Ménélik",
+          altA: ["Menelik"] },
+        /* Apple range la version espagnole en tête et la française sous « Radio
+           Edit ». `voulue` lève la pénalité qui frappe les éditions radio. */
+        { t: "Hey Oh", a: "Tragédie", q: "Tragédie Hey Oh Radio Edit Édition Deluxe",
+          voulue: true, interprete: "Tragédie", altT: ["Hey Ho"] },
+        { t: "PARISIENNE", a: "Gims", q: "GIMS La Mano 1.9 PARISIENNE", interprete: "GIMS & La Mano 1.9",
+          altA: ["GIMS & La Mano 1.9", "La Mano 1.9", "Maître Gims"] },
+        { t: "Wati By Night", a: "Sexion d'Assaut", q: "Sexion d'Assaut Wati By Night L'école des points vitaux",
+          interprete: "Sexion d'Assaut" },
+        { t: "À l'horizontale", a: "Keen'V", interprete: "Keen'V", altA: ["Keen V"] },
+        { t: "Meleğim", a: "Soolking feat. Dadju", q: "Soolking Dadju Meleğim Vintage",
+          interprete: "Soolking", altT: ["Melegim"], altA: ["Soolking", "Dadju"] },
+        { t: "Clic clic pan pan", a: "Yanns", q: "Yanns Clic clic pan pan NRJ Music Awards 2022",
+          interprete: "Yanns" },
+        { t: "Là c'est die", a: "Ridsa", interprete: "Ridsa" },
+        { t: "Le bilan", a: "Nèg' Marrons", q: "Nèg' Marrons Frankie Paul Le bilan",
+          interprete: "Nèg' Marrons & Frankie Paul", altA: ["Neg Marrons", "Neg' Marrons"] },
+        { t: "Angela", a: "Saïan Supa Crew", interprete: "Saïan Supa Crew", altA: ["Saian Supa Crew"] },
+        { t: "En feu", a: "Soprano", q: "Soprano En feu L'Everest", interprete: "Soprano" }
       ]
     },
     {
@@ -1392,7 +1448,10 @@ var Playlists = (function () {
         { t: "J'ai cherché", a: "Amir" },
         { t: "Un homme debout", a: "Claudio Capéo" },
         { t: "Makeba", a: "Jain" },
-        { t: "Le Chant des sirènes", a: "Fréro Delavega" }
+        { t: "Le Chant des sirènes", a: "Fréro Delavega" },
+        { t: "BOOMBAYAH", a: "BLACKPINK", interprete: "BLACKPINK" },
+        { t: "Hit Sale", a: "Therapie TAXI", q: "Therapie TAXI Roméo Elvis Hit Sale",
+          interprete: "Therapie TAXI", altA: ["Therapie Taxi", "Thérapie Taxi"] }
       ]
     },
     {
@@ -1436,7 +1495,11 @@ var Playlists = (function () {
         { t: "Stand by Me", a: "Ben E. King" },
         { t: "My Way", a: "Frank Sinatra" },
         { t: "Summer of '69", a: "Bryan Adams" },
-        { t: "Karma Chameleon", a: "Culture Club" }
+        { t: "Karma Chameleon", a: "Culture Club" },
+        { t: "La Tactique Du Gendarme", a: "Bourvil", interprete: "Bourvil" },
+        { t: "Félicie aussi", a: "Fernandel", interprete: "Fernandel" },
+        { t: "Je chante", a: "Charles Trenet", interprete: "Charles Trenet" },
+        { t: "Le zizi", a: "Pierre Perret", interprete: "Pierre Perret" }
       ]
     },
     {
@@ -1549,7 +1612,9 @@ var Playlists = (function () {
         { t: "Laisse béton", a: "Renaud", q: "Renaud Laisse béton" },
         { t: "Les Cactus", a: "Jacques Dutronc", q: "Jacques Dutronc Les cactus En vogue" },
         { t: "Ma préférence", a: "Julien Clerc", q: "Julien Clerc Ma préférence" },
-        { t: "Laisse-moi t'aimer", a: "Mike Brant", q: "Mike Brant Laisse moi t'aimer Qui saura" }
+        { t: "Laisse-moi t'aimer", a: "Mike Brant", q: "Mike Brant Laisse moi t'aimer Qui saura" },
+        { t: "Jolene", a: "Dolly Parton", interprete: "Dolly Parton" },
+        { t: "Nights in White Satin", a: "The Moody Blues", interprete: "The Moody Blues" }
       ]
     },
     {
@@ -1690,7 +1755,13 @@ var Playlists = (function () {
         { t: "Bell'A.R.B.", a: "Les Ramoneurs de Menhirs",
           q: "Les Ramoneurs de menhirs Bell A.R.B. Dans an diaoul",
           interprete: "Les Ramoneurs de menhirs",
-          altT: ["Bellarb", "Bell ARB"], altA: ["Ramoneurs de Menhirs"] }
+          altT: ["Bellarb", "Bell ARB"], altA: ["Ramoneurs de Menhirs"] },
+        /* Le tube que tout le monde connaît est la version de DJ Assad, où
+           Alain Ramanisum et Willy William chantent. C'est celle-là qu'on joue,
+           et les trois noms sont acceptés. */
+        { t: "Li Tourner", a: "Alain Ramanisum & Willy William",
+          q: "DJ Assad Li Tourner 2013 Alain Ramanisum Willy William",
+          interprete: "DJ Assad", altA: ["DJ Assad", "Alain Ramanisum", "Willy William"] }
       ]
     }
   ];
