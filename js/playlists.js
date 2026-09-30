@@ -57,7 +57,6 @@ var Playlists = (function () {
 
         /* Vingt-quatre sur vingt-quatre : la meilleure vague de la journée. Les
            tubes de cette décennie sont tous chez Apple en version d'origine. */
-        { t: "Shout", a: "Tears for Fears" },
         { t: "Don't You (Forget About Me)", a: "Simple Minds" },
         { t: "Call Me", a: "Blondie", q: "Blondie Call Me American Gigolo" },
         { t: "I Wanna Dance with Somebody", a: "Whitney Houston" },
@@ -230,7 +229,6 @@ var Playlists = (function () {
         { t: "In Da Club", a: "50 Cent" },
         { t: "Chasing Cars", a: "Snow Patrol" },
         { t: "That's Not My Name", a: "The Ting Tings" },
-        { t: "Porcelain", a: "Moby" },
         { t: "Get Busy", a: "Sean Paul" },
         { t: "Since U Been Gone", a: "Kelly Clarkson" },
         { t: "I Kissed a Girl", a: "Katy Perry" },
@@ -245,7 +243,6 @@ var Playlists = (function () {
         { t: "On s'attache", a: "Christophe Maé" },
         { t: "Toi + Moi", a: "Grégoire" },
         { t: "Les Voisines", a: "Renan Luce" },
-        { t: "Ta douleur", a: "Camille" },
         { t: "J'traîne des pieds", a: "Olivia Ruiz" },
         { t: "J'ai demandé à la lune", a: "Indochine" },
         /* Apple n'a de « Au soleil » que le « Nouveau Mix 2002 » — c'est bien le
@@ -321,7 +318,6 @@ var Playlists = (function () {
         { t: "Je te donne", a: "Jean-Jacques Goldman", altA: ["Michael Jones"] },
         { t: "Ma Liberté de penser", a: "Florent Pagny" },
         { t: "Jardin d'hiver", a: "Henri Salvador" },
-        { t: "Sur un prélude de Bach", a: "Maurane" },
         { t: "Sous le vent", a: "Garou & Céline Dion", altA: ["Garou", "Céline Dion"] },
         { t: "Manhattan-Kaboul", a: "Renaud & Axelle Red", altA: ["Renaud", "Axelle Red"] },
         { t: "Lettre à France", a: "Michel Polnareff" }
@@ -736,7 +732,6 @@ var Playlists = (function () {
           altA: ["Wednesday"] },
         { t: "Theme from Beverly Hills, 90210", a: "Beverly Hills 90210", q: "Theme from Beverly Hills 90210 John Davis Soundtrack", altA: ["90210"] },
         { t: "Dexter Main Title", a: "Dexter", q: "Rolfe Kent Dexter Main Title" },
-        { t: "Main Title Season 3", a: "Prison Break", q: "Ramin Djawadi Prison Break Seasons 3 & 4 Original Television Soundtrack", altT: ["Prison Break Theme"] },
         { t: "Life and Death", a: "Lost", q: "Michael Giacchino Lost Season 1 Original Television Soundtrack Life and Death" },
         { t: "Breaking Bad (Main Title Theme)", a: "Breaking Bad", q: "Dave Porter Breaking Bad Main Title Theme Music from the Original TV Series" },
         /* Apple n'a pas la prise de Randy Newman entendue dans la série : la
@@ -773,7 +768,6 @@ var Playlists = (function () {
         { t: "The Mandalorian", a: "The Mandalorian", q: "Ludwig Goransson The Mandalorian Chapter 1 Original Score" },
         { t: "Justice League Unlimited Theme", a: "La Ligue des justiciers", q: "Justice League Unlimited Theme Michael McCuistion Music of DC Comics", altA: ["Justice League"] },
         { t: "This Life", a: "Sons of Anarchy", q: "This Life Curtis Stigers Forest Rangers Songs of Anarchy" },
-        { t: "Arthur à la Tour", a: "Kaamelott", q: "Kaamelott Premier Volet Alexandre Astier bande originale" },
 
         /* ---- reprises instrumentales fidèles ----
            Ces génériques-là ne sont jamais sortis en disque. On garde une
@@ -1314,7 +1308,6 @@ var Playlists = (function () {
            artistes présents deux fois revenaient à presque chaque partie. */
         { t: "Jeune demoiselle", a: "Diam's" },
         { t: "Gravé dans la roche", a: "Sniper" },
-        { t: "L'amour du risque", a: "Fonky Family", q: "Fonky Family L'amour du risque Taxi" },
         { t: "Nirvana", a: "Doc Gynéco" },
         { t: "Femme Like U", a: "K-Maro", altA: ["K.Maro", "K Maro"] },
         { t: "Parce qu'on vient de loin", a: "Corneille" },
@@ -1328,7 +1321,6 @@ var Playlists = (function () {
         { t: "On verra", a: "Nekfeu" },
         { t: "Reine", a: "Dadju" },
         { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
-        { t: "La vie qu'on mène", a: "Ninho", q: "Ninho La vie qu'on mène Destin" },
         { t: "La Kiffance", a: "Naps" },
         { t: "Ça va ça vient", a: "Vitaa & Slimane", altA: ["Vitaa", "Slimane"] },
 
@@ -1336,19 +1328,12 @@ var Playlists = (function () {
            Vald, Sinik, PLK, Lartiste et Wallen n'y sont pas du tout. Plusieurs
            autres y sont, mais sous un autre morceau que celui demandé : on prend
            celui qui existe, l'artiste reste le bon. */
-        { t: "Zoo", a: "Kaaris", q: "Kaaris Zoo Or Noir" },
-        { t: "Madre Mia", a: "SCH", q: "SCH Madre Mia Morad Autobahn" },
         { t: "Terrasser", a: "Gradur", q: "Gradur Terrasser" },
         { t: "J'pète les plombs", a: "Disiz la Peste", q: "Disiz J'pète les plombs Le poisson rouge", altA: ["Disiz"] },
         { t: "Mon papa à moi est un gangster", a: "Stomy Bugsy", q: "Stomy Bugsy Mon papa à moi est un gangster Le calibre qu'il te faut" },
-        { t: "Jour 2 tonnerre", a: "Ärsenik", q: "Ärsenik Jour 2 tonnerre Quelques gouttes suffisent", altA: ["Arsenik"] },
-        { t: "365 jours", a: "Oxmo Puccino", q: "Oxmo Puccino 365 jours L'arme de paix" },
-        { t: "Samuraï", a: "Shurik'n", q: "Shurik'n Samuraï Où je vis" },
         { t: "C'est chelou", a: "Zaho", q: "Zaho C'est chelou Dima" },
         { t: "Femme de couleur", a: "Shy'm", q: "Shy'm Femme de couleur Mes Fantaisies" },
-        { t: "Boozillé", a: "Rim'K", q: "Rim'K Boozillé L'enfant du pays" },
         { t: "Maharaja", a: "Heuss l'Enfoiré", q: "Heuss L'enfoiré Maharaja" },
-        { t: "KASSAV", a: "Gazo", q: "Gazo KASSAV Tiakola DRILL FR", altA: ["Tiakola"] },
         { t: "Bazardée", a: "KeBlack", q: "KeBlack Bazardée Premier étage" },
         { t: "Ce soir ne sors pas", a: "Lacrim", q: "Lacrim Ce soir ne sors pas Maître Gims R.I.P.R.O 3" }
       ]
@@ -1433,7 +1418,6 @@ var Playlists = (function () {
         { t: "Don't Stop Believin'", a: "Journey" },
         { t: "Sweet Caroline", a: "Neil Diamond" },
         { t: "Total Eclipse of the Heart", a: "Bonnie Tyler" },
-        { t: "Twist and Shout", a: "The Beatles" },
         { t: "La Bamba", a: "Ritchie Valens" },
         { t: "Petit Papa Noël", a: "Tino Rossi" },
 
@@ -1441,8 +1425,6 @@ var Playlists = (function () {
         { t: "Santiano", a: "Hugues Aufray" },
         { t: "Les Corons", a: "Pierre Bachelet" },
         { t: "Étienne", a: "Guesch Patti" },
-        { t: "La Mer", a: "Charles Trenet" },
-        { t: "Lily", a: "Pierre Perret" },
         { t: "La Salsa du démon", a: "Le Grand Orchestre du Splendid" },
         { t: "Macumba", a: "Jean-Pierre Mader" },
         { t: "Il est libre Max", a: "Hervé Cristiani" },
@@ -1451,12 +1433,9 @@ var Playlists = (function () {
         { t: "Vieille Canaille", a: "Serge Gainsbourg" },
         { t: "Le Chanteur", a: "Daniel Balavoine" },
         { t: "We Are the Champions", a: "Queen" },
-        { t: "Take Me Home, Country Roads", a: "John Denver", altT: ["Country Roads"] },
         { t: "Stand by Me", a: "Ben E. King" },
         { t: "My Way", a: "Frank Sinatra" },
         { t: "Summer of '69", a: "Bryan Adams" },
-        { t: "Angels", a: "Robbie Williams" },
-        { t: "Hallelujah", a: "Jeff Buckley" },
         { t: "Karma Chameleon", a: "Culture Club" }
       ]
     },
@@ -1506,7 +1485,6 @@ var Playlists = (function () {
         { t: "J'avais rêvé d'une autre vie", a: "Les Misérables", q: "Les Miserables J'avais reve d'une autre vie" },
         { t: "Memory", a: "Cats", q: "Cats Memory Elaine Paige" },
         { t: "The Phantom of the Opera", a: "Le Fantôme de l'Opéra", q: "The Phantom of the Opera Andrew Lloyd Webber", altA: ["The Phantom of the Opera"] },
-        { t: "Alexander Hamilton", a: "Hamilton", q: "Hamilton Alexander Hamilton Original Broadway Cast" },
         { t: "Defying Gravity", a: "Wicked", q: "Wicked Defying Gravity Idina Menzel" },
         { t: "This Is Me", a: "The Greatest Showman", q: "The Greatest Showman This Is Me Keala Settle" }
         // « Résiste » retiré d'ici : c'était un doublon de la chanson de France
@@ -1550,7 +1528,6 @@ var Playlists = (function () {
         { t: "Respect", a: "Aretha Franklin" },
         { t: "I Want You Back", a: "The Jackson 5", altA: ["Jackson 5", "Michael Jackson"] },
         { t: "Imagine", a: "John Lennon" },
-        { t: "Killing Me Softly with His Song", a: "Roberta Flack" },
         { t: "Le Freak", a: "CHIC" },
         { t: "Born to Be Alive", a: "Patrick Hernandez" },
         { t: "Le Métèque", a: "Georges Moustaki" },
