@@ -1184,6 +1184,9 @@ var Playlists = (function () {
       strict: true,
       labelT: "Titre du morceau",
       labelA: "Jeu",
+      /* Le 8 bit et le chiptune sont le son d'origine des bornes et des
+         consoles : ici, ce ne sont pas des versions de fantaisie. */
+      retro: true,
       pistes: [
         { t: "Megalovania", a: "Undertale", q: "Megalovania Toby Fox Undertale" },
         { t: "Sweden", a: "Minecraft", q: "Sweden C418 Minecraft" },
@@ -1204,12 +1207,19 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/91/fe/ad/91fead15-6e40-5de1-06c1-7acfa34b5792/The_Legend_of_Zelda_-_Epic_Collection.jpg/600x600bb.jpg",
           altT: ["Thème principal", "Thème de Zelda", "Legend of Zelda: Suite"], altA: ["Zelda"] },
         { t: "Song of Storms", a: "The Legend of Zelda: Ocarina of Time", q: "Song of Storms Marcus Hedges Trend Orchestra Zelda", altA: ["Zelda", "Ocarina of Time"] },
-        { t: "Super Mario Bros: Theme", a: "Super Mario Bros.", q: "Super Mario Bros Theme Orchestre Philharmonique de Londres", altT: ["Thème principal"], altA: ["Mario", "Super Mario"] },
+        /* Le thème de Koji Kondo lui-même, en 8 bit, plutôt qu'une lecture
+           orchestrale : c'est le son que tout le monde a en tête. */
+        { t: "Super Mario Bros. Main Theme", a: "Super Mario Bros.",
+          q: "Koji Kondo Super Mario Bros Main Theme Nes", interprete: "Koji Kondo",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/c3/6a/d4/mzi.rrlozacu.jpg/600x600bb.jpg",
+          altT: ["Thème principal", "Super Mario Bros Theme", "Ground Theme"],
+          altA: ["Mario", "Super Mario"] },
         { t: "Halo", a: "Halo", q: "Halo Martin O'Donnell Michael Salvatori Combat Evolved", altT: ["Halo Theme"] },
         { t: "Rip & Tear", a: "Doom", q: "Rip and Tear Mick Gordon Doom" },
         { t: "Geralt of Rivia", a: "The Witcher 3", q: "Geralt of Rivia Marcin Przybylowicz Witcher 3", altA: ["The Witcher"] },
         // L'original de Rosa Walton est absent d'Apple FR : on jouait une reprise.
-        { t: "Chippin' In", a: "Cyberpunk 2077", q: "Chippin In Refused Cyberpunk 2077", altA: ["Cyberpunk"] },
+        { t: "Chippin' In", a: "Cyberpunk 2077", q: "Chippin In Refused Cyberpunk 2077", altA: ["Cyberpunk"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/cc/f9/32ccf935-d14c-c7f3-d881-b89678294bac/5902659802019.jpg/600x600bb.jpg" },
         { t: "Build That Wall", a: "Bastion", q: "Build That Wall Darren Korb Bastion" },
 
         /* Ajoutés sur proposition d'Audrey. Beaucoup d'éditeurs — Nintendo, Valve,
@@ -1219,8 +1229,12 @@ var Playlists = (function () {
         { t: "Official Theme Song", a: "GTA San Andreas", q: "Grand Theft Auto San Andreas Official Theme Song Michael Hunter", altA: ["GTA", "Grand Theft Auto", "San Andreas", "Grand Theft Auto San Andreas"] },
         { t: "Elden Ring", a: "Elden Ring", q: "Elden Ring London Music Works" },
         { t: "Unshaken", a: "Red Dead Redemption 2", q: "Unshaken D'Angelo Red Dead Redemption 2", altA: ["Red Dead Redemption", "Red Dead"] },
-        { t: "Animal Crossing: New Horizons", a: "Animal Crossing", q: "Animal Crossing New Horizons Theme Blue Brew Music", altA: ["Animal Crossing New Horizons"] },
-        { t: "Buy Mode", a: "Les Sims", q: "Buy Mode The Sims Power Up Orchestra", altA: ["The Sims", "Sims"] },
+        { t: "Welcome Horizons", a: "Animal Crossing",
+          q: "Kylydian Welcome Horizons Symphonic Horizons Animal Crossing",
+          interprete: "Kylydian", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/96/d7/4696d7a0-0d25-0d1d-bdc2-be67475a5316/artwork.jpg/600x600bb.jpg",
+          altT: ["Animal Crossing Main Theme"], altA: ["Animal Crossing New Horizons"] },
+        { t: "Buy Mode", a: "Les Sims", q: "Buy Mode The Sims Power Up Orchestra", altA: ["The Sims", "Sims"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/2b/ee/da2bee0c-f94d-58be-6ef5-b609cfd5057d/The-Sims_3000_1.jpg/600x600bb.jpg" },
         { t: "Pokemon Red/Blue (Battle Theme)", a: "Pokémon", q: "Pokemon Red Blue Battle Theme Pxls" },
         { t: "Fortnite (Battle Royale Theme)", a: "Fortnite", q: "Fortnite Battle Royale Theme Arcade Player" },
         { t: "Legends of Azeroth", a: "World of Warcraft", q: "Legends of Azeroth Main Title Jason Hayes", altA: ["WoW", "Warcraft"] },
@@ -1238,8 +1252,10 @@ var Playlists = (function () {
         { t: "Fallout 4 Main Theme", a: "Fallout", q: "Fallout 4 Main Theme Inon Zur", altA: ["Fallout 4"] },
         { t: "Gwyn, Lord of Cinder", a: "Dark Souls", q: "Gwyn Lord of Cinder Motoi Sakuraba Dark Souls" },
         { t: "Call of Duty Modern Warfare 2: Theme", a: "Call of Duty", q: "Call of Duty Modern Warfare 2 Theme Orchestre Philharmonique de Londres", altA: ["COD", "Modern Warfare"] },
-        { t: "Pac Man Theme", a: "Pac-Man", q: "Pac Man Theme Theme Mania Video Games Themes Collection", altA: ["Pacman"] },
-        { t: "Tetris Theme (Korobeiniki)", a: "Tetris", q: "Tetris Theme Korobeiniki Orchestre Philharmonique de Londres", altT: ["Korobeiniki"] },
+        { t: "Pac Man Theme", a: "Pac-Man", q: "Pac Man Theme Theme Mania Video Games Themes Collection", altA: ["Pacman"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/f4/ea/f4f4ea18-0582-ca91-7315-99f136df0da2/PA00153385_0_192500_jacket.jpg/600x600bb.jpg" },
+        { t: "Tetris Theme (Korobeiniki)", a: "Tetris", q: "Tetris Theme Korobeiniki Orchestre Philharmonique de Londres", altT: ["Korobeiniki"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/40/f8/5c/40f85c09-a8c3-cd5d-5fa3-54048cc3985e/859737336117_cover.jpg/600x600bb.jpg" },
 
         /* Quatre abandons : Half-Life (Valve ne distribue pas sa musique — la
            recherche finit chez Adele), Persona 5, Street Fighter II et NieR:
@@ -1258,6 +1274,37 @@ var Playlists = (function () {
         { t: "Nate's Theme", a: "Uncharted", q: "Nate's Theme Greg Edmonson Uncharted Drake's Fortune" },
         { t: "Aloy's Theme", a: "Horizon Zero Dawn", q: "Joris de Man Aloy's Theme Horizon Zero Dawn Original Soundtrack", altA: ["Horizon"] },
         { t: "Angry Birds Theme", a: "Angry Birds", q: "Angry Birds Theme Ari Pulkkinen" },
+        { t: "Crash Bandicoot Main Theme", a: "Crash Bandicoot",
+          q: "Vicarious Visions Crash Bandicoot Main Theme N Sane Trilogy",
+          interprete: "Vicarious Visions Audio", altT: ["N. Sanity Beach"] },
+        { t: "Overture to the Unwritten", a: "Hogwarts Legacy",
+          q: "Hogwarts Legacy Overture to the Unwritten Original Video Game Soundtrack",
+          altA: ["Hogwarts"] },
+        { t: "Battlefield V Legacy Theme", a: "Battlefield V",
+          q: "Johan Söderqvist Patrik Andrén Battlefield V Legacy Theme",
+          interprete: "Johan Söderqvist & Patrik Andrén", altA: ["Battlefield"] },
+        { t: "Wii Sports", a: "Wii Sports", q: "VGR Wii Sports single", interprete: "VGR" },
+        { t: "Reign of the Septims", a: "Oblivion",
+          q: "Jeremy Soule Reign of the Septims Oblivion",
+          interprete: "Jeremy Soule", altA: ["The Elder Scrolls IV", "The Elder Scrolls"] },
+        { t: "Green Greens", a: "Kirby", q: "Qumu Green Greens Kirby's Dream Land",
+          interprete: "Qumu", altA: ["Kirby's Dream Land"] },
+        { t: "To Zanarkand", a: "Final Fantasy X",
+          q: "Nobuo Uematsu Zanarkand Distant Worlds II Final Fantasy",
+          interprete: "Nobuo Uematsu", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/68/c2/a8/68c2a8b3-7e94-e44c-3ecc-18788311f969/dj.bcvznqkk.jpg/600x600bb.jpg",
+          altT: ["Zanarkand"], altA: ["Final Fantasy"] },
+        { t: "Overwatch Victory Theme", a: "Overwatch",
+          q: "Celestial Aeon Project Overwatch Victory Theme",
+          interprete: "Celestial Aeon Project", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c9/e8/bd/c9e8bddd-94da-03ef-93a3-6b6b18029891/047875730779_cover.jpg/600x600bb.jpg" },
+        { t: "Apex Legends: Main Theme", a: "Apex Legends",
+          q: "Stephen Barton Apex Legends Main Theme Original Soundtrack",
+          interprete: "Stephen Barton", altA: ["Apex"] },
+        { t: "Luigi's Mansion Theme", a: "Luigi's Mansion",
+          q: "Sixth Station Trio Luigi's Mansion Theme Video Games Unplugged",
+          interprete: "Sixth Station Trio & Unplugged", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/16/69/ee/1669ee8f-d722-2cbb-8a4c-3dfc2251be62/4E4nK.png/600x600bb.jpg" },
+        { t: "Main Theme", a: "Age of Empires",
+          q: "Todd Masten Age of Empires Definitive Edition Main Theme",
+          interprete: "Todd Masten", altA: ["Age of Empires II", "Âge des Empires"] },
         { t: "Legends Never Die", a: "League of Legends",
           q: "Legends Never Die Against the Current League of Legends",
           interprete: "League of Legends Music & Against The Current", altA: ["LoL"] }
@@ -1850,6 +1897,7 @@ var Playlists = (function () {
          départager les textes qui ne donnent aucun indice — « Forever Young »
          comme « Indochine » — quand le site les annonce à voix haute. */
       langue: m.langue || 'fr',
+      retro: !!m.retro,
       // D'où vient le morceau. Sert au Grand mélange, où l'en-tête ne peut pas
       // le dire : sans ça on ne sait pas si on cherche un jeu ou un Disney.
       categorie: m.emoji + ' ' + m.nom

@@ -75,6 +75,12 @@ var Itunes = (function () {
     };
   }
 
+  /* Les versions qu'on ne veut pas : un remix ou un acoustique est
+     méconnaissable en blind test. La seconde liste sert aux jeux vidéo, où le
+     8 bit et le chiptune sont la version d'origine et non une fantaisie. */
+  var ALTERNATIVES = /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit)\b/;
+  var ALTERNATIVES_RETRO = /\b(remix|rework|remaster|unplugged|acoustic|acoustique|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|reprise|cover|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse)\b/;
+
   /* Choisit, parmi les résultats, celui qui colle le mieux au morceau demandé. */
   function meilleur(resultats, piste) {
     var candidats = resultats.filter(function (r) { return r.previewUrl && r.kind === 'song'; });
@@ -175,8 +181,12 @@ var Itunes = (function () {
          « Comptine d'un autre été, l'après-midi ». Douze points de moins, et le
          bon morceau perdait contre « la démarche » — l'autre comptine du même
          album, du même compositeur, que rien ne pénalisait. */
-      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit)\b/
-            .test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
+      /* Dans les jeux vidéo, le 8 bit et le chiptune ne sont pas des bricolages :
+         c'est le son d'origine de la borne ou de la console. La manche le dit
+         avec `retro`, et ces mots-là cessent alors de rétrograder quoi que ce
+         soit. Partout ailleurs, ils restent des versions alternatives. */
+      var alternatives = piste.retro ? ALTERNATIVES_RETRO : ALTERNATIVES;
+      if (!voulue && alternatives.test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
 
       /* À enregistrement égal, on préfère l'album de l'artiste à une
          compilation. Ce n'est pas une question de son — c'est le même — mais
@@ -292,6 +302,7 @@ var Itunes = (function () {
       solo: piste.solo || null,
       strict: !!piste.strict,
       langue: piste.langue || 'fr',
+      retro: !!piste.retro,
       variantesTitre: unique(vT),
       variantesArtiste: unique(vA)
     };
