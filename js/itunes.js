@@ -124,6 +124,7 @@ var Itunes = (function () {
        retourner la règle contre le bon disque — celui-ci est alors rétrogradé
        au profit d'un autre morceau du même artiste, crédité seul. C'est arrivé
        trois fois d'un coup sur les ajouts du 30 septembre. */
+    var vDisque = piste.disque ? Match.normaliser(piste.disque) : '';
     var vInterprete = piste.interprete ? Match.variantesArtiste(piste.interprete) : [];
     var luiMeme = vInterprete.length && candidats.some(function (r) {
       return Match.correspond(r.artistName, vInterprete);
@@ -153,6 +154,15 @@ var Itunes = (function () {
 
       /* Et la reprise d'un autre interprète, quand on sait lequel on veut. */
       if (luiMeme && !Match.correspond(r.artistName, vInterprete)) n -= 25;
+
+      /* Quand plusieurs enregistrements du même titre, par le même artiste, se
+         valent point pour point, rien ne les sépare : c'est l'ordre d'Apple qui
+         tranchait, et il bouge d'un jour à l'autre. `disque` dit lequel on veut,
+         par un bout de son nom d'album ou de sa mention de version —
+         « Tchikita - Single » pour distinguer le single de l'album, « Refugee
+         Camp Band Remix » pour demander le remix plutôt que l'original. */
+      if (vDisque && (Match.normaliser(r.collectionName || '') + ' ' +
+                      Match.normaliser(r.trackName || '')).indexOf(vDisque) !== -1) n += 8;
 
       /* …et toutes les versions alternatives : un remix ou une version acoustique
          est méconnaissable en blind test. La pénalité n'exclut pas, elle

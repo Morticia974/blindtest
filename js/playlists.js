@@ -4,6 +4,20 @@
 
    Format d'un morceau : { t: titre, a: artiste, q: recherche (facultatif),
                            altT: [autres titres acceptés], altA: [autres artistes acceptés] }
+
+   Trois garde-fous facultatifs, quand Apple propose plusieurs enregistrements
+   du même morceau et qu'il ne choisit pas celui qu'on veut :
+     interprete : le crédit COMPLET tel qu'Apple l'écrit. Tout ce qui vient
+                  d'un autre passe derrière. Un crédit partiel se retourne
+                  contre le bon disque — « GIMS » ne vaut pas « GIMS & La
+                  Mano 1.9 ».
+     disque     : un bout du nom d'album ou de la mention de version, pour
+                  départager deux enregistrements par ailleurs identiques —
+                  « Tchikita - Single », « Refugee Camp Band Remix ».
+     voulue     : cette version alternative est celle qu'on veut. Lève les
+                  pénalités qui rétrogradent remixes, éditions radio et
+                  karaokés.
+
    Format d'une manche : { id, nom, emoji, desc, labelA: étiquette de la 2e réponse,
                            langue: 'fr' ou 'en' — celle des réponses, pour la voix
                            du site, pistes: [...] }                                     */
@@ -1342,7 +1356,9 @@ var Playlists = (function () {
         // « Bande organisée » retiré : quelle que soit la formulation, Apple ne
         // remonte que des parodies Mario Kart. « Au DD » retiré aussi, il
         // renvoyait « Onizuka », un autre titre de PNL.
-        { t: "Tchikita", a: "Jul" },
+        /* Deux enregistrements identiques chez Apple, l'album et le single.
+           Audrey a écouté les deux et préfère le single. */
+        { t: "Tchikita", a: "Jul", disque: "Tchikita - Single", interprete: "Jul" },
 
         /* Ajouts demandés par Audrey : la catégorie était trop petite, donc les
            artistes présents deux fois revenaient à presque chaque partie. */
@@ -1380,8 +1396,12 @@ var Playlists = (function () {
            affichée soit celle qu'on attend. */
         { t: "Le son qui tue", a: "Rohff", q: "Rohff Le son qui tue avec natty single",
           interprete: "Rohff", altA: ["Nathy", "Natty"] },
-        { t: "Bye bye", a: "Ménélik", q: "Ménélik Bye bye Je me souviens", interprete: "Ménélik",
-          altA: ["Menelik"] },
+        /* Le remix du Refugee Camp Band plutôt que l'original : Audrey a écouté
+           les deux. `voulue` lève la pénalité qui rétrograde les remixes, et
+           `disque` dit lequel des deux on veut — ils sont sur le même album. */
+        { t: "Bye bye", a: "Ménélik", q: "Ménélik Bye bye Je me souviens",
+          disque: "Refugee Camp Band Remix", voulue: true,
+          interprete: "Ménélik", altA: ["Menelik"] },
         /* Apple range la version espagnole en tête et la française sous « Radio
            Edit ». `voulue` lève la pénalité qui frappe les éditions radio. */
         { t: "Hey Oh", a: "Tragédie", q: "Tragédie Hey Oh Radio Edit Édition Deluxe",
