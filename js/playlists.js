@@ -841,6 +841,10 @@ var Playlists = (function () {
           interprete: "Geek Music" },
         // Le même thème ouvre les quatre saisons, chacune avec sa pochette :
         // on fixe celle de la première.
+        /* Le générique français de Prison Break. Le thème américain avait été
+           retiré à la demande d'Audrey ; c'est celui-ci qu'elle cherchait. */
+        { t: "Pas le temps", a: "Prison Break", q: "Faf Larage Pas le temps",
+          interprete: "Faf Larage" },
         { t: "Main Title Theme", a: "Westworld",
           q: "Ramin Djawadi Main Title Theme Westworld Season 1 Music from the HBO Series",
           interprete: "Ramin Djawadi",
@@ -1391,7 +1395,15 @@ var Playlists = (function () {
         { t: "Le bilan", a: "Nèg' Marrons", q: "Nèg' Marrons Frankie Paul Le bilan",
           interprete: "Nèg' Marrons & Frankie Paul", altA: ["Neg Marrons", "Neg' Marrons"] },
         { t: "Angela", a: "Saïan Supa Crew", interprete: "Saïan Supa Crew", altA: ["Saian Supa Crew"] },
-        { t: "En feu", a: "Soprano", q: "Soprano En feu L'Everest", interprete: "Soprano" }
+        { t: "En feu", a: "Soprano", q: "Soprano En feu L'Everest", interprete: "Soprano" },
+        /* « The Antidote » n'est pas chez Apple ; Audrey a écouté l'album
+           « Stup Virus » et retenu celui-ci. */
+        { t: "Crou Anthem", a: "Stupeflip", q: "Stupeflip Crou Anthem Stup Virus",
+          interprete: "Stupeflip" },
+        /* L'album de 2013 n'est pas chez Apple : ni « Fais les backs » ni
+           « Ils sont cools ». Audrey a choisi celui-ci dans « Comment c'est loin ». */
+        { t: "Si facile", a: "Casseurs Flowters", q: "Casseurs Flowters Si facile Comment c'est loin",
+          interprete: "Casseurs Flowters" }
       ]
     },
     {
@@ -1760,7 +1772,19 @@ var Playlists = (function () {
            Alain Ramanisum et Willy William chantent. C'est celle-là qu'on joue,
            et les trois noms sont acceptés. */
         { t: "Li Tourner", a: "Alain Ramanisum & Willy William",
-          q: "DJ Assad Li Tourner 2013 Alain Ramanisum Willy William",
+          q: "DJ Assad Li Tourner 2013 Single",
+          /* Le titre exact d’Apple, invités et mention compris. `normaliser` garde
+             le « (feat. …) » : sans cette forme, aucun des sept enregistrements ne
+             décrochait la correspondance de titre, ils se valaient tous, et c’est
+             le classement d’Apple qui choisissait — en servant la version 2023 un
+             jour sur deux.
+
+             `voulue` parce que la seule version 2013 du catalogue est un Radio
+             Edit : sans ça, la pénalité qui rétrograde les éditions alternatives
+             la ferait perdre contre le remix de 2023. Audrey a écouté les deux et
+             choisi celle-ci. */
+          altT: ["Li Tourner (feat. Alain Ramanisum & Willy William) [Radio Edit]"],
+          voulue: true,
           interprete: "DJ Assad", altA: ["DJ Assad", "Alain Ramanisum", "Willy William"] }
       ]
     }
