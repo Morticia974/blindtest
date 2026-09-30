@@ -1375,7 +1375,11 @@ var Playlists = (function () {
         { t: "Femme de couleur", a: "Shy'm", q: "Shy'm Femme de couleur Mes Fantaisies" },
         { t: "Maharaja", a: "Heuss l'Enfoiré", q: "Heuss L'enfoiré Maharaja" },
         { t: "Bazardée", a: "KeBlack", q: "KeBlack Bazardée Premier étage" },
-        { t: "Ce soir ne sors pas", a: "Lacrim", q: "Lacrim Ce soir ne sors pas Maître Gims R.I.P.R.O 3" },
+        /* Apple crédite ce titre à « Nathy & Rohff » sur l'album et à « Rohff »
+           seul sur le single. C'est le single qu'on vise, pour que la réponse
+           affichée soit celle qu'on attend. */
+        { t: "Le son qui tue", a: "Rohff", q: "Rohff Le son qui tue avec natty single",
+          interprete: "Rohff", altA: ["Nathy", "Natty"] },
         { t: "Bye bye", a: "Ménélik", q: "Ménélik Bye bye Je me souviens", interprete: "Ménélik",
           altA: ["Menelik"] },
         /* Apple range la version espagnole en tête et la française sous « Radio
