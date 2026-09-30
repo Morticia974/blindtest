@@ -1403,7 +1403,12 @@ var Playlists = (function () {
         /* L'album de 2013 n'est pas chez Apple : ni « Fais les backs » ni
            « Ils sont cools ». Audrey a choisi celui-ci dans « Comment c'est loin ». */
         { t: "Si facile", a: "Casseurs Flowters", q: "Casseurs Flowters Si facile Comment c'est loin",
-          interprete: "Casseurs Flowters" }
+          interprete: "Casseurs Flowters" },
+        /* À la place de « Ne reviens pas » de Gradur, que le catalogue Apple
+           n'a pas. Le remix avec Soprano et Sefyu sort souvent en tête : c'est
+           l'album « Mes repères » qu'on vise, où le morceau est seul. */
+        { t: "Ça fait mal", a: "La Fouine", q: "La Fouine Ça fait mal Mes repères",
+          interprete: "La Fouine" }
       ]
     },
     {
