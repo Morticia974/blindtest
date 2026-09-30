@@ -169,8 +169,13 @@ var Itunes = (function () {
          rétrograde : si Apple n'a que ça, le morceau est quand même joué.
          « music box », « orgel » et « lullaby » sont arrivés par la bande :
          Apple regorge de berceuses au carillon, et deux génériques d'animes
-         étaient tombés dessus. */
-      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit|midi)\b/
+         étaient tombés dessus.
+
+         « midi » en est reparti : il visait les rendus MIDI, mais il attrapait
+         « Comptine d'un autre été, l'après-midi ». Douze points de moins, et le
+         bon morceau perdait contre « la démarche » — l'autre comptine du même
+         album, du même compositeur, que rien ne pénalisait. */
+      if (!voulue && /\b(remix|rework|remaster|unplugged|acoustic|acoustique|instrumental|playback|live|en public|en concert|demo|a cappella|acapella|sped up|slowed|edit|mix|reprise|cover|orchestral|piano version|lofi|lo fi|music box|orgel|lullaby|berceuse|8 bit)\b/
             .test(Match.normaliser(r.trackName || '') + ' ' + etiquette)) n -= 12;
 
       /* À enregistrement égal, on préfère l'album de l'artiste à une
