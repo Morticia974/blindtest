@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comédies musicales</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🎭 Comédies musicales</h1>
+<p class="sous">33 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Temps des cathédrales — Notre-Dame de Paris <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Notre Dame de Paris - Studio</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8e/b3/2a/8eb32ae5-34e9-5670-4252-259db3d0b6ef/mzaf_12630620386592542366.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Belle — Notre-Dame de Paris <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Notre Dame de Paris - Studio</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2b/68/05/2b6805a6-000e-11a0-15e4-a24fdecfef63/mzaf_311536280010861208.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Vivre — Notre-Dame de Paris <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Notre Dame de Paris - Studio</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6a/2e/27/6a2e27d9-0807-106e-25e5-c05cced35667/mzaf_16563674506246810232.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/b2/4d/mzi.kmxqskfi.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/b2/4d/mzi.kmxqskfi.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Blues du businessman — Starmania <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Des mots qui sonnent</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/27/e4/7b27e4e9-787f-d324-76dd-5949f1d9e383/mzaf_9361447444132095494.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8e/cc/ec/8eccec97-9403-0387-6aa2-29eb6d1232bd/00602498009543.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8e/cc/ec/8eccec97-9403-0387-6aa2-29eb6d1232bd/00602498009543.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">SOS d'un terrien en détresse — Starmania <span class="doute">autre artiste</span></p>
+    <p class="detail">album : La voix d'un ange</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/53/70/65/537065d2-540a-79af-0b33-789a0b078c54/mzaf_16512697320494658153.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/b2/4d/mzi.kmxqskfi.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/b2/4d/mzi.kmxqskfi.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Monde est stone — Starmania <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Des mots qui sonnent</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d8/66/a2/d866a2a9-2b16-a5ed-8495-66b915fbba98/mzaf_5144157635692241265.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8a/11/9f/8a119fd6-a4a9-a895-689d-02038f344169/825646431779.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8a/11/9f/8a119fd6-a4a9-a895-689d-02038f344169/825646431779.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Uns contre les autres — Starmania <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Starmania (Le spectacle original) [Remastered in 2009]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4d/4b/90/4d4b90c3-d1d1-411a-5142-930d4766db93/mzaf_2522451736292725695.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/29/54/91/295491b6-2be8-c02d-e919-a98b2b64c311/3617055604564_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/29/54/91/295491b6-2be8-c02d-e919-a98b2b64c311/3617055604564_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'Envie d'aimer — Les Dix Commandements <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les Dix Commandements (L'intégrale)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b0/bb/a0/b0bba0a2-ff7f-6698-3b73-863da978b790/mzaf_2303682669680534247.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m08/d03/h11/mzi.ukdjbzbe.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m08/d03/h11/mzi.ukdjbzbe.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Je fais de toi mon essentiel — Le Roi Soleil <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Je fais de toi mon essentiel - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a9/5c/1d/a95c1d72-8f2d-7b3d-83c2-25eb137910d9/mzaf_16721107375135856223.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/bd/5e/9a/mzi.aiovbofe.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/bd/5e/9a/mzi.aiovbofe.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tant qu'on rêve encore — Le Roi Soleil</p>
+    <p class="detail">album : Tant qu'on rêve encore / Un geste de vous - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a9/ac/bf/a9acbf6e-bf9e-fb6c-e2c1-494a8b49560c/mzaf_11324078984941706182.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f8/ba/36/f8ba36eb-0653-78d2-f288-99d62a10b866/mzi.udvpfhyi.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f8/ba/36/f8ba36eb-0653-78d2-f288-99d62a10b866/mzi.udvpfhyi.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'Assasymphonie — Mozart l'Opéra Rock</p>
+    <p class="detail">album : Mozart l'Opéra Rock</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f7/08/7a/f7087a58-dab6-8192-07c9-328a59879a93/mzaf_16868961918458038666.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f8/ba/36/f8ba36eb-0653-78d2-f288-99d62a10b866/mzi.udvpfhyi.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f8/ba/36/f8ba36eb-0653-78d2-f288-99d62a10b866/mzi.udvpfhyi.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Bien qui fait mal — Mozart l'Opéra Rock</p>
+    <p class="detail">album : Mozart l'Opéra Rock</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/17/b7/fc/17b7fc38-2b45-c424-5718-dff8b6477579/mzaf_39362652166827027.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tatoue-moi — Mozart l'Opéra Rock <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Mozart l'Opéra Rock (Ultimate Collector)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f3/94/4f/f3944ffd-46ab-d60e-adde-dbe692f015c8/mzaf_5644759010410435509.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8b/1d/f5/8b1df540-ecad-553a-34a6-79498c160175/mzi.tlprzbve.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8b/1d/f5/8b1df540-ecad-553a-34a6-79498c160175/mzi.tlprzbve.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Rois du monde — Roméo et Juliette <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Roméo et Juliette, les enfants de Vérone (Musique du spectacle musical)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/02/1b/e3/021be3dc-b4eb-c209-ae61-96b51bb06184/mzaf_17564739204860965125.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8b/1d/f5/8b1df540-ecad-553a-34a6-79498c160175/mzi.tlprzbve.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8b/1d/f5/8b1df540-ecad-553a-34a6-79498c160175/mzi.tlprzbve.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Aimer — Roméo et Juliette <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Roméo et Juliette, les enfants de Vérone (Musique du spectacle musical)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/03/21/fb/0321fb0c-7d7e-2e1f-8023-c51dbd68ad48/mzaf_7810417376298157399.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/83/69/bd/8369bd63-cbfe-3ad5-dd8c-6372e2d20279/3663729455772_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/83/69/bd/8369bd63-cbfe-3ad5-dd8c-6372e2d20279/3663729455772_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Vérone — Roméo et Juliette <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Roméo et Juliette, de la haine à l'amour : L'intégrale</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/51/1b/8e/511b8e43-abf9-59a0-8342-095f6d6f8f47/mzaf_16129036809374606443.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/9a/34/61/9a3461fc-c58a-31ec-3d5f-dc65f5e81640/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/9a/34/61/9a3461fc-c58a-31ec-3d5f-dc65f5e81640/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">À la volonté du peuple — Les Misérables <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les misérables (Le chef d'oeuvre musical d'après le roman de Victor Hugo)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a1/d8/f3/a1d8f351-6963-3d23-d83a-e3a64081acd9/mzaf_18197372450590279601.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b4/7f/70/b47f70ee-7480-cdc0-77a9-00dfdf250ef3/5021732529381.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b4/7f/70/b47f70ee-7480-cdc0-77a9-00dfdf250ef3/5021732529381.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mon histoire — Les Misérables <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les Misérables (Théâtre du Châtelet, Paris 2024)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c9/fe/c0/c9fec0c2-ee93-b41a-bf17-2abcf19ace73/mzaf_8071984813209868209.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/21/7c/76/217c7609-ffd8-6060-48eb-9045eb1d2070/00044003807921.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/21/7c/76/217c7609-ffd8-6060-48eb-9045eb1d2070/00044003807921.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Chanson des jumelles — Les Demoiselles de Rochefort <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les demoiselles de Rochefort (Bande originale du spectacle musical)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/8e/38/ce/8e38cec7-8fce-a171-0b72-1189e5528aa0/mzaf_5884997117892402935.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8a/11/9f/8a119fd6-a4a9-a895-689d-02038f344169/825646431779.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8a/11/9f/8a119fd6-a4a9-a895-689d-02038f344169/825646431779.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Un garçon pas comme les autres — Starmania <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Starmania (Le spectacle original) [Remastered in 2009]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/54/45/3f/54453f11-b95c-7f9f-09c4-134e85ab2f0d/mzaf_2324025019187921515.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Danse mon Esmeralda — Notre-Dame de Paris <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Notre Dame de Paris - Studio</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/da/e3/49/dae34973-fd97-8e19-ffd9-8c7cdede85ec/mzaf_12547642062304379710.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/92/e8/f9/92e8f9e5-9dba-1243-8a12-ec3d13ef98c2/contsched.vlaptrqr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dieu que le monde est injuste — Notre-Dame de Paris <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Notre Dame de Paris - Studio</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f3/9a/9d/f39a9d4e-e4e0-f4b6-4971-dee88a407b8f/mzaf_6132636224404956937.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Vivre à en crever — Mozart l'Opéra Rock <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Mozart l'Opéra Rock (Ultimate Collector)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/15/fd/7b/15fd7bcd-b2c2-f53b-8751-702030b0e420/mzaf_7549118849963571946.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/1e/0a/db/mzi.vzasulio.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Je dors sur les roses — Mozart l'Opéra Rock <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Mozart l'Opéra Rock (Ultimate Collector)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/73/cd/76/73cd7601-b6ca-10ed-8aec-1ec3a4209f76/mzaf_8390411376382749526.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/21/88/f42188fa-eec2-845a-f4cf-a890555eba0e/26UMGIM44236.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/21/88/f42188fa-eec2-845a-f4cf-a890555eba0e/26UMGIM44236.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mon frère — Les Dix Commandements <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les Dix Commandements (L'intégrale)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/33/fc/41/33fc4111-4fa6-a9da-af4e-b0c01cd9dae2/mzaf_5914745874450040521.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f3/86/31/f38631e6-04a1-93a7-99a4-30e0f92aaea8/00602537173884.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f3/86/31/f38631e6-04a1-93a7-99a4-30e0f92aaea8/00602537173884.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ça ira mon amour — 1789, Les Amants de la Bastille <span class="doute">autre artiste</span></p>
+    <p class="detail">album : 1789, Les amants de la Bastille</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/19/89/98/19899853-6dae-d038-98ce-b38215180972/mzaf_7629737121678915722.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/17/3f/28173fce-ca5e-9485-3f42-6cbe8ea6ca6f/00602537596713.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/17/3f/28173fce-ca5e-9485-3f42-6cbe8ea6ca6f/00602537596713.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Pour la peine — 1789, Les Amants de la Bastille</p>
+    <p class="detail">album : 1789, Les amants de la Bastille (Super Deluxe)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/82/01/2b/82012bbd-8b59-e674-7891-3356caec3831/mzaf_7942602105046499199.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/03/c1/52/03c152ea-0c59-fffe-88fd-b9dd8a6c03b9/190295783679.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/03/c1/52/03c152ea-0c59-fffe-88fd-b9dd8a6c03b9/190295783679.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Être à la hauteur — Le Roi Soleil <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Le Roi Soleil (Le spectacle original) [L'intégrale]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/56/83/22/568322bc-cc35-9af2-554a-fed7454e01e9/mzaf_297890535701540837.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m06/d07/h07/s05.qatszclh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m06/d07/h07/s05.qatszclh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">J'avais rêvé d'une autre vie — Les Misérables <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Les Misérables (L'integrale - version originale 1980)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/3e/64/d8/3e64d8cc-ba3a-52d3-983e-572ab33cb34b/mzaf_6128829095841970945.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/80/a8/77/80a87714-4518-4d55-4ffa-91236d9ab194/602508548000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/80/a8/77/80a87714-4518-4d55-4ffa-91236d9ab194/602508548000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Memory — Cats <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Cats (Original 1981 London Cast)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/87/ed/4e/87ed4e7f-9c3c-9369-1046-194191502d17/mzaf_17578055788442225156.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/77/ed/67/77ed670a-7f4b-d9af-eea9-c994a7e66da2/602567004370.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/77/ed/67/77ed670a-7f4b-d9af-eea9-c994a7e66da2/602567004370.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Phantom of the Opera — Le Fantôme de l'Opéra <span class="doute">autre artiste</span></p>
+    <p class="detail">album : The Phantom of the Opera (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ea/28/fb/ea28fb6a-237f-9403-b8df-18b5f6ada50e/mzaf_13589030758047936973.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/15/f6/4d/15f64dc7-6ee9-a29a-4846-c22488cca889/06UMGIM10671.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/15/f6/4d/15f64dc7-6ee9-a29a-4846-c22488cca889/06UMGIM10671.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Defying Gravity — Wicked <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Wicked (Original Broadway Cast Recording)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c6/5d/a0/c65da0df-7e30-5e8f-3d22-9bbd0fe3a305/mzaf_10903228488945746761.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/cf/91/b0/cf91b07c-aca2-4511-e61c-63d13b8d1117/075679868770.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/cf/91/b0/cf91b07c-aca2-4511-e61c-63d13b8d1117/075679868770.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">This Is Me — The Greatest Showman <span class="doute">album douteux</span></p>
+    <p class="detail">album : The Greatest Showman (Original Motion Picture Soundtrack) [Sing-A-Long Edition]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/63/46/5b/63465b42-35a9-8bb4-6e53-6b7cc90f2756/mzaf_15016442944298305141.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Le Temps des cathédrales", "a": "Notre-Dame de Paris", "at": "Le temps des cathédrales", "aa": "Bruno Pelletier", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Belle", "a": "Notre-Dame de Paris", "at": "Belle", "aa": "Daniel Lavoie, Garou & Patrick Fiori", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Vivre", "a": "Notre-Dame de Paris", "at": "Vivre", "aa": "Noa", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Le Blues du businessman", "a": "Starmania", "at": "Le Blues Du Businessman", "aa": "Céline Dion", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "SOS d'un terrien en détresse", "a": "Starmania", "at": "S.O.S. d'un terrien en détresse", "aa": "Grégory Lemarchal", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Le Monde est stone", "a": "Starmania", "at": "Le Monde Est Stone", "aa": "Céline Dion", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Les Uns contre les autres", "a": "Starmania", "at": "Les uns contre les autres (Remastered in 2009)", "aa": "Fabienne Thibeault", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "L'Envie d'aimer", "a": "Les Dix Commandements", "at": "L'envie d'aimer", "aa": "Daniel Levi", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Je fais de toi mon essentiel", "a": "Le Roi Soleil", "at": "Je Fais De Toi Mon Essentiel", "aa": "Emmanuel Moire", "altT": ["Mon essentiel"], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Tant qu'on rêve encore", "a": "Le Roi Soleil", "at": "Tant Qu'on Rêve Encore", "aa": "Le Roi Soleil", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "L'Assasymphonie", "a": "Mozart l'Opéra Rock", "at": "L'assasymphonie", "aa": "Mozart l'Opéra Rock", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Le Bien qui fait mal", "a": "Mozart l'Opéra Rock", "at": "Le bien qui fait mal", "aa": "Claire Pérot, Florent Mothe, Maeva Méline, Melissa Mars, Mikelangelo Loconte, Solal & La Troupe de Mozart l'Opéra Rock", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Tatoue-moi", "a": "Mozart l'Opéra Rock", "at": "Tatoue-moi", "aa": "Mikelangelo Loconte", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Les Rois du monde", "a": "Roméo et Juliette", "at": "Les rois du monde", "aa": "Damien Sargue, Cyril Niccolaï & John Eyzen", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Aimer", "a": "Roméo et Juliette", "at": "Aimer", "aa": "Damien Sargue & Joy Esther", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Vérone", "a": "Roméo et Juliette", "at": "Vérone", "aa": "Gérard Presgurvic & Frédéric Charter", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "À la volonté du peuple", "a": "Les Misérables", "at": "À la volonté du peuple", "aa": "La troupe des Misérables", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Mon histoire", "a": "Les Misérables", "at": "Mon histoire", "aa": "Océane Demontis", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Chanson des jumelles", "a": "Les Demoiselles de Rochefort", "at": "Chanson des jumelles", "aa": "Frederica Sorel & Mélanie Cohl", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Un garçon pas comme les autres", "a": "Starmania", "at": "Un garçon pas comme les autres (Remastered in 2009)", "aa": "Fabienne Thibeault", "altT": ["Ziggy"], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Danse mon Esmeralda", "a": "Notre-Dame de Paris", "at": "Danse mon Esmeralda", "aa": "Garou", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Dieu que le monde est injuste", "a": "Notre-Dame de Paris", "at": "Dieu que le monde est injuste", "aa": "Garou", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Vivre à en crever", "a": "Mozart l'Opéra Rock", "at": "Vivre à en crever", "aa": "Florent Mothe & Mikelangelo Loconte", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Je dors sur les roses", "a": "Mozart l'Opéra Rock", "at": "Je dors sur les roses", "aa": "Mikelangelo Loconte", "altT": ["Je dors sur des roses"], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Mon frère", "a": "Les Dix Commandements", "at": "Mon Frère", "aa": "Ahmed Mouici & Daniel Levi", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Ça ira mon amour", "a": "1789, Les Amants de la Bastille", "at": "Ça ira mon amour (Extrait De “1789”)", "aa": "Rod Janois", "altT": [], "altA": ["1789"], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Pour la peine", "a": "1789, Les Amants de la Bastille", "at": "Pour la peine", "aa": "1789, Les amants de la Bastille", "altT": [], "altA": ["1789"], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Être à la hauteur", "a": "Le Roi Soleil", "at": "Etre à la hauteur", "aa": "Emmanuel Moire", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "J'avais rêvé d'une autre vie", "a": "Les Misérables", "at": "J'avais rêvè d'une autre vie", "aa": "Claude-Michel Schönberg", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Memory", "a": "Cats", "at": "Memory", "aa": "Elaine Paige", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "The Phantom of the Opera", "a": "Le Fantôme de l'Opéra", "at": "The Phantom of the Opera", "aa": "Emmy Rossum & Gerard Butler", "altT": [], "altA": ["The Phantom of the Opera"], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "Defying Gravity", "a": "Wicked", "at": "Defying Gravity", "aa": "Kristin Chenoweth & Idina Menzel", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}, {"t": "This Is Me", "a": "The Greatest Showman", "at": "This Is Me", "aa": "Keala Settle & The Greatest Showman Ensemble", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Comédie musicale", "langue": "fr"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>

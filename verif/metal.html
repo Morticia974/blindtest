@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Métal</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🤘 Métal</h1>
+<p class="sous">58 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c6/9b/1d/c69b1ddb-f873-53b4-9fc9-87ca49af2062/21UMGIM48676.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c6/9b/1d/c69b1ddb-f873-53b4-9fc9-87ca49af2062/21UMGIM48676.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Enter Sandman — Metallica</p>
+    <p class="detail">album : Metallica (Remastered)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/69/0d/54/690d54ca-def2-65b3-7ca1-5fed8f7a5188/mzaf_5625822267190589148.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/94/f7/1b/94f71ba1-a4d5-1f97-9438-1694dd2a3490/17UM1IM19945.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/94/f7/1b/94f71ba1-a4d5-1f97-9438-1694dd2a3490/17UM1IM19945.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Master of Puppets — Metallica</p>
+    <p class="detail">album : Master of Puppets (Deluxe Box Set)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/45/41/0d/45410d76-5a71-aa65-fb64-77df22ac615c/mzaf_1901010669135819171.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/b5/27/f8/mzi.cswxmwzg.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/b5/27/f8/mzi.cswxmwzg.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Paranoid — Black Sabbath</p>
+    <p class="detail">album : Paranoid - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/16/dd/83/16dd832c-3a07-3705-4d4a-0caa950bf263/mzaf_8178018978480322042.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/4a/f9/88/4af988c8-5a08-72e1-a97f-7b8d2010cc40/5414939548673.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/4a/f9/88/4af988c8-5a08-72e1-a97f-7b8d2010cc40/5414939548673.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ace of Spades — Motörhead</p>
+    <p class="detail">album : Ace of Spades (Expanded Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c9/92/05/c992051c-dc1e-eed5-b153-3bd6d9c5d581/mzaf_12000067792525113010.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/3e/ce/c7/3ecec7e6-66a3-7ca8-d70f-5a4512aa21ba/dj.stjulnox.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/3e/ce/c7/3ecec7e6-66a3-7ca8-d70f-5a4512aa21ba/dj.stjulnox.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Breaking the Law — Judas Priest</p>
+    <p class="detail">album : British Steel (Bonus Track Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d1/13/15/d113155f-6fbb-d883-740d-faee46fadc1f/mzaf_4958056101472605211.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d2/3f/04/d23f0468-dfa6-45aa-afb1-a3238d5e4f58/825646129232.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d2/3f/04/d23f0468-dfa6-45aa-afb1-a3238d5e4f58/825646129232.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Run to the Hills — Iron Maiden</p>
+    <p class="detail">album : The Number of the Beast</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2f/ec/22/2fec2280-1176-0d12-44ba-f27356eb4afa/mzaf_17396579970649437943.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/01/a0/67/01a067e2-8463-bdf0-54aa-e4c5af8dd962/825646128358.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/01/a0/67/01a067e2-8463-bdf0-54aa-e4c5af8dd962/825646128358.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fear of the Dark — Iron Maiden</p>
+    <p class="detail">album : Fear of the Dark</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b2/f8/69/b2f86977-8acc-22ec-a36e-f38c03dc56b5/mzaf_2416611910308243746.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/8a/58/70/8a58707b-829e-08ab-d144-ae4959cad54d/886448167204.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/8a/58/70/8a58707b-829e-08ab-d144-ae4959cad54d/886448167204.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Crazy Train — Ozzy Osbourne <span class="doute">album douteux</span></p>
+    <p class="detail">album : The Essential Ozzy Osbourne</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/73/c1/35/73c1356a-acda-cc3f-8e31-5ecdbe3c73cb/mzaf_15063144361570647052.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/82/7a/5f/827a5f77-9c5b-9eec-0ae7-b1c7971a48d7/00602498309940.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/82/7a/5f/827a5f77-9c5b-9eec-0ae7-b1c7971a48d7/00602498309940.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Holy Diver — Dio</p>
+    <p class="detail">album : Holy Diver (Remastered)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/30/3e/e0/303ee0a5-7172-506f-ea25-8bdf0055a321/mzaf_13699025017852971403.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ff/79/20/ff79206c-4d9e-d991-a020-1e79651edf9a/13UABIM29570.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ff/79/20/ff79206c-4d9e-d991-a020-1e79651edf9a/13UABIM29570.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Symphony of Destruction — Megadeth</p>
+    <p class="detail">album : Countdown to Extinction (Bonus Track Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e9/e2/2c/e9e22c1d-2781-0629-b6f9-472a2107d35d/mzaf_901045915115560835.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/6b/83/2c/6b832cb7-7234-0fb7-3930-38d9c385dc9a/23UM1IM55794.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/6b/83/2c/6b832cb7-7234-0fb7-3930-38d9c385dc9a/23UM1IM55794.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Raining Blood — Slayer</p>
+    <p class="detail">album : Reign In Blood</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/53/5c/0b/535c0b0f-7964-a7ea-2418-23a1da5368eb/mzaf_122777616155196911.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a7/82/85/a782854a-566a-c561-e2eb-71d46afc2618/081227974114.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a7/82/85/a782854a-566a-c561-e2eb-71d46afc2618/081227974114.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Walk — Pantera</p>
+    <p class="detail">album : Vulgar Display of Power (Deluxe Video Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/94/6e/77946ebf-e209-2e88-42cb-1ab363bb86a2/mzaf_16567209334260182638.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/78/af/45/78af45f6-e4e6-5681-c1f6-a20e3949ab8c/18UMGIM31237.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/78/af/45/78af45f6-e4e6-5681-c1f6-a20e3949ab8c/18UMGIM31237.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Du Hast — Rammstein</p>
+    <p class="detail">album : Sehnsucht</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/75/08/5a7508ee-f167-37aa-3b1a-7c63db8cb450/mzaf_11938743806268466326.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/ad/32/8f/ad328fce-8d4f-2708-9393-15eeb93528a8/06UMGIM68596.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/ad/32/8f/ad328fce-8d4f-2708-9393-15eeb93528a8/06UMGIM68596.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sonne — Rammstein</p>
+    <p class="detail">album : Mutter</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/58/89/be/5889beee-3248-8e1f-bb77-98fb0dd7998b/mzaf_18321568262675482928.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Chop Suey! — System of a Down</p>
+    <p class="detail">album : Toxicity</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/1f/74/991f74a5-0f17-bf20-7c10-7150ccb452de/mzaf_6639234409564144843.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/82/51/52/825152b4-9423-b23b-c036-cc67ead732d4/888888046775.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Toxicity — System of a Down</p>
+    <p class="detail">album : Toxicity</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/36/cc/94/36cc9476-5cd9-8fae-ccf6-dda12ba7752b/mzaf_10926716890507690766.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/43/3b/a9/433ba92d-79ed-6ddc-3436-0ba06a8c9fab/016861752309.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/43/3b/a9/433ba92d-79ed-6ddc-3436-0ba06a8c9fab/016861752309.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Duality — Slipknot <span class="doute">album douteux</span></p>
+    <p class="detail">album : Vol. 3 The Subliminal Verses</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/42/ef/db/42efdb9d-e4b3-6759-c118-3409c1afdb47/mzaf_9866069811142008918.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c7/03/a2/c703a2c4-97d1-106d-4e25-10322d7063ea/196873486703.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/c7/03/a2/c703a2c4-97d1-106d-4e25-10322d7063ea/196873486703.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Freak on a Leash — Korn <span class="doute">album douteux</span></p>
+    <p class="detail">album : Greatest Hits, Vol. 1</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c8/20/ff/c820ff8c-0564-8fb6-6e92-70f795a69aad/mzaf_16129259738892587094.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/10/4c/21/104c21e6-9ef0-4d3a-d1bd-d47167f121e5/00601501406300.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/10/4c/21/104c21e6-9ef0-4d3a-d1bd-d47167f121e5/00601501406300.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bring Me to Life — Evanescence</p>
+    <p class="detail">album : Fallen</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d2/b9/60/d2b96000-fd12-4645-106e-48238d264995/mzaf_4464035852986978967.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/20/bb/ea/20bbea8b-ba81-129f-e158-5bb6f8638128/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/20/bb/ea/20bbea8b-ba81-129f-e158-5bb6f8638128/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nemo — Nightwish</p>
+    <p class="detail">album : Once</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f2/dc/7b/f2dc7b59-d13f-a442-2c72-de64b14d6b92/mzaf_14426594349219176441.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/24/cd/f7/24cdf7d0-279d-316e-a39c-51c35e2cce32/016861747947.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/24/cd/f7/24cdf7d0-279d-316e-a39c-51c35e2cce32/016861747947.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Stranded — Gojira</p>
+    <p class="detail">album : Magma</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d1/2d/ca/d12dca9e-05d1-c86e-2836-f603822ebdd7/mzaf_9806676577959955015.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3b/e5/d0/3be5d033-b61d-8d74-2f3a-0f0f53d3d3b0/5099749333222.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3b/e5/d0/3be5d033-b61d-8d74-2f3a-0f0f53d3d3b0/5099749333222.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Furia — Mass Hysteria</p>
+    <p class="detail">album : Contraddiction</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/81/ea/d5/81ead572-c2c1-c538-e423-69f804f5d3d8/mzaf_15141309579316761653.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/e5/e4/d9/e5e4d94a-490e-f8e2-7999-a01f76446f3f/5400863135256_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/e5/e4/d9/e5e4d94a-490e-f8e2-7999-a01f76446f3f/5400863135256_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Downfall — Children of Bodom</p>
+    <p class="detail">album : Hatebreeder</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/26/b5/e8/26b5e816-14ad-6f73-8338-84689ab3228d/mzaf_3209725412537282164.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/83/6a/d6/836ad675-4d85-0168-7955-5c3f5aba5dbf/5400863135089_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/83/6a/d6/836ad675-4d85-0168-7955-5c3f5aba5dbf/5400863135089_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Are You Dead Yet? — Children of Bodom</p>
+    <p class="detail">album : Are You Dead Yet?</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fd/11/a6/fd11a652-abe1-8cf5-a5d9-0e686fd9bc03/mzaf_10680378344789558038.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/a9/49/98/a94998ff-982a-a974-1c39-f6ed64e77dc8/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/a9/49/98/a94998ff-982a-a974-1c39-f6ed64e77dc8/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Only for the Weak — In Flames</p>
+    <p class="detail">album : Clayman (20th Anniversary Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e5/2c/63/e52c63b3-c53f-e93c-af83-d54f0e5314bc/mzaf_12932342348976169171.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b3/12/b1/b312b1ab-dd87-f2cd-76ec-cccb47e24b68/mzi.jovnkxll.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b3/12/b1/b312b1ab-dd87-f2cd-76ec-cccb47e24b68/mzi.jovnkxll.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Twilight of the Thunder God — Amon Amarth</p>
+    <p class="detail">album : Twilight of the Thunder God</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f6/64/cd/f664cd1e-15a4-11e6-cbd7-552ad7376edf/mzaf_17587207097048251513.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/72/56/e0/7256e040-94e9-e069-4eda-109829ee0d11/886443600058.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/72/56/e0/7256e040-94e9-e069-4eda-109829ee0d11/886443600058.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nemesis — Arch Enemy</p>
+    <p class="detail">album : Doomsday Machine</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7f/c6/cb/7fc6cbff-4367-6ddc-1249-89ce9779f458/mzaf_16519817393942910474.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/fd/6c/68fd6c31-9b98-5da7-236b-a99e0fc3ef2d/mzi.sjbrpgni.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/68/fd/6c/68fd6c31-9b98-5da7-236b-a99e0fc3ef2d/mzi.sjbrpgni.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">My Curse — Killswitch Engage</p>
+    <p class="detail">album : As Daylight Dies</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/47/90/c7/4790c720-2f7a-098d-ea2d-0e4ef44cc2b7/mzaf_8676005654214897929.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4f/f7/f7/4ff7f7d7-ad05-77cc-0aa4-701470107a61/828768511527.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4f/f7/f7/4ff7f7d7-ad05-77cc-0aa4-701470107a61/828768511527.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tears Don't Fall — Bullet for My Valentine</p>
+    <p class="detail">album : Tears Don't Fall - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/15/d0/8a/15d08ad9-77a8-f2b3-d75f-83c64a4308ce/mzaf_17463616740309060466.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/68/c7/0d/mzi.xvchpzun.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/68/c7/0d/mzi.xvchpzun.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Redneck — Lamb of God</p>
+    <p class="detail">album : Redneck - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/86/e6/80/86e68065-56e2-0f2c-d631-d8f8a68323a3/mzaf_5524279895913443252.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3d/09/c2/3d09c27a-3faf-8959-9ab0-a1a26fed406d/4251981715667.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3d/09/c2/3d09c27a-3faf-8959-9ab0-a1a26fed406d/4251981715667.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bleed — Meshuggah</p>
+    <p class="detail">album : ObZen</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8b/9b/03/8b9b0375-9ebd-fc84-1de6-7f1773bf13ea/mzaf_5174655997735554572.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ee/fc/db/eefcdbb2-9c36-1e42-a225-48a520c5ba31/mzi.xnqkjsfo.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ee/fc/db/eefcdbb2-9c36-1e42-a225-48a520c5ba31/mzi.xnqkjsfo.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Davidian — Machine Head</p>
+    <p class="detail">album : Burn My Eyes</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/02/51/aa/0251aabd-68be-b306-354d-59d1ba8073d8/mzaf_8321850448827334924.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/82/95/c3/8295c310-afc6-9569-c61e-c07203ebd0fb/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/82/95/c3/8295c310-afc6-9569-c61e-c07203ebd0fb/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Primo Victoria — Sabaton</p>
+    <p class="detail">album : Primo Victoria</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/44/ea/58/44ea5848-0bb4-545f-5bad-d625e2284b51/mzaf_11477766809281279292.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/39/08/27/39082783-03de-c3c7-e54d-56ce233224b6/190295817480.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/39/08/27/39082783-03de-c3c7-e54d-56ce233224b6/190295817480.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Évier Metal — Ultra Vomit</p>
+    <p class="detail">album : Panzer Surprise !</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f2/fc/34/f2fc34af-1c24-c3e0-3aa5-dd04e27db169/mzaf_6216289437103529108.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features114/v4/fc/c2/f8/fcc2f850-1d81-7440-c0a0-de7fcef1e911/dj.rrgizfic.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features114/v4/fc/c2/f8/fcc2f850-1d81-7440-c0a0-de7fcef1e911/dj.rrgizfic.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Thunderstruck — AC/DC</p>
+    <p class="detail">album : The Razors Edge</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f2/76/cd/f276cd0b-d440-4190-7caa-afe359b27a7b/mzaf_6396399126209223363.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/20/86/46/208646e0-5959-1699-1db5-5e2b9a4c3e5f/mzi.kvmupcyx.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/20/86/46/208646e0-5959-1699-1db5-5e2b9a4c3e5f/mzi.kvmupcyx.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Poison — Alice Cooper</p>
+    <p class="detail">album : Trash</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8f/98/13/8f981381-776b-44b6-9cee-0e851d81bfed/mzaf_3265809451705671742.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fd/c8/04/fdc80494-b3cc-eb07-7a96-0cb08b53c9b9/0603497879861.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fd/c8/04/fdc80494-b3cc-eb07-7a96-0cb08b53c9b9/0603497879861.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">We're Not Gonna Take It — Twisted Sister</p>
+    <p class="detail">album : Stay Hungry</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/37/e9/64/37e964dc-fe75-08bc-6311-ae32739b8ed0/mzaf_10937916676747820203.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0b/7e/f9/0b7ef9e8-2921-a4c4-b87b-77b3b9c3986b/09UMGIM38546.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0b/7e/f9/0b7ef9e8-2921-a4c4-b87b-77b3b9c3986b/09UMGIM38546.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Caught in a Mosh — Anthrax</p>
+    <p class="detail">album : Among the Living (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1c/96/93/1c96930d-49c0-6f99-49ed-5f78f6a367a1/mzaf_16138469372980557528.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/48/12/7b/48127b38-656d-b69b-ff3c-03a34ddfc9de/mzi.rlwgbfor.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/48/12/7b/48127b38-656d-b69b-ff3c-03a34ddfc9de/mzi.rlwgbfor.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Roots Bloody Roots — Sepultura</p>
+    <p class="detail">album : Roots</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/43/b7/d1/43b7d1fc-e62c-8891-5699-c611734e6b60/mzaf_8380383271541072918.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="39">
+  <div class="num">40</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Numb — Linkin Park</p>
+    <p class="detail">album : Meteora (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1f/9d/28/1f9d2810-2ac3-efbd-ef02-623691ff9cd2/mzaf_17560018091772095942.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="40">
+  <div class="num">41</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/c0/22/d7/c022d742-bee6-7f53-cd23-dee90303299b/15UMGIM64609.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/c0/22/d7/c022d742-bee6-7f53-cd23-dee90303299b/15UMGIM64609.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rollin' (Air Raid Vehicle) — Limp Bizkit</p>
+    <p class="detail">album : Chocolate Starfish and the Hot Dog Flavored Water</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/37/c0/27/37c027a2-0568-7b2d-03c3-e016441137b2/mzaf_8971458604491651651.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="41">
+  <div class="num">42</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/74/1d/5c/mzi.rtrkwibe.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/74/1d/5c/mzi.rtrkwibe.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Down with the Sickness — Disturbed</p>
+    <p class="detail">album : The Sickness</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/56/8a/7e568a69-7fb1-c1c9-d539-712255254935/mzaf_1376202895156859006.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="42">
+  <div class="num">43</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/27/c3/f4/27c3f4f6-89f8-9368-6a7b-4ffd4abcdea1/00602527220123.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/27/c3/f4/27c3f4f6-89f8-9368-6a7b-4ffd4abcdea1/00602527220123.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Antichrist Superstar — Marilyn Manson</p>
+    <p class="detail">album : Antichrist Superstar</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/af/ec/17/afec17b6-2ac2-0702-5f20-031d1a946abb/mzaf_8256214192215784046.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="43">
+  <div class="num">44</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/57/a4/07/57a4070f-2d41-754b-90f1-ff14faa6133a/06UMGIM18800.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/57/a4/07/57a4070f-2d41-754b-90f1-ff14faa6133a/06UMGIM18800.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dragula — Rob Zombie</p>
+    <p class="detail">album : Hellbilly Deluxe</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1b/fb/06/1bfb0606-1a5a-fdf6-40df-cd224c3b37d2/mzaf_5207457278072148083.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="44">
+  <div class="num">45</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1d/e8/41/1de84191-303f-b4ae-daa3-3d24b41b5cb1/mzi.bgjsukia.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1d/e8/41/1de84191-303f-b4ae-daa3-3d24b41b5cb1/mzi.bgjsukia.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bat Country — Avenged Sevenfold</p>
+    <p class="detail">album : City of Evil</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b1/ad/d0/b1add04c-f8d9-0363-0ffe-6226ddb8da66/mzaf_7766772086448015188.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="45">
+  <div class="num">46</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e1/c0/f7/e1c0f7ac-aca2-cb38-9c9e-e5b8e7576842/886445388244.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e1/c0/f7/e1c0f7ac-aca2-cb38-9c9e-e5b8e7576842/886445388244.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Throne — Bring Me the Horizon</p>
+    <p class="detail">album : That's the Spirit</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0e/7b/b5/0e7bb52b-a7ef-c1a5-792b-bc505d55ceea/mzaf_17392033085003750336.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="46">
+  <div class="num">47</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/fd/b6/53/fdb65375-a8bc-59e6-0f36-352e14983f19/00888072015647.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/fd/b6/53/fdb65375-a8bc-59e6-0f36-352e14983f19/00888072015647.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Square Hammer — Ghost</p>
+    <p class="detail">album : Meliora (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ec/8c/15/ec8c155f-777e-028c-2c59-ec6db7268c3e/mzaf_7791001282457991367.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="47">
+  <div class="num">48</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/bb/43/b0bb439e-9a43-f3d5-9380-1dde2f3dd256/840588117376.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/bb/43/b0bb439e-9a43-f3d5-9380-1dde2f3dd256/840588117376.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Demons Are a Girl's Best Friend — Powerwolf</p>
+    <p class="detail">album : The Sacrament of Sin (Deluxe Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/52/37/67/52376710-1d37-7f1b-dbd3-382bd463b45c/mzaf_12185116132451524195.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="48">
+  <div class="num">49</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e3/ae/ef/e3aeef87-edec-b5d6-7a81-79adfdab9b33/828765193528.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ice Queen — Within Temptation</p>
+    <p class="detail">album : Mother Earth</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c8/72/9d/c8729d1c-da29-0301-2bc2-80e6c3a0196c/mzaf_16497417145446045185.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="49">
+  <div class="num">50</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/62/02/e1/6202e1a9-e297-848e-c3c2-e4571fc8d2e0/mzi.opgeoigt.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/62/02/e1/6202e1a9-e297-848e-c3c2-e4571fc8d2e0/mzi.opgeoigt.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Pull Me Under — Dream Theater</p>
+    <p class="detail">album : Images and Words</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/80/10/f0/8010f066-3aa2-9235-6c53-3c737769d86b/mzaf_7752380623203424349.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="50">
+  <div class="num">51</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/fb/99/8c/fb998c1e-1a11-2434-0fa7-0d90beba5d2b/886447824764.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/fb/99/8c/fb998c1e-1a11-2434-0fa7-0d90beba5d2b/886447824764.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Schism — Tool</p>
+    <p class="detail">album : Lateralus</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/57/ee/7a/57ee7afa-15c8-adac-64ed-cf91d260fc39/mzaf_8723320207182459716.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="51">
+  <div class="num">52</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/96/51/57/96515710-cf91-0663-6f5a-942acf6ea31b/093624919797.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/96/51/57/96515710-cf91-0663-6f5a-942acf6ea31b/093624919797.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Change (In the House of Flies) — Deftones</p>
+    <p class="detail">album : White Pony</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/86/a3/cd/86a3cd88-0036-3828-a67b-8174790c0355/mzaf_17335092681325376243.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="52">
+  <div class="num">53</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ae/b6/d6/aeb6d672-2004-41eb-ccba-e2964643a2bc/06UMGIM18607.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ae/b6/d6/aeb6d672-2004-41eb-ccba-e2964643a2bc/06UMGIM18607.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Black Hole Sun — Soundgarden</p>
+    <p class="detail">album : Superunknown (20th Anniversary)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/93/3a/b1/933ab128-cfac-b1f4-2542-62f955bf7ad7/mzaf_5473686799767912736.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="53">
+  <div class="num">54</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/63/d8/6c63d817-9e0b-07a3-a756-e468186302cb/s06.qdagdxdw.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/63/d8/6c63d817-9e0b-07a3-a756-e468186302cb/s06.qdagdxdw.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Blood and Thunder — Mastodon</p>
+    <p class="detail">album : Leviathan</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/69/04/03/6904030e-ce1e-4448-65ba-298153f3b125/mzaf_14876945480175066529.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="54">
+  <div class="num">55</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3d/1a/06/3d1a06ab-27b8-b563-a7c5-104ad96b9887/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/3d/1a/06/3d1a06ab-27b8-b563-a7c5-104ad96b9887/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">O Father O Satan O Sun — Behemoth</p>
+    <p class="detail">album : In Absentia Dei</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2e/66/61/2e6661c5-12aa-0792-0e37-dbd322bdf32f/mzaf_17831025084404376370.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="55">
+  <div class="num">56</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/13/69/9a/13699aef-5c29-9290-2822-ebd295a52a64/15UMGIM40128.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/13/69/9a/13699aef-5c29-9290-2822-ebd295a52a64/15UMGIM40128.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Behind Blue Eyes — Limp Bizkit</p>
+    <p class="detail">album : Results May Vary</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4d/27/b8/4d27b8b4-9503-959f-d44b-d00abd8574dc/mzaf_3533202050614562149.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="56">
+  <div class="num">57</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ce/c4/c5/cec4c56d-8805-7416-301c-cc225d952bfe/886446724089.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ce/c4/c5/cec4c56d-8805-7416-301c-cc225d952bfe/886446724089.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rock You Like a Hurricane — Scorpions</p>
+    <p class="detail">album : Stranger Things (Soundtrack from the Netflix Original Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ac/c6/3e/acc63ea8-82d9-124f-f010-b357dcd577e3/mzaf_5114702583921440006.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="57">
+  <div class="num">58</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/9b/a3/68/9ba36873-51bc-44a6-3334-9c32e448d2a2/886970597821.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/9b/a3/68/9ba36873-51bc-44a6-3334-9c32e448d2a2/886970597821.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">What Have You Done — Within Temptation</p>
+    <p class="detail">album : What Have You Done (feat. Keith Caputo) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/19/8b/d3/198bd350-43a7-8432-0139-5f01b7bbe4d9/mzaf_1935055296594192034.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Enter Sandman", "a": "Metallica", "at": "Enter Sandman", "aa": "Metallica", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Master of Puppets", "a": "Metallica", "at": "Master of Puppets", "aa": "Metallica", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Paranoid", "a": "Black Sabbath", "at": "Paranoid", "aa": "Black Sabbath", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Ace of Spades", "a": "Motörhead", "at": "Ace of Spades", "aa": "Motörhead", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Breaking the Law", "a": "Judas Priest", "at": "Breaking the Law", "aa": "Judas Priest", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Run to the Hills", "a": "Iron Maiden", "at": "Run to the Hills", "aa": "Iron Maiden", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Fear of the Dark", "a": "Iron Maiden", "at": "Fear of the Dark", "aa": "Iron Maiden", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Crazy Train", "a": "Ozzy Osbourne", "at": "Crazy Train", "aa": "Ozzy Osbourne", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Holy Diver", "a": "Dio", "at": "Holy Diver", "aa": "Dio", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Symphony of Destruction", "a": "Megadeth", "at": "Symphony of Destruction", "aa": "Megadeth", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Raining Blood", "a": "Slayer", "at": "Raining Blood", "aa": "Slayer", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Walk", "a": "Pantera", "at": "Walk", "aa": "Pantera", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Du Hast", "a": "Rammstein", "at": "Du hast", "aa": "Rammstein", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Sonne", "a": "Rammstein", "at": "Sonne", "aa": "Rammstein", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Chop Suey!", "a": "System of a Down", "at": "Chop Suey!", "aa": "System Of A Down", "altT": [], "altA": ["SOAD"], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Toxicity", "a": "System of a Down", "at": "Toxicity", "aa": "System Of A Down", "altT": [], "altA": ["SOAD"], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Duality", "a": "Slipknot", "at": "Duality", "aa": "Slipknot", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Freak on a Leash", "a": "Korn", "at": "Freak On a Leash", "aa": "Korn", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Bring Me to Life", "a": "Evanescence", "at": "Bring Me to Life", "aa": "Evanescence", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Nemo", "a": "Nightwish", "at": "Nemo", "aa": "Nightwish", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Stranded", "a": "Gojira", "at": "Stranded", "aa": "GOJIRA", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Furia", "a": "Mass Hysteria", "at": "Furia", "aa": "Mass Hysteria", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Downfall", "a": "Children of Bodom", "at": "Downfall", "aa": "Children of Bodom", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Are You Dead Yet?", "a": "Children of Bodom", "at": "Are You Dead Yet?", "aa": "Children of Bodom", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Only for the Weak", "a": "In Flames", "at": "Only for the Weak", "aa": "In Flames", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Twilight of the Thunder God", "a": "Amon Amarth", "at": "Twilight of the Thunder God", "aa": "Amon Amarth", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Nemesis", "a": "Arch Enemy", "at": "Nemesis", "aa": "Arch Enemy", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "My Curse", "a": "Killswitch Engage", "at": "My Curse", "aa": "Killswitch Engage", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Tears Don't Fall", "a": "Bullet for My Valentine", "at": "Tears Don't Fall", "aa": "Bullet for My Valentine", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Redneck", "a": "Lamb of God", "at": "Redneck", "aa": "Lamb of God", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Bleed", "a": "Meshuggah", "at": "Bleed", "aa": "Meshuggah", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Davidian", "a": "Machine Head", "at": "Davidian", "aa": "Machine Head", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Primo Victoria", "a": "Sabaton", "at": "Primo Victoria", "aa": "Sabaton", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Évier Metal", "a": "Ultra Vomit", "at": "Evier metal", "aa": "Ultra Vomit", "altT": ["Evier Metal"], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Thunderstruck", "a": "AC/DC", "at": "Thunderstruck", "aa": "AC/DC", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Poison", "a": "Alice Cooper", "at": "Poison", "aa": "Alice Cooper", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "We're Not Gonna Take It", "a": "Twisted Sister", "at": "We're Not Gonna Take It", "aa": "Twisted Sister", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Caught in a Mosh", "a": "Anthrax", "at": "Caught In a Mosh", "aa": "Anthrax", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Roots Bloody Roots", "a": "Sepultura", "at": "Roots Bloody Roots", "aa": "Sepultura", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Numb", "a": "Linkin Park", "at": "Numb", "aa": "LINKIN PARK", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Rollin' (Air Raid Vehicle)", "a": "Limp Bizkit", "at": "Rollin' (Air Raid Vehicle)", "aa": "Limp Bizkit", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Down with the Sickness", "a": "Disturbed", "at": "Down With the Sickness", "aa": "Disturbed", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Antichrist Superstar", "a": "Marilyn Manson", "at": "Antichrist Superstar", "aa": "Marilyn Manson", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Dragula", "a": "Rob Zombie", "at": "Dragula", "aa": "Rob Zombie", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Bat Country", "a": "Avenged Sevenfold", "at": "Bat Country", "aa": "Avenged Sevenfold", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Throne", "a": "Bring Me the Horizon", "at": "Throne", "aa": "Bring Me The Horizon", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Square Hammer", "a": "Ghost", "at": "Square Hammer", "aa": "Ghost", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Demons Are a Girl's Best Friend", "a": "Powerwolf", "at": "Demons Are a Girl's Best Friend", "aa": "Powerwolf", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Ice Queen", "a": "Within Temptation", "at": "Ice Queen", "aa": "Within Temptation", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Pull Me Under", "a": "Dream Theater", "at": "Pull Me Under", "aa": "Dream Theater", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Schism", "a": "Tool", "at": "Schism", "aa": "TOOL", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Change (In the House of Flies)", "a": "Deftones", "at": "Change (In the House of Flies)", "aa": "Deftones", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Black Hole Sun", "a": "Soundgarden", "at": "Black Hole Sun", "aa": "Soundgarden", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Blood and Thunder", "a": "Mastodon", "at": "Blood and Thunder", "aa": "Mastodon", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "O Father O Satan O Sun", "a": "Behemoth", "at": "O Father O Satan O Sun!", "aa": "Behemoth", "altT": ["O Father O Satan O Sun!"], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Behind Blue Eyes", "a": "Limp Bizkit", "at": "Behind Blue Eyes", "aa": "Limp Bizkit", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Rock You Like a Hurricane", "a": "Scorpions", "at": "Rock You Like a Hurricane", "aa": "Scorpions", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "What Have You Done", "a": "Within Temptation", "at": "What Have You Done (feat. Keith Caputo) [European Radio Version]", "aa": "Within Temptation", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dessins animés des années 90</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>📺 Dessins animés des années 90</h1>
+<p class="sous">39 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/af/6b/7a/af6b7a72-34f3-8a40-2a42-15ae09953883/00602577428111.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/af/6b/7a/af6b7a72-34f3-8a40-2a42-15ae09953883/00602577428111.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bioman</p>
+    <p class="detail">Bernard Minet · album : Bioman 2 : Maskman (Bande originale de la série télévisée)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/58/75/ba/5875ba2f-fc91-f03b-5374-daedee311d97/mzaf_1575293860971054560.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Chevaliers du Zodiaque</p>
+    <p class="detail">Bernard Minet · album : Metal Band</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/fc/4b/b3/fc4bb368-3049-2fc9-e35a-d7357d9c8454/mzaf_11161321357212244211.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/0a/45/01/0a450167-fcc7-4c34-8175-0982a6ac7835/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/0a/45/01/0a450167-fcc7-4c34-8175-0982a6ac7835/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dragon Ball Z</p>
+    <p class="detail">Bernard Minet · album : Dragon Ball Z (Générique et chansons officiels)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4a/77/61/4a776156-cc07-8da1-3460-35d844078311/mzaf_8880931688975818346.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/d4/29/f0/d429f0e9-0914-91c7-c731-e9b766a6fc01/dj.ubnualxw.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/d4/29/f0/d429f0e9-0914-91c7-c731-e9b766a6fc01/dj.ubnualxw.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Goldorak <span class="doute">album douteux</span></p>
+    <p class="detail">Bernard Minet · album : Le hit parade des enfants, vol. 2</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0e/b9/bc/0eb9bce3-3bfd-c546-5d0f-32a93e90268b/mzaf_18435529545345810586.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Capitaine Flam</p>
+    <p class="detail">Bernard Minet · album : Metal Band</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ab/7a/aa/ab7aaa37-aa59-83fc-aa39-08b302b9319f/mzaf_4360593169112756149.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/df/df/c8/mzi.pwxiqutx.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/df/df/c8/mzi.pwxiqutx.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nicky Larson</p>
+    <p class="detail">Bernard Minet · album : Nicky Larson (Générique original de la série télé) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e4/9c/cb/e49ccb93-425e-d2e8-8ebc-f820e408b4a2/mzaf_9735715816229036589.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Juliette je t'aime</p>
+    <p class="detail">Bernard Minet · album : Génériques TV</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ce/78/60/ce786031-da65-87e4-eec4-65599b155cee/mzaf_4926593966778086557.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Denver le dernier dinosaure</p>
+    <p class="detail">Bernard Minet · album : Metal Band</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2f/ec/33/2fec333d-5e45-c179-4416-c8a657bd20e7/mzaf_3879676822457287132.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Collège fou fou fou</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/18/b3/d1/18b3d193-7e6b-1c08-1564-ca427264a011/mzaf_2969733576445994190.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2a/25/20/2a2520ae-6dcc-f387-0d55-88ce164b36ec/00602577422126.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2a/25/20/2a2520ae-6dcc-f387-0d55-88ce164b36ec/00602577422126.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ranma ½</p>
+    <p class="detail">Bernard Minet · album : Changer tout ça</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview114/v4/4b/16/3a/4b163aef-78e2-15b5-1968-b11ea3a0a934/mzaf_8902473096866772672.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sailor Moon</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fd/a5/a2/fda5a20c-7a7e-618f-0974-3ef81578ae04/mzaf_4697701267537711533.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Olive et Tom</p>
+    <p class="detail">Bernard Minet · album : Metal Band</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/5a/7e/e2/5a7ee28b-0fd6-a0c9-827e-0ad966a75bba/mzaf_16929664198591144372.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/1a/f4/e6/1af4e60e-f1ea-a194-b7fb-f885ae22b99e/20UMGIM08912.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Jeanne et Serge</p>
+    <p class="detail">Bernard Minet · album : Metal Band</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/13/d8/3f/13d83f1d-66a1-3ebc-23cd-7566c82fa44a/mzaf_15374581057173356000.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Conan l'aventurier</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/13/99/c1/1399c135-7c02-2bd6-fba3-b4f14ba3d2ee/mzaf_10218132097683671419.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Robotech</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/c8/ef/c6/c8efc65e-80ec-34e3-81f7-78487673ba48/mzaf_4293002120872007399.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Musclor</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d6/a4/7d/d6a47d5e-514f-9efd-8c55-f38b4045f3d4/mzaf_5030081917982074475.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Transformers</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d1/df/ca/d1dfca2d-d5a2-ae89-4900-9711247028c1/mzaf_2779318888760169739.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Je veux être un Bisounours</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d7/96/8a/d7968a52-8ef2-7bda-19ec-baf82a13d05a/mzaf_18420942447948479685.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'École des champions</p>
+    <p class="detail">Bernard Minet · album : Génériques TV</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ae/a6/f5/aea6f5a3-26c1-07a2-eddd-9f8629db9590/mzaf_371534374284899744.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/a3/35/ca/a335ca82-037a-c168-293c-2ed5b0b63443/3596973161499_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/a3/35/ca/a335ca82-037a-c168-293c-2ed5b0b63443/3596973161499_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Mystérieuses Cités d'or</p>
+    <p class="detail">Le Groupe Apollo · album : Les mystérieuses cités d'or (Générique original du dessin animé) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c6/33/31/c63331d0-1310-fe31-30a3-b1ab323ebca7/mzaf_9074400633711146935.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ulysse 31</p>
+    <p class="detail">Le Groupe Apollo · album : Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/54/0b/9f/540b9f21-a439-d445-5ca2-0fe43570459a/mzaf_8470098807310868363.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/52/c5/6a/52c56a11-8a28-7db2-9a93-12222d390e5a/3596973162892_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/52/c5/6a/52c56a11-8a28-7db2-9a93-12222d390e5a/3596973162892_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bomber X</p>
+    <p class="detail">Le Groupe Apollo &amp; Lionel Leroy · album : Bomber X (Générique original de la série télévisée) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ca/29/61/ca296114-c888-09ab-70a2-27cad751a125/mzaf_11850023147310023051.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/2e/1f/90/2e1f90bf-90cf-e928-a0f8-3da9f05f2520/3700403509717_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/2e/1f/90/2e1f90bf-90cf-e928-a0f8-3da9f05f2520/3700403509717_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Clémentine</p>
+    <p class="detail">Marie Dauphin · album : Clémentine (Bande originale du feuilleton TV) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/44/f1/74/44f174b4-1b80-6e76-3eee-5abfe773f865/mzaf_17752475942441884954.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/f4/fa/c2/f4fac21e-25dd-7b2b-4f65-306fd9bc3d03/3700403509694_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/f4/fa/c2/f4fac21e-25dd-7b2b-4f65-306fd9bc3d03/3700403509694_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Lady Oscar</p>
+    <p class="detail">Marie Dauphin · album : Lady Oscar (Chanson originale de l'émission télévisée) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/9c/54/4d/9c544d26-24c1-050b-cf2e-efa182abd234/mzaf_7669264942289282137.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Princesse Sarah</p>
+    <p class="detail">Claude Lombard · album : Les génériques TV du Père Noël</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/08/1a/dd/081adde1-b67a-f975-1474-1332affb9c55/mzaf_1876778817064649189.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Embrasse-moi Lucille</p>
+    <p class="detail">Claude Lombard · album : Les génériques TV du Père Noël</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/4d/be/46/4dbe4672-e934-d83c-6a6a-b9a3f3554ac4/mzaf_16790710660071468050.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/2a/e3/12/2ae312f7-8fb1-279c-a04e-d5f13b35ccee/3760295594406_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Quatre Filles du docteur March</p>
+    <p class="detail">Claude Lombard · album : Les génériques TV du Père Noël</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/77/85/3e/77853e66-463d-a216-0d4d-ca007cb56f25/mzaf_4869737727835993369.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Samouraïs de l'éternel</p>
+    <p class="detail">Bernard Minet · album : Génériques TV</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ee/d7/a9/eed7a91e-94a9-e5ee-8eff-e5a5d59df33c/mzaf_4887628078837247841.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1e/41/6f/1e416f37-287f-6671-295c-d3b3fea6a219/18UMGIM70783.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">She-Ra</p>
+    <p class="detail">Bernard Minet · album : L'essentiel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/10/44/0d/10440ddd-de37-2e32-a670-b7cbeca1df8b/mzaf_6774843317957576778.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tom Sawyer <span class="doute">album douteux</span></p>
+    <p class="detail">Elfie · album : Génération souvenirs présente : Bandes Originales 80's &amp; 90's - Séries, Animés et Cinéma</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/e2/6a/75/e26a7590-195c-7651-c5fd-225c9a6353f3/mzaf_4277012063459727584.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/d5/43/59/d54359ab-8ea7-64c4-c9fe-cbc9a351216c/3596973163394_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/d5/43/59/d54359ab-8ea7-64c4-c9fe-cbc9a351216c/3596973163394_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Minipouss</p>
+    <p class="detail">Les Minipouss · album : Les Minipouss (Générique original du dessin animé) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/5b/0a/d3/5b0ad363-ab33-1b86-dfbd-d18e49280796/mzaf_7148054536893102965.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/aa/74/f5/aa74f5ce-e6ff-c00e-e239-988fa8ea3728/3596973163493_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/aa/74/f5/aa74f5ce-e6ff-c00e-e239-988fa8ea3728/3596973163493_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Inspecteur Gadget</p>
+    <p class="detail">Jacques Cardona · album : Inspecteur Gadget (Générique original du dessin animé) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/8a/2f/d0/8a2fd0e5-5d16-c919-0c87-94658636095d/mzaf_16532357467302950062.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/68/4b/5f/684b5f12-5c44-1189-a084-add0f78c1587/0d647192-0bd2-41f9-948d-b7c50d0b6ba8.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/68/4b/5f/684b5f12-5c44-1189-a084-add0f78c1587/0d647192-0bd2-41f9-948d-b7c50d0b6ba8.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Creamy, merveilleuse Creamy</p>
+    <p class="detail">Majokko Club · album : Creamy, merveilleuse Creamy (feat. Paolo Tuci) - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123/v4/87/c4/30/87c43013-4c5f-896c-ebfc-b0b97d9e70e8/mzaf_12735470710776752011.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music19/v4/21/fa/54/21fa5455-f9d1-7173-1d4f-9ba35f39bd5b/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music19/v4/21/fa/54/21fa5455-f9d1-7173-1d4f-9ba35f39bd5b/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Mondes engloutis</p>
+    <p class="detail">Vladimir Cosma · album : Les mondes engloutis / Biniky le dragon rose / La petite allumeuse</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/65/1d/91/651d9138-ff05-55ea-c0dc-6d1228eedc21/mzaf_13767423832165579826.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/69/14/e0/6914e033-dfb6-ce6b-9d91-5f5c16fe61d5/3596973161796_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/69/14/e0/6914e033-dfb6-ce6b-9d91-5f5c16fe61d5/3596973161796_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Jayce et les Conquérants de la lumière</p>
+    <p class="detail">Nick Carr · album : Jayce et les conquérants de la lumière (Générique original du dessin animé)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d0/26/77/d0267775-2f97-1710-ec19-499bcdbd381a/mzaf_8983246530875111321.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/a7/09/96/a709969e-d1cd-2204-caad-222ddc3217c2/3596973162090_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/a7/09/96/a709969e-d1cd-2204-caad-222ddc3217c2/3596973162090_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Entrechats</p>
+    <p class="detail">Noam · album : Les entrechats sont là! (Générique original du dessin animé) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/2a/fc/45/2afc4514-1b94-e349-c6c9-23c0638c1988/mzaf_11972623890568663689.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f6/50/0d/f6500dd4-4f49-0d3d-90f3-e9f03930e4eb/19UMGIM26965.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f6/50/0d/f6500dd4-4f49-0d3d-90f3-e9f03930e4eb/19UMGIM26965.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Schtroumpfs</p>
+    <p class="detail">Dorothée · album : Dorothée et les schtroumpfs</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/84/16/dd/8416ddf3-70fc-aafd-b043-20c52d189cdf/mzaf_10979209769161354873.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/42/54/e0/4254e0c7-ff1e-6351-d012-2c165c9d9d10/mzm.ibbvosdk.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/42/54/e0/4254e0c7-ff1e-6351-d012-2c165c9d9d10/mzm.ibbvosdk.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Tortues Ninja</p>
+    <p class="detail">Teenage Mutant Ninja Turtles · album : Let's Kick Shell! - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d3/ee/8f/d3ee8f3c-b804-0ce4-660a-a192d92a869d/mzaf_16726094752305918425.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6a/e2/f5/6ae2f556-b296-3331-0ff7-e5569f5e2279/794043180392.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6a/e2/f5/6ae2f556-b296-3331-0ff7-e5569f5e2279/794043180392.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Batman <span class="doute">album douteux</span></p>
+    <p class="detail">Shirley Walker · album : Batman: The Animated Series, Vol. 2 (Original Soundtrack from the Warner Bros. Television Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/52/f2/9c/52f29ce1-ab6b-960e-befb-997ff7758b59/mzaf_10307177277172052712.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Bioman", "a": "Bernard Minet", "at": "Bioman", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Chevaliers du Zodiaque", "a": "Bernard Minet", "at": "Les chevaliers du Zodiaque", "aa": "Bernard Minet", "altT": ["Saint Seiya"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Dragon Ball Z", "a": "Bernard Minet", "at": "Dragon Ball et Dragon Ball Z", "aa": "Bernard Minet", "altT": ["Dragon Ball"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Goldorak", "a": "Bernard Minet", "at": "Goldorak", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Capitaine Flam", "a": "Bernard Minet", "at": "Capitaine Flam", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Nicky Larson", "a": "Bernard Minet", "at": "Nicky Larson (Générique original de la série télé)", "aa": "Bernard Minet", "altT": ["City Hunter"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Juliette je t'aime", "a": "Bernard Minet", "at": "Juliette je t'aime", "aa": "Bernard Minet", "altT": ["Maison Ikkoku"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Denver le dernier dinosaure", "a": "Bernard Minet", "at": "Denver le dernier Dinosaure", "aa": "Bernard Minet", "altT": ["Denver"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Le Collège fou fou fou", "a": "Bernard Minet", "at": "Un collège fou fou fou", "aa": "Bernard Minet", "altT": ["Un collège fou fou fou"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Ranma ½", "a": "Bernard Minet", "at": "Ranma 1/2", "aa": "Bernard Minet", "altT": ["Ranma", "Ranma 1/2"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Sailor Moon", "a": "Bernard Minet", "at": "Sailor Moon", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Olive et Tom", "a": "Bernard Minet", "at": "Olive et Tom", "aa": "Bernard Minet", "altT": ["Captain Tsubasa"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Jeanne et Serge", "a": "Bernard Minet", "at": "Jeanne et Serge", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Conan l'aventurier", "a": "Bernard Minet", "at": "Conan l'aventurier", "aa": "Bernard Minet", "altT": ["Conan"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Robotech", "a": "Bernard Minet", "at": "Robotech", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Musclor", "a": "Bernard Minet", "at": "Musclor (Les Maîtres de l'univers)", "aa": "Bernard Minet", "altT": ["Les Maîtres de l'univers"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Transformers", "a": "Bernard Minet", "at": "Transformers pour un monde meilleur", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Je veux être un Bisounours", "a": "Bernard Minet", "at": "Je veux être un bisounours", "aa": "Bernard Minet", "altT": ["Les Bisounours", "Bisounours"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "L'École des champions", "a": "Bernard Minet", "at": "L'école des champions", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Mystérieuses Cités d'or", "a": "Le Groupe Apollo", "at": "Les mystérieuses cités d'or", "aa": "Jacques Cardona", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Ulysse 31", "a": "Le Groupe Apollo", "at": "Ulysse 31, Ulysse revient", "aa": "Apollo", "altT": ["Ulysse revient", "Ulysse"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Bomber X", "a": "Le Groupe Apollo & Lionel Leroy", "at": "Bomber X", "aa": "Le Groupe Apollo & Lionel Leroy", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Clémentine", "a": "Marie Dauphin", "at": "Clémentine (Bande originale du feuilleton TV)", "aa": "Marie Dauphin", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Lady Oscar", "a": "Marie Dauphin", "at": "Lady Oscar", "aa": "Marie Dauphin", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Princesse Sarah", "a": "Claude Lombard", "at": "Princesse Sarah", "aa": "Claude Lombard", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Embrasse-moi Lucille", "a": "Claude Lombard", "at": "Embrasse-moi Lucille", "aa": "Claude Lombard", "altT": ["Max et Compagnie"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Quatre Filles du docteur March", "a": "Claude Lombard", "at": "Les quatre filles du docteur March", "aa": "Claude Lombard", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Samouraïs de l'éternel", "a": "Bernard Minet", "at": "Les samourais de l'éternel", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "She-Ra", "a": "Bernard Minet", "at": "She Ra (J'ai le pouvoir)", "aa": "Bernard Minet & Caline", "altT": ["J'ai le pouvoir", "She-Ra la princesse du pouvoir"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Tom Sawyer", "a": "Elfie", "at": "Tom Sawyer (Générique original du dessin animé)", "aa": "Elfie", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Minipouss", "a": "Les Minipouss", "at": "Les Minipouss (Générique original du dessin animé)", "aa": "Les Minipouss", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Inspecteur Gadget", "a": "Jacques Cardona", "at": "Inspecteur Gadget (Générique original du dessin animé)", "aa": "Jacques Cardona", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Creamy, merveilleuse Creamy", "a": "Majokko Club", "at": "Creamy, merveilleuse Creamy (feat. Paolo Tuci) [Générique Remixé]", "aa": "Majokko Club", "altT": ["Creamy"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Mondes engloutis", "a": "Vladimir Cosma", "at": "Les mondes engloutis (From \"Les mondes engloutis\")", "aa": "Vladimir Cosma", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Jayce et les Conquérants de la lumière", "a": "Nick Carr", "at": "Jayce et les conquérants de la lumière", "aa": "Nick Carr", "altT": ["Jayce"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Entrechats", "a": "Noam", "at": "Les entrechats sont là! (Générique original du dessin animé)", "aa": "Noam", "altT": ["Les entrechats sont là !"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Schtroumpfs", "a": "Dorothée", "at": "La danse des Schtroumpfs", "aa": "Dorothée & Les Schtroumpfs", "altT": ["La danse des Schtroumpfs"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Les Tortues Ninja", "a": "Teenage Mutant Ninja Turtles", "at": "Teenage Mutant Ninja Turtles Cartoon Opening Theme (1987)", "aa": "Teenage Mutant Ninja Turtles", "altT": ["Tortues Ninja", "Teenage Mutant Ninja Turtles"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}, {"t": "Batman", "a": "Shirley Walker", "at": "Batman: The Animated Series (Alternate Main Title)", "aa": "Shirley Walker", "altT": ["Batman la série animée", "Batman, la série animée"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>

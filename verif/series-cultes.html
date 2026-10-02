@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Séries cultes</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>📺 Séries cultes</h1>
+<p class="sous">51 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/24/fd/3b/mzi.mwaebzpb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/24/fd/3b/mzi.mwaebzpb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Friends</p>
+    <p class="detail">musique : I'll Be There for You · album : The Rembrandts: L.P.</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d1/e4/9e/d1e49e0b-ff45-ed0e-fa77-5b6e9a5a7ecd/mzaf_10467587259594931193.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/20/75/39/207539da-60d1-8ac1-7f4f-9f7e534c8c85/00030206709728.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/20/75/39/207539da-60d1-8ac1-7f4f-9f7e534c8c85/00030206709728.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Game of Thrones</p>
+    <p class="detail">musique : Main Title · album : Game of Thrones (Music From the HBO Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/61/28/ad/6128ade4-d49a-3811-df92-b231bb3b3803/mzaf_1140403213038657471.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8f/4d/6e/8f4d6e87-beb3-b95f-d2ef-17ab4c296073/mzi.oppgthel.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8f/4d/6e/8f4d6e87-beb3-b95f-d2ef-17ab4c296073/mzi.oppgthel.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">X-Files</p>
+    <p class="detail">musique : The X-Files Theme · album : The Truth and the Light: Music from The X-Files</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/db/2b/05/db2b055a-a4ae-43dd-1a76-a8506d327e76/mzaf_16942281551703488024.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d3/62/40/d3624063-8676-3124-5e84-1eb82257a520/134.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d3/62/40/d3624063-8676-3124-5e84-1eb82257a520/134.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Doctor Who</p>
+    <p class="detail">musique : Doctor Who Theme · album : Doctor Who (Original Television Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a4/46/20/a4462088-29b2-9e84-a89e-0af2fd26ac59/mzaf_9446909286615454483.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/25/ca/5d/25ca5d71-5cd3-b249-8ddf-e8e3b8b761a3/stranger-things-volume-one_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/25/ca/5d/25ca5d71-5cd3-b249-8ddf-e8e3b8b761a3/stranger-things-volume-one_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Stranger Things <span class="doute">album douteux</span></p>
+    <p class="detail">musique : Stranger Things · album : Stranger Things, Vol. 1 (A Netflix Original Series Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c5/ce/6a/c5ce6acb-160b-de87-1831-e64677b11275/mzaf_17733386572512726172.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/62/d0/6462d048-881a-76f5-77da-dfa97d4c2d90/5414939860171.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/62/d0/6462d048-881a-76f5-77da-dfa97d4c2d90/5414939860171.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Peaky Blinders</p>
+    <p class="detail">musique : Red Right Hand · album : Red Right Hand (Theme from 'Peaky Blinders') - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/16/10/3d/16103d51-5e7c-096e-ac57-c5a1da7ca4b5/mzaf_9048986251349609051.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/b7/f9/9d/b7f99d58-792b-53ba-1b18-e59c8004a0c2/886445920253.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music111/v4/b7/f9/9d/b7f99d58-792b-53ba-1b18-e59c8004a0c2/886445920253.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Prince de Bel-Air</p>
+    <p class="detail">musique : Yo Home to Bel-Air · album : Homebase: The Remixes</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7c/ac/54/7cac5455-af86-9969-4d7a-54af74c3a69a/mzaf_522993413026599447.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/70/75/097075be-0784-95c3-9874-4bc8349b1252/46b5093f-3e13-49f0-9f92-a44e97804c59.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/70/75/097075be-0784-95c3-9874-4bc8349b1252/46b5093f-3e13-49f0-9f92-a44e97804c59.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Malcolm</p>
+    <p class="detail">musique : Boss of Me · album : Mink Car</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/16/84/9d/16849d42-2f42-6f25-20ef-500ef01547a2/mzaf_12880215912011305474.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/55/7f/db/557fdb12-57c5-7ec0-cb44-a596afdd228d/00720616235329.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/55/7f/db/557fdb12-57c5-7ec0-cb44-a596afdd228d/00720616235329.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Scrubs</p>
+    <p class="detail">musique : Superman · album : All The Time In The World</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/30/26/6d/30266da5-27d6-775e-9cd6-6ae5405504d9/mzaf_11530024030766668653.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/d5/b1/72/d5b17285-2950-4394-8d49-453ec304ec6c/859712752819_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/d5/b1/72/d5b17285-2950-4394-8d49-453ec304ec6c/859712752819_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">How I Met Your Mother</p>
+    <p class="detail">musique : Hey Beautiful · album : Heathers: The Musical (World Premiere Cast Recording)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/59/de/7b59def1-c8b4-1bf6-d546-34d941bd9c58/mzaf_5485666463478120286.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/16/4f/9c/164f9c46-270e-fa3a-87e2-c445d578616b/794043204791.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/16/4f/9c/164f9c46-270e-fa3a-87e2-c445d578616b/794043204791.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Big Bang Theory</p>
+    <p class="detail">musique : Big Bang Theory Theme · album : Hits from Yesterday &amp; the Day Before</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c4/ae/a0/c4aea056-8fc5-fff9-6c61-74fe6f7734ca/mzaf_170073029966653320.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/c6/aa/f1/c6aaf187-f85c-4717-e7e9-535d831bda40/00720616256867.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/c6/aa/f1/c6aaf187-f85c-4717-e7e9-535d831bda40/00720616256867.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Desperate Housewives</p>
+    <p class="detail">musique : Desperate Housewives Theme · album : Desperate Housewives (Music from and Inspired By the TV Show)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/fd/bf/6f/fdbf6f0f-7414-45c6-2f65-cbbb58db7d20/mzaf_17182938991404935854.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0a/98/55/0a98555b-8d9d-3b46-660a-b91261557d17/00724384559953.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0a/98/55/0a98555b-8d9d-3b46-660a-b91261557d17/00724384559953.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dr House</p>
+    <p class="detail">musique : Teardrop · album : Mezzanine</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a3/a6/91/a3a691b0-8e49-399d-2585-ddcd6694c9f2/mzaf_16325826545413166648.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a4/ee/a3/a4eea39c-f039-5fca-c9c6-a985359faec2/mzi.duugjrlw.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a4/ee/a3/a4eea39c-f039-5fca-c9c6-a985359faec2/mzi.duugjrlw.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Pretty Little Liars</p>
+    <p class="detail">musique : Secret · album : Thirteen Tales of Love and Revenge</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b1/07/bf/b107bf56-e246-c207-2575-7a4107806e2f/mzaf_4360721599140213081.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/e6/3a/64e63a1c-2238-5477-e27e-9f61f7368e88/00030206731408.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/e6/3a/64e63a1c-2238-5477-e27e-9f61f7368e88/00030206731408.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Orange Is the New Black</p>
+    <p class="detail">musique : You've Got Time · album : You've Got Time - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/40/7a/4d/407a4dc0-5930-af6e-19f5-c0a0d1ad61f7/mzaf_11374123161117894318.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f6/7e/e3/f67ee3c6-3108-584a-aaf7-49552b900d0a/886448250012.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f6/7e/e3/f67ee3c6-3108-584a-aaf7-49552b900d0a/886448250012.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Witcher</p>
+    <p class="detail">musique : Toss a Coin to Your Witcher · album : The Witcher (Music from the Netflix Original Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bd/c0/a0/bdc0a0c1-bc62-0a40-6e20-07d8bb7c70af/mzaf_6834707481262613789.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/8f/a0/60/8fa0608d-0884-c6af-cba4-511ffbd2a5a0/the-walking-dead_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/8f/a0/60/8fa0608d-0884-c6af-cba4-511ffbd2a5a0/the-walking-dead_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Walking Dead</p>
+    <p class="detail">musique : Theme from the Walking Dead · album : The Walking Dead (Original Television Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/bd/d3/fe/bdd3fec9-3c46-dd6d-b916-ba94e1b95e55/mzaf_5651273616867678446.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1f/ec/ab/1fecab29-fa10-0abd-6097-6909e1534708/wednesday_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1f/ec/ab/1fecab29-fa10-0abd-6097-6909e1534708/wednesday_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mercredi</p>
+    <p class="detail">musique : Goo Goo Muck · album : Psychedelic Jungle</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/26/8e/b6/268eb63d-b228-a040-3934-61840bd07c84/mzaf_12426396297438116241.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/39/99/ed/mzi.dhosdbnc.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/39/99/ed/mzi.dhosdbnc.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Beverly Hills 90210</p>
+    <p class="detail">musique : Theme from Beverly Hills, 90210 · album : Beverly Hills 90210 (The Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6f/37/c1/6f37c144-391c-5861-3e45-2f6645a4db9f/mzaf_17218468141999137196.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fa/34/a0/fa34a00d-f2cb-d853-1a75-c4e949403da2/886448177463.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fa/34/a0/fa34a00d-f2cb-d853-1a75-c4e949403da2/886448177463.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dexter</p>
+    <p class="detail">musique : Dexter Main Title · album : Dexter Season 8</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6a/79/81/6a798109-d58a-bd99-a489-68044b81bfc3/mzaf_3547309973478464909.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/90/ee/48/90ee48c5-99f4-fd8e-25d5-4f0abcc0e766/00030206672121.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/90/ee/48/90ee48c5-99f4-fd8e-25d5-4f0abcc0e766/00030206672121.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Lost</p>
+    <p class="detail">musique : Life and Death · album : Lost: Season 1 (Original Television Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/72/4f/96/724f9694-281b-1f13-98eb-584f54d1644e/mzaf_553213465716601159.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/83/32/3e/83323ee6-7ad6-3a17-f485-757500b18202/mzi.zczqlvxw.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/83/32/3e/83323ee6-7ad6-3a17-f485-757500b18202/mzi.zczqlvxw.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Breaking Bad</p>
+    <p class="detail">musique : Breaking Bad (Main Title Theme) · album : Breaking Bad (Music from the Original TV Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2f/d2/4c/2fd24c76-fe15-1674-7199-dc6348b712eb/mzaf_17815772063370693887.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/3a/61/b8/3a61b81f-c32e-53a8-6f13-0353e03a985b/00030206658897.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/3a/61/b8/3a61b81f-c32e-53a8-6f13-0353e03a985b/00030206658897.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Monk</p>
+    <p class="detail">musique : Monk Theme (Series Version) · album : Monk (Original Televsion Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b3/cc/37/b3cc37e8-6aa4-8000-fbc1-d3c85bf1dafc/mzaf_16729264792629727005.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5c/d6/45/5cd645a5-dc62-2c25-9762-6df98f41eda1/mzi.ggvuqngs.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5c/d6/45/5cd645a5-dc62-2c25-9762-6df98f41eda1/mzi.ggvuqngs.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Stargate SG-1 <span class="doute">album douteux</span></p>
+    <p class="detail">musique : Main Title · album : Best of Stargate SG-1 (Soundtrack from the TV Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/02/9e/a5/029ea568-f2d1-7b53-1b07-caf197c8e2ac/mzaf_2090325693289292218.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/36/92/fb/3692fb2c-c241-4816-7a8e-e4f941ff64ca/794043208225.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/36/92/fb/3692fb2c-c241-4816-7a8e-e4f941ff64ca/794043208225.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rick et Morty</p>
+    <p class="detail">musique : Rick and Morty Theme · album : The Rick and Morty Soundtrack</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/db/2a/ae/db2aaee7-1f9d-e5d8-7df5-f181ca28fd04/mzaf_450586748192900673.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/18/62/a6/1862a603-a961-e8b4-5582-332a3bb83fce/20UMGIM19736.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/18/62/a6/1862a603-a961-e8b4-5582-332a3bb83fce/20UMGIM19736.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Futurama</p>
+    <p class="detail">musique : Futurama Main Theme · album : Futurama Main Theme (From &quot;Futurama&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b8/7a/8e/b87a8e51-2997-a917-84fd-9f1c273d7b6e/mzaf_5582863860306248607.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/de/50/b0/de50b04f-a636-f428-709f-98b71f36498b/22UMGIM86329.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/de/50/b0/de50b04f-a636-f428-709f-98b71f36498b/22UMGIM86329.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Simpson</p>
+    <p class="detail">musique : The Simpsons Main Title Theme · album : Testify (A Whole Lot More Original Music from the Television Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/de/a9/05/dea905ac-26b4-ced3-7f6a-e74c2dc0121c/mzaf_13498207539877758881.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/cf/da/60cfdaed-e33d-4f11-dae6-12ab04b75a8c/00196922993985_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/cf/da/60cfdaed-e33d-4f11-dae6-12ab04b75a8c/00196922993985_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Arcane</p>
+    <p class="detail">musique : Enemy · album : Enemy (From the series &quot;Arcane League of Legends&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/88/1e/c4/881ec4c9-5c55-2796-c06c-99034e4ee21f/mzaf_6991313184662423805.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/3c/3e/d3/mzi.ktwyseiz.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/3c/3e/d3/mzi.ktwyseiz.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Battlestar Galactica</p>
+    <p class="detail">musique : Main Title · album : Battlestar Galactica: Season 2 (Original Soundtrack from the TV Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6e/00/80/6e00807e-62ae-3587-58b7-cd23174aed78/mzaf_674943215883760012.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/dd/73/43/dd7343b4-4f06-df19-1a5c-ab8b9904dd98/19UMGIM97288.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/dd/73/43/dd7343b4-4f06-df19-1a5c-ab8b9904dd98/19UMGIM97288.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Mandalorian</p>
+    <p class="detail">musique : The Mandalorian · album : The Mandalorian: Chapter 1 (Original Score)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7f/7f/06/7f7f0624-697c-a5a6-28ba-0315c7565139/mzaf_6538370982614567471.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/8f/f2/32/8ff232f0-059e-204b-f6fb-159cbea211a5/794043143335.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/8f/f2/32/8ff232f0-059e-204b-f6fb-159cbea211a5/794043143335.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">La Ligue des justiciers <span class="doute">album douteux</span></p>
+    <p class="detail">musique : Justice League Unlimited Theme · album : The Music of DC Comics (75th Anniversary Collection)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/48/2a/bd/482abd06-0c2f-f42a-3a8b-61ac25b1b3db/mzaf_11112865042316316605.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/57/1d/58/571d581c-b72f-21e4-7235-6ac72a82f67d/dj.vnwiufpp.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/57/1d/58/571d581c-b72f-21e4-7235-6ac72a82f67d/dj.vnwiufpp.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sons of Anarchy</p>
+    <p class="detail">musique : This Life · album : Songs of Anarchy: Music from Sons of Anarchy - Seasons 1-4</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8a/e1/06/8ae10621-bb34-a4c4-c78f-35e916b5a807/mzaf_16319607696490168603.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/03/39/9e/03399e5e-8252-a0ba-65c6-84ab3adf9ef5/Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/03/39/9e/03399e5e-8252-a0ba-65c6-84ab3adf9ef5/Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'Agence tous risques</p>
+    <p class="detail">musique : The A-Team - Theme from the TV Series · album : The &quot;a&quot; Team - Theme from the Television Series (Mike Post) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/8b/f4/73/8bf473b3-ec4f-2d16-49af-29cde9eebc32/mzaf_8324341923534933820.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/7b/f0/fa/7bf0fa82-da69-7bd9-9e1a-ccd39e59a0b0/mzi.jbcjgqgp.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/7b/f0/fa/7bf0fa82-da69-7bd9-9e1a-ccd39e59a0b0/mzi.jbcjgqgp.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Magnum</p>
+    <p class="detail">musique : Magnum P.I. Theme · album : Magnum P.I. - Theme from the Television Series (Mike Post, Pete Carpenter) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/53/e6/3a/53e63a2b-d264-0f6c-a5b8-a9cc87d230a1/mzaf_7075498017715289775.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/85/e2/92/85e292cd-d0bc-3eb8-c321-0b077180985d/Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/85/e2/92/85e292cd-d0bc-3eb8-c321-0b077180985d/Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">South Park</p>
+    <p class="detail">musique : South Park - Theme from the TV Series · album : South Park - Theme from the Television Series - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/dd/97/5a/dd975a17-087e-5498-7426-b0a52a805598/mzaf_9868946529428139087.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/6e/90/0e/mzi.tgiwivqf.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/6e/90/0e/mzi.tgiwivqf.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Buffy contre les vampires</p>
+    <p class="detail">musique : Buffy the Vampire Slayer · album : TV's Greatest Themes: 90's (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7e/42/40/7e4240c9-ddb7-86dd-8e1f-cb6ad59c8968/mzaf_314095937721039297.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/35/f9/be/35f9be24-b3d0-a46c-47f2-5cd11854e081/3700403510133_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/35/f9/be/35f9be24-b3d0-a46c-47f2-5cd11854e081/3700403510133_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Office <span class="doute">album douteux</span></p>
+    <p class="detail">musique : The Office · album : TV Generation, Vol. 5</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/14/1c/db/141cdbe3-1525-a572-0bfa-c4ee0fd6acdf/mzaf_411420473552663810.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ed/7d/ef/ed7def4f-08f4-c8b3-e6eb-6a55b16a47f5/195729742253_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ed/7d/ef/ed7def4f-08f4-c8b3-e6eb-6a55b16a47f5/195729742253_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Columbo</p>
+    <p class="detail">musique : Mystery Movie Theme · album : Mystery Movie Theme (From &quot;Columbo&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/96/3f/89/963f8951-eea6-6c44-f5b5-eb56b0d35e12/mzaf_3310082019338244313.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5f/2b/72/5f2b7226-09e9-ead6-2880-b624c7cf12ba/191079428618_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5f/2b/72/5f2b7226-09e9-ead6-2880-b624c7cf12ba/191079428618_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Esprits criminels</p>
+    <p class="detail">musique : Criminal Minds · album : 50 Best of American TV Themes</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/87/7b/99877b62-beff-8a51-bd2c-e9f97e80b3b2/mzaf_7833505821012577038.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="39">
+  <div class="num">40</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2f/3c/e7/2f3ce736-34ef-acd1-a6fb-157343970325/8437010999420.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2f/3c/e7/2f3ce736-34ef-acd1-a6fb-157343970325/8437010999420.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Un dos tres</p>
+    <p class="detail">musique : Sámbame · album : UPA Dance (Collector Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/7a/2c/0d/7a2c0d0d-920f-e2f9-494e-acdd2cef79bc/mzaf_3579703504617433308.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="40">
+  <div class="num">41</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/20/41/32/20413235-45bf-e89d-b953-0e3faa209159/bridgerton-covers-ep_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/20/41/32/20413235-45bf-e89d-b953-0e3faa209159/bridgerton-covers-ep_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Chroniques de Bridgerton</p>
+    <p class="detail">musique : Wildest Dreams · album : Bridgerton (Covers From the Netflix Original Series) - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/86/66/f8/8666f8cd-926c-574f-057d-c315c6a2890b/mzaf_14082659808935318905.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="41">
+  <div class="num">42</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/99/f1/a0/99f1a0e5-7a64-8306-3f86-32e5e90b1c8e/20UMGIM35292.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/99/f1/a0/99f1a0e5-7a64-8306-3f86-32e5e90b1c8e/20UMGIM35292.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">American Horror Story</p>
+    <p class="detail">musique : American Horror Story Theme · album : American Horror Story Theme (From &quot;American Horror Story&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/2c/7c/dc/2c7cdc2f-445f-7ca7-889f-768c9448c6ef/mzaf_10559129085335757687.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="42">
+  <div class="num">43</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/df/5c/61/df5c616a-12e5-8da8-682e-9e4ffdb07217/236.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/df/5c/61/df5c616a-12e5-8da8-682e-9e4ffdb07217/236.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Chapeau melon et bottes de cuir</p>
+    <p class="detail">musique : Main Titles Theme · album : The Avengers 1968-1969 (Soundtrack from the TV Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/42/81/d4/4281d488-d6c0-9bcc-99f3-07563c45742b/mzaf_9475233828845151775.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="43">
+  <div class="num">44</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/0b/a3/6f0ba3d7-9896-e833-d95f-12ffa8a70660/794043145414.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/0b/a3/6f0ba3d7-9896-e833-d95f-12ffa8a70660/794043145414.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Supernatural</p>
+    <p class="detail">musique : Carry On Wayward Son · album : Leftoverture (Expanded Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/71/4e/97/714e9707-b396-30a2-83ee-9a0a411a77dc/mzaf_17771455412700079863.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="44">
+  <div class="num">45</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/57/2f/15/572f1573-32f7-3696-4c79-f4b70dffa86e/196589279460.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/57/2f/15/572f1573-32f7-3696-4c79-f4b70dffa86e/196589279460.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Alerte à Malibu</p>
+    <p class="detail">musique : I'm Always Here · album : Baywatch</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2b/fa/b8/2bfab845-1010-b4a6-051f-d278cd61df27/mzaf_7847961532943185204.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="45">
+  <div class="num">46</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/47/44/11474414-6bc4-214b-4d50-adaece80810c/199257845592_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/47/44/11474414-6bc4-214b-4d50-adaece80810c/199257845592_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sex and the City</p>
+    <p class="detail">musique : Sex and the City Main Theme · album : Sex And The City Main Theme (Cover Version) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/66/6b/4e/666b4ebd-a465-ad52-97b9-1923aacdf3fe/mzaf_9375962509687206062.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="46">
+  <div class="num">47</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/38/1a/8f/381a8f71-a78c-8d8f-9d8b-077f75f4d023/192650296268_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/38/1a/8f/381a8f71-a78c-8d8f-9d8b-077f75f4d023/192650296268_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Vampire Diaries</p>
+    <p class="detail">musique : The Vampire Diaries - Main Theme · album : The Vampire Diaries - Main Theme - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/44/40/b2/4440b269-e566-4ace-4a7e-d9dbde418440/mzaf_11056963211638177317.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="47">
+  <div class="num">48</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d4/c7/ee/d4c7ee2d-a6c2-ed07-ac36-611ab2695d81/s06.mydywsyz.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d4/c7/ee/d4c7ee2d-a6c2-ed07-ac36-611ab2695d81/s06.mydywsyz.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Frères Scott</p>
+    <p class="detail">musique : I Don't Want to Be · album : Chariot</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/26/4f/6e/264f6e83-4088-1db0-be41-56a4a5046441/mzaf_7114740777498872318.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="48">
+  <div class="num">49</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7c/76/ba/7c76ba5c-e28a-5de4-4a94-76e57cfc02cd/191079474066_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7c/76/ba/7c76ba5c-e28a-5de4-4a94-76e57cfc02cd/191079474066_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Once Upon a Time</p>
+    <p class="detail">musique : Once Upon a Time - Main Theme · album : Once Upon a Time - Main Theme - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/11/70/80/11708064-1365-94b9-5075-d31b61e712d9/mzaf_15455031839422007311.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="49">
+  <div class="num">50</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/7a/58/96/mzi.prplknor.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/7a/58/96/mzi.prplknor.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Prison Break</p>
+    <p class="detail">musique : Pas le temps · album : Pas le temps - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/09/51/57/0951579f-5965-156a-efe7-4f661812a16e/mzaf_11880733535472936573.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="50">
+  <div class="num">51</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/09/b9/dc/09b9dcef-70c1-d41f-2f4b-aee1973cdfd8/794043191107.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/09/b9/dc/09b9dcef-70c1-d41f-2f4b-aee1973cdfd8/794043191107.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Westworld</p>
+    <p class="detail">musique : Main Title Theme · album : Westworld: Season 1 (Music from the HBO Series)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ce/de/8b/cede8b3f-4137-c6f1-e17a-3b0f619f7ed4/mzaf_9634988424484271208.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "I'll Be There for You", "a": "Friends", "at": "I'll Be There for You (Theme from Friends)", "aa": "The Rembrandts", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Main Title", "a": "Game of Thrones", "at": "Main Title", "aa": "Ramin Djawadi", "altT": [], "altA": ["Le Trône de fer"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The X-Files Theme", "a": "X-Files", "at": "Materia Primoris: The X-Files Theme (Main Title)", "aa": "Mark Snow & Chris Carter", "altT": ["Materia Primoris"], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Doctor Who Theme", "a": "Doctor Who", "at": "Doctor Who Theme", "aa": "Murray Gold", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Stranger Things", "a": "Stranger Things", "at": "Stranger Things", "aa": "Kyle Dixon & Michael Stein", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Red Right Hand", "a": "Peaky Blinders", "at": "Red Right Hand (2011 Remaster)", "aa": "Nick Cave & The Bad Seeds", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Yo Home to Bel-Air", "a": "Le Prince de Bel-Air", "at": "Yo Home to Bel-Air (Extended Version)", "aa": "DJ Jazzy Jeff & The Fresh Prince", "altT": [], "altA": ["Fresh Prince"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Boss of Me", "a": "Malcolm", "at": "Boss Of Me", "aa": "They Might Be Giants", "altT": [], "altA": ["Malcolm in the Middle"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Superman", "a": "Scrubs", "at": "Superman", "aa": "Lazlo Bane", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Hey Beautiful", "a": "How I Met Your Mother", "at": "Beautiful", "aa": "Katie Ladner, Alice Lee, Jessica Keenan Wynn, Barrett Wilbert Weed & Elle McLemore", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Big Bang Theory Theme", "a": "The Big Bang Theory", "at": "Big Bang Theory Theme", "aa": "Barenaked Ladies", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Desperate Housewives Theme", "a": "Desperate Housewives", "at": "Desperate Housewives Theme", "aa": "Danny Elfman", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Teardrop", "a": "Dr House", "at": "Teardrop", "aa": "Massive Attack", "altT": [], "altA": ["House", "House M.D."], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Secret", "a": "Pretty Little Liars", "at": "Secret", "aa": "The Pierces", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "You've Got Time", "a": "Orange Is the New Black", "at": "You've Got Time", "aa": "Regina Spektor", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Toss a Coin to Your Witcher", "a": "The Witcher", "at": "Toss a Coin to Your Witcher", "aa": "Sonya Belousova, Giona Ostinelli & Joey Batey", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Theme from the Walking Dead", "a": "The Walking Dead", "at": "Theme from the Walking Dead", "aa": "Bear McCreary", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Goo Goo Muck", "a": "Mercredi", "at": "Goo Goo Muck", "aa": "The Cramps", "altT": [], "altA": ["Wednesday"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Theme from Beverly Hills, 90210", "a": "Beverly Hills 90210", "at": "Theme from Beverly Hills, 90210", "aa": "John Davis", "altT": [], "altA": ["90210"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Dexter Main Title", "a": "Dexter", "at": "Dexter Main Title", "aa": "Rolfe Kent", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Life and Death", "a": "Lost", "at": "Life and Death", "aa": "Michael Giacchino, Tim Simonec & Hollywood Studio Symphony", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Breaking Bad (Main Title Theme)", "a": "Breaking Bad", "at": "Breaking Bad (Main Title Theme) [Extended Version]", "aa": "Dave Porter", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Monk Theme (Series Version)", "a": "Monk", "at": "Monk Theme (Series Version)", "aa": "Jeff Beal", "altT": ["Monk Theme", "It's a Jungle Out There"], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Main Title", "a": "Stargate SG-1", "at": "Main Title", "aa": "Joel Goldsmith", "altT": [], "altA": ["Stargate"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Rick and Morty Theme", "a": "Rick et Morty", "at": "Rick and Morty Theme", "aa": "Rick and Morty & Ryan Elder", "altT": [], "altA": ["Rick and Morty"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Futurama Main Theme", "a": "Futurama", "at": "Futurama Main Theme (From \"Futurama\"/TV Version)", "aa": "Christopher Tyng", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The Simpsons Main Title Theme", "a": "Les Simpson", "at": "\"The Simpsons\" Main Title Theme", "aa": "The Simpsons", "altT": [], "altA": ["The Simpsons"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Enemy", "a": "Arcane", "at": "Enemy (From the series \"Arcane League of Legends\")", "aa": "Imagine Dragons, Arcane & League of Legends Music", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Main Title", "a": "Battlestar Galactica", "at": "Battlestar Galactica (Main Title)", "aa": "Bear McCreary", "altT": ["Battlestar Galactica Main Title", "Générique"], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The Mandalorian", "a": "The Mandalorian", "at": "The Mandalorian", "aa": "Ludwig Göransson", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Justice League Unlimited Theme", "a": "La Ligue des justiciers", "at": "Justice League Unlimited Theme", "aa": "Michael McCuistion", "altT": [], "altA": ["Justice League"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "This Life", "a": "Sons of Anarchy", "at": "This Life", "aa": "Curtis Stigers & The Forest Rangers", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The A-Team - Theme from the TV Series", "a": "L'Agence tous risques", "at": "The a-Team - Theme from the TV Series", "aa": "Dominik Hauser & Roy Wiegand", "altT": ["The A-Team"], "altA": ["A-Team"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Magnum P.I. Theme", "a": "Magnum", "at": "Magnum PI", "aa": "Dominik Hauser", "altT": [], "altA": ["Magnum P.I."], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "South Park - Theme from the TV Series", "a": "South Park", "at": "South Park - Theme from the TV Series", "aa": "Dominik Hauser", "altT": ["South Park Theme"], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Buffy the Vampire Slayer", "a": "Buffy contre les vampires", "at": "Buffy the Vampire Slayer", "aa": "TV Tunesters", "altT": [], "altA": ["Buffy"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The Office", "a": "The Office", "at": "The Office", "aa": "Scranton Crew", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Mystery Movie Theme", "a": "Columbo", "at": "Mystery Movie Theme (From \"Columbo\")", "aa": "Geek Music", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Criminal Minds", "a": "Esprits criminels", "at": "Criminal Minds", "aa": "Movie Sounds Unlimited", "altT": [], "altA": ["Criminal Minds"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Sámbame", "a": "Un dos tres", "at": "Sámbame (Radio Edit Remix)", "aa": "Upa Dance", "altT": [], "altA": ["Upa Dance", "Un paso adelante"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Wildest Dreams", "a": "Les Chroniques de Bridgerton", "at": "Wildest Dreams", "aa": "Duomo", "altT": [], "altA": ["Bridgerton"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "American Horror Story Theme", "a": "American Horror Story", "at": "American Horror Story Theme (From \"American Horror Story\")", "aa": "Cesar Davila-Irizarry & Charlie Clouser", "altT": [], "altA": ["AHS"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Main Titles Theme", "a": "Chapeau melon et bottes de cuir", "at": "Main Titles Theme (From \"The Avengers\")", "aa": "Laurie Johnson", "altT": [], "altA": ["The Avengers"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Carry On Wayward Son", "a": "Supernatural", "at": "Carry On Wayward Son", "aa": "Kansas", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "I'm Always Here", "a": "Alerte à Malibu", "at": "I'm Always Here", "aa": "Jim Jamison", "altT": [], "altA": ["Baywatch"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Sex and the City Main Theme", "a": "Sex and the City", "at": "Sex And The City Main Theme (Cover Version)", "aa": "Geek Music", "altT": [], "altA": ["Sex & the City"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "The Vampire Diaries - Main Theme", "a": "Vampire Diaries", "at": "The Vampire Diaries - Main Theme", "aa": "Geek Music", "altT": [], "altA": ["The Vampire Diaries"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "I Don't Want to Be", "a": "Les Frères Scott", "at": "I Don't Want to Be", "aa": "Gavin DeGraw", "altT": [], "altA": ["One Tree Hill"], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Once Upon a Time - Main Theme", "a": "Once Upon a Time", "at": "Once Upon a Time - Main Theme", "aa": "Geek Music", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Pas le temps", "a": "Prison Break", "at": "Pas le temps", "aa": "Faf Larage", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}, {"t": "Main Title Theme", "a": "Westworld", "at": "Main Title Theme - Westworld", "aa": "Ramin Djawadi", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Série", "langue": "en"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>

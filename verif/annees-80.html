@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Années 80</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🕹️ Années 80</h1>
+<p class="sous">55 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/4f/fd/324ffda2-9e51-8f6a-0c2d-c6fd2b41ac55/074643811224.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/4f/fd/324ffda2-9e51-8f6a-0c2d-c6fd2b41ac55/074643811224.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Billie Jean — Michael Jackson</p>
+    <p class="detail">album : Thriller</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/dc/bc/8a/dcbc8a3e-4ce1-c00d-cc02-eda2212053c7/mzaf_8347559338388601510.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/c6/e1/c8/mzi.ixgzfcmc.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/c6/e1/c8/mzi.ixgzfcmc.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Take On Me — a-ha</p>
+    <p class="detail">album : Hunting High and Low (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f2/03/4f/f2034f41-707f-7111-bc63-e5d3cf7f2240/mzaf_17215043934336702540.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/69/ce/d2/69ced240-07a7-2a04-bbab-2afbacf30809/074643772822.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/69/ce/d2/69ced240-07a7-2a04-bbab-2afbacf30809/074643772822.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Africa — Toto</p>
+    <p class="detail">album : Toto IV</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bb/3d/07/bb3d07a3-b3af-2c99-5c9f-eb72796268c2/mzaf_11871467005041854011.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/00/4d/a9/004da9d2-9b4f-99f4-d396-72ec786fb88c/696998575721.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/00/4d/a9/004da9d2-9b4f-99f4-d396-72ec786fb88c/696998575721.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Final Countdown — Europe</p>
+    <p class="detail">album : The Final Countdown (Expanded Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d3/5b/d9/d35bd9a3-d105-95d8-ba29-0f5c6b8e764b/mzaf_7609183394807520180.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/ad/d3/3d/add33dea-0a4d-9509-643b-939ba6735733/dj.vpugapfp.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/ad/d3/3d/add33dea-0a4d-9509-643b-939ba6735733/dj.vpugapfp.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sweet Dreams (Are Made of This) — Eurythmics</p>
+    <p class="detail">album : Sweet Dreams (Are Made of This) [Deluxe Edition]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/65/eb/89/65eb89f3-63b5-51d1-84e9-362ddb0259e1/mzaf_13469396206931835946.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/62/e1/fa/62e1fa25-2c44-49d9-de33-34ab053ba5a7/07UMGIM08073.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/62/e1/fa/62e1fa25-2c44-49d9-de33-34ab053ba5a7/07UMGIM08073.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Every Breath You Take — The Police</p>
+    <p class="detail">album : The Police</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/33/55/ce/3355ceb6-679b-dede-bc9e-20240c173541/mzaf_2582695436913795899.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/40/16/3e/40163e24-6985-b785-d4ea-cbae07d74812/06UMGIM05422.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/40/16/3e/40163e24-6985-b785-d4ea-cbae07d74812/06UMGIM05422.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Livin' on a Prayer — Bon Jovi</p>
+    <p class="detail">album : Slippery When Wet</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/75/15/30/75153020-b7c4-7958-8907-4aa1b965dc24/mzaf_2377504467597068152.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/06/aa/19/06aa194a-56af-5dfd-aeae-7fae8c8ea97a/886444329651.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/06/aa/19/06aa194a-56af-5dfd-aeae-7fae8c8ea97a/886444329651.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Girls Just Want to Have Fun — Cyndi Lauper</p>
+    <p class="detail">album : She's So Unusual: A 30th Anniversary Celebration (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6a/17/cf/6a17cffc-3d8f-96cf-9796-3b1894c87081/mzaf_4651252225789153600.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/69/5b/e3/695be316-9ddf-7262-177c-e37edd599602/0888880777768.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/69/5b/e3/695be316-9ddf-7262-177c-e37edd599602/0888880777768.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Never Gonna Give You Up — Rick Astley</p>
+    <p class="detail">album : 3 Originals</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0a/05/07/0a050714-9dd1-3224-f17f-9765a081e1e7/mzaf_9758921650738173524.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ee/49/ac/ee49accc-78bd-bcdb-1aff-c40c1ac3ccc4/074643959520.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ee/49/ac/ee49accc-78bd-bcdb-1aff-c40c1ac3ccc4/074643959520.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Wake Me Up Before You Go-Go — Wham!</p>
+    <p class="detail">album : Make It Big</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/59/d0/df/59d0df1f-b9b0-c1f0-d27e-ad59ee9fe1fa/mzaf_15629855503092199047.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/33/55/5c/33555c2f-df24-dd08-b680-d92473948262/603497804955.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/33/55/5c/33555c2f-df24-dd08-b680-d92473948262/603497804955.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Like a Prayer — Madonna</p>
+    <p class="detail">album : Celebration (Deluxe Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9f/a7/12/9fa712d6-1783-d96e-366a-39255a1043d0/mzaf_13459590149591299421.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a7/04/dc/a704dce9-7671-9f42-4584-57bb7f822530/075992539562.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/a7/04/dc/a704dce9-7671-9f42-4584-57bb7f822530/075992539562.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Kiss — Prince</p>
+    <p class="detail">album : Parade (Music from the Motion Picture Under the Cherry Moon)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/da/48/98/da48985c-a43a-df20-e795-3a9c8dd193bb/mzaf_13129356430453756419.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/76/41/b9/7641b9cb-650e-8c9c-bad8-7196f8193a7d/25UMGIM39996.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/76/41/b9/7641b9cb-650e-8c9c-bad8-7196f8193a7d/25UMGIM39996.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Money for Nothing — Dire Straits</p>
+    <p class="detail">album : Brothers In Arms (40th Anniversary)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/42/b5/0e/42b50ec2-9d89-70f9-684a-55feb3820075/mzaf_15303419763425883726.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/98/f7/5e98f79c-69e3-3478-9a53-6881651b59b3/06UMGIM12183.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/5e/98/f7/5e98f79c-69e3-3478-9a53-6881651b59b3/06UMGIM12183.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Celebration — Kool &amp; The Gang</p>
+    <p class="detail">album : Gold</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b4/d1/d8/b4d1d807-0d0b-d5de-8c1e-1d0d74e67f6b/mzaf_13872719012739928210.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/6e/d3/72/6ed37242-3029-11f3-b6c5-e760460d157f/4007192519590.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/6e/d3/72/6ed37242-3029-11f3-b6c5-e760460d157f/4007192519590.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'Aventurier — Indochine</p>
+    <p class="detail">album : L'aventurier</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/eb/79/b7/eb79b79e-6783-4225-4331-6e0fac2646cc/mzaf_17876168266679953206.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/54/82/27/54822797-6ef4-f20c-7501-677a4766cb15/dj.irgzmvcf.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/54/82/27/54822797-6ef4-f20c-7501-677a4766cb15/dj.irgzmvcf.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Cendrillon — Téléphone <span class="doute">album douteux</span></p>
+    <p class="detail">album : Platinum</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ce/1b/69/ce1b69a2-99c9-0d05-b48d-e6034d26bbaa/mzaf_7804484407858687533.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7c/40/ff/7c40ff41-a6ee-1b32-60b1-1135467e1fa0/20UMGIM87780.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7c/40/ff/7c40ff41-a6ee-1b32-60b1-1135467e1fa0/20UMGIM87780.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'Aziza — Daniel Balavoine</p>
+    <p class="detail">album : Sauver l'amour (Remastered)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/40/fc/2c/40fc2c1f-a828-92f1-b0f0-ae90c9fbcac1/mzaf_13414759177177176290.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/3a/61/b7/3a61b76d-a450-fc5d-93c0-42428598e3d2/888880415950.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/3a/61/b7/3a61b76d-a450-fc5d-93c0-42428598e3d2/888880415950.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Quand la musique est bonne — Jean-Jacques Goldman</p>
+    <p class="detail">album : Quand la musique est bonne</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/96/22/41/962241f0-e62e-2b7f-6030-c7108ca33dc8/mzaf_7377471114079099101.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/cb/4e/mzi.qiytsyte.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/f3/cb/4e/mzi.qiytsyte.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Alexandrie Alexandra — Claude François</p>
+    <p class="detail">album : Magnolias for Ever</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/77/0a/25/770a2584-9e39-cd83-2662-5ee3addb33d2/mzaf_6581203752973164550.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/85/95/2a/85952aac-9be8-c8ef-6378-affeb92aa9ba/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/85/95/2a/85952aac-9be8-c8ef-6378-affeb92aa9ba/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Voyage voyage — Desireless</p>
+    <p class="detail">album : François</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4d/e3/a3/4de3a3c2-5f9b-f449-5962-fdf8b4a017a3/mzaf_517398043620256019.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/1c/c6/1f/1cc61fd5-fe1d-a9f0-e45b-f90efa0360d8/00042283594920.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/1c/c6/1f/1cc61fd5-fe1d-a9f0-e45b-f90efa0360d8/00042283594920.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Joe le taxi — Vanessa Paradis</p>
+    <p class="detail">album : M &amp; J (CD2)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/65/91/0b/65910b93-8dae-5828-77e8-b924133aff72/mzaf_17325635157831933688.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/57/48/9b/57489bf2-40a0-505c-7a9a-1744408f7a8c/5060421569703_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/57/48/9b/57489bf2-40a0-505c-7a9a-1744408f7a8c/5060421569703_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Marcia Baila — Les Rita Mitsouko</p>
+    <p class="detail">album : Rita Mitsouko</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2f/11/3d/2f113d14-2721-9222-aed1-ba15b1ed8a17/mzaf_6136396518096296454.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/34/38/5c/34385cb8-81bf-5c7f-993d-103bcf4a7cfa/602527717661.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/34/38/5c/34385cb8-81bf-5c7f-993d-103bcf4a7cfa/602527717661.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">I Want to Break Free — Queen</p>
+    <p class="detail">album : The Works (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c6/80/37/c68037e9-01a2-baa8-607a-ddd6e4cf16f3/mzaf_15819134685696982283.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/72/68/327268ba-b9dd-b322-2a16-bdd0212df48c/074643865326.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/72/68/327268ba-b9dd-b322-2a16-bdd0212df48c/074643865326.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Born in the U.S.A. — Bruce Springsteen</p>
+    <p class="detail">album : Born In the U.S.A.</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/05/68/bf/0568bf82-02e9-dd99-b3a7-0b4b7a2c2fc9/mzaf_975570673053529263.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/1a/ba/3e/1aba3e49-70e9-7443-4c00-32364a9205b7/17UMGIM81723.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/1a/ba/3e/1aba3e49-70e9-7443-4c00-32364a9205b7/17UMGIM81723.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">With or Without You — U2</p>
+    <p class="detail">album : The Joshua Tree (30th Anniversary Super Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b6/1f/0b/b61f0be5-94e7-0487-6507-38f9c9c71ab7/mzaf_4732149650781342076.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/47/55/0c/47550cd6-7ef5-bf86-c194-c7695d63c759/dj.xuditatj.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/47/55/0c/47550cd6-7ef5-bf86-c194-c7695d63c759/dj.xuditatj.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Careless Whisper — George Michael</p>
+    <p class="detail">album : Twenty Five</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cc/9d/91/cc9d915f-7533-8ab0-fd11-e4dbb866ca0d/mzaf_81705287059942479.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/46/ed/58/46ed5868-63b0-bbe8-5328-b2cc6e9bfb76/886446380094.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/46/ed/58/46ed5868-63b0-bbe8-5328-b2cc6e9bfb76/886446380094.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">I'm So Excited — The Pointer Sisters</p>
+    <p class="detail">album : So Excited! (Expanded Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e7/2d/5c/e72d5cf9-0159-43d6-eda9-f3a86ba3987f/mzaf_205687539786133575.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/72/89/c5/7289c526-da24-a8a7-2d73-26d2df9df4c6/825646585069.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/72/89/c5/7289c526-da24-a8a7-2d73-26d2df9df4c6/825646585069.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Il jouait du piano debout — France Gall</p>
+    <p class="detail">album : Paris, France (Remasterisé)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4b/39/5a/4b395a09-959e-e487-a60d-087a4d2aaa04/mzaf_6272835109972261752.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f7/e2/01/f7e20134-d523-362e-a354-aa0cc4b51f98/0884977426496.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f7/e2/01/f7e20134-d523-362e-a354-aa0cc4b51f98/0884977426496.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Besoin de rien, envie de toi — Peter et Sloane <span class="doute">autre artiste</span></p>
+    <p class="detail">album : Besoin de rien, envie de toi</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/03/35/ad/0335adf2-b2a6-eadb-935d-7bbf04b2e8ee/mzaf_6742616207368844628.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/5d/d2/57/5dd257e1-0d8c-67e2-0c55-0fa56a5143c1/20UMGIM87765.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/5d/d2/57/5dd257e1-0d8c-67e2-0c55-0fa56a5143c1/20UMGIM87765.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Je ne suis pas un héros — Daniel Balavoine</p>
+    <p class="detail">album : Un autre monde (Remastered)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/29/a3/96/29a396bc-c0bc-3028-4187-4ea75db08812/mzaf_2332870463214242829.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/1d/01/35/1d01351a-46e8-f91d-0ee2-0a836dd0ee74/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/1d/01/35/1d01351a-46e8-f91d-0ee2-0a836dd0ee74/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nuit de folie — Début de Soirée</p>
+    <p class="detail">album : Jardins d'enfants (Expanded Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c7/42/56/c74256ff-d7e6-360c-5b59-2b67b575b2df/mzaf_17796611432925770411.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/05/1d/e8/051de886-533e-ca0a-9558-3e743cfd4d4e/3596973373793_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/05/1d/e8/051de886-533e-ca0a-9558-3e743cfd4d4e/3596973373793_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Démons de minuit — Images</p>
+    <p class="detail">album : Les démons de minuit - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3e/2f/43/3e2f43d0-71a3-c0cc-25fa-d9d6a9c2ed94/mzaf_13500331263683743525.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/6e/43/286e43ed-12e3-f007-966f-ebd6c25b96bf/15UMGIM42148.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/6e/43/286e43ed-12e3-f007-966f-ebd6c25b96bf/15UMGIM42148.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Don't You (Forget About Me) — Simple Minds</p>
+    <p class="detail">album : Once Upon a Time (Super Deluxe)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/45/ea/da/45eada03-0d10-fdd1-3c48-dba500a7ec46/mzaf_16257786380485513644.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/79/cd/51/79cd5107-7557-584c-efff-9fefd00f2d29/19UMGIM53541.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/79/cd/51/79cd5107-7557-584c-efff-9fefd00f2d29/19UMGIM53541.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Call Me — Blondie</p>
+    <p class="detail">album : American Gigolo</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0f/6c/0b/0f6c0bc2-04b2-1f60-259a-c957d3ceee2c/mzaf_8954140771414666380.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/86/b5/25/86b525b1-bff1-4bf6-6112-531251b3d672/dj.hthdmusj.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/86/b5/25/86b525b1-bff1-4bf6-6112-531251b3d672/dj.hthdmusj.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">I Wanna Dance with Somebody — Whitney Houston</p>
+    <p class="detail">album : Whitney</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/67/fd/7b67fd07-6a7a-0362-135c-878ac5799f2c/mzaf_11309521725869189721.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/b8/93/14/b89314ca-f68a-9fda-4011-5f68ebc5f06c/5054197711701.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/b8/93/14/b89314ca-f68a-9fda-4011-5f68ebc5f06c/5054197711701.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">What's Love Got to Do with It — Tina Turner</p>
+    <p class="detail">album : What's Love Got to Do with It (30th Anniversary Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ea/9c/23/ea9c2357-1c12-2544-067e-bae5a6567381/mzaf_8342514748122922116.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/33/0f/4c/330f4c31-6b9a-b346-e625-01e8fba322cb/190295715762.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/33/0f/4c/330f4c31-6b9a-b346-e625-01e8fba322cb/190295715762.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Venus — Bananarama</p>
+    <p class="detail">album : True Confessions (Collector's Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d7/38/b3/d738b3d4-5e79-2771-c85b-1d8646ecd5bc/mzaf_8154527910386564159.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/3f/e0/293fe00f-f9ac-859f-bbe5-f3c2de3d83fc/603497880249.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/3f/e0/293fe00f-f9ac-859f-bbe5-f3c2de3d83fc/603497880249.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">In the Air Tonight — Phil Collins</p>
+    <p class="detail">album : Face Value (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/87/dc/e5/87dce590-ff0c-3194-dfc1-1bc9b3aa1fe5/mzaf_1137975488766871124.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/a6/89/fb/a689fb59-04a8-dd18-d4d4-94c0918f1463/3256.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/a6/89/fb/a689fb59-04a8-dd18-d4d4-94c0918f1463/3256.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Flashdance... What a Feeling — Irene Cara</p>
+    <p class="detail">album : What a Feelin' (Bonus Track Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ee/f0/fd/eef0fda5-3a77-ba9a-41e1-31e0fe603faa/mzaf_4287430643698303778.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="39">
+  <div class="num">40</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/9c/65/46/mzi.ehuzpzfh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/9c/65/46/mzi.ehuzpzfh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Brother Louie — Modern Talking</p>
+    <p class="detail">album : Ready for Romance</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e7/16/c0/e716c07f-8c9a-eaf3-7606-a1c90724d4c6/mzaf_7329994176972075347.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="40">
+  <div class="num">41</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3f/28/ad/3f28ad3c-3dc9-7c5b-32f0-5b33eb647bf7/mzi.bnuysrxb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3f/28/ad/3f28ad3c-3dc9-7c5b-32f0-5b33eb647bf7/mzi.bnuysrxb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Self Control — Laura Branigan</p>
+    <p class="detail">album : Self Control</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/73/f6/5a73f64d-ad41-6cfc-0e85-741e4f63bc68/mzaf_9034753905038821643.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="41">
+  <div class="num">42</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m06/d22/h05/s05.qwwmqauc.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m06/d22/h05/s05.qwwmqauc.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Forever Young — Alphaville</p>
+    <p class="detail">album : First Harvest 1984-1992</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/da/f4/b2/daf4b26a-83da-1e34-bbba-546e253798c7/mzaf_14148949332076372597.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="42">
+  <div class="num">43</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a4/09/dd/a409dde2-855f-9cdf-2af3-47c65a85bc22/08UMGIM15686.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a4/09/dd/a409dde2-855f-9cdf-2af3-47c65a85bc22/08UMGIM15686.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tainted Love — Soft Cell <span class="doute">album douteux</span></p>
+    <p class="detail">album : Non Stop Erotic Cabaret (Deluxe Edition)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/05/7a/d8/057ad825-8f51-30ab-f830-e12a31ceeb5c/mzaf_15503561629945838399.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="43">
+  <div class="num">44</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/f8/81/94/mzi.hvhrckom.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/f8/81/94/mzi.hvhrckom.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Amoureux solitaires — Lio</p>
+    <p class="detail">album : Je garde quelques images... pour mes vies postérieures</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f4/6b/f4/f46bf491-8813-e268-ecaa-4d6c9b0fc229/mzaf_4617952336208092795.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="44">
+  <div class="num">45</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/19/5b/c2/195bc28e-44a5-5c29-612e-f9c220bfecfb/mzi.lueenjxw.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/19/5b/c2/195bc28e-44a5-5c29-612e-f9c220bfecfb/mzi.lueenjxw.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">T'en va pas — Elsa</p>
+    <p class="detail">album : L'essentiel, 1986-1993</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ff/34/d5/ff34d597-b597-2279-a89e-744a74734d3f/mzaf_9436725445521987966.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="45">
+  <div class="num">46</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e6/95/c6/e695c60a-32ef-b531-2547-7d43f7cedf36/06UMGIM37613.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e6/95/c6/e695c60a-32ef-b531-2547-7d43f7cedf36/06UMGIM37613.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Sunlights des tropiques — Gilbert Montagné</p>
+    <p class="detail">album : Gilbert Montagné</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/6d/e1/c0/6de1c019-2f34-c530-4a81-4c292b7ea3f2/mzaf_14802127169689990803.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="46">
+  <div class="num">47</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/98/0f/47/980f475b-e9ad-6c70-d64c-06636a3ef283/mzi.myjspebs.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/98/0f/47/980f475b-e9ad-6c70-d64c-06636a3ef283/mzi.myjspebs.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Partenaire particulier — Partenaire Particulier</p>
+    <p class="detail">album : Jeux interdits</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f2/8b/12/f28b126e-9bb1-f562-7020-e4053fdb62cf/mzaf_10933640955075976313.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="47">
+  <div class="num">48</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6d/29/5b/6d295bc6-6f42-e339-d3af-21632a79b65b/00731458959229.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6d/29/5b/6d295bc6-6f42-e339-d3af-21632a79b65b/00731458959229.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tchiki boum — Niagara</p>
+    <p class="detail">album : Flammes</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bf/1f/92/bf1f925f-b8e9-3614-9b33-718745a4a669/mzaf_17749038292123858822.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="48">
+  <div class="num">49</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c5/b5/55/c5b55507-33cd-039a-beea-473de78c9d9c/06UMGIM63839.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c5/b5/55/c5b55507-33cd-039a-beea-473de78c9d9c/06UMGIM63839.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Femme que j'aime — Jean-Luc Lahaye</p>
+    <p class="detail">album : Femme que j'aime (Le meilleur de Jean-Luc Lahaye)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d2/db/ef/d2dbef1b-6452-1232-a97e-79796c450ea7/mzaf_2281680538960037471.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="49">
+  <div class="num">50</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/dc/0c/41/dc0c413c-e42d-9f1c-c020-179c2e7db8e7/886445062526.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/dc/0c/41/dc0c413c-e42d-9f1c-c020-179c2e7db8e7/886445062526.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Elle est d'ailleurs — Pierre Bachelet</p>
+    <p class="detail">album : Elle est d'ailleurs</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f5/2e/72/f52e722e-779f-ef8f-fa52-6b67de0168a9/mzaf_12697882076321762479.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="50">
+  <div class="num">51</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9b/38/0a/9b380a2b-6ddb-86a3-4dac-e166ae9a793b/3596975077897_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/9b/38/0a/9b380a2b-6ddb-86a3-4dac-e166ae9a793b/3596975077897_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Boule de flipper — Corynne Charby</p>
+    <p class="detail">album : Boule de flipper - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/80/aa/ce/80aace9c-25cf-345a-c64e-fd606fea3b7d/mzaf_13681652319633438736.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="51">
+  <div class="num">52</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b5/58/d3/b558d32f-24fd-c889-d544-bc4c96f6113e/dj.oinzmlgt.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b5/58/d3/b558d32f-24fd-c889-d544-bc4c96f6113e/dj.oinzmlgt.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Thriller — Michael Jackson</p>
+    <p class="detail">album : Thriller (25th Anniversary) [Deluxe Edition]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/01/2a/b5/012ab507-1b6e-198c-0f9d-5e44a2c2b919/mzaf_16660153232571583201.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="52">
+  <div class="num">53</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dc/f5/a9/dcf5a9d3-55e0-7f8b-8cbe-9a2616c9c377/mzi.eefglypz.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dc/f5/a9/dcf5a9d3-55e0-7f8b-8cbe-9a2616c9c377/mzi.eefglypz.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">You Spin Me Round (Like a Record) — Dead or Alive</p>
+    <p class="detail">album : Youthquake (Bonus Track Version)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/61/09/38/61093833-a4d0-0880-3067-5129fbe5cb30/mzaf_9682008866138929348.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="53">
+  <div class="num">54</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/57/90/82/579082af-68c5-4c37-8ab6-a975a9472b08/dj.bwnldyxf.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/v4/57/90/82/579082af-68c5-4c37-8ab6-a975a9472b08/dj.bwnldyxf.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Walk Like an Egyptian — The Bangles</p>
+    <p class="detail">album : Different Light</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/76/75/85/7675851b-e1a4-2318-2d2e-91ea9a130846/mzaf_8478278326384671629.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="54">
+  <div class="num">55</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/92/a6/ed/92a6ed11-d9d6-e9c7-1ec4-488ab2003366/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/92/a6/ed/92a6ed11-d9d6-e9c7-1ec4-488ab2003366/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Boys (Summertime Love) — Sabrina</p>
+    <p class="detail">album : Sabrina</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0e/cd/98/0ecd989a-31a0-5156-a3ac-b9536b02a4a7/mzaf_17613179532857726801.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Billie Jean", "a": "Michael Jackson", "at": "Billie Jean", "aa": "Michael Jackson", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Take On Me", "a": "a-ha", "at": "Take On Me", "aa": "a-ha", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Africa", "a": "Toto", "at": "Africa", "aa": "Toto", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "The Final Countdown", "a": "Europe", "at": "The Final Countdown", "aa": "Europe", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Sweet Dreams (Are Made of This)", "a": "Eurythmics", "at": "Sweet Dreams (Are Made of This)", "aa": "Eurythmics", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Every Breath You Take", "a": "The Police", "at": "Every Breath You Take", "aa": "The Police", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Livin' on a Prayer", "a": "Bon Jovi", "at": "Livin' On a Prayer", "aa": "Bon Jovi", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Girls Just Want to Have Fun", "a": "Cyndi Lauper", "at": "Girls Just Want to Have Fun", "aa": "Cyndi Lauper", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Never Gonna Give You Up", "a": "Rick Astley", "at": "Never Gonna Give You Up", "aa": "Rick Astley", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Wake Me Up Before You Go-Go", "a": "Wham!", "at": "Wake Me Up Before You Go-Go", "aa": "Wham!", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Like a Prayer", "a": "Madonna", "at": "Like a Prayer", "aa": "Madonna", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Kiss", "a": "Prince", "at": "Kiss", "aa": "Prince & The Revolution", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Money for Nothing", "a": "Dire Straits", "at": "Money For Nothing", "aa": "Dire Straits", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Celebration", "a": "Kool & The Gang", "at": "Celebration", "aa": "Kool & The Gang", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "L'Aventurier", "a": "Indochine", "at": "L'aventurier", "aa": "Indochine", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Cendrillon", "a": "Téléphone", "at": "Cendrillon", "aa": "Téléphone", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "L'Aziza", "a": "Daniel Balavoine", "at": "L'Aziza", "aa": "Daniel Balavoine", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Quand la musique est bonne", "a": "Jean-Jacques Goldman", "at": "Quand la musique est bonne", "aa": "Jean-Jacques Goldman", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Alexandrie Alexandra", "a": "Claude François", "at": "Alexandrie Alexandra", "aa": "Claude François", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Voyage voyage", "a": "Desireless", "at": "Voyage voyage", "aa": "Desireless", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Joe le taxi", "a": "Vanessa Paradis", "at": "Joe Le Taxi", "aa": "Vanessa Paradis", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Marcia Baila", "a": "Les Rita Mitsouko", "at": "Marcia Baïla", "aa": "Les Rita Mitsouko", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "I Want to Break Free", "a": "Queen", "at": "I Want To Break Free", "aa": "Queen", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Born in the U.S.A.", "a": "Bruce Springsteen", "at": "Born In the U.S.A.", "aa": "Bruce Springsteen", "altT": ["Born in the USA"], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "With or Without You", "a": "U2", "at": "With or Without You", "aa": "U2", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Careless Whisper", "a": "George Michael", "at": "Careless Whisper", "aa": "George Michael", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "I'm So Excited", "a": "The Pointer Sisters", "at": "I'm So Excited", "aa": "The Pointer Sisters", "altT": [], "altA": ["Pointer Sisters"], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Il jouait du piano debout", "a": "France Gall", "at": "Il jouait du piano debout", "aa": "France Gall", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Besoin de rien, envie de toi", "a": "Peter et Sloane", "at": "Besoin de rien, envie de toi", "aa": "Peter & Sloane", "altT": [], "altA": ["Peter & Sloane", "Peter and Sloane"], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Je ne suis pas un héros", "a": "Daniel Balavoine", "at": "Je ne suis pas un héros", "aa": "Daniel Balavoine", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Nuit de folie", "a": "Début de Soirée", "at": "Nuit de folie", "aa": "Début de Soirée", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Les Démons de minuit", "a": "Images", "at": "Les démons de minuit", "aa": "Images", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Don't You (Forget About Me)", "a": "Simple Minds", "at": "Don't You (Forget About Me)", "aa": "Simple Minds", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Call Me", "a": "Blondie", "at": "Call Me (Theme From \"American Gigolo\")", "aa": "Blondie", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "I Wanna Dance with Somebody", "a": "Whitney Houston", "at": "I Wanna Dance with Somebody (Who Loves Me)", "aa": "Whitney Houston", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "What's Love Got to Do with It", "a": "Tina Turner", "at": "What's Love Got to Do with It", "aa": "Tina Turner", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Venus", "a": "Bananarama", "at": "Venus", "aa": "Bananarama", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "In the Air Tonight", "a": "Phil Collins", "at": "In the Air Tonight", "aa": "Phil Collins", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Flashdance... What a Feeling", "a": "Irene Cara", "at": "Flashdance...What a Feeling", "aa": "Irene Cara", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Brother Louie", "a": "Modern Talking", "at": "Brother Louie", "aa": "Modern Talking", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Self Control", "a": "Laura Branigan", "at": "Self Control", "aa": "Laura Branigan", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Forever Young", "a": "Alphaville", "at": "Forever Young", "aa": "Alphaville", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Tainted Love", "a": "Soft Cell", "at": "Tainted Love", "aa": "Soft Cell", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Amoureux solitaires", "a": "Lio", "at": "Amoureux solitaires", "aa": "Lio", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "T'en va pas", "a": "Elsa", "at": "T'en va pas", "aa": "Elsa", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Les Sunlights des tropiques", "a": "Gilbert Montagné", "at": "Les sunlights des tropiques", "aa": "Gilbert Montagné", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Partenaire particulier", "a": "Partenaire Particulier", "at": "Partenaire particulier", "aa": "Partenaire Particulier", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Tchiki boum", "a": "Niagara", "at": "Tchiki boum", "aa": "Niagara", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Femme que j'aime", "a": "Jean-Luc Lahaye", "at": "Femme que j'aime", "aa": "Jean-Luc Lahaye", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Elle est d'ailleurs", "a": "Pierre Bachelet", "at": "Elle est d'ailleurs", "aa": "Pierre Bachelet", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Boule de flipper", "a": "Corynne Charby", "at": "Boule de flipper", "aa": "Corynne Charby", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Thriller", "a": "Michael Jackson", "at": "Thriller", "aa": "Michael Jackson", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "You Spin Me Round (Like a Record)", "a": "Dead or Alive", "at": "You Spin Me 'Round (Like a Record)", "aa": "Dead or Alive", "altT": ["You Spin Me Round"], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Walk Like an Egyptian", "a": "The Bangles", "at": "Walk Like an Egyptian", "aa": "The Bangles", "altT": [], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}, {"t": "Boys (Summertime Love)", "a": "Sabrina", "at": "Boys (Summertime Love)", "aa": "Sabrina", "altT": ["Boys"], "altA": [], "strict": false, "sol": "", "lab": "Artiste", "langue": "en"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>

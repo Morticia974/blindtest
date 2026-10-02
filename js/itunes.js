@@ -13,7 +13,7 @@ var Itunes = (function () {
   /* En changeant ce numéro, on force tous les joueurs à réinterroger Apple :
      les morceaux mémorisés avec l'ancienne logique de choix (qui laissait
      passer des remixes) sont oubliés. */
-  var CLE_CACHE = 'bt.cache.itunes.v2';
+  var CLE_CACHE = 'bt.cache.itunes.v3';
   var DUREE_CACHE = 1000 * 60 * 60 * 24 * 30; // 30 jours pour un morceau trouvé
   var DUREE_CACHE_VIDE = 1000 * 60 * 60;      // 1 heure seulement pour un échec
   var ENTRE_APPELS = 320;                     // ms entre deux requêtes
@@ -136,6 +136,33 @@ var Itunes = (function () {
       return Match.correspond(r.artistName, vInterprete);
     });
 
+    /* Un enregistrement de l'artiste demandé bat toujours celui d'un autre.
+
+       « Creep » de Radiohead n'existe pas au catalogue français : Apple n'en a
+       que la version acoustique, signée Radiohead, et une douzaine de reprises.
+       La pénalité des versions alternatives suffisait à faire passer l'acoustique
+       derrière un quatuor à cordes, et c'est le quatuor qui jouait.
+
+       On compare largement : le crédit d'Apple contient souvent plus de monde
+       que la playlist — « Lacrim & Maître Gims » pour un morceau de Lacrim —, et
+       ces invités-là ne font pas de l'enregistrement celui de quelqu'un d'autre.
+       Rien ne bouge non plus quand Apple n'a aucun enregistrement du bon
+       artiste : mieux vaut une reprise que le silence.
+
+       La règle ne vaut que là où `a` est bien quelqu'un qui chante. Ailleurs
+       c'est le nom d'une œuvre — le film, la série, le jeu, et aussi la comédie
+       musicale, où Apple crédite le chanteur (« Céline Dion » pour un morceau
+       de « Starmania ») sans que ce soit une reprise de qui que ce soit. Dans
+       ces catégories-là, c'est `interprete` qui tranche, morceau par morceau. */
+    function duBonArtiste(r) {
+      if (!vArtiste.length) return false;
+      if (Match.correspond(r.artistName, vArtiste)) return true;
+      var ra = Match.normaliser(r.artistName || ''), pa = Match.normaliser(piste.a || '');
+      return !!(pa && ra && (ra.indexOf(pa) !== -1 || pa.indexOf(ra) !== -1));
+    }
+    var surDesGens = /artiste|interprete|chanteur|groupe/i.test(piste.labelA || 'Artiste');
+    var leBonArtiste = !piste.strict && surDesGens && candidats.some(duBonArtiste);
+
     var note = candidats.map(function (r) {
       var n = 0;
       if (Match.correspond(r.trackName, vTitre)) n += 10;
@@ -160,6 +187,11 @@ var Itunes = (function () {
 
       /* Et la reprise d'un autre interprète, quand on sait lequel on veut. */
       if (luiMeme && !Match.correspond(r.artistName, vInterprete)) n -= 25;
+
+      /* Idem, sans avoir eu à le préciser : la playlist nomme déjà l'artiste.
+         Sauf si elle demande expressément une autre version — le karaoké de
+         « Pata Pata », qu'Audrey préfère à l'enregistrement de 1967. */
+      if (leBonArtiste && !voulue && !duBonArtiste(r)) n -= 15;
 
       /* Quand plusieurs enregistrements du même titre, par le même artiste, se
          valent point pour point, rien ne les sépare : c'est l'ordre d'Apple qui
@@ -335,6 +367,9 @@ var Itunes = (function () {
     resoudre: resoudre,
     chercher: chercher,
     viderCache: viderCache,
-    habiller: habiller
+    habiller: habiller,
+    /* Exposé pour pouvoir juger le classement sans rejouer une partie : on lui
+       donne une liste de résultats Apple mise de côté, il dit lequel il garde. */
+    meilleur: meilleur
   };
 })();

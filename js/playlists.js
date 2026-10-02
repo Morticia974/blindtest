@@ -1606,7 +1606,10 @@ var Playlists = (function () {
       pistes: [
         { t: "Le Temps des cathédrales", a: "Notre-Dame de Paris", q: "Le Temps des cathédrales Bruno Pelletier" },
         { t: "Belle", a: "Notre-Dame de Paris", q: "Belle Garou Notre-Dame de Paris" },
-        { t: "Vivre", a: "Notre-Dame de Paris", q: "Vivre Julie Zenatti Notre-Dame de Paris" },
+        /* Apple ne rend rien du tout sur « Vivre Julie Zenatti » : c'est Noa qui
+           chante Esmeralda sur l'album studio, le seul où le morceau existe. */
+        { t: "Vivre", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Vivre Studio",
+          disque: "Studio" },
         { t: "Le Blues du businessman", a: "Starmania", q: "Le Blues du businessman Starmania" },
         { t: "SOS d'un terrien en détresse", a: "Starmania", q: "SOS d'un terrien en détresse Daniel Balavoine" },
         { t: "Le Monde est stone", a: "Starmania", q: "Le Monde est stone Starmania" },
@@ -1855,6 +1858,10 @@ var Playlists = (function () {
            et les trois noms sont acceptés. */
         { t: "Li Tourner", a: "Alain Ramanisum & Willy William",
           q: "DJ Assad Li Tourner 2013 Single",
+          /* C'est bien le disque de DJ Assad qu'on veut, les deux autres y sont
+             invités. Sans le dire, la règle qui préfère l'artiste de la playlist
+             à tout autre irait chercher un enregistrement sans DJ Assad. */
+          interprete: "DJ Assad",
           /* Le titre exact d’Apple, invités et mention compris. `normaliser` garde
              le « (feat. …) » : sans cette forme, aucun des sept enregistrements ne
              décrochait la correspondance de titre, ils se valaient tous, et c’est

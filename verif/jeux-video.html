@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jeux vidéo</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🎮 Jeux vidéo</h1>
+<p class="sous">63 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/21/9f/d3219f8b-c2ff-2498-0e87-eb57873b6eca/841787181533.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/21/9f/d3219f8b-c2ff-2498-0e87-eb57873b6eca/841787181533.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Undertale</p>
+    <p class="detail">musique : Megalovania · album : Undertale Soundtrack</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/87/f7/7b87f7fd-8717-dd5f-ecc4-740af6750e55/mzaf_18160071326637017.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7c/04/bf/7c04bfc6-be8c-661a-3306-b97fc2c4999b/859705593825.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/7c/04/bf/7c04bfc6-be8c-661a-3306-b97fc2c4999b/859705593825.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Minecraft</p>
+    <p class="detail">musique : Sweden · album : Minecraft - Volume Alpha</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/af/31/01/af310107-0572-ec8a-0e8b-d99035407230/mzaf_13152283240780583171.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/2e/3b/01/2e3b01ad-cb3f-9768-8ed5-6409beb08b20/3663729217417_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/2e/3b/01/2e3b01ad-cb3f-9768-8ed5-6409beb08b20/3663729217417_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Assassin's Creed</p>
+    <p class="detail">musique : Ezio's Family · album : Assassin's Creed 2 (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/94/37/f3/9437f37f-fa9f-696c-974b-d988cc5ce17c/mzaf_7338972455251353603.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/06/ea/bb06eaa5-9500-d663-a31c-1a8c19f68f19/093155117877_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/06/ea/bb06eaa5-9500-d663-a31c-1a8c19f68f19/093155117877_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Skyrim</p>
+    <p class="detail">musique : Dragonborn · album : The Elder Scrolls V: Skyrim (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e1/f6/74/e1f6743e-3def-9555-70c6-669174974dc8/mzaf_15684803984770121721.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/df/84/e3/df84e35c-04f3-f3d7-b0b1-b46b74756161/dj.kilgdkaf.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/df/84/e3/df84e35c-04f3-f3d7-b0b1-b46b74756161/dj.kilgdkaf.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Civilization IV</p>
+    <p class="detail">musique : Baba Yetu · album : Baba Yetu - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/fe/c8/a9/fec8a999-1c21-f554-c4da-c1d36c2ee601/mzaf_4991267960601986156.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f1/70/c4/f170c4be-3623-0afe-444b-75a27bfbf9aa/mzi.gmtblhsy.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f1/70/c4/f170c4be-3623-0afe-444b-75a27bfbf9aa/mzi.gmtblhsy.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Portal</p>
+    <p class="detail">musique : Still Alive · album : The Orange Box (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f1/1f/62/f11f6274-a8a4-cbae-24a6-6ac656973033/mzaf_16715459062748520529.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/14/c9/3e/14c93ed5-f552-90b5-9cc5-0d1372c005a1/dj.pzwbuhuv.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/14/c9/3e/14c93ed5-f552-90b5-9cc5-0d1372c005a1/dj.pzwbuhuv.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Final Fantasy VII</p>
+    <p class="detail">musique : One-Winged Angel · album : FINAL FANTASY VII (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d5/82/65/d5826518-c08f-ac1c-a047-4b71af0f20e5/mzaf_2155416402330121882.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/91/fe/ad/91fead15-6e40-5de1-06c1-7acfa34b5792/The_Legend_of_Zelda_-_Epic_Collection.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/91/fe/ad/91fead15-6e40-5de1-06c1-7acfa34b5792/The_Legend_of_Zelda_-_Epic_Collection.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Legend of Zelda</p>
+    <p class="detail">musique : Main Theme · album : La meilleure musique de jeu vidéo</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/c0/0a/0c/c00a0c82-e710-20b4-2406-99d0b8cdafe6/mzaf_2135592547232476412.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/97/ed/d5/97edd54e-3a43-2fc7-835e-fe46a7242260/dj.bmmpddok.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/97/ed/d5/97edd54e-3a43-2fc7-835e-fe46a7242260/dj.bmmpddok.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Legend of Zelda: Ocarina of Time</p>
+    <p class="detail">musique : Song of Storms · album : Zelda: Link's Ocarina Orchestrated</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/52/97/f0/5297f0c8-90ef-ffe5-08d6-0f8fc8753c32/mzaf_6957613020052666767.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/c3/6a/d4/mzi.rrlozacu.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/c3/6a/d4/mzi.rrlozacu.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Super Mario Bros.</p>
+    <p class="detail">musique : Super Mario Bros. Main Theme · album : Top 10 Nes Soundtracks</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/14/62/f5/1462f567-4833-135e-5802-3ed94c625a19/mzaf_1552312185125947599.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/75/6f/9e/756f9ee4-3c26-fe99-fbe3-540abc365a3e/669311200020_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/75/6f/9e/756f9ee4-3c26-fe99-fbe3-540abc365a3e/669311200020_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Halo</p>
+    <p class="detail">musique : Halo · album : Halo: Combat Evolved (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/91/be/ce/91bece60-0ac9-0cf0-7bd4-17a7392f641b/mzaf_2204161395312214910.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f3/55/f8/f355f89a-1e55-bb46-1bf9-0785196d3ce6/093155170599_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f3/55/f8/f355f89a-1e55-bb46-1bf9-0785196d3ce6/093155170599_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Doom</p>
+    <p class="detail">musique : Rip &amp; Tear · album : DOOM (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b7/58/5f/b7585fe7-1e9a-7529-fcaa-f5d751405c45/mzaf_1655981182894286296.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6d/dc/ff/6ddcff60-e6b8-a8e2-d048-0557611cf330/0000411611116.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6d/dc/ff/6ddcff60-e6b8-a8e2-d048-0557611cf330/0000411611116.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Witcher 3</p>
+    <p class="detail">musique : Geralt of Rivia · album : The Witcher 3: Wild Hunt (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/52/2f/35/522f358c-8ef5-b0bf-aa0f-dd5c20e2dc1b/mzaf_1209768465440201593.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/cc/f9/32ccf935-d14c-c7f3-d881-b89678294bac/5902659802019.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/cc/f9/32ccf935-d14c-c7f3-d881-b89678294bac/5902659802019.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Cyberpunk 2077</p>
+    <p class="detail">musique : Chippin' In · album : Chippin' In (feat. Refused) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e8/91/e3/e891e306-7e9c-f694-1cb3-c605c0e8631d/mzaf_15034190138626129668.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/7f/2a/98/mzi.ntgxcgkf.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/7f/2a/98/mzi.ntgxcgkf.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Bastion</p>
+    <p class="detail">musique : Build That Wall · album : Bastion (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c4/74/10/c4741038-8f58-9e1f-7b93-683eb1795115/mzaf_9489469563312012225.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/17/ec/31/17ec3107-4f70-b7be-c19c-aca2ef2573d8/8720996784310.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/17/ec/31/17ec3107-4f70-b7be-c19c-aca2ef2573d8/8720996784310.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">GTA San Andreas</p>
+    <p class="detail">musique : Official Theme Song · album : Grand Theft Auto: San Andreas (Official Theme Song)- Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e1/d2/9f/e1d29fa9-a174-6cd7-9dae-91218a84689d/mzaf_1707805269116727507.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/64/49/17/64491716-fa3a-b5e3-735e-e3a824bd6a7f/2284.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/64/49/17/64491716-fa3a-b5e3-735e-e3a824bd6a7f/2284.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Elden Ring</p>
+    <p class="detail">musique : Elden Ring · album : Ashes &amp; Grace: Music from the Soulsborne Worlds</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8a/63/9e/8a639e30-42de-7c01-02b2-2d3ba1bc7d5f/mzaf_4704845892279927850.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a9/d3/bc/a9d3bca2-c250-5643-bee7-533e435da97f/dj.giylrpjz.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a9/d3/bc/a9d3bca2-c250-5643-bee7-533e435da97f/dj.giylrpjz.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Red Dead Redemption 2</p>
+    <p class="detail">musique : Unshaken · album : The Music of Red Dead Redemption 2 (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/65/e5/f165e5af-c8d9-9167-4ea6-1a0711486f74/mzaf_4932810315348386611.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/96/d7/4696d7a0-0d25-0d1d-bdc2-be67475a5316/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/96/d7/4696d7a0-0d25-0d1d-bdc2-be67475a5316/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Animal Crossing</p>
+    <p class="detail">musique : Welcome Horizons · album : Symphonic Horizons: Animal Crossing</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2f/22/9f/2f229f48-0c04-fb07-5b7a-2f8d9fe07da8/mzaf_4480916256228417172.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/2b/ee/da2bee0c-f94d-58be-6ef5-b609cfd5057d/The-Sims_3000_1.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/2b/ee/da2bee0c-f94d-58be-6ef5-b609cfd5057d/The-Sims_3000_1.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Sims</p>
+    <p class="detail">musique : Buy Mode · album : Games in Concert, Vol. 1 - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/0b/a1/62/0ba16220-0b4d-2287-8f44-d2be73ee0c46/mzaf_6966657483811960785.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c9/bb/00/c9bb0005-f668-43b1-2a08-bcdcc00723b2/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c9/bb/00/c9bb0005-f668-43b1-2a08-bcdcc00723b2/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Pokémon</p>
+    <p class="detail">musique : Pokemon Red/Blue (Battle Theme) · album : Pxls</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/f3/b8/bf/f3b8bf16-86e2-5c5a-60f4-0f02b26d91b8/mzaf_3917146295070726012.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/2c/d0/b4/2cd0b4ee-8509-f2f1-5433-5d3583943bd4/8BIT0129.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/2c/d0/b4/2cd0b4ee-8509-f2f1-5433-5d3583943bd4/8BIT0129.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fortnite</p>
+    <p class="detail">musique : Fortnite (Battle Royale Theme) · album : Fortnite (Battle Royale Theme) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/5e/fa/ac/5efaaccd-9bcd-07e7-9ff2-f0cf379bd4db/mzaf_9433744618956902656.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/44/34/80/44348023-4f58-9b3a-5c86-816f898e5c8e/020626605984_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/44/34/80/44348023-4f58-9b3a-5c86-816f898e5c8e/020626605984_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">World of Warcraft</p>
+    <p class="detail">musique : Legends of Azeroth · album : World of Warcraft Original Soundtrack</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ff/bc/a1/ffbca115-f07b-c1dd-fa34-2d522b870524/mzaf_555006609487410449.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/93/f8/8a/93f88a32-342c-b650-ef1c-ebc1c9f804c3/00198704643309_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/93/f8/8a/93f88a32-342c-b650-ef1c-ebc1c9f804c3/00198704643309_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">League of Legends</p>
+    <p class="detail">musique : POP/STARS · album : POP/STARS (feat. Jaira Burns &amp; League of Legends Music) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/6d/da/be6dda93-0fc9-9545-38a7-04bfd3a4c67d/mzaf_12674869634233540340.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/57/50/bb5750a0-e786-c10b-1901-908fbc2d8f25/8721215081586.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/57/50/bb5750a0-e786-c10b-1901-908fbc2d8f25/8721215081586.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Clair Obscur: Expedition 33</p>
+    <p class="detail">musique : Lumière · album : Clair Obscur: Expedition 33 (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4d/38/0e/4d380ef6-1b13-d931-fc7f-3f260b6b7e79/mzaf_8647643450660213230.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8d/cb/0e/8dcb0ec7-d82d-7bc9-4f86-05afea2c6a89/889326468264_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8d/cb/0e/8dcb0ec7-d82d-7bc9-4f86-05afea2c6a89/889326468264_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fable</p>
+    <p class="detail">musique : Title Theme · album : Fable Legends: The Rosewood (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/3f/f0/da/3ff0da4f-7fd6-4cd3-d746-34f6d0287e3e/mzaf_1734651179017672751.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/95/7a/8b/957a8b8b-77a2-fa17-7d34-0d4ffef0151f/886443853973.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/95/7a/8b/957a8b8b-77a2-fa17-7d34-0d4ffef0151f/886443853973.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Last of Us</p>
+    <p class="detail">musique : The Last of Us · album : The Last of Us (Video Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/18/bb/7a/18bb7a0a-10bd-13d7-8d71-78a1c407a5f5/mzaf_7015665378801919271.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7e/8d/aa/7e8daaab-32e9-b6da-2d14-12a26c6270fa/886446960623.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7e/8d/aa/7e8daaab-32e9-b6da-2d14-12a26c6270fa/886446960623.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">God of War</p>
+    <p class="detail">musique : God of War · album : God of War (PlayStation Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/68/e9/5d/68e95d05-9864-dbcf-d0ad-65f098d8627b/mzaf_4765404026437475808.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6d/73/36/6d7336f4-a1e6-aef7-a4d8-b989d30d2b51/047875863026_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/6d/73/36/6d7336f4-a1e6-aef7-a4d8-b989d30d2b51/047875863026_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Diablo</p>
+    <p class="detail">musique : Tristram · album : The Music of Diablo: 1996-2011</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b4/48/7d/b4487de4-2e8d-f73c-9689-ef10bcbb21a7/mzaf_6374804934266016585.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/97/92/ec/9792ec57-ea83-38fa-6538-83d6dfb23d51/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/97/92/ec/9792ec57-ea83-38fa-6538-83d6dfb23d51/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Counter-Strike</p>
+    <p class="detail">musique : Counter-Strike: Global Offensive Main Theme · album : Counter-Strike: Global Offensive Main Theme - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/f7/08/9b/f7089b69-f8d2-f322-af50-1dd6f2bfec2d/mzaf_4730656465618821498.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/51/2c/99/512c994b-80c8-86d2-0476-41632752009b/192650279841_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/51/2c/99/512c994b-80c8-86d2-0476-41632752009b/192650279841_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rocket League <span class="doute">album douteux</span></p>
+    <p class="detail">musique : Rocket League (2015) - Theme · album : The Best Video Game Music, Vol. 2</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7e/a7/bc/7ea7bc5d-c168-0028-319f-0f119bec1738/mzaf_3995290817041489881.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/af/f1/59/aff15952-a80c-575e-b4fc-c9381713aa41/7fbd9bac-2357-4ea9-84ba-35f95cc9bda8.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/af/f1/59/aff15952-a80c-575e-b4fc-c9381713aa41/7fbd9bac-2357-4ea9-84ba-35f95cc9bda8.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mario Kart</p>
+    <p class="detail">musique : Rainbow Road · album : Rainbow Road (From &quot;Mario Kart 64&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/f9/c6/de/f9c6de54-54c2-6eb8-201b-0ebead0f4f57/mzaf_2187185831318044525.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/63/5d/dc/635ddc0d-9618-105e-b47f-728e07e8ffa3/093155171015_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/63/5d/dc/635ddc0d-9618-105e-b47f-728e07e8ffa3/093155171015_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fallout</p>
+    <p class="detail">musique : Fallout 4 Main Theme · album : Fallout 4 (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d4/c6/09/d4c609a2-d472-5836-2f4c-455113b880f5/mzaf_17676462190474509108.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/59/6e/8a/596e8a23-7a27-39e5-76a4-c4ecbdcb1be5/PA00166469_0_205624_jacket.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/59/6e/8a/596e8a23-7a27-39e5-76a4-c4ecbdcb1be5/PA00166469_0_205624_jacket.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dark Souls</p>
+    <p class="detail">musique : Gwyn, Lord of Cinder · album : Dark Souls (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/f2/59/67f25931-616e-f90c-a4be-c3f4802008a3/mzaf_8339142820184459335.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/be/e1/51/mzi.fuiutcre.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/be/e1/51/mzi.fuiutcre.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Call of Duty</p>
+    <p class="detail">musique : Call of Duty Modern Warfare 2: Theme · album : La meilleure musique de jeu vidéo</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/23/3a/48/233a4870-c5bc-f174-00c5-245c068e2d9b/mzaf_16861838707972925114.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/f4/ea/f4f4ea18-0582-ca91-7315-99f136df0da2/PA00153385_0_192500_jacket.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f4/f4/ea/f4f4ea18-0582-ca91-7315-99f136df0da2/PA00153385_0_192500_jacket.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Pac-Man</p>
+    <p class="detail">musique : Pac Man Theme · album : Video Games Themes Collection</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4e/b4/ce/4eb4ce1a-8543-2fb7-7677-2c410c33d8e7/mzaf_6343167549364132396.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/40/f8/5c/40f85c09-a8c3-cd5d-5fa3-54048cc3985e/859737336117_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/40/f8/5c/40f85c09-a8c3-cd5d-5fa3-54048cc3985e/859737336117_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Tetris</p>
+    <p class="detail">musique : Tetris Theme · album : Tetris Theme: Korobeiniki (The Retro Game Collection) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/99/a4/f0/99a4f029-c5ff-45e3-ad6f-c469fb22f9ce/mzaf_5661054000100418544.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1b/03/01/1b030104-b380-dd69-35d2-f12098e3ceac/008031_4988602169683.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1b/03/01/1b030104-b380-dd69-35d2-f12098e3ceac/008031_4988602169683.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Metal Gear Solid 3</p>
+    <p class="detail">musique : Snake Eater · album : PACHISLOT METAL GEAR SOLID SNAKE EATER ORIGINAL SOUNDTRACK</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/61/ae/4e/61ae4e5e-8522-6698-5a69-e4ae12ae8c69/mzaf_11568807277268131807.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/50/33/a8/5033a864-661b-5ad8-2a2c-246a4c10a1c9/mzi.footaats.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/50/33/a8/5033a864-661b-5ad8-2a2c-246a4c10a1c9/mzi.footaats.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Silent Hill 2</p>
+    <p class="detail">musique : Promise (Reprise) · album : Silent Hill 2 (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d0/b2/24/d0b22422-b061-9b97-cef0-765124095ff5/mzaf_11655234648540919730.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="39">
+  <div class="num">40</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/18/ba/6f/18ba6f88-d406-ada1-4822-dee78a75cf68/00724383962952.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/18/ba/6f/18ba6f88-d406-ada1-4822-dee78a75cf68/00724383962952.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mortal Kombat</p>
+    <p class="detail">musique : Techno Syndrome · album : Mortal Kombat - The Album</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ef/4f/eb/ef4feb42-d51a-ff8d-87d4-d375895f1253/mzaf_18118633569990224833.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="40">
+  <div class="num">41</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/34/a2/fe/34a2fe17-0c27-5db5-bee4-645e987fb43d/21UMGIM14618.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/34/a2/fe/34a2fe17-0c27-5db5-bee4-645e987fb43d/21UMGIM14618.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sonic the Hedgehog</p>
+    <p class="detail">musique : Green Hill Zone · album : Sonic The Hedgehog 1&amp;2 Soundtrack</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bc/29/ec/bc29ec63-b15f-fda2-09a8-06aef81f0a79/mzaf_13711292446394599059.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="41">
+  <div class="num">42</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6a/a4/49/6aa4493d-0d7a-1424-abca-365a1654bbd9/889211340255.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6a/a4/49/6aa4493d-0d7a-1424-abca-365a1654bbd9/889211340255.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Castlevania</p>
+    <p class="detail">musique : Vampire Killer · album : Castlevania</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/05/07/26/05072679-4063-013b-baba-06d1cf2e0dd4/mzaf_15717343779337090306.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="42">
+  <div class="num">43</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5f/64/20/5f6420ec-3b07-01b1-3939-66c3b98127e2/mzi.kzyvfskz.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5f/64/20/5f6420ec-3b07-01b1-3939-66c3b98127e2/mzi.kzyvfskz.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Chrono Trigger</p>
+    <p class="detail">musique : Corridors of Time · album : Chrono Trigger (Original Soundtrack) [DS Version]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5e/ba/3e/5eba3e61-7cbe-57e8-8055-e5b86c2358db/mzaf_3471919286441114681.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="43">
+  <div class="num">44</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/02/e3/d002e325-299d-f87f-a737-7d7ad3c628ae/840095520225.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/02/e3/d002e325-299d-f87f-a737-7d7ad3c628ae/840095520225.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Hollow Knight</p>
+    <p class="detail">musique : Greenpath · album : Hollow Knight (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/bd/80/94/bd8094ec-c1a9-d2e2-cf8f-2f837668a5e7/mzaf_14110735906055863003.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="44">
+  <div class="num">45</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/2e/17/09/2e17091a-9594-7c7d-ab3b-29021e40ff3b/859718322498_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/2e/17/09/2e17091a-9594-7c7d-ab3b-29021e40ff3b/859718322498_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Stardew Valley</p>
+    <p class="detail">musique : Stardew Valley Overture · album : Stardew Valley (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/71/4d/3b/714d3bc0-d9a4-de54-2140-5e5e7dd73161/mzaf_4511795640020057180.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="45">
+  <div class="num">46</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c3/78/cd/c378cd45-c171-73ed-1a66-cf7d93596df6/00602567242055.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c3/78/cd/c378cd45-c171-73ed-1a66-cf7d93596df6/00602567242055.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Kingdom Hearts</p>
+    <p class="detail">musique : Simple and Clean · album : Colors - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/8c/b9/f1/8cb9f186-7e4e-6218-40a9-0010b8565523/mzaf_5942206887719680565.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="46">
+  <div class="num">47</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5c/19/96/5c199642-d761-d90d-74a9-0c0d2b367e8f/72.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/5c/19/96/5c199642-d761-d90d-74a9-0c0d2b367e8f/72.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Monster Hunter</p>
+    <p class="detail">musique : Proof of a Hero · album : MONSTER HUNTER: WORLD ORIGINAL SOUNDTRACK</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3e/b9/d2/3eb9d2fa-1d48-87af-0ba6-1ecb180778da/mzaf_1626431431328251426.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="47">
+  <div class="num">48</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/43/71/be/4371be05-b372-9ed6-516c-4058f3a5043e/Command_And_Conquer_Red_Alert_3_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/43/71/be/4371be05-b372-9ed6-516c-4058f3a5043e/Command_And_Conquer_Red_Alert_3_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Command &amp; Conquer</p>
+    <p class="detail">musique : Hell March 3 · album : Command &amp; Conquer: Red Alert 3 (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d6/cc/19/d6cc195b-b46a-1faf-2732-d0298fa531d4/mzaf_1800473042600130454.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="48">
+  <div class="num">49</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/da/ce/e1dace1c-4f6f-7936-499b-e545e1fd5b0b/859716802596.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/da/ce/e1dace1c-4f6f-7936-499b-e545e1fd5b0b/859716802596.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Uncharted</p>
+    <p class="detail">musique : Nate's Theme · album : Uncharted: Drake's Fortune (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/94/8d/ce/948dce49-1fc0-df0b-15c7-8c0000443f48/mzaf_10066681919446816566.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="49">
+  <div class="num">50</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a2/d6/c8/a2d6c8b1-7d0c-1219-c389-b565cbe1b62a/196589980908.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a2/d6/c8/a2d6c8b1-7d0c-1219-c389-b565cbe1b62a/196589980908.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Horizon Zero Dawn</p>
+    <p class="detail">musique : Aloy's Theme · album : Horizon Zero Dawn (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5d/0a/de/5d0ade1f-acd2-5942-73c5-c7ab4c377f5b/mzaf_2231709926919806038.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="50">
+  <div class="num">51</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7e/46/5a/7e465a01-cbca-57c6-2431-bcfd7310fddb/5054526021419_1.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7e/46/5a/7e465a01-cbca-57c6-2431-bcfd7310fddb/5054526021419_1.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Angry Birds</p>
+    <p class="detail">musique : Angry Birds Theme · album : Angry Birds (Original Game Soundtrack) [Extended Edition] - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/43/4d/6f/434d6f2f-98ef-89f9-a1a0-fd94fd5d7e20/mzaf_4360314660914015329.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="51">
+  <div class="num">52</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/9f/c7/be9fc796-626e-787a-8eb5-9fbec2aa533a/191515550941_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/9f/c7/be9fc796-626e-787a-8eb5-9fbec2aa533a/191515550941_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Crash Bandicoot</p>
+    <p class="detail">musique : Crash Bandicoot Main Theme · album : Music from Crash Bandicoot N. Sane Trilogy (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/99/32/81/99328113-a363-02b2-1499-3699e7dd1d9e/mzaf_13938216623220950542.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="52">
+  <div class="num">53</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/77/c0/d3/77c0d36b-2a78-8122-90a4-03315f2e1ca4/794043213519.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/77/c0/d3/77c0d36b-2a78-8122-90a4-03315f2e1ca4/794043213519.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Hogwarts Legacy</p>
+    <p class="detail">musique : Overture to the Unwritten · album : Hogwarts Legacy (Original Video Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/45/ad/c6/45adc6f6-f41a-3390-ce60-cc650a0765af/mzaf_6919470589618325842.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="53">
+  <div class="num">54</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/62/84/87/6284870f-f6a7-3cb2-a9f3-b1f86b9aed84/battlefield-v-album_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/62/84/87/6284870f-f6a7-3cb2-a9f3-b1f86b9aed84/battlefield-v-album_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Battlefield V</p>
+    <p class="detail">musique : Battlefield V Legacy Theme · album : Battlefield V (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a5/69/1b/a5691bdf-f649-69b5-f9d8-83b1a921086a/mzaf_14727615520336585365.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="54">
+  <div class="num">55</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/62/f9/01/62f901a6-00b9-d267-4ac1-3a2143ca38f2/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/62/f9/01/62f901a6-00b9-d267-4ac1-3a2143ca38f2/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Wii Sports</p>
+    <p class="detail">musique : Wii Sports · album : Wii Sports - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a1/c2/aa/a1c2aaac-65eb-1104-2707-161af31ce0f6/mzaf_9633771762648232535.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="55">
+  <div class="num">56</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3d/25/25/3d2525f7-2b5f-beca-b3fb-c3a0b2220aa5/5053760148647_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3d/25/25/3d2525f7-2b5f-beca-b3fb-c3a0b2220aa5/5053760148647_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Oblivion</p>
+    <p class="detail">musique : Reign of the Septims · album : The Elder Scrolls IV: Oblivion (Original Game Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/98/30/f2/9830f254-241d-cb6a-849d-7a7945947567/mzaf_7855753832033487124.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="56">
+  <div class="num">57</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/0b/f2/57/0bf25797-940c-45a6-80d3-dff53722a7a3/3f641f04-c045-4453-830f-7e63a7bb9ffd.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/0b/f2/57/0bf25797-940c-45a6-80d3-dff53722a7a3/3f641f04-c045-4453-830f-7e63a7bb9ffd.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Kirby</p>
+    <p class="detail">musique : Green Greens · album : Green Greens (From &quot;Kirby's Dream Land&quot;) - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d8/42/1e/d8421e2d-9ab9-2f4f-b5ab-e57cdbdee0b4/mzaf_15865603244587108959.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="57">
+  <div class="num">58</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/68/c2/a8/68c2a8b3-7e94-e44c-3ecc-18788311f969/dj.bcvznqkk.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/68/c2/a8/68c2a8b3-7e94-e44c-3ecc-18788311f969/dj.bcvznqkk.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Final Fantasy X</p>
+    <p class="detail">musique : To Zanarkand · album : FINAL FANTASY X (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/78/7f/9e/787f9e25-3a2d-f939-f9ce-830c24e22944/mzaf_3361348916679489518.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="58">
+  <div class="num">59</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c9/e8/bd/c9e8bddd-94da-03ef-93a3-6b6b18029891/047875730779_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c9/e8/bd/c9e8bddd-94da-03ef-93a3-6b6b18029891/047875730779_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Overwatch</p>
+    <p class="detail">musique : Overwatch Victory Theme · album : Video Game Covers, Vol. 3</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/2e/c8/18/2ec818bd-dab9-9e47-d584-02270200a826/mzaf_967601659087913456.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="59">
+  <div class="num">60</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/16/cc/cc/16ccccd0-47b0-9c23-499d-f4c570cc8f41/apex-legends_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/16/cc/cc/16ccccd0-47b0-9c23-499d-f4c570cc8f41/apex-legends_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Apex Legends <span class="doute">album douteux</span></p>
+    <p class="detail">musique : Apex Legends: Main Theme · album : Apex Legends: Music From the Outlands, Vol. 1 (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/10/98/e3/1098e339-067f-edd5-9aa6-bc13927fcc4b/mzaf_5675907948504723686.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="60">
+  <div class="num">61</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/16/69/ee/1669ee8f-d722-2cbb-8a4c-3dfc2251be62/4E4nK.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/16/69/ee/1669ee8f-d722-2cbb-8a4c-3dfc2251be62/4E4nK.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Luigi's Mansion</p>
+    <p class="detail">musique : Luigi's Mansion Theme · album : Video Games Unplugged™</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/6b/11/0d/6b110d68-0db5-bc62-29ee-5ae9963108c6/mzaf_2203110163937093646.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="61">
+  <div class="num">62</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/35/b7/ce35b761-7718-7f7d-ede7-dfa6afcf5461/191515626868_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/35/b7/ce35b761-7718-7f7d-ede7-dfa6afcf5461/191515626868_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Age of Empires</p>
+    <p class="detail">musique : Main Theme · album : Age of Empires Definitive Edition (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/7f/51/f17f516f-5de1-5789-9f2b-39528d337dea/mzaf_5866723926734444872.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="62">
+  <div class="num">63</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c0/04/09/c00409fd-96b3-6819-be08-86e97d35ed85/00198704669651_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c0/04/09/c00409fd-96b3-6819-be08-86e97d35ed85/00198704669651_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">League of Legends</p>
+    <p class="detail">musique : Legends Never Die · album : Legends Never Die - Single</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/4a/67/7b/4a677b66-1919-97fe-cd0b-234263157400/mzaf_3999730432051408385.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Megalovania", "a": "Undertale", "at": "Megalovania", "aa": "Toby Fox", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Sweden", "a": "Minecraft", "at": "Sweden", "aa": "C418", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Ezio's Family", "a": "Assassin's Creed", "at": "Ezio's Family", "aa": "Jesper Kyd", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Dragonborn", "a": "Skyrim", "at": "Dragonborn", "aa": "Jeremy Soule", "altT": [], "altA": ["The Elder Scrolls"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Baba Yetu", "a": "Civilization IV", "at": "Baba Yetu", "aa": "BYU Men's Chorus, Alex Boyé & BYU Philharmonic Orchestra", "altT": [], "altA": ["Civilization"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Still Alive", "a": "Portal", "at": "Still Alive", "aa": "GLaDOS & Jonathan Coulton", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "One-Winged Angel", "a": "Final Fantasy VII", "at": "One-Winged Angel", "aa": "Nobuo Uematsu", "altT": [], "altA": ["Final Fantasy"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Main Theme", "a": "The Legend of Zelda", "at": "Legend of Zelda: Suite", "aa": "Orchestre Philharmonique de Londres & Andrew Skeet", "altT": ["Thème principal", "Thème de Zelda", "Legend of Zelda: Suite"], "altA": ["Zelda"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Song of Storms", "a": "The Legend of Zelda: Ocarina of Time", "at": "Song of Storms", "aa": "The Marcus Hedges Trend Orchestra", "altT": [], "altA": ["Zelda", "Ocarina of Time"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Super Mario Bros. Main Theme", "a": "Super Mario Bros.", "at": "Super Mario Bros. Main Theme", "aa": "Koji Kondo", "altT": ["Thème principal", "Super Mario Bros Theme", "Ground Theme"], "altA": ["Mario", "Super Mario"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Halo", "a": "Halo", "at": "Halo", "aa": "Martin O'Donnell & Michael Salvatori", "altT": ["Halo Theme"], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Rip & Tear", "a": "Doom", "at": "Rip & Tear", "aa": "Mick Gordon", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Geralt of Rivia", "a": "The Witcher 3", "at": "Geralt Of Rivia", "aa": "Marcin Przybyłowicz", "altT": [], "altA": ["The Witcher"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Chippin' In", "a": "Cyberpunk 2077", "at": "Chippin' In (feat. Refused)", "aa": "SAMURAI", "altT": [], "altA": ["Cyberpunk"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Build That Wall", "a": "Bastion", "at": "Build That Wall (Zia's Theme)", "aa": "Darren Korb", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Official Theme Song", "a": "GTA San Andreas", "at": "Grand Theft Auto: San Andreas (Official Theme Song)", "aa": "Michael Hunter", "altT": [], "altA": ["GTA", "Grand Theft Auto", "San Andreas", "Grand Theft Auto San Andreas"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Elden Ring", "a": "Elden Ring", "at": "Elden Ring (From \"Elden Ring\")", "aa": "London Music Works & Antonin ROUX", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Unshaken", "a": "Red Dead Redemption 2", "at": "Unshaken", "aa": "D'Angelo", "altT": [], "altA": ["Red Dead Redemption", "Red Dead"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Welcome Horizons", "a": "Animal Crossing", "at": "Welcome Horizons (From \"Animal Crossing\")", "aa": "Kylydian", "altT": ["Animal Crossing Main Theme"], "altA": ["Animal Crossing New Horizons"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Buy Mode", "a": "Les Sims", "at": "Buy Mode (From \"the Sims\")", "aa": "Power Up Orchestra", "altT": [], "altA": ["The Sims", "Sims"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Pokemon Red/Blue (Battle Theme)", "a": "Pokémon", "at": "Pokemon Red/Blue (Battle Theme)", "aa": "Pxls", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Fortnite (Battle Royale Theme)", "a": "Fortnite", "at": "Fortnite (Battle Royale Theme)", "aa": "Arcade Player", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Legends of Azeroth", "a": "World of Warcraft", "at": "Legends of Azeroth (Main Title)", "aa": "Jason Hayes & Multi-interprètes", "altT": [], "altA": ["WoW", "Warcraft"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "POP/STARS", "a": "League of Legends", "at": "POP/STARS (feat. Jaira Burns & League of Legends Music)", "aa": "K/DA, Madison Beer & i-dle", "altT": [], "altA": ["LoL", "League"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Lumière", "a": "Clair Obscur: Expedition 33", "at": "Lumière", "aa": "Lorien Testard & Alice Duport-Percier", "altT": [], "altA": ["Expedition 33", "Clair Obscur"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Title Theme", "a": "Fable", "at": "Title Theme", "aa": "Russell Shaw", "altT": [], "altA": ["Fable Legends"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "The Last of Us", "a": "The Last of Us", "at": "The Last of Us", "aa": "Gustavo Santaolalla", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "God of War", "a": "God of War", "at": "God of War", "aa": "Bear McCreary", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Tristram", "a": "Diablo", "at": "Tristram", "aa": "Matt Uelmen", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Counter-Strike: Global Offensive Main Theme", "a": "Counter-Strike", "at": "Counter-Strike: Global Offensive Main Theme", "aa": "XG Stephen", "altT": [], "altA": ["CS", "CS GO", "Counter Strike Global Offensive"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Rocket League (2015) - Theme", "a": "Rocket League", "at": "Rocket League (2015) - Theme", "aa": "Geek Music", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Rainbow Road", "a": "Mario Kart", "at": "Rainbow Road (From \"Mario Kart 64\")", "aa": "Qumu", "altT": [], "altA": ["Mario Kart 64"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Fallout 4 Main Theme", "a": "Fallout", "at": "Fallout 4 Main Theme", "aa": "Inon Zur", "altT": [], "altA": ["Fallout 4"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Gwyn, Lord of Cinder", "a": "Dark Souls", "at": "Gwyn, Lord of Cinder", "aa": "Motoi Sakuraba", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Call of Duty Modern Warfare 2: Theme", "a": "Call of Duty", "at": "Call of Duty Modern Warfare 2: Theme", "aa": "Orchestre Philharmonique de Londres & Andrew Skeet", "altT": [], "altA": ["COD", "Modern Warfare"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Pac Man Theme", "a": "Pac-Man", "at": "Pac Man Theme", "aa": "Theme Mania", "altT": [], "altA": ["Pacman"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Tetris Theme", "a": "Tetris", "at": "Tetris Theme (8Bit Version)", "aa": "La Casa de Ollivander", "altT": ["Korobeiniki", "Tetris Theme (Korobeiniki)"], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Snake Eater", "a": "Metal Gear Solid 3", "at": "Snake Eater", "aa": "Cynthia Harrell", "altT": [], "altA": ["Metal Gear Solid"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Promise (Reprise)", "a": "Silent Hill 2", "at": "Promise (Reprise)", "aa": "Akira Yamaoka", "altT": ["Promise"], "altA": ["Silent Hill"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Techno Syndrome", "a": "Mortal Kombat", "at": "Techno Syndrome (Mortal Kombat)", "aa": "The Immortals", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Green Hill Zone", "a": "Sonic the Hedgehog", "at": "Sth1 Green Hill Zone (Mega Drive Version)", "aa": "Masato Nakamura", "altT": [], "altA": ["Sonic"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Vampire Killer", "a": "Castlevania", "at": "Vampire Killer", "aa": "Castlevania", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Corridors of Time", "a": "Chrono Trigger", "at": "Corridors of Time", "aa": "Yasunori Mitsuda", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Greenpath", "a": "Hollow Knight", "at": "Greenpath", "aa": "Christopher Larkin", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Stardew Valley Overture", "a": "Stardew Valley", "at": "Stardew Valley Overture", "aa": "ConcernedApe", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Simple and Clean", "a": "Kingdom Hearts", "at": "Simple and Clean", "aa": "Hikaru Utada", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Proof of a Hero", "a": "Monster Hunter", "at": "Proof of a Hero - Monster Hunter: World version (Extended edition)", "aa": "Zhenlan Kang(CAPCOM)", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Hell March 3", "a": "Command & Conquer", "at": "Hell March 3", "aa": "Frank Klepacki", "altT": ["Hell March"], "altA": ["Red Alert"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Nate's Theme", "a": "Uncharted", "at": "Nate's Theme", "aa": "Greg Edmonson", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Aloy's Theme", "a": "Horizon Zero Dawn", "at": "Aloy's Theme (feat. Julie Elven) [Part 1 - Motherland]", "aa": "Joris de Man", "altT": [], "altA": ["Horizon"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Angry Birds Theme", "a": "Angry Birds", "at": "Angry Birds Theme", "aa": "Ari Pulkkinen", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Crash Bandicoot Main Theme", "a": "Crash Bandicoot", "at": "Crash Bandicoot Main Theme", "aa": "Vicarious Visions Audio", "altT": ["N. Sanity Beach"], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Overture to the Unwritten", "a": "Hogwarts Legacy", "at": "Overture to the Unwritten (from \"Hogwarts Legacy\")", "aa": "chuck e. myers “sea”, J Scott Rakozy, Peter Murray & Hogwarts Legacy", "altT": [], "altA": ["Hogwarts"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Battlefield V Legacy Theme", "a": "Battlefield V", "at": "Battlefield V Legacy Theme", "aa": "Johan Söderqvist & Patrik Andrén", "altT": [], "altA": ["Battlefield"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Wii Sports", "a": "Wii Sports", "at": "Wii Sports", "aa": "VGR", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Reign of the Septims", "a": "Oblivion", "at": "Reign of the Septims", "aa": "Jeremy Soule", "altT": [], "altA": ["The Elder Scrolls IV", "The Elder Scrolls"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Green Greens", "a": "Kirby", "at": "Green Greens (From \"Kirby's Dream Land\")", "aa": "Qumu", "altT": [], "altA": ["Kirby's Dream Land"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "To Zanarkand", "a": "Final Fantasy X", "at": "Zanarkand", "aa": "Nobuo Uematsu", "altT": ["Zanarkand"], "altA": ["Final Fantasy"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Overwatch Victory Theme", "a": "Overwatch", "at": "Overwatch Victory Theme", "aa": "Celestial Aeon Project", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Apex Legends: Main Theme", "a": "Apex Legends", "at": "Apex Legends: Main Theme", "aa": "Stephen Barton", "altT": [], "altA": ["Apex"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Luigi's Mansion Theme", "a": "Luigi's Mansion", "at": "Luigi's Mansion Theme (From \"Luigi's Mansion\")", "aa": "Sixth Station Trio & Unplugged", "altT": [], "altA": [], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Main Theme", "a": "Age of Empires", "at": "Main Theme", "aa": "Todd Masten", "altT": [], "altA": ["Age of Empires II", "Âge des Empires"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}, {"t": "Legends Never Die", "a": "League of Legends", "at": "Legends Never Die", "aa": "League of Legends Music & Against The Current", "altT": [], "altA": ["LoL"], "strict": true, "sol": "artiste", "lab": "Jeu", "langue": "en"}];</script>
+<script src="../js/match.js?v=167"></script>
+<script src="verif.js?v=167"></script>
+</body>
+</html>
