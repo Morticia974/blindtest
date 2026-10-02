@@ -1045,14 +1045,14 @@
     caseT.className = 'case-reponse' + (trouves.titre ? ' trouve' : (reveal ? ' revele' : ''));
     var txtT = (trouves.titre || reveal) && piste ? piste.titre : 'à trouver';
     $('contenu-titre').textContent = txtT;
-    etiquetterLangue($('contenu-titre'), txtT, piste && piste.langue);
+    etiquetterLangue($('contenu-titre'), txtT, piste && piste.langue, piste && piste.artiste);
 
     // case Artiste / Film / Anime…
     var caseA = $('case-artiste');
     caseA.className = 'case-reponse' + (trouves.artiste ? ' trouve' : (reveal ? ' revele' : ''));
     var txtA = (trouves.artiste || reveal) && piste ? piste.artiste : 'à trouver';
     $('contenu-artiste').textContent = txtA;
-    etiquetterLangue($('contenu-artiste'), txtA, piste && piste.langue);
+    etiquetterLangue($('contenu-artiste'), txtA, piste && piste.langue, piste && piste.titre);
 
     // En solo, le champ non compté est révélé pour l'anecdote, sans points.
     var credit = $('credit-solo');
@@ -1184,10 +1184,10 @@
      L'annonce de la révélation était déjà étiquetée ; le tableau, lui, ne
      l'était pas. Quelqu'un qui parcourt l'écran à la main plutôt que d'attendre
      l'annonce s'entendait lire « Bohemian Rhapsody » à la française. */
-  function etiquetterLangue(el, texte, defaut) {
+  function etiquetterLangue(el, texte, defaut, appui) {
     if (!el) return;
     if (!texte || texte === 'à trouver') { el.removeAttribute('lang'); return; }
-    el.setAttribute('lang', langueDe(texte, defaut).slice(0, 2));
+    el.setAttribute('lang', langueDe(texte, defaut, appui).slice(0, 2));
   }
 
   /* Ce qu'on attend comme réponse, dit en toutes lettres.
@@ -1793,16 +1793,18 @@
     var oeuvre = !/artiste/i.test(p.labelA || 'Artiste');
     var debut = { t: "C'était", l: 'fr-FR' };
     var d = p.langue || 'fr';
-    function lg(x) { return langueDe(x, d); }
+    // Chaque moitié peut s'appuyer sur l'autre quand elle n'a aucun indice.
+    function lgT() { return langueDe(p.titre, d, p.artiste); }
+    function lgA() { return langueDe(p.artiste, d, p.titre); }
 
-    if (solo === 'artiste') return [debut, { t: p.artiste, l: lg(p.artiste) }];
-    if (solo === 'titre') return [debut, { t: p.titre, l: lg(p.titre) }];
+    if (solo === 'artiste') return [debut, { t: p.artiste, l: lgA() }];
+    if (solo === 'titre') return [debut, { t: p.titre, l: lgT() }];
     if (oeuvre) {
-      return [debut, { t: p.artiste, l: lg(p.artiste) },
-              { t: 'Musique :', l: 'fr-FR' }, { t: p.titre, l: lg(p.titre) }];
+      return [debut, { t: p.artiste, l: lgA() },
+              { t: 'Musique :', l: 'fr-FR' }, { t: p.titre, l: lgT() }];
     }
-    return [debut, { t: p.titre, l: lg(p.titre) },
-            { t: 'de', l: 'fr-FR' }, { t: p.artiste, l: lg(p.artiste) }];
+    return [debut, { t: p.titre, l: lgT() },
+            { t: 'de', l: 'fr-FR' }, { t: p.artiste, l: lgA() }];
   }
 
   function phraseDeRevelation(p) {
@@ -1846,7 +1848,13 @@
   /* « et » n'est pas dans la liste : la normalisation le fabrique à partir de
      « & » et de « feat. », et il faisait passer « Daft Punk feat. Pharrell
      Williams » pour du français. */
-  var MOTS_FR = ('le les un une des du de au aux dans sur pour avec sans mon ma mes ton ta tes ' +
+  /* « la » manquait, et avec lui la moitié des titres français : « La Famille
+     Addams » ne marquait aucun point et s'en allait du côté de l'anglais. Les
+     mots ajoutés ici n'existent pas en anglais — « on » et « in » restent
+     dehors pour cette raison. */
+  var MOTS_FR = ('la il ils elles ne se ce tout tous toute toutes quand sous entre ' +
+    'depuis car donc puis aussi trop chaque autre autres quelque quelques personne ' +
+    'le les un une des du de au aux dans sur pour avec sans mon ma mes ton ta tes ' +
     'sa ses notre votre leur je tu elle nous vous qui que quoi est sont etait suis ont pas plus ' +
     'rien tres mais comme encore toujours jamais etre avoir fait vais bien deja apres avant chez ' +
     'vers meme cette ces cet toi moi lui oui non faut veux veut peux peut sais sait aime coeur ' +
@@ -1857,8 +1865,8 @@
     'man world she he her his from out about into gonna wanna feel make take come go back down ' +
     'up just only now here there why how what who when where its im ive youre wont aint').split(' ');
 
-  function langueDe(texte, defaut) {
-    var brut = String(texte || '');
+  /* Les points marqués par chaque langue sur ce texte. */
+  function indices(brut) {
     var t = Match.normaliser(brut);
     var fr = 0, en = 0;
     t.split(' ').forEach(function (m) {
@@ -1877,11 +1885,41 @@
        « Imagination » et « Bastion » à la voix française. Un titre français en
        -tion ne perd rien au change : sans indice on suit la langue de la
        catégorie, qui est le français là où il se trouve. */
-    if (/(eau|oux|ais|ez$|aient)/.test(t)) fr += 1;
+    /* En fin de mot seulement : « beau », « chevaux », « jamais ». Au milieu,
+       « eau » attrapait « Beautiful », qui se mettait à parler français. */
+    if (/(eau|oux|ais|ez|aient)/.test(t)) fr += 1;
     if (/(th|wh|oo|ee|ck|sh|ing$|ight|w)/.test(t)) en += 1;
+    return { fr: fr, en: en };
+  }
 
-    if (en > fr) return 'en-US';
-    if (fr > en) return 'fr-FR';
+  /* `appui` : l'autre moitié de la réponse — le titre quand on cherche la
+     langue de l'artiste, l'artiste quand on cherche celle du titre.
+
+     « On s'attache » ne porte aucun indice : pas d'accent, aucun mot-outil des
+     deux listes. Il tombait donc dans la langue de sa catégorie, et les
+     Années 2000 sont annoncées anglophones — une voix anglaise lisait « On
+     s'attache ». Mais à côté il y avait « Christophe Maé », et cet accent-là
+     ne trompe personne. Un titre muet se range donc d'abord du côté de son
+     artiste, et seulement ensuite du côté de sa catégorie. */
+  function langueDe(texte, defaut, appui) {
+    var n = indices(String(texte || ''));
+    if (n.en > n.fr) return 'en-US';
+    if (n.fr > n.en) return 'fr-FR';
+
+    if (appui) {
+      var m = indices(String(appui));
+      /* Un indice suffit pour aller vers le français, il en faut deux pour
+         aller vers l'anglais.
+
+         Le site est français et son public aussi : un nom français lu à
+         l'anglaise s'entend tout de suite, l'inverse se remarque à peine. Et
+         les cas ne se valent pas — « Sexion d'Assaut » chante « Wati By
+         Night », « Bernard Minet » chante « Nicky Larson » : le titre anglais
+         d'un artiste français est courant, le contraire presque jamais. */
+      if (m.fr > m.en) return 'fr-FR';
+      if (m.en - m.fr >= 2) return 'en-US';
+    }
+
     /* Ni l'un ni l'autre — c'est le cas de près de la moitié du catalogue :
        « Forever Young », « Indochine », « Nirvana », « Calogero » ne portent
        aucun indice. On suit alors la langue dominante de la catégorie, ce qui
