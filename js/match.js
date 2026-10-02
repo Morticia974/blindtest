@@ -139,6 +139,36 @@ var Match = (function () {
     return Object.keys(out);
   }
 
+  /* Le dernier mot d'un nom, quand on peut raisonnablement le dire tout seul.
+
+     Personne ne dit « Jean-Jacques Goldman » en entier : on dit « Goldman ».
+     Ça ne marchait que pour les noms en deux mots, et les trois quarts des
+     prénoms composés y passaient — Goldman, Jean-Luc Lahaye, Rita Mitsouko.
+
+     Plus le nom est long, plus on exige du dernier mot : cinq lettres au lieu
+     de quatre. « The Black Eyed Peas » ne se réduit pas à « Peas ». */
+  var MOTS_LIEN = ('of|the|and|or|et|de|du|des|d|la|le|les|un|une|a|au|aux|en|' +
+    'sur|dans|pour|my|your|is|in|on|to|from|with|no').split('|');
+
+  function nomDeFamille(nom) {
+    var mots = String(nom).split(' ');
+    if (mots.length === 2 && mots[1].length >= 4) return mots[1];
+    if (mots.length < 3 || mots[mots.length - 1].length < 5) return '';
+
+    /* À partir de trois mots, il faut vérifier que c'en est un, de nom.
+
+       « Game of Thrones » et « Dead or Alive » ne sont pas des prénoms suivis
+       d'un patronyme : ce sont des titres, et « Thrones » n'est pas une réponse
+       — elle le serait que les films et les séries accepteraient le raccourci
+       qu'ils refusent partout ailleurs. Un petit mot de liaison au milieu
+       suffit à le dire. « Ludwig van Beethoven » en réchappe : « van » n'en est
+       pas un, et c'est bien « Beethoven » qu'on répond. */
+    for (var i = 0; i < mots.length - 1; i++) {
+      if (MOTS_LIEN.indexOf(mots[i]) !== -1) return '';
+    }
+    return mots[mots.length - 1];
+  }
+
   /* Toutes les formes acceptables d'un nom d'artiste : le nom complet, mais
      aussi chaque membre d'un duo et le nom sans article ("The Beatles" -> "beatles"). */
   function variantesArtiste(artiste) {
@@ -162,14 +192,18 @@ var Match = (function () {
           if (sa && sa.length >= 3) out[sa] = 1;
           // Nom de famille seul pour chaque membre d'un duo : on dit
           // « Gainsbourg », pas « Serge Gainsbourg ».
-          var m = n.split(' ');
-          if (m.length === 2 && m[1].length >= 4) out[m[1]] = 1;
+          var nf = nomDeFamille(n);
+          if (nf) out[nf] = 1;
         }
       });
 
-    // Nom de famille seul pour les artistes en deux mots ("Michael Jackson" -> "jackson")
-    var mots = complet.split(' ');
-    if (mots.length === 2 && mots[1].length >= 4) out[mots[1]] = 1;
+    /* Nom de famille seul ("Michael Jackson" -> "jackson"), sur le nom complet
+       comme sur le nom privé de son article : « Les Rita Mitsouko » n'a trois
+       mots qu'à cause du « Les », et c'est bien « Mitsouko » qu'on dit. */
+    [complet, sansArticle].forEach(function (forme) {
+      var nf = nomDeFamille(forme);
+      if (nf) out[nf] = 1;
+    });
 
     return Object.keys(out);
   }
@@ -241,8 +275,12 @@ var Match = (function () {
     }).join('');
   }
 
-  /* Une proposition est-elle acceptée pour l'une de ces variantes ? */
-  function correspond(proposition, variantes) {
+  /* Une proposition est-elle acceptée pour l'une de ces variantes ?
+
+     `options.voix` : la réponse vient du micro et non du clavier. On s'autorise
+     alors un écart de plus sur le son des mots — voir plus bas. */
+  function correspond(proposition, variantes, options) {
+    var voix = !!(options && options.voix);
     var g = normaliser(proposition);
     if (!g || g.length < 2) return false;
 
@@ -265,11 +303,47 @@ var Match = (function () {
         if (p === v) return true;
         var tol = tolerance(v.length);
         if (tol > 0 && distance(p, v, tol) <= tol) return true;
+
+        /* La même chose sans les espaces.
+
+           Le micro découpe les mots comme il l'entend : « Sweet Dreams » ou
+           « sweetdreams », « Girls Just Want to Have Fun » d'un seul tenant.
+           Chaque espace manquant comptait pour une faute de frappe, et un
+           titre un peu long en accumulait plus que la tolérance n'en pardonne :
+           la réponse était juste, et refusée. Quarante-deux titres du catalogue
+           étaient dans ce cas.
+
+           Enlever les espaces des deux côtés ne fait rien perdre : deux
+           réponses qui ne diffèrent que par la découpe des mots sont la même
+           réponse. */
+        var pc = p.replace(/ /g, ''), vc = v.replace(/ /g, '');
+        if (pc !== p || vc !== v) {
+          if (pc === vc) return true;
+          var tolc = tolerance(vc.length);
+          if (tolc > 0 && distance(pc, vc, tolc) <= tolc) return true;
+        }
         // Réponse partielle mais franche : "bohemian" pour "bohemian rhapsody"
         if (v.length >= 10 && p.length >= Math.ceil(v.length * 0.6) && v.indexOf(p) === 0) return true;
         /* Même son, autre orthographe. Réservé aux réponses d'au moins cinq
            lettres : en dessous, trop de mots différents se prononcent pareil. */
         if (v.length >= 5 && phonetique(p) === phonetique(v)) return true;
+
+        /* À la voix, presque le même son suffit.
+
+           Au clavier, une faute est une faute de doigt : une lettre à côté de
+           l'autre. Au micro, ce n'est pas le joueur qui écrit, c'est le
+           navigateur — et il écrit ce qu'il croit entendre, dans une langue
+           qu'il choisit tout seul. Entre sa transcription et le catalogue, il
+           reste souvent un son d'écart là où il n'y a aucune erreur de celui
+           qui a répondu.
+
+           Un seul écart, et seulement sur des réponses d'une certaine longueur.
+           Mesuré sur tout le catalogue : ça n'ajoute aucune réponse d'un
+           morceau qui en validerait un autre. */
+        if (voix && v.length >= 7) {
+          var pp = phonetique(p), vv = phonetique(v);
+          if (pp.length >= 6 && distance(pp, vv, 1) <= 1) return true;
+        }
       }
     }
     return false;
@@ -287,7 +361,7 @@ var Match = (function () {
   /* Le joueur a tout tapé d'un coup : "Danza Kuduro Don Omar", ou l'inverse.
      On essaie chaque découpe possible entre deux mots, dans les deux sens.
      Renvoie ce qui a été reconnu, ou null si aucune découpe ne donne rien. */
-  function decouper(proposition, vTitre, vArtiste) {
+  function decouper(proposition, vTitre, vArtiste, options) {
     var mots = normaliser(proposition).split(' ').filter(Boolean);
     if (mots.length < 2) return null;
 
@@ -305,10 +379,10 @@ var Match = (function () {
         var droite = mots.slice(departs[k]).join(' ');
         if (!droite) continue;
 
-        var gT = correspond(gauche, vTitre), dA = correspond(droite, vArtiste);
+        var gT = correspond(gauche, vTitre, options), dA = correspond(droite, vArtiste, options);
         if (gT && dA) return { titre: true, artiste: true };
 
-        var gA = correspond(gauche, vArtiste), dT = correspond(droite, vTitre);
+        var gA = correspond(gauche, vArtiste, options), dT = correspond(droite, vTitre, options);
         if (gA && dT) return { titre: true, artiste: true };
 
         /* Une seule moitié juste : on la garde de côté, mais uniquement si elle
@@ -364,13 +438,13 @@ var Match = (function () {
 
   /* Point d'entrée du jeu : que vient de trouver ce joueur ?
      Renvoie {titre: bool, artiste: bool}. */
-  function evaluer(proposition, piste) {
+  function evaluer(proposition, piste, options) {
     var vTitre = piste.variantesTitre || variantesTitre(piste.titre);
     var vArtiste = piste.variantesArtiste || variantesArtiste(piste.artiste);
 
     var res = {
-      titre: correspond(proposition, vTitre),
-      artiste: correspond(proposition, vArtiste)
+      titre: correspond(proposition, vTitre, options),
+      artiste: correspond(proposition, vArtiste, options)
     };
     if (res.titre && res.artiste) return res;
 
@@ -382,7 +456,7 @@ var Match = (function () {
        la réponse, si bien que « Amoureux solitaires Lio » ressemblait déjà
        assez à « Amoureux solitaires » pour être pris pour le titre seul. Le
        nom de l'artiste passait alors à la trappe, alors qu'il était écrit. */
-    var coupe = decouper(proposition, vTitre, vArtiste);
+    var coupe = decouper(proposition, vTitre, vArtiste, options);
     if (!coupe) return res;
     return {
       titre: res.titre || coupe.titre,

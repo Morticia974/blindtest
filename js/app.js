@@ -1657,7 +1657,7 @@
     var dit = ceQuOnNousDit(texte);
     if (!dit) return;
 
-    var res = partie.proposer(dit, { muet: true });
+    var res = partie.proposer(dit, { muet: true, voix: true });
     if (res.titre || res.artiste) { fermerLEcoute(); feterLaTrouvaille(res, true); return; }
     if (cEstDuRemplissage(dit)) return;
     /* Écrit seulement : un brouillon n'est qu'un morceau de phrase, et la
@@ -1707,7 +1707,7 @@
     if (!essais.length) return;
 
     for (var k = 0; k < essais.length; k++) {
-      var res = partie.proposer(essais[k], { muet: true });
+      var res = partie.proposer(essais[k], { muet: true, voix: true });
       // Une phrase traitée referme la fenêtre : un « ok », une réponse.
       if (res.titre || res.artiste) { fermerLEcoute(); feterLaTrouvaille(res, true); return; }
       if (res.deja) {
@@ -1732,7 +1732,7 @@
     repondreAuMicro('Entendu : « ' + essais[0] + ' » — pas ça 😛',
                     essais[0] + ', pas ça.', 'raté');
     if (meriteLeFil(essais[0], resultat[0] && resultat[0].confidence)) {
-      partie.proposer(essais[0]);
+      partie.proposer(essais[0], { voix: true });
     }
   }
 

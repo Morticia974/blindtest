@@ -371,7 +371,11 @@ var Jeu = (function () {
 
        `options.muet` essaie la réponse sans rien publier dans le fil commun.
        C'est ce qui permet au micro de tenter plusieurs transcriptions d'une
-       même phrase sans afficher quatre bêtises au salon. */
+       même phrase sans afficher quatre bêtises au salon.
+
+       `options.voix` dit que la réponse vient du micro : la correction est
+       alors un peu plus large, parce que l'orthographe n'est pas celle du
+       joueur mais celle du navigateur, qui écrit ce qu'il croit entendre. */
     function proposer(texte, options) {
       var vide = { titre: false, artiste: false, deja: false };
       if (!etat.tour || etat.tour.phase !== 'ecoute') return vide;
@@ -383,7 +387,7 @@ var Jeu = (function () {
       // animes (le nom de l'anime). L'autre champ n'est ni demandé ni compté.
       var solo = piste.solo || null;
 
-      var res = Match.evaluer(texte, piste);
+      var res = Match.evaluer(texte, piste, options);
 
       /* Rien de juste : la proposition part dans le fil commun. Ce test vient
          AVANT celui du joueur qui a déjà tout trouvé, pour qu'une bonne réponse
