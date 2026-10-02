@@ -941,7 +941,18 @@
   /* Ouvrir l'écoute, ou la refermer si elle est déjà ouverte. Sur tactile
      uniquement : c'est le geste qui remplace le mot convenu. */
   function basculerParole() {
-    if (reco) { stopperReco(); fermerLEcoute(); majBoutonMicro(); return; }
+    if (reco) {
+      stopperReco();
+      fermerLEcoute();
+      majBoutonMicro();
+      /* Dit, même annonces éteintes : un micro qu'on referme sans un mot laisse
+         parler dans le vide quelqu'un qui ne voit pas le bouton s'éteindre. Et
+         maintenant que tout l'écran referme, ça arrive d'un pouce posé de
+         travers. */
+      info('Micro fermé.', '');
+      dire('Micro fermé', true);
+      return;
+    }
     microVoulu = true;
     ecouteOuverteJusqua = Date.now() + 15000;
     demarrerReco();
@@ -954,6 +965,35 @@
   function estUnReglage(cible) {
     return !!(cible && cible.closest &&
               cible.closest('button, input, select, textarea, a, label'));
+  }
+
+  /* On joue sans regarder : au doigt, à la voix, et le site dit tout.
+
+     Trois conditions, et c'est ce trio qui définit le mode : un écran tactile,
+     les annonces allumées, un micro disponible. Personne ne coche de case
+     « aveugle » — ce sont les réglages déjà pris qui le disent. */
+  function jeuSansLesYeux() {
+    return surTactile && annoncesVoulues && microPossible();
+  }
+
+  /* Pendant le morceau, dans ce mode, l'écran entier est le bouton « Parler »
+     et plus rien d'autre ne répond.
+
+     Le pouce se pose où il tombe, et il tombait sur les réglages : une fois sur
+     le bouton des annonces, qui les a éteintes — donc plus de voix, donc plus
+     de jeu pour qui ne voit pas. Couper le son par mégarde est aussi vite fait.
+
+     Les réglages redeviennent actifs entre deux morceaux, pendant la
+     révélation : il faut bien un moment pour baisser le volume ou sortir du
+     mode, et à ce moment-là on ne cherche pas à répondre. Le micro, lui, reste
+     actif en permanence — c'est le seul bouton qu'on veut pouvoir atteindre
+     exprès, à la main ou au lecteur d'écran. */
+  function majVerrouTactile() {
+    var e = $('ecran-jeu');
+    if (!e) return;
+    var phase = partie && partie.etat.tour ? partie.etat.tour.phase : '';
+    var pendantLeMorceau = phase === 'depart' || phase === 'ecoute';
+    e.classList.toggle('parole-partout', jeuSansLesYeux() && pendantLeMorceau);
   }
 
   function donnerLaParole() {
@@ -969,6 +1009,8 @@
     var etat = partie.etat;
     var tour = etat.tour;
     if (!tour || !etat.meta) return;
+
+    majVerrouTactile();
 
     var piste = etat.pistes[tour.index];
     var trouves = partie.motsTrouves();
@@ -2308,6 +2350,8 @@
         taire();
       }
       info(annoncesVoulues ? 'Le site annoncera les réponses à voix haute.' : 'Annonces coupées.', '');
+      // Les annonces font partie du mode sans les yeux : le verrou suit.
+      majVerrouTactile();
     });
 
     microVoulu = lireChoixMicro();

@@ -876,3 +876,23 @@ button, input, select { font: inherit; color: inherit; }
 }
 
 
+
+/* ================= l'écran entier comme bouton « Parler » =================
+
+   Posé par le script sur l'écran de jeu, le temps du morceau, quand on joue
+   sur un téléphone avec les annonces et le micro : un pouce posé au hasard
+   doit demander la parole, et surtout pas couper le son ou les annonces.
+
+   `pointer-events: none` ne désactive pas les boutons, il les rend
+   transparents au doigt : le tap traverse et arrive sur l'écran de jeu, qui
+   ouvre le micro. Le curseur de volume cesse aussi de glisser, ce qu'un
+   `disabled` n'aurait pas fait sans le griser. Et le lecteur d'écran continue
+   de les annoncer : qui les cherche exprès les trouve encore. */
+#ecran-jeu.parole-partout button,
+#ecran-jeu.parole-partout input,
+#ecran-jeu.parole-partout select,
+#ecran-jeu.parole-partout textarea,
+#ecran-jeu.parole-partout label { pointer-events: none; }
+
+/* Sauf le micro : c'est lui qu'on vise quand on vise quelque chose. */
+#ecran-jeu.parole-partout #bouton-micro { pointer-events: auto; }

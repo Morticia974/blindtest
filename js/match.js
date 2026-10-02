@@ -214,7 +214,30 @@ var Match = (function () {
          On mesure le mot d'origine, pas sa version transformée : « phone » a
          bien cinq lettres, même s'il n'en garde que quatre une fois devenu
          « fone ». Sans ça, « télé phone » ne valait pas « téléfon ». */
-      return mot.length > 4 ? m.replace(/e$/, '') : m;
+      if (mot.length > 4) m = m.replace(/e$/, '');
+
+      /* La consonne finale muette, ce grand classique du français.
+
+         « Renault » et « Renaud » se disent pareil et s'écrivent à trois
+         lettres d'écart. Le micro, à qui l'on dit le nom du chanteur, écrit
+         celui de la voiture : c'est l'orthographe la plus courante, il n'a pas
+         tort. Mais à l'oreille c'est la même réponse, et elle était refusée.
+
+         Le « l » s'en va avec elle quand il la précède — « Renault », « Renaud »,
+         même mot. Seul, il reste : on l'entend dans « Mistral » et « soleil ».
+
+         Pas sur les mots très courts : « art » et « ar », « but » et « bu »,
+         il n'en resterait pas assez pour reconnaître quoi que ce soit.
+
+         Le « p » et le « g » finaux ne sont pas de la liste, bien qu'ils soient
+         muets en français : la moitié du catalogue est en anglais, où ils
+         s'entendent. « Creep » devenait « Creed », et « Song » aurait fini en
+         « son ». Mesuré sur tout le catalogue : avec eux, trois réponses d'un
+         morceau en validaient un autre ; sans eux, deux — et ces deux-là sont
+         de vrais homophones (« Rednex » / « Redneck »). */
+      if (mot.length > 3) m = m.replace(/l?[tdszx]$/, '');
+
+      return m;
     }).join('');
   }
 
