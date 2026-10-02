@@ -1310,8 +1310,19 @@
     dire(parle, true);
   }
 
+  var dernierJecouteA = 0;
+
   function ouvrirLEcoute() {
+    var dejaOuverte = Date.now() < ecouteOuverteJusqua;
     ecouteOuverteJusqua = Date.now() + 12000;
+
+    /* On ne le redit pas si l'oreille est déjà ouverte, ni deux fois en trois
+       secondes. Au téléphone, le micro de Chrome entend tout ce qui passe et
+       entendait « ok » à répétition : le site répondait « j'écoute, j'écoute,
+       j'écoute » sans laisser le temps de répondre. */
+    if (dejaOuverte || Date.now() - dernierJecouteA < 3000) return;
+    dernierJecouteA = Date.now();
+
     info('J\'écoute…', '');
     /* Dit à voix haute même si les annonces sont éteintes : c'est la réponse à
        une question posée à la voix, pas une annonce de partie. Écrite seule,
@@ -1541,22 +1552,39 @@
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
 
-    /* On ne garde que les transcriptions qui nous étaient adressées — celles
-       qui commencent par le mot convenu, ou celles qui arrivent dans la fenêtre
-       ouverte par ce mot. Tout le reste — la pièce, la musique, la bonne
-       réponse dite par un autre — passe sans laisser de trace. */
-    var essais = [];
-    var appele = false;
-    for (var i = 0; i < resultat.length; i++) {
-      var brut = String(resultat[i].transcript || '');
-      if (cEstMaVoix(brut)) return;   // c'est le site qu'on entend, pas un joueur
-      var dit = ceQuOnNousDit(brut);
-      if (dit === null) continue;
-      appele = true;
-      if (dit && essais.indexOf(dit) === -1) essais.push(dit);
+    /* Le mot convenu n'est cherché que dans la meilleure transcription.
+
+       Le navigateur en rend cinq par phrase, et c'est voulu : « Billie Jean »,
+       « Billy Jean » et « bili jean » sortent ensemble, on les essaie toutes
+       comme réponses. Mais pour le mot d'appel, cinq chances de tomber sur
+       « ok » par hasard, c'est cinq fois trop — au téléphone, le moindre bruit
+       en produisait un, et le micro s'ouvrait tout seul. */
+    var meilleure = String((resultat[0] || {}).transcript || '');
+    if (cEstMaVoix(meilleure)) return;   // c'est le site qu'on entend, pas un joueur
+
+    var ouverte = Date.now() < ecouteOuverteJusqua;
+    var dit = ceQuOnNousDit(meilleure);
+    if (dit === null) return;            // cette phrase ne nous était pas adressée
+
+    if (!dit) {
+      /* Le mot tout seul. Un vrai « ok » est prononcé net ; un bruit de fond
+         que le navigateur devine « ok » l'est rarement. Quand il nous donne sa
+         confiance, on s'en sert — quand il ne la donne pas, on fait avec. */
+      var sur = (resultat[0] || {}).confidence;
+      if (typeof sur === 'number' && sur > 0 && sur < 0.5) return;
+      ouvrirLEcoute();
+      return;
     }
-    // Le mot tout seul : il commence sa phrase, on ouvre l'oreille et on le dit.
-    if (appele && !essais.length) { ouvrirLEcoute(); return; }
+
+    /* La phrase nous était adressée : on garde aussi les autres transcriptions,
+       qui ne sont que d'autres orthographes de la même chose. */
+    var essais = [dit];
+    for (var i = 1; i < resultat.length; i++) {
+      var autre = String(resultat[i].transcript || '');
+      var a = ceQuOnNousDit(autre);
+      if (a === null) a = ouverte ? autre.trim() : null;
+      if (a && essais.indexOf(a) === -1) essais.push(a);
+    }
     if (!essais.length) return;
 
     for (var k = 0; k < essais.length; k++) {
