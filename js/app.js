@@ -938,6 +938,24 @@
 
      Seulement sur tactile : ailleurs le micro écoute en continu et le bouton ne
      sert qu'à l'allumer une fois. */
+  /* Ouvrir l'écoute, ou la refermer si elle est déjà ouverte. Sur tactile
+     uniquement : c'est le geste qui remplace le mot convenu. */
+  function basculerParole() {
+    if (reco) { stopperReco(); fermerLEcoute(); majBoutonMicro(); return; }
+    microVoulu = true;
+    ecouteOuverteJusqua = Date.now() + 15000;
+    demarrerReco();
+    majBoutonMicro();
+    info('J\'écoute… dis le titre ou l\'artiste.', '');
+  }
+
+  /* Ce qui, sur l'écran de jeu, fait déjà quelque chose quand on le touche :
+     un tap dessus ne doit pas se transformer en demande de parole. */
+  function estUnReglage(cible) {
+    return !!(cible && cible.closest &&
+              cible.closest('button, input, select, textarea, a, label'));
+  }
+
   function donnerLaParole() {
     if (!surTactile || !microPossible()) return;
     var b = $('bouton-micro');
@@ -2093,7 +2111,7 @@
                huit. Le décompte par défaut en dure six — ça déborde, mais la
                musique reste en retrait tant qu'on parle, donc rien n'est
                couvert. Et ce n'est qu'au premier morceau. */
-            bouts.push(surTactile ? 'Appuie sur le micro pour répondre.'
+            bouts.push(surTactile ? "Appuie n'importe où pour répondre."
                                   : 'Dis ok pour répondre.');
           }
           annoncer(bouts.join(' '), avecDecompte);
@@ -2296,14 +2314,8 @@
     majBoutonMicro();
     $('bouton-micro').addEventListener('click', function () {
       if (surTactile) {
-        /* Une pression, une phrase. L'oreille est ouverte d'office : le geste
-           remplace le mot convenu, il n'y a pas à dire « ok » en plus. */
-        if (reco) { stopperReco(); fermerLEcoute(); majBoutonMicro(); return; }
-        microVoulu = true;
-        ecouteOuverteJusqua = Date.now() + 15000;
-        demarrerReco();
-        majBoutonMicro();
-        info('J\'écoute… dis le titre ou l\'artiste.', '');
+        // Une pression, une phrase. Le geste remplace le mot convenu.
+        basculerParole();
         return;
       }
       microVoulu = !microVoulu;
@@ -2345,6 +2357,25 @@
     // Sur mobile, un tap n'importe où débloque le son si le navigateur l'a coupé.
     document.addEventListener('click', function () {
       if (contexte && contexte.state === 'suspended') contexte.resume();
+    });
+
+    /* Sur un écran tactile, tout l'écran de jeu est le bouton « Parler ».
+
+       Poser le curseur du lecteur d'écran sur le bouton ne suffisait pas : le
+       « double-tap n'importe où » n'existe que si VoiceOver ou TalkBack tourne.
+       Sans eux, il fallait viser le micro — impossible quand on ne le voit pas,
+       et pas plus commode pour qui voit mal.
+
+       Un tap n'importe où ouvre donc l'écoute, sauf sur ce qui fait déjà
+       quelque chose : le champ de réponse, le bouton Go, le curseur de volume,
+       les deux boutons de son. Le micro, lui, passe par son propre gestionnaire
+       et ne doit pas être traité deux fois. */
+    $('ecran-jeu').addEventListener('click', function (ev) {
+      if (!surTactile || !microPossible()) return;
+      if (ev.target && ev.target.closest && ev.target.closest('#bouton-micro')) return;
+      if (estUnReglage(ev.target)) return;
+      if (!partie || !partie.etat.tour || partie.etat.tour.phase !== 'ecoute') return;
+      basculerParole();
     });
   }
 
