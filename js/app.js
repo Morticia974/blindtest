@@ -928,6 +928,25 @@
     try { champ.focus({ preventScroll: true }); } catch (e) { champ.focus(); }
   }
 
+  /* Pose le curseur du lecteur d'écran sur le bouton « Parler ».
+
+     Sur un téléphone, celui qui ne voit pas devait balayer l'écran pour
+     retrouver ce bouton à chaque morceau — trente secondes de musique, et le
+     temps passé à chercher est du temps où l'on ne répond pas. Quand le curseur
+     est déjà dessus, un double-tap n'importe où sur l'écran l'active : c'est
+     ainsi que fonctionnent VoiceOver et TalkBack.
+
+     Seulement sur tactile : ailleurs le micro écoute en continu et le bouton ne
+     sert qu'à l'allumer une fois. */
+  function donnerLaParole() {
+    if (!surTactile || !microPossible()) return;
+    var b = $('bouton-micro');
+    if (!b || b.hidden) return;
+    try { b.focus({ preventScroll: true }); } catch (e) {
+      try { b.focus(); } catch (e2) {}
+    }
+  }
+
   function rendreJeu() {
     var etat = partie.etat;
     var tour = etat.tour;
@@ -1503,6 +1522,8 @@
         reco = null;
         fermerLEcoute();
         majBoutonMicro();
+        // Le curseur revient sur le bouton : on peut reparler aussitôt.
+        donnerLaParole();
         return;
       }
       if (!microVoulu) return;
@@ -2077,6 +2098,7 @@
           }
           annoncer(bouts.join(' '), avecDecompte);
         }
+        if (phase === 'ecoute') donnerLaParole();
       } else if (phase === 'reveal') {
         var p = etat.pistes[etat.tour.index];
         if (p) {
