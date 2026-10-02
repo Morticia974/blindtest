@@ -1377,6 +1377,19 @@
     return window.SpeechRecognition || window.webkitSpeechRecognition || null;
   }
 
+  /* Au téléphone, le micro ne peut pas rester ouvert.
+
+     Android joue un bip chaque fois que la reconnaissance démarre, et Chrome
+     l'arrête à chaque bruit de la pièce. On la relançait aussitôt : résultat,
+     un « tit, tit, tit » continu par-dessus lequel on ne pouvait plus parler.
+     Ce n'est pas réglable depuis une page web — le son appartient au système.
+
+     Sur un écran tactile, on inverse donc : le micro ne s'ouvre que sur une
+     pression, le temps d'une phrase. Un bip au début, un à la fin, et le
+     silence entre les deux. Appuyer remplace le mot « ok » : le geste dit déjà
+     qu'on s'adresse au jeu. */
+  var surTactile = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+
   var reco = null;              // la reconnaissance en cours, s'il y en a une
   var microVoulu = false;       // le choix du joueur, gardé d'une fois sur l'autre
   var relances = 0;             // garde-fou : Chrome se réarrête tout seul
@@ -1394,6 +1407,19 @@
     var b = $('bouton-micro');
     if (!b) return;
     b.hidden = !microPossible();
+
+    if (surTactile) {
+      /* Pas un interrupteur mais un déclencheur : il n'y a pas d'état « allumé »
+         à annoncer, seulement « j'écoute » le temps d'une phrase. */
+      var ecoute = !!reco;
+      b.classList.toggle('actif', ecoute);
+      b.removeAttribute('aria-pressed');
+      b.setAttribute('aria-label', ecoute ? 'J\'écoute, dis ta réponse'
+                                          : 'Appuie pour parler');
+      b.title = ecoute ? 'J\'écoute…' : 'Appuie pour parler';
+      return;
+    }
+
     b.classList.toggle('actif', microVoulu);
     b.setAttribute('aria-pressed', String(microVoulu));
     b.setAttribute('aria-label', microVoulu
@@ -1435,7 +1461,8 @@
     var r = new Classe();
     reco = r;
     r.lang = 'fr-FR';
-    r.continuous = true;
+    // Au téléphone, une pression vaut une phrase : pas de session continue.
+    r.continuous = !surTactile;
     /* On demande aussi les résultats provisoires. Un mot court dit une seule
        fois — « Scrubs », « Friends », « Lost » — n'est pas toujours validé par
        le navigateur : il n'en reste qu'un brouillon, et sans ça on le perdait
@@ -1469,7 +1496,16 @@
 
     r.onend = function () {
       if (brouillon) { tenterBrouillon(brouillon); brouillon = ''; }
-      if (reco !== r || !microVoulu) return;
+      if (reco !== r) return;
+      /* Au téléphone, on ne relance rien : c'est la prochaine pression qui
+         rouvrira le micro. Sans ça, chaque relance rejouerait le bip. */
+      if (surTactile) {
+        reco = null;
+        fermerLEcoute();
+        majBoutonMicro();
+        return;
+      }
+      if (!microVoulu) return;
       /* Chrome coupe tout seul après un silence. On repart, mais si ça
          recommence dix fois en une seconde c'est que quelque chose cloche :
          mieux vaut rendre la main que tourner en boucle. */
@@ -1503,7 +1539,9 @@
 
   function synchroniserMicro() {
     var enJeu = $('ecran-jeu') && $('ecran-jeu').classList.contains('actif');
-    if (microVoulu && enJeu) demarrerReco(); else stopperReco();
+    // Sur tactile, rien ne s'ouvre tout seul : seule une pression le fait.
+    if (!surTactile && microVoulu && enJeu) demarrerReco();
+    else if (!enJeu || !surTactile) stopperReco();
     majBoutonMicro();
   }
 
@@ -2027,14 +2065,15 @@
           } else {
             bouts.push('Morceau ' + (etat.tour.index + 1) + ' sur ' + etat.meta.nbTitres + '.');
           }
-          if (!consigneMicroDite && microVoulu && microPossible()) {
+          if (!consigneMicroDite && microPossible() && (microVoulu || surTactile)) {
             consigneMicroDite = true;
             /* Au plus court : ajoutée à la plus longue catégorie du catalogue,
                la phrase du premier morceau passe de neuf secondes et demie à
                huit. Le décompte par défaut en dure six — ça déborde, mais la
                musique reste en retrait tant qu'on parle, donc rien n'est
                couvert. Et ce n'est qu'au premier morceau. */
-            bouts.push('Dis ok pour répondre.');
+            bouts.push(surTactile ? 'Appuie sur le micro pour répondre.'
+                                  : 'Dis ok pour répondre.');
           }
           annoncer(bouts.join(' '), avecDecompte);
         }
@@ -2234,6 +2273,17 @@
     microVoulu = lireChoixMicro();
     majBoutonMicro();
     $('bouton-micro').addEventListener('click', function () {
+      if (surTactile) {
+        /* Une pression, une phrase. L'oreille est ouverte d'office : le geste
+           remplace le mot convenu, il n'y a pas à dire « ok » en plus. */
+        if (reco) { stopperReco(); fermerLEcoute(); majBoutonMicro(); return; }
+        microVoulu = true;
+        ecouteOuverteJusqua = Date.now() + 15000;
+        demarrerReco();
+        majBoutonMicro();
+        info('J\'écoute… dis le titre ou l\'artiste.', '');
+        return;
+      }
       microVoulu = !microVoulu;
       try { localStorage.setItem('bt.micro', microVoulu ? '1' : '0'); } catch (e) {}
       synchroniserMicro();
