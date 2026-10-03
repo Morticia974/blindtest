@@ -117,6 +117,26 @@ var Match = (function () {
     return 4;
   }
 
+  /* Ce qui s'écrit court et se dit long.
+
+     Personne ne prononce « Mr. Saxobeat » autrement que « mister saxobeat », et
+     le micro l'écrit ainsi. Les deux côtés passent par ici — la réponse du
+     catalogue comme la proposition du joueur — donc l'abrégé et le prononcé
+     finissent par se rencontrer, quel que soit celui qui a été écrit. */
+  var ABREGE = [[/mr/g, 'mister'], [/mr/g, 'monsieur'],
+                [/dr/g, 'docteur'], [/dr/g, 'doctor'],
+                [/st/g, 'saint'], [/ste/g, 'sainte'],
+                [/u/g, 'you'], [/n/g, 'and']];
+
+  function formesParlees(base) {
+    var out = [];
+    for (var i = 0; i < ABREGE.length; i++) {
+      var x = base.replace(ABREGE[i][0], ABREGE[i][1]);
+      if (x !== base && out.indexOf(x) === -1) out.push(x);
+    }
+    return out;
+  }
+
   /* Toutes les formes acceptables d'un titre. */
   function variantesTitre(titre) {
     var out = {};
@@ -136,6 +156,18 @@ var Match = (function () {
       var avantDeuxPoints = normaliser(degraisser(String(titre).split(/\s*:\s*/)[0]));
       if (avantDeuxPoints && avantDeuxPoints.length >= 3) out[avantDeuxPoints] = 1;
     }
+
+    /* Le « + » se dit « plus », et la normalisation en fait « et » : « Toi +
+       Moi » devenait « toi et moi », quand le micro écrit « toi plus moi ».
+       Les deux se disent, on garde les deux. */
+    if (/\+/.test(String(titre))) {
+      var avecPlus = normaliser(String(titre).replace(/\+/g, ' plus '));
+      if (avecPlus) out[avecPlus] = 1;
+    }
+
+    Object.keys(out).forEach(function (f) {
+      formesParlees(f).forEach(function (x) { out[x] = 1; });
+    });
     return Object.keys(out);
   }
 
@@ -203,6 +235,10 @@ var Match = (function () {
     [complet, sansArticle].forEach(function (forme) {
       var nf = nomDeFamille(forme);
       if (nf) out[nf] = 1;
+    });
+
+    Object.keys(out).forEach(function (f) {
+      formesParlees(f).forEach(function (x) { out[x] = 1; });
     });
 
     return Object.keys(out);
@@ -294,6 +330,8 @@ var Match = (function () {
     var formes = [g];
     var court = g.replace(ARTICLES, '');
     if (court && court !== g && court.length >= 2) formes.push(court);
+    // « Dr House » tapé, « Docteur House » écrit au catalogue : même réponse.
+    formesParlees(g).forEach(function (x) { if (formes.indexOf(x) === -1) formes.push(x); });
 
     for (var f = 0; f < formes.length; f++) {
       var p = formes[f];
