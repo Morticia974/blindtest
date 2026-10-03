@@ -46,6 +46,14 @@
     return { fr: fr, en: en };
   }
 
+  var LANGUES = { fr: 'fr-FR', en: 'en-US', es: 'es-ES', pt: 'pt-BR', de: 'de-DE', it: 'it-IT', ja: 'ja-JP' };
+
+  function codeLangue(x) {
+    if (!x) return '';
+    var k = String(x).toLowerCase();
+    return LANGUES[k] || (k.indexOf('-') !== -1 ? x : '');
+  }
+
   function langueDe(texte, defaut, appui) {
     var n = indices(String(texte || ''));
     if (n.en > n.fr) return 'en-US';
@@ -63,17 +71,20 @@
     var oeuvre = !/artiste/i.test(p.labelA || 'Artiste');
     var debut = { t: "C'était", l: 'fr-FR' };
     var d = p.langue || 'fr';
-    function lgT() { return langueDe(p.titre, d, p.artiste); }
-    function lgA() { return langueDe(p.artiste, d, p.titre); }
+    function lgT() { return codeLangue(p.lgT) || langueDe(p.titre, d, p.artiste); }
+    function lgA() { return codeLangue(p.lgA) || langueDe(p.artiste, d, p.titre); }
+    var dT = p.ditT || p.titre;
+    var dA = p.ditA || p.artiste;
 
-    if (solo === 'artiste') return [debut, { t: p.artiste, l: lgA() }];
-    if (solo === 'titre') return [debut, { t: p.titre, l: lgT() }];
+    if (solo === 'artiste') return [debut, { t: dA, l: lgA() }];
+    if (solo === 'titre') return [debut, { t: dT, l: lgT() }];
     if (oeuvre) {
-      return [debut, { t: p.artiste, l: lgA() },
-              { t: 'Musique :', l: 'fr-FR' }, { t: p.titre, l: lgT() }];
+      if (Match.normaliser(dT) === Match.normaliser(dA)) return [debut, { t: dA, l: lgA() }];
+      return [debut, { t: dA, l: lgA() },
+              { t: 'Musique :', l: 'fr-FR' }, { t: dT, l: lgT() }];
     }
-    return [debut, { t: p.titre, l: lgT() },
-            { t: 'de', l: 'fr-FR' }, { t: p.artiste, l: lgA() }];
+    return [debut, { t: dT, l: lgT() },
+            { t: 'de', l: 'fr-FR' }, { t: dA, l: lgA() }];
   }
 
   function voixPour(langue) {
@@ -162,7 +173,8 @@
     if (bDire) {
       bDire.addEventListener('click', function () {
         dire(partiesDeRevelation({
-          titre: p.t, artiste: p.a, solo: p.sol, labelA: p.lab, langue: p.langue
+          titre: p.t, artiste: p.a, solo: p.sol, labelA: p.lab, langue: p.langue,
+          lgT: p.lgT, lgA: p.lgA, ditT: p.ditT, ditA: p.ditA
         }));
       });
     }

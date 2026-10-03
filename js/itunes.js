@@ -334,6 +334,12 @@ var Itunes = (function () {
       solo: piste.solo || null,
       strict: !!piste.strict,
       langue: piste.langue || 'fr',
+      /* Ce que la playlist impose pour la voix : la langue de chaque moitié de
+         la réponse, et le texte à dire quand il diffère de celui qu'on écrit. */
+      lgT: piste.lgT || '',
+      lgA: piste.lgA || '',
+      ditT: piste.ditT || '',
+      ditA: piste.ditA || '',
       retro: !!piste.retro,
       variantesTitre: unique(vT),
       variantesArtiste: unique(vA)

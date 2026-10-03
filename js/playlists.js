@@ -27,6 +27,18 @@
                   pénalités qui rétrogradent remixes, éditions radio et
                   karaokés.
 
+   Pour la voix du site, quatre champs facultatifs de plus :
+     lgT, lgA   : la langue du titre et celle de l'artiste — 'fr', 'en', 'es'.
+                  À n'écrire que lorsque les indices se trompent : « En
+                  apesanteur » n'a ni accent ni mot-outil et partait à
+                  l'anglaise, « Respect » est anglais en pleine catégorie
+                  française.
+     ditT, ditA : le texte à DIRE, quand il ne se lit pas comme il s'écrit.
+                  « 1er Gaou » se dit « premier ga ou », « Mme. Pavoshko » se
+                  dit « Madame Pavoshko », et « Boney M. » se faisait lire
+                  « Boney monsieur ». Ça ne change ni ce qui est écrit à
+                  l'écran, ni ce qui est accepté comme réponse.
+
    Format d'une manche : { id, nom, emoji, desc, labelA: étiquette de la 2e réponse,
                            langue: 'fr' ou 'en' — celle des réponses, pour la voix
                            du site, pistes: [...] }                                     */
@@ -58,12 +70,12 @@ var Playlists = (function () {
         { t: "Kiss", a: "Prince" },
         { t: "Money for Nothing", a: "Dire Straits" },
         { t: "Celebration", a: "Kool & The Gang" },
-        { t: "L'Aventurier", a: "Indochine" },
+        { t: "L'Aventurier", a: "Indochine", lgT: "fr", lgA: "fr" },
         { t: "Cendrillon", a: "Téléphone" },
-        { t: "L'Aziza", a: "Daniel Balavoine" },
+        { t: "L'Aziza", a: "Daniel Balavoine", lgT: "fr", lgA: "fr" },
         { t: "Quand la musique est bonne", a: "Jean-Jacques Goldman" },
         { t: "Alexandrie Alexandra", a: "Claude François" },
-        { t: "Voyage voyage", a: "Desireless" },
+        { t: "Voyage voyage", a: "Desireless", lgT: "fr", lgA: "fr" },
         { t: "Joe le taxi", a: "Vanessa Paradis" },
         { t: "Marcia Baila", a: "Les Rita Mitsouko" },
 
@@ -95,10 +107,10 @@ var Playlists = (function () {
         { t: "Self Control", a: "Laura Branigan" },
         { t: "Forever Young", a: "Alphaville" },
         { t: "Tainted Love", a: "Soft Cell" },
-        { t: "Amoureux solitaires", a: "Lio" },
+        { t: "Amoureux solitaires", a: "Lio", lgT: "fr", lgA: "fr" },
         { t: "T'en va pas", a: "Elsa" },
         { t: "Les Sunlights des tropiques", a: "Gilbert Montagné" },
-        { t: "Partenaire particulier", a: "Partenaire Particulier" },
+        { t: "Partenaire particulier", a: "Partenaire Particulier", lgT: "fr", lgA: "fr" },
         { t: "Tchiki boum", a: "Niagara",
           altT: ["Tiki boom", "Tchiki boom"] },
         { t: "Femme que j'aime", a: "Jean-Luc Lahaye" },
@@ -106,7 +118,7 @@ var Playlists = (function () {
         /* Six remplacants choisis par Audrey, apres le retrait de Duran Duran,
            Talking Heads, INXS, Kim Wilde, Falco et Nena. */
         { t: "Elle est d'ailleurs", a: "Pierre Bachelet", q: "Pierre Bachelet Elle est d'ailleurs" },
-        { t: "Boule de flipper", a: "Corynne Charby", q: "Corynne Charby Boule de flipper" },
+        { t: "Boule de flipper", a: "Corynne Charby", q: "Corynne Charby Boule de flipper", lgT: "fr", lgA: "fr" },
         /* Sans le nom precis de l'album, Apple sert Thriller depuis une
            compilation dont la pochette ne dit rien. */
         { t: "Thriller", a: "Michael Jackson",
@@ -154,7 +166,7 @@ var Playlists = (function () {
         { t: "La Tribu de Dana", a: "Manau" },
         { t: "Tomber la chemise", a: "Zebda" },
         { t: "Je danse le mia", a: "IAM" },
-        { t: "Foule sentimentale", a: "Alain Souchon", q: "Alain Souchon Foule sentimentale C'est deja ca" },
+        { t: "Foule sentimentale", a: "Alain Souchon", q: "Alain Souchon Foule sentimentale C'est deja ca", lgT: "fr", lgA: "fr" },
         { t: "J't'emmène au vent", a: "Louise Attaque" },
 
         /* Cités par Audrey. */
@@ -183,9 +195,9 @@ var Playlists = (function () {
 
         /* Sept ajouts choisis par Audrey pour étoffer la catégorie. */
         { t: "Sensualité", a: "Axelle Red", q: "Axelle Red Sensualité Sans plus attendre" },
-        { t: "Osez Joséphine", a: "Alain Bashung", q: "Alain Bashung Osez Joséphine" },
+        { t: "Osez Joséphine", a: "Alain Bashung", q: "Alain Bashung Osez Joséphine", lgA: "fr" },
         { t: "Le Chat", a: "Pow Wow", q: "Pow Wow Le chat Regagner les plaines" },
-        { t: "Alors regarde", a: "Patrick Bruel", q: "Patrick Bruel Alors regarde" },
+        { t: "Alors regarde", a: "Patrick Bruel", q: "Patrick Bruel Alors regarde", lgT: "fr", lgA: "fr" },
         { t: "(Everything I Do) I Do It for You", a: "Bryan Adams",
           q: "Bryan Adams Everything I Do I Do It for You Waking Up the Neighbours",
           altT: ["Everything I Do", "I Do It for You"] },
@@ -202,7 +214,7 @@ var Playlists = (function () {
         // Sur son album de 1996 plutôt que sur la compilation « Soon ».
         { t: "Dieu m'a donné la foi", a: "Ophélie Winter",
           q: "Ophélie Winter Dieu m'a donné la foi No Soucy" },
-        { t: "Lucie", a: "Pascal Obispo", q: "Pascal Obispo Lucie Superflu" }
+        { t: "Lucie", a: "Pascal Obispo", q: "Pascal Obispo Lucie Superflu", lgT: "fr", lgA: "fr" }
       ]
     },
     {
@@ -239,7 +251,7 @@ var Playlists = (function () {
         { t: "Durch den Monsun", a: "Tokio Hotel", q: "Tokio Hotel Durch den Monsun Best of",
           altT: ["Dirt dead Manson", "Durch den Monsoon"] },
         { t: "La Boulette", a: "Diam's" },
-        { t: "En apesanteur", a: "Calogero" },
+        { t: "En apesanteur", a: "Calogero", lgT: "fr", lgA: "fr" },
         { t: "Butterfly", a: "Superbus" },
         // « Ces soirées-là » retiré : Apple n'a que des reprises (Generation Mix,
         // Shewood Band, Les Enfoirés en live), jamais l'original de Yannick.
@@ -320,7 +332,7 @@ var Playlists = (function () {
         { t: "Amoureuse", a: "Véronique Sanson" },
         { t: "Le Paradis blanc", a: "Michel Berger" },
         { t: "Petite Marie", a: "Francis Cabrel" },
-        { t: "Casser la voix", a: "Patrick Bruel" },
+        { t: "Casser la voix", a: "Patrick Bruel", lgA: "fr" },
         { t: "Savoir aimer", a: "Florent Pagny" },
         { t: "Le Vent nous portera", a: "Noir Désir" },
         { t: "Week-end à Rome", a: "Étienne Daho" },
@@ -420,7 +432,7 @@ var Playlists = (function () {
           q: "Cendrillon bande originale française du film Claude Chantal",
           interprete: "Claude Chantal",
           altT: ["Bibbidi-Bobbidi-Boo", "Où ai-je mis cette chose"] },
-        { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews" },
+        { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews", lgA: "fr", ditA: "Marie Poppins" },
         { t: "J'en ai rêvé", a: "La Belle au bois dormant", q: "La Belle au bois dormant J'en ai rêvé bande originale française" },
         { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française" },
         { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins" },
@@ -457,8 +469,8 @@ var Playlists = (function () {
           altT: ["I'm Still Here", "Jim's Theme"] },
         { t: "L'Apprenti sorcier", a: "Fantasia", q: "L'apprenti sorcier Philadelphia Orchestra Leopold Stokowski" },
         { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"] },
-        { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack" },
-        { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"] },
+        { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack", lgA: "fr" },
+        { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"], lgA: "fr" },
         // La version française d'« Oo-De-Lally », par Pierre Vassiliu. Apple
         // France n'a pas la bande originale française du film : le seul endroit
         // où elle se trouve est une compilation, dont la pochette est donc
@@ -599,7 +611,7 @@ var Playlists = (function () {
         // « Circle of Life » retiré : c'est la version anglaise de « L'Histoire
         // de la vie », déjà dans la catégorie Disney & dessins animés.
         // « Dragons » déplacé vers Disney & dessins animés : c'est un DreamWorks.
-        { t: "Now We Are Free", a: "Gladiator", q: "Now We Are Free Hans Zimmer" },
+        { t: "Now We Are Free", a: "Gladiator", q: "Now We Are Free Hans Zimmer", lgA: "fr" },
         { t: "Back to the Future", a: "Retour vers le futur", q: "Back to the Future Theme Alan Silvestri" },
         // « Là-haut » retiré : c'est un Pixar, sa place est dans la catégorie
         // Disney & dessins animés, pas parmi les films.
@@ -613,7 +625,7 @@ var Playlists = (function () {
         /* Abandonnés : Les Simpson (Apple France n'a que des arrangements pour
            orchestre de chambre), E.T. (uniquement en medley) et 2001 (Apple ne
            remonte pas le bon mouvement de Zarathoustra). */
-        { t: "Theme from Jurassic Park", a: "Jurassic Park", q: "Jurassic Park Original Motion Picture Soundtrack John Williams main theme" },
+        { t: "Theme from Jurassic Park", a: "Jurassic Park", q: "Jurassic Park Original Motion Picture Soundtrack John Williams main theme", lgA: "fr" },
         { t: "The Terminator Theme", a: "Terminator", q: "Terminator Main Title Brad Fiedel" },
         { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield" },
         { t: "Halloween Theme", a: "Halloween", q: "Halloween Theme John Carpenter" },
@@ -641,7 +653,7 @@ var Playlists = (function () {
         { t: "Cornfield Chase", a: "Interstellar", q: "Cornfield Chase Hans Zimmer Interstellar" },
         { t: "The Diva Dance", a: "Le Cinquième Élément", q: "Eric Serra Diva Dance Fifth Element Original Motion Picture Soundtrack", altA: ["Le 5e Élément"] },
         { t: "Forrest Gump Suite", a: "Forrest Gump", q: "Forrest Gump Suite Alan Silvestri" },
-        { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction" },
+        { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction", lgA: "en" },
         { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
         { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
         { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore" },
@@ -907,9 +919,9 @@ var Playlists = (function () {
         { t: "Freed from Desire", a: "Gala" },
         { t: "Show Me Love", a: "Robin S." },
         { t: "Mambo No. 5", a: "Lou Bega" },
-        { t: "Livin' la Vida Loca", a: "Ricky Martin" },
+        { t: "Livin' la Vida Loca", a: "Ricky Martin", lgT: "en" },
         { t: "It Wasn't Me", a: "Shaggy" },
-        { t: "1er Gaou", a: "Magic System", altT: ["Premier Gaou"] },
+        { t: "1er Gaou", a: "Magic System", altT: ["Premier Gaou"], lgT: "fr", lgA: "fr", ditT: "premier ga ou" },
         { t: "Aserejé", a: "Las Ketchup", altT: ["The Ketchup Song", "Accélérer", "Asereje"], altA: ["La ketchup"] },
         { t: "Mr. Saxobeat", a: "Alexandra Stan",
           altT: ["Mister Saxobeat"] },
@@ -947,7 +959,7 @@ var Playlists = (function () {
         { t: "Gasolina", a: "Daddy Yankee" },
         { t: "Give Me Everything", a: "Pitbull", altA: ["Ne-Yo", "Afrojack"] },
         { t: "Low", a: "Flo Rida", altA: ["T-Pain"] },
-        { t: "Party Rock Anthem", a: "LMFAO" },
+        { t: "Party Rock Anthem", a: "LMFAO", lgA: "fr", ditA: "L M F A O" },
         { t: "Gangnam Style", a: "PSY",
           altA: ["Psi", "Spy", "Psyche"] },
         { t: "Cheerleader", a: "OMI", q: "OMI Cheerleader Me 4 U" },
@@ -955,7 +967,7 @@ var Playlists = (function () {
         { t: "Axel F", a: "Crazy Frog" },
         { t: "Who Let the Dogs Out", a: "Baha Men",
           altT: ["Follet the dogs out"], altA: ["Bar à main", "Baha main"] },
-        { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"] },
+        { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"], lgT: "es" },
         { t: "Hypnodancer", a: "Little Big", interprete: "Little Big" },
         { t: "Stamp on the Ground", a: "ItaloBrothers", interprete: "ItaloBrothers",
           altA: ["Italo Brothers"] },
@@ -1117,6 +1129,8 @@ var Playlists = (function () {
       id: 'anime',
       langue: 'en',
       nom: "OST animés",
+      /* « OST » se lisait d'un bloc : la voix sort maintenant les trois lettres. */
+      ditNom: "O S T animés",
       emoji: "🍥",
       desc: "Génériques et musiques d'animes. Ici on devine l'anime.",
       /* Une seule réponse : l'anime. Personne ne devine « Kaikai Kitan ».
@@ -1469,7 +1483,7 @@ var Playlists = (function () {
         { t: "Banlieusards", a: "Kery James" },
         { t: "Désolé", a: "Sexion d'Assaut" },
         { t: "Dreamin'", a: "Youssoupha", q: "Youssoupha Dreamin Indila" },
-        { t: "Mme. Pavoshko", a: "Black M", altT: ["Madame Pavoshko"] },
+        { t: "Mme. Pavoshko", a: "Black M", altT: ["Madame Pavoshko"], lgT: "fr", lgA: "fr", ditT: "Madame Pavoshko" },
         { t: "On verra", a: "Nekfeu" },
         { t: "Reine", a: "Dadju" },
         { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
@@ -1506,12 +1520,12 @@ var Playlists = (function () {
           altA: ["GIMS & La Mano 1.9", "La Mano 1.9", "Maître Gims"] },
         { t: "Wati By Night", a: "Sexion d'Assaut", q: "Sexion d'Assaut Wati By Night L'école des points vitaux",
           interprete: "Sexion d'Assaut" },
-        { t: "À l'horizontale", a: "Keen'V", interprete: "Keen'V", altA: ["Keen V"] },
+        { t: "À l'horizontale", a: "Keen'V", interprete: "Keen'V", altA: ["Keen V"], lgA: "fr", ditA: "Kine Vé" },
         { t: "Meleğim", a: "Soolking feat. Dadju", q: "Soolking Dadju Meleğim Vintage",
           interprete: "Soolking", altT: ["Melegim"], altA: ["Soolking", "Dadju"] },
         { t: "Clic clic pan pan", a: "Yanns", q: "Yanns Clic clic pan pan NRJ Music Awards 2022",
           interprete: "Yanns" },
-        { t: "Là c'est die", a: "Ridsa", interprete: "Ridsa" },
+        { t: "Là c'est die", a: "Ridsa", interprete: "Ridsa", lgT: "fr", ditT: "Là c'est daille" },
         { t: "Le bilan", a: "Nèg' Marrons", q: "Nèg' Marrons Frankie Paul Le bilan",
           interprete: "Nèg' Marrons & Frankie Paul", altA: ["Neg Marrons", "Neg' Marrons"] },
         { t: "Angela", a: "Saïan Supa Crew", interprete: "Saïan Supa Crew", altA: ["Saian Supa Crew"] },
@@ -1561,7 +1575,7 @@ var Playlists = (function () {
         // (« Alors on danse » et « Papaoutai » en variété française).
         { t: "Je veux", a: "ZAZ" },
         { t: "Sur ma route", a: "Black M" },
-        { t: "Andalouse", a: "Kendji Girac" },
+        { t: "Andalouse", a: "Kendji Girac", lgT: "fr", lgA: "fr" },
 
         // « Sugar » seul ramenait « Maps » : on précise l'album.
         { t: "Sugar", a: "Maroon 5", q: "Maroon 5 Sugar V album" },
@@ -1590,7 +1604,7 @@ var Playlists = (function () {
         { t: "Le Chant des sirènes", a: "Fréro Delavega" },
         { t: "BOOMBAYAH", a: "BLACKPINK", interprete: "BLACKPINK" },
         { t: "Hit Sale", a: "Therapie TAXI", q: "Therapie TAXI Roméo Elvis Hit Sale",
-          interprete: "Therapie TAXI", altA: ["Therapie Taxi", "Thérapie Taxi"] }
+          interprete: "Therapie TAXI", altA: ["Therapie Taxi", "Thérapie Taxi"], lgT: "fr", lgA: "fr" }
       ]
     },
     {
@@ -1689,8 +1703,8 @@ var Playlists = (function () {
         { t: "Être à la hauteur", a: "Le Roi Soleil", q: "Le Roi Soleil Etre a la hauteur Emmanuel Moire" },
         { t: "J'avais rêvé d'une autre vie", a: "Les Misérables", q: "Les Miserables J'avais reve d'une autre vie" },
         { t: "Memory", a: "Cats", q: "Cats Memory Elaine Paige" },
-        { t: "The Phantom of the Opera", a: "Le Fantôme de l'Opéra", q: "The Phantom of the Opera Andrew Lloyd Webber", altA: ["The Phantom of the Opera"] },
-        { t: "Defying Gravity", a: "Wicked", q: "Wicked Defying Gravity Idina Menzel" },
+        { t: "The Phantom of the Opera", a: "Le Fantôme de l'Opéra", q: "The Phantom of the Opera Andrew Lloyd Webber", altA: ["The Phantom of the Opera"], lgT: "fr", lgA: "fr", ditT: "Le Fantôme de l'Opéra" },
+        { t: "Defying Gravity", a: "Wicked", q: "Wicked Defying Gravity Idina Menzel", lgT: "en" },
         { t: "This Is Me", a: "The Greatest Showman", q: "The Greatest Showman This Is Me Keala Settle" }
         // « Résiste » retiré d'ici : c'était un doublon de la chanson de France
         // Gall, déjà présente dans les Années 80, et pas la version du spectacle.
@@ -1717,32 +1731,32 @@ var Playlists = (function () {
         { t: "Gigi l'Amoroso", a: "Dalida" },
         { t: "On ira tous au paradis", a: "Michel Polnareff" },
         { t: "Le Sud", a: "Nino Ferrer" },
-        { t: "Bang Bang", a: "Sheila" },
+        { t: "Bang Bang", a: "Sheila", lgT: "en", lgA: "fr" },
         { t: "Let It Be", a: "The Beatles" },
         { t: "Paint It Black", a: "The Rolling Stones" },
         { t: "Stairway to Heaven", a: "Led Zeppelin" },
         { t: "Dancing Queen", a: "ABBA" },
         { t: "Stayin' Alive", a: "Bee Gees" },
         { t: "Hotel California", a: "Eagles" },
-        { t: "Rasputin", a: "Boney M." },
+        { t: "Rasputin", a: "Boney M.", lgA: "en", ditA: "Boney M" },
         { t: "Superstition", a: "Stevie Wonder" },
         { t: "I Feel Love", a: "Donna Summer" },
 
         { t: "Sympathy for the Devil", a: "The Rolling Stones" },
         { t: "The House of the Rising Sun", a: "The Animals" },
-        { t: "Respect", a: "Aretha Franklin" },
+        { t: "Respect", a: "Aretha Franklin", lgT: "en" },
         { t: "I Want You Back", a: "The Jackson 5", altA: ["Jackson 5", "Michael Jackson"] },
         { t: "Imagine", a: "John Lennon" },
         { t: "Le Freak", a: "CHIC",
           altT: ["Le fric"] },
-        { t: "Born to Be Alive", a: "Patrick Hernandez" },
+        { t: "Born to Be Alive", a: "Patrick Hernandez", lgA: "fr" },
         { t: "Le Métèque", a: "Georges Moustaki" },
         { t: "Mamy Blue", a: "Nicoletta" },
         { t: "Capri c'est fini", a: "Hervé Vilard" },
         { t: "Les Mots bleus", a: "Christophe" },
         { t: "Tous les garçons et les filles", a: "Françoise Hardy" },
         { t: "La Poupée qui fait non", a: "Michel Polnareff" },
-        { t: "Nathalie", a: "Gilbert Bécaud" },
+        { t: "Nathalie", a: "Gilbert Bécaud", lgT: "fr" },
         { t: "Belles belles belles", a: "Claude François" },
         { t: "Je suis malade", a: "Serge Lama" },
         { t: "Le Téléfon", a: "Nino Ferrer" },
@@ -1786,9 +1800,9 @@ var Playlists = (function () {
         { t: "Hips Don't Lie", a: "Shakira" },
         { t: "La Camisa Negra", a: "Juanes" },
         { t: "Suavemente", a: "Elvis Crespo",
-          altT: ["Soirée menti", "Souavemente"] },
+          altT: ["Soirée menti", "Souavemente"], lgT: "es" },
         { t: "Ai Se Eu Te Pego", a: "Michel Teló",
-          altT: ["I say to pego", "Aïe se ou tou pego"] },
+          altT: ["I say to pego", "Aïe se ou tou pego"], lgT: "es" },
         { t: "Dragostea Din Tei", a: "O-Zone" },
         { t: "Lambada", a: "Kaoma" },
         { t: "Yéké Yéké", a: "Mory Kanté" },
@@ -1802,7 +1816,7 @@ var Playlists = (function () {
              quand même ce rythme-là. On lui met au moins la pochette de
              l'album de Miriam Makeba, qui est la réponse attendue. */
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/65/8d/ea/658deacc-0f1e-e822-8550-08a1b55b3a8a/4062548001204_3000.jpg/600x600bb.jpg" },
-        { t: "Jerusalema", a: "Master KG" },
+        { t: "Jerusalema", a: "Master KG", lgA: "en", ditA: "Master K G" },
 
         { t: "Sofia", a: "Alvaro Soler" },
         { t: "Mambo Italiano", a: "Dean Martin" },
@@ -1844,14 +1858,14 @@ var Playlists = (function () {
           q: "Francky Vincent Fruit de la passion 100% tubes de l'ete bande son soleil",
           interprete: "Francky Vincent", altT: ["Vas-y Francky c'est bon"],
           // La compilation d'été ne dit rien de lui : pochette d'un de ses albums.
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/19/13/38/1913383b-4442-195b-d696-de2a44452dfa/cover.jpg/600x600bb.jpg" },
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music2/v4/19/13/38/1913383b-4442-195b-d696-de2a44452dfa/cover.jpg/600x600bb.jpg", lgA: "fr" },
         { t: "San ou", a: "Dezil'",
           q: "Dezil San ou Black Queen",
           interprete: "Dezil'", altA: ["Dez'il", "Dezil", "Des îles", "Dézile"], altT: ["San ou (la rivière)", "Sans nous"] },
         { t: "Turn Me On", a: "Kevin Lyttle",
           q: "Kevin Lyttle Turn Me On single 2003",
           interprete: "Kevin Lyttle",
-          altT: ["Tu es mignonne", "Turn me one"] },
+          altT: ["Tu es mignonne", "Turn me one"], lgT: "en" },
         { t: "Unité", a: "Nuttea",
           q: "Nuttea Unite Un signe du temps",
           interprete: "Nuttea",

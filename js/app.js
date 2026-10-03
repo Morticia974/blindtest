@@ -1045,14 +1045,16 @@
     caseT.className = 'case-reponse' + (trouves.titre ? ' trouve' : (reveal ? ' revele' : ''));
     var txtT = (trouves.titre || reveal) && piste ? piste.titre : 'à trouver';
     $('contenu-titre').textContent = txtT;
-    etiquetterLangue($('contenu-titre'), txtT, piste && piste.langue, piste && piste.artiste);
+    etiquetterLangue($('contenu-titre'), txtT, piste && piste.langue, piste && piste.artiste,
+                     piste && piste.lgT);
 
     // case Artiste / Film / Anime…
     var caseA = $('case-artiste');
     caseA.className = 'case-reponse' + (trouves.artiste ? ' trouve' : (reveal ? ' revele' : ''));
     var txtA = (trouves.artiste || reveal) && piste ? piste.artiste : 'à trouver';
     $('contenu-artiste').textContent = txtA;
-    etiquetterLangue($('contenu-artiste'), txtA, piste && piste.langue, piste && piste.titre);
+    etiquetterLangue($('contenu-artiste'), txtA, piste && piste.langue, piste && piste.titre,
+                     piste && piste.lgA);
 
     // En solo, le champ non compté est révélé pour l'anecdote, sans points.
     var credit = $('credit-solo');
@@ -1184,10 +1186,11 @@
      L'annonce de la révélation était déjà étiquetée ; le tableau, lui, ne
      l'était pas. Quelqu'un qui parcourt l'écran à la main plutôt que d'attendre
      l'annonce s'entendait lire « Bohemian Rhapsody » à la française. */
-  function etiquetterLangue(el, texte, defaut, appui) {
+  function etiquetterLangue(el, texte, defaut, appui, imposee) {
     if (!el) return;
     if (!texte || texte === 'à trouver') { el.removeAttribute('lang'); return; }
-    el.setAttribute('lang', langueDe(texte, defaut, appui).slice(0, 2));
+    var l = codeLangue(imposee) || langueDe(texte, defaut, appui);
+    el.setAttribute('lang', l.slice(0, 2));
   }
 
   /* Ce qu'on attend comme réponse, dit en toutes lettres.
@@ -1219,7 +1222,10 @@
 
   function categorieDe(etat, piste) {
     var m = Playlists.parId(etat.meta.manche);
-    if (m) return m.nom;
+    /* `ditNom` : le nom tel qu'il se dit, quand il ne se lit pas comme il
+       s'écrit. « OST animés » sortait en un seul bloc ; « O S T animés » se
+       comprend. */
+    if (m) return m.ditNom || m.nom;
     /* Le morceau porte sa catégorie avec l'émoji devant — « 📼 Années 90 ».
        À l'écran il fait joli ; à l'oreille, un lecteur d'écran annonce
        « cassette vidéo » avant la catégorie. On ne garde que les mots. */
@@ -1793,18 +1799,34 @@
     var oeuvre = !/artiste/i.test(p.labelA || 'Artiste');
     var debut = { t: "C'était", l: 'fr-FR' };
     var d = p.langue || 'fr';
-    // Chaque moitié peut s'appuyer sur l'autre quand elle n'a aucun indice.
-    function lgT() { return langueDe(p.titre, d, p.artiste); }
-    function lgA() { return langueDe(p.artiste, d, p.titre); }
+    /* La playlist a le dernier mot.
 
-    if (solo === 'artiste') return [debut, { t: p.artiste, l: lgA() }];
-    if (solo === 'titre') return [debut, { t: p.titre, l: lgT() }];
+       Les indices de langue se trompent encore : « En apesanteur » n'a ni
+       accent ni mot-outil, « Respect » est anglais au milieu d'une catégorie
+       française. Quand c'est le cas, la playlist tranche avec `lgT` et `lgA`,
+       et personne ne cherche plus à deviner.
+
+       `ditT` et `ditA` vont plus loin : ils remplacent le texte dit, sans
+       toucher à ce qui est écrit ni à ce qui est accepté comme réponse. C'est
+       pour les titres qui ne se lisent pas comme ils s'écrivent — « 1er Gaou »
+       se dit « premier ga ou », « Mme. Pavoshko » se dit « Madame Pavoshko »,
+       « Boney M. » se faisait lire « Boney monsieur ». */
+    function lgT() { return codeLangue(p.lgT) || langueDe(p.titre, d, p.artiste); }
+    function lgA() { return codeLangue(p.lgA) || langueDe(p.artiste, d, p.titre); }
+    var dT = p.ditT || p.titre;
+    var dA = p.ditA || p.artiste;
+
+    if (solo === 'artiste') return [debut, { t: dA, l: lgA() }];
+    if (solo === 'titre') return [debut, { t: dT, l: lgT() }];
     if (oeuvre) {
-      return [debut, { t: p.artiste, l: lgA() },
-              { t: 'Musique :', l: 'fr-FR' }, { t: p.titre, l: lgT() }];
+      /* « C'était Le Fantôme de l'Opéra. Musique : Le Fantôme de l'Opéra. » :
+         quand l'œuvre et le morceau portent le même nom, une fois suffit. */
+      if (Match.normaliser(dT) === Match.normaliser(dA)) return [debut, { t: dA, l: lgA() }];
+      return [debut, { t: dA, l: lgA() },
+              { t: 'Musique :', l: 'fr-FR' }, { t: dT, l: lgT() }];
     }
-    return [debut, { t: p.titre, l: lgT() },
-            { t: 'de', l: 'fr-FR' }, { t: p.artiste, l: lgA() }];
+    return [debut, { t: dT, l: lgT() },
+            { t: 'de', l: 'fr-FR' }, { t: dA, l: lgA() }];
   }
 
   function phraseDeRevelation(p) {
@@ -1901,6 +1923,17 @@
      s'attache ». Mais à côté il y avait « Christophe Maé », et cet accent-là
      ne trompe personne. Un titre muet se range donc d'abord du côté de son
      artiste, et seulement ensuite du côté de sa catégorie. */
+  /* Les langues qu'une playlist peut nommer, en court. Trois voix sont
+     installées chez presque tout le monde ; au-delà, le navigateur rend la
+     main et lit avec celle qu'il a. */
+  var LANGUES = { fr: 'fr-FR', en: 'en-US', es: 'es-ES', pt: 'pt-BR', de: 'de-DE', it: 'it-IT', ja: 'ja-JP' };
+
+  function codeLangue(x) {
+    if (!x) return '';
+    var k = String(x).toLowerCase();
+    return LANGUES[k] || (k.indexOf('-') !== -1 ? x : '');
+  }
+
   function langueDe(texte, defaut, appui) {
     var n = indices(String(texte || ''));
     if (n.en > n.fr) return 'en-US';
