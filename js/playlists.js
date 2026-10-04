@@ -940,7 +940,9 @@ var Playlists = (function () {
         // moins connue en France — et le jeu acceptait alors « Sean Paul » alors
         // que la réponse affichée restait « Enrique Iglesias ».
         { t: "Bailando", a: "Enrique Iglesias feat. Descemer Bueno & Gente de Zona", q: "Bailando Spanish Version Enrique Iglesias", altA: ["Enrique Iglesias", "Gente de Zona", "Descemer Bueno"] },
-        { t: "Danza Kuduro", a: "Don Omar feat. Lucenzo", altA: ["Lucenzo", "Don Omar"] },
+        { t: "Danza Kuduro", a: "Don Omar feat. Lucenzo", altA: ["Lucenzo", "Don Omar"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/don-omar-danza-kuduro.jpg" },
         { t: "On Écrit Sur Les Murs", a: "Kids United", q: "On écrit sur les murs Kids United" },
 
         { t: "Lady (Hear Me Tonight)", a: "Modjo" },
@@ -1448,7 +1450,9 @@ var Playlists = (function () {
       pistes: [
         // « Laisse pas traîner ton fils » retiré : Apple France n'a pas le
         // morceau, seulement un karaoké. « Ma Benz » reste.
-        { t: "Ma Benz", a: "Suprême NTM", altA: ["NTM"] },
+        { t: "Ma Benz", a: "Suprême NTM", altA: ["NTM"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/ntm-ma-benz.jpg" },
         { t: "Petit Frère", a: "IAM" },
         { t: "Demain c'est loin", a: "IAM" },
         { t: "Caroline", a: "MC Solaar" },
@@ -1486,7 +1490,9 @@ var Playlists = (function () {
         { t: "Mme. Pavoshko", a: "Black M", altT: ["Madame Pavoshko"], lgT: "fr", lgA: "fr", ditT: "Madame Pavoshko" },
         { t: "On verra", a: "Nekfeu" },
         { t: "Reine", a: "Dadju" },
-        { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï" },
+        { t: "Guerilla", a: "Soolking", q: "Soolking Guerilla Best of Raï",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/soolking-guerilla.jpg" },
         { t: "La Kiffance", a: "Naps", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/0d/e7/da/0de7da2e-c169-88da-25da-b334670b084e/3700187659653.png/600x600bb.jpg" },
         { t: "Ça va ça vient", a: "Vitaa & Slimane", altA: ["Vitaa", "Slimane"] },
 
