@@ -587,7 +587,9 @@ var Playlists = (function () {
         // Le titre du film doit être écrit en entier — mais le nom de la
         // licence est toujours accepté : « Star Wars » vaut pour la Marche
         // impériale. En revanche « Amélie Poulain » tronqué ne passe pas.
-        { t: "Hedwig's Theme", a: "Harry Potter à l'école des sorciers", q: "Hedwig's Theme John Williams", altA: ["Harry Potter"] },
+        { t: "Hedwig's Theme", a: "Harry Potter à l'école des sorciers", q: "Hedwig's Theme John Williams", altA: ["Harry Potter"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/harry-potter-ecole-des-sorciers.jpg" },
         { t: "He's a Pirate", a: "Pirates des Caraïbes : La Malédiction du Black Pearl", q: "He's a Pirate Klaus Badelt", altA: ["Pirates des Caraïbes", "Pirates of the Caribbean"] },
         { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"] },
         { t: "Mission: Impossible Theme", a: "Mission impossible", q: "Mission Impossible Theme Lalo Schifrin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/73/0b/68/730b687a-f83c-5779-dc41-483b955425da/00030206673395.rgb.jpg/600x600bb.jpg" },
