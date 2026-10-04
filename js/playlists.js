@@ -591,8 +591,8 @@ var Playlists = (function () {
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
           pochette: "https://morticia974.github.io/blindtest/images/pochettes/harry-potter-ecole-des-sorciers.jpg" },
         { t: "He's a Pirate", a: "Pirates des Caraïbes : La Malédiction du Black Pearl", q: "He's a Pirate Klaus Badelt", altA: ["Pirates des Caraïbes", "Pirates of the Caribbean"] },
-        { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"] },
-        { t: "Mission: Impossible Theme", a: "Mission impossible", q: "Mission Impossible Theme Lalo Schifrin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/73/0b/68/730b687a-f83c-5779-dc41-483b955425da/00030206673395.rgb.jpg/600x600bb.jpg" },
+        { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"], interprete: "John Williams & London Symphony Orchestra", disque: "A New Hope" },
+        { t: "Mission: Impossible Theme", a: "Mission impossible", q: "Mission Impossible Theme Lalo Schifrin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/73/0b/68/730b687a-f83c-5779-dc41-483b955425da/00030206673395.rgb.jpg/600x600bb.jpg", interprete: "Lalo Schifrin", disque: "Original Television Soundtrack" },
         { t: "Raiders March", a: "Indiana Jones et les Aventuriers de l'arche perdue", q: "Raiders March John Williams", altA: ["Indiana Jones", "Indiana", "Raiders of the Lost Ark", "Indiana Jones et les Aventuriers de l'arche perdue"] },
         { t: "Eye of the Tiger", a: "Rocky III", q: "Eye of the Tiger Survivor", altA: ["Rocky"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/37/3a/89/373a8959-4978-7fc2-8a10-7db103b8bd8b/05099969736957.jpg/600x600bb.jpg" },
         { t: "Ghostbusters", a: "SOS Fantômes", q: "Ghostbusters Ray Parker Jr", altA: ["Ghostbusters"] },
@@ -661,7 +661,7 @@ var Playlists = (function () {
         { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction", lgA: "en" },
         { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
         { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
-        { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore" },
+        { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore", interprete: "Münchner Symphoniker & Howard Shore", disque: "Silence of the Lambs" },
         /* Le thème du duel final, choisi par Audrey. Apple n'a pas la bande
            originale du film en album : l'enregistrement de Morricone n'existe
            que sur des compilations, d'où la pochette imposée (le single
@@ -755,7 +755,9 @@ var Playlists = (function () {
         { t: "I'll Be There for You", a: "Friends",
           q: "I'll Be There for You The Rembrandts",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/24/fd/3b/mzi.mwaebzpb.jpg/600x600bb.jpg" },
-        { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"] },
+        { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"],
+          /* Sans ça, « Main Title » tout court ramassait le générique de Battlestar Galactica : deux morceaux portant le même nom, et rien pour les départager. */
+          interprete: "Ramin Djawadi", disque: "Music From the HBO Series" },
         { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
         { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold",
           altA: ["Docteur Roux", "Docteur Who", "Doctor Roux"] },
@@ -782,7 +784,7 @@ var Playlists = (function () {
           q: "Superman Lazlo Bane All the Time in the World",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/55/7f/db/557fdb12-57c5-7ec0-cb44-a596afdd228d/00720616235329.rgb.jpg/600x600bb.jpg",
           altA: ["Screb", "Scrab", "Scrobs"] },
-        { t: "Hey Beautiful", a: "How I Met Your Mother", q: "Hey Beautiful The Solids How I Met Your Mother", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/0/2451.jpg" },
+        { t: "Hey Beautiful", a: "How I Met Your Mother", q: "Hey Beautiful The Solids How I Met Your Mother", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/0/2451.jpg", interprete: "The Solids", disque: "How I Met Your Music" },
         { t: "Big Bang Theory Theme", a: "The Big Bang Theory",
           q: "Barenaked Ladies Big Bang Theory Theme",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/16/4f/9c/164f9c46-270e-fa3a-87e2-c445d578616b/794043204791.jpg/600x600bb.jpg" },
@@ -813,7 +815,7 @@ var Playlists = (function () {
           pays: "US", interprete: "Randy Newman",
           altT: ["Monk Theme", "It's a Jungle Out There"],
           altA: ["Manque", "Monque"], disque: "Dark Matter" },
-        { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/1/3027.jpg" },
+        { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/1/3027.jpg", interprete: "Joel Goldsmith", disque: "Stargate" },
         { t: "Rick and Morty Theme", a: "Rick et Morty", q: "Ryan Elder Rick and Morty Theme", altA: ["Rick and Morty"] },
         // La requête vise la « TV Version » : sans elle, Apple sortait la
         // version longue, méconnaissable au premier accord.
