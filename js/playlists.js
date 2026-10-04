@@ -591,7 +591,9 @@ var Playlists = (function () {
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
           pochette: "https://morticia974.github.io/blindtest/images/pochettes/harry-potter-ecole-des-sorciers.jpg" },
         { t: "He's a Pirate", a: "Pirates des Caraïbes : La Malédiction du Black Pearl", q: "He's a Pirate Klaus Badelt", altA: ["Pirates des Caraïbes", "Pirates of the Caribbean"] },
-        { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"], interprete: "John Williams & London Symphony Orchestra", disque: "A New Hope" },
+        { t: "Main Title", a: "Star Wars, épisode IV : Un nouvel espoir", q: "Star Wars Main Title John Williams", altA: ["Star Wars", "La Guerre des étoiles"], interprete: "John Williams & London Symphony Orchestra", disque: "A New Hope",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/star-wars-un-nouvel-espoir.jpg" },
         { t: "Mission: Impossible Theme", a: "Mission impossible", q: "Mission Impossible Theme Lalo Schifrin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/73/0b/68/730b687a-f83c-5779-dc41-483b955425da/00030206673395.rgb.jpg/600x600bb.jpg", interprete: "Lalo Schifrin", disque: "Original Television Soundtrack" },
         { t: "Raiders March", a: "Indiana Jones et les Aventuriers de l'arche perdue", q: "Raiders March John Williams", altA: ["Indiana Jones", "Indiana", "Raiders of the Lost Ark", "Indiana Jones et les Aventuriers de l'arche perdue"] },
         { t: "Eye of the Tiger", a: "Rocky III", q: "Eye of the Tiger Survivor", altA: ["Rocky"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/37/3a/89/373a8959-4978-7fc2-8a10-7db103b8bd8b/05099969736957.jpg/600x600bb.jpg" },
@@ -661,7 +663,9 @@ var Playlists = (function () {
         { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction", lgA: "en" },
         { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
         { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
-        { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore", interprete: "Münchner Symphoniker & Howard Shore", disque: "Silence of the Lambs" },
+        { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore", interprete: "Münchner Symphoniker & Howard Shore", disque: "Silence of the Lambs",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-silence-des-agneaux.jpg" },
         /* Le thème du duel final, choisi par Audrey. Apple n'a pas la bande
            originale du film en album : l'enregistrement de Morricone n'existe
            que sur des compilations, d'où la pochette imposée (le single
@@ -674,7 +678,9 @@ var Playlists = (function () {
         { t: "Main Title", a: "Braveheart", q: "Braveheart Main Title James Horner" },
         { t: "Homo Delphinus", a: "Le Grand Bleu",
           q: "Eric Serra Homo Delphinus The Big Blue Original Motion Picture Soundtrack",
-          interprete: "Eric Serra", altA: ["The Big Blue"] },
+          interprete: "Eric Serra", altA: ["The Big Blue"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-grand-bleu.jpg" },
         { t: "Enae Volare", a: "Les Visiteurs", q: "Les Visiteurs Eric Levi bande originale" },
         { t: "Reality", a: "La Boum", q: "Reality Richard Sanderson La Boum" },
         { t: "Oss 117 thème", a: "OSS 117", q: "Ludovic Bource OSS 117 Le Caire nid d'espions bande originale du film" },
@@ -692,7 +698,9 @@ var Playlists = (function () {
           q: "Come and Get Your Love Redbone",
           // Apple sert le morceau sur le single de Redbone : pochette du film imposée.
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/68/93/3a6893ed-7882-9d3c-c154-a96f6b5a4b50/14DMGIM05420.rgb.jpg/600x600bb.jpg" },
-        { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer" },
+        { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/oppenheimer.jpg" },
         /* Celui-là s'imposait : le nom du site vient de Fatal Bazooka. */
         { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"],
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
@@ -795,7 +803,9 @@ var Playlists = (function () {
           q: "You've Got Time Regina Spektor",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/64/e6/3a/64e63a1c-2238-5477-e27e-9f61f7368e88/00030206731408.rgb.jpg/600x600bb.jpg" },
         { t: "Toss a Coin to Your Witcher", a: "The Witcher", q: "Toss a Coin to Your Witcher Sonya Belousova Joey Batey" },
-        { t: "Theme from the Walking Dead", a: "The Walking Dead", q: "Bear McCreary Theme from the Walking Dead Original Television Soundtrack" },
+        { t: "Theme from the Walking Dead", a: "The Walking Dead", q: "Bear McCreary Theme from the Walking Dead Original Television Soundtrack",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/the-walking-dead.jpg" },
         { t: "Goo Goo Muck", a: "Mercredi",
           q: "Goo Goo Muck The Cramps Psychedelic Jungle",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1f/ec/ab/1fecab29-fa10-0abd-6097-6909e1534708/wednesday_3000.jpg/600x600bb.jpg",
@@ -814,8 +824,10 @@ var Playlists = (function () {
           q: "It's a Jungle Out There Randy Newman Dark Matter",
           pays: "US", interprete: "Randy Newman",
           altT: ["Monk Theme", "It's a Jungle Out There"],
-          altA: ["Manque", "Monque"], disque: "Dark Matter" },
-        { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/1/3027.jpg", interprete: "Joel Goldsmith", disque: "Stargate" },
+          altA: ["Manque", "Monque"], disque: "Dark Matter",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/monk.jpg" },
+        { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/stargate-sg1.jpg", interprete: "Joel Goldsmith", disque: "Stargate" },
         { t: "Rick and Morty Theme", a: "Rick et Morty", q: "Ryan Elder Rick and Morty Theme", altA: ["Rick and Morty"] },
         // La requête vise la « TV Version » : sans elle, Apple sortait la
         // version longue, méconnaissable au premier accord.
@@ -852,7 +864,7 @@ var Playlists = (function () {
           q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/6e/90/0e/mzi.tgiwivqf.jpg/600x600bb.jpg",
           altA: ["Buffy"] },
-        { t: "The Office", a: "The Office", q: "The Office Scranton Crew TV Generation", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/481/1204342.jpg" },
+        { t: "The Office", a: "The Office", q: "The Office Scranton Crew TV Generation", pochette: "https://morticia974.github.io/blindtest/images/pochettes/the-office.jpg" },
         { t: "Mystery Movie Theme", a: "Columbo", q: "Mystery Movie Theme Columbo Geek Music", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/3/9270.jpg" },
         { t: "Criminal Minds", a: "Esprits criminels",
           q: "Criminal Minds Movie Sounds Unlimited Best of American TV Themes",
@@ -866,17 +878,21 @@ var Playlists = (function () {
         { t: "Sámbame", a: "Un dos tres", voulue: true, q: "Upa Dance Sámbame Radio Edit Remix Collector Edition", altA: ["Upa Dance", "Un paso adelante"] },
         // Audrey a écouté les cinq candidats et retenu celui-ci : la reprise
         // au piano, moins marquée par le tube d'origine que celles au quatuor.
-        { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"] },
+        { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/bridgerton.jpg" },
         { t: "American Horror Story Theme", a: "American Horror Story", q: "American Horror Story Theme Cesar Davila-Irizarry Charlie Clouser", altA: ["AHS"] },
         // Laurie Johnson, depuis la bande originale officielle de la série.
-        { t: "Main Titles Theme", a: "Chapeau melon et bottes de cuir", q: "Laurie Johnson Main Titles Theme The Avengers 1968-1969 Soundtrack from the TV Series", altA: ["The Avengers"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/543/1357959.jpg" },
+        { t: "Main Titles Theme", a: "Chapeau melon et bottes de cuir", q: "Laurie Johnson Main Titles Theme The Avengers 1968-1969 Soundtrack from the TV Series", altA: ["The Avengers"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/chapeau-melon-bottes-de-cuir.jpg" },
         /* La chanson du récapitulatif de chaque fin de saison. C'est un titre de
            Kansas, mais la catégorie demande explicitement une série : personne ne
            répondra « Kansas ». Le groupe n'est nulle part ailleurs dans le jeu. */
         { t: "Carry On Wayward Son", a: "Supernatural",
           q: "Kansas Carry On Wayward Son Leftoverture",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6f/0b/a3/6f0ba3d7-9896-e833-d95f-12ffa8a70660/794043145414.jpg/600x600bb.jpg" },
-        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"] },
+        { t: "I'm Always Here", a: "Alerte à Malibu", q: "Jim Jamison I'm Always Here Baywatch", altA: ["Baywatch"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/alerte-a-malibu.jpg" },
 
         /* Cinq séries choisies par Audrey pour remplacer celles qu'on a
            retirées. Trois d'entre elles n'ont jamais sorti leur générique en
@@ -996,8 +1012,12 @@ var Playlists = (function () {
         { t: "Bohemian Rhapsody", a: "Queen" },
         { t: "Highway to Hell", a: "AC/DC" },
         { t: "Sweet Child o' Mine", a: "Guns N' Roses" },
-        { t: "Smoke on the Water", a: "Deep Purple" },
-        { t: "Nothing Else Matters", a: "Metallica" },
+        { t: "Smoke on the Water", a: "Deep Purple",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/deep-purple-smoke-on-the-water.jpg" },
+        { t: "Nothing Else Matters", a: "Metallica",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/metallica-nothing-else-matters.jpg" },
         { t: "Whole Lotta Love", a: "Led Zeppelin" },
         { t: "(I Can't Get No) Satisfaction", a: "The Rolling Stones", altT: ["Satisfaction"] },
         { t: "Hey Jude", a: "The Beatles" },
@@ -1177,8 +1197,8 @@ var Playlists = (function () {
         { t: "Kaikai Kitan", a: "Jujutsu Kaisen", q: "Kaikai Kitan Eve", altA: ["JJK"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521905.jpg" },
         { t: "Idol", a: "Oshi no Ko", q: "Idol YOASOBI", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521297.jpg" },
         { t: "Zenzenzense", a: "Your Name", q: "Zenzenzense RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/your-name.jpg" },
-        { t: "Merry-Go-Round of Life", a: "Le Château ambulant", q: "Merry Go Round of Life Joe Hisaishi", altA: ["Howl's Moving Castle"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/4b/af/f0/4baff0ae-1795-7807-128c-4259ad2fd970/TKCA-72775.jpg/600x600bb.jpg" },
-        { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/12/dc/cf/12dccf7e-32ce-12e8-03fe-37574d6c2197/TKCA-72165.jpg/600x600bb.jpg" },
+        { t: "Merry-Go-Round of Life", a: "Le Château ambulant", q: "Merry Go Round of Life Joe Hisaishi", altA: ["Howl's Moving Castle"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-chateau-ambulant.jpg" },
+        { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-voyage-de-chihiro.jpg" },
         { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu",
           altA: ["MHA", "Boku no Hero Academia", "BNHA"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/599/1499141.jpg" },
         { t: "Kick Back", a: "Chainsaw Man", q: "Kick Back Kenshi Yonezu", altA: ["CSM"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/422/1056726.jpg" },
@@ -1298,15 +1318,17 @@ var Playlists = (function () {
         { t: "Unshaken", a: "Red Dead Redemption 2", q: "Unshaken D'Angelo Red Dead Redemption 2", altA: ["Red Dead Redemption", "Red Dead"] },
         { t: "Welcome Horizons", a: "Animal Crossing",
           q: "Kylydian Welcome Horizons Symphonic Horizons Animal Crossing",
-          interprete: "Kylydian", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/46/96/d7/4696d7a0-0d25-0d1d-bdc2-be67475a5316/artwork.jpg/600x600bb.jpg",
+          interprete: "Kylydian", pochette: "https://morticia974.github.io/blindtest/images/pochettes/animal-crossing.jpg",
           altT: ["Animal Crossing Main Theme"], altA: ["Animal Crossing New Horizons"] },
         { t: "Buy Mode", a: "Les Sims", q: "Buy Mode The Sims Power Up Orchestra", altA: ["The Sims", "Sims"],
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/2b/ee/da2bee0c-f94d-58be-6ef5-b609cfd5057d/The-Sims_3000_1.jpg/600x600bb.jpg" },
         { t: "Pokemon Red/Blue (Battle Theme)", a: "Pokémon", q: "Pokemon Red Blue Battle Theme Pxls", pochette: "https://morticia974.github.io/blindtest/images/pochettes/pokemon-rouge-bleu.jpg" },
-        { t: "Fortnite (Battle Royale Theme)", a: "Fortnite", q: "Fortnite Battle Royale Theme Arcade Player", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/58/ac/a0/58aca06b-4dc5-d680-14c4-1f05fb3b9928/AppIcon-0-0-1x_U007epad-0-1-85-220.png/600x600bb.jpg" },
+        { t: "Fortnite (Battle Royale Theme)", a: "Fortnite", q: "Fortnite Battle Royale Theme Arcade Player", pochette: "https://morticia974.github.io/blindtest/images/pochettes/fortnite.jpg" },
         { t: "Legends of Azeroth", a: "World of Warcraft", q: "Legends of Azeroth Main Title Jason Hayes", altA: ["WoW", "Warcraft"] },
         { t: "POP/STARS", a: "League of Legends", q: "POP STARS K/DA Madison Beer", altA: ["LoL", "League"] },
-        { t: "Lumière", a: "Clair Obscur: Expedition 33", q: "Lumière Lorien Testard Clair Obscur Expedition 33", altA: ["Expedition 33", "Clair Obscur"] },
+        { t: "Lumière", a: "Clair Obscur: Expedition 33", q: "Lumière Lorien Testard Clair Obscur Expedition 33", altA: ["Expedition 33", "Clair Obscur"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/clair-obscur-expedition-33.jpg" },
         { t: "Title Theme", a: "Fable", q: "Title Theme Russell Shaw Fable Legends", altA: ["Fable Legends"] },
         { t: "The Last of Us", a: "The Last of Us", q: "The Last of Us Gustavo Santaolalla" },
         { t: "God of War", a: "God of War", q: "God of War Bear McCreary PlayStation Soundtrack" },
