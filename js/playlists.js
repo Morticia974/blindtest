@@ -162,7 +162,6 @@ var Playlists = (function () {
         { t: "All That She Wants", a: "Ace of Base" },
         { t: "Macarena", a: "Los del Río", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/75/42/8e7542a9-7dd3-6449-d2cc-6626912009d1/dj.djaqgbqy.jpg/600x600bb.jpg" },
         { t: "I Will Always Love You", a: "Whitney Houston" },
-        { t: "Belle", a: "Garou, Daniel Lavoie & Patrick Fiori", altA: ["Notre-Dame de Paris"] },
         { t: "La Tribu de Dana", a: "Manau" },
         { t: "Tomber la chemise", a: "Zebda" },
         { t: "Je danse le mia", a: "IAM" },
@@ -255,7 +254,7 @@ var Playlists = (function () {
         { t: "Butterfly", a: "Superbus" },
         // « Ces soirées-là » retiré : Apple n'a que des reprises (Generation Mix,
         // Shewood Band, Les Enfoirés en live), jamais l'original de Yannick.
-        { t: "L'Hymne de nos campagnes", a: "Tryo" },
+        { t: "L'Hymne de nos campagnes", a: "Tryo", interprete: "Tryo", disque: "Mamagubida", voulue: true },
 
         /* Ajouts validés par Audrey. Écartés faute de mieux chez Apple France :
            Green Day (que des reprises au quatuor à cordes), James Blunt pour
@@ -395,11 +394,11 @@ var Playlists = (function () {
       labelA: "Film",
       pistes: [
         { t: "Libérée, délivrée", a: "La Reine des neiges", q: "Libérée délivrée Anaïs Delva" },
-        { t: "Ce rêve bleu", a: "Aladdin", q: "Ce rêve bleu Aladdin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c7/af/52/c7af524c-d45f-1117-0ac6-c92be7ad1955/19UMGIM42916.rgb.jpg/600x600bb.jpg" },
-        { t: "Histoire éternelle", a: "La Belle et la Bête", q: "Histoire éternelle La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg" },
-        { t: "Sous l'océan", a: "La Petite Sirène", q: "Sous l'océan La Petite Sirène", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d0/81/37/d081370d-8597-ec61-0c58-4cf01b2481b8/14DMGIM05199.rgb.jpg/600x600bb.jpg" },
+        { t: "Ce rêve bleu", a: "Aladdin", q: "Ce rêve bleu Aladdin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c7/af/52/c7af524c-d45f-1117-0ac6-c92be7ad1955/19UMGIM42916.rgb.jpg/600x600bb.jpg", interprete: "Karine Costa & Paolo Domingo" },
+        { t: "Histoire éternelle", a: "La Belle et la Bête", q: "Histoire éternelle La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg", interprete: "Lucie Dolene" },
+        { t: "Sous l'océan", a: "La Petite Sirène", q: "Sous l'océan La Petite Sirène", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d0/81/37/d081370d-8597-ec61-0c58-4cf01b2481b8/14DMGIM05199.rgb.jpg/600x600bb.jpg", interprete: "Henri Salvador" },
         { t: "Il en faut peu pour être heureux", a: "Le Livre de la jungle", q: "Il en faut peu pour être heureux Livre de la jungle" },
-        { t: "Hakuna Matata", a: "Le Roi Lion", q: "Hakuna Matata Le Roi Lion", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/f7/57/9b/f7579b07-8143-23b7-cd17-738a4a012e16/19UMGIM61865.rgb.jpg/600x600bb.jpg" },
+        { t: "Hakuna Matata", a: "Le Roi Lion", q: "Hakuna Matata Le Roi Lion", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/f7/57/9b/f7579b07-8143-23b7-cd17-738a4a012e16/19UMGIM61865.rgb.jpg/600x600bb.jpg", interprete: "Dimitri Rougeul, Emmanuel Curtil, Jean-Philippe Puymartin & Michel Elias" },
         { t: "L'Histoire de la vie", a: "Le Roi Lion", q: "L'Histoire de la vie Le Roi Lion" },
         { t: "Comme un homme", a: "Mulan", q: "Comme un homme Mulan" },
         // Sans le nom de Laura Mayne, Apple sert la reprise de Jenifer (We Love
@@ -412,7 +411,7 @@ var Playlists = (function () {
         { t: "Le Bleu lumière", a: "Vaiana", q: "Le Bleu lumière Vaiana" },
         { t: "Je suis ton ami", a: "Toy Story", q: "Je suis ton ami Toy Story" },
         { t: "Les Cloches de Notre-Dame", a: "Le Bossu de Notre-Dame", q: "Les Cloches de Notre-Dame Bossu" },
-        { t: "C'est la fête", a: "La Belle et la Bête", q: "C'est la fête La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg" },
+        { t: "C'est la fête", a: "La Belle et la Bête", q: "C'est la fête La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg", interprete: "Daniel Beretta & Lucie Dolene" },
         { t: "Je voudrais déjà être roi", a: "Le Roi Lion", q: "Je voudrais déjà être roi Le Roi Lion" },
         // Titre complet exigé : « Blanche-Neige » seul est le nom du personnage,
         // pas celui du film. La forme avec le chiffre 7 est acceptée telle quelle.
@@ -437,11 +436,11 @@ var Playlists = (function () {
         { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/21/f9/38/21f938e9-d247-d78f-bdfc-3a8baacfd56e/43396568129.jpg/600x600bb.jpg" },
         { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins" },
         { t: "Au bout du rêve", a: "La Princesse et la Grenouille", q: "La Princesse et la Grenouille Au bout du rêve" },
-        { t: "Cruella De Vil", a: "Les 101 Dalmatiens", q: "Les 101 Dalmatiens Cruella De Vil", altA: ["101 Dalmatiens"] },
+        { t: "Cruella de ville", a: "Les 101 Dalmatiens", q: "Cruella de ville Les 101 Dalmatiens", altA: ["101 Dalmatiens"], interprete: "Chœurs - Les 101 Dalmatiens", altT: ["Cruella De Vil"] },
         { t: "Dans un autre monde", a: "La Reine des neiges 2", q: "La Reine des neiges 2 Dans un autre monde", altA: ["La Reine des neiges"] },
         { t: "Ne parlons pas de Bruno", a: "Encanto", q: "Encanto Ne parlons pas de Bruno", altA: ["La Fantastique Famille Madrigal"] },
         { t: "Loin du froid de décembre", a: "Anastasia", q: "Anastasia Loin du froid de décembre", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/83/8b/39/838b3930-e308-e3b6-1ade-9a08105ad158/859721178099.jpg/600x600bb.jpg" },
-        { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/74/e1/a2/74e1a22e-104e-9cd0-1c0f-c21ffc0f8bdc/20UMGIM16843.rgb.jpg/600x600bb.jpg" },
+        { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/74/e1/a2/74e1a22e-104e-9cd0-1c0f-c21ffc0f8bdc/20UMGIM16843.rgb.jpg/600x600bb.jpg", interprete: "Bernard Alane & Sébastien Valter" },
         // Audrey a validé ce titre-là pour Merlin plutôt que « Un tout petit rien ».
         { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus" },
         { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" },
@@ -801,11 +800,11 @@ var Playlists = (function () {
            ne vit que dans la boutique américaine. Le titre est écrit en entier
            parce que l'album contient aussi une version longue et une version
            pilote, qui portent presque le même nom. */
-        { t: "Monk Theme (Series Version)", a: "Monk",
-          q: "Monk Jeff Beal Original Television Soundtrack Monk Theme Series Version",
-          pays: "US", interprete: "Jeff Beal",
+        { t: "It's a Jungle Out There", a: "Monk",
+          q: "It's a Jungle Out There Randy Newman Dark Matter",
+          pays: "US", interprete: "Randy Newman",
           altT: ["Monk Theme", "It's a Jungle Out There"],
-          altA: ["Manque", "Monque"] },
+          altA: ["Manque", "Monque"], disque: "Dark Matter" },
         { t: "Main Title", a: "Stargate SG-1", q: "Stargate SG-1 Main Title Joel Goldsmith Best of Soundtrack", altA: ["Stargate"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/1/3027.jpg" },
         { t: "Rick and Morty Theme", a: "Rick et Morty", q: "Ryan Elder Rick and Morty Theme", altA: ["Rick and Morty"] },
         // La requête vise la « TV Version » : sans elle, Apple sortait la
@@ -1143,13 +1142,11 @@ var Playlists = (function () {
       labelT: "Titre du morceau",
       labelA: "Anime",
       pistes: [
-        { t: "Cha-La Head-Cha-La", a: "Dragon Ball Z", q: "Cha La Head Cha La Hironobu Kageyama",
-          altA: ["DBZ"] },
         { t: "We Are!", a: "One Piece", q: "We Are Hiroshi Kitadani One Piece", altA: ["OP"] },
         { t: "Blue Bird", a: "Naruto Shippuden", q: "Blue Bird Ikimonogakari", altA: ["Naruto"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/3/9413.jpg" },
-        { t: "Guren no Yumiya", a: "L'Attaque des Titans", q: "Guren no Yumiya Linked Horizon",
-          interprete: "Linked Horizon", altT: ["Feuerroter Pfeil und Bogen"],
-          altA: ["Attack on Titan", "Shingeki no Kyojin", "SNK", "AOT"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/632/1582290.jpg" },
+        { t: "Shinzo wo Sasageyo!", a: "L'Attaque des Titans", q: "Shinzo wo Sasageyo Linked Horizon TV Size",
+          interprete: "Linked Horizon", altT: ["Feuerroter Pfeil und Bogen", "Shinzou wo Sasageyo", "Guren no Yumiya"],
+          altA: ["Attack on Titan", "Shingeki no Kyojin", "SNK", "AOT"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/632/1582290.jpg", disque: "TV Size" },
         { t: "Gurenge", a: "Demon Slayer", q: "Gurenge LiSA", altA: ["Kimetsu no Yaiba", "KNY"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/456/1140750.jpg" },
         { t: "Unravel", a: "Tokyo Ghoul", q: "Unravel TK from Ling tosite sigure", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/604/1510953.jpg" },
         /* La série de 2003, pas Brotherhood : c'est celle qu'on a vue en France,
@@ -1176,7 +1173,7 @@ var Playlists = (function () {
         { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu JUDY AND MARY The Great Escape", altA: ["Rurouni Kenshin"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/11/27683.jpg" },
 
         /* Ajoutés sur proposition d'Audrey : la catégorie manquait de variété. */
-        { t: "Pokémon Theme", a: "Pokémon", q: "Pokemon Theme Gotta Catch Em All" },
+        { t: "Pokémon (Attrapez-les tous)", a: "Pokémon", q: "Pokémon Attrapez-les tous Bob Konnie Patline", interprete: "Bob & Konnie Patline & C. Willys", altT: ["Pokémon Theme", "Attrapez-les tous"] },
         { t: "Crossing Field", a: "Sword Art Online", q: "Crossing Field LiSA", altA: ["SAO"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/573/1434479.jpg" },
         { t: "Déjà Vu", a: "Initial D", q: "Deja Vu Dave Rodgers", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/459/1148933.jpg" },
         { t: "The WORLD", a: "Death Note", q: "The World Nightmare Death Note", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/499/1249019.jpg" },
@@ -1193,7 +1190,6 @@ var Playlists = (function () {
           voulue: true, altA: ["JoJo"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/420/1052327.jpg" },
         { t: "LEveL", a: "Solo Leveling", q: "LEveL SawanoHiroyuki nZk Tomorrow X Together", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/497/1244908.jpg" },
         { t: "Forces", a: "Berserk", q: "Forces Susumu Hirasawa Berserk", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/396/991619.jpg" },
-        { t: "Snow Fairy", a: "Fairy Tail", q: "Snow Fairy FUNKIST" },
         { t: "Seishun Satsubatsuron", a: "Assassination Classroom", q: "Seishun Satsubatsuron 3-nen E-gumi Utatan", altA: ["Ansatsu Kyoushitsu"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/632/1581272.jpg" },
         { t: "Rose", a: "NANA", q: "Rose Anna Tsuchiya NANA", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/19/49054.jpg" },
         { t: "This Game", a: "No Game No Life", q: "This Game Konomi Suzuki", altA: ["NGNL"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/22/55861.jpg" },
@@ -1225,7 +1221,7 @@ var Playlists = (function () {
         { t: "Hikarunara", a: "Your Lie in April", q: "Goose house Hikarunara Milk", altT: ["Hikaru Nara"], altA: ["Shigatsu wa Kimi no Uso"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/25/62602.jpg" },
         { t: "My Soul, Your Beats!", a: "Angel Beats!", q: "My Soul Your Beats Lia Angel Beats", altA: ["Angel Beats"] },
         { t: "Fairy Tail Main Theme", a: "Fairy Tail", q: "Yasuharu Takanashi Fairy Tail Main Theme",
-          interprete: "Yasuharu Takanashi", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/62/156497.jpg" },
+          interprete: "Yasuharu Takanashi", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/38/c7/ab/38c7abd2-f523-8351-f2ff-a49da4c07b6b/PCCA_03469_itunes.png/600x600bb.jpg" },
         { t: "Sparkle", a: "Your Name", q: "RADWIMPS Sparkle Your Name Human Bloom",
           interprete: "RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/56/b3/8c/56b38c05-1728-402c-016c-c1e4b0635be8/4988031167618_cover.jpg/600x600bb.jpg" }
       ]
@@ -1669,10 +1665,9 @@ var Playlists = (function () {
            chante Esmeralda sur l'album studio, le seul où le morceau existe. */
         { t: "Vivre", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Vivre Studio",
           disque: "Studio" },
-        { t: "Le Blues du businessman", a: "Starmania", q: "Le Blues du businessman Starmania" },
-        { t: "SOS d'un terrien en détresse", a: "Starmania", q: "SOS d'un terrien en détresse Daniel Balavoine" },
-        { t: "Le Monde est stone", a: "Starmania", q: "Le Monde est stone Starmania" },
-        { t: "Les Uns contre les autres", a: "Starmania", q: "Les Uns contre les autres Starmania" },
+        { t: "Le Blues du businessman", a: "Starmania", q: "Le Blues du businessman Claude Dubois Starmania", interprete: "Claude Dubois", disque: "spectacle original" },
+        { t: "SOS d'un terrien en détresse", a: "Starmania", q: "SOS d'un terrien en détresse Daniel Balavoine Starmania", interprete: "Daniel Balavoine", disque: "spectacle original" },
+        { t: "Le Monde est stone", a: "Starmania", q: "Le Monde est stone Fabienne Thibeault Starmania", interprete: "Fabienne Thibeault", disque: "spectacle original" },
         { t: "L'Envie d'aimer", a: "Les Dix Commandements", q: "L'Envie d'aimer Daniel Lévi" },
         { t: "Je fais de toi mon essentiel", a: "Le Roi Soleil", q: "Je fais de toi mon essentiel Emmanuel Moire", altT: ["Mon essentiel"] },
         { t: "Tant qu'on rêve encore", a: "Le Roi Soleil", q: "Tant qu'on rêve encore Le Roi Soleil" },
@@ -1693,10 +1688,6 @@ var Playlists = (function () {
         /* « Ziggy » est catalogué chez Apple sous son sous-titre : on affiche
            les deux, et les deux sont acceptés. */
         { t: "Un garçon pas comme les autres", a: "Starmania", q: "Starmania Un garçon pas comme les autres Fabienne Thibeault", altT: ["Ziggy"] },
-        { t: "Danse mon Esmeralda", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Danse mon Esmeralda Garou" },
-        { t: "Dieu que le monde est injuste", a: "Notre-Dame de Paris", q: "Notre Dame de Paris Dieu que le monde est injuste" },
-        { t: "Vivre à en crever", a: "Mozart l'Opéra Rock", q: "Mozart l'Opera Rock Vivre a en crever" },
-        { t: "Je dors sur les roses", a: "Mozart l'Opéra Rock", q: "Mozart l'Opera Rock Je dors sur des roses", altT: ["Je dors sur des roses"] },
         { t: "Mon frère", a: "Les Dix Commandements", q: "Les Dix Commandements Mon frere Daniel Levi" },
         { t: "Ça ira mon amour", a: "1789, Les Amants de la Bastille", q: "1789 Les Amants de la Bastille Ca ira mon amour", altA: ["1789"] },
         { t: "Pour la peine", a: "1789, Les Amants de la Bastille", q: "1789 Les Amants de la Bastille Pour la peine", altA: ["1789"] },
