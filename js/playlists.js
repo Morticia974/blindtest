@@ -632,9 +632,11 @@ var Playlists = (function () {
         { t: "The Terminator Theme", a: "Terminator", q: "Terminator Main Title Brad Fiedel" },
         { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield" },
         { t: "Halloween Theme", a: "Halloween", q: "Halloween Theme John Carpenter" },
-        { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/cd/de/f5/cddef582-a63b-1119-8983-53105a8f494d/mzi.bwecfgra.jpg/600x600bb.jpg" },
+        { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore", pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-seigneur-des-anneaux.jpg" },
         { t: "Lux Aeterna", a: "Requiem for a Dream", q: "Lux Aeterna Clint Mansell" },
-        { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone" },
+        { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-bon-la-brute-et-le-truand.jpg" },
 
         /* Vingt-six films cités par Audrey. Huit d'entre eux sortaient sur une
            reprise et ont demandé une requête épinglée : Matrix arrivait en
@@ -1172,7 +1174,7 @@ var Playlists = (function () {
         { t: "Colors", a: "Code Geass", q: "Colors FLOW Code Geass", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/580/1451498.jpg" },
         { t: "Kaikai Kitan", a: "Jujutsu Kaisen", q: "Kaikai Kitan Eve", altA: ["JJK"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521905.jpg" },
         { t: "Idol", a: "Oshi no Ko", q: "Idol YOASOBI", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/608/1521297.jpg" },
-        { t: "Zenzenzense", a: "Your Name", q: "Zenzenzense RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/56/b3/8c/56b38c05-1728-402c-016c-c1e4b0635be8/4988031167618_cover.jpg/600x600bb.jpg" },
+        { t: "Zenzenzense", a: "Your Name", q: "Zenzenzense RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/your-name.jpg" },
         { t: "Merry-Go-Round of Life", a: "Le Château ambulant", q: "Merry Go Round of Life Joe Hisaishi", altA: ["Howl's Moving Castle"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/4b/af/f0/4baff0ae-1795-7807-128c-4259ad2fd970/TKCA-72775.jpg/600x600bb.jpg" },
         { t: "One Summer's Day", a: "Le Voyage de Chihiro", q: "One Summer's Day Joe Hisaishi Spirited Away", altA: ["Spirited Away"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/12/dc/cf/12dccf7e-32ce-12e8-03fe-37574d6c2197/TKCA-72165.jpg/600x600bb.jpg" },
         { t: "Peace Sign", a: "My Hero Academia", q: "Peace Sign Kenshi Yonezu",
@@ -1181,7 +1183,9 @@ var Playlists = (function () {
         { t: "Sobakasu", a: "Kenshin le vagabond", q: "Sobakasu JUDY AND MARY The Great Escape", altA: ["Rurouni Kenshin"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/11/27683.jpg" },
 
         /* Ajoutés sur proposition d'Audrey : la catégorie manquait de variété. */
-        { t: "Pokémon (Attrapez-les tous)", a: "Pokémon", q: "Pokémon Attrapez-les tous Bob Konnie Patline", interprete: "Bob & Konnie Patline & C. Willys", altT: ["Pokémon Theme", "Attrapez-les tous"] },
+        { t: "Pokémon (Attrapez-les tous)", a: "Pokémon", q: "Pokémon Attrapez-les tous Bob Konnie Patline", interprete: "Bob & Konnie Patline & C. Willys", altT: ["Pokémon Theme", "Attrapez-les tous"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/pokemon-anime.jpg" },
         { t: "Crossing Field", a: "Sword Art Online", q: "Crossing Field LiSA", altA: ["SAO"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/573/1434479.jpg" },
         { t: "Déjà Vu", a: "Initial D", q: "Deja Vu Dave Rodgers", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/459/1148933.jpg" },
         { t: "The WORLD", a: "Death Note", q: "The World Nightmare Death Note", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/499/1249019.jpg" },
@@ -1231,7 +1235,7 @@ var Playlists = (function () {
         { t: "Fairy Tail Main Theme", a: "Fairy Tail", q: "Yasuharu Takanashi Fairy Tail Main Theme",
           interprete: "Yasuharu Takanashi", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/38/c7/ab/38c7abd2-f523-8351-f2ff-a49da4c07b6b/PCCA_03469_itunes.png/600x600bb.jpg" },
         { t: "Sparkle", a: "Your Name", q: "RADWIMPS Sparkle Your Name Human Bloom",
-          interprete: "RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/56/b3/8c/56b38c05-1728-402c-016c-c1e4b0635be8/4988031167618_cover.jpg/600x600bb.jpg" }
+          interprete: "RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/your-name.jpg" }
       ]
     },
     {
@@ -1296,7 +1300,7 @@ var Playlists = (function () {
           altT: ["Animal Crossing Main Theme"], altA: ["Animal Crossing New Horizons"] },
         { t: "Buy Mode", a: "Les Sims", q: "Buy Mode The Sims Power Up Orchestra", altA: ["The Sims", "Sims"],
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/da/2b/ee/da2bee0c-f94d-58be-6ef5-b609cfd5057d/The-Sims_3000_1.jpg/600x600bb.jpg" },
-        { t: "Pokemon Red/Blue (Battle Theme)", a: "Pokémon", q: "Pokemon Red Blue Battle Theme Pxls", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/43/93/07439340-4dc9-321c-c9cd-e4e39e401e25/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/600x600bb.jpg" },
+        { t: "Pokemon Red/Blue (Battle Theme)", a: "Pokémon", q: "Pokemon Red Blue Battle Theme Pxls", pochette: "https://morticia974.github.io/blindtest/images/pochettes/pokemon-rouge-bleu.jpg" },
         { t: "Fortnite (Battle Royale Theme)", a: "Fortnite", q: "Fortnite Battle Royale Theme Arcade Player", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/58/ac/a0/58aca06b-4dc5-d680-14c4-1f05fb3b9928/AppIcon-0-0-1x_U007epad-0-1-85-220.png/600x600bb.jpg" },
         { t: "Legends of Azeroth", a: "World of Warcraft", q: "Legends of Azeroth Main Title Jason Hayes", altA: ["WoW", "Warcraft"] },
         { t: "POP/STARS", a: "League of Legends", q: "POP STARS K/DA Madison Beer", altA: ["LoL", "League"] },
@@ -1380,7 +1384,7 @@ var Playlists = (function () {
           interprete: "Todd Masten", altA: ["Age of Empires II", "Âge des Empires"] },
         { t: "Legends Never Die", a: "League of Legends",
           q: "Legends Never Die Against the Current League of Legends",
-          interprete: "League of Legends Music & Against The Current", altA: ["LoL"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/e1/e9/70e1e94a-6d1e-2dd1-3375-75b43d8f71a5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/600x600bb.jpg" }
+          interprete: "League of Legends Music & Against The Current", altA: ["LoL"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/league-of-legends.jpg" }
       ]
     },
     {
