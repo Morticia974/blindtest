@@ -1299,7 +1299,9 @@ var Playlists = (function () {
         { t: "The Last of Us", a: "The Last of Us", q: "The Last of Us Gustavo Santaolalla" },
         { t: "God of War", a: "God of War", q: "God of War Bear McCreary PlayStation Soundtrack" },
         { t: "Tristram", a: "Diablo", q: "Tristram Matt Uelmen Diablo", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/db/dc/dfdbdcf9-9266-5b88-0792-795342cbf627/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/600x600bb.jpg" },
-        { t: "Counter-Strike: Global Offensive Main Theme", a: "Counter-Strike", q: "Counter-Strike Global Offensive Main Theme XG Stephen", altA: ["CS", "CS GO", "Counter Strike Global Offensive"] },
+        { t: "Counter-Strike: Global Offensive Main Theme", a: "Counter-Strike", q: "Counter-Strike Global Offensive Main Theme XG Stephen", altA: ["CS", "CS GO", "Counter Strike Global Offensive"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/counter-strike.jpg" },
         { t: "Rocket League (2015) - Theme", a: "Rocket League", q: "Rocket League 2015 Theme Geek Music" },
         // Among Us retiré à la demande d'Audrey : le « drip theme » qu'Apple
         // propose n'est pas la musique qu'on associe au jeu.
