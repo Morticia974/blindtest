@@ -530,7 +530,7 @@ var Playlists = (function () {
           altA: ["L'Étrange Noël de Mr Jack", "The Nightmare Before Christmas"] },
         { t: "Je défendrai ma vie", a: "Spirit, l'étalon des plaines",
           q: "Spirit l'étalon des plaines Je défendrai ma vie Bryan Adams French Version",
-          interprete: "Bryan Adams", altA: ["Spirit"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fb/8b/d1/fb8bd160-c5de-1720-e239-943af65d99e5/19UMGIM70229.rgb.jpg/600x600bb.jpg" },
+          interprete: "Bryan Adams", altA: ["Spirit"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/spirit-etalon-des-plaines.jpg" },
         { t: "Kung Fu Fighting", a: "Kung Fu Panda",
           q: "Kung Fu Panda Original Motion Picture Soundtrack Cee-Lo Jack Black Kung Fu Fighting",
           pays: "US", interprete: "Cee-Lo" },
@@ -690,7 +690,9 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3a/68/93/3a6893ed-7882-9d3c-c154-a96f6b5a4b50/14DMGIM05420.rgb.jpg/600x600bb.jpg" },
         { t: "Can You Hear the Music", a: "Oppenheimer", q: "Can You Hear the Music Ludwig Goransson Oppenheimer" },
         /* Celui-là s'imposait : le nom du site vient de Fatal Bazooka. */
-        { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"] },
+        { t: "Ce matin va être une pure soirée", a: "Fatal", q: "Fatal Bazooka Ce matin va être une pure soirée Big Ali", altA: ["Fatal Bazooka"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/fatal.jpg" },
         // Demandé par une amie d'Audrey. La bande originale de Harry Manfredini
         // est chez Apple : c'est bien le générique d'origine, pas une reprise.
         { t: "Overlay of Evil / Main Title", a: "Vendredi 13", q: "Harry Manfredini Friday the 13th Overlay of Evil Main Title Original Motion Picture Soundtrack", altA: ["Friday the 13th"] },
@@ -1304,7 +1306,9 @@ var Playlists = (function () {
         { t: "Counter-Strike: Global Offensive Main Theme", a: "Counter-Strike", q: "Counter-Strike Global Offensive Main Theme XG Stephen", altA: ["CS", "CS GO", "Counter Strike Global Offensive"],
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
           pochette: "https://morticia974.github.io/blindtest/images/pochettes/counter-strike.jpg" },
-        { t: "Rocket League (2015) - Theme", a: "Rocket League", q: "Rocket League 2015 Theme Geek Music" },
+        { t: "Rocket League (2015) - Theme", a: "Rocket League", q: "Rocket League 2015 Theme Geek Music",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/rocket-league.jpg" },
         // Among Us retiré à la demande d'Audrey : le « drip theme » qu'Apple
         // propose n'est pas la musique qu'on associe au jeu.
         { t: "Rainbow Road", a: "Mario Kart", q: "Rainbow Road Mario Kart 64 Qumu", altA: ["Mario Kart 64"] },
@@ -1353,7 +1357,9 @@ var Playlists = (function () {
           q: "Jeremy Soule Reign of the Septims Oblivion",
           interprete: "Jeremy Soule", altA: ["The Elder Scrolls IV", "The Elder Scrolls"] },
         { t: "Green Greens", a: "Kirby", q: "Qumu Green Greens Kirby's Dream Land",
-          interprete: "Qumu", altA: ["Kirby's Dream Land"] },
+          interprete: "Qumu", altA: ["Kirby's Dream Land"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/kirby.jpg" },
         { t: "To Zanarkand", a: "Final Fantasy X",
           q: "Nobuo Uematsu Zanarkand Distant Worlds II Final Fantasy",
           interprete: "Nobuo Uematsu", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/68/c2/a8/68c2a8b3-7e94-e44c-3ecc-18788311f969/dj.bcvznqkk.jpg/600x600bb.jpg",
@@ -1366,7 +1372,7 @@ var Playlists = (function () {
           interprete: "Stephen Barton", altA: ["Apex"] },
         { t: "Luigi's Mansion Theme", a: "Luigi's Mansion",
           q: "Sixth Station Trio Luigi's Mansion Theme Video Games Unplugged",
-          interprete: "Sixth Station Trio & Unplugged", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/16/69/ee/1669ee8f-d722-2cbb-8a4c-3dfc2251be62/4E4nK.png/600x600bb.jpg" },
+          interprete: "Sixth Station Trio & Unplugged", pochette: "https://morticia974.github.io/blindtest/images/pochettes/luigis-mansion.jpg" },
         { t: "Main Theme", a: "Age of Empires",
           q: "Todd Masten Age of Empires Definitive Edition Main Theme",
           interprete: "Todd Masten", altA: ["Age of Empires II", "Âge des Empires"] },
@@ -1408,7 +1414,9 @@ var Playlists = (function () {
         { t: "Musclor", a: "Bernard Minet", q: "Musclor Les Maîtres de l'univers Bernard Minet", altT: ["Les Maîtres de l'univers"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/20/50749.jpg" },
         { t: "Transformers", a: "Bernard Minet", q: "Transformers pour un monde meilleur Bernard Minet", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/62/156745.jpg" },
         { t: "Je veux être un Bisounours", a: "Bernard Minet", q: "Je veux être un bisounours Bernard Minet", altT: ["Les Bisounours", "Bisounours"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/32/81206.jpg" },
-        { t: "L'École des champions", a: "Bernard Minet", q: "L'école des champions Bernard Minet" },
+        { t: "L'École des champions", a: "Bernard Minet", q: "L'école des champions Bernard Minet",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/ecole-des-champions.jpg" },
         { t: "Les Mystérieuses Cités d'or", a: "Le Groupe Apollo", q: "Les Mystérieuses Cités d'or générique", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/63/157531.jpg" },
 
         { t: "Ulysse 31", a: "Le Groupe Apollo", q: "Ulysse revient Le Groupe Apollo Ulysse 31", altT: ["Ulysse revient", "Ulysse"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/67/169872.jpg" },
