@@ -442,7 +442,9 @@ var Playlists = (function () {
         { t: "Loin du froid de décembre", a: "Anastasia", q: "Anastasia Loin du froid de décembre", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/83/8b/39/838b3930-e308-e3b6-1ade-9a08105ad158/859721178099.jpg/600x600bb.jpg" },
         { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/74/e1/a2/74e1a22e-104e-9cd0-1c0f-c21ffc0f8bdc/20UMGIM16843.rgb.jpg/600x600bb.jpg", interprete: "Bernard Alane & Sébastien Valter" },
         // Audrey a validé ce titre-là pour Merlin plutôt que « Un tout petit rien ».
-        { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus" },
+        { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus",
+          /* Affiche donnée par Audrey : Apple n'avait rien qui parle du dessin animé. Rangée dans le site même, elle ne dépend plus de personne. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/merlin-lenchanteur.jpg" },
         { t: "Être un homme comme vous", a: "Le Livre de la jungle", q: "Le Livre de la jungle Être un homme comme vous" },
         // Venu des génériques : c'est un dessin animé, sa place est ici.
         { t: "Test Drive", a: "Dragons", q: "Test Drive John Powell How to Train Your Dragon", altA: ["How to Train Your Dragon"] },
