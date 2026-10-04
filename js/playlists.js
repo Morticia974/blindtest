@@ -160,7 +160,7 @@ var Playlists = (function () {
         { t: "What Is Love", a: "Haddaway", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/88/ec/43/88ec43e7-3321-6664-835b-73243625f668/4250282801123.jpg/600x600bb.jpg" },
         { t: "Rhythm Is a Dancer", a: "SNAP!" },
         { t: "All That She Wants", a: "Ace of Base" },
-        { t: "Macarena", a: "Los del Río", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8e/75/42/8e7542a9-7dd3-6449-d2cc-6626912009d1/dj.djaqgbqy.jpg/600x600bb.jpg" },
+        { t: "Macarena", a: "Los del Río", pochette: "https://morticia974.github.io/blindtest/images/pochettes/macarena.jpg" },
         { t: "I Will Always Love You", a: "Whitney Houston" },
         { t: "La Tribu de Dana", a: "Manau" },
         { t: "Tomber la chemise", a: "Zebda" },
@@ -264,7 +264,9 @@ var Playlists = (function () {
            dancefloor : on ne les remet pas ici. */
         // « Bring Me to Life » est déjà dans la catégorie Métal.
         { t: "The Reason", a: "Hoobastank" },
-        { t: "How You Remind Me", a: "Nickelback" },
+        { t: "How You Remind Me", a: "Nickelback",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/nickelback-how-you-remind-me.jpg" },
         { t: "Complicated", a: "Avril Lavigne" },
         { t: "Beautiful", a: "Christina Aguilera" },
         { t: "So What", a: "P!nk", altA: ["Pink"] },
@@ -394,13 +396,17 @@ var Playlists = (function () {
       labelA: "Film",
       pistes: [
         { t: "Libérée, délivrée", a: "La Reine des neiges", q: "Libérée délivrée Anaïs Delva" },
-        { t: "Ce rêve bleu", a: "Aladdin", q: "Ce rêve bleu Aladdin", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c7/af/52/c7af524c-d45f-1117-0ac6-c92be7ad1955/19UMGIM42916.rgb.jpg/600x600bb.jpg", interprete: "Karine Costa & Paolo Domingo" },
-        { t: "Histoire éternelle", a: "La Belle et la Bête", q: "Histoire éternelle La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg", interprete: "Lucie Dolene" },
+        { t: "Ce rêve bleu", a: "Aladdin", q: "Ce rêve bleu Aladdin", pochette: "https://morticia974.github.io/blindtest/images/pochettes/aladdin.jpg", interprete: "Karine Costa & Paolo Domingo" },
+        { t: "Histoire éternelle", a: "La Belle et la Bête", q: "Histoire éternelle La Belle et la Bête", pochette: "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-la-bete.jpg", interprete: "Lucie Dolene" },
         { t: "Sous l'océan", a: "La Petite Sirène", q: "Sous l'océan La Petite Sirène", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d0/81/37/d081370d-8597-ec61-0c58-4cf01b2481b8/14DMGIM05199.rgb.jpg/600x600bb.jpg", interprete: "Henri Salvador" },
         { t: "Il en faut peu pour être heureux", a: "Le Livre de la jungle", q: "Il en faut peu pour être heureux Livre de la jungle" },
-        { t: "Hakuna Matata", a: "Le Roi Lion", q: "Hakuna Matata Le Roi Lion", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/f7/57/9b/f7579b07-8143-23b7-cd17-738a4a012e16/19UMGIM61865.rgb.jpg/600x600bb.jpg", interprete: "Dimitri Rougeul, Emmanuel Curtil, Jean-Philippe Puymartin & Michel Elias" },
-        { t: "L'Histoire de la vie", a: "Le Roi Lion", q: "L'Histoire de la vie Le Roi Lion" },
-        { t: "Comme un homme", a: "Mulan", q: "Comme un homme Mulan" },
+        { t: "Hakuna Matata", a: "Le Roi Lion", q: "Hakuna Matata Le Roi Lion", pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-roi-lion.jpg", interprete: "Dimitri Rougeul, Emmanuel Curtil, Jean-Philippe Puymartin & Michel Elias" },
+        { t: "L'Histoire de la vie", a: "Le Roi Lion", q: "L'Histoire de la vie Le Roi Lion",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-roi-lion.jpg" },
+        { t: "Comme un homme", a: "Mulan", q: "Comme un homme Mulan",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/mulan.jpg" },
         // Sans le nom de Laura Mayne, Apple sert la reprise de Jenifer (We Love
         // Disney) à la place de la bande originale du film.
         { t: "L'Air du vent", a: "Pocahontas", q: "Laura Mayne L'Air du vent Pocahontas" },
@@ -411,12 +417,16 @@ var Playlists = (function () {
         { t: "Le Bleu lumière", a: "Vaiana", q: "Le Bleu lumière Vaiana" },
         { t: "Je suis ton ami", a: "Toy Story", q: "Je suis ton ami Toy Story" },
         { t: "Les Cloches de Notre-Dame", a: "Le Bossu de Notre-Dame", q: "Les Cloches de Notre-Dame Bossu" },
-        { t: "C'est la fête", a: "La Belle et la Bête", q: "C'est la fête La Belle et la Bête", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/c6/42/12/c6421270-b3d7-3e26-2429-5a018b669b48/00050087361365.rgb.jpg/600x600bb.jpg", interprete: "Daniel Beretta & Lucie Dolene" },
-        { t: "Je voudrais déjà être roi", a: "Le Roi Lion", q: "Je voudrais déjà être roi Le Roi Lion" },
+        { t: "C'est la fête", a: "La Belle et la Bête", q: "C'est la fête La Belle et la Bête", pochette: "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-la-bete.jpg", interprete: "Daniel Beretta & Lucie Dolene" },
+        { t: "Je voudrais déjà être roi", a: "Le Roi Lion", q: "Je voudrais déjà être roi Le Roi Lion",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-roi-lion.jpg" },
         // Titre complet exigé : « Blanche-Neige » seul est le nom du personnage,
         // pas celui du film. La forme avec le chiffre 7 est acceptée telle quelle.
         { t: "Un jour mon prince viendra", a: "Blanche-Neige et les Sept Nains", q: "Un jour mon prince viendra Blanche Neige", altA: ["Blanche-Neige et les 7 nains"] },
-        { t: "Prince Ali", a: "Aladdin", q: "Prince Ali Aladdin" },
+        { t: "Prince Ali", a: "Aladdin", q: "Prince Ali Aladdin",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/aladdin.jpg" },
 
         /* Apple France n'a rien d'utilisable pour Dumbo, Coco, Le Prince
            d'Égypte, Kuzco, Oliver et Compagnie ni Rox et Rouky : que des
@@ -433,14 +443,16 @@ var Playlists = (function () {
           altT: ["Bibbidi-Bobbidi-Boo", "Où ai-je mis cette chose"] },
         { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews", lgA: "fr", ditA: "Marie Poppins" },
         { t: "J'en ai rêvé", a: "La Belle au bois dormant", q: "La Belle au bois dormant J'en ai rêvé bande originale française" },
-        { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/21/f9/38/21f938e9-d247-d78f-bdfc-3a8baacfd56e/43396568129.jpg/600x600bb.jpg" },
+        { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française", pochette: "https://morticia974.github.io/blindtest/images/pochettes/peter-pan.jpg" },
         { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins" },
         { t: "Au bout du rêve", a: "La Princesse et la Grenouille", q: "La Princesse et la Grenouille Au bout du rêve" },
-        { t: "Cruella de ville", a: "Les 101 Dalmatiens", q: "Cruella de ville Les 101 Dalmatiens", altA: ["101 Dalmatiens"], interprete: "Chœurs - Les 101 Dalmatiens", altT: ["Cruella De Vil"] },
+        { t: "Cruella de ville", a: "Les 101 Dalmatiens", q: "Cruella de ville Les 101 Dalmatiens", altA: ["101 Dalmatiens"], interprete: "Chœurs - Les 101 Dalmatiens", altT: ["Cruella De Vil"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/les-101-dalmatiens.jpg" },
         { t: "Dans un autre monde", a: "La Reine des neiges 2", q: "La Reine des neiges 2 Dans un autre monde", altA: ["La Reine des neiges"] },
         { t: "Ne parlons pas de Bruno", a: "Encanto", q: "Encanto Ne parlons pas de Bruno", altA: ["La Fantastique Famille Madrigal"] },
-        { t: "Loin du froid de décembre", a: "Anastasia", q: "Anastasia Loin du froid de décembre", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/83/8b/39/838b3930-e308-e3b6-1ade-9a08105ad158/859721178099.jpg/600x600bb.jpg" },
-        { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/74/e1/a2/74e1a22e-104e-9cd0-1c0f-c21ffc0f8bdc/20UMGIM16843.rgb.jpg/600x600bb.jpg", interprete: "Bernard Alane & Sébastien Valter" },
+        { t: "Loin du froid de décembre", a: "Anastasia", q: "Anastasia Loin du froid de décembre", pochette: "https://morticia974.github.io/blindtest/images/pochettes/anastasia.jpg" },
+        { t: "Bella Notte", a: "La Belle et le Clochard", q: "La Belle et le Clochard Bella Notte français", pochette: "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-le-clochard.jpg", interprete: "Bernard Alane & Sébastien Valter" },
         // Audrey a validé ce titre-là pour Merlin plutôt que « Un tout petit rien ».
         { t: "Higitus Figitus", a: "Merlin l'Enchanteur", q: "Merlin l'Enchanteur Higitus Figitus",
           /* Affiche donnée par Audrey : Apple n'avait rien qui parle du dessin animé. Rangée dans le site même, elle ne dépend plus de personne. */
@@ -456,7 +468,9 @@ var Playlists = (function () {
            « Kung Fu Fighting » plutôt que le nom du film. */
         { t: "Le Festin", a: "Ratatouille", q: "Camille Le Festin Ratatouille" },
         { t: "The Glory Days", a: "Les Indestructibles", q: "Michael Giacchino The Glory Days The Incredibles", altA: ["The Incredibles"] },
-        { t: "Bundle of Joy", a: "Vice-versa", q: "Michael Giacchino Bundle of Joy Inside Out", altA: ["Inside Out"] },
+        { t: "Bundle of Joy", a: "Vice-versa", q: "Michael Giacchino Bundle of Joy Inside Out", altA: ["Inside Out"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/vice-versa.jpg" },
         { t: "Vers le ciel", a: "Rebelle",
           q: "Vers le Ciel Maeva Méline Rebelle Bande Originale du Film",
           interprete: "Maeva Méline", altT: ["Touch the Sky"], altA: ["Brave"] },
@@ -469,7 +483,7 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/3e/55/00/3e550053-0a12-8c28-7a11-47b553d28c11/00094638584650.jpg/600x600bb.jpg",
           altT: ["I'm Still Here", "Jim's Theme"] },
         { t: "L'Apprenti sorcier", a: "Fantasia", q: "L'apprenti sorcier Philadelphia Orchestra Leopold Stokowski", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/c1/93/fc/c193fcb1-ed2c-4676-c506-cb59a0b38647/05099968554750.jpg/600x600bb.jpg" },
-        { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/f7/57/9b/f7579b07-8143-23b7-cd17-738a4a012e16/19UMGIM61865.rgb.jpg/600x600bb.jpg" },
+        { t: "L'Amour nous guidera", a: "Le Roi Lion 2", q: "Le Roi Lion 2 L'amour nous guidera Best of", altA: ["Le Roi Lion"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-roi-lion-2.jpg" },
         { t: "I'm a Believer", a: "Shrek", q: "Smash Mouth I'm a Believer Shrek Original Motion Picture Soundtrack", lgA: "fr" },
         { t: "Try Everything", a: "Zootopie", q: "Shakira Try Everything Zootopie Bande Originale", altA: ["Zootopia"], lgA: "fr" },
         // La version française d'« Oo-De-Lally », par Pierre Vassiliu. Apple
@@ -477,7 +491,7 @@ var Playlists = (function () {
         // où elle se trouve est une compilation, dont la pochette est donc
         // générique et non celle de Robin des Bois.
         { t: "Quel beau jour vraiment", a: "Robin des Bois",
-          q: "Pierre Vassiliu Quel beau jour vraiment Robin Hood", altT: ["Oo-De-Lally"], pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/d5/13/31/d51331cc-c10c-cebc-28c9-15cac519b9ff/00050087373252.rgb.jpg/600x600bb.jpg" },
+          q: "Pierre Vassiliu Quel beau jour vraiment Robin Hood", altT: ["Oo-De-Lally"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/robin-des-bois.jpg" },
 
         /* Trois Pixar pour aligner la catégorie sur les autres. « Là-haut »
            vient des films cultes, où il n'avait rien à faire. */
@@ -513,7 +527,9 @@ var Playlists = (function () {
           interprete: "Océane Demontis", altA: ["Wish : Asha et la bonne étoile"] },
         { t: "Wreck-It Ralph", a: "Les Mondes de Ralph",
           q: "Wreck-It Ralph Original Score Henry Jackman",
-          interprete: "Henry Jackman", altA: ["Ralph"] },
+          interprete: "Henry Jackman", altA: ["Ralph"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/les-mondes-de-ralph.jpg" },
         { t: "Immortals", a: "Les Nouveaux Héros",
           q: "Fall Out Boy Immortals Big Hero 6 Original Motion Picture Soundtrack",
           interprete: "Fall Out Boy", altA: ["Big Hero 6"] },
@@ -765,7 +781,9 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/24/fd/3b/mzi.mwaebzpb.jpg/600x600bb.jpg" },
         { t: "Main Title", a: "Game of Thrones", q: "Game of Thrones Main Title Ramin Djawadi", altA: ["Le Trône de fer"],
           /* Sans ça, « Main Title » tout court ramassait le générique de Battlestar Galactica : deux morceaux portant le même nom, et rien pour les départager. */
-          interprete: "Ramin Djawadi", disque: "Music From the HBO Series" },
+          interprete: "Ramin Djawadi", disque: "Music From the HBO Series",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/game-of-thrones.jpg" },
         { t: "The X-Files Theme", a: "X-Files", q: "X Files Theme Mark Snow", altT: ["Materia Primoris"] },
         { t: "Doctor Who Theme", a: "Doctor Who", q: "Doctor Who Theme Murray Gold",
           altA: ["Docteur Roux", "Docteur Who", "Doctor Roux"] },
@@ -1434,7 +1452,7 @@ var Playlists = (function () {
         { t: "Nicky Larson", a: "Bernard Minet", q: "Nicky Larson Bernard Minet", altT: ["City Hunter"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/26/66121.jpg" },
         { t: "Juliette je t'aime", a: "Bernard Minet", q: "Juliette je t'aime Bernard Minet", altT: ["Maison Ikkoku"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/462/1156313.jpg" },
         { t: "Denver le dernier dinosaure", a: "Bernard Minet", q: "Denver le dernier Dinosaure Bernard Minet", altT: ["Denver"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/33/83145.jpg" },
-        { t: "Le Collège fou fou fou", a: "Bernard Minet", q: "Le collège fou, fou, fou Bernard Minet", altT: ["Un collège fou fou fou"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/471/1178719.jpg" },
+        { t: "Le Collège fou fou fou", a: "Bernard Minet", q: "Le collège fou, fou, fou Bernard Minet", altT: ["Un collège fou fou fou"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-college-fou-fou-fou.jpg" },
         { t: "Ranma ½", a: "Bernard Minet", q: "Ranma 1/2 Bernard Minet", altT: ["Ranma", "Ranma 1/2"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/609/1522705.jpg" },
         { t: "Sailor Moon", a: "Bernard Minet", q: "Sailor Moon Bernard Minet", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/291/728726.jpg" },
         { t: "Olive et Tom", a: "Bernard Minet", q: "Olive et Tom Bernard Minet", altT: ["Captain Tsubasa"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/480/1200597.jpg" },
@@ -1454,7 +1472,7 @@ var Playlists = (function () {
         { t: "Clémentine", a: "Marie Dauphin", q: "Clémentine Marie Dauphin bande originale feuilleton" },
         { t: "Lady Oscar", a: "Marie Dauphin", q: "Lady Oscar Marie Dauphin" },
         { t: "Princesse Sarah", a: "Claude Lombard", q: "Princesse Sarah Claude Lombard", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/20/51891.jpg" },
-        { t: "Embrasse-moi Lucille", a: "Claude Lombard", q: "Embrasse-moi Lucille Claude Lombard", altT: ["Max et Compagnie"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/74/185225.jpg" },
+        { t: "Embrasse-moi Lucille", a: "Claude Lombard", q: "Embrasse-moi Lucille Claude Lombard", altT: ["Max et Compagnie"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/embrasse-moi-lucile.jpg" },
         { t: "Les Quatre Filles du docteur March", a: "Claude Lombard", q: "Les quatre filles du docteur March Claude Lombard", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/20/51695.jpg" },
         { t: "Les Samouraïs de l'éternel", a: "Bernard Minet", q: "Les samouraïs de l'éternel Bernard Minet", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/8/21308.jpg" },
         { t: "She-Ra", a: "Bernard Minet", q: "She Ra J'ai le pouvoir Bernard Minet Caline", altT: ["J'ai le pouvoir", "She-Ra la princesse du pouvoir"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/255/639875.jpg" },
@@ -1599,8 +1617,12 @@ var Playlists = (function () {
       pistes: [
         { t: "Rolling in the Deep", a: "Adele" },
         { t: "Someone Like You", a: "Adele" },
-        { t: "Shape of You", a: "Ed Sheeran" },
-        { t: "Perfect", a: "Ed Sheeran" },
+        { t: "Shape of You", a: "Ed Sheeran",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/ed-sheeran-shape-of-you.jpg" },
+        { t: "Perfect", a: "Ed Sheeran",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/ed-sheeran-perfect.jpg" },
         { t: "Bad Guy", a: "Billie Eilish" },
         { t: "Somebody That I Used to Know", a: "Gotye",
           altA: ["Gauthier", "Gautier"] },
