@@ -298,6 +298,23 @@
     if (coin && v) coin.textContent = 'version ' + v;
   })();
 
+  /* Le mode d'emploi de l'accueil.
+
+     Il arrive deplie : l'attribut `open` est ecrit dans la page, donc c'est
+     vrai meme si ce script ne tourne pas. Quelqu'un qui decouvre le site n'a
+     rien a chercher. Ensuite on respecte son dernier geste : qui l'a replie le
+     retrouve replie, d'une visite a l'autre. */
+  function reglerNotice() {
+    var n = $('notice');
+    if (!n) return;
+    var choix = null;
+    try { choix = localStorage.getItem('bt.notice'); } catch (e) {}
+    if (choix === '0') n.open = false;
+    n.addEventListener('toggle', function () {
+      try { localStorage.setItem('bt.notice', n.open ? '1' : '0'); } catch (e) {}
+    });
+  }
+
   var lecteur = $('lecteur');
   var contexte = null, analyseur = null, source = null, donneesFreq = null;
   var gain = null;
@@ -2579,6 +2596,7 @@
     chargerVolume();
     chargerProfil();
     rendreManches();
+    reglerNotice();
     poserEvenements();
     boucle();
 

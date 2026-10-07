@@ -896,3 +896,192 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Sauf le micro : c'est lui qu'on vise quand on vise quelque chose. */
 #ecran-jeu.parole-partout #bouton-micro { pointer-events: auto; }
+
+
+/* =========================================================================
+   Le mode d'emploi de l'accueil
+
+   Il s'ouvre tout seul la premiere fois : quelqu'un qui ne connait pas le site
+   doit pouvoir le lire sans savoir qu'il faut cliquer quelque part. Une fois
+   replie, il le reste. Colonne de lecture bornee a 68 caracteres : au-dela,
+   l'oeil perd sa ligne en revenant a la marge.
+   ========================================================================= */
+
+.notice {
+  margin-top: 22px;
+  background: linear-gradient(180deg, rgba(20,57,43,.80), rgba(14,42,32,.85));
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon-lg);
+  overflow: hidden;     /* le coin arrondi tient meme quand le volet est ouvert */
+}
+
+.notice > summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 20px;
+  cursor: pointer;
+  list-style: none;        /* le triangle par defaut : on met le notre */
+  user-select: none;
+}
+.notice > summary::-webkit-details-marker { display: none; }
+.notice > summary:hover { background: rgba(140,255,74,.06); }
+.notice > summary:focus-visible { outline: 3px solid var(--ambre); outline-offset: -3px; }
+
+.notice-icone { font-size: 26px; flex: none; line-height: 1; }
+
+.notice-sommaire { flex: 1; min-width: 0; }
+.notice-sommaire b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+}
+.notice-sommaire small {
+  display: block;
+  color: var(--doux);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* Le chevron. Il pointe vers le bas quand c'est ferme, vers le haut ouvert. */
+.notice-fleche {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-right: 2.5px solid var(--vert);
+  border-bottom: 2.5px solid var(--vert);
+  transform: rotate(45deg);
+  transition: transform .18s ease;
+  margin-right: 4px;
+}
+.notice[open] > summary .notice-fleche { transform: rotate(225deg); }
+
+.notice-corps {
+  padding: 4px 20px 24px;
+  max-width: 68ch;
+  border-top: 1px solid rgba(31,89,66,.6);
+  margin-top: -1px;
+}
+
+.notice-intro { font-size: 15.5px; margin: 18px 0 0; }
+
+.notice-titre {
+  font-size: 17px;
+  margin: 26px 0 10px;
+  color: var(--vert);
+}
+
+.notice-petit { font-size: 14.5px; color: var(--doux); margin: 0 0 12px; }
+.notice-petit b { color: var(--texte); }
+
+/* Les encadres : ce qu'il faut savoir avant de commencer, et les points. */
+.notice-bloc {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: var(--rayon);
+  background: rgba(4,14,10,.42);
+  border: 1px solid rgba(31,89,66,.75);
+  font-size: 14.5px;
+}
+.notice-bloc p { margin: 0; }
+.notice-bloc p + p { margin-top: 10px; }
+
+/* L'ambre est reserve a tout ce qui touche aux points. */
+.notice-points {
+  border-color: rgba(255,194,71,.42);
+  background: rgba(255,194,71,.07);
+}
+.notice-points b { color: var(--ambre); }
+
+/* Les etapes numerotees. Le numero est dessine a la main : les puces natives
+   ne se colorent pas separement du texte. */
+.notice-etapes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: etape;
+}
+.notice-etapes > li {
+  counter-increment: etape;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+.notice-etapes > li::before {
+  content: counter(etape);
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--vert), var(--vert-fonce));
+  color: #06140F;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15px;
+}
+.notice-etapes ul {
+  margin: 9px 0 0;
+  padding-left: 18px;
+  font-size: 14.5px;
+  color: var(--doux);
+}
+.notice-etapes ul b { color: var(--texte); }
+.notice-etapes ul li { margin-bottom: 7px; }
+.notice-etapes ul li::marker { color: var(--vert); }
+
+.notice-liste {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 15px;
+}
+.notice-liste > li { margin-bottom: 12px; }
+.notice-liste > li::marker { color: var(--vert); }
+.notice-liste i { color: var(--ambre); font-style: normal; font-family: var(--mono); font-size: .93em; }
+
+/* Le depannage : replie dans le replie, pour ne pas allonger la notice avec
+   des problemes que la plupart des gens ne rencontreront jamais. */
+.notice-coince {
+  margin-top: 24px;
+  border: 1px solid rgba(31,89,66,.75);
+  border-radius: var(--rayon);
+  background: rgba(4,14,10,.42);
+  overflow: hidden;
+}
+.notice-coince > summary {
+  padding: 13px 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14.5px;
+  list-style: none;
+}
+.notice-coince > summary::-webkit-details-marker { display: none; }
+.notice-coince > summary::after {
+  content: " ▾";
+  color: var(--vert);
+}
+.notice-coince[open] > summary::after { content: " ▴"; }
+.notice-coince > summary:hover { background: rgba(140,255,74,.06); }
+.notice-coince > summary:focus-visible { outline: 3px solid var(--ambre); outline-offset: -3px; }
+.notice-coince .notice-liste {
+  padding: 0 16px 14px 36px;
+  font-size: 14px;
+  color: var(--doux);
+}
+.notice-coince .notice-liste b { color: var(--texte); }
+
+/* Au telephone, on recupere les marges : la notice est longue, chaque pixel
+   de largeur est une ligne de moins a faire defiler. */
+@media (max-width: 560px) {
+  .notice > summary { padding: 15px 15px; gap: 11px; }
+  .notice-sommaire b { font-size: 17.5px; }
+  .notice-corps { padding: 4px 15px 20px; }
+  .notice-etapes > li { padding-left: 36px; }
+  .notice-etapes > li::before { width: 25px; height: 25px; font-size: 14px; }
+}

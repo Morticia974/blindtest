@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=181">
+<link rel="stylesheet" href="css/style.css?v=182">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -47,6 +47,231 @@
 
     <div id="banniere-mode" class="banniere invisible" style="margin-top:22px"
          role="status" aria-live="polite"></div>
+
+  <!-- ===================== LE MODE D'EMPLOI =====================
+
+       Déplié à l'arrivée : quelqu'un qui débarque sur le site n'a rien à aller
+       chercher, tout est sous ses yeux, dans l'ordre où il va s'en servir.
+       Replié une fois, il le reste : le navigateur s'en souvient d'une visite
+       à l'autre (voir `reglerNotice` dans app.js). -->
+  <details class="notice" id="notice" open>
+    <summary>
+      <span class="notice-icone" aria-hidden="true">📖</span>
+      <span class="notice-sommaire">
+        <b>Comment on joue&nbsp;?</b>
+        <small>Tout est expliqué là-dessous. À lire une fois, et c'est bon pour la vie&nbsp;!</small>
+      </span>
+      <span class="notice-fleche" aria-hidden="true"></span>
+    </summary>
+
+    <div class="notice-corps">
+
+      <p class="notice-intro">
+        <b>Bienvenue sur un site de blind test&nbsp;!</b> Le principe est tout
+        simple&nbsp;: on vous passe <b>30&nbsp;secondes</b> d'une musique, et il
+        faut reconnaître <b>le titre</b> et <b>l'artiste</b> avant les copains.
+        Tout le monde joue en même temps, chacun sur son téléphone. Et personne
+        n'a à s'occuper de rien&nbsp;: la musique s'enchaîne toute seule, les
+        points tombent tout seuls. Pas de meneur de jeu, pas de feuille de score
+        à tenir&nbsp;— juste vous et vos oreilles.
+      </p>
+
+      <div class="notice-bloc">
+        <p><b>Ce qu'il faut&nbsp;:</b> un téléphone (ou un ordinateur, ou une
+        tablette) par joueur, et internet. Rien à installer, aucun compte à
+        créer, rien à payer, pas de publicité.</p>
+        <p><b>Si vous êtes tous dans la même pièce&nbsp;:</b> laissez
+        <b>un seul</b> appareil faire le son&nbsp;— le plus fort, ou celui qu'on
+        branche sur l'enceinte ou sur la télé&nbsp;— et coupez celui des autres
+        avec le bouton 🔊 pendant la partie. Sinon les téléphones se répondent
+        en écho, chacun avec son petit décalage, et on n'entend plus rien.</p>
+      </div>
+
+      <h3 class="notice-titre">On y va, étape par étape</h3>
+
+      <ol class="notice-etapes">
+        <li>
+          <b>Ton nom de scène.</b> Écris ton prénom, ton surnom, ce que tu veux,
+          dans la première case («&nbsp;Ton nom de scène&nbsp;»). C'est ce que
+          les autres verront à côté de tes points&nbsp;: fais-toi plaisir.
+        </li>
+        <li>
+          <b>Ton émoji et ta couleur.</b> Le gros bouton 🎤 juste à gauche de
+          ton nom ouvre le choix des émojis&nbsp;: clique dessus et prends celui
+          qui te ressemble. Puis choisis une pastille de couleur en dessous. Ça
+          ne change rien au jeu, c'est pour se reconnaître d'un coup d'œil dans
+          le tableau des scores.
+        </li>
+        <li>
+          <b>Une seule personne crée le salon.</b> Celle qui organise&nbsp;— on
+          l'appelle <b>l'hôte</b>&nbsp;— clique sur
+          <b>«&nbsp;Créer un salon&nbsp;»</b>. Les autres ne touchent pas à ce
+          bouton, sinon chacun se retrouve tout seul dans son coin&nbsp;! Un
+          <b>code de quatre lettres</b> s'affiche alors en grand&nbsp;: c'est
+          l'adresse de votre partie.
+        </li>
+        <li>
+          <b>Les autres rejoignent.</b> Deux façons, au choix&nbsp;:
+          <ul>
+            <li>L'hôte clique sur <b>«&nbsp;Copier le lien&nbsp;»</b> et le colle
+            dans le groupe WhatsApp, un SMS, un mail… Chacun ouvre le lien&nbsp;:
+            le code se remplit tout seul, il ne reste plus qu'à écrire son nom et
+            cliquer sur <b>«&nbsp;Rejoindre la partie&nbsp;»</b>.</li>
+            <li>Ou l'hôte dicte les quatre lettres à voix haute. Chacun les tape
+            dans la case de la carte «&nbsp;Rejoindre&nbsp;», puis clique sur
+            <b>«&nbsp;Rejoindre la partie&nbsp;»</b>.</li>
+          </ul>
+          Les noms apparaissent au fur et à mesure dans
+          «&nbsp;Joueurs dans la place&nbsp;». Il n'y a pas de nombre maximum,
+          et un retardataire peut même arriver une fois la partie commencée.
+        </li>
+        <li>
+          <b>L'hôte choisit la musique.</b> Il y a <b>19 catégories</b>&nbsp;:
+          les années 60-70, 80, 90, 2000 et 2010-2020, la variété française, le
+          rap et R'n'B français, le rock, le métal, le dancefloor, le karaoké,
+          Disney, les dessins animés des années 90, les films cultes, les séries
+          cultes, les OST d'animés, les jeux vidéo, les comédies musicales, et
+          le zouk-reggae-latino. Plus deux cases à part&nbsp;:
+          <ul>
+            <li>🎲 <b>Grand mélange</b>, tout en haut&nbsp;: un peu de tout,
+            toutes les époques mélangées. Le choix idéal quand on ne sait pas
+            quoi prendre.</li>
+            <li>🎛️ <b>Personnaliser</b>, tout en bas&nbsp;: c'est là qu'on peut
+            <b>en sélectionner plusieurs</b>. Clique dessus, et une liste de
+            cases à cocher apparaît juste en dessous&nbsp;: coche les catégories
+            à mélanger, et le jeu ne piochera que dans celles-là.</li>
+          </ul>
+          Seul l'hôte choisit&nbsp;— mais les autres voient son choix s'allumer
+          sur leur écran, en direct.
+        </li>
+        <li>
+          <b>L'hôte règle la partie</b> (ou ne touche à rien, c'est déjà bien
+          comme ça)&nbsp;: le <b>nombre de titres</b> à deviner, de 5 à 25
+          (12 par défaut)&nbsp;; la <b>durée d'écoute</b> de chaque
+          extrait&nbsp;; la <b>pause</b> entre deux morceaux, pour souffler et
+          râler un peu&nbsp;; et le <b>décompte</b> avant que la musique démarre.
+        </li>
+        <li>
+          <b>C'est parti&nbsp;!</b> L'hôte clique sur
+          <b>«&nbsp;Lancer la partie&nbsp;»</b>, et tout le monde démarre
+          ensemble, à la seconde près.
+        </li>
+      </ol>
+
+      <h3 class="notice-titre">Pendant la musique</h3>
+
+      <ul class="notice-liste">
+        <li><b>Tape ce que tu reconnais</b> dans la case en bas de l'écran, puis
+        <b>«&nbsp;Go&nbsp;»</b> (ou la touche Entrée). Tu peux retenter autant de
+        fois que tu veux&nbsp;: se tromper ne coûte jamais de points.</li>
+
+        <li><b>Le titre, l'artiste, ou les deux d'un coup.</b> Pour
+        «&nbsp;Africa&nbsp;» de Toto, tout marche&nbsp;: <i>africa</i>,
+        <i>toto</i>, <i>africa toto</i>, <i>toto africa</i>,
+        <i>africa de toto</i>. Le jeu découpe lui-même ta phrase et t'attribue
+        tout ce qu'il y reconnaît.</li>
+
+        <li><b>Les fautes sont pardonnées.</b> Accents oubliés, majuscules,
+        apostrophes, un doigt tombé à côté de la lettre&nbsp;: ça passe quand
+        même. «&nbsp;guns and roses&nbsp;» compte pour Guns N'&nbsp;Roses. Et si
+        une moitié de ta réponse est juste et l'autre à côté de la plaque, tu
+        gardes les points de la bonne moitié.</li>
+
+        <li><b>Les réponses ratées s'affichent pour tout le salon</b> dans
+        «&nbsp;Les propositions&nbsp;»&nbsp;— ça fait partie du plaisir 😄. Les
+        bonnes réponses, elles, n'y passent jamais&nbsp;: impossible de vendre
+        la mèche sans le vouloir.</li>
+
+        <li><b>Parfois, il n'y a qu'une seule chose à trouver.</b> Sur les films
+        cultes, les séries cultes, les animes, les jeux vidéo, Disney et les
+        dessins animés des années 90, on ne demande pas le titre du morceau mais
+        <b>l'œuvre</b>&nbsp;: le film, la série, le jeu, le dessin animé. Une
+        seule case s'affiche alors, et elle dit elle-même ce qu'elle attend. Pour
+        les films et les séries, il faut le <b>titre complet</b>&nbsp;:
+        «&nbsp;Le Fabuleux Destin d'Amélie Poulain&nbsp;», et pas
+        «&nbsp;Amélie Poulain&nbsp;». Le nom de la saga suffit toujours, en
+        revanche&nbsp;: «&nbsp;Star Wars&nbsp;» ou «&nbsp;Harry Potter&nbsp;»
+        sont acceptés.</li>
+      </ul>
+
+      <div class="notice-bloc notice-points">
+        <p><b>Les points&nbsp;:</b> 100 pour le titre, 100 pour l'artiste, et
+        <b>50 de bonus</b> si tu trouves les deux. Mais ça fond seconde après
+        seconde pendant que l'extrait tourne&nbsp;:
+        <b>répondre vite, ça paie</b>.</p>
+        <p>Et bonne nouvelle&nbsp;: tout le monde peut marquer sur le même
+        morceau. Arriver deuxième rapporte encore des points&nbsp;— il n'y a pas
+        un premier qui rafle tout.</p>
+      </div>
+
+      <h3 class="notice-titre">Les deux boutons magiques (tout à fait facultatifs)</h3>
+
+      <p class="notice-petit">
+        Ils apparaissent pendant la partie, à côté du curseur de volume et de la
+        case de réponse. Ils servent à jouer <b>sans regarder l'écran</b>&nbsp;:
+        pratique dans le noir, en cuisinant, ou quand on voit mal.
+      </p>
+
+      <ul class="notice-liste">
+        <li><b>🎙️ Répondre à la voix.</b> Au lieu de taper, tu dis ta réponse.
+        <b>Sur un ordinateur</b>&nbsp;: tu cliques une fois, le micro reste
+        ouvert toute la partie, et tu annonces «&nbsp;<b>ok</b>, Mistral
+        gagnant&nbsp;»&nbsp;— le petit mot «&nbsp;ok&nbsp;» prévient le jeu que
+        ce qui suit est une réponse, pour qu'il n'aille pas compter vos
+        conversations. <b>Sur un téléphone</b>&nbsp;: une pression, une phrase.
+        Tu appuies, tu dis ta réponse, et c'est tout. Le bouton ne s'affiche que
+        si le navigateur sait écouter&nbsp;: Chrome, Edge et Safari savent
+        faire, Firefox non.</li>
+
+        <li><b>🗣️ Les annonces à voix haute.</b> Le site dit tout&nbsp;: la
+        catégorie du morceau, la bonne réponse à la fin de chaque extrait, qui a
+        marqué, et le gagnant à la fin. De quoi jouer les yeux fermés.</li>
+
+        <li><b>Les deux ensemble, sur téléphone&nbsp;:</b> pendant la musique,
+        <b>tout l'écran devient le bouton «&nbsp;parler&nbsp;»</b>. Tu tapes
+        n'importe où du pouce pour donner ta réponse, et n'importe où à nouveau
+        pour refermer le micro. Les autres boutons sont bloqués le temps du
+        morceau, exprès&nbsp;: comme ça, un pouce posé de travers ne coupe
+        jamais le son.</li>
+      </ul>
+
+      <h3 class="notice-titre">Et à la fin</h3>
+
+      <ul class="notice-liste">
+        <li>Un <b>podium</b> avec les trois premiers et leurs points, puis la
+        <b>liste de tous les morceaux passés</b> avec leur titre et leur
+        artiste&nbsp;— de quoi dire «&nbsp;ah mais si, celle-là je la
+        connaissais&nbsp;!&nbsp;».</li>
+        <li><b>«&nbsp;Rejouer&nbsp;»</b> ramène tout le monde dans le salon, les
+        scores remis à zéro&nbsp;: l'hôte peut changer de catégorie et relancer
+        aussitôt, sans que personne ait à se reconnecter.
+        <b>«&nbsp;Retour à l'accueil&nbsp;»</b> quitte le salon.</li>
+        <li>Le 🎺 <b>Barry White</b>, c'est la petite musique qui sacre le
+        gagnant. Si tu préfères le silence, le bouton l'éteint.</li>
+      </ul>
+
+      <details class="notice-coince">
+        <summary>😬 Si quelque chose coince</summary>
+        <ul class="notice-liste">
+          <li><b>Pas de son sur l'iPhone.</b> Les iPhone n'autorisent le son
+          qu'après un vrai geste&nbsp;: touche l'écran une fois après avoir
+          rejoint le salon. Vérifie aussi le petit interrupteur silencieux sur
+          la tranche du téléphone.</li>
+          <li><b>Un morceau a été sauté.</b> C'est qu'Apple n'avait pas
+          l'extrait dans son catalogue français. Le jeu passe tout seul au
+          suivant, il y a toujours de la réserve.</li>
+          <li><b>Plus rien ne se charge après plusieurs parties d'affilée.</b>
+          Apple limite le nombre de recherches par minute. Attendez une minute,
+          et ça repart.</li>
+          <li><b>L'hôte a fermé son téléphone.</b> Pas de panique&nbsp;: le
+          joueur suivant prend le relais automatiquement, et la partie continue.
+          Pareil si quelqu'un perd le réseau une minute&nbsp;: en revenant, il
+          retombe au bon endroit du morceau en cours et garde tous ses points.</li>
+        </ul>
+      </details>
+
+    </div>
+  </details>
 
     <div class="grille-accueil">
 
@@ -291,16 +516,17 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=181 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=182 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=181 à ?v=181. -->
-<script src="js/config.js?v=181"></script>
-<script src="js/match.js?v=181"></script>
-<script src="js/playlists.js?v=181"></script>
-<script src="js/itunes.js?v=181"></script>
-<script src="js/net.js?v=181"></script>
-<script src="js/game.js?v=181"></script>
-<script src="js/app.js?v=181"></script>
+     le changement ne s'affiche pas, passe tous les ?v=182 au numéro suivant
+     (183, puis 184…) — ici et dans journal.html. -->
+<script src="js/config.js?v=182"></script>
+<script src="js/match.js?v=182"></script>
+<script src="js/playlists.js?v=182"></script>
+<script src="js/itunes.js?v=182"></script>
+<script src="js/net.js?v=182"></script>
+<script src="js/game.js?v=182"></script>
+<script src="js/app.js?v=182"></script>
 
 </body>
 </html>
