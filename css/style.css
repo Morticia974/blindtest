@@ -862,6 +862,15 @@ button, input, select { font: inherit; color: inherit; }
   padding: 26px 18px 34px;
 }
 
+/* La mention de droits : un cran plus lisible que le reste du pied de page,
+   sans venir devant le jeu. Elle n'est pas là pour être jolie, elle est là
+   pour être lue. */
+.droits {
+  color: var(--doux);
+  display: inline-block;
+  margin-top: 4px;
+}
+
 .invisible { display: none !important; }
 
 /* Doit passer après .credit et consorts, qui forcent un display. */
