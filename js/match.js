@@ -31,7 +31,104 @@ var Match = (function () {
     ten: 10, eleven: 11, twelve: 12, fifty: 50
   };
 
+  /* Les nombres écrits en toutes lettres, y compris en plusieurs mots.
+
+     « Sum 41 » dit au micro ressort souvent « Sum quarante et un » : le
+     navigateur écrit le nombre comme il l'entend, et le catalogue l'écrit en
+     chiffres. Mot à mot, « quarante et un » donnait « 40 et un » — ni l'un ni
+     l'autre. On assemble donc le nombre entier avant de comparer, des deux
+     côtés : « Sum quarante et un » et « Sum 41 » finissent identiques.
+
+     L'assemblage est strict, et c'est volontaire. « Cinq six » n'est pas
+     onze : une unité ne suit pas une unité, une dizaine ne suit pas une
+     dizaine. Quand la suite de mots ne forme pas un nombre valable en
+     français, on renonce et chaque mot repart seul, comme avant. */
+  var UNITE = { un: 1, une: 1, one: 1, deux: 2, two: 2, trois: 3, three: 3,
+                quatre: 4, four: 4, cinq: 5, five: 5, six: 6, sept: 7, seven: 7,
+                huit: 8, eight: 8, neuf: 9, nine: 9 };
+  var ADO = { dix: 10, ten: 10, onze: 11, eleven: 11, douze: 12, twelve: 12,
+              treize: 13, thirteen: 13, quatorze: 14, fourteen: 14,
+              quinze: 15, fifteen: 15, seize: 16, sixteen: 16,
+              seventeen: 17, eighteen: 18, nineteen: 19 };
+  var DIZAINE = { vingt: 20, vingts: 20, twenty: 20, trente: 30, thirty: 30,
+                  quarante: 40, forty: 40, cinquante: 50, fifty: 50,
+                  soixante: 60, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
+  var CENT = { cent: 100, cents: 100, hundred: 100 };
+  var MILLE = { mille: 1000, thousand: 1000 };
+
+  function motNombre(m) {
+    return UNITE[m] !== undefined || ADO[m] !== undefined ||
+           DIZAINE[m] !== undefined || CENT[m] !== undefined || MILLE[m] !== undefined;
+  }
+
+  /* La valeur d'une suite de mots, ou null si elle ne forme pas un nombre. */
+  function composer(mots) {
+    var total = 0, bloc = 0, vu = false;
+    for (var i = 0; i < mots.length; i++) {
+      var m = mots[i], s = mots[i + 1];
+
+      /* Le « et » des nombres : « vingt et un », « soixante et onze ». Nulle
+         part ailleurs — « deux et trois » reste deux et trois. */
+      if (m === 'et' || m === 'and') {
+        if (!vu || !s || !(UNITE[s] === 1 || ADO[s] === 11)) return null;
+        continue;
+      }
+
+      if (MILLE[m] !== undefined) {
+        if (bloc > 999) return null;
+        total += (bloc || 1) * 1000; bloc = 0; vu = true; continue;
+      }
+      if (CENT[m] !== undefined) {
+        if (bloc > 9) return null;            // « vingt cent » n'existe pas
+        bloc = (bloc || 1) * 100; vu = true; continue;
+      }
+      if (DIZAINE[m] !== undefined) {
+        var d = DIZAINE[m];
+        // « quatre-vingt » : le quatre qui précède multiplie, il ne s'ajoute pas
+        if (d === 20 && bloc % 100 === 4) { bloc = bloc - 4 + 80; vu = true; continue; }
+        if (bloc % 100 !== 0) return null;    // une dizaine ne suit pas une unité
+        bloc += d; vu = true; continue;
+      }
+      if (ADO[m] !== undefined) {
+        var a = ADO[m];
+        // « soixante dix », « quatre-vingt onze » : les seules suites possibles
+        var reste = bloc % 100;
+        if (reste !== 0 && reste !== 60 && reste !== 80) return null;
+        if (reste !== 0 && a > 19) return null;
+        bloc += a; vu = true; continue;
+      }
+      if (UNITE[m] !== undefined) {
+        if (bloc % 10 !== 0) return null;     // une unité ne suit pas une unité
+        bloc += UNITE[m]; vu = true; continue;
+      }
+      return null;
+    }
+    return vu ? total + bloc : null;
+  }
+
+  function composerNombres(t) {
+    if (!/[a-z]/.test(t)) return t;
+    var mots = t.split(' '), sortie = [], i = 0;
+    while (i < mots.length) {
+      if (!motNombre(mots[i])) { sortie.push(mots[i]); i++; continue; }
+      var j = i + 1;
+      while (j < mots.length &&
+             (motNombre(mots[j]) ||
+              ((mots[j] === 'et' || mots[j] === 'and') && mots[j + 1] && motNombre(mots[j + 1])))) j++;
+      var suite = mots.slice(i, j);
+      /* Un mot seul garde son sort d'avant : « un » et « une » sont des
+         articles bien plus souvent que des nombres, et le tableau d'origine
+         les laisse tranquilles. */
+      var valeur = suite.length > 1 ? composer(suite) : null;
+      if (valeur !== null) sortie.push(String(valeur));
+      else sortie = sortie.concat(suite);
+      i = j;
+    }
+    return sortie.join(' ');
+  }
+
   function chiffrer(t) {
+    t = composerNombres(t);
     t = t.replace(/[a-z]+/g, function (mot) {
       return NOMBRES[mot] !== undefined ? String(NOMBRES[mot]) : mot;
     });
@@ -123,10 +220,10 @@ var Match = (function () {
      le micro l'écrit ainsi. Les deux côtés passent par ici — la réponse du
      catalogue comme la proposition du joueur — donc l'abrégé et le prononcé
      finissent par se rencontrer, quel que soit celui qui a été écrit. */
-  var ABREGE = [[/mr/g, 'mister'], [/mr/g, 'monsieur'],
-                [/dr/g, 'docteur'], [/dr/g, 'doctor'],
-                [/st/g, 'saint'], [/ste/g, 'sainte'],
-                [/u/g, 'you'], [/n/g, 'and']];
+  var ABREGE = [[/\bmr\b/g, 'mister'], [/\bmr\b/g, 'monsieur'],
+                [/\bdr\b/g, 'docteur'], [/\bdr\b/g, 'doctor'],
+                [/\bst\b/g, 'saint'], [/\bste\b/g, 'sainte'],
+                [/\bu\b/g, 'you'], [/\bn\b/g, 'and']];
 
   function formesParlees(base) {
     var out = [];
@@ -315,6 +412,19 @@ var Match = (function () {
 
      `options.voix` : la réponse vient du micro et non du clavier. On s'autorise
      alors un écart de plus sur le son des mots — voir plus bas. */
+  /* Les chiffres d'une réponse, dans l'ordre. « Sum 41 » -> ["41"]. */
+  function chiffresDe(t) {
+    return String(t).match(/\d+/g) || [];
+  }
+
+  /* Deux réponses qui portent exactement les mêmes nombres. */
+  function memesChiffres(a, b) {
+    var ca = chiffresDe(a), cb = chiffresDe(b);
+    if (!ca.length || ca.length !== cb.length) return false;
+    for (var i = 0; i < ca.length; i++) if (ca[i] !== cb[i]) return false;
+    return true;
+  }
+
   function correspond(proposition, variantes, options) {
     var voix = !!(options && options.voix);
     var g = normaliser(proposition);
@@ -365,6 +475,18 @@ var Match = (function () {
         /* Même son, autre orthographe. Réservé aux réponses d'au moins cinq
            lettres : en dessous, trop de mots différents se prononcent pareil. */
         if (v.length >= 5 && phonetique(p) === phonetique(v)) return true;
+
+        /* Un nombre, c'est une ancre : on pardonne une faute de plus autour.
+
+           « Sum 41 » dit au micro revient en « some 41 », « somme 41 » — deux
+           écarts sur une réponse de six lettres, un de trop. Mais le 41 est
+           tombé juste, et deux réponses différentes qui portent le même nombre
+           et se ressemblent à deux lettres près, ça n'existe pas dans le
+           catalogue : vérifié sur les neuf cent trente-cinq morceaux. */
+        if (memesChiffres(p, v)) {
+          var tolN = tolerance(v.length) + 1;
+          if (distance(p, v, tolN) <= tolN) return true;
+        }
 
         /* À la voix, presque le même son suffit.
 

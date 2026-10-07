@@ -1088,7 +1088,12 @@ var Playlists = (function () {
           altT: ["The Hansen", "The antem"] },
         { t: "I'm Just a Kid", a: "Simple Plan", interprete: "Simple Plan" },
         { t: "My Name Is Stain", a: "Shaka Ponk", interprete: "Shaka Ponk" },
-        { t: "In Too Deep", a: "Sum 41", interprete: "Sum 41" }
+        /* « Somme 41 » : ce que le micro écrit parfois quand on dit le nom
+           du groupe à la française. Le reste — « some 41 », « sum quarante
+           et un », « sam 41 » — passe tout seul depuis que les nombres
+           écrits en lettres sont assemblés. */
+        { t: "In Too Deep", a: "Sum 41", interprete: "Sum 41",
+          altA: ["Somme 41", "Sun 41"] }
       ]
     },
     {

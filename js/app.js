@@ -2113,7 +2113,7 @@
        catégorie, qui est le français là où il se trouve. */
     /* En fin de mot seulement : « beau », « chevaux », « jamais ». Au milieu,
        « eau » attrapait « Beautiful », qui se mettait à parler français. */
-    if (/(eau|oux|ais|ez|aient)/.test(t)) fr += 1;
+    if (/(eau\b|oux\b|ais\b|ez\b|aient\b)/.test(t)) fr += 1;
     if (/(th|wh|oo|ee|ck|sh|ing$|ight|w)/.test(t)) en += 1;
     return { fr: fr, en: en };
   }
