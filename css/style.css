@@ -894,8 +894,17 @@ button, input, select { font: inherit; color: inherit; }
 #ecran-jeu.parole-partout textarea,
 #ecran-jeu.parole-partout label { pointer-events: none; }
 
-/* Sauf le micro : c'est lui qu'on vise quand on vise quelque chose. */
-#ecran-jeu.parole-partout #bouton-micro { pointer-events: auto; }
+/* Sauf le micro : c'est lui qu'on vise quand on vise quelque chose.
+
+   Et sauf la barre d'écriture, avec son bouton Go. La voix se trompe, le micro
+   n'entend pas toujours, et il ne faut pas que ça casse la partie : écrire sa
+   réponse reste possible à tout moment, même micro ouvert, même écran
+   verrouillé. C'est la porte de secours, et une porte de secours ne se ferme
+   pas. */
+#ecran-jeu.parole-partout #bouton-micro,
+#ecran-jeu.parole-partout #formulaire-reponse,
+#ecran-jeu.parole-partout #formulaire-reponse input,
+#ecran-jeu.parole-partout #formulaire-reponse button { pointer-events: auto; }
 
 
 /* =========================================================================

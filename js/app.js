@@ -165,6 +165,9 @@
       // à écouter, et un micro ouvert pour rien n'a pas à l'être.
       synchroniserMicro();
       taire();
+      /* Le salon est le seul moment calme : rien ne joue, rien ne s'annonce,
+         et il reste le temps de se mettre en place avant la musique. */
+      if (nom === 'salon') proposerLesModes();
     }
   }
 
@@ -958,14 +961,37 @@
   /* Ouvrir l'écoute, ou la refermer si elle est déjà ouverte. Sur tactile
      uniquement : c'est le geste qui remplace le mot convenu. */
   function basculerParole() {
+    /* Quand l'écran entier est le bouton, il n'ouvre que dans un sens.
+
+       Fermer tenait à un tap, et un tap arrive tout seul : un pouce posé de
+       travers, le téléphone contre l'oreille, et le micro se refermait sans
+       que son propriétaire — qui ne voit pas le bouton s'éteindre — ait de
+       quoi s'en douter. Il parlait dans le vide jusqu'à la fin du morceau.
+
+       Un deuxième tap prolonge donc l'écoute au lieu de la couper. Pour
+       reprendre la main, on éteint les annonces entre deux morceaux : pendant
+       la révélation tous les boutons redeviennent actifs, et le mode s'arrête
+       là. En silence : le micro vient de s'ouvrir, lui parler par-dessus
+       reviendrait à se faire entendre de soi-même. */
+    if (ecranEstLeBouton()) {
+      ecouteOuverteJusqua = Date.now() + 15000;
+      if (reco) return;
+      microVoulu = true;
+      demarrerReco();
+      majBoutonMicro();
+      info('J\'écoute… dis le titre ou l\'artiste.', '');
+      return;
+    }
+
+    /* Hors de ce mode, le micro reste un interrupteur ordinaire : il s'ouvre
+       et se ferme quand on veut, à n'importe quel moment de la partie. */
     if (reco) {
       stopperReco();
       fermerLEcoute();
       majBoutonMicro();
-      /* Dit, même annonces éteintes : un micro qu'on referme sans un mot laisse
-         parler dans le vide quelqu'un qui ne voit pas le bouton s'éteindre. Et
-         maintenant que tout l'écran referme, ça arrive d'un pouce posé de
-         travers. */
+      /* Dit, même annonces éteintes : un micro qu'on referme sans un mot
+         laisse parler dans le vide quelqu'un qui ne voit pas le bouton
+         s'éteindre. */
       info('Micro fermé.', '');
       dire('Micro fermé', true);
       return;
@@ -982,6 +1008,140 @@
   function estUnReglage(cible) {
     return !!(cible && cible.closest &&
               cible.closest('button, input, select, textarea, a, label'));
+  }
+
+  /* ================= le lecteur d'écran du téléphone =================
+
+     VoiceOver et TalkBack lisent l'écran ; le site, lui, dit la catégorie, la
+     réponse, les points. Les deux ensemble, par-dessus la musique, ça fait
+     trois voix et plus rien de compréhensible. Et le lecteur d'écran garde les
+     touchers pour lui : là où le site attend un tap, il en faut deux, si bien
+     que le micro ne s'ouvrait qu'une fois sur deux.
+
+     Le mode sans les yeux REMPLACE le lecteur d'écran le temps de la partie,
+     il ne s'ajoute pas à lui. Encore faut-il le dire — et le dire à voix
+     haute, puisque c'est précisément quelqu'un qui ne lit pas l'écran qu'on
+     cherche à prévenir. On le dit dans le salon, avant que la musique
+     commence : il reste le temps d'aller couper le lecteur, et le salon est le
+     seul moment calme de la partie. */
+  function consigneLecteurEcran() {
+    var ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      return {
+        ecrit: 'Sur iPhone : coupe VoiceOver le temps de la partie ' +
+               '(triple-clic sur le bouton latéral). Le site te dit tout, et ' +
+               'tout l\'écran sert de bouton pour parler.',
+        dit: 'Avant de commencer : coupe VoiceOver le temps de la partie. ' +
+             'Triple clic sur le bouton latéral, ou demande à Siri de ' +
+             'désactiver VoiceOver. Pendant la partie, c\'est le site qui te ' +
+             'dit tout, et tout l\'écran sert de bouton pour parler. ' +
+             'Le même triple clic le rallumera à la fin.'
+      };
+    }
+    if (/Android/i.test(ua)) {
+      return {
+        ecrit: 'Sur Android : coupe TalkBack le temps de la partie (les deux ' +
+               'touches de volume maintenues trois secondes). Le site te dit ' +
+               'tout, et tout l\'écran sert de bouton pour parler.',
+        dit: 'Avant de commencer : coupe TalkBack le temps de la partie. ' +
+             'Maintiens les deux touches de volume pendant trois secondes. ' +
+             'Pendant la partie, c\'est le site qui te dit tout, et tout ' +
+             'l\'écran sert de bouton pour parler. Le même geste le rallumera ' +
+             'à la fin.'
+      };
+    }
+    return {
+      ecrit: 'Coupe le lecteur d\'écran de ton appareil le temps de la ' +
+             'partie : le site te dit tout, et tout l\'écran sert de bouton ' +
+             'pour parler.',
+      dit: 'Avant de commencer : coupe le lecteur d\'écran de ton appareil le ' +
+           'temps de la partie. C\'est le site qui te dit tout, et tout ' +
+           'l\'écran sert de bouton pour parler.'
+    };
+  }
+
+  /* ================= « Mode aveugle, ou mode normal ? » =================
+
+     La question est posée à voix haute, sur chaque téléphone, dans le salon —
+     avant la musique, avant le décompte, au seul moment de la partie où rien
+     ne joue et où rien d'autre ne parle. On y répond à la voix.
+
+     C'est l'idée d'Audrey, et elle règle d'un coup ce qui ne marchait pas :
+     personne n'a plus à savoir qu'il existe un bouton 🗣️ et un bouton 🎙️, ni à
+     les trouver du doigt sur un écran qu'on ne voit pas. On dit « mode
+     aveugle », et tout se met en place : les annonces, le micro, l'écran
+     entier comme bouton, et la consigne de couper VoiceOver.
+
+     Qui ne répond rien garde ses réglages : le silence n'est pas une réponse,
+     et il ne doit rien éteindre à quelqu'un qui avait déjà tout allumé.
+
+     La question ne se pose que là où ce mode existe : un écran tactile, un
+     micro, une voix de synthèse. Sur un ordinateur, le micro écoute en continu
+     et l'écran n'est le bouton de personne. */
+
+  var questionModeJusqua = 0;
+
+  function questionModeOuverte() { return Date.now() < questionModeJusqua; }
+
+  function modeDit(texte) {
+    var t = Match.normaliser(texte || '');
+    if (!t) return null;
+    if (/aveugle|non voyant|malvoyant|sans les yeux|sans regarder/.test(t)) return 'aveugle';
+    if (/normal|classique|habitude|comme d habitude|voyant/.test(t)) return 'normal';
+    return null;
+  }
+
+  function proposerLesModes() {
+    if (!surTactile || !microPossible() || !synthesePossible()) return;
+    info('Mode aveugle, ou mode normal ? Dis-le à voix haute.', '');
+    dire('Avant de commencer. Tu veux jouer en mode aveugle, ou en mode normal ? ' +
+         'Dis : mode aveugle, ou mode normal.', true, function () {
+      /* L'oreille ne s'ouvre qu'une fois la question finie : ouverte avant,
+         le micro entendrait le site poser la question et se répondrait à
+         lui-même.
+
+         Et on oublie ce qu'on vient de dire. `cEstMaVoix` écarte d'ordinaire
+         ce que le site s'entend prononcer — sauf qu'ici la question contient
+         les deux réponses possibles : « mode aveugle » dit par un joueur
+         ressemblait mot pour mot à un bout de la question, et partait à la
+         poubelle. La question est finie, le micro n'était pas ouvert pendant
+         qu'elle se disait : il n'y a plus rien à écarter. */
+      ditsRecents = [];
+      questionModeJusqua = Date.now() + 12000;
+      ecouteOuverteJusqua = Date.now() + 12000;
+      demarrerReco();
+      majBoutonMicro();
+    });
+  }
+
+  function appliquerMode(choix) {
+    questionModeJusqua = 0;
+    var aveugle = choix === 'aveugle';
+
+    annoncesVoulues = aveugle;
+    microVoulu = aveugle;
+    try {
+      localStorage.setItem('bt.annonces', aveugle ? '1' : '0');
+      localStorage.setItem('bt.micro', aveugle ? '1' : '0');
+    } catch (e) {}
+    majBoutonAnnonces();
+    majBoutonMicro();
+    majVerrouTactile();
+
+    if (aveugle) {
+      var c = consigneLecteurEcran();
+      info('Mode aveugle. ' + c.ecrit, '');
+      /* Tout d'un seul tenant : chaque `dire` coupe le précédent, deux appels
+         à la suite n'en laisseraient entendre qu'un. */
+      dire('Mode aveugle. ' + c.dit + ' Pendant chaque morceau, touche l\'écran ' +
+           'n\'importe où pour donner ta réponse. Les autres boutons sont bloqués ' +
+           'le temps de la musique, et ils reviennent entre deux morceaux.', true);
+      return;
+    }
+
+    stopperReco();
+    info('Mode normal. Le micro s\'ouvre et se ferme avec le bouton 🎙️.', '');
+    dire('Mode normal.', true);
   }
 
   /* On joue sans regarder : au doigt, à la voix, et le site dit tout.
@@ -1002,15 +1162,21 @@
 
      Les réglages redeviennent actifs entre deux morceaux, pendant la
      révélation : il faut bien un moment pour baisser le volume ou sortir du
-     mode, et à ce moment-là on ne cherche pas à répondre. Le micro, lui, reste
-     actif en permanence — c'est le seul bouton qu'on veut pouvoir atteindre
-     exprès, à la main ou au lecteur d'écran. */
+     mode, et à ce moment-là on ne cherche pas à répondre.
+
+     Le micro, lui, reste atteignable en permanence — c'est le seul bouton
+     qu'on veut pouvoir viser exprès. Mais tant que le morceau tourne, il ne
+     fait qu'ouvrir : voir `basculerParole`. */
+  function ecranEstLeBouton() {
+    if (!jeuSansLesYeux()) return false;
+    var phase = partie && partie.etat.tour ? partie.etat.tour.phase : '';
+    return phase === 'depart' || phase === 'ecoute';
+  }
+
   function majVerrouTactile() {
     var e = $('ecran-jeu');
     if (!e) return;
-    var phase = partie && partie.etat.tour ? partie.etat.tour.phase : '';
-    var pendantLeMorceau = phase === 'depart' || phase === 'ecoute';
-    e.classList.toggle('parole-partout', jeuSansLesYeux() && pendantLeMorceau);
+    e.classList.toggle('parole-partout', ecranEstLeBouton());
   }
 
   function donnerLaParole() {
@@ -1563,8 +1729,10 @@
     var r = new Classe();
     reco = r;
     r.lang = 'fr-FR';
-    // Au téléphone, une pression vaut une phrase : pas de session continue.
-    r.continuous = !surTactile;
+    /* Au téléphone, une pression vaut une phrase : pas de session continue.
+       Sauf le temps de la question des modes, à laquelle on répond sans avoir
+       rien touché — là, l'oreille doit rester ouverte toute seule. */
+    r.continuous = !surTactile || questionModeOuverte();
     /* On demande aussi les résultats provisoires. Un mot court dit une seule
        fois — « Scrubs », « Friends », « Lost » — n'est pas toujours validé par
        le navigateur : il n'en reste qu'un brouillon, et sans ça on le perdait
@@ -1603,6 +1771,10 @@
          rouvrira le micro. Sans ça, chaque relance rejouerait le bip. */
       if (surTactile) {
         reco = null;
+        /* Sauf pendant la question des modes : personne n'a appuyé sur rien,
+           personne ne rappuiera. On relance tant que la fenêtre est ouverte —
+           elle se referme d'elle-même au bout de douze secondes. */
+        if (questionModeOuverte()) { majBoutonMicro(); demarrerReco(); return; }
         fermerLEcoute();
         majBoutonMicro();
         // Le curseur revient sur le bouton : on peut reparler aussitôt.
@@ -1691,6 +1863,21 @@
 
   function entendu(resultat) {
     if (!partie || jeParle()) return;   // c'est le site qu'on entend, pas un joueur
+
+    /* La question des modes se joue dans le salon, hors de toute écoute : elle
+       passe donc avant le garde-fou de la phase. Les cinq transcriptions sont
+       essayées — « mode aveugle » revient souvent en « mode d'aveugle » ou
+       « mode aveugles », et aucune ne mérite de faire rater le départ. */
+    if (questionModeOuverte()) {
+      for (var q = 0; q < resultat.length; q++) {
+        var texteQ = String((resultat[q] || {}).transcript || '');
+        if (cEstMaVoix(texteQ)) continue;
+        var choix = modeDit(texteQ);
+        if (choix) { appliquerMode(choix); return; }
+      }
+      return;
+    }
+
     var etat = partie.etat;
     if (!etat.tour || etat.tour.phase !== 'ecoute') return;   // hors écoute, on ignore
 
@@ -2024,18 +2211,26 @@
 
   /* Dit une phrase française. `quandMeme` passe outre le bouton des annonces,
      pour les quelques phrases qui répondent directement à la voix du joueur. */
-  function dire(texte, quandMeme) {
-    direParties([{ t: texte, l: 'fr-FR' }], quandMeme);
+  function dire(texte, quandMeme, apres) {
+    direParties([{ t: texte, l: 'fr-FR' }], quandMeme, apres);
   }
 
   /* Dit une suite de morceaux, chacun dans sa langue : « C'était » en français,
      puis le titre en anglais s'il l'est. Rien ne s'accumule d'une annonce à
      l'autre — sinon le site parlerait encore du morceau précédent pendant qu'on
      écoute le suivant. */
-  function direParties(parties, quandMeme) {
-    if ((!annoncesVoulues && !quandMeme) || !synthesePossible()) return;
+  function direParties(parties, quandMeme, apres) {
+    /* `apres` : rappelé une fois la phrase dite. Sert à ouvrir le micro juste
+       après une question, et pas pendant — sinon le site s'entend demander et
+       se répond à lui-même. Appelé une seule fois, quoi qu'il arrive : si la
+       synthèse ne rend jamais la main (ça arrive), un garde-fou le lance. */
+    var rendu = false;
+    function rendreLaMain() { if (!rendu) { rendu = true; try { apres(); } catch (e) {} } }
+    if (typeof apres !== 'function') rendreLaMain = function () {};
+
+    if ((!annoncesVoulues && !quandMeme) || !synthesePossible()) { rendreLaMain(); return; }
     parties = (parties || []).filter(function (p) { return p && String(p.t || '').trim(); });
-    if (!parties.length) return;
+    if (!parties.length) { rendreLaMain(); return; }
 
     try {
       window.speechSynthesis.cancel();
@@ -2084,11 +2279,13 @@
                revient par le micro. */
             parleJusqua = Math.min(parleJusqua, Date.now() + 200);
             remettreLaMusique();
+            setTimeout(rendreLaMain, 250);
           };
         }
         window.speechSynthesis.speak(u);
       });
-    } catch (e) { remettreLaMusique(); }
+      setTimeout(rendreLaMain, plafond + 2500);
+    } catch (e) { remettreLaMusique(); rendreLaMain(); }
   }
 
   function taire() {
@@ -2432,12 +2629,24 @@
       if (annoncesVoulues) {
         /* On répond tout de suite : c'est la seule preuve audible que ça
            marche, et ce premier clic débloque la voix sur les navigateurs qui
-           l'exigent. */
-        dire('Les annonces sont allumées.');
+           l'exigent.
+
+           Sur un téléphone, allumer les annonces, c'est entrer dans le mode
+           sans les yeux : la consigne du lecteur d'écran part dans la foulée,
+           et d'un seul tenant — chaque `dire` coupe le précédent, deux appels
+           de suite n'en laisseraient entendre qu'un. */
+        if (surTactile && microPossible()) {
+          var consigne = consigneLecteurEcran();
+          info(consigne.ecrit, '');
+          dire('Les annonces sont allumées. ' + consigne.dit, true);
+        } else {
+          dire('Les annonces sont allumées.');
+          info('Le site annoncera les réponses à voix haute.', '');
+        }
       } else {
         taire();
+        info('Annonces coupées.', '');
       }
-      info(annoncesVoulues ? 'Le site annoncera les réponses à voix haute.' : 'Annonces coupées.', '');
       // Les annonces font partie du mode sans les yeux : le verrou suit.
       majVerrouTactile();
     });
@@ -2503,10 +2712,13 @@
        les deux boutons de son. Le micro, lui, passe par son propre gestionnaire
        et ne doit pas être traité deux fois. */
     $('ecran-jeu').addEventListener('click', function (ev) {
-      if (!surTactile || !microPossible()) return;
+      /* Seulement dans le mode aveugle. En mode normal, le micro appartient à
+         son bouton : on appuie, il s'ouvre ; on rappuie, il se ferme. Un écran
+         qui ouvrait le micro au moindre effleurement surprenait ceux qui
+         voient — ils touchent l'écran pour tout autre chose. */
+      if (!ecranEstLeBouton()) return;
       if (ev.target && ev.target.closest && ev.target.closest('#bouton-micro')) return;
       if (estUnReglage(ev.target)) return;
-      if (!partie || !partie.etat.tour || partie.etat.tour.phase !== 'ecoute') return;
       basculerParole();
     });
   }
