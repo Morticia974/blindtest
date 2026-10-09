@@ -810,11 +810,11 @@ var Playlists = (function () {
         { t: "Boss of Me", a: "Malcolm",
           q: "They Might Be Giants Boss of Me Mink Car",
           // Apple n'a aucun album de la série : pochette d'un single du générique.
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/09/70/75/097075be-0784-95c3-9874-4bc8349b1252/46b5093f-3e13-49f0-9f92-a44e97804c59.jpg/600x600bb.jpg",
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/malcolm.jpg",
           altA: ["Malcolm in the Middle"] },
         { t: "Superman", a: "Scrubs",
           q: "Superman Lazlo Bane All the Time in the World",
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/55/7f/db/557fdb12-57c5-7ec0-cb44-a596afdd228d/00720616235329.rgb.jpg/600x600bb.jpg",
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/scrubs.jpg",
           altA: ["Screb", "Scrab", "Scrobs"] },
         { t: "Hey Beautiful", a: "How I Met Your Mother", q: "Hey Beautiful The Solids How I Met Your Mother", pochette: "https://static.tvmaze.com/uploads/images/original_untouched/0/2451.jpg", interprete: "The Solids", disque: "How I Met Your Music" },
         { t: "Big Bang Theory Theme", a: "The Big Bang Theory",
@@ -866,7 +866,7 @@ var Playlists = (function () {
           pochette: "https://morticia974.github.io/blindtest/images/pochettes/simpson.jpg" },
         { t: "Enemy", a: "Arcane",
           q: "Enemy Imagine Dragons JID Arcane League of Legends",
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/cf/da/60cfdaed-e33d-4f11-dae6-12ab04b75a8c/00196922993985_Cover.jpg/600x600bb.jpg" },
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/arcane.jpg" },
         /* La série de 2004, pas celle de 1978 : le générique des saisons 2 à 4,
            par Bear McCreary. Les bandes originales de la série n'existent que
            dans la boutique américaine d'Apple — d'où `pays`. */
