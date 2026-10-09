@@ -855,7 +855,9 @@ var Playlists = (function () {
         // Trouvé au troisième essai seulement : la version officielle existe, sur
         // l'album « Testify » de la série. Les requêtes évidentes ne sortaient
         // que des arrangements pour orchestre de chambre.
-        { t: "The Simpsons Main Title Theme", a: "Les Simpson", q: "Simpsons Main Title Theme Testify original music television series", altA: ["The Simpsons"] },
+        { t: "The Simpsons Main Title Theme", a: "Les Simpson", q: "Simpsons Main Title Theme Testify original music television series", altA: ["The Simpsons"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/simpson.jpg" },
         { t: "Enemy", a: "Arcane",
           q: "Enemy Imagine Dragons JID Arcane League of Legends",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/60/cf/da/60cfdaed-e33d-4f11-dae6-12ab04b75a8c/00196922993985_Cover.jpg/600x600bb.jpg" },
@@ -868,7 +870,19 @@ var Playlists = (function () {
           altT: ["Battlestar Galactica Main Title", "Générique"] },
         { t: "The Mandalorian", a: "The Mandalorian", q: "Ludwig Goransson The Mandalorian Chapter 1 Original Score",
           altA: ["Demande à Lauriane", "The Mandalorien"] },
-        { t: "Justice League Unlimited Theme", a: "La Ligue des justiciers", q: "Justice League Unlimited Theme Michael McCuistion Music of DC Comics", altA: ["Justice League"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/80/200323.jpg" },
+        /* Le générique de la série elle-même, et non celui de « Justice League
+           Unlimited », la suite de 2004 qui jouait ici jusqu'ici. Apple ne
+           propose que deux génériques de cette famille : ce générique
+           d'ouverture (bande originale officielle, 62 secondes) et celui de
+           Unlimited. L'arrangement plus rapide de la saison 2 n'est sorti
+           nulle part en disque. */
+        { t: "Justice League Main Title", a: "La Ligue des justiciers",
+          q: "Justice League Main Title Lolita Ritmanis Justice League Original Soundtrack Vol. 1",
+          interprete: "Lolita Ritmanis",
+          disque: "Justice League: Original Soundtrack-Vol. 1",
+          altA: ["Justice League", "Justice League Unlimited"],
+          altT: ["Justice League Unlimited Theme", "Justice League Theme", "Générique"],
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/80/200323.jpg" },
         { t: "This Life", a: "Sons of Anarchy", q: "This Life Curtis Stigers Forest Rangers Songs of Anarchy" },
 
         /* ---- reprises instrumentales fidèles ----
