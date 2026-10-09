@@ -2465,6 +2465,9 @@
           historique.indexOf(piste) === -1 &&
           !historique.some(function (p) { return p.apercu === piste.apercu; })) {
         historique.push(piste);
+        /* Et pour les parties d'après : ce morceau passera en fin de pioche
+           tant que la catégorie n'aura pas été entendue en entier. */
+        Playlists.noterEntendu(piste);
       }
 
       /* On prépare tout ce que le chef a déjà résolu, pas seulement le morceau

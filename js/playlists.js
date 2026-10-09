@@ -2010,6 +2010,73 @@ var Playlists = (function () {
     }
   ];
 
+  /* ================= ce qu'on a déjà entendu =================
+
+     Le tirage est honnête : mesuré sur deux mille parties, chaque morceau sort
+     aussi souvent que les autres, et aucun ne reste au fond du chapeau. Mais
+     tirer douze morceaux dans une catégorie qui en compte cinquante, c'est en
+     retrouver trois d'une partie à l'autre — et cinq dans les comédies
+     musicales, qui n'en comptent que vingt-huit. C'est le hasard pur qui donne
+     ça, exactement ça ; seulement, à l'oreille, le hasard pur ressemble à une
+     panne.
+
+     On retient donc, dans ce navigateur, ce qui est déjà passé. Le mélange ne
+     change pas — tout est toujours battu — mais ce qu'on n'a pas encore entendu
+     remonte en tête. Une fois la catégorie épuisée, les plus anciens reviennent
+     les premiers : un tour complet avant de réentendre quoi que ce soit.
+
+     C'est la mémoire de CE navigateur, pas celle du salon. Chacun a la sienne,
+     et c'est celle de l'hôte qui décide, puisque c'est lui qui tire. */
+  var CLE_ENTENDUS = 'bt.entendus';
+  var MAX_ENTENDUS = 600;   // de quoi tenir deux tours du catalogue entier
+
+  function cleMorceau(p) {
+    if (!p) return '';
+    return Match.normaliser(p.t || p.titre || '') + '|' +
+           Match.normaliser(p.a || p.artiste || '');
+  }
+
+  function entendus() {
+    try {
+      var liste = JSON.parse(localStorage.getItem(CLE_ENTENDUS) || '[]');
+      return Object.prototype.toString.call(liste) === '[object Array]' ? liste : [];
+    } catch (e) { return []; }
+  }
+
+  /* Appelé à la révélation, chez tout le monde : même celui qui n'est pas hôte
+     peut le devenir à la partie suivante. Le plus récent part en queue. */
+  function noterEntendu(p) {
+    var cle = cleMorceau(p);
+    if (!cle || cle === '|') return;
+    var liste = entendus();
+    var i = liste.indexOf(cle);
+    if (i !== -1) liste.splice(i, 1);
+    liste.push(cle);
+    if (liste.length > MAX_ENTENDUS) liste = liste.slice(liste.length - MAX_ENTENDUS);
+    try { localStorage.setItem(CLE_ENTENDUS, JSON.stringify(liste)); } catch (e) {}
+  }
+
+  function oublierEntendus() {
+    try { localStorage.removeItem(CLE_ENTENDUS); } catch (e) {}
+  }
+
+  /* Les jamais entendus d'abord, puis les autres, du plus ancien au plus
+     récent. L'ordre du mélange est gardé à l'intérieur de chaque groupe : deux
+     parties d'affilée ne donnent pas la même suite pour autant. */
+  function fraisDabord(liste, dejaVus) {
+    if (!dejaVus || !dejaVus.length) return liste;
+    var rang = {}, i;
+    for (i = 0; i < dejaVus.length; i++) rang[dejaVus[i]] = i;
+    var frais = [], revus = [];
+    liste.forEach(function (p) {
+      var r = rang[cleMorceau(p)];
+      if (r === undefined) frais.push(p);
+      else revus.push({ p: p, r: r });
+    });
+    revus.sort(function (a, b) { return a.r - b.r; });
+    return frais.concat(revus.map(function (x) { return x.p; }));
+  }
+
   /* Mélange (Fisher-Yates) avec une graine, pour que tous les joueurs d'un
      salon tirent exactement la même sélection de morceaux. */
   function melangerAvecGraine(tableau, graine) {
@@ -2077,7 +2144,7 @@ var Playlists = (function () {
 
   /* Sélection tirée au sort pour une partie. `melange` = toutes manches
      confondues, `perso:a,b,c` = celles que le salon a cochées. */
-  function tirage(id, nombre, graine) {
+  function tirage(id, nombre, graine, dejaVus) {
     var source;
     var choisies = id === 'melange' ? manches : manchesChoisies(id);
     if (choisies) {
@@ -2092,7 +2159,7 @@ var Playlists = (function () {
       source = [];
       choisies.forEach(function (m) {
         m.pistes.forEach(function (p) {
-          var cle = Match.normaliser(p.t) + '|' + Match.normaliser(p.a);
+          var cle = cleMorceau(p);
           if (vus[cle]) return;
 
           var oeuvre = cleOeuvre(p, m);
@@ -2116,7 +2183,10 @@ var Playlists = (function () {
          par œuvre — celui qui sort en tête. Le tirage change à chaque partie,
          donc ce n'est pas toujours « Hakuna Matata » qui représente le film. */
       if (m.solo) {
-        var melange = melangerAvecGraine(source, graine);
+        /* Les frais d'abord AVANT de ne garder qu'un morceau par œuvre : sinon
+           le représentant du film pourrait être celui qu'on vient d'entendre
+           alors qu'un autre, du même film, n'est jamais passé. */
+        var melange = fraisDabord(melangerAvecGraine(source, graine), dejaVus);
         var vues = {};
         source = [];
         melange.forEach(function (p) {
@@ -2130,7 +2200,7 @@ var Playlists = (function () {
         return source.slice(0, nombre);
       }
     }
-    return melangerAvecGraine(source, graine).slice(0, nombre);
+    return fraisDabord(melangerAvecGraine(source, graine), dejaVus).slice(0, nombre);
   }
 
   return {
@@ -2138,6 +2208,9 @@ var Playlists = (function () {
     parId: parId,
     manchesChoisies: manchesChoisies,
     tirage: tirage,
+    entendus: entendus,
+    noterEntendu: noterEntendu,
+    oublierEntendus: oublierEntendus,
     melangerAvecGraine: melangerAvecGraine
   };
 })();

@@ -203,7 +203,8 @@ var Jeu = (function () {
       if (!m || m.graine === undefined || m.graine === null) return false;
       if (graineReserve === m.graine && reserve.length) return true;
 
-      reserve = Playlists.tirage(m.manche, (m.nbTitres || 12) + 12, m.graine);
+      reserve = Playlists.tirage(m.manche, (m.nbTitres || 12) + 12, m.graine,
+                                 Playlists.entendus());
       curseurReserve = 0;
       graineReserve = m.graine;
       return reserve.length > 0;
@@ -451,7 +452,9 @@ var Jeu = (function () {
     function lancerPartie(manche, reglages) {
       var graine = Math.floor(Math.random() * 1e9);
       var nb = reglages.nbTitres;
-      reserve = Playlists.tirage(manche, nb + 12, graine); // marge pour les introuvables
+      /* La marge sert aux introuvables ; la mémoire, elle, fait remonter ce
+         qu'on n'a pas encore entendu sur ce navigateur. */
+      reserve = Playlists.tirage(manche, nb + 12, graine, Playlists.entendus());
       curseurReserve = 0;
       graineReserve = graine;
       etat.pistes = {};
