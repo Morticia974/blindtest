@@ -891,7 +891,9 @@ var Playlists = (function () {
            est la même. C'est le choix déjà fait pour les jeux Nintendo. */
         { t: "The A-Team - Theme from the TV Series", a: "L'Agence tous risques", q: "Dominik Hauser The A-Team Theme from the Television Series single", altT: ["The A-Team"], altA: ["A-Team"], pochette: "https://static.tvmaze.com/uploads/images/original_untouched/6/17013.jpg" },
         { t: "Magnum P.I. Theme", a: "Magnum", q: "Dominik Hauser Magnum P.I. Theme from the Television Series", altA: ["Magnum P.I."] },
-        { t: "South Park - Theme from the TV Series", a: "South Park", q: "Dominik Hauser South Park Theme from the Television Series", altT: ["South Park Theme"] },
+        { t: "South Park - Theme from the TV Series", a: "South Park", q: "Dominik Hauser South Park Theme from the Television Series", altT: ["South Park Theme"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/south-park.jpg" },
         { t: "Buffy the Vampire Slayer", a: "Buffy contre les vampires",
           q: "Buffy the Vampire Slayer TV Tunesters TV's Greatest Themes 90's",
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music/6e/90/0e/mzi.tgiwivqf.jpg/600x600bb.jpg",
@@ -907,7 +909,9 @@ var Playlists = (function () {
            qu'il fallait fouiller le catalogue des interprètes. */
         // Apple n'a de « Sámbame » que le « Radio Edit Remix », qui est la
         // version single : « voulue » empêche le moteur de la rétrograder.
-        { t: "Sámbame", a: "Un dos tres", voulue: true, q: "Upa Dance Sámbame Radio Edit Remix Collector Edition", altA: ["Upa Dance", "Un paso adelante"] },
+        { t: "Sámbame", a: "Un dos tres", voulue: true, q: "Upa Dance Sámbame Radio Edit Remix Collector Edition", altA: ["Upa Dance", "Un paso adelante"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/un-dos-tres.jpg" },
         // Audrey a écouté les cinq candidats et retenu celui-ci : la reprise
         // au piano, moins marquée par le tube d'origine que celles au quatuor.
         { t: "Wildest Dreams", a: "Les Chroniques de Bridgerton", q: "Duomo Wildest Dreams Bridgerton Covers From the Netflix Original Series", altA: ["Bridgerton"],
