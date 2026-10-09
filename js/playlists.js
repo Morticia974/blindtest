@@ -622,7 +622,9 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/ed/9b/75/ed9b75fd-e5af-64aa-1452-4c5390a6991b/5099706321323.jpg/600x600bb.jpg" },
         { t: "The Time of My Life", a: "Dirty Dancing", q: "I've Had The Time of My Life Bill Medley" },
         { t: "You're the One That I Want", a: "Grease", q: "You're the One That I Want Grease" },
-        { t: "Danger Zone", a: "Top Gun", q: "Danger Zone Kenny Loggins" },
+        { t: "Danger Zone", a: "Top Gun", q: "Danger Zone Kenny Loggins",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/top-gun.jpg" },
         { t: "Skyfall", a: "Skyfall", q: "Skyfall Adele", altA: ["James Bond", "007"] },
         /* Le titre exact chez Apple porte « l'après-midi » : sans ça, une
            reprise au piano sortie en single passait devant Yann Tiersen. */
@@ -648,9 +650,11 @@ var Playlists = (function () {
            remonte pas le bon mouvement de Zarathoustra). */
         { t: "Theme from Jurassic Park", a: "Jurassic Park", q: "Jurassic Park Original Motion Picture Soundtrack John Williams main theme", lgA: "fr" },
         { t: "The Terminator Theme", a: "Terminator", q: "Terminator Main Title Brad Fiedel" },
-        { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield" },
+        { t: "Tubular Bells", a: "L'Exorciste", q: "Tubular Bells Mike Oldfield",
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/exorciste.jpg" },
         { t: "Halloween Theme", a: "Halloween", q: "Halloween Theme John Carpenter" },
-        { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore", pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-seigneur-des-anneaux.jpg" },
+        { t: "Concerning Hobbits", a: "Le Seigneur des anneaux", q: "Concerning Hobbits Howard Shore", pochette: "https://morticia974.github.io/blindtest/images/pochettes/seigneur-des-anneaux.jpg" },
         { t: "Lux Aeterna", a: "Requiem for a Dream", q: "Lux Aeterna Clint Mansell" },
         { t: "The Ecstasy of Gold", a: "Le Bon, la Brute et le Truand", q: "Ecstasy of Gold Ennio Morricone",
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
@@ -678,7 +682,9 @@ var Playlists = (function () {
         { t: "Forrest Gump Suite", a: "Forrest Gump", q: "Forrest Gump Suite Alan Silvestri" },
         { t: "Misirlou", a: "Pulp Fiction", q: "Misirlou Dick Dale Pulp Fiction", lgA: "en" },
         { t: "Main Title and First Victim", a: "Les Dents de la mer", q: "Jaws Main Title and First Victim John Williams", altA: ["Jaws"] },
-        { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"] },
+        { t: "Prelude", a: "Psychose", q: "Bernard Herrmann Psycho Original Motion Picture Score Prelude", altA: ["Psycho"],
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/psychose.jpg" },
         { t: "Main Title", a: "Le Silence des agneaux", q: "Silence of the Lambs Main Title Howard Shore", interprete: "Münchner Symphoniker & Howard Shore", disque: "Silence of the Lambs",
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
           pochette: "https://morticia974.github.io/blindtest/images/pochettes/le-silence-des-agneaux.jpg" },
