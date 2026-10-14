@@ -77,6 +77,7 @@
     background: var(--forest-2); color: var(--parch); box-shadow: 0 8px 24px #000a, inset 0 0 0 2px var(--gold);
     font-weight: 800; white-space: nowrap;
   }
+  .volpanel[hidden] { display: none; }
   .volpanel input { width: clamp(120px, 30vw, 220px); accent-color: var(--gold); }
   .volpanel span { min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
   .tool.off::after { content: ""; position: absolute; left: 22%; right: 22%; top: 50%; height: 3px; background: #c8553d; transform: rotate(-45deg); border-radius: 2px; }
@@ -107,6 +108,16 @@
     transition: transform .08s;
   }
   .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #071711, inset 0 0 0 2px var(--gold); }
+  .games { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .game {
+    display: grid; gap: 1px; text-align: left; padding: 7px 10px; border-radius: 10px;
+    border: 2px solid var(--rim); background: #fffaf0; color: var(--ink); line-height: 1.2;
+  }
+  .game b { font-weight: 900; font-size: .92em; }
+  .game span { font-size: .78em; color: var(--ink-soft); font-weight: 700; }
+  .game.sel { border-color: var(--forest-2); background: var(--forest-2); color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .game.sel span { color: var(--parch-2); }
+  .game:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 2px; }
   .btn.expert { background: #3a1414; color: #ffd9a0; box-shadow: 0 4px 0 #1a0606, inset 0 0 0 2px #e0603c; }
   .btn:focus-visible { outline: 3px solid var(--sheikah); outline-offset: 3px; }
 
@@ -227,11 +238,18 @@
 <script>
 /* ================= DATA ================= */
 const EXPERT_N = 25;
+const KICKER = "Breath of the Wild · Tears of the Kingdom · Ocarina of Time · Twilight Princess";
+const GAMES = [
+  { id: "all", emoji: "🔺", name: "Tous les jeux", desc: "Un peu de tout !" },
+  { id: "bt", emoji: "🗡️", name: "BotW · TotK", desc: "+ L'Ère du Fléau et Les Chroniques du Sceau" },
+  { id: "oot", emoji: "🎵", name: "Ocarina of Time", desc: "D'après le manga" },
+  { id: "tp", emoji: "🐺", name: "Twilight Princess", desc: "D'après le manga" }
+];
 const LEVELS = [
-  { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 5 },
-  { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 6 },
-  { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 8 },
-  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 6 },
+  { name: "Premiers pas en Hyrule", emoji: "🌱", desc: "Pour s'échauffer", scene: "forest", song: "A", icon: "sprite", quick: 5, grand: 15 },
+  { name: "Les peuples d'Hyrule", emoji: "🍄", desc: "Les peuples et les héros d'Hyrule", scene: "zora", song: "B", icon: "crown", quick: 6, grand: 20 },
+  { name: "Les secrets du royaume", emoji: "🐉", desc: "Les secrets de Tears of the Kingdom", scene: "sky", song: "C", icon: "dragon", quick: 8, grand: 22 },
+  { name: "L'épreuve des Sages", emoji: "🔺", desc: "Questions très difficiles, pour les pros", scene: "castle", song: "D", icon: "triforce", quick: 6, grand: 23 },
   { name: "Mode Expert", emoji: "💀", desc: "Uniquement des questions très difficiles", scene: "castle", song: "D", icon: "moon", quick: 0, expert: true }
 ];
 
@@ -484,7 +502,246 @@ const Q = [
   { lv:4, sc:"castle", ic:"sword", q:"Avec quelle arme Link bat-il Ganon, Créature Maléfique ?", o:["L'Épée de légende","L'Arc de Lumière","L'Arc des Prodiges","L'Arc Sheikah"], a:1,
     f:"C'est Zelda qui le lui donne pendant le combat." },
   { lv:4, sc:"forest", ic:"crown", q:"Où se trouve la plus grande statue de la Déesse dans Breath of the Wild ?", o:["Au château d'Hyrule","Au Temple Oublié","À Cocorico","Sur le Plateau du Prélude"], a:1,
-    f:"Un immense temple en ruine, rempli de Gardiens endormis." }
+    f:"Un immense temple en ruine, rempli de Gardiens endormis." },
+  /* ---- OoT, TP, L'Ère du Fléau, Les Chroniques du Sceau ---- */
+  { lv:0, g:"oot", sc:"forest", ic:"fairy", q:"Comment s'appelle la fée de Link ?", o:["Navi","Midona","Saria","Malon"], a:0,
+    f:"Une petite fée bleue qui accompagne Link partout." },
+  { lv:0, g:"oot", sc:"forest", ic:"tree", q:"Dans quelle forêt grandit Link ?", o:["La forêt de Firone","La forêt Kokiri","Les Bois Perdus","La forêt de Toal"], a:1,
+    f:"Il vit avec les Kokiri, des enfants qui ne grandissent jamais." },
+  { lv:0, g:"oot", sc:"forest", ic:"tree", q:"Quel grand arbre protège les Kokiri ?", o:["L'Arbre Mojo","Le Chêne d'Hylia","L'Arbre Millénaire","Le Saule Kokiri"], a:0,
+    f:"C'est lui qui envoie Navi chercher Link." },
+  { lv:0, g:"oot", sc:"forest", ic:"ocarina", q:"Qui est la meilleure amie de Link chez les Kokiri ?", o:["Malon","Saria","Ruto","Impa"], a:1,
+    f:"Saria offre son ocarina à Link quand il quitte la forêt." },
+  { lv:0, g:"oot", sc:"meadow", ic:"ocarina", q:"De quel instrument joue Link ?", o:["De la flûte","De l'ocarina","De la harpe","Du violon"], a:1,
+    f:"Un petit instrument en terre, qui donne son nom à l'histoire." },
+  { lv:0, g:"oot", sc:"meadow", ic:"horseshoe", q:"Comment s'appelle la jument de Link ?", o:["Épona","Malon","Lune","Étoile"], a:0,
+    f:"Une jument rousse qui vit au ranch Lon Lon." },
+  { lv:0, g:"oot", sc:"castle", ic:"moon", q:"Qui est le grand méchant d'Ocarina of Time ?", o:["Xanto","Ganondorf","Vaati","Kohga"], a:1,
+    f:"Le roi des Gerudo, qui veut s'emparer de la Triforce." },
+  { lv:0, g:"oot", sc:"sheikah", ic:"hourglass", q:"Combien d'années Link dort-il avant de se réveiller adulte ?", o:["3 ans","7 ans","10 ans","100 ans"], a:1,
+    f:"Il était trop jeune pour porter l'Épée de légende… alors il dort sept ans !" },
+  { lv:1, g:"oot", sc:"forest", ic:"tree", q:"Qu'arrive-t-il à l'Arbre Mojo au début de l'histoire ?", o:["Il s'endort","Il est malade","Il déménage","Il perd ses feuilles"], a:1,
+    f:"Un maléfice de Ganondorf l'a rendu très malade." },
+  { lv:1, g:"oot", sc:"forest", ic:"sprite", q:"Quel Kokiri est jaloux de Link ?", o:["Mido","Saria","Navi","Talon"], a:0,
+    f:"Il est grognon au début… mais il finit par aider Link." },
+  { lv:1, g:"oot", sc:"sheikah", ic:"gem", q:"Combien de Pierres Ancestrales Link doit-il trouver ?", o:["2","3","4","7"], a:1,
+    f:"Une pour la forêt, une pour le feu et une pour l'eau." },
+  { lv:1, g:"oot", sc:"forest", ic:"gem", q:"Quelle Pierre Ancestrale l'Arbre Mojo donne-t-il à Link ?", o:["Le Rubis Goron","Le Saphir Zora","L'Émeraude Kokiri","Le Diamant Gerudo"], a:2,
+    f:"Il lui demande de l'apporter à la princesse Zelda." },
+  { lv:1, g:"oot", sc:"volcano", ic:"gem", q:"Qui garde le Rubis Goron ?", o:["Darunia","Ganondorf","Impa","Rauru"], a:0,
+    f:"Le grand chef des Gorons." },
+  { lv:1, g:"oot", sc:"zora", ic:"fish", q:"Comment s'appelle la princesse des Zoras ?", o:["Mipha","Ruto","Malon","Saria"], a:1,
+    f:"Elle a un sacré caractère !" },
+  { lv:1, g:"oot", sc:"meadow", ic:"horseshoe", q:"Où Link rencontre-t-il Malon et Épona ?", o:["Au Ranch Lon Lon","Au village Cocorico","Au château","Au lac Hylia"], a:0,
+    f:"Le ranch du papa de Malon." },
+  { lv:1, g:"oot", sc:"meadow", ic:"horseshoe", q:"Comment s'appelle le papa de Malon ?", o:["Ingo","Talon","Rauru","Darunia"], a:1,
+    f:"Il dort beaucoup… pendant qu'Ingo fait tout le travail !" },
+  { lv:1, g:"oot", sc:"castle", ic:"sword", q:"Où Link trouve-t-il l'Épée de légende ?", o:["Dans la forêt Kokiri","Au Temple du Temps","Dans le château","Au fond du lac"], a:1,
+    f:"Derrière la Porte du Temps." },
+  { lv:1, g:"oot", sc:"forest", ic:"fairy", q:"Qui est vraiment Link, même s'il a grandi chez les Kokiri ?", o:["Un Kokiri","Un Hylien","Un Sheikah","Un Gerudo"], a:1,
+    f:"C'est pour ça qu'il n'avait pas de fée au début : il n'est pas un vrai Kokiri !" },
+  { lv:2, g:"oot", sc:"zora", ic:"fish", q:"Qui a avalé la princesse Ruto ?", o:["Le grand Jabu-Jabu","Un Lynel","Le Roi Dodongo","Gohma"], a:0,
+    f:"Link doit aller la chercher… dans le ventre de Jabu-Jabu !" },
+  { lv:2, g:"oot", sc:"volcano", ic:"rock", q:"Que doit faire Link pour que Darunia lui donne le Rubis Goron ?", o:["Lui chanter une chanson","Libérer la caverne Dodongo","Lui apporter des rochers","Gagner une course"], a:1,
+    f:"Les Gorons n'ont plus rien à manger : la caverne est bloquée !" },
+  { lv:2, g:"oot", sc:"volcano", ic:"dragon", q:"Quel monstre Link affronte-t-il dans la caverne Dodongo ?", o:["Gohma","Le Roi Dodongo","Volvagia","Ganon"], a:1,
+    f:"Un énorme monstre qui avale des bombes…" },
+  { lv:2, g:"oot", sc:"night", ic:"feather", q:"Quel grand hibou guide Link pendant son voyage ?", o:["Kaepora Gaebora","Asarim","Revali","Teba"], a:0,
+    f:"Il l'emmène même jusqu'au domaine Zora !" },
+  { lv:2, g:"oot", sc:"zora", ic:"gem", q:"Que représente le Saphir Zora pour la princesse Ruto ?", o:["Un simple bijou","Une bague de fiançailles","Un porte-bonheur","Une clé"], a:1,
+    f:"En le donnant à Link, elle pense qu'ils sont fiancés !" },
+  { lv:2, g:"oot", sc:"castle", ic:"ocarina", q:"Qui lance l'Ocarina du Temps à Link en fuyant le château ?", o:["Impa","Zelda","Navi","Saria"], a:1,
+    f:"Ganondorf est juste derrière elle…" },
+  { lv:2, g:"oot", sc:"castle", ic:"ocarina", q:"Dans le manga, quel ocarina Ganondorf prend-il par erreur ?", o:["L'Ocarina du Temps","L'ocarina de Saria","Un faux ocarina","Celui de Malon"], a:1,
+    f:"Il croit avoir l'Ocarina du Temps… raté !" },
+  { lv:2, g:"oot", sc:"sheikah", ic:"star", q:"Quel est le premier Sage que Link rencontre une fois adulte ?", o:["Saria","Rauru","Darunia","Impa"], a:1,
+    f:"Il donne son médaillon à Link." },
+  { lv:2, g:"oot", sc:"forest", ic:"ocarina", q:"Saria est la Sage de quoi ?", o:["De la Forêt","De l'Eau","Du Feu","De l'Ombre"], a:0,
+    f:"La meilleure amie de Link était une Sage depuis toujours !" },
+  { lv:2, g:"oot", sc:"sheikah", ic:"eye", q:"Qui se cache sous le déguisement de Sheik ?", o:["Impa","Zelda","Navi","Malon"], a:1,
+    f:"Elle s'est déguisée pour échapper à Ganondorf pendant sept ans." },
+  { lv:3, g:"oot", sc:"volcano", ic:"flame", q:"Darunia est le Sage de quoi ?", o:["De la Forêt","Du Feu","De l'Esprit","De la Lumière"], a:1,
+    f:"Le chef des Gorons, au cœur du feu." },
+  { lv:3, g:"oot", sc:"zora", ic:"drop", q:"Ruto est la Sage de quoi ?", o:["De l'Eau","De l'Ombre","Du Vent","De la Forêt"], a:0,
+    f:"La princesse des Zoras devient une Sage !" },
+  { lv:3, g:"oot", sc:"night", ic:"eye", q:"Impa est la Sage de quoi ?", o:["De la Lumière","De l'Ombre","Du Feu","Du Temps"], a:1,
+    f:"La gardienne de Zelda, de la tribu Sheikah." },
+  { lv:3, g:"oot", sc:"desert", ic:"bolt", q:"Nabooru est la Sage de quoi ?", o:["De l'Esprit","De la Foudre","Du Désert","De l'Eau"], a:0,
+    f:"Une Gerudo qui n'est pas d'accord avec Ganondorf." },
+  { lv:3, g:"oot", sc:"desert", ic:"moon", q:"Comment s'appellent les deux sorcières qui tendent un piège à Link ?", o:["Koume et Kotake","Ute et Moï","Kaïa et Kaïo","Twina et Rova"], a:0,
+    f:"Deux vieilles sorcières : une de feu et une de glace." },
+  { lv:3, g:"oot", sc:"forest", ic:"sword", q:"Avec quelle arme Link bat-il le monstre qui attend dans la forêt, une fois adulte ?", o:["L'Épée de légende","L'Arc des Fées","Un boomerang","Des bombes"], a:1,
+    f:"C'est juste avant que Saria se révèle être une Sage." },
+  { lv:3, g:"oot", sc:"zora", ic:"eye", q:"Dans le chapitre « Link contre Link », contre qui Link se bat-il ?", o:["Contre son double sombre","Contre Ganondorf","Contre un Lynel","Contre Mido"], a:0,
+    f:"Un reflet maléfique qui fait exactement les mêmes gestes que lui !" },
+  { lv:3, g:"oot", sc:"forest", ic:"sprite", q:"Une fois adulte, qui aide Link à retrouver Saria dans la forêt ?", o:["Navi","Mido","Malon","Impa"], a:1,
+    f:"Le Kokiri grognon devient un vrai allié !" },
+  { lv:4, g:"oot", sc:"sheikah", ic:"triforce", q:"Combien y a-t-il de Sages en tout, en comptant Zelda ?", o:["5","6","7","8"], a:2,
+    f:"Six Sages… et Zelda, la septième, qui les guide." },
+  { lv:4, g:"oot", sc:"desert", ic:"crown", q:"De quel peuple Ganondorf est-il le roi ?", o:["Des Gorons","Des Gerudo","Des Sheikahs","Des Zoras"], a:1,
+    f:"Le seul homme du peuple Gerudo depuis très longtemps." },
+  { lv:4, g:"oot", sc:"forest", ic:"star", q:"Dans la Perfect Edition, quel personnage a droit à une histoire bonus ?", o:["Skull Kid","Mido","Talon","Ingo"], a:0,
+    f:"L'histoire bonus s'appelle « Le masque de Skull Kid »." },
+  { lv:4, g:"oot", sc:"volcano", ic:"rock", q:"Comment s'appelle la montagne où vivent les Gorons ?", o:["Le Mont du Péril","La Montagne de la Mort","Le Mont Ulmus","Le Pic Hébra"], a:0,
+    f:"Un volcan… avec un dragon de feu caché à l'intérieur !" },
+  { lv:4, g:"oot", sc:"zora", ic:"fish", q:"Qu'est-ce que le grand Jabu-Jabu ?", o:["Un poisson géant gardien des Zoras","Un dragon","Un arbre","Un roi Zora"], a:0,
+    f:"Un énorme poisson que les Zoras vénèrent." },
+  { lv:4, g:"oot", sc:"castle", ic:"moon", q:"En quoi Ganondorf se transforme-t-il à la fin ?", o:["En dragon","En Ganon, un monstre géant","En loup","En statue"], a:1,
+    f:"Un énorme monstre avec deux grandes épées !" },
+  { lv:4, g:"oot", sc:"castle", ic:"sword", q:"Qu'est-ce qui s'ouvre avec l'Ocarina du Temps et les trois Pierres Ancestrales ?", o:["Le château","La Porte du Temps","La caverne Dodongo","Le ranch"], a:1,
+    f:"Derrière elle, l'Épée de légende attend le héros." },
+  { lv:0, g:"tp", sc:"forest", ic:"horseshoe", q:"Comment s'appelle le village où vit Link ?", o:["Cocorico","Le village de Toal","Elimith","Écaraille"], a:1,
+    f:"Un petit village tranquille dans la forêt." },
+  { lv:0, g:"tp", sc:"twilight", ic:"wolf", q:"En quel animal Link se transforme-t-il dans le Crépuscule ?", o:["En renard","En loup","En ours","En aigle"], a:1,
+    f:"Un grand loup gris aux yeux bleus." },
+  { lv:0, g:"tp", sc:"twilight", ic:"imp", q:"Comment s'appelle la petite créature qui aide Link ?", o:["Navi","Midona","Noïa","Saria"], a:1,
+    f:"Elle chevauche Link quand il est en loup." },
+  { lv:0, g:"tp", sc:"meadow", ic:"horseshoe", q:"Comment s'appelle la jument de Link dans Twilight Princess ?", o:["Épona","Iria","Lune","Brume"], a:0,
+    f:"Le même nom que dans Ocarina of Time !" },
+  { lv:0, g:"tp", sc:"forest", ic:"star", q:"Comment s'appelle l'amie d'enfance de Link ?", o:["Iria","Zelda","Telma","Malon"], a:0,
+    f:"Elle prend très soin d'Épona." },
+  { lv:0, g:"tp", sc:"castle", ic:"moon", q:"Qui est le grand méchant caché derrière tout ça ?", o:["Ganondorf","Vaati","Le Grand Kohga","Astor"], a:0,
+    f:"Il a aidé Xanto à prendre le pouvoir." },
+  { lv:0, g:"tp", sc:"twilight", ic:"crown", q:"Qui se fait appeler le Roi du Crépuscule ?", o:["Xanto","Ganondorf","Bohdan","Talon"], a:0,
+    f:"Un usurpateur : il a volé le trône." },
+  { lv:0, g:"tp", sc:"twilight", ic:"moon", q:"Comment s'appelle le monde des ombres ?", o:["Le Monde à l'envers","Le Royaume du Crépuscule","Les Profondeurs","Le Monde des Esprits"], a:1,
+    f:"Un monde parallèle à Hyrule, plongé dans la pénombre." },
+  { lv:1, g:"tp", sc:"forest", ic:"sword", q:"Quel garçon timide de Toal admire Link ?", o:["Colin","Balder","Mido","Talon"], a:0,
+    f:"Il voudrait devenir aussi courageux que Link." },
+  { lv:1, g:"tp", sc:"forest", ic:"crown", q:"Comment s'appelle le maire de Toal, le papa d'Iria ?", o:["Bohdan","Moï","Talon","Rauru"], a:0,
+    f:"Un homme très fort… qui adore la lutte !" },
+  { lv:1, g:"tp", sc:"forest", ic:"horseshoe", q:"Où travaille Link au village de Toal ?", o:["À la forge","À la bergerie","À l'épicerie","À la pêche"], a:1,
+    f:"Il s'occupe des chèvres du village avec Épona." },
+  { lv:1, g:"tp", sc:"night", ic:"flame", q:"Qui enlève les enfants du village de Toal ?", o:["Le Roi Bulblin et ses Bulblins","Xanto lui-même","Des Lynels","Des Gardiens"], a:0,
+    f:"Ils arrivent sur de gros sangliers !" },
+  { lv:1, g:"tp", sc:"twilight", ic:"imp", q:"Où Midona se cache-t-elle la plupart du temps ?", o:["Dans un sac","Dans l'ombre de Link","Dans un arbre","Dans une bouteille"], a:1,
+    f:"Elle ne supporte pas la lumière d'Hyrule." },
+  { lv:1, g:"tp", sc:"twilight", ic:"imp", q:"De quelle couleur sont les cheveux de Midona ?", o:["Noirs","Blonds","Roux","Bleus"], a:2,
+    f:"Une peau bleue et noire… et des cheveux roux qui peuvent même attraper des choses !" },
+  { lv:1, g:"tp", sc:"castle", ic:"wolf", q:"Qu'est-ce que Link garde attaché à sa patte quand il est un loup ?", o:["Un bracelet","Une chaîne","Une clochette","Un ruban"], a:1,
+    f:"Un souvenir de la prison du château." },
+  { lv:1, g:"tp", sc:"castle", ic:"wolf", q:"Où Link se retrouve-t-il enfermé quand il devient loup pour la première fois ?", o:["Dans une cage du village","Dans les prisons du château d'Hyrule","Dans une grotte","Dans le désert"], a:1,
+    f:"C'est là que Midona le trouve… et l'aide à s'échapper." },
+  { lv:1, g:"tp", sc:"twilight", ic:"star", q:"Que doit ramasser Link pour chasser le Crépuscule d'une région ?", o:["Des rubis","Des Perles de Lumière","Des cœurs","Des plumes"], a:1,
+    f:"Une fois le calice rempli, la lumière revient !" },
+  { lv:1, g:"tp", sc:"twilight", ic:"eye", q:"Qui a avalé les Perles de Lumière ?", o:["Des insectes des ombres","Des poissons","Des oiseaux","Des Bulblins"], a:0,
+    f:"Link doit les vaincre pour récupérer les perles." },
+  { lv:2, g:"tp", sc:"desert", ic:"mirror", q:"Avec quel objet Link et Midona peuvent-ils entrer dans le Royaume du Crépuscule ?", o:["La Triforce","Le Miroir des Ombres","L'Épée de légende","Une Perle de Lumière"], a:1,
+    f:"C'est le seul lien entre le monde de la lumière et celui des ombres." },
+  { lv:2, g:"tp", sc:"desert", ic:"mirror", q:"Où se trouve le Miroir des Ombres ?", o:["Dans le désert Gerudo","Au village de Toal","Au fond du lac Hylia","Dans le château"], a:0,
+    f:"Tout en haut de la Tour du Jugement." },
+  { lv:2, g:"tp", sc:"twilight", ic:"crown", q:"Qui est la vraie « Twilight Princess » ?", o:["Zelda","Midona","Iria","Telma"], a:1,
+    f:"Midona est la souveraine du Royaume du Crépuscule !" },
+  { lv:2, g:"tp", sc:"twilight", ic:"moon", q:"Comment s'appelle le peuple du Royaume du Crépuscule ?", o:["Les Twilis","Les Soneaus","Les Sheikahs","Les Kokiri"], a:0,
+    f:"Midona et Xanto sont des Twilis." },
+  { lv:2, g:"tp", sc:"twilight", ic:"imp", q:"Qu'est-ce que Midona porte sur la tête ?", o:["Une couronne","Un casque en partie brisé","Un chapeau pointu","Rien du tout"], a:1,
+    f:"Un drôle de casque qui lui couvre un œil." },
+  { lv:2, g:"tp", sc:"forest", ic:"star", q:"Qu'arrive-t-il à Iria après son enlèvement ?", o:["Elle devient un loup","Elle perd la mémoire","Elle s'enfuit au désert","Elle devient reine"], a:1,
+    f:"Elle ne reconnaît même plus Link…" },
+  { lv:2, g:"tp", sc:"castle", ic:"crown", q:"Que fait Zelda pour sauver Midona très affaiblie ?", o:["Elle lui donne sa propre force","Elle lui donne un élixir","Elle chante une chanson","Elle appelle une Grande Fée"], a:0,
+    f:"Un grand geste de courage de la princesse." },
+  { lv:2, g:"tp", sc:"castle", ic:"flame", q:"Qui tient l'auberge de la Citadelle et aide la Résistance ?", o:["Telma","Iria","Malon","Machaon"], a:0,
+    f:"Son auberge est le repaire secret des amis de Link." },
+  { lv:2, g:"tp", sc:"castle", ic:"moon", q:"Quand Link (en loup) rencontre Zelda au château, comment est-elle habillée ?", o:["En robe rose","D'une grande cape noire","En armure","En tenue de Sheik"], a:1,
+    f:"Le château est plongé dans le Crépuscule…" },
+  { lv:3, g:"tp", sc:"forest", ic:"sword", q:"Comment Colin montre-t-il son courage face au Roi Bulblin ?", o:["Il protège la petite Anaïs","Il vole son épée","Il appelle Épona","Il se cache"], a:0,
+    f:"Le garçon timide devient un vrai petit héros !" },
+  { lv:3, g:"tp", sc:"desert", ic:"mirror", q:"Que fait Midona au Miroir des Ombres à la toute fin ?", o:["Elle le brise","Elle le garde","Elle le donne à Zelda","Elle le cache"], a:0,
+    f:"Pour que plus personne ne puisse passer d'un monde à l'autre…" },
+  { lv:3, g:"tp", sc:"twilight", ic:"crown", q:"Quand le sort est rompu, à quoi ressemble la vraie Midona ?", o:["À une petite fille","À une grande et belle princesse","À un loup","À une fée"], a:1,
+    f:"Xanto l'avait transformée en petite créature !" },
+  { lv:3, g:"tp", sc:"twilight", ic:"star", q:"Qui avait enfermé autrefois le peuple de l'ombre dans le Royaume du Crépuscule ?", o:["Ganondorf","Les Esprits de la Lumière","Rauru","Les Zoras"], a:1,
+    f:"Pour protéger la Terre Sacrée et la Triforce." },
+  { lv:3, g:"tp", sc:"twilight", ic:"wolf", q:"Pourquoi Link se transforme-t-il en loup ?", o:["Il a mangé un champignon","À cause du maléfice de Xanto, en entrant dans le Crépuscule","Midona lui a jeté un sort pour s'amuser","C'est un pouvoir de naissance"], a:1,
+    f:"Dans le Crépuscule, les Hyliens deviennent des esprits… mais Link, lui, devient un loup !" },
+  { lv:3, g:"tp", sc:"forest", ic:"tree", q:"Comment s'appelle la forêt près du village de Toal ?", o:["La forêt de Firone","La forêt Kokiri","Les Bois Perdus","La forêt de Latouane"], a:0,
+    f:"C'est là que le Crépuscule frappe en premier." },
+  { lv:4, g:"tp", sc:"twilight", ic:"crown", q:"À quel animal ressemble le casque de Xanto ?", o:["À un serpent","À un caméléon","À un loup","À un dragon"], a:1,
+    f:"Avec même une langue de caméléon à la place du menton !" },
+  { lv:4, g:"tp", sc:"night", ic:"star", q:"Qui recueille les enfants de Toal au village Cocorico ?", o:["Reynald","Impa","Telma","Bohdan"], a:0,
+    f:"Le gardien du sanctuaire de Cocorico." },
+  { lv:4, g:"tp", sc:"zora", ic:"drop", q:"Où Iria emmène-t-elle Épona pour la soigner, juste avant d'être enlevée ?", o:["À la source de Latouane","Au lac Hylia","Au ranch Lon Lon","À la forge"], a:0,
+    f:"Une source sacrée tout près du village de Toal." },
+  { lv:4, g:"tp", sc:"forest", ic:"sprite", q:"Lequel de ces enfants n'habite PAS à Toal ?", o:["Colin","Balder","Fénir","Mido"], a:3,
+    f:"Mido, c'est le Kokiri d'Ocarina of Time !" },
+  { lv:4, g:"tp", sc:"forest", ic:"star", q:"Comment s'appellent les parents de Colin ?", o:["Moï et Ute","Bohdan et Iria","Talon et Malon","Rauru et Sonia"], a:0,
+    f:"Moï est aussi le maître d'épée de Link." },
+  { lv:4, g:"tp", sc:"desert", ic:"mirror", q:"Dans quelle tour se trouve le Miroir des Ombres ?", o:["La Tour du Jugement","La Tour du Prélude","La Tour du Temps","La Tour d'Ordinn"], a:0,
+    f:"Là où, autrefois, on jugeait les criminels d'Hyrule." },
+  { lv:4, g:"tp", sc:"castle", ic:"wolf", q:"Quelle patte de Link loup porte la chaîne ?", o:["L'avant gauche","L'avant droite","L'arrière gauche","L'arrière droite"], a:0,
+    f:"Il la garde pendant toute l'aventure !" },
+  { lv:3, g:"bt", sc:"volcano", ic:"rock", q:"Qui aide Link à monter sur Vah'Rudania ?", o:["Buldo","Yunobo","Daruk","Teba"], a:1,
+    f:"Yunobo et son bouclier : un vrai canon à Gorons !" },
+  { lv:3, g:"bt", sc:"rito", ic:"feather", q:"Qui vole aux côtés de Link pour affronter Vah'Medoh ?", o:["Kaï","Asarim","Teba","Babil"], a:2,
+    f:"Le grand guerrier piaf, papa de Babil." },
+  { lv:3, g:"bt", sc:"desert", ic:"bolt", q:"Qui aide Link à approcher Vah'Naboris ?", o:["Riju","Urbosa","Ardi","Pru'Ha"], a:0,
+    f:"Sur le dos de son phoque des sables !" },
+  { lv:3, g:"bt", sc:"zora", ic:"fish", q:"Qui aide Link à approcher Vah'Ruta ?", o:["Mipha","Sidon","Dorefah","Qia"], a:1,
+    f:"Il nage avec Link sur la cascade !" },
+  { lv:4, g:"bt", sc:"rito", ic:"feather", q:"Comment s'appelle la maman de Babil ?", o:["Camailla","Dézelle","Kornuieh","Pervieh"], a:1,
+    f:"Babil est le fils de Teba et Dézelle." },
+  { lv:4, g:"bt", sc:"depths", ic:"shield", q:"Mineru est la grande sœur de qui ?", o:["Rauru","Sonia","Ganondorf","Agraston"], a:0,
+    f:"Rauru et Mineru sont les derniers Soneaus." },
+  { lv:1, g:"bt", sc:"sheikah", ic:"eye", q:"Dans L'Ère du Fléau, comment s'appelle le petit Gardien blanc ?", o:["Terrako","Gardinou","Robbie","Mini-Gardien"], a:0,
+    f:"Il est tout petit… et très mignon !" },
+  { lv:2, g:"bt", sc:"sheikah", ic:"hourglass", q:"Dans L'Ère du Fléau, d'où vient Terrako ?", o:["De la lune","Du futur","Des Profondeurs","D'un sanctuaire"], a:1,
+    f:"Il remonte le temps pour prévenir Zelda du danger du Fléau." },
+  { lv:2, g:"bt", sc:"castle", ic:"moon", q:"Comment s'appelle le méchant prophète de L'Ère du Fléau ?", o:["Astor","Kohga","Xanto","Grimmel"], a:0,
+    f:"Le « Prophète du Chaos », au service du Fléau Ganon." },
+  { lv:2, g:"bt", sc:"castle", ic:"crown", q:"Dans L'Ère du Fléau, pourquoi Zelda va-t-elle voir les quatre peuples ?", o:["Pour faire du tourisme","Pour trouver les futurs prodiges","Pour vendre des rubis","Pour trouver Épona"], a:1,
+    f:"Il faut des pilotes pour les quatre créatures divines !" },
+  { lv:3, g:"bt", sc:"night", ic:"eye", q:"Dans L'Ère du Fléau, qui est encore jeune et peut créer des clones d'elle-même ?", o:["Pru'Ha","Impa","Pahya","Riju"], a:1,
+    f:"Bien avant de devenir la vieille dame de Cocorico !" },
+  { lv:3, g:"bt", sc:"meadow", ic:"shield", q:"Qu'est-ce qui change à la fin de L'Ère du Fléau par rapport à Breath of the Wild ?", o:["Les prodiges survivent","Link ne se réveille pas","Zelda devient un dragon","Ganon gagne"], a:0,
+    f:"Grâce à Terrako, l'histoire prend un autre chemin !" },
+  { lv:4, g:"bt", sc:"volcano", ic:"rock", q:"Comment s'appelle l'arme géante de Daruk ?", o:["Le Brise-Montagne","Le Marteau Goron","Le Casse-Rocher","La Massue de Feu"], a:0,
+    f:"Une épée énorme, à la taille de Daruk !" },
+  { lv:4, g:"bt", sc:"desert", ic:"bolt", q:"Comment s'appelle le cimeterre d'Urbosa ?", o:["Le cimeterre des Sept-Joyaux","Le sabre de la Foudre","La lame du Désert","Le cimeterre royal"], a:0,
+    f:"Accompagné de son bouclier des Sept-Joyaux." },
+  { lv:4, g:"bt", sc:"rito", ic:"feather", q:"Comment s'appelle l'arc de Revali ?", o:["L'Arc de l'Aigle","L'Arc du Faucon","L'Arc du Vent","L'Arc Piaf"], a:0,
+    f:"Un arc très léger qui tire trois flèches à la fois !" },
+  { lv:4, g:"bt", sc:"zora", ic:"fish", q:"Comment s'appelle la lance de Mipha ?", o:["La Lance d'écailles radieuse","Le Trident Zora","La Lance de corail","La Lance de la Cascade"], a:0,
+    f:"Mipha est à la fois une grande guerrière et une soigneuse." },
+  { lv:4, g:"bt", sc:"castle", ic:"crown", q:"Quel est le nom complet du roi Rhoam ?", o:["Rhoam Bosphoramus","Rhoam Hylia","Rhoam Rauru","Rhoam de Cocorico"], a:0,
+    f:"Rhoam Bosphoramus Hyrule, le papa de Zelda." },
+  { lv:1, g:"bt", sc:"sky", ic:"hand", q:"Comment s'appelle la guerre racontée dans Les Chroniques du Sceau ?", o:["La guerre du Fléau","La guerre du Sceau","La guerre des Golems","La guerre du Ciel"], a:1,
+    f:"Le grand combat contre Ganondorf, il y a très longtemps." },
+  { lv:1, g:"bt", sc:"forest", ic:"sprite", q:"De quel peuple est Calamo ?", o:["Des Korogus","Des Gorons","Des Soneaus","Des Piafs"], a:0,
+    f:"Un petit guerrier Korogu très courageux !" },
+  { lv:1, g:"bt", sc:"depths", ic:"shield", q:"Qui combat aux côtés de Calamo ?", o:["Le Golem Mystérieux","Un Lynel","Le Dragon Blanc","Noïa"], a:0,
+    f:"Un grand golem qui peut se transformer pour voler !" },
+  { lv:2, g:"bt", sc:"forest", ic:"tree", q:"Que cherche Calamo pendant son aventure ?", o:["Un trésor","Un endroit pour faire pousser une nouvelle forêt","Sa famille","L'Épée de légende"], a:1,
+    f:"Un vrai Korogu : il rêve d'une forêt !" },
+  { lv:2, g:"bt", sc:"depths", ic:"sword", q:"Qu'est-ce que Calamo découvre dans les Profondeurs ?", o:["Un éclat de l'Épée de légende","Une Pierre Occulte","Un œuf de dragon","Une carte"], a:0,
+    f:"L'éclat entre dans le cœur du Golem… et le réveille !" },
+  { lv:2, g:"bt", sc:"forest", ic:"tree", q:"Que devient Calamo à la fin des Chroniques du Sceau ?", o:["Un grand guerrier","Un arbre","Un roi Korogu","Un golem"], a:1,
+    f:"Il s'enracine près de son ami le Golem… pour faire naître une forêt." },
+  { lv:2, g:"bt", sc:"rito", ic:"feather", q:"Qui était l'ancien sage du Vent, à l'époque de Rauru ?", o:["Raphica","Teba","Revali","Babil"], a:0,
+    f:"L'ancêtre de Babil." },
+  { lv:2, g:"bt", sc:"volcano", ic:"flame", q:"Qui était l'ancien sage du Feu, à l'époque de Rauru ?", o:["Daruk","Agraston","Buldo","Yunobo"], a:1,
+    f:"Le chef des Gorons à l'époque de la guerre du Sceau." },
+  { lv:3, g:"bt", sc:"zora", ic:"drop", q:"Qui était l'ancienne sage de l'Eau, à l'époque de Rauru ?", o:["Mipha","Qia","Ruto","Luterra"], a:1,
+    f:"La reine des Zoras de l'époque." },
+  { lv:3, g:"bt", sc:"desert", ic:"bolt", q:"Qui était l'ancienne sage de la Foudre, à l'époque de Rauru ?", o:["Urbosa","Riju","Ardi","Nabooru"], a:2,
+    f:"La cheffe des Gerudos, qui n'était pas d'accord avec Ganondorf." },
+  { lv:3, g:"bt", sc:"castle", ic:"shield", q:"Quel titre Rauru et Zelda donnent-ils au Golem Mystérieux, sur l'idée de Calamo ?", o:["Golem Royal","Golem Chevalier","Golem Gardien","Golem Héros"], a:1,
+    f:"Un vrai chevalier d'Hyrule !" },
+  { lv:3, g:"bt", sc:"depths", ic:"skull", q:"Contre quel ennemi le Golem Chevalier livre-t-il son dernier combat ?", o:["Le Golem Maudit","Ganondorf","Un Lynel","Le Dragon Blanc"], a:0,
+    f:"Avec l'aide de Calamo, jusqu'au bout…" },
+  { lv:4, g:"bt", sc:"volcano", ic:"flame", q:"De qui Agraston est-il l'ancêtre ?", o:["De Daruk","De Yunobo","De Buldo","De Babil"], a:1,
+    f:"Son esprit apparaît même à Yunobo dans Tears of the Kingdom." },
+  { lv:4, g:"bt", sc:"sky", ic:"gem", q:"Comment s'appellent les pierres magiques que Rauru confie aux sages ?", o:["Les Pierres Ancestrales","Les Pierres Occultes","Les Perles de Lumière","Les Pierres de Lune"], a:1,
+    f:"Chacune donne un grand pouvoir à celui qui la porte." },
+  { lv:4, g:"bt", sc:"depths", ic:"sprite", q:"Qui réveille le Golem Mystérieux sans le vouloir ?", o:["Zelda","Calamo","Mineru","Rauru"], a:1,
+    f:"En ramassant l'éclat de l'Épée de légende !" },
+  { lv:4, g:"bt", sc:"forest", ic:"sword", q:"Quelle arme utilise Calamo ?", o:["Une épée des sylvains","Une feuille Korogu","Un arc","Une lance"], a:0,
+    f:"Une épée de la forêt, parfaite pour un Korogu !" },
+  { lv:4, g:"bt", sc:"forest", ic:"sprite", q:"Combien de fruits Calamo lance-t-il pour son attaque spéciale ?", o:["1","2","3","5"], a:2,
+    f:"Des fruits de feu, de gel, de foudre… ou des choux péteurs !" },
+  { lv:4, g:"bt", sc:"forest", ic:"tree", q:"Quel arbre très célèbre Calamo deviendra-t-il plus tard ?", o:["L'Arbre Mojo","Le Grand Arbre d'Hylia","L'Arbre de Toal","Le Saule de Firone"], a:0,
+    f:"Le petit Korogu courageux devient le grand protecteur des Korogus !" },
+  { lv:4, g:"bt", sc:"forest", ic:"tree", q:"Pourquoi Calamo est-il bouleversé en arrivant dans la forêt de la Grande Hyrule ?", o:["Il s'est perdu","Sa maison a été détruite","Il a peur du noir","Il a perdu son épée"], a:1,
+    f:"La guerre a tout dévasté…" }
 ];
 
 const RANKS = [
@@ -540,6 +797,13 @@ const I = {
   bolt: `<path d="M36 4 L14 36 H30 L24 60 L50 26 H34Z" fill="#e8b93ccc"/>`,
   eye: `<path d="M4 30 Q32 6 60 30 Q32 54 4 30Z" fill="#4fd3e822" stroke="#4fd3e8"/><circle cx="32" cy="30" r="9" stroke="#4fd3e8"/><circle cx="32" cy="30" r="4" fill="#4fd3e8" stroke="none"/><path d="M32 44 V60 M26 54 L32 60 L38 54" stroke="#4fd3e8"/>`,
   triforce: `<path d="M32 6 L44 28 H20Z M20 28 L32 50 H8Z M44 28 L56 50 H32Z" fill="currentColor"/>`,
+  fairy: `<circle cx="32" cy="32" r="9" fill="#bfe8ff"/><path d="M26 26 C14 10 4 18 12 28 C16 32 22 32 26 30 M38 26 C50 10 60 18 52 28 C48 32 42 32 38 30 M26 38 C16 46 12 54 20 54 C26 54 28 46 28 40 M38 38 C48 46 52 54 44 54 C38 54 36 46 36 40" fill="#4fd3e844" stroke="#4fd3e8"/><circle cx="32" cy="32" r="16" stroke="#4fd3e8" stroke-dasharray="3 5"/>`,
+  ocarina: `<path d="M8 34 C8 22 24 16 40 20 C52 23 58 30 56 38 C54 46 42 48 30 46 C18 44 8 42 8 34Z" fill="#4f7fc8"/><path d="M50 26 L60 18" stroke-width="6"/><circle cx="24" cy="30" r="2.5" fill="#f3ead2" stroke="none"/><circle cx="32" cy="28" r="2.5" fill="#f3ead2" stroke="none"/><circle cx="40" cy="30" r="2.5" fill="#f3ead2" stroke="none"/><path d="M18 40 L26 36 L34 40 L42 36" stroke="#e8b93c" stroke-width="2"/>`,
+  gem: `<path d="M20 10 H44 L56 26 L32 58 L8 26Z" fill="#4f9e3f"/><path d="M8 26 H56 M20 10 L26 26 L32 58 L38 26 L44 10" stroke-width="2.5"/><path d="M14 18 l4 4" stroke="#fff" stroke-width="2"/>`,
+  wolf: `<path d="M10 58 L14 30 L8 8 L24 20 L32 16 L40 20 L56 8 L50 30 L54 58 L32 50Z" fill="#4a4f5a"/><path d="M22 34 L28 36 M42 34 L36 36" stroke="#4fd3e8" stroke-width="4"/><path d="M28 46 L32 50 L36 46" stroke-width="2.5"/><path d="M8 50 C2 54 2 60 8 60" stroke="#8a8a90" stroke-dasharray="2 3"/>`,
+  imp: `<path d="M14 28 C14 14 50 14 50 28 C50 44 42 54 32 54 C22 54 14 44 14 28Z" fill="#2a3a5a"/><path d="M12 24 C20 4 44 4 52 24 L44 20 L38 26 L32 18 L26 26 L20 20Z" fill="#c8c0a8"/><circle cx="25" cy="34" r="4" fill="#f0d040" stroke="none"/><path d="M34 34 h8" stroke="#f0d040" stroke-width="3"/><path d="M26 44 Q32 48 38 44" stroke="#f3ead2" stroke-width="2"/><path d="M50 30 C58 34 60 44 54 50" stroke="#e0703c" stroke-width="5"/>`,
+  mirror: `<rect x="14" y="6" width="36" height="52" rx="4" fill="#2a2a3a"/><rect x="20" y="12" width="24" height="40" rx="2" fill="#4fd3e844" stroke="#4fd3e8"/><path d="M26 18 L34 30 L28 34 L38 46" stroke="#f3ead2" stroke-width="2"/><path d="M8 58 H56"/>`,
+  skull: `<path d="M12 30 C12 14 22 6 32 6 C42 6 52 14 52 30 C52 38 46 42 44 46 V54 H20 V46 C18 42 12 38 12 30Z" fill="#c8553d"/><circle cx="24" cy="28" r="5" fill="#1d2a12" stroke="none"/><circle cx="40" cy="28" r="5" fill="#1d2a12" stroke="none"/><path d="M26 54 V46 M32 54 V46 M38 54 V46"/>`,
   sword: `<path d="M32 4 L37 10 V42 H27 V10Z" fill="#dfe8ee"/><path d="M18 42 H46 M32 42 V56"/><circle cx="32" cy="58" r="3" fill="currentColor"/><circle cx="32" cy="42" r="3" fill="#4fd3e8" stroke="none"/>`
 };
 function medal(key) {
@@ -798,6 +1062,22 @@ const SCENES = {
     hills(0.92, 0.1, 1.8, "#c98f4f", 9);
     motes(t, 60, "255,230,180", { vx: 2.2, vy: 0.1, size: 0.8, a: .7, seed: 260 });
   },
+  twilight(t) {
+    sky([[0, "#1a0d06"], [0.45, "#a4501c"], [0.7, "#f0a040"], [1, "#2a1408"]]);
+    glow(W * 0.5, H * 0.62, 280 * U, "255,170,80", 0.45);
+    hills(0.7, 0.14, 1.2, "#140a06", 3);
+    canopy(0.82, 0.12, "#0c0604", 9, 10);
+    for (let i = 0; i < 70; i++) {
+      const s = 300 + i * 1.7, sp = 0.4 + rnd(s * 3);
+      const x = (rnd(s) * W + Math.sin(t * 0.6 + s) * 20 * U) % W;
+      const y = H - ((rnd(s * 7) * H + t * 22 * U * sp) % (H * 1.1));
+      const z = (3 + rnd(s * 5) * 7) * U, a = 0.35 + 0.4 * Math.abs(Math.sin(t + s));
+      cx.save(); cx.translate(x, y); cx.rotate(t * 0.5 + s);
+      cx.fillStyle = `rgba(10,10,14,${a})`; cx.fillRect(-z / 2, -z / 2, z, z);
+      cx.strokeStyle = `rgba(80,220,200,${a * 0.6})`; cx.lineWidth = 1 * U; cx.strokeRect(-z / 2, -z / 2, z, z);
+      cx.restore();
+    }
+  },
   depths(t) {
     sky([[0, "#040406"], [0.6, "#140912"], [1, "#07060a"]]);
     for (let k = 0; k < 4; k++) glow(W * (0.2 + k * 0.22) + Math.sin(t * 0.3 + k) * 30 * U, H * (0.45 + 0.1 * Math.sin(k)), 220 * U, "170,20,60", 0.18);
@@ -924,14 +1204,24 @@ function start() {
   setScene("meadow"); Sound.play("A");
   setBar(`<div class="brand">The Legend of Zelda</div>`);
   const name = store("hyrule-name") || "Mélina";
-  const MAIN = LEVELS.filter(l => !l.expert), nMain = Q.filter(q => !LEVELS[q.lv].expert).length;
-  const quickN = MAIN.reduce((s, l) => s + l.quick, 0);
-  const bq = store("hyrule-best-quick"), bg = store("hyrule-best-grand"), bx = store("hyrule-best-expert");
-  const recs = [bq && `partie rapide <b>${esc(bq)}/${quickN}</b>`, bg && `grande aventure <b>${esc(bg)}/${nMain}</b>`, bx && `mode Expert <b>${esc(bx)}/${EXPERT_N}</b>`].filter(Boolean);
+  const HAS_GAMES = typeof GAMES !== "undefined" && GAMES.length > 1;
+  let game = HAS_GAMES ? (store("hyrule-game") || GAMES[0].id) : "all";
+  if (HAS_GAMES && !GAMES.some(g => g.id === game)) game = GAMES[0].id;
+  const inGame = q => game === "all" || (q.g || "bt") === game;
+  const xLv0 = LEVELS.findIndex(l => l.expert);
+  const MAIN = LEVELS.filter(l => !l.expert);
+  const poolOf = lv => Q.filter(q => q.lv === lv && inGame(q)).length;
+  const nMain = LEVELS.reduce((s, l, lv) => s + (l.expert ? 0 : Math.min(l.grand || Infinity, poolOf(lv))), 0);
+  const quickN = LEVELS.reduce((s, l, lv) => s + (l.expert ? 0 : Math.min(l.quick, poolOf(lv))), 0);
+  const xPool = xLv0 < 0 ? 0 : poolOf(xLv0) + (poolOf(xLv0) < EXPERT_N ? poolOf(xLv0 - 1) : 0);
+  const expertN = Math.min(EXPERT_N, xPool);
+  const gk = game === "all" ? "" : "-" + game;
+  const bq = store("hyrule-best-quick" + gk), bg = store("hyrule-best-grand" + gk), bx = store("hyrule-best-expert" + gk);
+  const recs = [bq && `partie rapide <b>${esc(bq)}/${quickN}</b>`, bg && `grande aventure <b>${esc(bg)}/${nMain}</b>`, bx && `mode Expert <b>${esc(bx)}/${expertN}</b>`].filter(Boolean);
   stage.innerHTML = `
     <section class="card start pop">
       <div class="hero">
-        <div class="kicker">Breath of the Wild · Tears of the Kingdom</div>
+        <div class="kicker">${typeof KICKER !== "undefined" ? KICKER : "Breath of the Wild · Tears of the Kingdom"}</div>
         <div class="title">Le Grand Quiz d'Hyrule</div>
         <p>${nMain} questions en quatre épreuves de plus en plus difficiles. Chaque bonne réponse te rapporte une noix Korogu&nbsp;!</p>
         ${recs.length ? `<p class="hint">🏆 Records : ${recs.join(" · ")}</p>` : ""}
@@ -941,9 +1231,10 @@ function start() {
         <label class="name" for="player">Ton prénom
           <input id="player" type="text" maxlength="20" autocomplete="off" value="${esc(name)}">
         </label>
+        ${HAS_GAMES ? `<div class="games" role="radiogroup" aria-label="Choix du jeu">${GAMES.map(g => `<button class="game${g.id === game ? " sel" : ""}" data-game="${g.id}" role="radio" aria-checked="${g.id === game}"><b>${g.emoji} ${g.name}</b>${g.desc ? `<span>${g.desc}</span>` : ""}</button>`).join("")}</div>` : ""}
         <button class="btn" id="quick">Partie rapide · ${quickN} questions</button>
         <button class="btn" id="grand">Grande aventure · ${nMain} questions</button>
-        <button class="btn expert" id="expert">💀 Mode Expert · ${EXPERT_N} questions</button>
+        <button class="btn expert" id="expert">💀 Mode Expert · ${expertN} questions</button>
         <p class="hint">Les questions de la partie rapide sont tirées au hasard : chaque partie est différente !</p>
         <p class="hint">🎵 coupe la musique du quiz, 🔔 coupe les bruitages.</p>
         <p class="hint">📺 Pour la télé : tourne le téléphone en mode paysage avant de lancer la diffusion.</p>
@@ -957,21 +1248,26 @@ function start() {
     try { seen = JSON.parse(store("hyrule-seen") || "[]"); } catch (e) { seen = []; }
     if (!Array.isArray(seen)) seen = [];
     const picked = [];
-    const xLv = LEVELS.findIndex(l => l.expert);
+    const xLv = xLv0;
     if (mode === "expert") {
       let xs = [];
       try { xs = JSON.parse(store("hyrule-seen-x") || "[]"); } catch (e) { xs = []; }
       if (!Array.isArray(xs)) xs = [];
-      const all = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === xLv));
+      let all = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === xLv && inGame(Q[k])));
+      if (all.length < EXPERT_N) all = all.concat(shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === xLv - 1 && inGame(Q[k]))));
       let fresh = all.filter(k => !xs.includes(k));
-      if (fresh.length < EXPERT_N) { xs = []; fresh = fresh.concat(all.filter(k => !fresh.includes(k))); }
+      if (fresh.length < Math.min(EXPERT_N, all.length)) { xs = xs.filter(k => !all.includes(k)); fresh = fresh.concat(all.filter(k => !fresh.includes(k))); }
       const take = fresh.slice(0, EXPERT_N);
       xs.push(...take); store("hyrule-seen-x", JSON.stringify(xs));
       picked.push(...take);
     } else LEVELS.forEach((l, lv) => {
       if (l.expert) return;
-      const qs = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === lv));
-      if (mode !== "quick") { picked.push(...qs); return; }
+      const qs = shuffle(Q.map((_, k) => k).filter(k => Q[k].lv === lv && inGame(Q[k])));
+      if (mode !== "quick") {
+        const fr = qs.filter(k => !seen.includes(k));
+        picked.push(...shuffle(fr.concat(qs.filter(k => !fr.includes(k))).slice(0, l.grand || qs.length)));
+        return;
+      }
       let fresh = qs.filter(k => !seen.includes(k));
       if (fresh.length < l.quick) {
         seen = seen.filter(k => !Q[k] || Q[k].lv !== lv);
@@ -982,13 +1278,19 @@ function start() {
     });
     if (mode === "quick") store("hyrule-seen", JSON.stringify(seen));
     const pool = picked.map(k => mode === "expert" ? { ...Q[k], lv: xLv } : Q[k]);
-    st = { name: n, mode, i: 0, score: 0, results: [],
+    st = { name: n, mode, game, i: 0, score: 0, results: [],
       qs: pool.map(q => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map(k => q.o[k]), right: order.indexOf(q.a) }; }) };
     interlude(st.qs[0].lv);
   };
   document.getElementById("quick").onclick = () => begin("quick");
   document.getElementById("grand").onclick = () => begin("grand");
   document.getElementById("expert").onclick = () => begin("expert");
+  stage.querySelectorAll(".game").forEach(b => b.onclick = () => {
+    store("hyrule-game", b.dataset.game);
+    const typed = document.getElementById("player").value.trim();
+    if (typed) store("hyrule-name", typed);
+    Sound.fx("tap"); start();
+  });
 }
 
 function interlude(lv) {
@@ -1060,7 +1362,7 @@ function answer(k) {
 
 function finish() {
   const N = st.qs.length, rank = RANKS.find(r => st.score / N >= r.min);
-  const key = "hyrule-best-" + st.mode;
+  const key = "hyrule-best-" + st.mode + (st.game && st.game !== "all" ? "-" + st.game : "");
   const prevBest = parseInt(store(key) || "0", 10), record = st.score > prevBest;
   if (record) store(key, String(st.score));
   const per = LEVELS.map((l, lv) => { const idx = st.qs.map((q, k) => q.lv === lv ? k : -1).filter(k => k >= 0); return { l, got: idx.filter(k => st.results[k]).length, of: idx.length }; }).filter(p => p.of > 0);
