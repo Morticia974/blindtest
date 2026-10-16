@@ -56,7 +56,8 @@ def alternatives():
     out = {}
     for cat, lot in d.items():
         for p in lot:
-            out[(cat, p["t"], p.get("a") or u"")] = (p.get("altT") or [], p.get("altA") or [])
+            out[(cat, p["t"], p.get("a") or u"")] = (
+                p.get("altT") or [], p.get("altA") or [], p.get("pochette") or u"")
     return out
 
 
@@ -76,14 +77,17 @@ def main(source):
         nom, emoji = TITRES[cat]
         i = rangs.get(cat, 0)
         rangs[cat] = i + 1
+        reglage = alt.get((cat, e["t"], e["a"]), ([], [], u""))
+        # une pochette choisie a la main remplace celle de l'album, comme en jeu
+        if reglage[2]:
+            e["img"] = reglage[2]
         audit["neuf-%s#%d" % (cat, i)] = {
             "cat": "neuf-" + cat, "nom": nom, "emoji": emoji, "i": i,
             "t": e["t"], "a": e["a"], "aa": e.get("aa") or "", "alb": e.get("alb") or "",
             "img": e.get("img") or "", "apercu": e.get("apercu") or "",
             "sol": e.get("sol") or "", "lab": e.get("lab") or "Artiste",
             "langue": "fr", "strict": False, "fix": 1,
-            "altT": alt.get((cat, e["t"], e["a"]), ([], []))[0],
-            "altA": alt.get((cat, e["t"], e["a"]), ([], []))[1],
+            "altT": reglage[0], "altA": reglage[1],
             "lgT": "", "lgA": "", "ditT": "", "ditA": "",
         }
 
