@@ -183,3 +183,48 @@ def ajouter_liste(s, idm, rang, cle, valeurs, commentaire=None):
             out.append(v)
     neuf = texte[:m.start(1)] + json.dumps(out, ensure_ascii=False) + texte[m.end(1):]
     return s[:debut] + neuf + s[fin + 1:]
+
+ORDRE = ["t", "a", "q", "interprete", "disque", "pays", "voulue", "retro",
+         "strict", "solo", "langue", "lgT", "lgA", "ditT", "ditA",
+         "altT", "altA", "pochette"]
+
+
+def _champ(cle, val):
+    return u"%s: %s" % (cle, json.dumps(val, ensure_ascii=False))
+
+
+def texte_piste(piste, marge=u"        "):
+    """Une piste ecrite comme le reste du fichier : les champs dans l'ordre
+       habituel, et un retour a la ligne des que ca deborde."""
+    champs = [_champ(c, piste[c]) for c in ORDRE if c in piste and piste[c] not in (None, u"", [])]
+    pour_rien = [c for c in piste if c not in ORDRE]
+    assert not pour_rien, u"champ inconnu : %s" % pour_rien
+
+    lignes, courante = [], u"{ "
+    for i, bout in enumerate(champs):
+        morceau = bout + (u"," if i < len(champs) - 1 else u"")
+        if len(courante) + len(morceau) > 92 and courante.strip() != u"{":
+            lignes.append(courante.rstrip())
+            courante = marge + u"  "
+        courante += morceau + u" "
+    lignes.append(courante.rstrip() + u" }")
+    return marge + (u"\n".join(lignes)).lstrip()
+
+
+def inserer(s, idm, pistes, commentaire=None):
+    """Ajoute des pistes a la fin d'une manche.
+
+       On se place apres la derniere entree, virgule comprise : la liste reste
+       lisible, et l'ordre d'origine n'est pas bouscule. Les morceaux ajoutes
+       se retrouvent donc en queue, ce qui n'a aucune importance pour le jeu
+       (tout est melange) mais rend les ajouts faciles a retrouver."""
+    lst = entrees(s, idm)
+    assert lst, u"manche vide ou inconnue : %s" % idm
+    fin = lst[-1][1]
+    """Le commentaire n'est pas un element de la liste. Suivi d'une
+       virgule, il creerait un trou : en JavaScript `[a, , b]` compte
+       trois cases dont une vide, et le jeu se casse en tombant dessus.
+       Le navigateur comptait 48 morceaux la ou il n'y en avait que 47."""
+    entete = (u"\n        /* " + commentaire + u" */") if commentaire else u""
+    corps = u",".join(u"\n" + texte_piste(p) for p in pistes)
+    return s[:fin + 1] + u"," + entete + corps + s[fin + 1:]
