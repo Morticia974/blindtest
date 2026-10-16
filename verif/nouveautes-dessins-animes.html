@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⭐ NOUVEAUTÉS — Dessins animés</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>📺 ⭐ NOUVEAUTÉS — Dessins animés</h1>
+<p class="sous">12 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg"></a>
+  <div>
+    <p class="reponse">Code Lyoko</p>
+    <p class="detail">justine sainte</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2b/f9/95/2bf995c1-1102-0db2-305c-41668abf3e5a/mzaf_9363648667849414135.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/244/610616.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/244/610616.jpg"></a>
+  <div>
+    <p class="reponse">Corneil et Bernie</p>
+    <p class="detail">Caniche de feu</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/a3/36/9da3366f-2989-11c5-d026-306f5b426f12/mzaf_9025929341110883123.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/222/555782.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/222/555782.jpg"></a>
+  <div>
+    <p class="reponse">Les Ratz</p>
+    <p class="detail">Caniche de feu</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2f/43/78/2f4378d4-472f-b737-fda6-5101d12b22d9/mzaf_5905939897695523701.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a7/35/52/a7355284-8ed6-a47f-b692-91703c6b6fb6/825646191239.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a7/35/52/a7355284-8ed6-a47f-b692-91703c6b6fb6/825646191239.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">L'âne Trotro</p>
+    <p class="detail">Zut</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/84/1e/bd/841ebda0-8a39-73bd-990c-dbad583e8830/mzaf_7628428496930591357.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/638/1596958.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/638/1596958.jpg"></a>
+  <div>
+    <p class="reponse">Totally Spies</p>
+    <p class="detail">Totally Spies!</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0f/a1/80/0fa18092-dcb1-3d2f-6077-94e7b0fe3723/mzaf_4451016829503793776.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/594/1486607.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/594/1486607.jpg"></a>
+  <div>
+    <p class="reponse">Bob l'éponge</p>
+    <p class="detail">Painty the Pirate &amp; Kids</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c6/48/3e/c6483ed3-bea0-199d-153a-9d60e247c8c7/mzaf_16852627216052242192.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/158/396340.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/158/396340.jpg"></a>
+  <div>
+    <p class="reponse">Kim Possible</p>
+    <p class="detail">Christina Milian</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e4/66/73/e466732e-073a-bd3c-c867-01a76d5aa5ef/mzaf_16352541821380356350.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/62/156943.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/62/156943.jpg"></a>
+  <div>
+    <p class="reponse">Marsupilami</p>
+    <p class="detail">Marsupilami</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/08/35/57/083557ba-e81e-1315-e0c2-49846ad7d9b0/mzaf_15944624653598754454.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/273/684918.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/273/684918.jpg"></a>
+  <div>
+    <p class="reponse">Winx Club</p>
+    <p class="detail">Winx Club</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ee/6f/54/ee6f54b2-3777-7631-5107-cd6ea610a9e4/mzaf_12760171035936885802.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/6/15988.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/6/15988.jpg"></a>
+  <div>
+    <p class="reponse">Pat' Patrouille</p>
+    <p class="detail">PAW Patrol</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0e/23/a8/0e23a8ae-2cb1-8fdc-8a6b-0172e521fd09/mzaf_12034050214155489332.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/486/1216902.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/486/1216902.jpg"></a>
+  <div>
+    <p class="reponse">Lucky Luke</p>
+    <p class="detail">Jacques Cardona</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ff/f8/3b/fff83b17-b0b1-31c2-0dc4-c6c6896b5fa0/mzaf_10561672630011028278.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://static.tvmaze.com/uploads/images/original_untouched/6/16288.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://static.tvmaze.com/uploads/images/original_untouched/6/16288.jpg"></a>
+  <div>
+    <p class="reponse">Ben 10</p>
+    <p class="detail">Continuity Error</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ec/18/fd/ec18fd79-721f-72ab-a23b-03309d42c7a8/mzaf_14238297446156322061.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Code Lyoko", "a": "justine sainte", "at": "", "aa": "justine sainte", "altT": ["Un monde sans danger"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Corneil et Bernie", "a": "Caniche de feu", "at": "", "aa": "Caniche de feu", "altT": ["Corneil & Bernie", "Watch My Chops"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Les Ratz", "a": "Caniche de feu", "at": "", "aa": "Caniche de feu", "altT": ["Ratz"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "L'âne Trotro", "a": "Zut", "at": "", "aa": "Zut", "altT": ["Trotro"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Totally Spies", "a": "Totally Spies!", "at": "", "aa": "Totally Spies!", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Bob l'éponge", "a": "Painty the Pirate & Kids", "at": "", "aa": "Painty the Pirate & Kids", "altT": ["SpongeBob SquarePants", "Bob l'éponge carré"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Kim Possible", "a": "Christina Milian", "at": "", "aa": "Christina Milian", "altT": ["Call Me Beep Me"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Marsupilami", "a": "Marsupilami", "at": "", "aa": "Marsupilami", "altT": ["Mon ami Marsupilami", "Les Marsupilamis"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Winx Club", "a": "Winx Club", "at": "", "aa": "Winx Club", "altT": ["Les Winx", "Winx"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Pat' Patrouille", "a": "PAW Patrol", "at": "", "aa": "PAW Patrol", "altT": ["Paw Patrol", "La Pat Patrouille", "Pat Patrouille"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Lucky Luke", "a": "Jacques Cardona", "at": "", "aa": "Jacques Cardona", "altT": ["Les Nouvelles Aventures de Lucky Luke", "Bang Bang Lucky Luke"], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Ben 10", "a": "Continuity Error", "at": "", "aa": "Continuity Error", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}];</script>
+<script src="../js/match.js?v=191"></script>
+<script src="verif.js?v=191"></script>
+</body>
+</html>
