@@ -41,10 +41,30 @@ def version():
     return m.group(1) if m else "1"
 
 
+def alternatives():
+    """Les reponses acceptees en plus du titre, lues dans nouveautes.json.
+
+       Elles manquaient au premier tour : la page proposait d'essayer sa voix,
+       mais sans les connaitre. Audrey a donc vu refuser « Aquarius » pour
+       « Aquarius / Let the Sunshine In » alors que le jeu, lui, l'accepte.
+       Le test etait plus severe que la realite, ce qui est le pire des
+       reglages pour un outil de verification."""
+    chemin = os.path.join(DEPOT, "nouveautes.json")
+    if not os.path.exists(chemin):
+        return {}
+    d = json.load(io.open(chemin, encoding="utf-8"))
+    out = {}
+    for cat, lot in d.items():
+        for p in lot:
+            out[(cat, p["t"], p.get("a") or u"")] = (p.get("altT") or [], p.get("altA") or [])
+    return out
+
+
 def main(source):
     resolu = json.load(io.open(source, encoding="utf-8"))
     faits = resolu["faits"] if isinstance(resolu, dict) else resolu
     audit = json.load(io.open(AUDIT, encoding="utf-8"))
+    alt = alternatives()
 
     # on repart d'un audit propre : les nouveautes d'un tour precedent
     # n'ont pas a s'empiler
@@ -62,7 +82,9 @@ def main(source):
             "img": e.get("img") or "", "apercu": e.get("apercu") or "",
             "sol": e.get("sol") or "", "lab": e.get("lab") or "Artiste",
             "langue": "fr", "strict": False, "fix": 1,
-            "altT": [], "altA": [], "lgT": "", "lgA": "", "ditT": "", "ditA": "",
+            "altT": alt.get((cat, e["t"], e["a"]), ([], []))[0],
+            "altA": alt.get((cat, e["t"], e["a"]), ([], []))[1],
+            "lgT": "", "lgA": "", "ditT": "", "ditA": "",
         }
 
     temporaire = os.path.join(ICI, "audit-avec-nouveautes.json")
