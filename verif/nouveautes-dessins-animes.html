@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⭐ NOUVEAUTÉS — Dessins animés</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>📺 ⭐ NOUVEAUTÉS — Dessins animés</h1>
+<p class="sous">24 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Quatre Fantastiques</p>
+    <p class="detail">Noam</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a8/13/00/a8130096-624f-3ef9-0d67-36ee51616d8d/mzaf_16250527771827803078.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/2a/74/4d/2a744d55-6cc6-e578-6a48-7b750d3ecc6e/3596973203793_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Superman</p>
+    <p class="detail">Noam</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/59/e9/3a/59e93abb-6c20-18df-fcad-474778348528/mzaf_11845457762389351242.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">George de la jungle</p>
+    <p class="detail">The Towenda Choir Orchestra</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/40/1e/8a/401e8ace-8b56-2ceb-2fc7-32afc94f108a/mzaf_2159625113020573757.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/bb/71/5e/bb715e6f-ceff-101c-0b30-ee0941f86948/3700403509878_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/bb/71/5e/bb715e6f-ceff-101c-0b30-ee0941f86948/3700403509878_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Cobra</p>
+    <p class="detail">Olivier Constantin</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/07/9c/6c/079c6caf-d4f5-16c5-cae3-32fa282327a4/mzaf_6146348937416655804.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/58/57/be/5857be3d-ee03-bb4f-7820-29f8170d3a69/3596973476197_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/58/57/be/5857be3d-ee03-bb4f-7820-29f8170d3a69/3596973476197_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Iznogoud</p>
+    <p class="detail">Alain Garcia</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/96/5a/2a/965a2a42-91c9-12cd-a834-8275a5d4fcd5/mzaf_2847936074486742060.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/5e/d4/bc/5ed4bce7-d059-fdc8-15b8-3afef23cc73c/3700403509700_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/5e/d4/bc/5ed4bce7-d059-fdc8-15b8-3afef23cc73c/3700403509700_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Albator</p>
+    <p class="detail">Eric Charden</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/96/dd/3f/96dd3f84-3b4e-f734-3fc0-cc08f991370d/mzaf_16017390167678006426.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/68/a5/e4/68a5e4fd-d103-13d6-3478-c1db036ca0f9/3596973203496_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/68/a5/e4/68a5e4fd-d103-13d6-3478-c1db036ca0f9/3596973203496_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Heidi</p>
+    <p class="detail">Alexandra</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/23/03/6a/23036ad3-e098-b48a-79ae-7e626d97ad55/mzaf_4622069037150021997.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/cd/3c/28/cd3c2813-9d2c-9197-4291-2c7532702880/3596974278394_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Scoubidou</p>
+    <p class="detail">The Towenda Choir Orchestra</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/8e/ce/9f/8ece9f52-9f34-ee6e-4c86-97cddcaa848a/mzaf_681446562458566427.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/29/b8/22/29b82277-86f2-5fc6-37a6-8b278774e69a/0698458974280.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/29/b8/22/29b82277-86f2-5fc6-37a6-8b278774e69a/0698458974280.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Scoubidou</p>
+    <p class="detail">TV Theme Songs Unlimited</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d4/65/3c/d4653caf-0ff3-6d07-6358-d7fbd1354586/mzaf_934063325626479295.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/40/af/4e/40af4ea5-36ef-334b-3b0e-82cc47918cb6/mzi.lgmwdtuh.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Turbo Rangers</p>
+    <p class="detail">Bernard Minet</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/0b/37/cc/0b37cc5c-002f-00c4-f1f8-0cb2b605bb74/mzaf_11093749476775482110.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mimi Cracra</p>
+    <p class="detail">Top TV 80</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/30/03/f3/3003f3d6-df69-e3d8-abf8-f82e09e16611/mzaf_15469162194264315218.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Magicien d'Oz</p>
+    <p class="detail">Top TV 80</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/9b/53/10/9b5310c3-ee70-f7ae-d428-b16eb1bba214/mzaf_12157123067082270071.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Babar</p>
+    <p class="detail">Top TV 80</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/18/0f/eb/180feb04-f502-e185-866c-9e650a1278ad/mzaf_16739377470956988.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/80/61/36/806136b0-eb2f-0020-bc78-51e00547f19b/mzi.hcxoevzj.tif/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Super Nana</p>
+    <p class="detail">Top TV 80</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/06/2e/bf/062ebfec-698f-d444-f739-52d93544863c/mzaf_3585307063672767955.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/47/d5/bc/47d5bc89-b8d9-bb3a-75ab-cee56de563e8/997393.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/47/d5/bc/47d5bc89-b8d9-bb3a-75ab-cee56de563e8/997393.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">La Bande à Picsou</p>
+    <p class="detail">Meancat Tv</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/18/9c/5a/189c5a4b-9859-77b6-61e6-f56cd22e0bca/mzaf_12838919623254768915.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f3/a6/d4/f3a6d4e1-113f-c88e-29e5-ef4bf000bbad/0888837514323_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f3/a6/d4/f3a6d4e1-113f-c88e-29e5-ef4bf000bbad/0888837514323_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Oggy et les cafards</p>
+    <p class="detail">Hugues Le Bars</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/88/80/1d/88801d3f-7634-44ed-bb2d-6a6fee9aa38c/mzaf_11337802126298021043.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/8d/05/07/mzi.khvkbzpr.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/8d/05/07/mzi.khvkbzpr.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Foot 2 rue</p>
+    <p class="detail">Kool Shen</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b8/6d/18/b86d18f3-d673-0ac2-c3e2-54ac41c1f4c9/mzaf_6630850640414895721.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b0/4c/d4/b04cd4a2-38de-28bd-9ea6-a9eceb632462/859731764015.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b0/4c/d4/b04cd4a2-38de-28bd-9ea6-a9eceb632462/859731764015.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Adventure Time</p>
+    <p class="detail">générique</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/88/f6/10/88f6101f-c825-b535-a7ee-ff2e8f309999/mzaf_12099389603395357283.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/56/cf/5d/56cf5de8-502e-781d-c78e-fefdff91e71e/579bcfde-e04f-46b2-a387-703714a21c92.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/56/cf/5d/56cf5de8-502e-781d-c78e-fefdff91e71e/579bcfde-e04f-46b2-a387-703714a21c92.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Miraculous</p>
+    <p class="detail">Roxane Genot</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d2/f6/e8/d2f6e8a7-2100-1c12-ccc6-027559f59c02/mzaf_10960923891222709104.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/ca/8b/57/ca8b57d0-eb82-603e-43af-3fc5c43b3482/859732131069_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/ca/8b/57/ca8b57d0-eb82-603e-43af-3fc5c43b3482/859732131069_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Code Lyoko</p>
+    <p class="detail">Un monde sans danger</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/77/da/a0/77daa0ce-a052-570b-bd80-ec2d463e2b4f/mzaf_1489513538675851273.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8d/8d/9c/8d8d9ce6-9363-b1fc-1018-8d796ef7b56c/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8d/8d/9c/8d8d9ce6-9363-b1fc-1018-8d796ef7b56c/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Totally Spies</p>
+    <p class="detail">Millennials Remix</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f2/59/48/f2594833-db60-daa7-50ac-e4963cd411ef/mzaf_14850536102742439415.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f6/40/d5/f640d56a-4cfc-1cc1-f735-6512736d48ea/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f6/40/d5/f640d56a-4cfc-1cc1-f735-6512736d48ea/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Titeuf</p>
+    <p class="detail">Millennials Remix</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ed/f2/ce/edf2cee9-6a07-6b0b-fda9-224c4219b1cd/mzaf_5830054692820011425.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ca/38/cb/ca38cb76-da87-f8b1-76ca-152b6ba4ed19/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ca/38/cb/ca38cb76-da87-f8b1-76ca-152b6ba4ed19/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Martin Matin</p>
+    <p class="detail">Millennials Remix</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/6b/b9/4d/6bb94d51-88b2-ee0f-81fa-a4fe7c64718e/mzaf_7852656513957252617.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/20/53/77/20537790-cc86-1c47-8c34-f75888d8e056/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/20/53/77/20537790-cc86-1c47-8c34-f75888d8e056/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dora l'exploratrice</p>
+    <p class="detail">Millennials Remix</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/88/f7/de/88f7de56-20dd-e50f-810b-34cfaf52db3a/mzaf_14163952922275888359.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Les Quatre Fantastiques", "a": "Noam", "at": "", "aa": "Noam", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Superman", "a": "Noam", "at": "", "aa": "Noam", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "George de la jungle", "a": "The Towenda Choir Orchestra", "at": "", "aa": "The Towenda Choir Orchestra", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Cobra", "a": "Olivier Constantin", "at": "", "aa": "Olivier Constantin", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Iznogoud", "a": "Alain Garcia", "at": "", "aa": "Alain Garcia", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Albator", "a": "Eric Charden", "at": "", "aa": "Eric Charden", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Heidi", "a": "Alexandra", "at": "", "aa": "Alexandra", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Scoubidou", "a": "The Towenda Choir Orchestra", "at": "", "aa": "The Towenda Choir Orchestra", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Scoubidou", "a": "TV Theme Songs Unlimited", "at": "", "aa": "TV Theme Songs Unlimited", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Turbo Rangers", "a": "Bernard Minet", "at": "", "aa": "Bernard Minet", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Mimi Cracra", "a": "Top TV 80", "at": "", "aa": "Top TV 80", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Le Magicien d'Oz", "a": "Top TV 80", "at": "", "aa": "Top TV 80", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Babar", "a": "Top TV 80", "at": "", "aa": "Top TV 80", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Super Nana", "a": "Top TV 80", "at": "", "aa": "Top TV 80", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "La Bande à Picsou", "a": "Meancat Tv", "at": "", "aa": "Meancat Tv", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Oggy et les cafards", "a": "Hugues Le Bars", "at": "", "aa": "Hugues Le Bars", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Foot 2 rue", "a": "Kool Shen", "at": "", "aa": "Kool Shen", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Adventure Time", "a": "générique", "at": "", "aa": "générique", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Miraculous", "a": "Roxane Genot", "at": "", "aa": "Roxane Genot", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Code Lyoko", "a": "Un monde sans danger", "at": "", "aa": "Un monde sans danger", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Totally Spies", "a": "Millennials Remix", "at": "", "aa": "Millennials Remix", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Titeuf", "a": "Millennials Remix", "at": "", "aa": "Millennials Remix", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Martin Matin", "a": "Millennials Remix", "at": "", "aa": "Millennials Remix", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Dora l'exploratrice", "a": "Millennials Remix", "at": "", "aa": "Millennials Remix", "altT": [], "altA": [], "strict": false, "sol": "titre", "lab": "Interprète", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}];</script>
+<script src="../js/match.js?v=190"></script>
+<script src="verif.js?v=190"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><title>Résolution des nouveautés</title></head>
+<body style="font:14px/1.5 monospace;background:#111;color:#ddd;padding:20px">
+<p id="etat">…</p>
+<script src="../js/config.js?r=1"></script>
+<script src="../js/match.js?r=1"></script>
+<script src="../js/playlists.js?r=1"></script>
+<script src="../js/itunes.js?r=1"></script>
+<script>
+/* Page jetable : fait résoudre les candidats par le moteur du jeu lui-même,
+   pour qu'Audrey entende exactement ce que le jeu jouerait. */
+var REGLAGES = {
+  clubdo:   { nom: "Dessins animés", labelT: "Dessin animé", labelA: "Interprète", solo: "titre",   strict: false, langue: "fr" },
+  musicals: { nom: "Comédies musicales", labelT: "Titre", labelA: "Comédie musicale", solo: null,   strict: false, langue: "fr" },
+  karaoke:  { nom: "Karaoké", labelT: "Titre", labelA: "Artiste", solo: null, strict: false, langue: "fr" }
+};
+
+window.__fait = [];
+window.__rate = [];
+window.__fini = false;
+
+(async function () {
+  var data = await fetch('../nouveautes.json?r=1').then(function (r) { return r.json(); });
+  var total = 0;
+  Object.keys(data).forEach(function (k) { total += data[k].length; });
+  var n = 0;
+
+  for (var cat of Object.keys(data)) {
+    var m = REGLAGES[cat];
+    for (var p of data[cat]) {
+      n++;
+      document.getElementById('etat').textContent = n + ' / ' + total + '  —  ' + p.t;
+      var piste = Object.assign({}, p, {
+        labelA: m.labelA, labelT: m.labelT, solo: m.solo,
+        strict: m.strict, langue: m.langue, categorie: m.nom
+      });
+      try {
+        var r = await Itunes.resoudre(piste);
+        if (r && r.apercu) {
+          window.__fait.push({
+            cat: cat, t: p.t, a: p.a,
+            aa: r.artiste, alb: r.album || '', img: r.pochette || '', apercu: r.apercu,
+            sol: m.solo || '', lab: m.labelA
+          });
+        } else {
+          window.__rate.push({ cat: cat, t: p.t, a: p.a, pourquoi: 'aucun extrait' });
+        }
+      } catch (e) {
+        window.__rate.push({ cat: cat, t: p.t, a: p.a, pourquoi: String(e).slice(0, 60) });
+      }
+      await new Promise(function (ok) { setTimeout(ok, 2600); });
+    }
+  }
+  window.__fini = true;
+  document.getElementById('etat').textContent =
+    'terminé : ' + window.__fait.length + ' résolus, ' + window.__rate.length + ' ratés';
+})();
+</script>
+</body>
+</html>
