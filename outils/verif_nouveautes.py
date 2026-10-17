@@ -77,6 +77,18 @@ def main(source):
     # n'ont pas a s'empiler
     audit = dict((k, v) for k, v in audit.items() if not k.startswith("neuf-"))
 
+    """La resolution garde la trace de tout ce qui est passe par elle, y
+       compris de ce qui est deja entre dans le jeu. Seules les categories
+       encore en attente meritent une page : sinon on refabrique une page
+       « nouveautes » pour des morceaux qui jouent deja."""
+    chemin = os.path.join(DEPOT, "nouveautes.json")
+    en_attente = set(json.load(io.open(chemin, encoding="utf-8"))) \
+        if os.path.exists(chemin) else set()
+    faits = [e for e in faits if e["cat"] in en_attente]
+    if not faits:
+        print(u"rien en attente : aucune page de nouveautés à faire")
+        return
+
     rangs = {}
     for e in faits:
         cat = e["cat"]
