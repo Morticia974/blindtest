@@ -2216,7 +2216,36 @@ var Playlists = (function () {
              choisi celle-ci. */
           altT: ["Li Tourner (feat. Alain Ramanisum & Willy William) [Radio Edit]"],
           voulue: true,
-          interprete: "DJ Assad", altA: ["DJ Assad", "Alain Ramanisum", "Willy William"] }
+          interprete: "DJ Assad", altA: ["DJ Assad", "Alain Ramanisum", "Willy William"] },
+        /* 22 morceaux validés par Audrey le 17/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Con Calma", a: "Daddy Yankee", interprete: "Daddy Yankee" },
+        { t: "Loca", a: "Shakira", interprete: "Shakira" },
+        { t: "Maria Maria", a: "Santana", interprete: "Santana", altT: ["Maria"] },
+        { t: "La Bicicleta", a: "Carlos Vives & Shakira", interprete: "Carlos Vives & Shakira" },
+        { t: "No Woman, No Cry", a: "Bob Marley", interprete: "Bob Marley" },
+        { t: "Jamming", a: "Bob Marley", interprete: "Bob Marley" },
+        { t: "Here Comes the Hotstepper", a: "Ini Kamoze",
+          q: "Here Comes the Hotstepper Ini Kamoze Heartical Mix", interprete: "Ini Kamoze",
+          disque: "Here Comes the Hotstepper", voulue: true },
+        { t: "Informer", a: "Snow", interprete: "Snow" },
+        { t: "Angel", a: "Shaggy", q: "Angel Shaggy Rayvon Hot Shot", interprete: "Shaggy",
+          disque: "Hot Shot" },
+        { t: "Boombastic", a: "Shaggy", interprete: "Shaggy" },
+        { t: "Red Red Wine", a: "UB40", interprete: "UB40" },
+        { t: "Kingston Town", a: "UB40", interprete: "UB40" },
+        { t: "Kolé Séré", a: "Philippe Lavil & Jocelyne Béroard",
+          interprete: "Philippe Lavil & Jocelyne Béroard",
+          altT: ["collé serré", "collé-serré", "colé séré"] },
+        { t: "Syé Bwa", a: "Kassav'", q: "Syé bwa Kassav'", interprete: "Kassav'",
+          disque: "Syé bwa", altT: ["qui est bois", "sié bois", "syé bois"] },
+        { t: "Flamme", a: "Slaï", interprete: "Slaï", altA: ["fly", "slay", "slaïe"] },
+        { t: "Elle préfère l'amour en mer", a: "Philippe Lavil", interprete: "Philippe Lavil" },
+        { t: "Coller la petite", a: "Franko", interprete: "Franko" },
+        { t: "Sweet Fanta Diallo", a: "Alpha Blondy", interprete: "Alpha Blondy" },
+        { t: "Dimanche à Bamako", a: "Amadou & Mariam", interprete: "Amadou & Mariam" },
+        { t: "Tri Martolod", a: "Alan Stivell", interprete: "Alan Stivell" },
+        { t: "Panique Celtique", a: "Manau", interprete: "Manau" },
+        { t: "Martiniquaise", a: "Soldat Louis", interprete: "Soldat Louis" }
       ]
     }
   ];
