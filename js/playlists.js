@@ -1806,7 +1806,10 @@ var Playlists = (function () {
         { t: "À nos souvenirs", a: "Trois Cafés Gourmands", interprete: "Trois Cafés Gourmands" },
         { t: "Clown", a: "Soprano", interprete: "Soprano" },
         { t: "Comme des enfants", a: "Cœur de pirate", interprete: "Cœur de pirate" },
-        { t: "Le sens de la vie", a: "Tal", interprete: "Tal" }
+        { t: "Le sens de la vie", a: "Tal", interprete: "Tal" },
+        /* 1 morceaux validés par Audrey le 17/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Carmen", a: "Stromae", q: "Carmen Stromae Racine carrée", interprete: "Stromae",
+          disque: "Racine carrée" }
       ]
     },
     {
