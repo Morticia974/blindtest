@@ -21,11 +21,17 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 DEPOT = os.path.dirname(ICI)
 AUDIT = os.path.join(ICI, "audit.json")
 
-TITRES = {
-    "clubdo":   (u"⭐ NOUVEAUTÉS — Dessins animés", u"\U0001f4fa"),
-    "musicals": (u"⭐ NOUVEAUTÉS — Comédies musicales", u"\U0001f3ad"),
-    "karaoke":  (u"⭐ NOUVEAUTÉS — Karaoké", u"\U0001f37b"),
-}
+def titre_de_categorie(audit, cat):
+    """« ⭐ NOUVEAUTÉS — Années 2010-2020 », avec l'emoji de la catégorie telle
+       qu'elle existe déjà dans le jeu.
+
+       Une table écrite à la main ne tenait que le temps d'un paquet : il
+       fallait l'allonger à chaque nouvelle catégorie, et l'oubli se voyait
+       sous la forme d'une page intitulée « annees2010 »."""
+    for v in audit.values():
+        if v.get("cat") == cat:
+            return (u"⭐ NOUVEAUTÉS — " + v["nom"], v.get("emoji") or u"")
+    return (u"⭐ NOUVEAUTÉS — " + cat, u"")
 
 NOTE = (u'</p>' + u"\n" +
         u'<p class="sous" style="color:#ffd166">Les %d morceaux des trois pages '
@@ -74,7 +80,7 @@ def main(source):
     rangs = {}
     for e in faits:
         cat = e["cat"]
-        nom, emoji = TITRES[cat]
+        nom, emoji = titre_de_categorie(audit, cat)
         i = rangs.get(cat, 0)
         rangs[cat] = i + 1
         reglage = alt.get((cat, e["t"], e["a"]), ([], [], u""))

@@ -10,11 +10,22 @@
 <script>
 /* Page jetable : fait résoudre les candidats par le moteur du jeu lui-même,
    pour qu'Audrey entende exactement ce que le jeu jouerait. */
-var REGLAGES = {
-  clubdo:   { nom: "Dessins animés", labelT: "Dessin animé", labelA: "Interprète", solo: "titre",   strict: false, langue: "fr" },
-  musicals: { nom: "Comédies musicales", labelT: "Titre", labelA: "Comédie musicale", solo: null,   strict: false, langue: "fr" },
-  karaoke:  { nom: "Karaoké", labelT: "Titre", labelA: "Artiste", solo: null, strict: false, langue: "fr" }
-};
+/* Les réglages d'une catégorie — intitulés des cases, réponse unique,
+   titre exact exigé — se lisent dans la playlist, là où le jeu les lit
+   lui-même. Une table recopiée ici ne valait que pour les trois catégories
+   du premier paquet, et la quatrième plantait la page. */
+function reglagesDe(cat) {
+  var m = Playlists.parId(cat);
+  if (!m) throw new Error('catégorie inconnue de la playlist : ' + cat);
+  return {
+    nom: m.nom,
+    labelT: m.labelT || 'Titre',
+    labelA: m.labelA || 'Artiste',
+    solo: m.solo || null,
+    strict: !!m.strict,
+    langue: m.langue || 'fr'
+  };
+}
 
 window.__fait = [];
 window.__rate = [];
@@ -27,7 +38,7 @@ window.__fini = false;
   var n = 0;
 
   for (var cat of Object.keys(data)) {
-    var m = REGLAGES[cat];
+    var m = reglagesDe(cat);
     for (var p of data[cat]) {
       n++;
       document.getElementById('etat').textContent = n + ' / ' + total + '  —  ' + p.t;
