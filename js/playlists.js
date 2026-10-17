@@ -1552,7 +1552,21 @@ var Playlists = (function () {
           q: "Miraculous Générique de la série TV Lou Danser sur tes mots",
           interprete: "Lou",
           altT: ["Miraculous Ladybug", "Miraculous, les aventures de Ladybug et Chat Noir", "Ladybug"],
-          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/599/1499134.jpg" }
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/599/1499134.jpg" },
+        /* Proposés par Audrey, validés à l'oreille le 17/10/2026. Sur ses vingt-deux titres, dix n'existent nulle part chez Apple et huit n'y existent qu'en reprise ou en remix, qu'elle a écartés. */
+        { t: "L'âne Trotro", a: "Zut", q: "L'âne Trotro Zut Trotro fait son cirque",
+          interprete: "Zut", altT: ["Trotro"] },
+        { t: "Bob l'éponge", a: "Painty the Pirate & Kids",
+          q: "SpongeBob SquarePants Theme Painty the Pirate Original Theme Highlights",
+          altT: ["SpongeBob SquarePants", "Bob l'éponge carré"],
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/594/1486607.jpg" },
+        { t: "Kim Possible", a: "Christina Milian",
+          q: "Call Me Beep Me Kim Possible Christina Milian Songs from Kim Possible",
+          interprete: "Christina Milian", altT: ["Call Me Beep Me"],
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/158/396340.jpg" },
+        { t: "Pat' Patrouille", a: "PAW Patrol", q: "PAW Patrol Opening Theme Official Theme Song",
+          altT: ["Paw Patrol", "La Pat Patrouille", "Pat Patrouille"],
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/6/15988.jpg" }
       ]
     },
     {

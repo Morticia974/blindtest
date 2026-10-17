@@ -1,64 +1,9 @@
 {
   "clubdo": [
-    { "t": "Code Lyoko", "a": "justine sainte",
-      "q": "Un Monde Sans Danger From Code Lyoko justine sainte",
-      "altT": ["Un monde sans danger"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg" },
-
-    { "t": "Corneil et Bernie", "a": "Caniche de feu",
-      "q": "Corneil et Bernie Caniche de feu",
-      "interprete": "Caniche de feu",
-      "altT": ["Corneil & Bernie", "Watch My Chops"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/244/610616.jpg" },
-
-    { "t": "Les Ratz", "a": "Caniche de feu",
-      "q": "Les Ratz Caniche de feu",
-      "interprete": "Caniche de feu", "altT": ["Ratz"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/222/555782.jpg" },
-
-    { "t": "L'âne Trotro", "a": "Zut",
-      "q": "L'âne Trotro Zut Trotro fait son cirque",
-      "interprete": "Zut", "altT": ["Trotro"] },
-
-    { "t": "Totally Spies", "a": "Totally Spies!",
-      "q": "Totally Spies Theme Song Top Secret Mission",
-      "interprete": "Totally Spies",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/638/1596958.jpg" },
-
-    { "t": "Bob l'éponge", "a": "Painty the Pirate & Kids",
-      "q": "SpongeBob SquarePants Theme Painty the Pirate Original Theme Highlights",
-      "altT": ["SpongeBob SquarePants", "Bob l'éponge carré"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/594/1486607.jpg" },
-
-    { "t": "Kim Possible", "a": "Christina Milian",
-      "q": "Call Me Beep Me Kim Possible Christina Milian Songs from Kim Possible",
-      "interprete": "Christina Milian", "altT": ["Call Me Beep Me"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/158/396340.jpg" },
-
-    { "t": "Marsupilami", "a": "Marsupilami",
-      "q": "Les Marsupilamis Générique Theme Song",
-      "altT": ["Mon ami Marsupilami", "Les Marsupilamis"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/62/156943.jpg" },
-
-    { "t": "Winx Club", "a": "Winx Club",
-      "q": "We Are The Winx Winx Club Season 1",
-      "altT": ["Les Winx", "Winx"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/273/684918.jpg" },
-
-    { "t": "Pat' Patrouille", "a": "PAW Patrol",
-      "q": "PAW Patrol Opening Theme Official Theme Song",
-      "altT": ["Paw Patrol", "La Pat Patrouille", "Pat Patrouille"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/15988.jpg" },
-
-    { "t": "Lucky Luke", "a": "Jacques Cardona",
-      "q": "Bang Bang Lucky Luke Jacques Cardona",
-      "interprete": "Jacques Cardona",
-      "altT": ["Les Nouvelles Aventures de Lucky Luke", "Bang Bang Lucky Luke"],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/486/1216902.jpg" },
-
-    { "t": "Ben 10", "a": "Continuity Error",
-      "q": "Ben 10 Theme Song Continuity Error",
-      "interprete": "Continuity Error",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/16288.jpg" }
+    { "t": "Marsupilami", "a": "Henri Seroka",
+      "q": "Houba Marsupilami Henri Seroka Franquin Marsupilamis EP",
+      "interprete": "Henri Seroka",
+      "altT": ["Mon ami Marsupilami", "Houba Marsupilami", "Les Marsupilamis"],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/62/156943.jpg" }
   ]
 }
