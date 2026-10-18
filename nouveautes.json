@@ -292,7 +292,9 @@
     },
     {
       "t": "Double Je",
-      "a": "Christophe Willem"
+      "a": "Christophe Willem",
+      "q": "Double je Christophe Willem Inventaire",
+      "disque": "Inventaire"
     },
     {
       "t": "Il y a trop de gens qui t'aiment",
@@ -309,8 +311,10 @@
     {
       "t": "Fan",
       "a": "Pascal Obispo",
-      "q": "Fan Pascal Obispo Millesimes",
-      "interprete": "Pascal Obispo"
+      "q": "Fan Pascal Obispo single",
+      "interprete": "Pascal Obispo",
+      "disque": "Fan - Single",
+      "voulue": true
     },
     {
       "t": "Le Petit Bonhomme en mousse",
