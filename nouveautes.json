@@ -1,0 +1,152 @@
+{
+  "monde": [
+    {
+      "t": "Bailamos",
+      "a": "Enrique Iglesias",
+      "interprete": "Enrique Iglesias"
+    },
+    {
+      "t": "Maria",
+      "a": "Ricky Martin",
+      "interprete": "Ricky Martin"
+    },
+    {
+      "t": "On the Floor",
+      "a": "Jennifer Lopez",
+      "interprete": "Jennifer Lopez"
+    },
+    {
+      "t": "Conga",
+      "a": "Gloria Estefan",
+      "interprete": "Gloria Estefan"
+    },
+    {
+      "t": "Tusa",
+      "a": "Karol G & Nicki Minaj",
+      "interprete": "Karol G & Nicki Minaj"
+    },
+    {
+      "t": "Taki Taki",
+      "a": "DJ Snake",
+      "interprete": "DJ Snake"
+    },
+    {
+      "t": "Baby Boy",
+      "a": "Beyoncé & Sean Paul",
+      "interprete": "Beyoncé & Sean Paul"
+    },
+    {
+      "t": "Alice ça glisse",
+      "a": "Francky Vincent",
+      "interprete": "Francky Vincent"
+    },
+    {
+      "t": "Tu veux mon zizi",
+      "a": "Francky Vincent",
+      "interprete": "Francky Vincent"
+    },
+    {
+      "t": "Laisse parler les gens",
+      "a": "Jocelyne Labylle ( y'a aussi ma rivale que tu peux ajouter à celle là)",
+      "interprete": "Jocelyne Labylle ( y'a aussi ma rivale que tu peux ajouter à celle là)"
+    },
+    {
+      "t": "Ancrée à ton port",
+      "a": "Fanny J",
+      "interprete": "Fanny J"
+    },
+    {
+      "t": "Bouger Bouger",
+      "a": "Magic System",
+      "interprete": "Magic System"
+    },
+    {
+      "t": "Zouglou Dance",
+      "a": "Magic System",
+      "interprete": "Magic System"
+    },
+    {
+      "t": "Saga Africa",
+      "a": "Yannick Noah",
+      "interprete": "Yannick Noah"
+    },
+    {
+      "t": "Bretonne",
+      "a": "Nolwenn Leroy",
+      "interprete": "Nolwenn Leroy"
+    },
+    {
+      "t": "L'Avenir est un long passé",
+      "a": "Manau",
+      "interprete": "Manau"
+    },
+    {
+      "t": "Timber",
+      "a": "Pitbull & Kesha",
+      "interprete": "Pitbull & Kesha"
+    },
+    {
+      "t": "Bad Boys",
+      "a": "Inner Circle",
+      "interprete": "Inner Circle"
+    },
+    {
+      "t": "Beautiful Girls",
+      "a": "Sean Kingston",
+      "interprete": "Sean Kingston"
+    },
+    {
+      "t": "Rude",
+      "a": "MAGIC!",
+      "interprete": "MAGIC!"
+    },
+    {
+      "t": "Façon Sex",
+      "a": "Tribal King",
+      "interprete": "Tribal King"
+    },
+    {
+      "t": "C'est la vie",
+      "a": "Khaled",
+      "interprete": "Khaled"
+    },
+    {
+      "t": "La Blanche Hermine",
+      "a": "Gilles Servat",
+      "interprete": "Gilles Servat"
+    },
+    {
+      "t": "Mais qui est la belette ?",
+      "a": "Manau",
+      "interprete": "Manau"
+    },
+    {
+      "t": "Color Gitano",
+      "a": "Kendji Girac",
+      "interprete": "Kendji Girac"
+    },
+    {
+      "t": "Mon Pays",
+      "a": "Faudel",
+      "interprete": "Faudel"
+    },
+    {
+      "t": "Soleil blanc",
+      "a": "Merzhin",
+      "q": "Soleil blanc Merzhin Pleine lune",
+      "interprete": "Merzhin",
+      "disque": "Pleine lune"
+    },
+    {
+      "t": "Ma rivale",
+      "a": "Lynnsha & Sweety",
+      "q": "Ma rivale Lynnsha Sweety Jacob Desvarieux",
+      "interprete": "Lynnsha",
+      "altA": [
+        "Lynnsha",
+        "Sweety",
+        "Jacob Desvarieux"
+      ]
+    }
+  ]
+}
