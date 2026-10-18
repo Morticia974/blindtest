@@ -41,16 +41,18 @@
     },
     {
       "t": "Laisse parler les gens",
-      "a": "Jocelyne Labylle",
+      "a": "Jocelyne Labylle (Dis l'heure de Zouk)",
       "interprete": "Jocelyne Labylle",
       "altA": [
+        "Jocelyne Labylle",
         "Jocelyne Labille",
         "Dis l'heure de Zouk",
         "Dis l'heure 2 Zouk",
         "Cheela",
         "Jacob Desvarieux",
         "Passi"
-      ]
+      ],
+      "q": "Laisse parler les gens Jocelyne Labylle Cheela Jacob Desvarieux Passi"
     },
     {
       "t": "Ancrée à ton port",
@@ -140,10 +142,11 @@
     },
     {
       "t": "Ma rivale",
-      "a": "Lynnsha & Sweety",
+      "a": "Lynnsha & Sweety (Dis l'heure de Zouk)",
       "q": "Ma rivale Lynnsha Sweety Jacob Desvarieux",
       "interprete": "Lynnsha",
       "altA": [
+        "Lynnsha & Sweety",
         "Lynnsha",
         "Sweety",
         "Jacob Desvarieux",
