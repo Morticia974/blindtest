@@ -83,3 +83,18 @@ if __name__ == "__main__":
     v = version()
     subprocess.check_call([sys.executable, os.path.join(ICI, "pages_verif.py"), AUDIT, v])
     print(u"pages de vérif en version %s" % v)
+
+    # pages_verif.py refait l'index a partir du seul catalogue : les pages de
+    # nouveautes, qui n'en font pas encore partie, en disparaissent. Les
+    # fichiers restent, mais plus rien n'y mene, et Audrey a cherche en vain
+    # sa page d'ecoute. On le dit, faute de connaitre ici le fichier de
+    # resolution qu'il faudrait repasser.
+    attente = os.path.join(DEPOT, "nouveautes.json")
+    if os.path.exists(attente):
+        reste = json.load(io.open(attente, encoding="utf-8"))
+        combien = sum(len(x) for x in reste.values())
+        if combien:
+            print(u"\n   ATTENTION : %d morceau(x) attendent encore dans %s."
+                  % (combien, os.path.basename(attente)))
+            print(u"   L'index ne les mentionne plus. Repasse :")
+            print(u"       python outils/verif_nouveautes.py <resolu>.json")
