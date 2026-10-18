@@ -212,4 +212,8 @@ def main():
     print(u"%d pages + index dans %s" % (len(par_cat), DOSSIER))
 
 
-main()
+# Sans ce garde-fou, importer ce fichier pour ses gabarits le faisait
+# s'executer : outils/versions.py, qui lui emprunte son style, voyait
+# un nom d'artiste pris pour un fichier de resolution.
+if __name__ == "__main__":
+    main()

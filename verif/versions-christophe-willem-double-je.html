@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Christophe Willem — Double je</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>Christophe Willem — Double je</h1>
+<p class="sous">12 versions différentes chez Apple. Écoute-les et dis-moi le numéro de celle que tu connais.</p>
+</header><div class="liste">
+<div class="piste">
+  <div class="num">1</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7f/99/2a/7f992a39-4caf-d905-3a1c-5c59da7cf9b4/mzi.mtdhugwj.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je <span class="doute">celle du jeu</span></p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 3 min 36</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2a/22/c5/2a22c570-e5b6-ecf6-424e-e3dbc9c89b93/mzaf_10659992952684439316.plus.aac.p.m4a"></audio>
+    <p class="detail">Inventaire (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">2</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/e3/b6/f2/e3b6f26c-5d78-2bff-340c-5350296d409d/886971381023.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (A cappella)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 2 min 57</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0d/96/14/0d9614e7-d291-9c3c-5af3-6d9fa4dd762c/mzaf_9976402761298487227.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Les remixes (EP) (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">3</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/49/91/71/dj.afzvzvve.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Acoustic Version)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 3 min 55</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/ca/ec/67/caec67a3-f8f7-3a80-4409-c52f9059d2b9/mzaf_419539309466384914.plus.aac.p.m4a"></audio>
+    <p class="detail">Inventaire tout en Acoustic (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">4</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/e3/b6/f2/e3b6f26c-5d78-2bff-340c-5350296d409d/886971381023.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Club)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 30</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/27/13/12/271312f8-2289-2016-e292-7e9fb13a46f5/mzaf_11959142537264191241.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Les remixes (EP) (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">5</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/e3/b6/f2/e3b6f26c-5d78-2bff-340c-5350296d409d/886971381023.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Düsseldorf Dub)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 32</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/db/6e/4d/db6e4da0-ae53-c669-3a93-0bb4c42c4f10/mzaf_10574658884131541961.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Les remixes (EP) (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">6</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/e3/b6/f2/e3b6f26c-5d78-2bff-340c-5350296d409d/886971381023.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Düsseldorf Mix)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 40</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7d/da/90/7dda90f0-f0e2-efa1-0292-99b17ecc350d/mzaf_11579653567308213930.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Les remixes (EP) (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">7</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music5/v4/01/40/fa/0140fa81-a6ba-95af-f518-c803fefc9a3e/886445337235.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Live)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 25</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/1d/e1/0e/1de10e64-b5ad-0142-ca37-3e97e1db244f/mzaf_258633651309471196.plus.aac.p.m4a"></audio>
+    <p class="detail">Les nuits paraît-il (Le concert inédit d'une tournée insolite) [Live] (2015)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">8</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7f/99/2a/7f992a39-4caf-d905-3a1c-5c59da7cf9b4/mzi.mtdhugwj.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (remix)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 3 min 16</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/be/c7/e1/bec7e179-e465-fb9d-b83a-f0cb9c092390/mzaf_9307526728699801704.plus.aac.p.m4a"></audio>
+    <p class="detail">Inventaire (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">9</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/8b/d4/34/8bd43416-e6c8-4230-158f-74926bff84ee/886446928722.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Remix)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 3 min 16</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/05/c7/84/05c78461-3aaf-02ee-1586-c53e1573166a/mzaf_8147172749649745155.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Single (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">10</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/e3/b6/f2/e3b6f26c-5d78-2bff-340c-5350296d409d/886971381023.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Remix)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 3 min 16</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7b/be/5f/7bbe5f43-c660-c74c-12b4-5de52eec27f3/mzaf_889604721138116654.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Les remixes (EP) (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">11</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/3f/d9/0d/3fd90d4f-3011-3a6d-b51c-0d0d1d89c0b5/888880303844.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Set acoustique Radio Contact/Plug TV)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 47</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a4/81/86/a48186bc-360f-e127-a013-19bd8b39cbe1/mzaf_3273302573871500930.plus.aac.p.m4a"></audio>
+    <p class="detail">Elu produit de l'année / Double je (Acoustique) - Single (2007)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">12</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/8b/d4/34/8bd43416-e6c8-4230-158f-74926bff84ee/886446928722.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Double je (Version club)</p>
+    <p class="detail">Christophe Willem &nbsp;·&nbsp; 4 min 31</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/dd/0a/43/dd0a43cd-29a5-a0ec-2bda-56f13d36bce0/mzaf_8479645117075150367.plus.aac.p.m4a"></audio>
+    <p class="detail">Double je - Single (2007)</p>
+  </div>
+</div>
+</div>
+</body>
+</html>
