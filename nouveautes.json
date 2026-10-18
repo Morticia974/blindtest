@@ -240,7 +240,10 @@
     },
     {
       "t": "Big Bisou",
-      "a": "Carlos"
+      "a": "Carlos",
+      "q": "Carlos Big Bisou La fete avec Carlos",
+      "disque": "la fete avec carlos",
+      "voulue": true
     },
     {
       "t": "La Dernière Séance",
