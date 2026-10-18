@@ -8,22 +8,26 @@
     {
       "t": "Maria",
       "a": "Ricky Martin",
-      "interprete": "Ricky Martin"
+      "interprete": "Ricky Martin",
+      "q": "María Ricky Martin Pablo Flores Spanglish Radio Edit",
+      "disque": "Ricky Martin",
+      "voulue": true,
+      "altT": [
+        "María",
+        "Un dos tres"
+      ]
     },
     {
       "t": "On the Floor",
       "a": "Jennifer Lopez",
-      "interprete": "Jennifer Lopez"
+      "interprete": "Jennifer Lopez",
+      "q": "On the Floor Jennifer Lopez Pitbull LOVE",
+      "disque": "LOVE?"
     },
     {
       "t": "Conga",
       "a": "Gloria Estefan",
       "interprete": "Gloria Estefan"
-    },
-    {
-      "t": "Tusa",
-      "a": "Karol G & Nicki Minaj",
-      "interprete": "Karol G & Nicki Minaj"
     },
     {
       "t": "Taki Taki",
@@ -36,19 +40,17 @@
       "interprete": "Beyoncé & Sean Paul"
     },
     {
-      "t": "Alice ça glisse",
-      "a": "Francky Vincent",
-      "interprete": "Francky Vincent"
-    },
-    {
-      "t": "Tu veux mon zizi",
-      "a": "Francky Vincent",
-      "interprete": "Francky Vincent"
-    },
-    {
       "t": "Laisse parler les gens",
-      "a": "Jocelyne Labylle ( y'a aussi ma rivale que tu peux ajouter à celle là)",
-      "interprete": "Jocelyne Labylle ( y'a aussi ma rivale que tu peux ajouter à celle là)"
+      "a": "Jocelyne Labylle",
+      "interprete": "Jocelyne Labylle",
+      "altA": [
+        "Jocelyne Labille",
+        "Dis l'heure de Zouk",
+        "Dis l'heure 2 Zouk",
+        "Cheela",
+        "Jacob Desvarieux",
+        "Passi"
+      ]
     },
     {
       "t": "Ancrée à ton port",
@@ -63,17 +65,14 @@
     {
       "t": "Zouglou Dance",
       "a": "Magic System",
-      "interprete": "Magic System"
+      "interprete": "Magic System",
+      "q": "Zouglou Dance Magic System Ki Dit Mié",
+      "disque": "Ki Dit Mié"
     },
     {
       "t": "Saga Africa",
       "a": "Yannick Noah",
       "interprete": "Yannick Noah"
-    },
-    {
-      "t": "Bretonne",
-      "a": "Nolwenn Leroy",
-      "interprete": "Nolwenn Leroy"
     },
     {
       "t": "L'Avenir est un long passé",
@@ -83,7 +82,9 @@
     {
       "t": "Timber",
       "a": "Pitbull & Kesha",
-      "interprete": "Pitbull & Kesha"
+      "interprete": "Pitbull & Kesha",
+      "q": "Timber Pitbull Kesha Global Warming Meltdown",
+      "disque": "Global Warming: Meltdown"
     },
     {
       "t": "Bad Boys",
@@ -145,7 +146,9 @@
       "altA": [
         "Lynnsha",
         "Sweety",
-        "Jacob Desvarieux"
+        "Jacob Desvarieux",
+        "Dis l'heure de Zouk",
+        "Dis l'heure 2 Zouk"
       ]
     },
     {
@@ -206,7 +209,8 @@
       "t": "Je sais pas jouer",
       "a": "Pierpoljak",
       "q": "Je sais pas jouer Pierpoljak Kingston karma",
-      "interprete": "Pierpoljak"
+      "interprete": "Pierpoljak",
+      "disque": "Kingston karma"
     },
     {
       "t": "Liberta",
