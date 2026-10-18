@@ -211,9 +211,32 @@
     {
       "t": "Je sais pas jouer",
       "a": "Pierpoljak",
-      "q": "Je sais pas jouer Pierpoljak Kingston karma",
+      "q": "Je sais pas jouer Pierpoljak Best of",
       "interprete": "Pierpoljak",
-      "disque": "Kingston karma"
+      "disque": "Best of Pierpoljak",
+      "voulue": true,
+      "altA": [
+        "Pierrepoljak",
+        "Pierpoljack",
+        "Pierpoljac",
+        "Pierrepoljac",
+        "Pierre Paul Jacques",
+        "Pierrepauljacques",
+        "Pierre-Paul-Jacques",
+        "Pierre Paul Jack",
+        "Pierrepauljack",
+        "Pierre Paul Jak",
+        "Pier Pol Jak",
+        "Pierre Pol Jak",
+        "Pierre Pol Jack",
+        "Pierre Pol Jaques",
+        "Pierpauljak",
+        "Pierpauljack",
+        "Pier Pol Jack",
+        "Pierrepoljack",
+        "Pierre Paul Jaques"
+      ],
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/pierpoljak-je-sais-pas-jouer.jpg"
     },
     {
       "t": "Liberta",
