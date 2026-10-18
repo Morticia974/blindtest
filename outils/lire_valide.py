@@ -46,11 +46,39 @@ def lire(source, combien):
             remarques.append((n, titre, note))
         (refuse if u"~~" in l else garde).append((n, titre, artiste))
 
-    return garde, refuse, remarques
+    return garde, refuse, remarques, ajouts(t)
+
+
+# Ce qui ressemble a un morceau : « Artiste - Titre », ou « Titre | Artiste »
+AJOUT = re.compile(u"^(.{2,60}?)\\s+[-–—|]\\s+(.{2,60})$")
+# Ce qui n'en est pas : mes propres phrases, et les barres de separation
+PAS_UN_MORCEAU = re.compile(
+    u"^[=\\-_ ]*$|catalogue|proposé|refus|objectif|Bloc-notes|Markdown|"
+    u"ajouter|vérifier|^\\s*\\d{1,3}\\\\?\\.|Apple|morceaux|paquet|"
+    u"NOUVEAUX|ZOUK|ANNÉES|tablée|barr", re.I)
+
+
+def ajouts(t):
+    """Les morceaux qu'Audrey ajoute de sa main, sans numero.
+
+       Je les avais tous rates : le lecteur ne regardait que les lignes
+       numerotees, et elle en avait ecrit treize a la fin du document, comme
+       le fichier le lui proposait. Elle a du demander si je les avais vus.
+       Desormais toute ligne qui ressemble a « Artiste - Titre » et qui n'est
+       pas une de mes propres phrases est signalee."""
+    out = []
+    for l in t.split(u"\n"):
+        l = l.replace(BS, u"").strip()
+        if not l or PAS_UN_MORCEAU.search(l) or u"~~" in l:
+            continue
+        m = AJOUT.match(l)
+        if m and u"." * 3 not in l:
+            out.append(l)
+    return out
 
 
 def main(source, combien, sortie):
-    garde, refuse, remarques = lire(source, combien)
+    garde, refuse, remarques, siens = lire(source, combien)
     tous = sorted(n for n, _, _ in garde + refuse)
     manquants = [n for n in range(1, combien + 1) if n not in tous]
     print(u"lus %d sur %d%s" % (len(tous), combien,
@@ -61,6 +89,11 @@ def main(source, combien, sortie):
         print(u"\n=== %d remarque(s), à lire et à traiter à la main ===" % len(remarques))
         for n, titre, note in remarques:
             print(u"  %3d  %-30s %s" % (n, titre[:30], note[:110]))
+
+    if siens:
+        print(u"\n=== %d morceau(x) qu'elle a ajouté(s) elle-même ===" % len(siens))
+        for l in siens:
+            print(u"       %s" % l[:100])
 
     io.open(sortie, "w", encoding="utf-8").write(
         u"\n".join(u"%s | %s" % (t_, a) for _, t_, a in garde) + u"\n")
