@@ -283,56 +283,6 @@
       "a": "Sylvie Vartan"
     }
   ],
-  "annees2000": [
-    {
-      "t": "Dis-moi",
-      "a": "BB Brunes",
-      "q": "Dis-moi BB Brunes Blonde comme moi",
-      "interprete": "BB Brunes"
-    },
-    {
-      "t": "Double Je",
-      "a": "Christophe Willem",
-      "q": "Double je Christophe Willem Inventaire",
-      "disque": "inventaire double je remix",
-      "voulue": true
-    },
-    {
-      "t": "Il y a trop de gens qui t'aiment",
-      "a": "Hélène Ségara"
-    },
-    {
-      "t": "Près de toi",
-      "a": "Lorie"
-    },
-    {
-      "t": "Tu trouveras",
-      "a": "Natasha St-Pier"
-    },
-    {
-      "t": "Fan",
-      "a": "Pascal Obispo",
-      "q": "Fan Pascal Obispo single",
-      "interprete": "Pascal Obispo",
-      "disque": "Fan - Single",
-      "voulue": true
-    },
-    {
-      "t": "Le Petit Bonhomme en mousse",
-      "a": "Patrick Sébastien"
-    },
-    {
-      "t": "Les Sardines",
-      "a": "Patrick Sébastien"
-    },
-    {
-      "t": "Lola",
-      "a": "Superbus",
-      "q": "Lola Superbus Wow",
-      "interprete": "Superbus",
-      "disque": "Wow"
-    }
-  ],
   "annees80": [
     {
       "t": "Le Rital",

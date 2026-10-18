@@ -311,7 +311,20 @@ var Playlists = (function () {
         { t: "Dilemma", a: "Nelly feat. Kelly Rowland", q: "Nelly Kelly Rowland Dilemma Nellyville",
           interprete: "Nelly", altA: ["Nelly", "Kelly Rowland"] },
         { t: "The Real Slim Shady", a: "Eminem", interprete: "Eminem", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/ea/ac/03/eaac03e5-8e9d-847e-d5b9-af7dee6a970b/00606949063221.rgb.jpg/600x600bb.jpg" },
-        { t: "Lift Me Up", a: "Moby", interprete: "Moby" }
+        { t: "Lift Me Up", a: "Moby", interprete: "Moby" },
+        /* 9 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Dis-moi", a: "BB Brunes", q: "Dis-moi BB Brunes Blonde comme moi",
+          interprete: "BB Brunes" },
+        { t: "Double Je", a: "Christophe Willem", q: "Double je Christophe Willem Inventaire",
+          disque: "inventaire double je remix", voulue: true },
+        { t: "Il y a trop de gens qui t'aiment", a: "Hélène Ségara" },
+        { t: "Près de toi", a: "Lorie" },
+        { t: "Tu trouveras", a: "Natasha St-Pier" },
+        { t: "Fan", a: "Pascal Obispo", q: "Fan Pascal Obispo single", interprete: "Pascal Obispo",
+          disque: "Fan - Single", voulue: true },
+        { t: "Le Petit Bonhomme en mousse", a: "Patrick Sébastien" },
+        { t: "Les Sardines", a: "Patrick Sébastien" },
+        { t: "Lola", a: "Superbus", q: "Lola Superbus Wow", interprete: "Superbus", disque: "Wow" }
       ]
     },
     {
