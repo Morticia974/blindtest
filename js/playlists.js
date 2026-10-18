@@ -1894,7 +1894,7 @@ var Playlists = (function () {
         { t: "My Way", a: "Frank Sinatra" },
         { t: "Summer of '69", a: "Bryan Adams" },
         { t: "Karma Chameleon", a: "Culture Club" },
-        { t: "La Tactique Du Gendarme", a: "Bourvil", interprete: "Bourvil" },
+        { t: "La Tactique du gendarme", a: "Bourvil", interprete: "Bourvil" },
         { t: "Félicie aussi", a: "Fernandel", interprete: "Fernandel" },
         { t: "Je chante", a: "Charles Trenet", interprete: "Charles Trenet" },
         { t: "Le zizi", a: "Pierre Perret", interprete: "Pierre Perret" },
