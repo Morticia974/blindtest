@@ -32,7 +32,17 @@ window.__rate = [];
 window.__fini = false;
 
 (async function () {
-  var data = await fetch('../nouveautes.json?r=1').then(function (r) { return r.json(); });
+  /* L'adresse doit changer à chaque fois : avec un « ?r=1 » fixe, le
+     navigateur ressert la liste de la fois d'avant. Une résolution lancée
+     sur un seul morceau a ainsi rejoué les quatre-vingt-treize. */
+  var data = await fetch('../nouveautes.json?r=' + Date.now())
+    .then(function (r) { return r.json(); });
+
+  /* Et le moteur garde ses propres résolutions, rangées sous le texte de la
+     recherche. Corriger `disque` ou `voulue` sans toucher à `q` ne changeait
+     donc rien : il reservait son choix d'avant. Cette page existe pour
+     refaire le choix, jamais pour le relire. */
+  Itunes.viderCache();
   var total = 0;
   Object.keys(data).forEach(function (k) { total += data[k].length; });
   var n = 0;
