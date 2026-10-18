@@ -2069,7 +2069,21 @@ var Playlists = (function () {
         { t: "Ma préférence", a: "Julien Clerc", q: "Julien Clerc Ma préférence" },
         { t: "Laisse-moi t'aimer", a: "Mike Brant", q: "Mike Brant Laisse moi t'aimer Qui saura" },
         { t: "Jolene", a: "Dolly Parton", interprete: "Dolly Parton" },
-        { t: "Nights in White Satin", a: "The Moody Blues", interprete: "The Moody Blues", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/87/47/0f/87470f53-405b-aa7b-58df-6ed3163f1e56/00042282000729.rgb.jpg/600x600bb.jpg" }
+        { t: "Nights in White Satin", a: "The Moody Blues", interprete: "The Moody Blues", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/87/47/0f/87470f53-405b-aa7b-58df-6ed3163f1e56/00042282000729.rgb.jpg/600x600bb.jpg" },
+        /* 12 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Manureva", a: "Alain Chamfort" },
+        { t: "Big Bisou", a: "Carlos", q: "Carlos Big Bisou La fete avec Carlos",
+          disque: "la fete avec carlos", voulue: true },
+        { t: "La Dernière Séance", a: "Eddy Mitchell" },
+        { t: "J'ai encore rêvé d'elle", a: "Il était une fois" },
+        { t: "Rockollection", a: "Laurent Voulzy" },
+        { t: "L'Oiseau et l'Enfant", a: "Marie Myriam" },
+        { t: "Que Marianne était jolie", a: "Michel Delpech" },
+        { t: "Les Vacances au bord de la mer", a: "Michel Jonasz" },
+        { t: "Emmène-moi danser ce soir", a: "Michèle Torr" },
+        { t: "Les P'tites Femmes de Pigalle", a: "Serge Lama" },
+        { t: "Les Rois mages", a: "Sheila" },
+        { t: "Comme un garçon", a: "Sylvie Vartan" }
       ]
     },
     {
