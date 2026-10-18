@@ -127,7 +127,26 @@ var Playlists = (function () {
           q: "Dead or Alive You Spin Me Round Like a Record Youthquake",
           altT: ["You Spin Me Round"] },
         { t: "Walk Like an Egyptian", a: "The Bangles", q: "The Bangles Walk Like an Egyptian Different Light" },
-        { t: "Boys (Summertime Love)", a: "Sabrina", q: "Sabrina Boys Summertime Love", altT: ["Boys"] }
+        { t: "Boys (Summertime Love)", a: "Sabrina", q: "Sabrina Boys Summertime Love", altT: ["Boys"] },
+        /* 12 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Le Rital", a: "Claude Barzotti" },
+        { t: "Toi mon toit", a: "Elli Medeiros" },
+        { t: "Si j'étais président", a: "Gérard Lenorman" },
+        { t: "On va s'aimer", a: "Gilbert Montagné" },
+        { t: "Ville de lumière", a: "Gold", q: "Ville de lumière Gold groupe", interprete: "Gold",
+          /* Le maxi 45 tours : « GOLD » et « VILLE DE LUMIÈRE » en gros, le
+             groupe dessous. On garde le son de l'album, pas la version longue. */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/47/20/0b/47200b0e-06f5-dcbb-904a-7be4b82c29b9/4099964124781.jpg/600x600bb.jpg" },
+        { t: "Le Géant de papier", a: "Jean-Jacques Lafon",
+          /* Les compilations ne disaient rien de lui ; sa propre anthologie
+             porte son nom, le titre de la chanson, et son visage. */
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/88/98/f2/8898f2c2-c1b6-d1e3-4079-4ba63e98197b/3596974934993_cover.jpg/600x600bb.jpg" },
+        { t: "Juste une illusion", a: "Jean-Louis Aubert" },
+        { t: "C'est bon pour le moral", a: "La Compagnie Créole" },
+        { t: "Chante", a: "Les Forbans", q: "Chante Les Forbans", interprete: "Les Forbans" },
+        { t: "Le Parking des anges", a: "Marc Lavoine" },
+        { t: "Une femme amoureuse", a: "Mireille Mathieu" },
+        { t: "J'ai vu", a: "Niagara" }
       ]
     },
     {
