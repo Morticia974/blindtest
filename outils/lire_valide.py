@@ -33,11 +33,17 @@ def lire(source, combien):
             continue
         nu = m.group(2).replace(BS, u"").replace(u"~~", u"")
         corps, fleche = (nu.split(u"=>", 1) + [u""])[:2]
-        bouts = re.split(r"\s*\.{2,}\s*", corps.strip())
+        # La ligne de pointillés est entouree d'espaces ; les points de
+        # suspension d'un titre collent au mot qui precede. Sans cette
+        # nuance, « Chante... Comme si tu devais mourir demain .. Michel
+        # Fugain » se lisait « Chante » / « Comme si tu devais mourir
+        # demain », et le vrai artiste passait a la trappe. On prend aussi
+        # le DERNIER morceau, pas le deuxieme, pour la meme raison.
+        bouts = re.split(r"\s+\.{2,}\s+", corps.strip())
         if len(bouts) < 2:          # un titre de section, pas un morceau
             continue
         titre = bouts[0].strip(u" .")
-        artiste = bouts[1].strip(u" .")
+        artiste = bouts[-1].strip(u" .")
 
         note = fleche.strip()
         if REMARQUE.search(artiste):
