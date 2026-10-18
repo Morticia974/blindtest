@@ -336,35 +336,5 @@
       "t": "J'ai vu",
       "a": "Niagara"
     }
-  ],
-  "annees90": [
-    {
-      "t": "Je m'appelle Hélène",
-      "a": "Hélène",
-      "q": "Je m'appelle Hélène Hélène Rollès",
-      "interprete": "Hélène"
-    },
-    {
-      "t": "Tout",
-      "a": "Lara Fabian",
-      "q": "Tout Lara Fabian Pure",
-      "interprete": "Lara Fabian"
-    },
-    {
-      "t": "L'Autre Finistère",
-      "a": "Les Innocents"
-    },
-    {
-      "t": "Tombé pour elle",
-      "a": "Pascal Obispo"
-    }
-  ],
-  "annees2010": [
-    {
-      "t": "On ira",
-      "a": "Zaz",
-      "q": "On ira Zaz Recto Verso",
-      "interprete": "Zaz"
-    }
   ]
 }

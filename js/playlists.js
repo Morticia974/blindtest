@@ -213,7 +213,13 @@ var Playlists = (function () {
         // Sur son album de 1996 plutôt que sur la compilation « Soon ».
         { t: "Dieu m'a donné la foi", a: "Ophélie Winter",
           q: "Ophélie Winter Dieu m'a donné la foi No Soucy" },
-        { t: "Lucie", a: "Pascal Obispo", q: "Pascal Obispo Lucie Superflu", lgT: "fr", lgA: "fr" }
+        { t: "Lucie", a: "Pascal Obispo", q: "Pascal Obispo Lucie Superflu", lgT: "fr", lgA: "fr" },
+        /* 4 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Je m'appelle Hélène", a: "Hélène", q: "Je m'appelle Hélène Hélène Rollès",
+          interprete: "Hélène" },
+        { t: "Tout", a: "Lara Fabian", q: "Tout Lara Fabian Pure", interprete: "Lara Fabian" },
+        { t: "L'Autre Finistère", a: "Les Innocents" },
+        { t: "Tombé pour elle", a: "Pascal Obispo" }
       ]
     },
     {
@@ -1822,7 +1828,9 @@ var Playlists = (function () {
         { t: "Le sens de la vie", a: "Tal", interprete: "Tal" },
         /* 1 morceaux validés par Audrey le 17/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Carmen", a: "Stromae", q: "Carmen Stromae Racine carrée", interprete: "Stromae",
-          disque: "Racine carrée" }
+          disque: "Racine carrée" },
+        /* 1 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "On ira", a: "Zaz", q: "On ira Zaz Recto Verso", interprete: "Zaz" }
       ]
     },
     {
