@@ -72,7 +72,47 @@ def synchroniser():
     return vues, changees
 
 
+def replacer():
+    """Remet chaque fiche d'audit a la place qu'elle occupe dans le jeu.
+
+       Une fiche ne porte pas seulement un titre : elle porte sa categorie,
+       son rang, le nom et l'emoji de sa manche, et c'est la-dessus que les
+       pages de verif se construisent. Deplacer un morceau dans la playlist
+       — « Macarena » des Annees 90 au Dancefloor — laissait donc l'audit
+       raconter l'ancienne histoire, et la page affichait 99 morceaux la ou
+       le jeu en avait 100. Pire : toutes les fiches qui suivaient le trou
+       gardaient leur ancien rang.
+
+       On refait le calcul a chaque passage, depuis la playlist qui fait foi."""
+    s = E.lire()
+    d = json.load(io.open(AUDIT, encoding="utf-8"))
+    manches = {}
+    for m in re.finditer(r"id: '([a-z0-9]+)'(.*?)pistes", s, re.S):
+        nom = re.search(r'nom: "([^"]+)"', m.group(2))
+        emo = re.search(r'emoji: "([^"]+)"', m.group(2))
+        manches[m.group(1)] = (nom.group(1) if nom else m.group(1),
+                               emo.group(1) if emo else u"")
+
+    bouge = 0
+    for idm, (nom, emoji) in manches.items():
+        for n in range(len(E.entrees(s, idm))):
+            e = d.get(u"%s#%d" % (idm, n))
+            if e and (e.get("cat"), e.get("i"), e.get("nom")) != (idm, n, nom):
+                e["cat"], e["i"], e["nom"], e["emoji"] = idm, n, nom, emoji
+                bouge += 1
+
+    if bouge:
+        shutil.copy(AUDIT, AUDIT + ".avant")
+        io.open(AUDIT + ".tmp", "w", encoding="utf-8").write(
+            json.dumps(d, ensure_ascii=False))
+        shutil.move(AUDIT + ".tmp", AUDIT)
+    return bouge
+
+
 if __name__ == "__main__":
+    bouge = replacer()
+    if bouge:
+        print(u"%d fiche(s) remises à leur place dans l'audit" % bouge)
     vues, changees = synchroniser()
     print(u"%d pochettes choisies à la main dans la playlist" % vues)
     for c in changees:
