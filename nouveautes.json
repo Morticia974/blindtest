@@ -234,8 +234,10 @@
     {
       "t": "Don't You Worry Child",
       "a": "Swedish House Mafia",
-      "q": "Swedish House Mafia Don't You Worry Child single",
-      "disque": "Don't You Worry Child"
+      "q": "Swedish House Mafia Don't You Worry Child radio edit",
+      "disque": "until now dont you worry child et john martin radio edit",
+      "interprete": "Swedish House Mafia",
+      "voulue": true
     },
     {
       "t": "Tacata",
@@ -283,8 +285,9 @@
         "Wes Madiko"
       ],
       "interprete": "Wes",
-      "q": "Wes Alane single",
-      "disque": "Alane - Single"
+      "q": "Wes Alane Todd Terry",
+      "disque": "alane ep alane todd terrys radio mix",
+      "voulue": true
     },
     {
       "t": "Saturday Night",
