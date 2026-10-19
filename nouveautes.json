@@ -8,10 +8,15 @@
       "t": "Around the World",
       "a": "ATC",
       "altA": [
+        "ATC",
         "A Touch of Class"
       ],
-      "interprete": "ATC",
-      "q": "ATC Around the World"
+      "interprete": "A Touch of Class",
+      "q": "A Touch of Class Around the World La La La La La",
+      "disque": "Planet Pop",
+      "altT": [
+        "Around the World La La La La La"
+      ]
     },
     {
       "t": "Levels",
@@ -24,10 +29,6 @@
     {
       "t": "Ride on Time",
       "a": "Black Box"
-    },
-    {
-      "t": "Pump It",
-      "a": "Black Eyed Peas"
     },
     {
       "t": "Rock This Party (Everybody Dance Now)",
@@ -92,7 +93,8 @@
     },
     {
       "t": "Chihuahua",
-      "a": "DJ BoBo"
+      "a": "DJ BoBo",
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/96/94/6e/96946e1c-010c-03c7-55b2-7f8e9a9062a0/7619978103229_3000.jpg/600x600bb.jpg"
     },
     {
       "t": "Hey Baby",
@@ -132,7 +134,13 @@
     },
     {
       "t": "Think About the Way",
-      "a": "Ice MC"
+      "a": "Ice MC",
+      "altA": [
+        "Hayce Lemsi",
+        "Ice M C",
+        "Icemc",
+        "Ice Emcee"
+      ]
     },
     {
       "t": "SexyBack",
@@ -148,7 +156,11 @@
     },
     {
       "t": "Poker Face",
-      "a": "Lady Gaga"
+      "a": "Lady Gaga",
+      "q": "Lady Gaga Poker Face Hits of 2009",
+      "disque": "hits of 2009 poker face",
+      "interprete": "Lady Gaga",
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/1b/98/88/1b9888da-6a1f-bff0-ec03-518f445019f6/19UMGIM73435.rgb.jpg/600x600bb.jpg"
     },
     {
       "t": "Funkytown",
@@ -207,7 +219,13 @@
     },
     {
       "t": "Ecuador",
-      "a": "Sash!"
+      "a": "Sash!",
+      "altA": [
+        "Sache",
+        "Sash",
+        "Sasch",
+        "Sacha"
+      ]
     },
     {
       "t": "The Power",
@@ -215,16 +233,20 @@
     },
     {
       "t": "Don't You Worry Child",
-      "a": "Swedish House Mafia"
+      "a": "Swedish House Mafia",
+      "q": "Swedish House Mafia Don't You Worry Child single",
+      "disque": "Don't You Worry Child"
     },
     {
       "t": "Tacata",
       "a": "Tacabro",
-      "interprete": "Tacabro"
+      "interprete": "Tacabro",
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/48/42/81/4842819a-cb3f-a405-fed3-e705782a8829/cover.jpg/600x600bb.jpg"
     },
     {
       "t": "Break Your Heart",
-      "a": "Taio Cruz"
+      "a": "Taio Cruz",
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/77/d3/bf/77d3bfa7-d2e6-b678-0a6c-0e772600e326/11UMGIM13376.rgb.jpg/600x600bb.jpg"
     },
     {
       "t": "Dynamite",
@@ -236,7 +258,10 @@
     },
     {
       "t": "Up & Down",
-      "a": "Vengaboys"
+      "a": "Vengaboys",
+      "altT": [
+        "Up and Down"
+      ]
     },
     {
       "t": "In the Navy",
@@ -258,7 +283,8 @@
         "Wes Madiko"
       ],
       "interprete": "Wes",
-      "q": "Wes Alane"
+      "q": "Wes Alane single",
+      "disque": "Alane - Single"
     },
     {
       "t": "Saturday Night",

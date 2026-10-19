@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wes — Alane</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>Wes — Alane</h1>
+<p class="sous">33 versions différentes chez Apple. Écoute-les et dis-moi le numéro de celle que tu connais.</p>
+</header><div class="liste">
+<div class="piste">
+  <div class="num">1</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/b8/21/0b/b8210b3f-470b-91f4-a599-be0fab957cdd/190295201500.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane <span class="doute">celle du jeu</span></p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 2 min 55</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/50/85/75/508575fa-62d7-12d5-34c1-d28f48042742/mzaf_17946393460320846922.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - Single (2020)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">2</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/06/36/39/063639a5-64b7-0d5b-30fb-941929add001/3-21-cover-master.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 19</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/48/f9/ee/48f9eef7-63e6-713b-9fd1-191b8f4de5f4/mzaf_16714390367537946734.plus.aac.p.m4a"></audio>
+    <p class="detail">Roadkill Remix, Vol. 3.21 (1998)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">3</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/ec/3d/13/ec3d1306-898a-96f9-2036-68dfe803d90c/190295105266.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane</p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 2 min 55</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f7/11/87/f71187e9-39b8-bcab-5caf-c9df83083e9b/mzaf_503744123363423426.plus.aac.p.m4a"></audio>
+    <p class="detail">IIII (2020)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">4</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/f7/04/fb/f704fbbe-3065-3496-3230-f37320503d8a/20UMGIM64396.rgb.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane</p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 2 min 56</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9a/cc/70/9acc70e7-b5ba-e4a7-8bc2-ae7493f8011f/mzaf_13638875390844134347.plus.aac.p.m4a"></audio>
+    <p class="detail">NRJ Music Awards 2020 (2020)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">5</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/0e/2c/af/0e2caf50-0bd7-67a0-e995-4c6d5df0c089/21UMGIM31654.rgb.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane</p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 2 min 56</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9a/98/00/9a9800bc-0585-a64c-f8b4-eaeb0c5ed02b/mzaf_1694459965052091967.plus.aac.p.m4a"></audio>
+    <p class="detail">NRJ Good Vibes 2021 (2020)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">6</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Cut Cut Disco Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 5 min 36</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/47/57/6e/47576e9e-60f7-fb2b-7f6f-57d9f7fe5a1c/mzaf_15418024302737453762.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">7</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (DJ Greek's Dallenger Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 5 min 50</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/b9/48/89/b948892c-25e6-c530-9cc9-eb52d5483f25/mzaf_4708014359644069210.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">8</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (DJ Greek's Dark Club Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 7 min 04</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/6f/93/7e/6f937e60-c8d3-2d43-cc9b-e709a541dd68/mzaf_4554018875494504984.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">9</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/69/de/39/69de3991-996c-c34f-3580-c90ece7ead3d/190295186746.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Don Diablo Remix)</p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 3 min 20</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/14/6c/89/146c8942-8b95-604f-d8d4-e1aba1810d73/mzaf_16222525353115970164.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane (Don Diablo Remix) - Single (2020)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">10</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Pepe's Call of The City Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 48</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8b/f4/fb/8bf4fbb4-38d4-5950-d64b-8e613f1aad44/mzaf_6212309116402899969.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">11</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Pepe's Road to Africa Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 50</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/fc/e9/53/fce953a9-d0a3-5e86-15b3-62d3d33d7e85/mzaf_6826596779385281110.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">12</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/12/62/53/1262533e-fbec-de2f-563f-11bc496eb8db/886448068389.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Philcat Flashing Widow Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/31/48/a9/3148a927-d16d-7a1d-1696-a1a8b15e14a9/mzaf_10596658424622956425.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">13</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Philcat Flashing Widow Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/93/d9/69/93d96919-55eb-72d3-5368-ad054890816f/mzaf_5933422049404138447.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">14</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0c/2c/16/0c2c163f-4a73-754e-c53e-f28f5d60d48a/886448074854.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's A Cappella)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 35</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3a/2b/ed/3a2bed03-58e6-880e-7f97-d9bc7a983f83/mzaf_4783520419878527475.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">15</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's A Cappella)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 35</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/09/a1/3f/09a13fb2-5c30-c5dc-2cf7-2ada96559b3f/mzaf_2577016064139286876.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">16</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0c/2c/16/0c2c163f-4a73-754e-c53e-f28f5d60d48a/886448074854.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Club Remix Full Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 8 min 04</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c7/09/ee/c709ee4e-7c1d-555c-9747-3b8e29e6b8b5/mzaf_9861928242468208172.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">17</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Club Remix Full Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 8 min 04</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/75/3a/42/753a42e3-1dd2-67c0-cd9c-fb498fd9764f/mzaf_10611795720372810789.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">18</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0c/2c/16/0c2c163f-4a73-754e-c53e-f28f5d60d48a/886448074854.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Club Remix Short Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 37</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/65/c5/bd/65c5bd08-a6b5-b51b-a5a5-917a6e4f39c2/mzaf_11656326232216073765.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">19</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Club Remix Short Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 37</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/61/89/5e/61895e34-cdc4-9c32-7c85-b4ddca5e3a01/mzaf_9380180470280786824.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">20</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0c/2c/16/0c2c163f-4a73-754e-c53e-f28f5d60d48a/886448074854.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Drop Remix Full Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 8 min 04</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/61/f9/de/61f9dee5-73b9-1b92-8e40-92c70fda959e/mzaf_9702460014750069287.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">21</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Drop Remix Full Version)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 8 min 04</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/81/bb/4b/81bb4bdc-d9bf-31d2-1574-2001efa3eb54/mzaf_3984902300990513213.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">22</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/0c/2c/16/0c2c163f-4a73-754e-c53e-f28f5d60d48a/886448074854.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Radio Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 40</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f0/17/15/f017158f-b91c-e97e-1c1e-5a759871b8b3/mzaf_16722770433200747326.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">23</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Todd Terry's Radio Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 3 min 40</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/67/c5/d8/67c5d81b-95e5-8e9a-a7fe-83fb8d07d3ef/mzaf_5557668846873038643.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">24</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/12/62/53/1262533e-fbec-de2f-563f-11bc496eb8db/886448068389.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran A Cappella)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/eb/76/36/eb7636ca-3946-ab6e-059e-8293234d82c7/mzaf_557614962578567195.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">25</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran A Cappella)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8e/98/51/8e9851f1-6f1e-022d-bcd1-076eb8a50699/mzaf_9824860045245595867.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">26</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/12/62/53/1262533e-fbec-de2f-563f-11bc496eb8db/886448068389.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran Instrumental Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 40</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ca/b7/7e/cab77edc-1953-8158-3e61-4e2a18968ea7/mzaf_2852459890105123879.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">27</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran Instrumental Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 40</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/ce/b3/93/ceb393f6-1e88-3ead-1487-17a9c8a39d2c/mzaf_17237495207565158845.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">28</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/12/62/53/1262533e-fbec-de2f-563f-11bc496eb8db/886448068389.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran Main Pass Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/90/d0/09/90d009b6-9bc7-2630-4d41-16fc2201ef38/mzaf_3317058812292071723.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane - EP (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">29</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Tony Moran Main Pass Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 39</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/05/71/91/057191bc-6f7e-64c1-bd3c-4cce5a2304e3/mzaf_8247526694000001755.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1997)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">30</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Trouser Enthusiasts Orgasmic Apparition Mix)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 10 min 42</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/8d/54/35/8d5435ea-998b-7ab9-1c17-cd323e1a3159/mzaf_18336273030431280789.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">31</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Trouser Enthusiasts - Radio Edit)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 4 min 09</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/b1/f7/00/b1f700a6-e5e6-d407-2fa7-414332e65be0/mzaf_11233047520732341651.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">32</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/e5/9f/6d/e59f6d87-4f56-9291-df1c-e64ef8171bb5/886449790449.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Trouser Enthusiasts Spectrophilliac Dub)</p>
+    <p class="detail">Wes &nbsp;·&nbsp; 6 min 55</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/9e/e1/6e/9ee16eb6-89b0-2cc1-2a40-ac4782f83cec/mzaf_5926231142291988785.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane Remixes (1999)</p>
+  </div>
+</div>
+<div class="piste">
+  <div class="num">33</div>
+  <img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/8f/b6/40/8fb640c8-20e7-7e3e-6384-e8fbb73d25a9/190295186715.jpg/600x600bb.jpg">
+  <div>
+    <p class="reponse">Alane (Yves V Remix)</p>
+    <p class="detail">Robin Schulz &amp; Wes &nbsp;·&nbsp; 2 min 26</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/93/77/7f/93777f06-b05a-6d39-a480-6fd78b73c0fa/mzaf_13473650289816925101.plus.aac.p.m4a"></audio>
+    <p class="detail">Alane (Yves V Remix) - Single (2020)</p>
+  </div>
+</div>
+</div>
+</body>
+</html>
