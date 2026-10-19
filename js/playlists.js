@@ -146,7 +146,15 @@ var Playlists = (function () {
         { t: "Chante", a: "Les Forbans", q: "Chante Les Forbans", interprete: "Les Forbans" },
         { t: "Le Parking des anges", a: "Marc Lavoine" },
         { t: "Une femme amoureuse", a: "Mireille Mathieu" },
-        { t: "J'ai vu", a: "Niagara" }
+        { t: "J'ai vu", a: "Niagara" },
+        /* 5 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Relax", a: "Frankie Goes to Hollywood" },
+        { t: "La Danse des canards", a: "J.J. Lionel",
+          altA: ["Gigi Lionel", "Jiji Lionel", "JJ Lionel", "Ji Ji Lionel", "Jay Jay Lionel", "Lionel"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/b3/f0/14b3f06c-5bc6-9f8e-fa2a-188108cee926/cover.jpg/600x600bb.jpg" },
+        { t: "Walking on Sunshine", a: "Katrina & The Waves" },
+        { t: "Footloose", a: "Kenny Loggins" },
+        { t: "Maniac", a: "Michael Sembello" }
       ]
     },
     {
