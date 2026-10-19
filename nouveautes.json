@@ -268,28 +268,5 @@
       "t": "My Oh My",
       "a": "Aqua"
     }
-  ],
-  "annees90": [
-    {
-      "t": "Jump Around",
-      "a": "House of Pain"
-    },
-    {
-      "t": "Dur dur d'être bébé",
-      "a": "Jordy"
-    },
-    {
-      "t": "U Can't Touch This",
-      "a": "MC Hammer",
-      "altT": [
-        "Can't Touch 6",
-        "Can't Touch Six",
-        "Can't Touch This"
-      ]
-    },
-    {
-      "t": "Ice Ice Baby",
-      "a": "Vanilla Ice"
-    }
   ]
 }

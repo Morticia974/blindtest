@@ -246,7 +246,13 @@ var Playlists = (function () {
           interprete: "Hélène" },
         { t: "Tout", a: "Lara Fabian", q: "Tout Lara Fabian Pure", interprete: "Lara Fabian" },
         { t: "L'Autre Finistère", a: "Les Innocents" },
-        { t: "Tombé pour elle", a: "Pascal Obispo" }
+        { t: "Tombé pour elle", a: "Pascal Obispo" },
+        /* 4 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Jump Around", a: "House of Pain" },
+        { t: "Dur dur d'être bébé", a: "Jordy" },
+        { t: "U Can't Touch This", a: "MC Hammer",
+          altT: ["Can't Touch 6", "Can't Touch Six", "Can't Touch This"] },
+        { t: "Ice Ice Baby", a: "Vanilla Ice" }
       ]
     },
     {
