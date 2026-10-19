@@ -1,0 +1,322 @@
+{
+  "dancefloor": [
+    {
+      "t": "Let the Beat Control Your Body",
+      "a": "2 Unlimited"
+    },
+    {
+      "t": "Around the World",
+      "a": "ATC",
+      "altA": [
+        "A Touch of Class"
+      ],
+      "interprete": "ATC",
+      "q": "ATC Around the World"
+    },
+    {
+      "t": "Levels",
+      "a": "Avicii"
+    },
+    {
+      "t": "Satisfaction",
+      "a": "Benny Benassi"
+    },
+    {
+      "t": "Ride on Time",
+      "a": "Black Box"
+    },
+    {
+      "t": "Pump It",
+      "a": "Black Eyed Peas"
+    },
+    {
+      "t": "Rock This Party (Everybody Dance Now)",
+      "a": "Bob Sinclar",
+      "altT": [
+        "Rock This Party"
+      ]
+    },
+    {
+      "t": "Daddy Cool",
+      "a": "Boney M",
+      "altA": [
+        "Boney M."
+      ],
+      "interprete": "Boney M."
+    },
+    {
+      "t": "Toxic",
+      "a": "Britney Spears"
+    },
+    {
+      "t": "Gonna Make You Sweat (Everybody Dance Now)",
+      "a": "C+C Music Factory",
+      "altT": [
+        "Gonna Make You Sweat"
+      ]
+    },
+    {
+      "t": "How Deep Is Your Love",
+      "a": "Calvin Harris"
+    },
+    {
+      "t": "Summer",
+      "a": "Calvin Harris"
+    },
+    {
+      "t": "Tic, Tic Tac",
+      "a": "Carrapicho",
+      "q": "Carrapicho Tic Tic Tac",
+      "interprete": "Carrapicho",
+      "disque": "Tic, Tic, Tac - Single"
+    },
+    {
+      "t": "Attention",
+      "a": "Charlie Puth"
+    },
+    {
+      "t": "Mr. Vain",
+      "a": "Culture Beat"
+    },
+    {
+      "t": "Da Funk",
+      "a": "Daft Punk"
+    },
+    {
+      "t": "Sexy Chick",
+      "a": "David Guetta"
+    },
+    {
+      "t": "When Love Takes Over",
+      "a": "David Guetta"
+    },
+    {
+      "t": "Chihuahua",
+      "a": "DJ BoBo"
+    },
+    {
+      "t": "Hey Baby",
+      "a": "DJ Ötzi"
+    },
+    {
+      "t": "Turn Down for What",
+      "a": "DJ Snake"
+    },
+    {
+      "t": "New Rules",
+      "a": "Dua Lipa"
+    },
+    {
+      "t": "Move Your Body",
+      "a": "Eiffel 65"
+    },
+    {
+      "t": "Call On Me",
+      "a": "Eric Prydz"
+    },
+    {
+      "t": "Good Feeling",
+      "a": "Flo Rida"
+    },
+    {
+      "t": "Wild Ones",
+      "a": "Flo Rida"
+    },
+    {
+      "t": "Infinity 2008",
+      "a": "Guru Josh Project",
+      "altT": [
+        "Infinity"
+      ],
+      "interprete": "Guru Josh Project"
+    },
+    {
+      "t": "Think About the Way",
+      "a": "Ice MC"
+    },
+    {
+      "t": "SexyBack",
+      "a": "Justin Timberlake"
+    },
+    {
+      "t": "Be My Lover",
+      "a": "La Bouche"
+    },
+    {
+      "t": "Bad Romance",
+      "a": "Lady Gaga"
+    },
+    {
+      "t": "Poker Face",
+      "a": "Lady Gaga"
+    },
+    {
+      "t": "Funkytown",
+      "a": "Lipps Inc",
+      "altA": [
+        "Lipps, Inc."
+      ],
+      "interprete": "Lipps, Inc."
+    },
+    {
+      "t": "Sexy and I Know It",
+      "a": "LMFAO"
+    },
+    {
+      "t": "Can't Hold Us",
+      "a": "Macklemore & Ryan Lewis"
+    },
+    {
+      "t": "Hung Up",
+      "a": "Madonna"
+    },
+    {
+      "t": "Coco Jamboo",
+      "a": "Mr. President"
+    },
+    {
+      "t": "Hot in Herre",
+      "a": "Nelly"
+    },
+    {
+      "t": "Starships",
+      "a": "Nicki Minaj"
+    },
+    {
+      "t": "D.I.S.C.O.",
+      "a": "Ottawan",
+      "altT": [
+        "Disco"
+      ],
+      "q": "Ottawan DISCO",
+      "interprete": "Ottawan"
+    },
+    {
+      "t": "T'es OK",
+      "a": "Ottawan",
+      "altT": [
+        "T'es O.K.",
+        "T'es OK t'es bath t'es in"
+      ],
+      "q": "Ottawan T'es OK",
+      "interprete": "Ottawan"
+    },
+    {
+      "t": "Children",
+      "a": "Robert Miles"
+    },
+    {
+      "t": "Ecuador",
+      "a": "Sash!"
+    },
+    {
+      "t": "The Power",
+      "a": "Snap!"
+    },
+    {
+      "t": "Don't You Worry Child",
+      "a": "Swedish House Mafia"
+    },
+    {
+      "t": "Tacata",
+      "a": "Tacabro",
+      "interprete": "Tacabro"
+    },
+    {
+      "t": "Break Your Heart",
+      "a": "Taio Cruz"
+    },
+    {
+      "t": "Dynamite",
+      "a": "Taio Cruz"
+    },
+    {
+      "t": "Pump Up the Jam",
+      "a": "Technotronic"
+    },
+    {
+      "t": "Up & Down",
+      "a": "Vengaboys"
+    },
+    {
+      "t": "In the Navy",
+      "a": "Village People"
+    },
+    {
+      "t": "Y.M.C.A.",
+      "a": "Village People",
+      "altT": [
+        "YMCA"
+      ],
+      "q": "Village People YMCA",
+      "interprete": "Village People"
+    },
+    {
+      "t": "Alane",
+      "a": "Wes",
+      "altA": [
+        "Wes Madiko"
+      ],
+      "interprete": "Wes",
+      "q": "Wes Alane"
+    },
+    {
+      "t": "Saturday Night",
+      "a": "Whigfield"
+    },
+    {
+      "t": "My Oh My",
+      "a": "Aqua"
+    }
+  ],
+  "annees6070": [
+    {
+      "t": "Night Fever",
+      "a": "Bee Gees"
+    },
+    {
+      "t": "September",
+      "a": "Earth, Wind & Fire"
+    }
+  ],
+  "annees80": [
+    {
+      "t": "Relax",
+      "a": "Frankie Goes to Hollywood"
+    },
+    {
+      "t": "La Danse des canards",
+      "a": "J.J. Lionel"
+    },
+    {
+      "t": "Walking on Sunshine",
+      "a": "Katrina & The Waves"
+    },
+    {
+      "t": "Footloose",
+      "a": "Kenny Loggins"
+    },
+    {
+      "t": "Maniac",
+      "a": "Michael Sembello"
+    }
+  ],
+  "annees90": [
+    {
+      "t": "Jump Around",
+      "a": "House of Pain"
+    },
+    {
+      "t": "Dur dur d'être bébé",
+      "a": "Jordy"
+    },
+    {
+      "t": "U Can't Touch This",
+      "a": "MC Hammer"
+    },
+    {
+      "t": "Ice Ice Baby",
+      "a": "Vanilla Ice"
+    }
+  ]
+}
