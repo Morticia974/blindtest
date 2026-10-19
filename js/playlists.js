@@ -2163,7 +2163,10 @@ var Playlists = (function () {
         { t: "Emmène-moi danser ce soir", a: "Michèle Torr" },
         { t: "Les P'tites Femmes de Pigalle", a: "Serge Lama" },
         { t: "Les Rois mages", a: "Sheila" },
-        { t: "Comme un garçon", a: "Sylvie Vartan" }
+        { t: "Comme un garçon", a: "Sylvie Vartan" },
+        /* 2 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Night Fever", a: "Bee Gees" },
+        { t: "September", a: "Earth, Wind & Fire" }
       ]
     },
     {
