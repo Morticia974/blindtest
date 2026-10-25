@@ -40,14 +40,11 @@
       "a": "Foo Fighters"
     },
     {
-      "t": "American Idiot",
-      "a": "Green Day"
-    },
-    {
-      "t": "Boulevard of Broken Dreams",
+      "t": "Holiday",
       "a": "Green Day",
       "interprete": "Green Day",
-      "q": "Green Day Boulevard of Broken Dreams American Idiot"
+      "q": "Green Day Holiday American Idiot",
+      "disque": "american idiot holiday"
     },
     {
       "t": "Welcome to the Jungle",
@@ -193,7 +190,10 @@
       "a": "t.A.T.u.",
       "interprete": "t.A.T.u.",
       "altA": [
+        "Tatoo",
         "Tatu",
+        "Tatou",
+        "Tattoo",
         "TATU"
       ]
     },
@@ -237,7 +237,13 @@
     },
     {
       "t": "More Than a Feeling",
-      "a": "Boston"
+      "a": "Boston",
+      "altT": [
+        "Morzine Feeling",
+        "Mor Than a Feeling",
+        "More Then a Feeling",
+        "Morzine a Feeling"
+      ]
     },
     {
       "t": "Jump",
