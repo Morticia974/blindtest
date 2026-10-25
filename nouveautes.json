@@ -248,6 +248,18 @@
     {
       "t": "Jump",
       "a": "Van Halen"
+    },
+    {
+      "t": "Jailhouse Rock",
+      "a": "Elvis Presley",
+      "interprete": "Elvis Presley",
+      "q": "Elvis Presley Jailhouse Rock Golden Records",
+      "disque": "elvis golden records jailhouse rock",
+      "altA": [
+        "Elvis",
+        "Presley",
+        "Elvisse Pressley"
+      ]
     }
   ]
 }
