@@ -154,7 +154,10 @@ var Playlists = (function () {
           pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/b3/f0/14b3f06c-5bc6-9f8e-fa2a-188108cee926/cover.jpg/600x600bb.jpg" },
         { t: "Walking on Sunshine", a: "Katrina & The Waves" },
         { t: "Footloose", a: "Kenny Loggins" },
-        { t: "Maniac", a: "Michael Sembello" }
+        { t: "Maniac", a: "Michael Sembello" },
+        /* 2 morceaux validés par Audrey le 25/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "In the Army Now", a: "Status Quo" },
+        { t: "Gimme All Your Lovin'", a: "ZZ Top" }
       ]
     },
     {
