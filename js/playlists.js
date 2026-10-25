@@ -254,7 +254,9 @@ var Playlists = (function () {
         { t: "Dur dur d'être bébé", a: "Jordy" },
         { t: "U Can't Touch This", a: "MC Hammer",
           altT: ["Can't Touch 6", "Can't Touch Six", "Can't Touch This"] },
-        { t: "Ice Ice Baby", a: "Vanilla Ice" }
+        { t: "Ice Ice Baby", a: "Vanilla Ice" },
+        /* 1 morceaux validés par Audrey le 25/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Ironic", a: "Alanis Morissette" }
       ]
     },
     {
@@ -2255,7 +2257,10 @@ var Playlists = (function () {
         { t: "Comme un garçon", a: "Sylvie Vartan" },
         /* 2 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Night Fever", a: "Bee Gees" },
-        { t: "September", a: "Earth, Wind & Fire" }
+        { t: "September", a: "Earth, Wind & Fire" },
+        /* 2 morceaux validés par Audrey le 25/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Go Your Own Way", a: "Fleetwood Mac" },
+        { t: "Hold the Line", a: "Toto" }
       ]
     },
     {

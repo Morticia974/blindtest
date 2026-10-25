@@ -232,21 +232,5 @@
       "t": "Jump",
       "a": "Van Halen"
     }
-  ],
-  "annees90": [
-    {
-      "t": "Ironic",
-      "a": "Alanis Morissette"
-    }
-  ],
-  "annees6070": [
-    {
-      "t": "Go Your Own Way",
-      "a": "Fleetwood Mac"
-    },
-    {
-      "t": "Hold the Line",
-      "a": "Toto"
-    }
   ]
 }
