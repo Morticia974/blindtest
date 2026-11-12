@@ -26,7 +26,15 @@
       "a": "Hawaï police d'État",
       "interprete": "Mort Stevens",
       "q": "Mort Stevens Hawaii Five-O",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/16397.jpg"
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/16397.jpg",
+      "altA": [
+        "Hawaii 5-0",
+        "Hawaii Five-0",
+        "Hawaii Five O",
+        "Hawaii five zero",
+        "Hawaii 5 0",
+        "Hawai 5 0"
+      ]
     },
     {
       "t": "Mr. Bean Theme",
@@ -178,7 +186,12 @@
       "a": "You",
       "interprete": "Blake Neely",
       "q": "Blake Neely Hello You Netflix",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/564/1412472.jpg"
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/564/1412472.jpg",
+      "altA": [
+        "Vous",
+        "You la série",
+        "Youh"
+      ]
     },
     {
       "t": "The Lord of the Rings: The Rings of Power",
@@ -241,7 +254,7 @@
       "a": "MacGyver",
       "interprete": "MacGyver",
       "q": "MacGyver theme television",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/282/705919.jpg"
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/237/592622.jpg"
     },
     {
       "t": "Sherlock",
@@ -293,13 +306,6 @@
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/70/176011.jpg"
     },
     {
-      "t": "Greenback Boogie",
-      "a": "Suits",
-      "interprete": "Ima Robot",
-      "q": "Ima Robot Greenback Boogie Suits",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/393/983536.jpg"
-    },
-    {
       "t": "Paradise Circus",
       "a": "Luther",
       "interprete": "Massive Attack",
@@ -342,18 +348,81 @@
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/478/1195717.jpg"
     },
     {
-      "t": "Invincible",
-      "a": "Invincible",
-      "interprete": "John Paesano",
-      "q": "John Paesano Invincible main title",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/618/1545777.jpg"
+      "t": "Hey Jessie",
+      "a": "Jessie",
+      "interprete": "Debby Ryan",
+      "q": "Debby Ryan Hey Jessie Disney",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/24/61588.jpg"
     },
     {
-      "t": "Endless Forms Most Beautiful",
-      "a": "Orphan Black",
-      "interprete": "Trevor Yuile",
-      "q": "Trevor Yuile Orphan Black",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/484/1210257.jpg"
+      "t": "The Best of Both Worlds",
+      "a": "Hannah Montana",
+      "interprete": "Hannah Montana",
+      "q": "Hannah Montana The Best of Both Worlds soundtrack",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/15391.jpg"
+    },
+    {
+      "t": "Everything Is Not As It Seems",
+      "a": "Les Sorciers de Waverly Place",
+      "interprete": "Selena Gomez",
+      "q": "Selena Gomez Everything Is Not What It Seems",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/15629.jpg"
+    },
+    {
+      "t": "Supernatural",
+      "a": "Raven",
+      "interprete": "Raven-Symoné",
+      "q": "Raven Symone Supernatural That's So Raven",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/8/20019.jpg"
+    },
+    {
+      "t": "Leave It All to Me",
+      "a": "iCarly",
+      "interprete": "Miranda Cosgrove",
+      "q": "Miranda Cosgrove Leave It All to Me iCarly theme",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/404/1011740.jpg"
+    },
+    {
+      "t": "Make It Shine",
+      "a": "Victorious",
+      "interprete": "Victorious Cast",
+      "q": "Victorious Cast Make It Shine",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/441/1102783.jpg"
+    },
+    {
+      "t": "Found a Way",
+      "a": "Drake et Josh",
+      "interprete": "Drake Bell",
+      "q": "Drake Bell Found a Way",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/258/647005.jpg"
+    },
+    {
+      "t": "Call Me, Beep Me!",
+      "a": "Kim Possible",
+      "interprete": "Christina Milian",
+      "q": "Christina Milian Call Me Beep Me Kim Possible",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/158/396340.jpg"
+    },
+    {
+      "t": "Today Is Gonna Be a Great Day",
+      "a": "Phineas et Ferb",
+      "interprete": "Bowling for Soup",
+      "q": "Bowling for Soup Today Is Gonna Be a Great Day Phineas",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/595/1489325.jpg"
+    },
+    {
+      "t": "Shake It Up",
+      "a": "Shake It Up",
+      "interprete": "Selena Gomez",
+      "q": "Selena Gomez Shake It Up Disney",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/12/30372.jpg"
+    },
+    {
+      "t": "Here I Am",
+      "a": "La Vie de palace de Zack et Cody",
+      "interprete": "Geek Music",
+      "q": "Here I Am Suite Life of Zack and Cody theme",
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/453/1132771.jpg"
     }
   ]
 }
