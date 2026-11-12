@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⭐ NOUVEAUTÉS — OST animés</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🍥 ⭐ NOUVEAUTÉS — OST animés</h1>
+<p class="sous">46 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/a2/fc/d3a2fcf0-8ea8-1eba-1bce-499373326c53/4562144210814_cov.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/a2/fc/d3a2fcf0-8ea8-1eba-1bce-499373326c53/4562144210814_cov.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dragon Ball Z</p>
+    <p class="detail">musique : CHA-LA HEAD-CHA-LA</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/cd/9f/92/cd9f92f4-e289-64ae-5655-60700be8a5bf/mzaf_10572068565068451184.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/63/f2/1e/mzi.vhhkcvtl.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/63/f2/1e/mzi.vhhkcvtl.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dragon Ball</p>
+    <p class="detail">musique : Makafushigi Adventure</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e6/35/57/e63557e4-8e12-f5a8-6cdb-f85679a7edbe/mzaf_11680431081188851464.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features6/v4/27/8c/78/278c7842-60be-57a1-d77d-71d20618e581/V4HttpAssetRepositoryClient-ticket.bwzihhpj.jpg-2215192951068931557.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features6/v4/27/8c/78/278c7842-60be-57a1-d77d-71d20618e581/V4HttpAssetRepositoryClient-ticket.bwzihhpj.jpg-2215192951068931557.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Chevaliers du Zodiaque</p>
+    <p class="detail">musique : Pegasus Fantasy</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/Music4/v4/57/46/df/5746dfe2-5497-4d24-edbb-69401b13dc1c/mzaf_3910016554513963767.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/cc/ea/a7/cceaa747-1530-c473-11e6-1e1cfbdffb34/jacket_ESCB01207B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/cc/ea/a7/cceaa747-1530-c473-11e6-1e1cfbdffb34/jacket_ESCB01207B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nicky Larson</p>
+    <p class="detail">musique : Get Wild</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ba/17/f3/ba17f3e8-c00e-3741-7494-b169ffc2a4df/mzaf_187667507128768005.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/31/c6/95/31c69580-fee6-f41b-4573-4d57e43a4c8f/26UMGIM71663.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/31/c6/95/31c69580-fee6-f41b-4573-4d57e43a4c8f/26UMGIM71663.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ken le Survivant</p>
+    <p class="detail">musique : Ai wo Torimodose</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3c/36/a3/3c36a305-cb52-2b0a-050d-4c289e7112d6/mzaf_17727029190593074143.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/82/ac/73/82ac7333-2b57-091c-7d2b-f18798894931/ANTCD-A0000018254.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/82/ac/73/82ac7333-2b57-091c-7d2b-f18798894931/ANTCD-A0000018254.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Inuyasha</p>
+    <p class="detail">musique : CHANGE THE WORLD</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/30/84/b8/3084b877-1469-ee54-130e-444bed5d5fa0/mzaf_11241067620342181573.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ce/a6/3a/cea63a5f-7e15-d8d4-e85e-44e79d753841/VPCG-84702_990000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ce/a6/3a/cea63a5f-7e15-d8d4-e85e-44e79d753841/VPCG-84702_990000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Lupin III</p>
+    <p class="detail">musique : Lupin The Third</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/dc/47/63/dc476332-2d7b-fe93-e37a-c4251ba89eca/mzaf_10167056185543312179.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/be/59/2b/be592b54-496f-bd59-9e46-49fa2f45a717/VICL-61411.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/be/59/2b/be592b54-496f-bd59-9e46-49fa2f45a717/VICL-61411.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Samurai Champloo</p>
+    <p class="detail">musique : Battlecry</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/fa/be/45/fabe4575-dd38-33d4-346b-c52ed22ccc1b/mzaf_4828261970399400305.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a6/d7/41/a6d74192-4290-e482-718c-bdbc8248c912/25UM1IM01763.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a6/d7/41/a6d74192-4290-e482-718c-bdbc8248c912/25UM1IM01763.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Yuri on Ice</p>
+    <p class="detail">musique : History Maker</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2d/46/9f/2d469ff4-2034-21c5-82ec-9f83849387f2/mzaf_8836693281161716445.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3e/c2/c8/3ec2c890-bd51-5278-91c2-4cf45331a666/VPCC-82322.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/3e/c2/c8/3ec2c890-bd51-5278-91c2-4cf45331a666/VPCC-82322.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Parasyte</p>
+    <p class="detail">musique : Let Me Hear</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/20/b7/b9/20b7b9a6-82a6-0c61-ffd1-40fec9d3e023/mzaf_12393437252740216920.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/ca/b9/17/cab9176a-64ae-747e-6cc8-6461081281b0/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/ca/b9/17/cab9176a-64ae-747e-6cc8-6461081281b0/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">K-On!</p>
+    <p class="detail">musique : Don't say lazy</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/7d/f4/3f/7df43f62-108e-44e4-20d4-8440f68af686/mzaf_386205958702524788.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c5/1b/ae/c51bae20-91f8-4979-1ba6-42880b87dbb0/jacket_SVWC70005B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c5/1b/ae/c51bae20-91f8-4979-1ba6-42880b87dbb0/jacket_SVWC70005B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mahouka</p>
+    <p class="detail">musique : Rising Hope</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/5a/a9/21/5aa9211a-4f7c-96c1-3501-c1e3d49d752c/mzaf_17249924019822395231.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/3c/13/56/3c13566e-6e12-daf2-3e7e-777a38ad1040/20UMGIM18828.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/3c/13/56/3c13566e-6e12-daf2-3e7e-777a38ad1040/20UMGIM18828.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Detective Conan</p>
+    <p class="detail">musique : Detective Conan Main Theme</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7b/78/bc/7b78bc79-4a7d-b71d-0ae0-3ca3dccb4b67/mzaf_1167642714457267046.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/18/cf/0218cf4b-6850-28b1-6fd3-8cb5278e34b5/TKCA-72717.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/02/18/cf/0218cf4b-6850-28b1-6fd3-8cb5278e34b5/TKCA-72717.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Nausicaä</p>
+    <p class="detail">musique : Requiem</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/91/9d/74/919d7441-5633-b67c-720b-4aa025a40fb9/mzaf_7703302913147643646.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/f7/19/cc/f719cc4e-05d7-708c-af87-a5cfbbb3ff79/TKCA-.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/v4/f7/19/cc/f719cc4e-05d7-708c-af87-a5cfbbb3ff79/TKCA-.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ponyo</p>
+    <p class="detail">musique : Ponyo sur la falaise</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d1/63/7e/d1637e17-92e8-af88-f163-1976daa3afed/mzaf_2075993691075174131.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/53/17/2d/53172dc4-ea48-4ada-85c0-8027ebaddf3d/VICL-65922.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/53/17/2d/53172dc4-ea48-4ada-85c0-8027ebaddf3d/VICL-65922.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Akira</p>
+    <p class="detail">musique : KANEDA</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c9/95/a6/c995a6dd-e120-f51f-0ce6-98e5fb633257/mzaf_11254390391790882267.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b5/10/75/b510758b-328f-b2af-93dd-a89fa9a78748/jacket_AICL02451B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b5/10/75/b510758b-328f-b2af-93dd-a89fa9a78748/jacket_AICL02451B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Psycho-Pass</p>
+    <p class="detail">musique : abnormalize</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/b5/68/ee/b568ee6a-5795-10f9-5aad-352bc9770f1b/mzaf_8392068482065194010.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f2/a1/97/f2a19788-b1d7-7de8-78b7-18cef9ff8ab3/5021732651600.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f2/a1/97/f2a19788-b1d7-7de8-78b7-18cef9ff8ab3/5021732651600.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Black Lagoon</p>
+    <p class="detail">musique : Red fraction</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/83/68/9d/83689ddb-1a6b-e8d2-ed31-21913bf0e4a1/mzaf_10010782124677314263.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ed/7a/86/ed7a864c-4074-d971-e494-bb914abd5641/jacket_SRXX02875B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ed/7a/86/ed7a864c-4074-d971-e494-bb914abd5641/jacket_SRXX02875B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Banana Fish</p>
+    <p class="detail">musique : found &amp; lost</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c0/9c/00/c09c00a0-a8bc-a92b-7bd1-88332bb137bb/mzaf_9957394120571790990.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b6/e8/75/b6e87557-292a-463e-2fd7-daadff97ba51/jacket_SVWC07804B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/b6/e8/75/b6e87557-292a-463e-2fd7-daadff97ba51/jacket_SVWC07804B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fate Zero</p>
+    <p class="detail">musique : oath sign</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/00/e9/ef/00e9ef1a-e552-c7de-69c5-794a32bdd0eb/mzaf_18207629086908825135.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/44/ff/f0/44fff0b5-6515-dd2d-1fbe-c8e6c7177a8a/VEATP-34882.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/44/ff/f0/44fff0b5-6515-dd2d-1fbe-c8e6c7177a8a/VEATP-34882.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Card Captor Sakura</p>
+    <p class="detail">musique : Platinum</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/21/b4/18/21b418a4-0d9d-829e-a7e0-0998f2f668f1/mzaf_7991169889939249544.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/0b/52/83/0b5283c8-79ae-6187-ffa0-7435a62df49f/886445188738.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/0b/52/83/0b5283c8-79ae-6187-ffa0-7435a62df49f/886445188738.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Madoka Magica</p>
+    <p class="detail">musique : Connect</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/98/f1/a9/98f1a980-2aee-1616-482b-07beac62237a/mzaf_14557262681976174240.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/39/9b/7c/399b7cf8-7d45-1cf0-8530-8801d6899d76/25UMGIM94011.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/39/9b/7c/399b7cf8-7d45-1cf0-8530-8801d6899d76/25UMGIM94011.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Noragami</p>
+    <p class="detail">musique : Kyouran Hey Kids!!</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/02/da/c8/02dac8e6-70b5-fc0a-d31d-bf4cab7bc4c2/mzaf_4998254113717568575.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="23">
+  <div class="num">24</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/d6/9e/54/d69e54ca-2d82-f291-d745-9a706aa26940/19UMGIM59475.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/d6/9e/54/d69e54ca-2d82-f291-d745-9a706aa26940/19UMGIM59475.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Fire Force</p>
+    <p class="detail">musique : Inferno</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/70/25/37/70253773-995d-296e-19db-6a2457b9f3db/mzaf_2716666302310961916.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="24">
+  <div class="num">25</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a8/8a/b1/a88ab119-d8b5-9448-cfa0-ee3494853e4f/4542114000034_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a8/8a/b1/a88ab119-d8b5-9448-cfa0-ee3494853e4f/4542114000034_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Black Clover</p>
+    <p class="detail">musique : Harukamirai</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1d/1f/f0/1d1ff073-50c7-2516-f0b0-2095a1c9611d/mzaf_11678571325728471866.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="25">
+  <div class="num">26</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/16/35/0e/16350e08-00fe-7fcb-c5a6-1ec29541e9a0/jacket_ESXX02080B00Z_550.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/16/35/0e/16350e08-00fe-7fcb-c5a6-1ec29541e9a0/jacket_ESXX02080B00Z_550.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Dr. Stone</p>
+    <p class="detail">musique : Good Morning World!</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/79/e4/70/79e47026-31b5-915d-55f7-a300199a7fd0/mzaf_5748746241432309370.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="26">
+  <div class="num">27</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/ad/03/6b/ad036bed-1b09-562b-6026-384b37a9251d/0602508485701_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/ad/03/6b/ad036bed-1b09-562b-6026-384b37a9251d/0602508485701_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Enfants du temps</p>
+    <p class="detail">musique : Grand Escape</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/0f/be/ca/0fbeca14-fb58-cb5b-28e5-fce72308e6c1/mzaf_10126865951010148236.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="27">
+  <div class="num">28</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/1a/e2/74/1ae2740f-eacb-19b8-0c0a-fab4ce391052/0602448736116_Cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/1a/e2/74/1ae2740f-eacb-19b8-0c0a-fab4ce391052/0602448736116_Cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Suzume</p>
+    <p class="detail">musique : Suzume</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bb/58/a9/bb58a93b-367c-6605-500c-9eb526bac5af/mzaf_11246565455893707181.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="28">
+  <div class="num">29</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Features/e1/a5/ea/dj.plgyurpa.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Features/e1/a5/ea/dj.plgyurpa.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Cyberpunk Edgerunners</p>
+    <p class="detail">musique : This Fffire</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7a/50/de/7a50de41-4e28-658e-f5d3-69e8baf95c8d/mzaf_17468325016928347405.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="29">
+  <div class="num">30</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/be/b7/d6beb7aa-b7c2-d62e-cc4e-fa1381bc1033/4547366437829.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/be/b7/d6beb7aa-b7c2-d62e-cc4e-fa1381bc1033/4547366437829.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Beastars</p>
+    <p class="detail">musique : Wild Side</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/42/2a/61/422a6104-4564-a479-47c6-fc68e5d6521d/mzaf_6068950879761787855.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="30">
+  <div class="num">31</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/15/c7/55/15c755bc-7603-3ce3-e243-e59f1f9863ea/602527724171.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/15/c7/55/15c755bc-7603-3ce3-e243-e59f1f9863ea/602527724171.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Great Pretender</p>
+    <p class="detail">musique : The Great Pretender</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/af/21/6d/af216d50-530d-01bb-4261-aea3ae550f66/mzaf_5318054735455729138.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="31">
+  <div class="num">32</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/a2/fc/d3a2fcf0-8ea8-1eba-1bce-499373326c53/4562144210814_cov.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d3/a2/fc/d3a2fcf0-8ea8-1eba-1bce-499373326c53/4562144210814_cov.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Yu Yu Hakusho</p>
+    <p class="detail">musique : Hohoemi No Bakudan</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/79/1d/4b/791d4b60-e105-7602-3c9e-a9ff25c2c766/mzaf_3443678629195382645.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="32">
+  <div class="num">33</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/56/f2/01/mzi.hgdjmfoc.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/56/f2/01/mzi.hgdjmfoc.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Macross</p>
+    <p class="detail">musique : Ai Oboete Imasu Ka</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/de/0f/e9/de0fe9d6-ec91-b933-8429-200a95999be6/mzaf_12606000571030246113.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="33">
+  <div class="num">34</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/53/d0/ea/53d0ea79-ef4f-ea37-9814-c824f2399cbb/artwork.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/53/d0/ea/53d0ea79-ef4f-ea37-9814-c824f2399cbb/artwork.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sailor Moon</p>
+    <p class="detail">musique : Moonlight Densetsu</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/03/a4/cf/03a4cf24-8123-e4fe-aaa3-88e3a36bca96/mzaf_2216017803357215763.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="34">
+  <div class="num">35</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/78/09/42/7809429d-ab6a-1e0d-3b2a-28e99174c7fa/cover_KM0023050_1.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/78/09/42/7809429d-ab6a-1e0d-3b2a-28e99174c7fa/cover_KM0023050_1.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Digimon</p>
+    <p class="detail">musique : Butter-Fly</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/57/a3/8a/57a38a86-1858-0ba9-841c-db43ce94e496/mzaf_11486667698816604707.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="35">
+  <div class="num">36</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/71/f9/a5/71f9a5ed-b510-8609-1c33-c4f1d9796721/00602577571114.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/71/f9/a5/71f9a5ed-b510-8609-1c33-c4f1d9796721/00602577571114.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mon voisin Totoro</p>
+    <p class="detail">musique : Tonari No Totoro</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cc/a2/13/cca213e2-95be-0293-665e-6ffb742606d0/mzaf_17531637698109501078.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="36">
+  <div class="num">37</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music127/v4/d3/c2/be/d3c2be0f-b7e5-1c89-fd6c-657552ed5215/191061685258.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music127/v4/d3/c2/be/d3c2be0f-b7e5-1c89-fd6c-657552ed5215/191061685258.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Château dans le ciel</p>
+    <p class="detail">musique : Kimi Wo Nosete</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4d/91/d9/4d91d918-509a-93b4-f7e9-b7e64a97b42e/mzaf_10908525577636248810.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="37">
+  <div class="num">38</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/4c/b4/56/4cb45621-0558-3685-e3d5-316239899e06/ARIC-070001.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/4c/b4/56/4cb45621-0558-3685-e3d5-316239899e06/ARIC-070001.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Kiki la petite sorcière</p>
+    <p class="detail">musique : Umi no mieru machi</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview111/v4/a0/de/40/a0de403b-0471-8aba-b5db-7af40bbe15dd/mzaf_388448978028508379.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="38">
+  <div class="num">39</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/6a/be/79/6abe79fe-81f1-f6e5-4e28-b44f758182ff/77239.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/6a/be/79/6abe79fe-81f1-f6e5-4e28-b44f758182ff/77239.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mob Psycho 100</p>
+    <p class="detail">musique : Mob Choir 99</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f8/87/cc/f887cc62-b633-d467-a8f3-c0d9367bd209/mzaf_13253857915299391281.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="39">
+  <div class="num">40</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/3e/26/9f/3e269f0b-e817-64a1-ed33-6504f37a2f48/888174830353.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/3e/26/9f/3e269f0b-e817-64a1-ed33-6504f37a2f48/888174830353.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Elfen Lied</p>
+    <p class="detail">musique : Lilium</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/12/52/15/125215a1-5ff8-197b-3265-3df9dbbac6c4/mzaf_3501500894578689465.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="40">
+  <div class="num">41</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/10/27/2b/10272b73-92bd-04d4-96e8-f6ccb741ad86/VEATP-32444.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/10/27/2b/10272b73-92bd-04d4-96e8-f6ccb741ad86/VEATP-32444.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Trigun</p>
+    <p class="detail">musique : H.T</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/92/45/cc/9245ccfd-1aa8-758d-b2fd-5beec08463a3/mzaf_4904447427618936545.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="41">
+  <div class="num">42</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/b5/ad/eb/mzi.mlucczoi.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/b5/ad/eb/mzi.mlucczoi.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Ranma 1/2</p>
+    <p class="detail">musique : Jajauma Ni Sasenaide</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e9/d5/df/e9d5df95-7293-da2f-31f4-ccb5c3bb10a4/mzaf_15865358631503813021.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="42">
+  <div class="num">43</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c6/06/b5/c606b5b7-3dc0-8ef2-e22c-10459d133c65/COCC-11070.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c6/06/b5/c606b5b7-3dc0-8ef2-e22c-10459d133c65/COCC-11070.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Olive et Tom</p>
+    <p class="detail">musique : Moete Hero</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/24/04/eb/2404eb8d-1923-89af-e3be-7af535455ff6/mzaf_17291920791208150489.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="43">
+  <div class="num">44</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/49/4f/a2/494fa284-df69-fdb3-be39-a4078ed04207/198001941795.png/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/49/4f/a2/494fa284-df69-fdb3-be39-a4078ed04207/198001941795.png/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Slam Dunk</p>
+    <p class="detail">musique : Kimi Ga Suki Da to Sakebitai</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/d4/b3/32/d4b332be-a604-7f9a-9429-e0d305b3c9ee/mzaf_4633823178788538871.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="44">
+  <div class="num">45</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/99/b0/de99b027-437c-15d2-0876-7190e553e296/beyblade-burst-turbo_3000.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/de/99/b0/de99b027-437c-15d2-0876-7190e553e296/beyblade-burst-turbo_3000.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Beyblade</p>
+    <p class="detail">musique : Beyblade Burst Turbo</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/40/52/73/40527338-4805-4c95-6f44-120dfa0fc043/mzaf_976534777579805960.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="45">
+  <div class="num">46</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/6b/3e/71/6b3e7106-8547-9477-8c69-19fd1c76d37d/889845817437.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/6b/3e/71/6b3e7106-8547-9477-8c69-19fd1c76d37d/889845817437.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Yu-Gi-Oh!</p>
+    <p class="detail">musique : Yu-Gi-Oh</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/56/e6/d3/56e6d377-a689-1ec3-754b-8a02c184d73b/mzaf_10135853312976952527.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "CHA-LA HEAD-CHA-LA", "a": "Dragon Ball Z", "at": "", "aa": "Dragon Ball Z", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Makafushigi Adventure", "a": "Dragon Ball", "at": "", "aa": "Dragon Ball", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Pegasus Fantasy", "a": "Les Chevaliers du Zodiaque", "at": "", "aa": "Les Chevaliers du Zodiaque", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Get Wild", "a": "Nicky Larson", "at": "", "aa": "Nicky Larson", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Ai wo Torimodose", "a": "Ken le Survivant", "at": "", "aa": "Ken le Survivant", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "CHANGE THE WORLD", "a": "Inuyasha", "at": "", "aa": "Inuyasha", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Lupin The Third", "a": "Lupin III", "at": "", "aa": "Lupin III", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Battlecry", "a": "Samurai Champloo", "at": "", "aa": "Samurai Champloo", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "History Maker", "a": "Yuri on Ice", "at": "", "aa": "Yuri on Ice", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Let Me Hear", "a": "Parasyte", "at": "", "aa": "Parasyte", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Don't say lazy", "a": "K-On!", "at": "", "aa": "K-On!", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Rising Hope", "a": "Mahouka", "at": "", "aa": "Mahouka", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Detective Conan Main Theme", "a": "Detective Conan", "at": "", "aa": "Detective Conan", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Requiem", "a": "Nausicaä", "at": "", "aa": "Nausicaä", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Ponyo sur la falaise", "a": "Ponyo", "at": "", "aa": "Ponyo", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "KANEDA", "a": "Akira", "at": "", "aa": "Akira", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "abnormalize", "a": "Psycho-Pass", "at": "", "aa": "Psycho-Pass", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Red fraction", "a": "Black Lagoon", "at": "", "aa": "Black Lagoon", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "found & lost", "a": "Banana Fish", "at": "", "aa": "Banana Fish", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "oath sign", "a": "Fate Zero", "at": "", "aa": "Fate Zero", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Platinum", "a": "Card Captor Sakura", "at": "", "aa": "Card Captor Sakura", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Connect", "a": "Madoka Magica", "at": "", "aa": "Madoka Magica", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Kyouran Hey Kids!!", "a": "Noragami", "at": "", "aa": "Noragami", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Inferno", "a": "Fire Force", "at": "", "aa": "Fire Force", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Harukamirai", "a": "Black Clover", "at": "", "aa": "Black Clover", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Good Morning World!", "a": "Dr. Stone", "at": "", "aa": "Dr. Stone", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Grand Escape", "a": "Les Enfants du temps", "at": "", "aa": "Les Enfants du temps", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Suzume", "a": "Suzume", "at": "", "aa": "Suzume", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "This Fffire", "a": "Cyberpunk Edgerunners", "at": "", "aa": "Cyberpunk Edgerunners", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Wild Side", "a": "Beastars", "at": "", "aa": "Beastars", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "The Great Pretender", "a": "Great Pretender", "at": "", "aa": "Great Pretender", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Hohoemi No Bakudan", "a": "Yu Yu Hakusho", "at": "", "aa": "Yu Yu Hakusho", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Ai Oboete Imasu Ka", "a": "Macross", "at": "", "aa": "Macross", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Moonlight Densetsu", "a": "Sailor Moon", "at": "", "aa": "Sailor Moon", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Butter-Fly", "a": "Digimon", "at": "", "aa": "Digimon", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Tonari No Totoro", "a": "Mon voisin Totoro", "at": "", "aa": "Mon voisin Totoro", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Kimi Wo Nosete", "a": "Le Château dans le ciel", "at": "", "aa": "Le Château dans le ciel", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Umi no mieru machi", "a": "Kiki la petite sorcière", "at": "", "aa": "Kiki la petite sorcière", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Mob Choir 99", "a": "Mob Psycho 100", "at": "", "aa": "Mob Psycho 100", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Lilium", "a": "Elfen Lied", "at": "", "aa": "Elfen Lied", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "H.T", "a": "Trigun", "at": "", "aa": "Trigun", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Jajauma Ni Sasenaide", "a": "Ranma 1/2", "at": "", "aa": "Ranma 1/2", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Moete Hero", "a": "Olive et Tom", "at": "", "aa": "Olive et Tom", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Kimi Ga Suki Da to Sakebitai", "a": "Slam Dunk", "at": "", "aa": "Slam Dunk", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Beyblade Burst Turbo", "a": "Beyblade", "at": "", "aa": "Beyblade", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Yu-Gi-Oh", "a": "Yu-Gi-Oh!", "at": "", "aa": "Yu-Gi-Oh!", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Anime", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}];</script>
+<script src="../js/match.js?v=210"></script>
+<script src="verif.js?v=210"></script>
+</body>
+</html>

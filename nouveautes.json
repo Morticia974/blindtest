@@ -1,0 +1,280 @@
+{
+  "anime": [
+    {
+      "t": "CHA-LA HEAD-CHA-LA",
+      "a": "Dragon Ball Z",
+      "interprete": "Hironobu Kageyama",
+      "q": "Hironobu Kageyama CHA-LA HEAD-CHA-LA Dragon Ball Z"
+    },
+    {
+      "t": "Makafushigi Adventure",
+      "a": "Dragon Ball",
+      "interprete": "高橋洋樹",
+      "q": "Doragon Ball Makafushigi Adventure"
+    },
+    {
+      "t": "Pegasus Fantasy",
+      "a": "Les Chevaliers du Zodiaque",
+      "interprete": "Make-Up",
+      "q": "MAKE-UP Pegasus Fantasy"
+    },
+    {
+      "t": "Get Wild",
+      "a": "Nicky Larson",
+      "interprete": "TM NETWORK",
+      "q": "TM NETWORK Get Wild"
+    },
+    {
+      "t": "Ai wo Torimodose",
+      "a": "Ken le Survivant",
+      "interprete": "クリスタルキング",
+      "q": "Hokuto No Ken Ai O Torimodose Crystal King"
+    },
+    {
+      "t": "CHANGE THE WORLD",
+      "a": "Inuyasha",
+      "interprete": "V6",
+      "q": "V6 CHANGE THE WORLD Inuyasha"
+    },
+    {
+      "t": "Lupin The Third",
+      "a": "Lupin III",
+      "interprete": "YUJI OHNO TRIO",
+      "q": "YUJI OHNO TRIO Lupin The Third theme"
+    },
+    {
+      "t": "Battlecry",
+      "a": "Samurai Champloo",
+      "interprete": "Nujabes",
+      "q": "Nujabes Shing02 Battlecry"
+    },
+    {
+      "t": "History Maker",
+      "a": "Yuri on Ice",
+      "interprete": "DEAN FUJIOKA",
+      "q": "DEAN FUJIOKA History Maker"
+    },
+    {
+      "t": "Let Me Hear",
+      "a": "Parasyte",
+      "interprete": "Fear, and Loathing in Las Vegas",
+      "q": "Fear and Loathing in Las Vegas Let Me Hear"
+    },
+    {
+      "t": "Don't say lazy",
+      "a": "K-On!",
+      "interprete": "放課後ティータイム",
+      "q": "Ho-kago Tea Time Don't say lazy"
+    },
+    {
+      "t": "Rising Hope",
+      "a": "Mahouka",
+      "interprete": "LiSA",
+      "q": "LiSA Rising Hope"
+    },
+    {
+      "t": "Detective Conan Main Theme",
+      "a": "Detective Conan",
+      "interprete": "Katsuo Ohno",
+      "q": "Katsuo Ohno Detective Conan main theme"
+    },
+    {
+      "t": "Requiem",
+      "a": "Nausicaä",
+      "interprete": "Joe Hisaishi",
+      "q": "Joe Hisaishi Requiem Nausicaa"
+    },
+    {
+      "t": "Ponyo sur la falaise",
+      "a": "Ponyo",
+      "interprete": "Joe Hisaishi",
+      "q": "Joe Hisaishi Ponyo sur la falaise"
+    },
+    {
+      "t": "KANEDA",
+      "a": "Akira",
+      "interprete": "GEINOH YAMASHIROGUMI",
+      "q": "GEINOH YAMASHIROGUMI KANEDA Akira"
+    },
+    {
+      "t": "abnormalize",
+      "a": "Psycho-Pass",
+      "interprete": "Ling tosite sigure",
+      "q": "Ling tosite sigure abnormalize"
+    },
+    {
+      "t": "Red fraction",
+      "a": "Black Lagoon",
+      "interprete": "MELL",
+      "q": "MELL Red fraction"
+    },
+    {
+      "t": "found & lost",
+      "a": "Banana Fish",
+      "interprete": "Survive Said The Prophet",
+      "q": "Survive Said The Prophet found and lost"
+    },
+    {
+      "t": "oath sign",
+      "a": "Fate Zero",
+      "interprete": "LiSA",
+      "q": "LiSA oath sign"
+    },
+    {
+      "t": "Platinum",
+      "a": "Card Captor Sakura",
+      "interprete": "Maaya Sakamoto",
+      "q": "Maaya Sakamoto Platinum Cardcaptor Sakura"
+    },
+    {
+      "t": "Connect",
+      "a": "Madoka Magica",
+      "interprete": "ClariS",
+      "q": "ClariS Connect"
+    },
+    {
+      "t": "Kyouran Hey Kids!!",
+      "a": "Noragami",
+      "interprete": "THE ORAL CIGARETTES",
+      "q": "THE ORAL CIGARETTES Kyouran Hey Kids"
+    },
+    {
+      "t": "Inferno",
+      "a": "Fire Force",
+      "interprete": "Mrs. GREEN APPLE",
+      "q": "Mrs GREEN APPLE Inferno"
+    },
+    {
+      "t": "Harukamirai",
+      "a": "Black Clover",
+      "interprete": "KANKAKU PIERO",
+      "q": "KANKAKU PIERO Harukamirai"
+    },
+    {
+      "t": "Good Morning World!",
+      "a": "Dr. Stone",
+      "interprete": "BURNOUT SYNDROMES",
+      "q": "BURNOUT SYNDROMES Good Morning World"
+    },
+    {
+      "t": "Grand Escape",
+      "a": "Les Enfants du temps",
+      "interprete": "RADWIMPS",
+      "q": "RADWIMPS Grand Escape Weathering With You"
+    },
+    {
+      "t": "Suzume",
+      "a": "Suzume",
+      "interprete": "RADWIMPS",
+      "q": "RADWIMPS Toaka Suzume"
+    },
+    {
+      "t": "This Fffire",
+      "a": "Cyberpunk Edgerunners",
+      "interprete": "Franz Ferdinand",
+      "q": "Franz Ferdinand This Fffire"
+    },
+    {
+      "t": "Wild Side",
+      "a": "Beastars",
+      "interprete": "ALI",
+      "q": "ALI Wild Side Beastars"
+    },
+    {
+      "t": "The Great Pretender",
+      "a": "Great Pretender",
+      "interprete": "Freddie Mercury",
+      "q": "Freddie Mercury The Great Pretender"
+    },
+    {
+      "t": "Hohoemi No Bakudan",
+      "a": "Yu Yu Hakusho",
+      "interprete": "馬渡 松子",
+      "q": "Mawatari Matsuko Hohoemi no Bakudan"
+    },
+    {
+      "t": "Ai Oboete Imasu Ka",
+      "a": "Macross",
+      "interprete": "Mari Iijima",
+      "q": "Mari Iijima Ai Oboete Imasu Ka"
+    },
+    {
+      "t": "Moonlight Densetsu",
+      "a": "Sailor Moon",
+      "interprete": "The Covers Duo",
+      "q": "The Covers Duo Moonlight Densetsu Sailor Moon"
+    },
+    {
+      "t": "Butter-Fly",
+      "a": "Digimon",
+      "interprete": "大澤翔",
+      "q": "Butter-Fly Digimon Adventure"
+    },
+    {
+      "t": "Tonari No Totoro",
+      "a": "Mon voisin Totoro",
+      "interprete": "Cécile Corbel",
+      "q": "Cecile Corbel Tonari No Totoro"
+    },
+    {
+      "t": "Kimi Wo Nosete",
+      "a": "Le Château dans le ciel",
+      "interprete": "Singapore Symphony Children's Choir",
+      "q": "Singapore Symphony Children Choir Kimi Wo Nosete"
+    },
+    {
+      "t": "Umi no mieru machi",
+      "a": "Kiki la petite sorcière",
+      "interprete": "Kazeno-Quintet",
+      "q": "Kazeno-Quintet Umi no mieru machi Kiki"
+    },
+    {
+      "t": "Mob Choir 99",
+      "a": "Mob Psycho 100",
+      "interprete": "Jonathan Young",
+      "q": "Jonathan Young Mob Choir 99"
+    },
+    {
+      "t": "Lilium",
+      "a": "Elfen Lied",
+      "interprete": "Chrisdiospria",
+      "q": "Chrisdiospria Lilium"
+    },
+    {
+      "t": "H.T",
+      "a": "Trigun",
+      "interprete": "Dr.Donuts",
+      "q": "Dr.Donuts H.T Trigun"
+    },
+    {
+      "t": "Jajauma Ni Sasenaide",
+      "a": "Ranma 1/2",
+      "interprete": "Kristine Sa",
+      "q": "Kristine Sa Jajauma Ni Sasenaide Ranma"
+    },
+    {
+      "t": "Moete Hero",
+      "a": "Olive et Tom",
+      "interprete": "小野塚宏太",
+      "q": "Moete Hero Captain Tsubasa"
+    },
+    {
+      "t": "Kimi Ga Suki Da to Sakebitai",
+      "a": "Slam Dunk",
+      "interprete": "Rockaraoke",
+      "q": "Rockaraoke Kimi Ga Suki Da to Sakebitai Slam Dunk"
+    },
+    {
+      "t": "Beyblade Burst Turbo",
+      "a": "Beyblade",
+      "interprete": "NateWantsToBattle",
+      "q": "NateWantsToBattle Beyblade Burst Turbo opening"
+    },
+    {
+      "t": "Yu-Gi-Oh",
+      "a": "Yu-Gi-Oh!",
+      "interprete": "Elisa Mutto",
+      "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh"
+    }
+  ]
+}
