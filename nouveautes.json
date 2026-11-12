@@ -1,34 +1,6 @@
 {
   "anime": [
     {
-      "t": "CHA-LA HEAD-CHA-LA",
-      "a": "Dragon Ball Z",
-      "interprete": "Hironobu Kageyama",
-      "q": "Hironobu Kageyama CHA-LA HEAD-CHA-LA Dragon Ball Z",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/11/29190.jpg"
-    },
-    {
-      "t": "Makafushigi Adventure",
-      "a": "Dragon Ball",
-      "interprete": "高橋洋樹",
-      "q": "Doragon Ball Makafushigi Adventure",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/436/1091415.jpg"
-    },
-    {
-      "t": "Pegasus Fantasy",
-      "a": "Les Chevaliers du Zodiaque",
-      "interprete": "Make-Up",
-      "q": "MAKE-UP Pegasus Fantasy",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/20/52044.jpg"
-    },
-    {
-      "t": "Get Wild",
-      "a": "Nicky Larson",
-      "interprete": "TM NETWORK",
-      "q": "TM NETWORK Get Wild",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/18/47495.jpg"
-    },
-    {
       "t": "Ai wo Torimodose",
       "a": "Ken le Survivant",
       "interprete": "クリスタルキング",
@@ -41,13 +13,6 @@
       "interprete": "V6",
       "q": "V6 CHANGE THE WORLD Inuyasha",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/651/1627745.jpg"
-    },
-    {
-      "t": "Lupin The Third",
-      "a": "Lupin III",
-      "interprete": "YUJI OHNO TRIO",
-      "q": "YUJI OHNO TRIO Lupin The Third theme",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/65/164450.jpg"
     },
     {
       "t": "Battlecry",
@@ -225,13 +190,6 @@
       "q": "Mari Iijima Ai Oboete Imasu Ka"
     },
     {
-      "t": "Moonlight Densetsu",
-      "a": "Sailor Moon",
-      "interprete": "The Covers Duo",
-      "q": "The Covers Duo Moonlight Densetsu Sailor Moon",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/291/728726.jpg"
-    },
-    {
       "t": "Butter-Fly",
       "a": "Digimon",
       "interprete": "大澤翔",
@@ -279,20 +237,6 @@
       "interprete": "Dr.Donuts",
       "q": "Dr.Donuts H.T Trigun",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/20/51222.jpg"
-    },
-    {
-      "t": "Jajauma Ni Sasenaide",
-      "a": "Ranma 1/2",
-      "interprete": "Kristine Sa",
-      "q": "Kristine Sa Jajauma Ni Sasenaide Ranma",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/609/1522705.jpg"
-    },
-    {
-      "t": "Moete Hero",
-      "a": "Olive et Tom",
-      "interprete": "小野塚宏太",
-      "q": "Moete Hero Captain Tsubasa",
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/485/1213495.jpg"
     },
     {
       "t": "Kimi Ga Suki Da to Sakebitai",
