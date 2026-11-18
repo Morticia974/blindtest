@@ -561,7 +561,8 @@ var Playlists = (function () {
         { t: "Supercalifragilisticexpialidocious", a: "Mary Poppins", q: "Mary Poppins Supercalifragilisticexpialidocious Julie Andrews", lgA: "fr", ditA: "Marie Poppins" },
         { t: "J'en ai rêvé", a: "La Belle au bois dormant", q: "La Belle au bois dormant J'en ai rêvé bande originale française" },
         { t: "Tu t'envoles", a: "Peter Pan", q: "Peter Pan Tu t'envoles bande originale française", pochette: "https://morticia974.github.io/blindtest/images/pochettes/peter-pan.jpg" },
-        { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins" },
+        { t: "Toujours dans mon cœur", a: "Tarzan", q: "Tarzan Toujours dans mon coeur Phil Collins",
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/tarzan.jpg" },
         { t: "Au bout du rêve", a: "La Princesse et la Grenouille", q: "La Princesse et la Grenouille Au bout du rêve" },
         { t: "Cruella de ville", a: "Les 101 Dalmatiens", q: "Cruella de ville Les 101 Dalmatiens", altA: ["101 Dalmatiens"], interprete: "Chœurs - Les 101 Dalmatiens", altT: ["Cruella De Vil"],
           /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
