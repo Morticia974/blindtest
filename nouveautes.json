@@ -208,5 +208,448 @@
       "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/19/49898.jpg"
     }
+  ],
+  "disney": [
+    {
+      "t": "Nuits d'arabie",
+      "a": "Aladdin",
+      "q": "Nuits d'arabie Bernard Alane",
+      "interprete": "Bernard Alane",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Nuits d'arabie",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/aladdin.jpg"
+    },
+    {
+      "t": "Je suis en retard",
+      "a": "Alice au pays des merveilles",
+      "q": "Je suis en retard Chœurs - Alice au Pays des Merveilles",
+      "interprete": "Chœurs - Alice au Pays des Merveilles",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Je suis en retard",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/a4/41/b1/a441b16b-b833-d7ab-a1e8-6f872b1f2eaf/00050086070077.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Pays du merveilleux",
+      "a": "Alice au pays des merveilles",
+      "q": "Pays du merveilleux Chœurs - Alice au Pays des Merveilles",
+      "interprete": "Chœurs - Alice au Pays des Merveilles",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Pays du merveilleux",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/a4/41/b1/a441b16b-b833-d7ab-a1e8-6f872b1f2eaf/00050086070077.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "L'amour est éternel",
+      "a": "Bambi",
+      "q": "L'amour est éternel Chœurs - Bambi",
+      "interprete": "Chœurs - Bambi",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) L'amour est éternel",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/2d/cc/33/2dcc336e-8f08-043a-33cd-3c105ff5d0eb/00094635266559.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "La chanson du printemps",
+      "a": "Bambi",
+      "q": "La chanson du printemps Chœurs - Bambi",
+      "interprete": "Chœurs - Bambi",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La chanson du printemps",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/2d/cc/33/2dcc336e-8f08-043a-33cd-3c105ff5d0eb/00094635266559.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Je souhaite",
+      "a": "Blanche-Neige et les Sept Nains",
+      "q": "Je souhaite Rachel Pignot & Olivier Cantore",
+      "interprete": "Rachel Pignot & Olivier Cantore",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Je souhaite",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2d/c5/aa/2dc5aa9a-0351-ef8d-61a2-0045ab3978e0/13DMGIM04075.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Un sourire en chantant",
+      "a": "Blanche-Neige et les Sept Nains",
+      "q": "Un sourire en chantant Rachel Pignot",
+      "interprete": "Rachel Pignot",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Un sourire en chantant",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/2d/c5/aa/2dc5aa9a-0351-ef8d-61a2-0045ab3978e0/13DMGIM04075.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Tendre rêve",
+      "a": "Cendrillon",
+      "q": "Tendre rêve Cast – Cendrillon",
+      "interprete": "Cast – Cendrillon",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Tendre rêve",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a6/bb/f8/a6bbf88e-7a17-2965-0c4e-06ab3bfe0d19/13DMGIM04701.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "La marche des éléphants",
+      "a": "Dumbo",
+      "q": "La marche des éléphants Chœurs - Dumbo",
+      "interprete": "Chœurs - Dumbo",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La marche des éléphants",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a6/ea/7d/a6ea7d14-eb9e-7ba0-9437-07cc6e5f9653/00050086071579.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Voici le messager",
+      "a": "Dumbo",
+      "q": "Voici le messager Chœurs - Dumbo",
+      "interprete": "Chœurs - Dumbo",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Voici le messager",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a6/ea/7d/a6ea7d14-eb9e-7ba0-9437-07cc6e5f9653/00050086071579.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Regarde dans mes yeux",
+      "a": "Frère des ours",
+      "q": "Regarde dans mes yeux Phil Collins",
+      "interprete": "Phil Collins",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Regarde dans mes yeux",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/bd/8c/78/bd8c78b3-1e77-44b9-7ae5-bc07321a332f/00094635266955.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Jamais je n'avouerai",
+      "a": "Hercule",
+      "q": "Jamais je n'avouerai Mimi Félixine, Assitan Dembele, Norma Ray, Jessica Parker & Debbie Davis",
+      "interprete": "Mimi Félixine, Assitan Dembele, Norma Ray, Jessica Parker & Debbie Davis",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Jamais je n'avouerai",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c8/f9/2b/c8f92b7a-ed83-cbd6-63e8-a1fb2cf8c347/13ULAIM51259.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Le Boogie Blues",
+      "a": "L'Étrange Noël de monsieur Jack",
+      "q": "Le Boogie Blues Richard Darbois & Henri Poirier",
+      "interprete": "Richard Darbois & Henri Poirier",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Le Boogie Blues",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/0e/c7/f0/0ec7f022-e787-79c7-f086-383eea38829b/15DMGIM06525.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Douce Aurore",
+      "a": "La Belle au bois dormant",
+      "q": "Douce Aurore Chœurs - La Belle au Bois Dormant",
+      "interprete": "Chœurs - La Belle au Bois Dormant",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Douce Aurore",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/42/98/fb/4298fb0e-b9a8-a539-80b5-dfce23e7bdfd/00050087313296.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Belle",
+      "a": "La Belle et la Bête",
+      "q": "Belle Bénédicte Lecroard, Jean-Claude Corbel & François Leroux",
+      "interprete": "Bénédicte Lecroard, Jean-Claude Corbel & François Leroux",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Belle",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-la-bete.jpg"
+    },
+    {
+      "t": "Belle nuit",
+      "a": "La Belle et le Clochard",
+      "q": "Belle nuit Chœurs - La Belle et le Clochard",
+      "interprete": "Chœurs - La Belle et le Clochard",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Belle nuit",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-le-clochard.jpg"
+    },
+    {
+      "t": "La chansons des siamois",
+      "a": "La Belle et le Clochard",
+      "q": "La chansons des siamois Sophie Deschaumes",
+      "interprete": "Sophie Deschaumes",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La chansons des siamois",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/la-belle-et-le-clochard.jpg"
+    },
+    {
+      "t": "Filles du Roi Triton",
+      "a": "La Petite Sirène",
+      "q": "Filles du Roi Triton Choeurs - La Petite Sirène",
+      "interprete": "Choeurs - La Petite Sirène",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Filles du Roi Triton",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d0/81/37/d081370d-8597-ec61-0c58-4cf01b2481b8/14DMGIM05199.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Partir là-bas",
+      "a": "La Petite Sirène",
+      "q": "Partir là-bas Claire Guyot",
+      "interprete": "Claire Guyot",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Partir là-bas",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d0/81/37/d081370d-8597-ec61-0c58-4cf01b2481b8/14DMGIM05199.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Humains pour la vie",
+      "a": "La Princesse et la Grenouille",
+      "q": "Humains pour la vie Richard Darbois, Alexis Tomassian & China Moses",
+      "interprete": "Richard Darbois, Alexis Tomassian & China Moses",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Humains pour la vie",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/ad/d4/2c/add42c59-edf4-18f0-2659-72a5a1ef2071/05099960833457.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Ma belle Evangéline",
+      "a": "La Princesse et la Grenouille",
+      "q": "Ma belle Evangéline Anthony Kavanagh",
+      "interprete": "Anthony Kavanagh",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Ma belle Evangéline",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/ad/d4/2c/add42c59-edf4-18f0-2659-72a5a1ef2071/05099960833457.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Je voudrais un bonhomme de neige",
+      "a": "La Reine des neiges",
+      "q": "Je voudrais un bonhomme de neige Coralie Thuilier, Issia Lorrain & Emmylou Homs",
+      "interprete": "Coralie Thuilier, Issia Lorrain & Emmylou Homs",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Je voudrais un bonhomme de neige",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/70/57/21/70572194-0cc0-065c-5afa-ccf7bd29a927/13DMGIM04527.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Le renouveau",
+      "a": "La Reine des neiges",
+      "q": "Le renouveau Emmylou Homs & Anaïs Delva",
+      "interprete": "Emmylou Homs & Anaïs Delva",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Le renouveau",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/70/57/21/70572194-0cc0-065c-5afa-ccf7bd29a927/13DMGIM04527.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Les bannis ont droit d’amour",
+      "a": "Le Bossu de Notre-Dame",
+      "q": "Les bannis ont droit d’amour Claudia Benamou & Chœurs - Le Bossu de Notre Dame",
+      "interprete": "Claudia Benamou & Chœurs - Le Bossu de Notre Dame",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Les bannis ont droit d’amour",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fb/76/75/fb767589-9b50-aa2c-8fe8-342a4fc4d7e5/00094635322453.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Rien qu'un Jour",
+      "a": "Le Bossu de Notre-Dame",
+      "q": "Rien qu'un Jour Francis Lalanne",
+      "interprete": "Francis Lalanne",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Rien qu'un Jour",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/fb/76/75/fb767589-9b50-aa2c-8fe8-342a4fc4d7e5/00094635322453.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "La patrouille des éléphants",
+      "a": "Le Livre de la jungle",
+      "q": "La patrouille des éléphants Pierre Marret",
+      "interprete": "Pierre Marret",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La patrouille des éléphants",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/5e/e7/f6/5ee7f6b5-a6ba-fe15-37e9-1f16660b64c1/00094635325959.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Des gammes et des arpèges",
+      "a": "Les Aristochats",
+      "q": "Des gammes et des arpèges Cast - Aristocats",
+      "interprete": "Cast - Aristocats",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Des gammes et des arpèges",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/91/96/c0/9196c049-80c2-5887-4e1b-e268787e84dc/00094635307351.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Les Aristochats",
+      "a": "Les Aristochats",
+      "q": "Les Aristochats Maurice Chevalier",
+      "interprete": "Maurice Chevalier",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Les Aristochats",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/91/96/c0/9196c049-80c2-5887-4e1b-e268787e84dc/00094635307351.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Can't Help Falling In Love",
+      "a": "Lilo & Stitch",
+      "q": "Can't Help Falling In Love A*Teens",
+      "interprete": "A*Teens",
+      "disque": "Disney : Les 50 plus belles chansons, vol. 3 Can't Help Falling In Love",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/80/50/0a/80500a3d-9695-25fa-8de1-5aa2c3592e0e/00094635321258.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "He Mele No Lilo",
+      "a": "Lilo & Stitch",
+      "q": "He Mele No Lilo Mark Keali'i Ho'omalu & North Shore Children’s Choir & Key Cygnetures",
+      "interprete": "Mark Keali'i Ho'omalu & North Shore Children’s Choir & Key Cygnetures",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) He Mele No Lilo",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/80/50/0a/80500a3d-9695-25fa-8de1-5aa2c3592e0e/00094635321258.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Chem-chem Cheminée",
+      "a": "Mary Poppins",
+      "q": "Chem-chem Cheminée Michel Roux",
+      "interprete": "Michel Roux",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Chem-chem Cheminée",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/67/2e/9b/672e9bf3-5683-c815-a11c-891c1ca70afe/00050086070671.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "If I Didn't Have You",
+      "a": "Monstres & Cie",
+      "q": "If I Didn't Have You Randy Newman",
+      "interprete": "Randy Newman",
+      "disque": "Disney : Les 50 plus belles chansons, vol. 3 If I Didn't Have You",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/bd/e1/57/bde1574b-5f3d-7091-a355-8dfbc2adedf7/00094635323658.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Réflexion",
+      "a": "Mulan",
+      "q": "Réflexion Marie Galey",
+      "interprete": "Marie Galey",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Réflexion",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/mulan.jpg"
+    },
+    {
+      "t": "Une belle fille à aimer",
+      "a": "Mulan",
+      "q": "Une belle fille à aimer Marie Galey, Thierry Ragueneau, Pierre-François Pistorio, Michel Vigné & Chorus - Mulan",
+      "interprete": "Marie Galey, Thierry Ragueneau, Pierre-François Pistorio, Michel Vigné & Chorus - Mulan",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Une belle fille à aimer",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/mulan.jpg"
+    },
+    {
+      "t": "Un petit point de lumière",
+      "a": "Peter et Elliott le dragon",
+      "q": "Un petit point de lumière Nicole Croisille",
+      "interprete": "Nicole Croisille",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Un petit point de lumière",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/df/79/b1/df79b1fa-47b8-f5bb-6eea-e61c2ee8a5a9/00050086076079.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "À la file indienne",
+      "a": "Peter Pan",
+      "q": "À la file indienne Chœurs - Peter Pan",
+      "interprete": "Chœurs - Peter Pan",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) À la file indienne",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/peter-pan.jpg"
+    },
+    {
+      "t": "Peter Pan",
+      "a": "Peter Pan",
+      "q": "Peter Pan Chœurs - Peter Pan",
+      "interprete": "Chœurs - Peter Pan",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Peter Pan",
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/peter-pan.jpg"
+    },
+    {
+      "t": "Hi-Diddle Di Di",
+      "a": "Pinocchio",
+      "q": "Hi-Diddle Di Di Jean Lussac",
+      "interprete": "Jean Lussac",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Hi-Diddle Di Di",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7a/04/5e/7a045ed3-f905-7c96-bbdd-3199fafc4601/13DMGIM04714.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Sifflez vite vite",
+      "a": "Pinocchio",
+      "q": "Sifflez vite vite Christiane Legrand & Jean Lussac",
+      "interprete": "Christiane Legrand & Jean Lussac",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Sifflez vite vite",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7a/04/5e/7a045ed3-f905-7c96-bbdd-3199fafc4601/13DMGIM04714.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Au détour de la rivière",
+      "a": "Pocahontas",
+      "q": "Au détour de la rivière Laura Mayne",
+      "interprete": "Laura Mayne",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Au détour de la rivière",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f8/52/fe/f852fe46-aa83-389a-7127-438bbfb75166/15DMGIM06446.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Écoute ton cœur I",
+      "a": "Pocahontas",
+      "q": "Écoute ton cœur I Annie Cordy & Karine Costa",
+      "interprete": "Annie Cordy & Karine Costa",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Écoute ton cœur I",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f8/52/fe/f852fe46-aa83-389a-7127-438bbfb75166/15DMGIM06446.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "J’ai un rêve",
+      "a": "Raiponce",
+      "q": "J’ai un rêve Emmanuel Dahl, Xavier Fagnon, David Krüger & Maeva Méline",
+      "interprete": "Emmanuel Dahl, Xavier Fagnon, David Krüger & Maeva Méline",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) J’ai un rêve",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/82/95/a5/8295a537-e7be-4f57-2e7a-4afd8db69522/10DMGIM01997.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Où est la vraie vie ?",
+      "a": "Raiponce",
+      "q": "Où est la vraie vie ? Maeva Méline",
+      "interprete": "Maeva Méline",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Où est la vraie vie ?",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/82/95/a5/8295a537-e7be-4f57-2e7a-4afd8db69522/10DMGIM01997.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Soleil brûlant",
+      "a": "Rebelle",
+      "q": "Soleil brûlant Maeva Méline",
+      "interprete": "Maeva Méline",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Soleil brûlant",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/d3/e5/00/d3e500ab-2c1a-905d-8338-f90ed7a6ff70/12DMGIM03659.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Enfant de L'homme",
+      "a": "Tarzan",
+      "q": "Enfant de L'homme Phil Collins",
+      "interprete": "Phil Collins",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Enfant de L'homme",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/de/b2/6a/deb26a0a-c2c8-0b6d-a268-698019ae6191/14ULAIM03109.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Entre deux mondes",
+      "a": "Tarzan",
+      "q": "Entre deux mondes Phil Collins",
+      "interprete": "Phil Collins",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Entre deux mondes",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/de/b2/6a/deb26a0a-c2c8-0b6d-a268-698019ae6191/14ULAIM03109.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "L'explorateur",
+      "a": "Vaiana",
+      "q": "L'explorateur Jean-Michel Vaubien & Opetaia Foa'i",
+      "interprete": "Jean-Michel Vaubien & Opetaia Foa'i",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) L'explorateur",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2f/c1/85/2fc185c1-aee6-6b24-bc8c-6505081e4038/16UMGIM79880.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "Pour les hommes",
+      "a": "Vaiana",
+      "q": "Pour les hommes Anthony Kavanagh",
+      "interprete": "Anthony Kavanagh",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Pour les hommes",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2f/c1/85/2fc185c1-aee6-6b24-bc8c-6505081e4038/16UMGIM79880.rgb.jpg/600x600bb.jpg"
+    },
+    {
+      "t": "La Pluie, Pluie, Pluie, Tombe, Tombe, Tombe",
+      "a": "Winnie l'ourson",
+      "q": "La Pluie, Pluie, Pluie, Tombe, Tombe, Tombe Chœurs - Winnie l'Ourson",
+      "interprete": "Chœurs - Winnie l'Ourson",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La Pluie, Pluie, Pluie, Tombe, Tombe, Tombe",
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/e1/42/c9/e142c9a0-43e2-d6a4-6992-1e56cb6e453b/00094635328752.jpg/600x600bb.jpg"
+    }
   ]
 }
