@@ -44,6 +44,29 @@ def noyau(s):
     return u" ".join(m for m in plat(s).split() if m not in PETITS)
 
 
+def dedans(petit, grand):
+    """Les mots de `petit` se suivent-ils tels quels dans `grand` ?"""
+    if not petit or len(petit) > len(grand):
+        return False
+    for i in range(len(grand) - len(petit) + 1):
+        if grand[i:i + len(petit)] == petit:
+            return True
+    return False
+
+
+def parent(un, autre):
+    """Deux noms designent-ils la meme oeuvre ?
+
+       Par MOTS ENTIERS dans un sens ou dans l'autre, et non par egalite
+       ni par bouts de chaine. L'egalite laissait passer « Goldorak : Et
+       l'aventure continue » face a « Goldorak », et « Dis-moi Bioman »
+       face a « Bioman » : memes reponses, cribles differents. Les bouts
+       de chaine, eux, ecartaient « Supernana » a cause de « NANA ».
+    """
+    a, b = noyau(un).split(), noyau(autre).split()
+    return dedans(a, b) or dedans(b, a)
+
+
 def liste(bloc, champ):
     m = re.search(champ + r': \[([^\]]*)\]', bloc)
     if not m:
@@ -89,12 +112,14 @@ def main(cat_attente=None):
               % (cat, len(pistes), len(deja)))
         coll = []
         for i, p in enumerate(pistes, 1):
-            k = noyau(p["a"])
             vus, ou = set(), []
-            for c, n in deja.get(k, []):
-                if (c, n) not in vus:
-                    vus.add((c, n))
-                    ou.append((c, n))
+            for cle, v in deja.items():
+                if not parent(p["a"], cle):
+                    continue
+                for c, n in v:
+                    if (c, n) not in vus:
+                        vus.add((c, n))
+                        ou.append((c, n))
             if ou:
                 coll.append((i, p["a"], p["t"], ou))
         print(u"=== %d doublon(s) de reponse ===" % len(coll))
