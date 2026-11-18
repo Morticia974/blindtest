@@ -2060,7 +2060,12 @@ var Playlists = (function () {
           interprete: "justine sainte",
           disque: "Un Monde Sans Danger From Code Lyoko Original Version Single Un Monde Sans Danger",
           voulue: true, altT: ["Un monde sans danger"],
-          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg" }
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg" },
+        /* 1 morceaux validés par Audrey le 18/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Totally Spies", a: "Kids Superstars", q: "Kids Superstars Totally Spies Theme Song",
+          interprete: "Kids Superstars",
+          disque: "Totally Spies Theme Song EP Totally Spies Theme Song", voulue: true,
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/638/1596958.jpg" }
       ]
     },
     {
