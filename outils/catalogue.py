@@ -21,7 +21,12 @@ MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
 
 src = io.open(os.path.join(DEPOT, "js", "playlists.js"), encoding="utf-8").read()
 CAT = re.compile(r"id: '([a-z0-9]+)',")
-PISTE = re.compile(r'\{ t: "((?:[^"\\]|\\.)*)", a: "((?:[^"\\]|\\.)*)"', re.S)
+# `\s*` entre les deux champs, sinon une fiche dont le titre et l'artiste
+# sont sur deux lignes echappe au comptage. « La Maison de Mickey » a
+# manque au catalogue pour cette seule raison : son interprete est si
+# long -- quatre noms -- que l'integration a passe la ligne. Elle etait
+# bien dans le jeu, mais pas dans le fichier texte qu'Audrey relit.
+PISTE = re.compile(r'\{ t: "((?:[^"\\]|\\.)*)",\s*a: "((?:[^"\\]|\\.)*)"', re.S)
 
 
 def champ(bloc, nom):
