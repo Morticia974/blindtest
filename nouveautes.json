@@ -208,5 +208,167 @@
       "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/19/49898.jpg"
     }
+  ],
+  "disney": [
+    {
+      "t": "La chanson de la pluie",
+      "a": "Bambi",
+      "q": "La chanson de la pluie Chœurs - Bambi",
+      "interprete": "Chœurs - Bambi",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La chanson de la pluie",
+      "voulue": true
+    },
+    {
+      "t": "Mon tout-petit",
+      "a": "Dumbo",
+      "q": "Mon tout-petit Chœurs - Dumbo",
+      "interprete": "Chœurs - Dumbo",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Mon tout-petit",
+      "voulue": true
+    },
+    {
+      "t": "Je vais orner ton corps",
+      "a": "Kirikou",
+      "q": "Je vais orner ton corps Rokia Traoré & Youssou N'Dour",
+      "interprete": "Rokia Traoré & Youssou N'Dour",
+      "disque": "Comédie musicale Kirikou Je vais orner ton corps",
+      "voulue": true
+    },
+    {
+      "t": "Suis-moi",
+      "a": "Le Petit Prince",
+      "q": "Suis-moi Camille & Hans Zimmer",
+      "interprete": "Camille & Hans Zimmer",
+      "disque": "Le Petit Prince (Bande originale du film) Suis-moi",
+      "voulue": true
+    },
+    {
+      "t": "Quelqu'un viendra",
+      "a": "Les Aventures de Bernard et Bianca",
+      "q": "Quelqu'un viendra Cast - Bernard et Bianca",
+      "interprete": "Cast - Bernard et Bianca",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Quelqu'un viendra",
+      "voulue": true
+    },
+    {
+      "t": "Un petit point de lumière",
+      "a": "Peter et Elliott le dragon",
+      "q": "Un petit point de lumière Nicole Croisille",
+      "interprete": "Nicole Croisille",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Un petit point de lumière",
+      "voulue": true
+    },
+    {
+      "t": "Deux bons copains",
+      "a": "Rox et Rouky",
+      "q": "Deux bons copains Evelyne Voilaume",
+      "interprete": "Evelyne Voilaume",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Deux bons copains",
+      "voulue": true
+    },
+    {
+      "t": "Taram et le chaudron magique",
+      "a": "Taram et le Chaudron magique",
+      "q": "Taram et le chaudron magique Douchka",
+      "interprete": "Douchka",
+      "disque": "Singles, Vol: 1 - EP Taram et le chaudron magique",
+      "voulue": true
+    },
+    {
+      "t": "Notre paradis",
+      "a": "Vaiana 2",
+      "q": "Notre paradis Cerise Calixte & Cast - Vaiana 2",
+      "interprete": "Cerise Calixte & Cast - Vaiana 2",
+      "disque": "Vaiana 2 (Bande Originale française du Film) Notre paradis",
+      "voulue": true
+    },
+    {
+      "t": "L' Univers de Jean-Christophe",
+      "a": "Winnie l'ourson",
+      "q": "L' Univers de Jean-Christophe Chœurs - Winnie l'Ourson",
+      "interprete": "Chœurs - Winnie l'Ourson",
+      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) L' Univers de Jean-Christophe",
+      "voulue": true
+    },
+    {
+      "t": "It's Finn McMissile!",
+      "a": "Cars 2",
+      "q": "It's Finn McMissile! Michael Giacchino",
+      "interprete": "Michael Giacchino",
+      "disque": "Cars 2 (Original Soundtrack) It's Finn McMissile!",
+      "voulue": true
+    },
+    {
+      "t": "One Little Slip",
+      "a": "Chicken Little",
+      "q": "One Little Slip Barenaked Ladies",
+      "interprete": "Barenaked Ladies",
+      "disque": "Chicken Little (Original Version) One Little Slip",
+      "voulue": true
+    },
+    {
+      "t": "Hit Me Up",
+      "a": "Happy Feet",
+      "q": "Hit Me Up Gia Farrell",
+      "interprete": "Gia Farrell",
+      "disque": "Happy Feet (Music from the Motion Picture) Hit Me Up",
+      "voulue": true
+    },
+    {
+      "t": "My First Love",
+      "a": "Les Croods",
+      "q": "My First Love Mark Mothersbaugh",
+      "interprete": "Mark Mothersbaugh",
+      "disque": "The Croods: A New Age (Original Motion Picture Soundtrack) My First Love",
+      "voulue": true
+    },
+    {
+      "t": "Turn Up The Sunshine",
+      "a": "Les Minions",
+      "q": "Turn Up The Sunshine Diana Ross & Tame Impala",
+      "interprete": "Diana Ross & Tame Impala",
+      "disque": "Minions: The Rise Of Gru (Original Motion Picture Soundtrack) Turn Up The Sunshine",
+      "voulue": true
+    },
+    {
+      "t": "Let Me Take You to Río (Blu's Arrival)",
+      "a": "Rio",
+      "q": "Let Me Take You to Río (Blu's Arrival) Ester Dean & Carlinhos Brown",
+      "interprete": "Ester Dean & Carlinhos Brown",
+      "disque": "Río (Music from the Motion Picture) Let Me Take You to Río (Blu's Arrival)",
+      "voulue": true
+    },
+    {
+      "t": "Epiphany",
+      "a": "Soul",
+      "q": "Epiphany Trent Reznor & Atticus Ross",
+      "interprete": "Trent Reznor & Atticus Ross",
+      "disque": "Soul (Original Motion Picture Soundtrack) Epiphany",
+      "voulue": true
+    },
+    {
+      "t": "I'm Still Standing",
+      "a": "Tous en scène",
+      "q": "I'm Still Standing Taron Egerton Tous en scène",
+      "interprete": "Taron Egerton",
+      "disque": "Tous en scène Bande originale du film I'm Still Standing",
+      "voulue": true
+    },
+    {
+      "t": "I Thought I Lost You",
+      "a": "Volt, star malgré lui",
+      "q": "I Thought I Lost You John Travolta & Miley Cyrus",
+      "interprete": "John Travolta & Miley Cyrus",
+      "disque": "VOLT - Star malgré lui (Bande originale du film) I Thought I Lost You",
+      "voulue": true
+    },
+    {
+      "t": "Down to Earth (feat. The Soweto Gospel Choir)",
+      "a": "WALL-E",
+      "q": "Down to Earth (feat. The Soweto Gospel Choir) Peter Gabriel",
+      "interprete": "Peter Gabriel",
+      "disque": "WALL-E (Original Motion Picture Soundtrack) Down to Earth (feat. The Soweto Gospel Choir)",
+      "voulue": true
+    }
   ]
 }
