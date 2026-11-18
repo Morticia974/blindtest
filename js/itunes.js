@@ -241,12 +241,35 @@ var Itunes = (function () {
 
   /* Résout un morceau de playlist en extrait jouable.
      Renvoie null si Apple n'a rien de jouable (le jeu passe alors au suivant). */
+  /* Certains morceaux sont dans le catalogue d'Apple sans être dans son index
+     de recherche. Aucun mot-clé ne les rend, et pourtant ils existent et ont un
+     extrait. Giédré est le cas d'école : quatorze albums au catalogue, un seul
+     que la recherche connaît. Vérifié le 19/11/2026 — ni le filtre du contenu
+     explicite, ni une limite trop basse : avec limit=200 et attribute=artistTerm,
+     Apple rend treize morceaux sur la centaine qu'il a enregistrée.
+
+     Une fiche peut donc donner `idApple`, l'identifiant du morceau. On le
+     demande alors directement, au lieu de le chercher.
+
+     C'est aussi la façon la plus sûre d'épingler UNE version : pas de
+     classement, pas de concurrence, c'est cet enregistrement-là et aucun
+     autre. */
+  function appelerId(id, pays) {
+    var url = 'https://itunes.apple.com/lookup?'
+      + new URLSearchParams({ id: id, country: pays, entity: 'song' }).toString();
+    return fetch(url, { cache: 'force-cache' }).then(function (r) {
+      if (!r.ok) throw new Error('iTunes ' + r.status);
+      return r.json();
+    });
+  }
+
   function resoudre(piste) {
     var requete = piste.q || ((piste.a ? piste.a + ' ' : '') + piste.t);
     var pays = piste.pays || PAYS;
     // La boutique fait partie de la clé : sans ça, une recherche française et
     // une recherche américaine sur le même texte se marcheraient dessus.
-    var cle = pays + '|' + Match.normaliser(requete);
+    var cle = pays + '|' + (piste.idApple ? 'id:' + piste.idApple
+                                          : Match.normaliser(requete));
     var enCache = cache[cle];
     var duree = (enCache && enCache.vide) ? DUREE_CACHE_VIDE : DUREE_CACHE;
 
@@ -261,16 +284,27 @@ var Itunes = (function () {
          hors de la liste avant même qu'on puisse le préférer. */
       var params = { term: requete, media: 'music', entity: 'song', country: pays,
                      limit: piste.interprete ? 16 : 8 };
+      var demander = piste.idApple
+        ? function () { return appelerId(piste.idApple, pays); }
+        : function () { return appeler(params); };
 
       // Apple coupe le robinet au-delà d'une vingtaine d'appels par minute, et
       // répond alors une liste vide. On retente une fois avant de conclure.
-      return appeler(params)
+      return demander()
         .then(function (data) {
           if (data.results && data.results.length) return data;
-          return attendre(2500).then(function () { return appeler(params); });
+          return attendre(2500).then(demander);
         })
         .then(function (data) {
-          var resolue = enPiste(meilleur(data.results || [], piste));
+          /* Une demande par identifiant renvoie l'album avec ses morceaux :
+             on écarte la fiche d'album, qui n'a pas d'extrait. */
+          var trouvees = (data.results || []).filter(function (r) {
+            return r.wrapperType !== 'collection';
+          });
+          /* Demandé par son identifiant, le morceau EST la réponse : on ne le
+             met pas en concurrence avec lui-même. */
+          var resolue = enPiste(piste.idApple ? trouvees[0]
+                                              : meilleur(trouvees, piste));
 
           // Un « rien trouvé » n'est mémorisé qu'une heure : sinon une simple
           // coupure d'Apple bannirait un bon morceau pendant un mois.

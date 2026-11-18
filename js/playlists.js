@@ -3279,7 +3279,13 @@ var Playlists = (function () {
           interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true },
         /* 1 morceaux validés par Audrey le 19/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Poupine et Thierry", a: "Les Wriggles", q: "Poupine et Thierry Les Wriggles",
-          interprete: "Les Wriggles", disque: "Le best of Poupine et Thierry", voulue: true }
+          interprete: "Les Wriggles", disque: "Le best of Poupine et Thierry", voulue: true },
+        /* Première fiche par identifiant : « Pisser debout » n'est dans aucun
+           résultat de recherche d'Apple, mais le morceau existe et a un
+           extrait. Voir `idApple` dans itunes.js. */
+        { t: "Pisser debout", a: "Giédré", altA: ["Giedre"],
+          idApple: 587467621, q: "Pisser debout Giedre",
+          interprete: "Giedre", voulue: true }
       ]
     }
   ];
