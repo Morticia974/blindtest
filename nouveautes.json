@@ -213,9 +213,9 @@
     {
       "t": "La chanson de la pluie",
       "a": "Bambi",
-      "q": "La chanson de la pluie Chœurs - Bambi",
-      "interprete": "Chœurs - Bambi",
-      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) La chanson de la pluie",
+      "q": "La chanson de la pluie Cast of Bambi",
+      "interprete": "Cast of Bambi",
+      "disque": "Bambi (Original Soundtrack) [French Version] La chanson de la pluie",
       "voulue": true
     },
     {
@@ -224,14 +224,15 @@
       "q": "Mon tout-petit Chœurs - Dumbo",
       "interprete": "Chœurs - Dumbo",
       "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Mon tout-petit",
-      "voulue": true
+      "voulue": true,
+      "pochette": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a6/ea/7d/a6ea7d14-eb9e-7ba0-9437-07cc6e5f9653/00050086071579.rgb.jpg/600x600bb.jpg"
     },
     {
-      "t": "Je vais orner ton corps",
+      "t": "Kirikou grandira",
       "a": "Kirikou",
-      "q": "Je vais orner ton corps Rokia Traoré & Youssou N'Dour",
-      "interprete": "Rokia Traoré & Youssou N'Dour",
-      "disque": "Comédie musicale Kirikou Je vais orner ton corps",
+      "q": "Kirikou grandira Jara Ezo",
+      "interprete": "Jara Ezo",
+      "disque": "Kirikou et les hommes et les femmes (Bande originale du film) Kirikou grandira",
       "voulue": true
     },
     {
@@ -248,14 +249,15 @@
       "q": "Quelqu'un viendra Cast - Bernard et Bianca",
       "interprete": "Cast - Bernard et Bianca",
       "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Quelqu'un viendra",
-      "voulue": true
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/bernard-et-bianca.jpg"
     },
     {
-      "t": "Un petit point de lumière",
+      "t": "Candle On the Water",
       "a": "Peter et Elliott le dragon",
-      "q": "Un petit point de lumière Nicole Croisille",
-      "interprete": "Nicole Croisille",
-      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Un petit point de lumière",
+      "q": "Candle On the Water Helen Reddy",
+      "interprete": "Helen Reddy",
+      "disque": "Pete's Dragon (Original Motion Picture Soundtrack) Candle On the Water",
       "voulue": true
     },
     {
@@ -264,15 +266,8 @@
       "q": "Deux bons copains Evelyne Voilaume",
       "interprete": "Evelyne Voilaume",
       "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) Deux bons copains",
-      "voulue": true
-    },
-    {
-      "t": "Taram et le chaudron magique",
-      "a": "Taram et le Chaudron magique",
-      "q": "Taram et le chaudron magique Douchka",
-      "interprete": "Douchka",
-      "disque": "Singles, Vol: 1 - EP Taram et le chaudron magique",
-      "voulue": true
+      "voulue": true,
+      "pochette": "https://morticia974.github.io/blindtest/images/pochettes/rox-et-rouky.jpg"
     },
     {
       "t": "Notre paradis",
@@ -283,19 +278,11 @@
       "voulue": true
     },
     {
-      "t": "L' Univers de Jean-Christophe",
+      "t": "L'univers de Jean-Christophe",
       "a": "Winnie l'ourson",
-      "q": "L' Univers de Jean-Christophe Chœurs - Winnie l'Ourson",
-      "interprete": "Chœurs - Winnie l'Ourson",
-      "disque": "Les 100 Plus Belles Chansons Disney (5 Vol.) L' Univers de Jean-Christophe",
-      "voulue": true
-    },
-    {
-      "t": "It's Finn McMissile!",
-      "a": "Cars 2",
-      "q": "It's Finn McMissile! Michael Giacchino",
-      "interprete": "Michael Giacchino",
-      "disque": "Cars 2 (Original Soundtrack) It's Finn McMissile!",
+      "q": "L'univers de Jean-Christophe Chorus",
+      "interprete": "Chorus",
+      "disque": "Winnie l'Ourson et ses plus belles chansons L'univers de Jean-Christophe",
       "voulue": true
     },
     {
@@ -315,14 +302,6 @@
       "voulue": true
     },
     {
-      "t": "My First Love",
-      "a": "Les Croods",
-      "q": "My First Love Mark Mothersbaugh",
-      "interprete": "Mark Mothersbaugh",
-      "disque": "The Croods: A New Age (Original Motion Picture Soundtrack) My First Love",
-      "voulue": true
-    },
-    {
       "t": "Turn Up The Sunshine",
       "a": "Les Minions",
       "q": "Turn Up The Sunshine Diana Ross & Tame Impala",
@@ -339,11 +318,11 @@
       "voulue": true
     },
     {
-      "t": "Epiphany",
+      "t": "It's All Right",
       "a": "Soul",
-      "q": "Epiphany Trent Reznor & Atticus Ross",
-      "interprete": "Trent Reznor & Atticus Ross",
-      "disque": "Soul (Original Motion Picture Soundtrack) Epiphany",
+      "q": "It's All Right Jon Batiste",
+      "interprete": "Jon Batiste",
+      "disque": "Soul (Original Motion Picture Soundtrack) It's All Right",
       "voulue": true
     },
     {
@@ -355,11 +334,11 @@
       "voulue": true
     },
     {
-      "t": "I Thought I Lost You",
+      "t": "Barking At the Moon",
       "a": "Volt, star malgré lui",
-      "q": "I Thought I Lost You John Travolta & Miley Cyrus",
-      "interprete": "John Travolta & Miley Cyrus",
-      "disque": "VOLT - Star malgré lui (Bande originale du film) I Thought I Lost You",
+      "q": "Barking At the Moon Jenny Lewis",
+      "interprete": "Jenny Lewis",
+      "disque": "VOLT - Star malgré lui (Bande originale du film) Barking At the Moon",
       "voulue": true
     },
     {
@@ -368,6 +347,14 @@
       "q": "Down to Earth (feat. The Soweto Gospel Choir) Peter Gabriel",
       "interprete": "Peter Gabriel",
       "disque": "WALL-E (Original Motion Picture Soundtrack) Down to Earth (feat. The Soweto Gospel Choir)",
+      "voulue": true
+    },
+    {
+      "t": "Run That Race",
+      "a": "Cars 3",
+      "q": "Run That Race Dan Auerbach",
+      "interprete": "Dan Auerbach",
+      "disque": "Cars 3 (Original Motion Picture Soundtrack) Run That Race",
       "voulue": true
     }
   ]
