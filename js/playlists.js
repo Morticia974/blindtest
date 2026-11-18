@@ -3272,7 +3272,10 @@ var Playlists = (function () {
           interprete: "El Chombo", disque: "Chacarron - EP Chacarron (Radio Edit)",
           voulue: true, altT: ["Chacarron Macarron"] },
         { t: "Le Jerk", a: "Thierry Hazard", q: "Le Jerk Thierry Hazard",
-          interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true }
+          interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true },
+        /* 1 morceaux validés par Audrey le 19/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Poupine et Thierry", a: "Les Wriggles", q: "Poupine et Thierry Les Wriggles",
+          interprete: "Les Wriggles", disque: "Le best of Poupine et Thierry", voulue: true }
       ]
     }
   ];
