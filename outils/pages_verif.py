@@ -194,6 +194,23 @@ def main():
                       % (ech(fichier_de(nom)), emoji, ech(nom), len(pistes),
                          u" · %d à regarder" % aRegarder if aRegarder else u""))
 
+    # Les pages de comparaison de versions, fabriquees a part par
+    # versions.py et versions_libres.py. Sans ca elles sont orphelines :
+    # elles existent, elles repondent, mais aucun lien n'y mene et Audrey
+    # ne peut y arriver qu'en collant l'adresse. Elle me l'a dit le
+    # 18/11/2026 : « je n'ai pas acces aux pages d'ecoute ».
+    aparte = []
+    for f in sorted(os.listdir(DOSSIER)):
+        if not (f.startswith(u"versions-") and f.endswith(u".html")):
+            continue
+        texte = io.open(os.path.join(DOSSIER, f), encoding="utf-8").read()
+        m = re.search(r"<h1>(.*?)</h1>", texte, re.S)
+        titre = re.sub(r"<[^>]+>", u"", m.group(1)).strip() if m else f
+        combien = texte.count(u"<audio controls")
+        aparte.append(u'<a class="cat" href="%s"><b>🔍 %s</b>'
+                      u'<span>%d version%s à comparer</span></a>'
+                      % (ech(f), ech(titre), combien, u"s" if combien > 1 else u""))
+
     total = sum(len(v) for v in par_cat.values())
     corps = (u'<header>\n<h1>🎧 Tout le catalogue, à vérifier</h1>\n'
              u'<p class="sous">%d morceaux, %d catégories. Aucun hasard : tout y est.</p>\n</header>\n'
@@ -204,8 +221,15 @@ def main():
              u'au clavier.<br><br>L\'étiquette <span class="doute">à regarder</span> est de moi : '
              u'album qui sent la compilation ou la reprise, artiste qui n\'est pas celui demandé. '
              u'C\'est un soupçon, pas un verdict — ton oreille tranche.\n</div>\n'
-             u'<div class="cats">\n%s\n</div>'
-             % (total, len(par_cat), u"\n".join(cartes)))
+             u'<div class="cats">\n%s\n</div>%s'
+             % (total, len(par_cat), u"\n".join(cartes),
+                (u'\n<header style="margin-top:34px">\n'
+                 u'<h1 style="font-size:20px">🔍 Choisir une version</h1>\n'
+                 u'<p class="sous">Quand Apple n\'a pas l\'enregistrement '
+                 u'd\'origine : toutes les autres versions côte à côte, '
+                 u'pour que tu montres celle que tu connais.</p>\n</header>\n'
+                 u'<div class="cats">\n%s\n</div>' % u"\n".join(aparte))
+                if aparte else u""))
     io.open(os.path.join(DOSSIER, u"index.html"), "w", encoding="utf-8", newline="").write(
         page(u"Catalogue à vérifier", corps, STYLE + INDEX_PLUS))
 

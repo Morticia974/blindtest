@@ -120,8 +120,12 @@ def main(source):
     index = os.path.join(DEPOT, "verif", "index.html")
     s = io.open(index, encoding="utf-8").read()
     ancien = u"</p>" + u"\n" + u"</header>"
-    if s.count(ancien) == 1:
-        neuf = s.replace(ancien, (NOTE % sum(rangs.values())) + u"\n" + u"</header>")
+    # On vise le PREMIER en-tete, celui du haut de page. L'index en a
+    # gagne un second le 18/11/2026, pour la section « Choisir une
+    # version » : chercher un repere unique ne marchait plus et la note
+    # ne se posait plus du tout, sans que rien ne casse par ailleurs.
+    if ancien in s:
+        neuf = s.replace(ancien, (NOTE % sum(rangs.values())) + u"\n" + u"</header>", 1)
         io.open(index, "w", encoding="utf-8", newline="").write(neuf)
     else:
         print(u"   (note non posée : l'en-tête de l'index a changé)")
