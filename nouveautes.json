@@ -275,30 +275,6 @@
         "La famille des Barbapapa"
       ],
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/80/201839.jpg"
-    },
-    {
-      "t": "Lucky Luke",
-      "a": "Claude Bolling & Pat Woods",
-      "q": "Claude Bolling Pat Woods I'm a Poor Lonesome Cowboy Lucky Luke Daisy Town",
-      "interprete": "Claude Bolling",
-      "disque": "Lucky Luke : Daisy Town Bande originale I'm a Poor Lonesome Cowboy",
-      "voulue": true,
-      "altT": [
-        "I'm a Poor Lonesome Cowboy"
-      ],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/216/541115.jpg"
-    },
-    {
-      "t": "Lucky Luke 2",
-      "a": "Claude Bolling",
-      "q": "Claude Bolling Generique Lucky Luke serie 2 Bande originale",
-      "interprete": "Claude Bolling",
-      "disque": "Lucky Luke serie 2 Bande originale Generique Lucky Luke",
-      "voulue": true,
-      "altT": [
-        "Generique Lucky Luke"
-      ],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/216/541115.jpg"
     }
   ]
 }
