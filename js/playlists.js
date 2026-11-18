@@ -1715,7 +1715,26 @@ var Playlists = (function () {
         { t: "Fairy Tail Main Theme", a: "Fairy Tail", q: "Yasuharu Takanashi Fairy Tail Main Theme",
           interprete: "Yasuharu Takanashi", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/38/c7/ab/38c7abd2-f523-8351-f2ff-a49da4c07b6b/PCCA_03469_itunes.png/600x600bb.jpg" },
         { t: "Sparkle", a: "Your Name", q: "RADWIMPS Sparkle Your Name Human Bloom",
-          interprete: "RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/your-name.jpg" }
+          interprete: "RADWIMPS", altA: ["Kimi no Na wa"], pochette: "https://morticia974.github.io/blindtest/images/pochettes/your-name.jpg" },
+        /* 8 morceaux validés par Audrey le 18/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Requiem", a: "Nausicaä", q: "Joe Hisaishi Requiem Nausicaa",
+          interprete: "Joe Hisaishi" },
+        { t: "Ponyo sur la falaise", a: "Ponyo", q: "Joe Hisaishi Ponyo sur la falaise",
+          interprete: "Joe Hisaishi" },
+        { t: "KANEDA", a: "Akira", q: "GEINOH YAMASHIROGUMI KANEDA Akira",
+          interprete: "GEINOH YAMASHIROGUMI" },
+        { t: "Grand Escape", a: "Les Enfants du temps",
+          q: "RADWIMPS Grand Escape Weathering With You", interprete: "RADWIMPS" },
+        { t: "Suzume", a: "Suzume", q: "RADWIMPS Toaka Suzume", interprete: "RADWIMPS" },
+        { t: "Totoro", a: "Mon voisin Totoro",
+          q: "Joe Hisaishi Totoro Mon Voisin Totoro Original Soundtrack",
+          interprete: "Joe Hisaishi", disque: "mon voisin totoro" },
+        { t: "Le Château dans le ciel", a: "Le Château dans le ciel",
+          q: "Joe Hisaishi Le Chateau dans le ciel Original Soundtrack",
+          interprete: "Joe Hisaishi", disque: "le chateau dans le ciel" },
+        { t: "Une Ville avec vue sur l’océan", a: "Kiki la petite sorcière",
+          q: "Joe Hisaishi Kiki la petite sorciere Original Soundtrack",
+          interprete: "Joe Hisaishi", disque: "kiki la petite sorciere" }
       ]
     },
     {

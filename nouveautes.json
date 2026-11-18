@@ -56,24 +56,6 @@
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/362/906141.jpg"
     },
     {
-      "t": "Requiem",
-      "a": "Nausicaä",
-      "interprete": "Joe Hisaishi",
-      "q": "Joe Hisaishi Requiem Nausicaa"
-    },
-    {
-      "t": "Ponyo sur la falaise",
-      "a": "Ponyo",
-      "interprete": "Joe Hisaishi",
-      "q": "Joe Hisaishi Ponyo sur la falaise"
-    },
-    {
-      "t": "KANEDA",
-      "a": "Akira",
-      "interprete": "GEINOH YAMASHIROGUMI",
-      "q": "GEINOH YAMASHIROGUMI KANEDA Akira"
-    },
-    {
       "t": "abnormalize",
       "a": "Psycho-Pass",
       "interprete": "Ling tosite sigure",
@@ -144,18 +126,6 @@
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/620/1550756.jpg"
     },
     {
-      "t": "Grand Escape",
-      "a": "Les Enfants du temps",
-      "interprete": "RADWIMPS",
-      "q": "RADWIMPS Grand Escape Weathering With You"
-    },
-    {
-      "t": "Suzume",
-      "a": "Suzume",
-      "interprete": "RADWIMPS",
-      "q": "RADWIMPS Toaka Suzume"
-    },
-    {
       "t": "This Fffire",
       "a": "Cyberpunk Edgerunners",
       "interprete": "Franz Ferdinand",
@@ -195,27 +165,6 @@
       "interprete": "大澤翔",
       "q": "Butter-Fly Digimon Adventure",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/244/610565.jpg"
-    },
-    {
-      "t": "Totoro",
-      "a": "Mon voisin Totoro",
-      "interprete": "Joe Hisaishi",
-      "q": "Joe Hisaishi Totoro Mon Voisin Totoro Original Soundtrack",
-      "disque": "mon voisin totoro"
-    },
-    {
-      "t": "Le Château dans le ciel",
-      "a": "Le Château dans le ciel",
-      "interprete": "Joe Hisaishi",
-      "q": "Joe Hisaishi Le Chateau dans le ciel Original Soundtrack",
-      "disque": "le chateau dans le ciel"
-    },
-    {
-      "t": "Une Ville avec vue sur l’océan",
-      "a": "Kiki la petite sorcière",
-      "interprete": "Joe Hisaishi",
-      "q": "Joe Hisaishi Kiki la petite sorciere Original Soundtrack",
-      "disque": "kiki la petite sorciere"
     },
     {
       "t": "Mob Choir 99",
