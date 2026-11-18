@@ -726,15 +726,27 @@
     var maintenant = net.maintenant();
     var piste = etat.pistes[tour.index];
 
+    /* La médaille en jeu à cet instant. Elle teint l'anneau : on voit l'or
+       devenir argent du coin de l'œil, sans quitter le champ de réponse des
+       yeux. Hors de l'écoute, l'anneau reprend ses couleurs. */
+    var medaille = (tour.phase === 'ecoute' && tour.debutA)
+      ? Jeu.palierCourant(etat.meta, maintenant - tour.debutA,
+                          etat.meta.dureeExtrait * 1000)
+      : null;
+    if (medaille && medaille.couleur) {
+      $('plateau').style.setProperty('--couleur-palier', medaille.couleur);
+    } else {
+      $('plateau').style.removeProperty('--couleur-palier');
+    }
+
     if (tour.phase === 'ecoute' && tour.debutA) {
       var duree = etat.meta.dureeExtrait * 1000;
       var restant = Math.max(0, tour.debutA + duree - maintenant);
       var part = restant / duree;
       $('chrono').textContent = Math.ceil(restant / 1000);
-      /* Sous le chrono, le palier en cours plutôt que « à l'écoute » : c'est
+      /* Sous le chrono, la médaille en jeu plutôt que « à l'écoute » : c'est
          tout l'intérêt des paliers, savoir ce qu'on joue avant de répondre. */
-      $('sous-chrono').textContent =
-        Jeu.nomPalier(etat.meta, duree - restant, duree) || 'à l\'écoute';
+      $('sous-chrono').textContent = (medaille && medaille.nom) || 'à l\'écoute';
       $('piste-temps').setAttribute('stroke-dashoffset', String(CIRCONFERENCE * (1 - part)));
       $('plateau').classList.toggle('presse', restant < 8000);
     } else if (tour.phase === 'reveal' && tour.revealA) {

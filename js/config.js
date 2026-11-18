@@ -39,7 +39,8 @@ var Config = {
        l'extrait, pas un nombre de secondes : si l'écoute passe de 30 à 20 s,
        les paliers se resserrent tout seuls. `part` est ce qu'on touche dans
        ce palier — 1 = tout, 0.5 = la moitié. `nom` s'affiche sous le chrono
-       pendant l'écoute, pour que chacun sache où il en est.
+       pendant l'écoute et `couleur` teint l'anneau, pour que chacun sache où
+       il en est sans avoir à lire.
 
        Les paliers plutôt qu'une fonte continue : une fonte, personne ne la
        sent ; un palier, ça s'annonce et ça se voit venir.
@@ -52,21 +53,21 @@ var Config = {
     vitesses: [
       { nom: "tout le monde pareil",
         aide: "Trouver suffit : tous ceux qui trouvent marquent pareil.",
-        paliers: [ { jusqua: 1, part: 1, nom: "plein tarif" } ] },
+        paliers: [ { jusqua: 1, part: 1, nom: "or", couleur: "#FFD34A" } ] },
 
       // sur 30 s d'écoute : tout jusqu'à 15 s, 70 % jusqu'à 24 s, puis 45 %
       { nom: "un peu de rapidité",
-        aide: "Plein tarif pendant la première moitié de l'extrait, le temps de taper. Ensuite deux paliers, annoncés sous le chrono.",
-        paliers: [ { jusqua: 0.5, part: 1,    nom: "plein tarif" },
-                   { jusqua: 0.8, part: 0.7,  nom: "tarif réduit" },
-                   { jusqua: 1,   part: 0.45, nom: "petits points" } ] },
+        aide: "Médaille d'or pendant toute la première moitié de l'extrait, le temps de taper. Ensuite l'argent, puis le bronze.",
+        paliers: [ { jusqua: 0.5, part: 1,    nom: "🥇 or",     couleur: "#FFD34A" },
+                   { jusqua: 0.8, part: 0.7,  nom: "🥈 argent", couleur: "#D7E2E6" },
+                   { jusqua: 1,   part: 0.45, nom: "🥉 bronze", couleur: "#D97A3C" } ] },
 
       // sur 30 s d'écoute : tout jusqu'à 10 s, la moitié jusqu'à 20 s, puis 20 %
       { nom: "la course",
-        aide: "Tout dans le premier tiers, la moitié dans le deuxième, des miettes dans le dernier.",
-        paliers: [ { jusqua: 0.333, part: 1,   nom: "plein tarif" },
-                   { jusqua: 0.667, part: 0.5, nom: "demi-tarif" },
-                   { jusqua: 1,     part: 0.2, nom: "dernière chance" } ] }
+        aide: "L'or dans le premier tiers, l'argent dans le deuxième, le bronze dans le dernier.",
+        paliers: [ { jusqua: 0.333, part: 1,   nom: "🥇 or",     couleur: "#FFD34A" },
+                   { jusqua: 0.667, part: 0.5, nom: "🥈 argent", couleur: "#D7E2E6" },
+                   { jusqua: 1,     part: 0.2, nom: "🥉 bronze", couleur: "#D97A3C" } ] }
     ]
   }
 };

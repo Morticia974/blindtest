@@ -248,12 +248,16 @@ secondes : raccourcir l'écoute resserre les paliers tout seul. Sur 30 s :
 | Position | 0–10 s | 10–15 s | 15–20 s | 20–24 s | 24–30 s |
 |---|---|---|---|---|---|
 | tout le monde pareil | tout | tout | tout | tout | tout |
-| un peu de rapidité | tout | tout | 70 % | 70 % | 45 % |
-| la course | tout | 50 % | 50 % | 20 % | 20 % |
+| un peu de rapidité | 🥇 tout | 🥇 tout | 🥈 70 % | 🥈 70 % | 🥉 45 % |
+| la course | 🥇 tout | 🥈 50 % | 🥈 50 % | 🥉 20 % | 🥉 20 % |
 
 Le premier palier est long exprès : taper une réponse sur un téléphone prend
 dix secondes à qui n'a pas l'habitude, et ces dix secondes ne disent rien de
-ce qu'on connaît. Le palier en cours s'affiche sous le chrono.
+ce qu'on connaît.
+
+La médaille en jeu s'écrit sous le chrono, et sa `couleur` (dans la même
+table) teint l'anneau — doré, argenté, bronze. C'est fait pour se voir du coin
+de l'œil, sans lire.
 
 ---
 

@@ -60,12 +60,13 @@ var Jeu = (function () {
     return Math.max(1, Math.round(base * palier(paliers, ecoule, dureeMs).part));
   }
 
-  /* Le nom du palier en cours, à afficher sous le chrono pendant l'écoute.
-     Vide s'il n'y a qu'un palier : il n'y a alors rien à surveiller. */
-  function nomPalier(reglages, ecoule, dureeMs) {
+  /* Le palier en cours, pour l'afficher pendant l'écoute : son nom sous le
+     chrono, sa couleur sur l'anneau. Rien s'il n'y a qu'un palier — il n'y a
+     alors pas de médaille à perdre, et l'anneau garde sa couleur habituelle. */
+  function palierCourant(reglages, ecoule, dureeMs) {
     var paliers = (reglages && reglages.paliers) || [];
-    if (paliers.length < 2) return '';
-    return palier(paliers, ecoule, dureeMs).nom || '';
+    if (paliers.length < 2) return null;
+    return palier(paliers, ecoule, dureeMs);
   }
 
   /* ------------------------------------------------------------------
@@ -662,6 +663,6 @@ var Jeu = (function () {
     codeAleatoire: codeAleatoire,
     identifiant: identifiant,
     points: points,
-    nomPalier: nomPalier
+    palierCourant: palierCourant
   };
 })();
