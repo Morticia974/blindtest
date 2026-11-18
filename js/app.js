@@ -118,12 +118,12 @@
   /* Une accroche différente à chaque ouverture du site. Ajoute, retire ou
      réécris ce que tu veux ici : une seule est tirée au sort au chargement. */
   var ACCROCHES = [
-    "Sors ton téléphone, monte le son, et tape plus vite que les autres. 🎤",
+    "Sors ton téléphone, monte le son, et fais confiance à tes oreilles. 🎤",
     "Chacun son téléphone, aucun arbitre… donc aucune excuse. 😛",
     "La playlist s'enchaîne toute seule. Toi, tu n'as qu'à reconnaître. Facile, non ? 😏",
-    "Celui qui crie le plus fort n'a pas raison. Celui qui tape le plus vite, si. ⚡",
+    "Celui qui crie le plus fort n'a pas raison. Celui qui connaît ses classiques, si. ⚡",
     "Trois notes et ça te revient. Ou alors pas du tout. 🎶",
-    "Prépare tes pouces : ici, une seconde d'hésitation coûte des points. ⏱️",
+    "Trois notes, un nom qui remonte, et le tableau des scores bouge. ⏱️",
     "Pas de maître du jeu, pas de triche, pas de pitié. 🎧",
     "Le moment où tu connais la chanson mais pas le titre. On connaît. 🙃",
     "Douze titres, trente secondes chacun, et beaucoup de mauvaise foi. 🕺",
@@ -2575,6 +2575,10 @@
       });
     });
 
+    /* Celui-ci n'affiche pas un nombre mais un nom, et une phrase sous le
+       curseur : il a son propre affichage. */
+    $('reglage-vitesse').addEventListener('input', montrerVitesse);
+
     $('bouton-lancer').addEventListener('click', function () {
       amorcerAudio();
       this.disabled = true;
@@ -2726,6 +2730,21 @@
     });
   }
 
+  /* La rapidité choisie avant de lancer. Les trois positions vivent dans
+     config.js : on lit la table plutôt que de répéter les chiffres ici. */
+  function vitesseChoisie() {
+    var table = Config.partie.vitesses || [];
+    var i = parseInt($('reglage-vitesse').value, 10);
+    if (isNaN(i)) i = Config.partie.vitesse || 0;
+    return table[i] || { nom: 'tout le monde pareil', aide: '', part: 0, delai: 0 };
+  }
+
+  function montrerVitesse() {
+    var v = vitesseChoisie();
+    $('valeur-vitesse').textContent = v.nom;
+    $('aide-vitesse').textContent = v.aide || '';
+  }
+
   function reglagesActuels() {
     var d = Config.partie;
     return {
@@ -2737,7 +2756,10 @@
       pointsTitre: d.pointsTitre,
       pointsArtiste: d.pointsArtiste,
       bonusDouble: d.bonusDouble,
-      partVitesse: d.partVitesse
+      /* La rapidité voyage jusqu'aux autres joueurs : chaque téléphone
+         compte ses propres points, il lui faut donc les mêmes règles. */
+      partVitesse: vitesseChoisie().part,
+      delaiVitesse: vitesseChoisie().delai
     };
   }
 
@@ -2823,6 +2845,8 @@
     $('valeur-pause').textContent = Config.partie.dureeReponse;
     $('reglage-depart').value = Config.partie.dureeDepart;
     $('valeur-depart').textContent = Config.partie.dureeDepart;
+    $('reglage-vitesse').value = Config.partie.vitesse;
+    montrerVitesse();
 
     Net.creer().then(function (n) {
       net = n;

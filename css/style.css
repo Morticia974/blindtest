@@ -404,6 +404,15 @@ button, input, select { font: inherit; color: inherit; }
 .reglage span { display: block; margin-bottom: 6px; }
 .reglage input[type="range"] { width: 100%; accent-color: var(--vert); }
 .reglage .valeur { font-family: var(--mono); color: var(--ambre); }
+/* La phrase qui explique la position du curseur de rapidite : elle change
+   quand on le bouge, et dit en clair ce que ca fait aux points. */
+.reglage .aide-reglage {
+  display: block;
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--doux);
+}
 
 /* =========================================================================
    Écran de jeu

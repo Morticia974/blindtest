@@ -237,8 +237,15 @@ Trois réglages se posent sur la **catégorie** (et non sur un morceau) :
 ## Réglages
 
 Dans **`js/config.js`**, section `partie` : nombre de titres, durée des
-extraits, points, part du score qui dépend de la rapidité. Les trois premiers
-sont aussi réglables directement depuis l'écran du salon, avant de lancer.
+extraits, pause, décompte, points, et `vitesses` — la part du score qui dépend
+de la rapidité. Tout sauf les points se règle aussi depuis l'écran du salon,
+avant de lancer.
+
+**La rapidité**, trois positions : *tout le monde pareil* (trouver suffit),
+*un peu de rapidité* (les douze premières secondes valent plein tarif, le
+temps de taper) et *la course* (les points fondent dès la première seconde).
+Le temps de grâce de la position du milieu est là pour que celui qui tape
+lentement ne perde pas des points qu'il avait trouvés.
 
 ---
 

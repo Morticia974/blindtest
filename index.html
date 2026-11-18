@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=220">
+<link rel="stylesheet" href="css/style.css?v=221">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 </head>
 <body>
@@ -425,6 +425,16 @@
           <span>Décompte avant la musique&nbsp;: <b class="valeur" id="valeur-depart">6</b>&nbsp;s</span>
           <input id="reglage-depart" type="range" min="0" max="12" step="1" value="6">
         </label>
+        <!-- La part de la rapidité dans les points. Avant, 60 % du score
+             fondait pendant les trente secondes de l'extrait : à ce
+             compte-là, c'était le plus rapide à taper qui gagnait, pas celui
+             qui reconnaissait la chanson. Les trois positions sont dans
+             config.js, section `vitesses`. -->
+        <label class="reglage">
+          <span>Rapidité&nbsp;: <b class="valeur" id="valeur-vitesse">un peu de rapidité</b></span>
+          <input id="reglage-vitesse" type="range" min="0" max="2" step="1" value="1">
+          <small id="aide-vitesse" class="aide-reglage"></small>
+        </label>
       </div>
     </div>
 
@@ -559,17 +569,17 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-<!-- Le ?v=220 force le navigateur à recharger ces fichiers au lieu de servir une
+<!-- Le ?v=221 force le navigateur à recharger ces fichiers au lieu de servir une
      vieille version gardée en mémoire. Si tu modifies un de ces fichiers et que
-     le changement ne s'affiche pas, passe tous les ?v=220 au numéro suivant
+     le changement ne s'affiche pas, passe tous les ?v=221 au numéro suivant
      (183, puis 184…) — ici et dans journal.html. -->
-<script src="js/config.js?v=220"></script>
-<script src="js/match.js?v=220"></script>
-<script src="js/playlists.js?v=220"></script>
-<script src="js/itunes.js?v=220"></script>
-<script src="js/net.js?v=220"></script>
-<script src="js/game.js?v=220"></script>
-<script src="js/app.js?v=220"></script>
+<script src="js/config.js?v=221"></script>
+<script src="js/match.js?v=221"></script>
+<script src="js/playlists.js?v=221"></script>
+<script src="js/itunes.js?v=221"></script>
+<script src="js/net.js?v=221"></script>
+<script src="js/game.js?v=221"></script>
+<script src="js/app.js?v=221"></script>
 
 </body>
 </html>

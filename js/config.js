@@ -31,6 +31,23 @@ var Config = {
     pointsTitre: 100,       // points pour le titre trouvé
     pointsArtiste: 100,     // points pour l'artiste trouvé
     bonusDouble: 50,        // bonus si on trouve les deux
-    partVitesse: 0.6        // part des points qui dépend de la rapidité (0 = pas de bonus)
+
+    /* La rapidité, en trois positions — celle qui est proposée par défaut,
+       puis la table des trois. Elles se règlent aussi sur l'écran du salon.
+
+       `part` est la fraction des points qui fond pendant l'extrait. `delai`
+       est le nombre de secondes qui valent plein tarif avant que ça ne
+       commence à fondre : ce délai existe parce que taper une réponse sur un
+       téléphone prend du temps, et que ce temps-là ne dit rien de ce qu'on
+       connaît. Sans lui, c'est le plus rapide des pouces qui gagnait. */
+    vitesse: 1,
+    vitesses: [
+      { nom: "tout le monde pareil", part: 0, delai: 0,
+        aide: "Trouver suffit : tous ceux qui trouvent marquent pareil." },
+      { nom: "un peu de rapidité", part: 0.35, delai: 12,
+        aide: "Les 12 premières secondes valent plein tarif, le temps de taper. Après, les points fondent un peu." },
+      { nom: "la course", part: 0.6, delai: 0,
+        aide: "Les points fondent dès la première seconde. Avantage aux pouces rapides." }
+    ]
   }
 };

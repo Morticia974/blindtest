@@ -35,10 +35,22 @@ var Jeu = (function () {
     }
   }
 
-  /* Points gagnés : la base, réduite au fur et à mesure que le temps passe. */
-  function points(base, ecoule, dureeMs, partVitesse) {
-    var r = Math.max(0, Math.min(1, ecoule / dureeMs));
-    return Math.max(1, Math.round(base * (1 - partVitesse * r)));
+  /* Points gagnés : la base, réduite au fur et à mesure que le temps passe.
+
+     `delaiMs` est le temps de grâce : les premières secondes valent plein
+     tarif. Sans lui, c'était celui qui tape le plus vite sur son clavier qui
+     gagnait, pas celui qui reconnaissait la chanson — deux choses qui n'ont
+     rien à voir, surtout en famille où tout le monde n'a pas les pouces d'un
+     ado. Au-delà du délai, ce qui reste est de la vraie hésitation.
+
+     `partVitesse` à zéro, plus rien ne fond : trouver suffit. */
+  function points(base, ecoule, dureeMs, partVitesse, delaiMs) {
+    var part = partVitesse || 0;
+    // Le délai ne peut pas avaler l'extrait entier : il reste une seconde.
+    var grace = Math.max(0, Math.min(delaiMs || 0, dureeMs - 1000));
+    var utile = Math.max(1, dureeMs - grace);
+    var r = Math.max(0, Math.min(1, (ecoule - grace) / utile));
+    return Math.max(1, Math.round(base * (1 - part * r)));
   }
 
   /* ------------------------------------------------------------------
@@ -414,15 +426,16 @@ var Jeu = (function () {
       var reglages = etat.meta;
       var ecoule = net.maintenant() - (etat.tour.debutA || net.maintenant());
       var dureeMs = reglages.dureeExtrait * 1000;
+      var graceMs = (reglages.delaiVitesse || 0) * 1000;
       var gain = 0;
 
       if (gagneTitre) {
         motsTrouves.titre = true;
-        gain += points(reglages.pointsTitre, ecoule, dureeMs, reglages.partVitesse);
+        gain += points(reglages.pointsTitre, ecoule, dureeMs, reglages.partVitesse, graceMs);
       }
       if (gagneArtiste) {
         motsTrouves.artiste = true;
-        gain += points(reglages.pointsArtiste, ecoule, dureeMs, reglages.partVitesse);
+        gain += points(reglages.pointsArtiste, ecoule, dureeMs, reglages.partVitesse, graceMs);
       }
 
       if (solo) {
@@ -431,7 +444,7 @@ var Jeu = (function () {
         motsTrouves.titre = true;
         motsTrouves.artiste = true;
         gain += points(solo === 'titre' ? reglages.pointsArtiste : reglages.pointsTitre,
-                       ecoule, dureeMs, reglages.partVitesse)
+                       ecoule, dureeMs, reglages.partVitesse, graceMs)
               + reglages.bonusDouble;
       } else if (motsTrouves.titre && motsTrouves.artiste) {
         gain += reglages.bonusDouble;
