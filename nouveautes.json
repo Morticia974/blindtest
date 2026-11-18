@@ -208,5 +208,40 @@
       "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/19/49898.jpg"
     }
+  ],
+  "clubdo": [
+    {
+      "t": "La Maison de Mickey",
+      "a": "Georges Costa, Michel Costa, Marie-Charlotte Leclaire & Carine Costa",
+      "q": "La maison de Mickey, le générique Georges Costa",
+      "interprete": "Georges Costa, Michel Costa, Marie-Charlotte Leclaire & Carine Costa",
+      "disque": "Playhouse Disney Hits La maison de Mickey, le générique",
+      "voulue": true,
+      "altT": [
+        "La maison de Mickey, le générique"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/6/15020.jpg"
+    },
+    {
+      "t": "Hey Duggee",
+      "a": "Duggee & The Squirrels",
+      "q": "Hey Duggee Duggee & The Squirrels",
+      "interprete": "Duggee & The Squirrels",
+      "disque": "Hey Duggee & the Greatest Hits Badge, Vol. Woof Hey Duggee",
+      "voulue": true,
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/75/188774.jpg"
+    },
+    {
+      "t": "Jimmy Neutron",
+      "a": "Bowling for Soup",
+      "q": "Jimmy Neutron Theme Bowling for Soup",
+      "interprete": "Bowling for Soup",
+      "disque": "Bowling for Soup Goes to the Movies Jimmy Neutron Theme",
+      "voulue": true,
+      "altT": [
+        "Jimmy Neutron Theme"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/494/1235083.jpg"
+    }
   ]
 }
