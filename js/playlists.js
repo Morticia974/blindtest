@@ -3212,8 +3212,12 @@ var Playlists = (function () {
           disque: "Richard Anthony at His Best, Vol. 1 Itsi bitsi petit bikini", voulue: true },
         { t: "Les bêtises", a: "Sabine Paturel", q: "Sabine Paturel Les bêtises", interprete: "Sabine Paturel",
           disque: "Les bêtises - Single Les bêtises", voulue: true },
-        { t: "Papa Pingouin", a: "Sophie et Magaly", q: "Papa Pingouin Sophie & Magaly", interprete: "Sophie & Magaly",
-          disque: "Ralph Siegel - Mehr als ein bisschen Frieden Papa Pingouin", voulue: true },
+        /* La reprise de 2006, celle qu'Audrey a en tête : Sophie & Magaly
+           c'était l'Eurovision 1980, et leur version n'est pas celle qu'on
+           reconnaît aujourd'hui. On accepte quand même leur nom. */
+        { t: "Papa Pingouin", a: "Pigloo", altA: ["Sophie et Magaly", "Sophie & Magaly"],
+          q: "Le papa pingouin Pigloo La banquise", interprete: "Pigloo",
+          disque: "La banquise Le papa pingouin", voulue: true },
         { t: "En voiture Simone", a: "Sébastien Patoche", q: "En voiture Simone Sébastien Patoche", interprete: "Sébastien Patoche",
           disque: "J'emmerde les bobos ! En voiture Simone", voulue: true },
         { t: "La cartouche", a: "Sébastien Patoche", q: "La cartouche Sébastien Patoche", interprete: "Sébastien Patoche",
