@@ -3258,7 +3258,21 @@ var Playlists = (function () {
           altT: ["Chui bo", "Chuis beau", "J'suis beau"] },
         { t: "La queuleuleu", a: "Bézu", q: "La queuleuleu Bézu au bal musette", interprete: "Bézu",
           disque: "Bézu au bal musette La queuleuleu", voulue: true,
-          altT: ["À la queue leu leu", "La queue leu leu"], altA: ["Bézu et la Classe"] }
+          altT: ["À la queue leu leu", "La queue leu leu"], altA: ["Bézu et la Classe"] },
+        /* 5 morceaux validés par Audrey le 19/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Ce soir tu vas prendre", a: "Max Boublil", q: "Ce soir tu vas prendre Max Boublil",
+          interprete: "Max Boublil", disque: "L'album Ce soir tu vas prendre", voulue: true },
+        { t: "Vous êtes fous !", a: "Benny B",
+          q: "Vous êtes fous (feat. Daddy K) [Single edit] Benny B", interprete: "Benny B",
+          disque: "Vous êtes fous ! (feat. Daddy K) - EP Vous êtes fous (feat. Daddy K) [Single edit]",
+          voulue: true, altT: ["Vous êtes fous"] },
+        { t: "Harlem Shake", a: "Baauer", q: "Harlem Shake Baauer", interprete: "Baauer",
+          disque: "Harlem Shake - Single Harlem Shake", voulue: true, lgT: "en", lgA: "en" },
+        { t: "Chacarron", a: "El Chombo", q: "Chacarron (Radio Edit) El Chombo",
+          interprete: "El Chombo", disque: "Chacarron - EP Chacarron (Radio Edit)",
+          voulue: true, altT: ["Chacarron Macarron"] },
+        { t: "Le Jerk", a: "Thierry Hazard", q: "Le Jerk Thierry Hazard",
+          interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true }
       ]
     }
   ];
