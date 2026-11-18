@@ -2053,7 +2053,14 @@ var Playlists = (function () {
         { t: "Simon", a: "Simon Superlapin", q: "Générique de Simon Simon Superlapin",
           interprete: "Simon Superlapin", disque: "SIMON SUPER ALBUM Générique de Simon",
           voulue: true, altT: ["Générique de Simon"],
-          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/317/794424.jpg" }
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/317/794424.jpg" },
+        /* 1 morceaux validés par Audrey le 18/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
+        { t: "Code Lyoko", a: "justine sainte",
+          q: "justine sainte Un Monde Sans Danger Code Lyoko Original Version",
+          interprete: "justine sainte",
+          disque: "Un Monde Sans Danger From Code Lyoko Original Version Single Un Monde Sans Danger",
+          voulue: true, altT: ["Un monde sans danger"],
+          pochette: "https://static.tvmaze.com/uploads/images/original_untouched/34/87258.jpg" }
       ]
     },
     {
