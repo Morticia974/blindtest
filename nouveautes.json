@@ -244,30 +244,6 @@
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/64/160211.jpg"
     },
     {
-      "t": "Turbo Rangers",
-      "a": "Bernard Minet",
-      "q": "Turbo Rangers Bernard Minet",
-      "interprete": "Bernard Minet",
-      "disque": "Génériques TV Turbo Rangers",
-      "voulue": true
-    },
-    {
-      "t": "Gil et Julie",
-      "a": "Lionel Leroy",
-      "q": "Gil et Julie Lionel Leroy",
-      "interprete": "Lionel Leroy",
-      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Gil et Julie",
-      "voulue": true
-    },
-    {
-      "t": "Michel Vaillant",
-      "a": "Claude Vallois",
-      "q": "Michel Vaillant Claude Vallois",
-      "interprete": "Claude Vallois",
-      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Michel Vaillant",
-      "voulue": true
-    },
-    {
       "t": "Les Quatre Fantastiques",
       "a": "Noam",
       "q": "Les 4 Fantastiques Noam",
@@ -278,18 +254,6 @@
         "Les 4 Fantastiques"
       ],
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/20/50840.jpg"
-    },
-    {
-      "t": "Émilie",
-      "a": "Dorothée",
-      "q": "La chanson d'Emilie Dorothée",
-      "interprete": "Dorothée",
-      "disque": "Dorothée et ses amis de récré A2 chantent... La chanson d'Emilie",
-      "voulue": true,
-      "altT": [
-        "La chanson d'Emilie"
-      ],
-      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/521/1303123.jpg"
     },
     {
       "t": "Le Magicien d'Oz",

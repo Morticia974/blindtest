@@ -67,14 +67,44 @@ def apple(terme, limite=25):
         return []
 
 
-def interpretes_voulus():
-    """Qui on voulait, quand `a` ne le dit pas (series, films, jeux)."""
+def attente():
     try:
-        d = json.load(io.open(ATTENTE, encoding="utf-8"))
+        return json.load(io.open(ATTENTE, encoding="utf-8"))
     except Exception:
         return {}
+
+
+def interpretes_voulus():
+    """Qui on voulait, quand `a` ne le dit pas (series, films, jeux)."""
+    d = attente()
     return dict(((c, p["t"]), p["interprete"])
                 for c in d for p in d[c] if p.get("interprete"))
+
+
+def recherches():
+    """Avec quoi retrouver le morceau chez Apple.
+
+       On cherchait « a + t », ce qui marche quand `t` est le titre du
+       morceau. Mais dans « Dessins animes », `t` porte LA REPONSE -- le
+       nom du dessin anime -- et pas le titre de la chanson : chercher
+       « Noam Les Quatre Fantastiques » ne trouvait rien, alors que le
+       morceau s'appelle « Les 4 Fantastiques ». Deux fiches sur sept
+       restaient donc non verifiees, et un « non retrouve » ressemble a
+       un probleme alors que ce n'en etait pas un.
+
+       On reprend donc le `q` de la liste d'attente : c'est exactement
+       ce que le moteur a cherche pour choisir l'enregistrement.
+    """
+    d = attente()
+    return dict(((c, p["t"]), p["q"])
+                for c in d for p in d[c] if p.get("q"))
+
+
+def alias_titres():
+    """Les autres ecritures acceptees pour le titre, s'il y en a."""
+    d = attente()
+    return dict(((c, p["t"]), p["altT"])
+                for c in d for p in d[c] if p.get("altT"))
 
 
 def main(source, cat=None):
@@ -82,11 +112,14 @@ def main(source, cat=None):
     if cat:
         d = [e for e in d if e["cat"] == cat]
     voulus = interpretes_voulus()
+    ou_chercher = recherches()
+    alias = alias_titres()
     suspects, inconnus = [], []
 
     for n, e in enumerate(d, 1):
         trouve = None
-        for r in apple(e["a"] + u" " + e["t"]):
+        terme = ou_chercher.get((e["cat"], e["t"]), e["a"] + u" " + e["t"])
+        for r in apple(terme):
             if r.get("previewUrl") == e["apercu"]:
                 trouve = r
                 break
@@ -100,7 +133,14 @@ def main(source, cat=None):
             veut = voulus.get((e["cat"], e["t"]), e["a"])
             if plat(veut) not in plat(an) and plat(an) not in plat(veut):
                 pourquoi.append(u"REPRISE (%s)" % an[:24])
-            if plat(e["t"]) not in plat(tn) and plat(tn) not in plat(e["t"]):
+            # Les titres acceptables : la reponse, et les ecritures
+            # listees dans altT. Dans « Dessins animes », la reponse est
+            # le nom du dessin anime et la chanson s'appelle autrement --
+            # « Les Barbapapa » pour « La famille des Barbapapa ». Sans
+            # altT, chaque fiche de cette categorie criait AUTRE TITRE.
+            titres = [e["t"]] + list(alias.get((e["cat"], e["t"]), []))
+            if not any(plat(x) in plat(tn) or plat(tn) in plat(x)
+                       for x in titres if x):
                 pourquoi.append(u"AUTRE TITRE (%s)" % tn[:24])
             if AUTRE_VERSION.search(tn):
                 pourquoi.append(u"version")
