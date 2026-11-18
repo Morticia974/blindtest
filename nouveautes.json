@@ -208,5 +208,121 @@
       "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/19/49898.jpg"
     }
+  ],
+  "clubdo": [
+    {
+      "t": "Candy",
+      "a": "Dorothée",
+      "q": "Au pays de Candy Dorothée",
+      "interprete": "Dorothée",
+      "disque": "Dorothée et ses amis de récré A2 chantent... Au pays de Candy",
+      "voulue": true,
+      "altT": [
+        "Au pays de Candy"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/69/174739.jpg"
+    },
+    {
+      "t": "Lucky Luke",
+      "a": "Jacques Cardona",
+      "q": "Bang Bang Lucky Luke Jacques Cardona",
+      "interprete": "Jacques Cardona",
+      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Bang Bang Lucky Luke",
+      "voulue": true,
+      "altT": [
+        "Bang Bang Lucky Luke"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/618/1547471.jpg"
+    },
+    {
+      "t": "Samuraï Pizza Cats",
+      "a": "Claude Vallois",
+      "q": "Samurai Pizza Cats Claude Vallois",
+      "interprete": "Claude Vallois",
+      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Samurai Pizza Cats",
+      "voulue": true,
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/64/160211.jpg"
+    },
+    {
+      "t": "Turbo Rangers",
+      "a": "Bernard Minet",
+      "q": "Turbo Rangers Bernard Minet",
+      "interprete": "Bernard Minet",
+      "disque": "Génériques TV Turbo Rangers",
+      "voulue": true
+    },
+    {
+      "t": "Gil et Julie",
+      "a": "Lionel Leroy",
+      "q": "Gil et Julie Lionel Leroy",
+      "interprete": "Lionel Leroy",
+      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Gil et Julie",
+      "voulue": true
+    },
+    {
+      "t": "Michel Vaillant",
+      "a": "Claude Vallois",
+      "q": "Michel Vaillant Claude Vallois",
+      "interprete": "Claude Vallois",
+      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Michel Vaillant",
+      "voulue": true
+    },
+    {
+      "t": "Les Quatre Fantastiques",
+      "a": "Noam",
+      "q": "Les 4 Fantastiques Noam",
+      "interprete": "Noam",
+      "disque": "Génériques TV : 30 thèmes originaux de vos séries TV et dessins animés cultes (avec HotmixRadio) Les 4 Fantastiques",
+      "voulue": true,
+      "altT": [
+        "Les 4 Fantastiques"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/20/50840.jpg"
+    },
+    {
+      "t": "Émilie",
+      "a": "Dorothée",
+      "q": "La chanson d'Emilie Dorothée",
+      "interprete": "Dorothée",
+      "disque": "Dorothée et ses amis de récré A2 chantent... La chanson d'Emilie",
+      "voulue": true,
+      "altT": [
+        "La chanson d'Emilie"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/521/1303123.jpg"
+    },
+    {
+      "t": "Le Magicien d'Oz",
+      "a": "Top TV 80",
+      "q": "Le Magicien D'Oz Top TV 80",
+      "interprete": "Top TV 80",
+      "disque": "Les Meilleures Musiques de Dessins Animés Vol. 3 Le Magicien D'Oz",
+      "voulue": true,
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/34/85212.jpg"
+    },
+    {
+      "t": "Oliver Twist",
+      "a": "Top TV 80",
+      "q": "Oliver Top TV 80",
+      "interprete": "Top TV 80",
+      "disque": "Les Meilleures Musiques de Dessins Animés Vol. 3 Oliver",
+      "voulue": true,
+      "altT": [
+        "Oliver"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/63/158039.jpg"
+    },
+    {
+      "t": "Les Barbapapa",
+      "a": "Bob & Konnie Patline & C. Willys",
+      "q": "La famille des Barbapapa Bob & Konnie Patline",
+      "interprete": "Bob & Konnie Patline & C. Willys",
+      "disque": "Non-Stop Mangas - Les génériques TV La famille des Barbapapa",
+      "voulue": true,
+      "altT": [
+        "La famille des Barbapapa"
+      ],
+      "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/80/201839.jpg"
+    }
   ]
 }
