@@ -35,22 +35,37 @@ var Jeu = (function () {
     }
   }
 
-  /* Points gagnés : la base, réduite au fur et à mesure que le temps passe.
+  /* Le palier où tombe une réponse : le premier dont on n'a pas dépassé la
+     borne. Les bornes sont des fractions de l'extrait (voir config.js). */
+  function palier(paliers, ecoule, dureeMs) {
+    var r = Math.max(0, Math.min(1, ecoule / Math.max(1, dureeMs)));
+    for (var i = 0; i < paliers.length; i++) {
+      if (r <= paliers[i].jusqua) return paliers[i];
+    }
+    return paliers[paliers.length - 1];
+  }
 
-     `delaiMs` est le temps de grâce : les premières secondes valent plein
-     tarif. Sans lui, c'était celui qui tape le plus vite sur son clavier qui
-     gagnait, pas celui qui reconnaissait la chanson — deux choses qui n'ont
-     rien à voir, surtout en famille où tout le monde n'a pas les pouces d'un
-     ado. Au-delà du délai, ce qui reste est de la vraie hésitation.
+  /* Points gagnés : la base, prise au tarif du palier.
 
-     `partVitesse` à zéro, plus rien ne fond : trouver suffit. */
-  function points(base, ecoule, dureeMs, partVitesse, delaiMs) {
-    var part = partVitesse || 0;
-    // Le délai ne peut pas avaler l'extrait entier : il reste une seconde.
-    var grace = Math.max(0, Math.min(delaiMs || 0, dureeMs - 1000));
-    var utile = Math.max(1, dureeMs - grace);
-    var r = Math.max(0, Math.min(1, (ecoule - grace) / utile));
-    return Math.max(1, Math.round(base * (1 - part * r)));
+     Avant, les points fondaient seconde après seconde. Celui qui tape vite
+     gagnait contre celui qui connaît la chanson — deux choses qui n'ont rien
+     à voir, surtout en famille. Les paliers rendent la règle visible : à
+     l'intérieur d'un palier, tout le monde touche pareil.
+
+     Pas de paliers dans les réglages — un salon ouvert par une version plus
+     ancienne du site — et tout le monde touche plein tarif. */
+  function points(base, ecoule, dureeMs, reglages) {
+    var paliers = (reglages && reglages.paliers) || null;
+    if (!paliers || !paliers.length) return Math.max(1, Math.round(base));
+    return Math.max(1, Math.round(base * palier(paliers, ecoule, dureeMs).part));
+  }
+
+  /* Le nom du palier en cours, à afficher sous le chrono pendant l'écoute.
+     Vide s'il n'y a qu'un palier : il n'y a alors rien à surveiller. */
+  function nomPalier(reglages, ecoule, dureeMs) {
+    var paliers = (reglages && reglages.paliers) || [];
+    if (paliers.length < 2) return '';
+    return palier(paliers, ecoule, dureeMs).nom || '';
   }
 
   /* ------------------------------------------------------------------
@@ -426,16 +441,15 @@ var Jeu = (function () {
       var reglages = etat.meta;
       var ecoule = net.maintenant() - (etat.tour.debutA || net.maintenant());
       var dureeMs = reglages.dureeExtrait * 1000;
-      var graceMs = (reglages.delaiVitesse || 0) * 1000;
       var gain = 0;
 
       if (gagneTitre) {
         motsTrouves.titre = true;
-        gain += points(reglages.pointsTitre, ecoule, dureeMs, reglages.partVitesse, graceMs);
+        gain += points(reglages.pointsTitre, ecoule, dureeMs, reglages);
       }
       if (gagneArtiste) {
         motsTrouves.artiste = true;
-        gain += points(reglages.pointsArtiste, ecoule, dureeMs, reglages.partVitesse, graceMs);
+        gain += points(reglages.pointsArtiste, ecoule, dureeMs, reglages);
       }
 
       if (solo) {
@@ -444,7 +458,7 @@ var Jeu = (function () {
         motsTrouves.titre = true;
         motsTrouves.artiste = true;
         gain += points(solo === 'titre' ? reglages.pointsArtiste : reglages.pointsTitre,
-                       ecoule, dureeMs, reglages.partVitesse, graceMs)
+                       ecoule, dureeMs, reglages)
               + reglages.bonusDouble;
       } else if (motsTrouves.titre && motsTrouves.artiste) {
         gain += reglages.bonusDouble;
@@ -647,6 +661,7 @@ var Jeu = (function () {
     rejoindreSalon: rejoindreSalon,
     codeAleatoire: codeAleatoire,
     identifiant: identifiant,
-    points: points
+    points: points,
+    nomPalier: nomPalier
   };
 })();

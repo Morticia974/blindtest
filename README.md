@@ -241,11 +241,19 @@ extraits, pause, décompte, points, et `vitesses` — la part du score qui dépe
 de la rapidité. Tout sauf les points se règle aussi depuis l'écran du salon,
 avant de lancer.
 
-**La rapidité**, trois positions : *tout le monde pareil* (trouver suffit),
-*un peu de rapidité* (les douze premières secondes valent plein tarif, le
-temps de taper) et *la course* (les points fondent dès la première seconde).
-Le temps de grâce de la position du milieu est là pour que celui qui tape
-lentement ne perde pas des points qu'il avait trouvés.
+**La rapidité**, trois positions, chacune une suite de paliers (`vitesses`
+dans config.js). Les bornes sont des fractions de l'extrait, pas des
+secondes : raccourcir l'écoute resserre les paliers tout seul. Sur 30 s :
+
+| Position | 0–10 s | 10–15 s | 15–20 s | 20–24 s | 24–30 s |
+|---|---|---|---|---|---|
+| tout le monde pareil | tout | tout | tout | tout | tout |
+| un peu de rapidité | tout | tout | 70 % | 70 % | 45 % |
+| la course | tout | 50 % | 50 % | 20 % | 20 % |
+
+Le premier palier est long exprès : taper une réponse sur un téléphone prend
+dix secondes à qui n'a pas l'habitude, et ces dix secondes ne disent rien de
+ce qu'on connaît. Le palier en cours s'affiche sous le chrono.
 
 ---
 

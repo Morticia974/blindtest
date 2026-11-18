@@ -731,7 +731,10 @@
       var restant = Math.max(0, tour.debutA + duree - maintenant);
       var part = restant / duree;
       $('chrono').textContent = Math.ceil(restant / 1000);
-      $('sous-chrono').textContent = 'à l\'écoute';
+      /* Sous le chrono, le palier en cours plutôt que « à l'écoute » : c'est
+         tout l'intérêt des paliers, savoir ce qu'on joue avant de répondre. */
+      $('sous-chrono').textContent =
+        Jeu.nomPalier(etat.meta, duree - restant, duree) || 'à l\'écoute';
       $('piste-temps').setAttribute('stroke-dashoffset', String(CIRCONFERENCE * (1 - part)));
       $('plateau').classList.toggle('presse', restant < 8000);
     } else if (tour.phase === 'reveal' && tour.revealA) {
@@ -2736,7 +2739,7 @@
     var table = Config.partie.vitesses || [];
     var i = parseInt($('reglage-vitesse').value, 10);
     if (isNaN(i)) i = Config.partie.vitesse || 0;
-    return table[i] || { nom: 'tout le monde pareil', aide: '', part: 0, delai: 0 };
+    return table[i] || { nom: 'tout le monde pareil', aide: '', paliers: [] };
   }
 
   function montrerVitesse() {
@@ -2756,10 +2759,9 @@
       pointsTitre: d.pointsTitre,
       pointsArtiste: d.pointsArtiste,
       bonusDouble: d.bonusDouble,
-      /* La rapidité voyage jusqu'aux autres joueurs : chaque téléphone
+      /* Les paliers voyagent jusqu'aux autres joueurs : chaque téléphone
          compte ses propres points, il lui faut donc les mêmes règles. */
-      partVitesse: vitesseChoisie().part,
-      delaiVitesse: vitesseChoisie().delai
+      paliers: vitesseChoisie().paliers
     };
   }
 

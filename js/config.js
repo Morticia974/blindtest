@@ -35,19 +35,38 @@ var Config = {
     /* La rapidité, en trois positions — celle qui est proposée par défaut,
        puis la table des trois. Elles se règlent aussi sur l'écran du salon.
 
-       `part` est la fraction des points qui fond pendant l'extrait. `delai`
-       est le nombre de secondes qui valent plein tarif avant que ça ne
-       commence à fondre : ce délai existe parce que taper une réponse sur un
-       téléphone prend du temps, et que ce temps-là ne dit rien de ce qu'on
-       connaît. Sans lui, c'est le plus rapide des pouces qui gagnait. */
+       Chaque position est une suite de PALIERS. `jusqua` est une fraction de
+       l'extrait, pas un nombre de secondes : si l'écoute passe de 30 à 20 s,
+       les paliers se resserrent tout seuls. `part` est ce qu'on touche dans
+       ce palier — 1 = tout, 0.5 = la moitié. `nom` s'affiche sous le chrono
+       pendant l'écoute, pour que chacun sache où il en est.
+
+       Les paliers plutôt qu'une fonte continue : une fonte, personne ne la
+       sent ; un palier, ça s'annonce et ça se voit venir.
+
+       Le premier palier est long exprès. Taper « Les Rois du monde » sur un
+       téléphone prend dix secondes à qui n'a pas l'habitude, et ces dix
+       secondes ne disent rien de ce qu'on connaît : si le premier palier est
+       trop court, c'est encore le plus rapide des pouces qui gagne. */
     vitesse: 1,
     vitesses: [
-      { nom: "tout le monde pareil", part: 0, delai: 0,
-        aide: "Trouver suffit : tous ceux qui trouvent marquent pareil." },
-      { nom: "un peu de rapidité", part: 0.35, delai: 12,
-        aide: "Les 12 premières secondes valent plein tarif, le temps de taper. Après, les points fondent un peu." },
-      { nom: "la course", part: 0.6, delai: 0,
-        aide: "Les points fondent dès la première seconde. Avantage aux pouces rapides." }
+      { nom: "tout le monde pareil",
+        aide: "Trouver suffit : tous ceux qui trouvent marquent pareil.",
+        paliers: [ { jusqua: 1, part: 1, nom: "plein tarif" } ] },
+
+      // sur 30 s d'écoute : tout jusqu'à 15 s, 70 % jusqu'à 24 s, puis 45 %
+      { nom: "un peu de rapidité",
+        aide: "Plein tarif pendant la première moitié de l'extrait, le temps de taper. Ensuite deux paliers, annoncés sous le chrono.",
+        paliers: [ { jusqua: 0.5, part: 1,    nom: "plein tarif" },
+                   { jusqua: 0.8, part: 0.7,  nom: "tarif réduit" },
+                   { jusqua: 1,   part: 0.45, nom: "petits points" } ] },
+
+      // sur 30 s d'écoute : tout jusqu'à 10 s, la moitié jusqu'à 20 s, puis 20 %
+      { nom: "la course",
+        aide: "Tout dans le premier tiers, la moitié dans le deuxième, des miettes dans le dernier.",
+        paliers: [ { jusqua: 0.333, part: 1,   nom: "plein tarif" },
+                   { jusqua: 0.667, part: 0.5, nom: "demi-tarif" },
+                   { jusqua: 1,     part: 0.2, nom: "dernière chance" } ] }
     ]
   }
 };
