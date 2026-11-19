@@ -3205,7 +3205,9 @@ var Playlists = (function () {
         { t: "La fête au village", a: "Les Musclés", q: "La fête au village Les Musclés", interprete: "Les Musclés",
           disque: "La fête au village La fête au village", voulue: true },
         { t: "Viens boire un petit coup à la maison", a: "Licence IV", altT: ["Viens boire un p'tit coup à la maison"], altA: ["Licence 4", "Licence quatre"], q: "Licence IV Viens boire un p'tit coup à la maison",
-          interprete: "Licence IV", voulue: true },
+          interprete: "Licence IV", voulue: true,
+          /* Image donnée par Audrey : Apple n'avait rien qui parle de l'œuvre. */
+          pochette: "https://morticia974.github.io/blindtest/images/pochettes/licence-iv-viens-boire-un-ptit-coup.jpg" },
         { t: "La tristitude", a: "Oldelaf", q: "La tristitude Oldelaf", interprete: "Oldelaf",
           disque: "Le monde est beau La tristitude", voulue: true },
         { t: "Baby Shark", a: "Pinkfong", lgT: "en", lgA: "en", q: "Baby Shark Pinkfong", interprete: "Pinkfong",
