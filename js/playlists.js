@@ -3156,7 +3156,13 @@ var Playlists = (function () {
           disque: "Les indispensables Cho ka ka o", voulue: true },
         { t: "Tata Yoyo", a: "Annie Cordy", q: "Tata Yoyo Annie Cordy", interprete: "Annie Cordy",
           disque: "Les indispensables Tata Yoyo", voulue: true },
-        { t: "Stach Stach", a: "Bratisla Boys", q: "Stach Stach Bratisla Boys", interprete: "Bratisla Boys",
+        /* Le micro ne rend presque jamais « Stach Stach » : il écrit ce
+           qu'il croit entendre. On accepte ses transcriptions — le joueur,
+           lui, a donné la bonne réponse. */
+        { t: "Stach Stach", a: "Bratisla Boys",
+          altT: ["Touch touch", "Tach tach", "Stash stash", "Stache stache"],
+          altA: ["Bratislaboise", "Bratisla boise", "Bratislavoise", "Bratisla boy"],
+          q: "Stach Stach Bratisla Boys", interprete: "Bratisla Boys",
           disque: "Stach Stach - Single Stach Stach", voulue: true },
         { t: "Le Gambadou", a: "Bézu", q: "Le Gambadou Bézu", interprete: "Bézu",
           disque: "Les rois de la fête - Coup double Le Gambadou", voulue: true },
@@ -3164,8 +3170,12 @@ var Playlists = (function () {
           disque: "La fête avec Carlos Senor Météo", voulue: true },
         { t: "Chacun fait c'qui lui plaît", a: "Chagrin d'Amour", altT: ["Chacun fait c'qui lui plait"], q: "Chacun fait (c'qui lui plait) Chagrin d'Amour", interprete: "Chagrin d'Amour",
           disque: "Chacun fait (C'qui lui plait) - Single Chacun fait (c'qui lui plait)", voulue: true },
-        { t: "Bécassine c'est ma cousine", a: "Chantal Goya", altT: ["Bécassine"], q: "Bécassine, c'est ma cousine (Live) Chantal Goya", interprete: "Chantal Goya",
-          disque: "Le soulier qui vole (Live) Bécassine, c'est ma cousine (Live)", voulue: true },
+        /* Épinglé sur l'album « Bécassine, c'est ma cousine » : c'est la
+           version studio, et la pochette montre Bécassine au lieu d'une photo
+           de scène. */
+        { t: "Bécassine c'est ma cousine", a: "Chantal Goya", altT: ["Bécassine"],
+          idApple: 735244735, q: "Bécassine Chantal Goya",
+          interprete: "Chantal Goya", voulue: true },
         { t: "Daniela", a: "Elmer Food Beat", q: "Daniela Elmer Food Beat", interprete: "Elmer Food Beat",
           disque: "30 cm Daniela", voulue: true },
         { t: "Le plastique c'est fantastique", a: "Elmer Food Beat", q: "Le plastique c'est fantastique Elmer Food Beat", interprete: "Elmer Food Beat",
@@ -3174,34 +3184,30 @@ var Playlists = (function () {
           disque: "T'as vu Fous ta cagoule", voulue: true },
         { t: "Mauvaise foi nocturne", a: "Fatal Bazooka", q: "Mauvaise foi nocturne (feat. Vitoo) Fatal Bazooka", interprete: "Fatal Bazooka",
           disque: "T'as vu Mauvaise foi nocturne (feat. Vitoo)", voulue: true },
-        { t: "Parle à ma main", a: "Fatal Bazooka", q: "Parle à ma main (feat. Yelle) [Version longue] Fatal Bazooka", interprete: "Fatal Bazooka",
-          disque: "Le Bestov De Fatal Bazooka - EP Parle à ma main (feat. Yelle) [Version longue]", voulue: true },
-        { t: "Vas-y Francky c'est bon", a: "Francky Vincent", q: "Vas-y Francky c'est bon (Nouvelle génération) [Club Extended] Francky Vincent", interprete: "Francky Vincent",
-          disque: "Vas-y Francky c'est bon (Nouvelle génération)  - Single Vas-y Francky c'est bon (Nouvelle génération) [Club Extended]", voulue: true },
+        /* Sur « T'as vu », comme les deux autres Fatal Bazooka du jeu : même
+           pochette pour les trois. */
+        { t: "Parle à ma main", a: "Fatal Bazooka", idApple: 1831971738,
+          q: "Parle à ma main Fatal Bazooka T'as vu",
+          interprete: "Fatal Bazooka", voulue: true },
         { t: "Un monde parfait", a: "Ilona Mitrecey", q: "Un monde parfait Ilona Mitrecey", interprete: "Ilona Mitrecey",
           disque: "Un monde parfait Un monde parfait", voulue: true },
         { t: "Marly-Gomont", a: "Kamini", q: "Marly-Gomont Kamini", interprete: "Kamini",
           disque: "Psychostar World Marly-Gomont", voulue: true },
-        { t: "La chenille", a: "La Bande à Basile", q: "La chenille La Bande à Basile", interprete: "La Bande à Basile",
-          disque: "Best Of La chenille", voulue: true },
+        /* Sur « Double d'Or », une photo du groupe. Le best of, lui, imprimait
+           sa liste de titres sur la pochette. */
+        { t: "La chenille", a: "La Bande à Basile", idApple: 566073305,
+          q: "La chenille La Bande à Basile", interprete: "La Bande à Basile",
+          voulue: true },
         { t: "Bo le lavabo", a: "Lagaf'", altA: ["Vincent Lagaf'", "Lagaf"], q: "Bo le lavabo Vincent Lagaf'", interprete: "Vincent Lagaf'",
           disque: "Bo le lavabo - Single Bo le lavabo", voulue: true },
         { t: "La Zoubida", a: "Lagaf'", altA: ["Vincent Lagaf'", "Lagaf"], q: "La Zoubida Vincent Lagaf'", interprete: "Vincent Lagaf'",
           disque: "La Zoubida - Single La Zoubida", voulue: true },
-        { t: "Merci patron", a: "Les Charlots", q: "Merci patron Les Charlots", interprete: "Les Charlots",
-          disque: "Les bons morceaux : Tout doit disparaître! Merci patron", voulue: true },
-        { t: "L'amour à la française", a: "Les Fatals Picards", q: "L'amour À La Française Les Fatals Picards", interprete: "Les Fatals Picards",
-          disque: "Pamplemousse Mécanique L'amour À La Française", voulue: true },
-        { t: "Mon père était tellement de gauche", a: "Les Fatals Picards", q: "Mon Père Était Tellement De Gauche Les Fatals Picards", interprete: "Les Fatals Picards",
-          disque: "Pamplemousse Mécanique Mon Père Était Tellement De Gauche", voulue: true },
         { t: "La fête au village", a: "Les Musclés", q: "La fête au village Les Musclés", interprete: "Les Musclés",
           disque: "La fête au village La fête au village", voulue: true },
         { t: "Viens boire un petit coup à la maison", a: "Licence IV", altT: ["Viens boire un p'tit coup à la maison"], altA: ["Licence 4", "Licence quatre"], q: "Licence IV Viens boire un p'tit coup à la maison",
           interprete: "Licence IV", voulue: true },
         { t: "La tristitude", a: "Oldelaf", q: "La tristitude Oldelaf", interprete: "Oldelaf",
           disque: "Le monde est beau La tristitude", voulue: true },
-        { t: "Le café", a: "Oldelaf et Monsieur D", q: "Le Café (Nouvelle version) Oldelaf et Monsieur D.", interprete: "Oldelaf et Monsieur D.",
-          disque: "Dernière chance d'être disque d'or (Version deluxe) Le Café (Nouvelle version)", voulue: true },
         { t: "Baby Shark", a: "Pinkfong", lgT: "en", lgA: "en", q: "Baby Shark Pinkfong", interprete: "Pinkfong",
           disque: "Pinkfong Animal Songs Baby Shark", voulue: true },
         { t: "Tout va très bien Madame la Marquise", a: "Ray Ventura", q: "Tout va très bien Madame la Marquise Ray Ventura", interprete: "Ray Ventura",
@@ -3218,8 +3224,6 @@ var Playlists = (function () {
         { t: "Papa Pingouin", a: "Pigloo", altA: ["Sophie et Magaly", "Sophie & Magaly"],
           q: "Le papa pingouin Pigloo La banquise", interprete: "Pigloo",
           disque: "La banquise Le papa pingouin", voulue: true },
-        { t: "En voiture Simone", a: "Sébastien Patoche", q: "En voiture Simone Sébastien Patoche", interprete: "Sébastien Patoche",
-          disque: "J'emmerde les bobos ! En voiture Simone", voulue: true },
         { t: "La cartouche", a: "Sébastien Patoche", q: "La cartouche Sébastien Patoche", interprete: "Sébastien Patoche",
           disque: "J'emmerde les bobos ! La cartouche", voulue: true },
         { t: "Quand il pète il troue son slip", a: "Sébastien Patoche", q: "Quand il pète il troue son slip Sébastien Patoche", interprete: "Sébastien Patoche",
@@ -3231,18 +3235,24 @@ var Playlists = (function () {
           disque: "Fais la poule - Single Fais la poule", voulue: true },
         { t: "PonPonPon", a: "Kyary Pamyu Pamyu", q: "Ponponpon Kyary Pamyu Pamyu",
           interprete: "Kyary Pamyu Pamyu", disque: "Ponponpon - Single Ponponpon",
-          voulue: true, altT: ["Pon pon pon"] },
+          voulue: true,
+          altT: ["Pon pon pon", "Pan pan pan", "Pompon pon", "Ponpon pon"] },
         { t: "Tunak Tunak Tun", a: "Daler Mehndi", q: "Tunak Tunak Tun Daler Mehndi",
           interprete: "Daler Mehndi", disque: "Tunak Tunak Tun Tunak Tunak Tun",
-          voulue: true, altT: ["Tunak tunak tun", "Tunak"] },
-        { t: "Chipolata", a: "Téo Lavabo", q: "Chipolata (Bonne Année) Téo Lavabo",
-          interprete: "Téo Lavabo",
-          disque: "Chipolata (Bonne Année) - Single Chipolata (Bonne Année)", voulue: true,
-          altT: ["Chipolata Bonne Année"] },
+          voulue: true,
+          altT: ["Tunak tunak tun", "Tunak", "Tonight tonight", "Tonight tonight tune",
+                 "Tounak tounak toun"] },
+        /* La version d'origine, sur « Chipolateo ». Apple servait d'abord le
+           remontage « Bonne Année » du Nouvel An, pochette comprise. */
+        { t: "Chipolata", a: "Téo Lavabo", idApple: 1564040635,
+          q: "Chipolata Téo Lavabo Chipolateo", interprete: "Téo Lavabo",
+          voulue: true },
         { t: "La 4L de Jacky", a: "Coco Rapido", q: "La 4L de Jacky Coco Rapido",
           interprete: "Coco Rapido",
           disque: "La 4L de Jacky - Le disque officiel des fêtes La 4L de Jacky",
-          voulue: true },
+          /* « 4L » se lisait « quatre litres ». */
+          ditT: "la quatre èl de Jacky",
+          altT: ["La 4 L de Jacky", "La quatre L de Jacky"], voulue: true },
         { t: "Petit caniche", a: "Didier Super",
           q: "Petit caniche, peluche pour vieux Didier Super", interprete: "Didier Super",
           disque: "Vaut mieux en rire que s'en foutre Petit caniche, peluche pour vieux",
@@ -3256,7 +3266,8 @@ var Playlists = (function () {
           interprete: "PIKOTARO",
           disque: "PPAP (Pen Pineapple Apple Pen) [Long Version] - Single PPAP (Pen Pineapple Apple Pen) [Long Version]",
           voulue: true, lgT: "en", lgA: "en",
-          altT: ["Pen Pineapple Apple Pen", "Pen-Pineapple-Apple-Pen"] },
+          altT: ["Pen Pineapple Apple Pen", "Pen-Pineapple-Apple-Pen",
+                 "Pipi", "Pipi a pi", "P P A P", "Pi pi ai pi"] },
         { t: "Chuis bo", a: "PZK", q: "Chuis Bo! PZK La loi de la jungle", interprete: "PZK",
           disque: "La loi de la jungle Chuis Bo!", voulue: true,
           altT: ["Chui bo", "Chuis beau", "J'suis beau"] },
@@ -3278,14 +3289,22 @@ var Playlists = (function () {
         { t: "Le Jerk", a: "Thierry Hazard", q: "Le Jerk Thierry Hazard",
           interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true },
         /* 1 morceaux validés par Audrey le 19/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
-        { t: "Poupine et Thierry", a: "Les Wriggles", q: "Poupine et Thierry Les Wriggles",
-          interprete: "Les Wriggles", disque: "Le best of Poupine et Thierry", voulue: true },
+        /* Sur « Ah bah ouais mais bon », leur album : le best of n'avait qu'un
+           montage pour pochette. */
+        { t: "Poupine et Thierry", a: "Les Wriggles", idApple: 1786591514,
+          q: "Poupine et Thierry Les Wriggles", interprete: "Les Wriggles",
+          voulue: true },
         /* Première fiche par identifiant : « Pisser debout » n'est dans aucun
            résultat de recherche d'Apple, mais le morceau existe et a un
            extrait. Voir `idApple` dans itunes.js. */
         { t: "Pisser debout", a: "Giédré", altA: ["Giedre"],
           idApple: 587467621, q: "Pisser debout Giedre",
-          interprete: "Giedre", voulue: true }
+          interprete: "Giedre", voulue: true },
+        /* Les deux autres tubes de Francky Vincent ne sont pas dans l'index
+           de recherche d'Apple ; celui-ci vient du catalogue. */
+        { t: "Alice ça glisse", a: "Francky Vincent", idApple: 1504943727,
+          q: "Alice ça glisse Francky Vincent", interprete: "Francky Vincent",
+          voulue: true }
       ]
     }
   ];
