@@ -149,9 +149,7 @@ var Playlists = (function () {
         { t: "J'ai vu", a: "Niagara" },
         /* 5 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Relax", a: "Frankie Goes to Hollywood" },
-        { t: "La Danse des canards", a: "J.J. Lionel",
-          altA: ["Gigi Lionel", "Jiji Lionel", "JJ Lionel", "Ji Ji Lionel", "Jay Jay Lionel", "Lionel"],
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/b3/f0/14b3f06c-5bc6-9f8e-fa2a-188108cee926/cover.jpg/600x600bb.jpg" },
+        
         { t: "Walking on Sunshine", a: "Katrina & The Waves" },
         { t: "Footloose", a: "Kenny Loggins" },
         { t: "Maniac", a: "Michael Sembello" },
@@ -232,12 +230,9 @@ var Playlists = (function () {
         { t: "Kiss from a Rose", a: "Seal", q: "Seal Kiss from a Rose Seal II" },
         { t: "No Scrubs", a: "TLC", q: "TLC No Scrubs Fanmail" },
 
-        /* Deux titres de la liste d'Audrey. Le single de 1993 de Billy Ze Kick
-           n'est pas chez Apple France : seul le ragga mix y est, et elle l'a
-           validé à l'écoute — d'où `voulue`, qui lève la pénalité sur les mix. */
-        { t: "Mangez-moi ! Mangez-moi !", a: "Billy Ze Kick",
-          q: "Billy Ze Kick et les Gamins en Folie Mangez-moi", voulue: true,
-          altT: ["Mangez-moi"], altA: ["Billy Ze Kick et les Gamins en Folie"] },
+        /* Un titre de la liste d'Audrey. Le second, Billy Ze Kick, est parti
+           au rayon bêtise le 19/11/2026. */
+        
         { t: "Tu m'oublieras", a: "Larusso", q: "Larusso Tu m'oublieras Simplement 1999" },
         // Sur son album de 1996 plutôt que sur la compilation « Soon ».
         { t: "Dieu m'a donné la foi", a: "Ophélie Winter",
@@ -251,7 +246,7 @@ var Playlists = (function () {
         { t: "Tombé pour elle", a: "Pascal Obispo" },
         /* 4 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Jump Around", a: "House of Pain" },
-        { t: "Dur dur d'être bébé", a: "Jordy" },
+        
         { t: "U Can't Touch This", a: "MC Hammer",
           altT: ["Can't Touch 6", "Can't Touch Six", "Can't Touch This"] },
         { t: "Ice Ice Baby", a: "Vanilla Ice" },
@@ -365,8 +360,8 @@ var Playlists = (function () {
         { t: "Tu trouveras", a: "Natasha St-Pier" },
         { t: "Fan", a: "Pascal Obispo", q: "Fan Pascal Obispo single", interprete: "Pascal Obispo",
           disque: "Fan - Single", voulue: true },
-        { t: "Le Petit Bonhomme en mousse", a: "Patrick Sébastien" },
-        { t: "Les Sardines", a: "Patrick Sébastien" },
+        
+        
         { t: "Lola", a: "Superbus", q: "Lola Superbus Wow", interprete: "Superbus", disque: "Wow" }
       ]
     },
@@ -478,7 +473,7 @@ var Playlists = (function () {
         { t: "La Femme chocolat", a: "Olivia Ruiz" },
         { t: "Il me dit que je suis belle", a: "Patricia Kaas" },
         { t: "Place des grands hommes", a: "Patrick Bruel" },
-        { t: "Louxor j'adore", a: "Philippe Katerine" },
+        
         { t: "Les Jolies Colonies de vacances", a: "Pierre Perret" },
         { t: "On brûlera", a: "Pomme" },
         { t: "La Lettre", a: "Renan Luce" },
@@ -1537,7 +1532,7 @@ var Playlists = (function () {
           altA: ["Psi", "Spy", "Psyche"] },
         { t: "Cheerleader", a: "OMI", q: "OMI Cheerleader Me 4 U" },
         { t: "Be Mine", a: "Ofenbach" },
-        { t: "Axel F", a: "Crazy Frog" },
+        
         { t: "Who Let the Dogs Out", a: "Baha Men",
           altT: ["Follet the dogs out"], altA: ["Bar à main", "Baha main"] },
         { t: "Mi Gente", a: "J Balvin & Willy William", altA: ["J Balvin", "Willy William"], lgT: "es" },
@@ -1567,8 +1562,7 @@ var Playlists = (function () {
         { t: "Da Funk", a: "Daft Punk" },
         { t: "Sexy Chick", a: "David Guetta" },
         { t: "When Love Takes Over", a: "David Guetta" },
-        { t: "Chihuahua", a: "DJ BoBo",
-          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/96/94/6e/96946e1c-010c-03c7-55b2-7f8e9a9062a0/7619978103229_3000.jpg/600x600bb.jpg" },
+        
         { t: "Hey Baby", a: "DJ Ötzi" },
         { t: "Turn Down for What", a: "DJ Snake" },
         { t: "New Rules", a: "Dua Lipa" },
@@ -2848,7 +2842,7 @@ var Playlists = (function () {
         { t: "Je suis malade", a: "Serge Lama" },
         { t: "Le Téléfon", a: "Nino Ferrer" },
         // Pour la maman d'Audrey. Sortie en 1974, donc elle a sa place ici.
-        { t: "La Bonne du curé", a: "Annie Cordy" },
+        
 
         /* Audrey a voulu plus de francophone ici : six titres internationaux
            sont partis pour leur faire de la place. */
@@ -2861,8 +2855,7 @@ var Playlists = (function () {
         { t: "Nights in White Satin", a: "The Moody Blues", interprete: "The Moody Blues", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/87/47/0f/87470f53-405b-aa7b-58df-6ed3163f1e56/00042282000729.rgb.jpg/600x600bb.jpg" },
         /* 12 morceaux validés par Audrey le 19/10/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
         { t: "Manureva", a: "Alain Chamfort" },
-        { t: "Big Bisou", a: "Carlos", q: "Carlos Big Bisou La fete avec Carlos",
-          disque: "la fete avec carlos", voulue: true },
+        
         { t: "La Dernière Séance", a: "Eddy Mitchell" },
         { t: "J'ai encore rêvé d'elle", a: "Il était une fois" },
         { t: "Rockollection", a: "Laurent Voulzy" },
@@ -3324,7 +3317,36 @@ var Playlists = (function () {
         /* Premier morceau des 3 Fromages : ils n'étaient au jeu que
            comme invités des Fatals Picards. */
         { t: "La galère d'un pirate", a: "Les 3 Fromages", altA: ["Les Trois Fromages", "3 Fromages"],
-          idApple: 913044712, q: "La galère d'un pirate Les 3 Fromages", interprete: "Les 3 Fromages", voulue: true }
+          idApple: 913044712, q: "La galère d'un pirate Les 3 Fromages", interprete: "Les 3 Fromages", voulue: true },
+        /* Dix morceaux rapatriés des autres catégories le 19/11/2026 :
+           ils y étaient dispersés faute d'un rayon bêtise. Audrey a laissé
+           en place ceux qui tenaient leur catégorie — tout le karaoké, Le
+           Téléfon, Salade de fruits, Fruit de la passion — et elle a sorti
+           du Dancefloor deux titres que je proposais de garder : Axel F et
+           Chihuahua. Elle a eu raison, ce sont des bêtises avant d'être des
+           tubes de piste.
+
+           Quatre de leurs catégories d'origine sont déclarées en anglais :
+           ces titres français y étaient écoutés en anglais par la
+           reconnaissance vocale. Le déplacement les répare au passage. */
+        { t: "Les Sardines", a: "Patrick Sébastien" },
+        { t: "Le Petit Bonhomme en mousse", a: "Patrick Sébastien" },
+        { t: "Big Bisou", a: "Carlos", q: "Carlos Big Bisou La fete avec Carlos",
+          disque: "la fete avec carlos", voulue: true },
+        { t: "La Bonne du curé", a: "Annie Cordy" },
+        { t: "La Danse des canards", a: "J.J. Lionel",
+          altA: ["Gigi Lionel", "Jiji Lionel", "JJ Lionel", "Ji Ji Lionel", "Jay Jay Lionel", "Lionel"],
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/b3/f0/14b3f06c-5bc6-9f8e-fa2a-188108cee926/cover.jpg/600x600bb.jpg" },
+        { t: "Dur dur d'être bébé", a: "Jordy" },
+        /* Le single de 1993 n'est pas chez Apple France : seul le ragga
+           mix y est, validé à l'écoute — d'où `voulue`. */
+        { t: "Mangez-moi ! Mangez-moi !", a: "Billy Ze Kick",
+          q: "Billy Ze Kick et les Gamins en Folie Mangez-moi", voulue: true,
+          altT: ["Mangez-moi"], altA: ["Billy Ze Kick et les Gamins en Folie"] },
+        { t: "Louxor j'adore", a: "Philippe Katerine" },
+        { t: "Axel F", a: "Crazy Frog", lgT: "en", lgA: "en" },
+        { t: "Chihuahua", a: "DJ BoBo",
+          pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/96/94/6e/96946e1c-010c-03c7-55b2-7f8e9a9062a0/7619978103229_3000.jpg/600x600bb.jpg", lgT: "en", lgA: "en" }
       ]
     }
   ];
@@ -3444,7 +3466,7 @@ var Playlists = (function () {
     /* On coupe au premier deux-points ou à la première virgule pour remonter à
        la saga : « Star Wars, épisode IV » et « épisode V » comptent pour une
        seule œuvre, tout comme les deux Zelda. */
-    return Match.normaliser(String(p.a).split(/[:,]/)[0]);
+    return Match.normaliser(String(p.a).split(/[:]/)[0]);
   }
 
   /* « perso:rock,disney » : la sélection libre d'un salon. Renvoie les manches
