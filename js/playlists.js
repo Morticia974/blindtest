@@ -487,7 +487,8 @@ var Playlists = (function () {
         { t: "Prendre un enfant", a: "Yves Duteil" },
         { t: "À bicyclette", a: "Yves Montand" },
         { t: "Je suis un homme", a: "Zazie" },
-        { t: "Zen", a: "Zazie", q: "Zen Zazie Made in Love", interprete: "Zazie" }
+        { t: "Zen", a: "Zazie", q: "Zen Zazie Made in Love", interprete: "Zazie" },
+        { t: "Mon amie la rose", a: "Françoise Hardy", idApple: 268219908, q: "Mon amie la rose Françoise Hardy", interprete: "Françoise Hardy", voulue: true }
       ]
     },
     {
@@ -1611,7 +1612,9 @@ var Playlists = (function () {
           disque: "alane ep alane todd terrys radio mix", voulue: true, altA: ["Wes Madiko"] },
         { t: "Saturday Night", a: "Whigfield" },
         { t: "My Oh My", a: "Aqua" },
-        { t: "Macarena", a: "Los del Río", pochette: "https://morticia974.github.io/blindtest/images/pochettes/macarena.jpg" }
+        { t: "Macarena", a: "Los del Río", pochette: "https://morticia974.github.io/blindtest/images/pochettes/macarena.jpg" },
+        { t: "Barbra Streisand", a: "Duck Sauce", lgT: "en", lgA: "en", idApple: 1786856061, q: "Barbra Streisand Duck Sauce", interprete: "Duck Sauce", voulue: true },
+        { t: "Insomnia", a: "Faithless", lgT: "en", lgA: "en", idApple: 557828921, q: "Insomnia Faithless", interprete: "Faithless", voulue: true }
       ]
     },
     {
