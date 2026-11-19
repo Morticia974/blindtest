@@ -3304,7 +3304,17 @@ var Playlists = (function () {
            de recherche d'Apple ; celui-ci vient du catalogue. */
         { t: "Alice ça glisse", a: "Francky Vincent", idApple: 1504943727,
           q: "Alice ça glisse Francky Vincent", interprete: "Francky Vincent",
-          voulue: true }
+          voulue: true },
+        /* Le morceau-titre de leur album. Absent de l'index de recherche
+           d'Apple, comme presque tout ce qui n'est pas un single. */
+        { t: "Ah bah ouais mais bon", a: "Les Wriggles", idApple: 1786591194, q: "Ah bah ouais mais bon Les Wriggles", interprete: "Les Wriggles", voulue: true },
+        /* Son troisième et dernier : « Fruit de la passion » est en Zouk,
+           « Alice ça glisse » ici. Le maximum d'Audrey est de trois. */
+        { t: "Tu veux mon zizi", a: "Francky Vincent", idApple: 1504943721, q: "Tu veux mon zizi Francky Vincent", interprete: "Francky Vincent", voulue: true },
+        /* Avec Les 3 Fromages. Audrey avait retiré leurs deux premiers
+           morceaux : « c'était une très bonne trouvaille, mais j'aurais
+           préféré d'autres morceaux de ce groupe ». */
+        { t: "À la vie, à l'Armor", a: "Les Fatals Picards", altT: ["A la vie a l'Armor"], idApple: 1124240490, q: "À la vie, à l'Armor Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true }
       ]
     }
   ];
