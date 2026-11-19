@@ -1113,7 +1113,63 @@ var Playlists = (function () {
           q: "Raymond Lefevre Douliou douliou Saint-Tropez gendarme bande originale",
           interprete: "Raymond Lefevre", altA: ["Le Gendarme", "Le Gendarme de Saint Tropez"] },
         { t: "Générique", a: "Le Corniaud", q: "Georges Delerue Le corniaud générique bande originale",
-          interprete: "Georges Delerue" }
+          interprete: "Georges Delerue" },
+        /* 23 films validés par Audrey le 19/11/2026. La catégorie était
+           la plus mince du jeu, à 56.
+
+           Dix portent une `pochette` : leur enregistrement vient de
+           l'album de l'artiste — Sting pour Léon, les Pixies pour Fight
+           Club — et l'image doit montrer le FILM, puisque c'est lui la
+           réponse. Les affiches sont prises sur l'album de bande
+           originale. Vérifiées une à une : la recherche m'avait rendu Le
+           Grand Bleu pour Léon et un album de Blackpink pour Men in
+           Black. */
+        { t: "Also sprach Zarathustra", a: "2001, l'Odyssée de l'espace", altA: ["2001", "2001 l'Odyssée de l'espace", "2001 A Space Odyssey"], idApple: 1837807082,
+          q: "Also sprach Zarathustra Hidden Citizens", interprete: "Hidden Citizens", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/04/c3/57/04c357a9-880f-a197-58e2-841eafab2117/2001.jpg/600x600bb.jpg", voulue: true },
+        { t: "Bienvenue chez les Ch'tis", a: "Bienvenue chez les Ch'tis", altA: ["Les Ch'tis", "Bienvenue chez les Chtis"], idApple: 1745258515,
+          q: "Bienvenue chez les Ch'tis Philippe Rombi", interprete: "Philippe Rombi", voulue: true },
+        { t: "Main Titles", a: "Blade Runner", idApple: 73327205,
+          q: "Main Titles Vangelis", interprete: "Vangelis", voulue: true },
+        { t: "Flying Theme", a: "E.T. l'extra-terrestre", altA: ["E.T.", "ET", "ET l'extraterrestre"], idApple: 1594160847,
+          q: "Flying Theme Berliner Philharmoniker & John Williams", interprete: "Berliner Philharmoniker & John Williams", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/86/da/95/86da952e-f2ed-a9f5-a471-9d84243c6dec/00008811281922.rgb.jpg/600x600bb.jpg", voulue: true },
+        { t: "Where Is My Mind?", a: "Fight Club", idApple: 1027465608,
+          q: "Where Is My Mind? Pixies", interprete: "Pixies", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/69/d9/07/69d907b8-7059-77af-f969-bb6330567b8e/018777371568.jpg/600x600bb.jpg", voulue: true },
+        { t: "What a Feeling", a: "Flashdance", idApple: 280711410,
+          q: "What a Feeling Irene Cara", interprete: "Irene Cara", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/40/97/5f/40975fe8-20e6-e617-7e1c-c8dc1dbc753a/06UMGIM29411.rgb.jpg/600x600bb.jpg", voulue: true },
+        { t: "Hymn to the Fallen", a: "Il faut sauver le soldat Ryan", altA: ["Le soldat Ryan", "Saving Private Ryan"], idApple: 1440486534,
+          q: "Hymn to the Fallen John Williams", interprete: "John Williams", voulue: true },
+        { t: "Fly", a: "Intouchables", idApple: 485718410,
+          q: "Fly Ludovico Einaudi", interprete: "Ludovico Einaudi", voulue: true },
+        { t: "Battle Without Honor or Humanity", a: "Kill Bill", altA: ["Kill Bill Volume 1", "Kill Bill vol 1"], idApple: 1443740454,
+          q: "Battle Without Honor or Humanity Hotei", interprete: "Hotei", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/94/54/94/945494ca-97a7-93bb-fca1-9cb091ced9a3/888915909973_cover.jpg/600x600bb.jpg", voulue: true },
+        { t: "L'Aile ou la Cuisse", a: "L'Aile ou la Cuisse", altA: ["L'aile ou la cuisse"], idApple: 956523478,
+          q: "L'Aile ou la Cuisse Vladimir Cosma", interprete: "Vladimir Cosma", voulue: true },
+        { t: "La Chèvre", a: "La Chèvre", altA: ["La chevre"], idApple: 1300145011,
+          q: "La Chèvre Vladimir Cosma, Orchestre National Symphonique de Roumanie & César Cazanoi", interprete: "Vladimir Cosma, Orchestre National Symphonique de Roumanie & César Cazanoi", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/b9/16/ab/b916ab4e-0ac1-3bea-c9ef-63a7d77e05be/cover.jpg/600x600bb.jpg", voulue: true },
+        { t: "La Grande Vadrouille", a: "La Grande Vadrouille", altA: ["La grande vadrouille"], idApple: 1779291196,
+          q: "La Grande Vadrouille Georges Auric", interprete: "Georges Auric", voulue: true },
+        { t: "Another Day of Sun", a: "La La Land", idApple: 1440863663,
+          q: "Another Day of Sun La La Land Cast", interprete: "La La Land Cast", voulue: true },
+        { t: "Theme from Schindler's List", a: "La Liste de Schindler", altA: ["Schindler's List", "La liste de Schindler"], idApple: 1440502971,
+          q: "Theme from Schindler's List John Williams, Itzhak Perlman & Boston Symphony Orchestra", interprete: "John Williams, Itzhak Perlman & Boston Symphony Orchestra", voulue: true },
+        { t: "Le Dîner de cons", a: "Le Dîner de cons", idApple: 957549775,
+          q: "Le Dîner de cons Vladimir Cosma", interprete: "Vladimir Cosma", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/5e/9d/76/5e9d76af-4c5b-8e49-e04a-c7dd5d7faef0/cover.jpg/600x600bb.jpg", voulue: true },
+        { t: "Le Grand Blond", a: "Le Grand Blond avec une chaussure noire", altA: ["Le Grand Blond"], idApple: 956540078,
+          q: "Le Grand Blond Vladimir Cosma & Gheorghe Zamfir", interprete: "Vladimir Cosma & Gheorghe Zamfir", voulue: true },
+        { t: "Le Père Noël est une ordure", a: "Le Père Noël est une ordure", altA: ["Le Père Noël"], idApple: 956534298,
+          q: "Le Père Noël est une ordure Vladimir Cosma", interprete: "Vladimir Cosma", voulue: true },
+        { t: "Shape of My Heart", a: "Léon", altA: ["Léon le professionnel", "Leon"], idApple: 1725377410,
+          q: "Shape of My Heart Sting", interprete: "Sting", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/b1/73/bb/b173bb13-7d61-5973-71f2-f1fa5db4bdc6/19UMGIM61624.rgb.jpg/600x600bb.jpg", voulue: true },
+        { t: "Men in Black", a: "Men in Black", altA: ["MIB"], idApple: 279366591,
+          q: "Men in Black Will Smith", interprete: "Will Smith", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/eb/3c/15/eb3c1520-e377-fe3f-e53d-32da66fa4490/888880552938.jpg/600x600bb.jpg", voulue: true },
+        { t: "Oh, Pretty Woman", a: "Pretty Woman", altA: ["Jolie femme"], idApple: 872478306,
+          q: "Oh, Pretty Woman Roy Orbison", interprete: "Roy Orbison", voulue: true },
+        { t: "Push It to the Limit", a: "Scarface", idApple: 1440761588,
+          q: "Push It to the Limit Paul Engemann", interprete: "Paul Engemann", voulue: true },
+        { t: "I Believe I Can Fly", a: "Space Jam", idApple: 303156673,
+          q: "I Believe I Can Fly R. Kelly", interprete: "R. Kelly", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/74/0d/94/740d9464-ef6c-6db0-5617-ffee13f43cd0/603497870356.jpg/600x600bb.jpg", voulue: true },
+        { t: "Taxi", a: "Taxi", idApple: 1751339110,
+          q: "Taxi Fonky Family", interprete: "Fonky Family", voulue: true }
       ]
     },
     {
