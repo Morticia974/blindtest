@@ -3291,9 +3291,11 @@ var Playlists = (function () {
         { t: "Le Jerk", a: "Thierry Hazard", q: "Le Jerk Thierry Hazard",
           interprete: "Thierry Hazard", disque: "Pop music Le Jerk", voulue: true },
         /* 1 morceaux validés par Audrey le 19/11/2026, après écoute de l'extrait et de la pochette sur les pages de vérif. */
-        /* Sur « Ah bah ouais mais bon », leur album : le best of n'avait qu'un
-           montage pour pochette. */
-        { t: "Poupine et Thierry", a: "Les Wriggles", idApple: 1786591514,
+        /* Sur « Le best of », une photo du groupe. Pas sur « Ah bah ouais mais
+           bon » : cette pochette-là porte son titre écrit dessus, et depuis
+           que la chanson du même nom est au jeu, elle annoncerait la réponse
+           d'un autre morceau. */
+        { t: "Poupine et Thierry", a: "Les Wriggles", idApple: 1786614445,
           q: "Poupine et Thierry Les Wriggles", interprete: "Les Wriggles",
           voulue: true },
         /* Première fiche par identifiant : « Pisser debout » n'est dans aucun
@@ -3316,7 +3318,9 @@ var Playlists = (function () {
         /* Avec Les 3 Fromages. Audrey avait retiré leurs deux premiers
            morceaux : « c'était une très bonne trouvaille, mais j'aurais
            préféré d'autres morceaux de ce groupe ». */
-        { t: "À la vie, à l'Armor", a: "Les Fatals Picards", altT: ["A la vie a l'Armor"], idApple: 1124240490, q: "À la vie, à l'Armor Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true }
+        { t: "À la vie, à l'Armor", a: "Les Fatals Picards", altT: ["A la vie a l'Armor"], idApple: 1124240490, q: "À la vie, à l'Armor Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true },
+        { t: "La sécurité de l'emploi", a: "Les Fatals Picards", idApple: 214985263, q: "La sécurité de l'emploi Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true },
+        { t: "Au mariage de Kevin et ma sœur", a: "Les Fatals Picards", altT: ["Au mariage de Kevin et ma soeur"], idApple: 214985288, q: "Au mariage de Kevin et ma sœur Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true }
       ]
     }
   ];
