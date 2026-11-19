@@ -3320,7 +3320,11 @@ var Playlists = (function () {
            préféré d'autres morceaux de ce groupe ». */
         { t: "À la vie, à l'Armor", a: "Les Fatals Picards", altT: ["A la vie a l'Armor"], idApple: 1124240490, q: "À la vie, à l'Armor Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true },
         { t: "La sécurité de l'emploi", a: "Les Fatals Picards", idApple: 214985263, q: "La sécurité de l'emploi Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true },
-        { t: "Au mariage de Kevin et ma sœur", a: "Les Fatals Picards", altT: ["Au mariage de Kevin et ma soeur"], idApple: 214985288, q: "Au mariage de Kevin et ma sœur Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true }
+        { t: "Au mariage de Kevin et ma sœur", a: "Les Fatals Picards", altT: ["Au mariage de Kevin et ma soeur"], idApple: 214985288, q: "Au mariage de Kevin et ma sœur Les Fatals Picards", interprete: "Les Fatals Picards", voulue: true },
+        /* Premier morceau des 3 Fromages : ils n'étaient au jeu que
+           comme invités des Fatals Picards. */
+        { t: "La galère d'un pirate", a: "Les 3 Fromages", altA: ["Les Trois Fromages", "3 Fromages"],
+          idApple: 913044712, q: "La galère d'un pirate Les 3 Fromages", interprete: "Les 3 Fromages", voulue: true }
       ]
     }
   ];
