@@ -1166,7 +1166,14 @@ var Playlists = (function () {
         { t: "Push It to the Limit", a: "Scarface", idApple: 1440761588,
           q: "Push It to the Limit Paul Engemann", interprete: "Paul Engemann", voulue: true },
         { t: "I Believe I Can Fly", a: "Space Jam", idApple: 303156673,
-          q: "I Believe I Can Fly R. Kelly", interprete: "R. Kelly", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/74/0d/94/740d9464-ef6c-6db0-5617-ffee13f43cd0/603497870356.jpg/600x600bb.jpg", voulue: true }
+          q: "I Believe I Can Fly R. Kelly", interprete: "R. Kelly", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/74/0d/94/740d9464-ef6c-6db0-5617-ffee13f43cd0/603497870356.jpg/600x600bb.jpg", voulue: true },
+        /* Affiche donnée par Audrey : la bande originale du film n'est
+           pas chez Apple France, et l'album de Roy Orbison montrait Roy
+           Orbison. Ici la réponse est le FILM, il faut donc le voir.
+           Réduite pour tenir entière dans le cercle du jeu. */
+        { t: "Oh, Pretty Woman", a: "Pretty Woman", altA: ["Jolie femme"],
+          idApple: 872478306, q: "Oh, Pretty Woman Roy Orbison",
+          interprete: "Roy Orbison", pochette: "https://morticia974.github.io/blindtest/images/pochettes/pretty-woman-affiche.jpg", voulue: true }
         
       ]
     },
