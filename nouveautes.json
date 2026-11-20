@@ -208,5 +208,220 @@
       "q": "Elisa Mutto Fabio Cobelli Yu-Gi-Oh",
       "pochette": "https://static.tvmaze.com/uploads/images/original_untouched/19/49898.jpg"
     }
+  ],
+  "generiques": [
+    {
+      "t": "Ride of the Valkyries",
+      "a": "Apocalypse Now",
+      "idApple": 310901670,
+      "q": "Ride of the Valkyries The Original Movies Orchestra",
+      "interprete": "The Original Movies Orchestra",
+      "voulue": true
+    },
+    {
+      "t": "Camping",
+      "a": "Camping",
+      "idApple": 1728667426,
+      "q": "Camping Jean-Yves d'Angelo",
+      "interprete": "Jean-Yves d'Angelo",
+      "voulue": true
+    },
+    {
+      "t": "Singin' in the Rain",
+      "a": "Chantons sous la pluie",
+      "idApple": 1455885774,
+      "q": "Singin' in the Rain Gene Kelly",
+      "interprete": "Gene Kelly",
+      "voulue": true,
+      "altA": [
+        "Singin in the Rain"
+      ]
+    },
+    {
+      "t": "Pure Imagination",
+      "a": "Charlie et la chocolaterie",
+      "idApple": 1440841512,
+      "q": "Pure Imagination Gene Wilder",
+      "interprete": "Gene Wilder",
+      "voulue": true,
+      "altA": [
+        "Willy Wonka"
+      ]
+    },
+    {
+      "t": "The John Dunbar Theme",
+      "a": "Danse avec les loups",
+      "idApple": 322943228,
+      "q": "The John Dunbar Theme John Barry",
+      "interprete": "John Barry",
+      "voulue": true,
+      "altA": [
+        "Danse avec les loups"
+      ]
+    },
+    {
+      "t": "Ice Dance",
+      "a": "Edward aux mains d'argent",
+      "idApple": 1440790067,
+      "q": "Ice Dance Danny Elfman",
+      "interprete": "Danny Elfman",
+      "voulue": true
+    },
+    {
+      "t": "Flash",
+      "a": "Flash Gordon",
+      "idApple": 6781023924,
+      "q": "Flash Queen",
+      "interprete": "Queen",
+      "voulue": true
+    },
+    {
+      "t": "Gremlins Theme",
+      "a": "Gremlins",
+      "idApple": 1614291038,
+      "q": "Gremlins Theme Jean-Michel Bernard",
+      "interprete": "Jean-Michel Bernard",
+      "voulue": true
+    },
+    {
+      "t": "Princes of the Universe",
+      "a": "Highlander",
+      "idApple": 6781081254,
+      "q": "Princes of the Universe Queen",
+      "interprete": "Queen",
+      "voulue": true
+    },
+    {
+      "t": "Jumanji",
+      "a": "Jumanji",
+      "idApple": 269526259,
+      "q": "Jumanji James Horner",
+      "interprete": "James Horner",
+      "voulue": true
+    },
+    {
+      "t": "La Guerre des boutons",
+      "a": "La Guerre des boutons",
+      "idApple": 1675145037,
+      "q": "La Guerre des boutons José Berghmans et son orchestre",
+      "interprete": "José Berghmans et son orchestre",
+      "voulue": true,
+      "altA": [
+        "La guerre des boutons"
+      ]
+    },
+    {
+      "t": "Dead Poets Society",
+      "a": "Le Cercle des poètes disparus",
+      "idApple": 1666249756,
+      "q": "Dead Poets Society Maurice Jarre",
+      "interprete": "Maurice Jarre",
+      "voulue": true,
+      "altA": [
+        "Le cercle des poetes disparus"
+      ]
+    },
+    {
+      "t": "Promentory",
+      "a": "Le Dernier des Mohicans",
+      "idApple": 307374945,
+      "q": "Promentory Trevor Jones",
+      "interprete": "Trevor Jones",
+      "voulue": true,
+      "altA": [
+        "Le dernier des mohicans"
+      ]
+    },
+    {
+      "t": "Mrs. Robinson",
+      "a": "Le Loup de Wall Street",
+      "idApple": 1463652181,
+      "q": "Mrs. Robinson Simon & Garfunkel",
+      "interprete": "Simon & Garfunkel",
+      "voulue": true
+    },
+    {
+      "t": "The Goonies 'R' Good Enough",
+      "a": "Les Goonies",
+      "idApple": 299116892,
+      "q": "The Goonies 'R' Good Enough Cyndi Lauper",
+      "interprete": "Cyndi Lauper",
+      "voulue": true
+    },
+    {
+      "t": "Les Rivières pourpres",
+      "a": "Les Rivières pourpres",
+      "idApple": 1874323097,
+      "q": "Les Rivières pourpres Bruno Coulais",
+      "interprete": "Bruno Coulais",
+      "voulue": true
+    },
+    {
+      "t": "Brothers in Arms",
+      "a": "Mad Max : Fury Road",
+      "idApple": 1454326485,
+      "q": "Brothers in Arms Junkie XL",
+      "interprete": "Junkie XL",
+      "voulue": true,
+      "altA": [
+        "Mad Max",
+        "Fury Road"
+      ]
+    },
+    {
+      "t": "Adagio for Strings",
+      "a": "Platoon",
+      "idApple": 594596762,
+      "q": "Adagio for Strings Leonard Bernstein & New York Philharmonic",
+      "interprete": "Leonard Bernstein & New York Philharmonic",
+      "voulue": true
+    },
+    {
+      "t": "Leaving Wallbrook",
+      "a": "Rain Man",
+      "idApple": 724501232,
+      "q": "Leaving Wallbrook Hans Zimmer",
+      "interprete": "Hans Zimmer",
+      "voulue": true
+    },
+    {
+      "t": "Close Encounters",
+      "a": "Rencontres du troisième type",
+      "idApple": 1452864080,
+      "q": "Close Encounters Los Angeles Philharmonic & Zubin Mehta",
+      "interprete": "Los Angeles Philharmonic & Zubin Mehta",
+      "voulue": true,
+      "altA": [
+        "Rencontres du 3e type"
+      ]
+    },
+    {
+      "t": "I Will Follow Him",
+      "a": "Sister Act",
+      "idApple": 1600986199,
+      "q": "I Will Follow Him Deloris & The Sisters",
+      "interprete": "Deloris & The Sisters",
+      "voulue": true
+    },
+    {
+      "t": "Why So Serious?",
+      "a": "The Dark Knight",
+      "idApple": 284530521,
+      "q": "Why So Serious? James Newton Howard & Hans Zimmer",
+      "interprete": "James Newton Howard & Hans Zimmer",
+      "voulue": true,
+      "altA": [
+        "Batman The Dark Knight",
+        "Le Chevalier noir"
+      ]
+    },
+    {
+      "t": "Cuban Pete",
+      "a": "The Mask",
+      "idApple": 206733742,
+      "q": "Cuban Pete Jim Carrey",
+      "interprete": "Jim Carrey",
+      "voulue": true
+    }
   ]
 }

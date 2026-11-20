@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⭐ NOUVEAUTÉS — Films cultes</title>
+<style>
+:root { --fond:#0f1116; --carte:#171a21; --trait:#262b36; --texte:#e8eaf0;
+        --doux:#9aa3b5; --jaune:#ffd166; --vert:#7ee787; --rouge:#ff8a8a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--fond); color:var(--texte);
+       font:16px/1.5 -apple-system,Segoe UI,Roboto,sans-serif; padding:22px 14px 90px }
+header { max-width:980px; margin:0 auto 22px }
+h1 { font-size:26px; margin:0 0 6px }
+.sous { color:var(--doux); font-size:15px; margin:0 }
+.retour { color:var(--jaune); font-size:14px; text-decoration:none; display:inline-block; margin-bottom:10px }
+.liste { max-width:980px; margin:0 auto; display:grid; gap:14px }
+.piste { display:grid; grid-template-columns:54px 100px 1fr; gap:14px; align-items:start;
+         background:var(--carte); border:1px solid var(--trait); border-radius:14px; padding:12px }
+.num { font-size:24px; font-weight:800; color:var(--jaune); text-align:center; padding-top:4px }
+.pochette { width:100px; height:100px; border-radius:10px; object-fit:cover;
+            background:#222; display:block }
+.reponse { font-size:19px; font-weight:700; margin:0 0 2px }
+.detail { color:var(--doux); font-size:13px; margin:0 0 9px }
+audio { width:100%; max-width:420px; height:36px; margin-bottom:8px; display:block }
+.essais { display:flex; flex-wrap:wrap; gap:8px; align-items:center }
+button { font:inherit; font-size:14px; background:#222838; color:var(--texte);
+         border:1px solid var(--trait); border-radius:999px; padding:7px 13px; cursor:pointer }
+button:hover { border-color:var(--jaune) }
+button.ecoute { border-color:var(--vert); color:var(--vert) }
+input.b-texte { font:inherit; font-size:14px; background:#10141c; color:var(--texte);
+                border:1px solid var(--trait); border-radius:999px; padding:7px 13px; width:190px }
+.verdict { font-size:14px; width:100%; min-height:1px }
+.verdict.bon { color:var(--vert) }
+.verdict.rate { color:var(--rouge) }
+.doute { font-size:12px; font-weight:600; color:var(--jaune); border:1px solid #6b5a22;
+         background:#2a2412; border-radius:999px; padding:2px 8px; vertical-align:middle;
+         white-space:nowrap }
+@media (max-width:620px) {
+  .piste { grid-template-columns:38px 68px 1fr; gap:9px; padding:10px }
+  .pochette { width:68px; height:68px }
+  .num { font-size:19px }
+  .reponse { font-size:16px }
+  input.b-texte { width:140px }
+}
+</style>
+</head>
+<body>
+<header>
+<a class="retour" href="index.html">← toutes les catégories</a>
+<h1>🍿 ⭐ NOUVEAUTÉS — Films cultes</h1>
+<p class="sous">23 morceaux. Écoute, et note les numéros qui ne vont pas : mauvaise musique, pochette à côté, réponse mal dite, mot refusé.</p>
+</header>
+<div class="liste">
+<div class="piste" data-i="0">
+  <div class="num">1</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/14/5b/db/mzi.eprgrmff.tif/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/14/5b/db/mzi.eprgrmff.tif/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Apocalypse Now</p>
+    <p class="detail">musique : Ride of the Valkyries · album : Movies And Classics Vol.2</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ef/fe/6e/effe6e31-154d-5ea0-fcfc-d053cbd5b0be/mzaf_14183129573073513869.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="1">
+  <div class="num">2</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/01/1e/61/011e6167-cbb7-2852-c692-6db86a49009b/3663729279248_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/01/1e/61/011e6167-cbb7-2852-c692-6db86a49009b/3663729279248_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Camping</p>
+    <p class="detail">musique : Camping · album : Camping 3 (Bande originale du film)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/7b/47/93/7b479329-c361-af7b-8d1b-32af5aa6a8e1/mzaf_4561182037321558075.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="2">
+  <div class="num">3</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/5a/5e/c2/5a5ec258-75ae-8d5f-2a13-09495d6fa8f7/794043185656.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/5a/5e/c2/5a5ec258-75ae-8d5f-2a13-09495d6fa8f7/794043185656.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Chantons sous la pluie</p>
+    <p class="detail">musique : Singin' in the Rain · album : Singin' in the Rain (Original Motion Picture Soundtrack) [Deluxe Version]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/81/c5/b0/81c5b02c-8fa1-81f7-eafd-f792c8892fe5/mzaf_17724809493012138393.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="3">
+  <div class="num">4</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/76/b1/92/76b1922c-694b-f3b4-b33c-3da6a709f1a6/00602547585851.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/76/b1/92/76b1922c-694b-f3b4-b33c-3da6a709f1a6/00602547585851.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Charlie et la chocolaterie</p>
+    <p class="detail">musique : Pure Imagination · album : Willy Wonka &amp; the Chocolate Factory (Music From the Original Soundtrack of the Paramount Picture)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1f/10/85/1f108524-d765-e89e-c19d-5481e9b6f521/mzaf_16184886528717532727.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="4">
+  <div class="num">5</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e3/7c/19/e37c1955-0055-941b-604d-1d3555a90e06/mzi.rhevglql.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e3/7c/19/e37c1955-0055-941b-604d-1d3555a90e06/mzi.rhevglql.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Danse avec les loups</p>
+    <p class="detail">musique : The John Dunbar Theme · album : Dances With Wolves (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/14/b2/3e/14b23eb0-5698-2557-cec7-d29b049d1897/mzaf_11917674776881577241.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="5">
+  <div class="num">6</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2e/ec/0b/2eec0b4b-cac1-5d51-2ab8-4e83a1f56b94/00008811013325.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2e/ec/0b/2eec0b4b-cac1-5d51-2ab8-4e83a1f56b94/00008811013325.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Edward aux mains d'argent</p>
+    <p class="detail">musique : Ice Dance · album : Edward Scissorhands (Music From the Motion Picture)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d7/8f/83/d78f83ca-8ed3-4bbd-531a-37f71ca5b997/mzaf_310250659656718187.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="6">
+  <div class="num">7</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ac/eb/9e/aceb9ec9-4d41-f79f-8597-247e69eea118/602527717692.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ac/eb/9e/aceb9ec9-4d41-f79f-8597-247e69eea118/602527717692.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Flash Gordon</p>
+    <p class="detail">musique : Flash · album : Flash Gordon (Original Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e1/a8/64/e1a86465-133c-3ed8-1349-7039b4cb417d/mzaf_1770811153880439634.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="7">
+  <div class="num">8</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/0a/7d/0f/0a7d0f9a-30a6-d972-6044-e5614726e39b/cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/0a/7d/0f/0a7d0f9a-30a6-d972-6044-e5614726e39b/cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Gremlins</p>
+    <p class="detail">musique : Gremlins Theme · album : The Singular World of Jerry Goldsmith as Seen by Jean-Michel Bernard</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/e0/5a/01/e05a013c-6b37-1973-8822-f3851294ca6f/mzaf_11116911125444597362.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="8">
+  <div class="num">9</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/15/c7/55/15c755bc-7603-3ce3-e243-e59f1f9863ea/602527724171.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/15/c7/55/15c755bc-7603-3ce3-e243-e59f1f9863ea/602527724171.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Highlander</p>
+    <p class="detail">musique : Princes of the Universe · album : The Platinum Collection</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/53/b4/1a/53b41a54-0e4a-2403-1246-4cd2d1fdfac5/mzaf_3850787809023369287.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="9">
+  <div class="num">10</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/a8/25/c4/mzi.ztnknajd.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/a8/25/c4/mzi.ztnknajd.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Jumanji</p>
+    <p class="detail">musique : Jumanji · album : Jumanji (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/d7/a5/4b/d7a54b24-634a-ec15-67a5-e5d4ff5b5110/mzaf_2780639454612828764.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="10">
+  <div class="num">11</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4f/4d/14/4f4d1471-f26f-3abd-5b99-158e4743c457/886449303434.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/4f/4d/14/4f4d1471-f26f-3abd-5b99-158e4743c457/886449303434.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">La Guerre des boutons</p>
+    <p class="detail">musique : La Guerre des boutons · album : La guerre des boutons (Bande originale du film de Yves Robert) - EP</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/90/3c/02/903c02ee-c373-cde0-319b-773e6bd6a672/mzaf_279184203415193596.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="11">
+  <div class="num">12</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c4/2a/5c/c42a5cc9-eab7-21f4-3a0c-2e3e8f6d919a/196589837042.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/c4/2a/5c/c42a5cc9-eab7-21f4-3a0c-2e3e8f6d919a/196589837042.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Cercle des poètes disparus</p>
+    <p class="detail">musique : Dead Poets Society · album : Dead Poets Society (Peter Weir's Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/13/82/39/1382391f-28f9-dc26-7930-b9670ece3d70/mzaf_1701046508094230215.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="12">
+  <div class="num">13</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/ff/d1/af/ffd1af6a-47fa-e897-b2ac-83c0b4d96578/mzi.bqakaqur.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/ff/d1/af/ffd1af6a-47fa-e897-b2ac-83c0b4d96578/mzi.bqakaqur.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Dernier des Mohicans</p>
+    <p class="detail">musique : Promentory · album : Last of the Mohicans (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/cf/18/53/cf185363-6ba9-afd1-51a4-bdce1305ac17/mzaf_825087074984451214.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="13">
+  <div class="num">14</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/03/30/2f/03302f7a-3bba-084a-3ed9-c9ac018fadfd/886447698341.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/03/30/2f/03302f7a-3bba-084a-3ed9-c9ac018fadfd/886447698341.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Le Loup de Wall Street</p>
+    <p class="detail">musique : Mrs. Robinson · album : The Best of Simon &amp; Garfunkel</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/95/32/a8/9532a81f-da90-bc0d-0ae2-acd12a312527/mzaf_2594578376859699098.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="14">
+  <div class="num">15</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music/a7/b9/3f/mzi.onqtzxrs.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music/a7/b9/3f/mzi.onqtzxrs.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Goonies</p>
+    <p class="detail">musique : The Goonies 'R' Good Enough · album : The Goonies (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ce/79/7b/ce797be5-03e7-f706-3b50-8c8efbdaf433/mzaf_8379319399006545371.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="15">
+  <div class="num">16</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/56/a1/d4/56a1d401-0fe5-a083-2fba-d8a032ae1f35/3663729427007_cover.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/56/a1/d4/56a1d401-0fe5-a083-2fba-d8a032ae1f35/3663729427007_cover.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Les Rivières pourpres</p>
+    <p class="detail">musique : Les Rivières pourpres · album : Les Rivières pourpres (Bande originale du film)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d3/1a/4e/d31a4ee3-dd65-1576-012a-7e7bf18dc689/mzaf_6780390700617461357.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="16">
+  <div class="num">17</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9b/3d/7e/9b3d7e2c-4b00-912f-4524-f0e4013c5b1c/794043184246.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9b/3d/7e/9b3d7e2c-4b00-912f-4524-f0e4013c5b1c/794043184246.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Mad Max : Fury Road</p>
+    <p class="detail">musique : Brothers in Arms · album : Mad Max: Fury Road (Original Motion Picture Soundtrack) [Deluxe Version]</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/34/68/89/3468897a-5b02-5779-3e4c-f4280d7cbf1f/mzaf_7053927198605704346.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="17">
+  <div class="num">18</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/8a/37/b1/8a37b1ea-6c18-d5ab-bff6-ae62b8b91e50/886443706705.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/8a/37/b1/8a37b1ea-6c18-d5ab-bff6-ae62b8b91e50/886443706705.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Platoon</p>
+    <p class="detail">musique : Adagio for Strings · album : Barber: Adagio for Strings - Copland: Appalachian Spring, Rodeo &amp; Billy the Kid</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d0/85/31/d08531a8-2728-39fe-e6be-aca4da1a53af/mzaf_323540302720620860.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="18">
+  <div class="num">19</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/97/da/8e/97da8e28-3d6e-26ca-e0d1-6b34f29479b5/13ULAIM55428.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/97/da/8e/97da8e28-3d6e-26ca-e0d1-6b34f29479b5/13ULAIM55428.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rain Man</p>
+    <p class="detail">musique : Leaving Wallbrook · album : Rain Man (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f1/94/f2/f194f2e5-f4be-1ad9-4718-f012229dff45/mzaf_5823137774489789307.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="19">
+  <div class="num">20</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/93/8f/90/938f9029-bf32-df20-e643-7a14f929a9fa/06UMGIM47571.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/93/8f/90/938f9029-bf32-df20-e643-7a14f929a9fa/06UMGIM47571.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Rencontres du troisième type</p>
+    <p class="detail">musique : Close Encounters · album : Holst: The Planets - John Williams: Star Wars Suite - Strauss: Also Sprach Zarathustra</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2d/c5/8f/2dc58fec-e9a3-eea9-5bf8-4ade817cbb78/mzaf_8431683699553719376.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="20">
+  <div class="num">21</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/27/b0/30/27b030b5-3ff5-b854-fb7a-1f2600deff4b/21UM1IM54970.rgb.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/27/b0/30/27b030b5-3ff5-b854-fb7a-1f2600deff4b/21UM1IM54970.rgb.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">Sister Act</p>
+    <p class="detail">musique : I Will Follow Him · album : Sister Act (Music from the Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9c/f4/b5/9cf4b534-9c59-2b9b-4ef7-37fe2a0fac46/mzaf_13148433416805479152.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="21">
+  <div class="num">22</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fa/ca/e9/facae98b-9cf4-4c8e-be22-f47225eb8316/mzi.wevryeas.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fa/ca/e9/facae98b-9cf4-4c8e-be22-f47225eb8316/mzi.wevryeas.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Dark Knight</p>
+    <p class="detail">musique : Why So Serious? · album : The Dark Knight (Original Motion Picture Soundtrack)</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/98/5d/97985da8-5a50-bf01-ad64-3387d26ef2f7/mzaf_1097861028012296191.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+<div class="piste" data-i="22">
+  <div class="num">23</div>
+  <a href="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/61/5f/a9/615fa9de-6776-7158-1ae7-193d9160ede5/886970330923.jpg/600x600bb.jpg" target="_blank" rel="noopener"><img class="pochette" loading="lazy" alt="" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/61/5f/a9/615fa9de-6776-7158-1ae7-193d9160ede5/886970330923.jpg/600x600bb.jpg"></a>
+  <div>
+    <p class="reponse">The Mask</p>
+    <p class="detail">musique : Cuban Pete · album : Cinema Hits</p>
+    <audio controls preload="none" src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/07/c8/5a07c8dc-1b39-b7e6-d85a-c28acff9dcf8/mzaf_7760691004891116704.plus.aac.p.m4a"></audio>
+    <div class="essais">
+      <button type="button" class="b-dire">🔊 Entendre la réponse</button>
+      <button type="button" class="b-micro">🎙️ Répondre à la voix</button>
+      <input class="b-texte" type="text" placeholder="ou tape, puis Entrée…" autocomplete="off" spellcheck="false">
+      <span class="verdict"></span>
+    </div>
+  </div>
+</div>
+</div>
+<script>window.PISTES = [{"t": "Ride of the Valkyries", "a": "Apocalypse Now", "at": "", "aa": "The Original Movies Orchestra", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Camping", "a": "Camping", "at": "", "aa": "Jean-Yves d'Angelo", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Singin' in the Rain", "a": "Chantons sous la pluie", "at": "", "aa": "Gene Kelly", "altT": [], "altA": ["Singin in the Rain"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Pure Imagination", "a": "Charlie et la chocolaterie", "at": "", "aa": "Gene Wilder", "altT": [], "altA": ["Willy Wonka"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "The John Dunbar Theme", "a": "Danse avec les loups", "at": "", "aa": "John Barry", "altT": [], "altA": ["Danse avec les loups"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Ice Dance", "a": "Edward aux mains d'argent", "at": "", "aa": "Danny Elfman", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Flash", "a": "Flash Gordon", "at": "", "aa": "Queen", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Gremlins Theme", "a": "Gremlins", "at": "", "aa": "Jean-Michel Bernard", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Princes of the Universe", "a": "Highlander", "at": "", "aa": "Queen", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Jumanji", "a": "Jumanji", "at": "", "aa": "James Horner", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "La Guerre des boutons", "a": "La Guerre des boutons", "at": "", "aa": "José Berghmans et son orchestre", "altT": [], "altA": ["La guerre des boutons"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Dead Poets Society", "a": "Le Cercle des poètes disparus", "at": "", "aa": "Maurice Jarre", "altT": [], "altA": ["Le cercle des poetes disparus"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Promentory", "a": "Le Dernier des Mohicans", "at": "", "aa": "Trevor Jones", "altT": [], "altA": ["Le dernier des mohicans"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Mrs. Robinson", "a": "Le Loup de Wall Street", "at": "", "aa": "Simon & Garfunkel", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "The Goonies 'R' Good Enough", "a": "Les Goonies", "at": "", "aa": "Cyndi Lauper", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Les Rivières pourpres", "a": "Les Rivières pourpres", "at": "", "aa": "Bruno Coulais", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Brothers in Arms", "a": "Mad Max : Fury Road", "at": "", "aa": "Junkie XL", "altT": [], "altA": ["Mad Max", "Fury Road"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Adagio for Strings", "a": "Platoon", "at": "", "aa": "Leonard Bernstein & New York Philharmonic", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Leaving Wallbrook", "a": "Rain Man", "at": "", "aa": "Hans Zimmer", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Close Encounters", "a": "Rencontres du troisième type", "at": "", "aa": "Los Angeles Philharmonic & Zubin Mehta", "altT": [], "altA": ["Rencontres du 3e type"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "I Will Follow Him", "a": "Sister Act", "at": "", "aa": "Deloris & The Sisters", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Why So Serious?", "a": "The Dark Knight", "at": "", "aa": "James Newton Howard & Hans Zimmer", "altT": [], "altA": ["Batman The Dark Knight", "Le Chevalier noir"], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}, {"t": "Cuban Pete", "a": "The Mask", "at": "", "aa": "Jim Carrey", "altT": [], "altA": [], "strict": false, "sol": "artiste", "lab": "Artiste", "langue": "fr", "lgT": "", "lgA": "", "ditT": "", "ditA": ""}];</script>
+<script src="../js/match.js?v=239"></script>
+<script src="verif.js?v=239"></script>
+</body>
+</html>
