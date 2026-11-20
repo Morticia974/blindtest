@@ -1162,14 +1162,12 @@ var Playlists = (function () {
           q: "Shape of My Heart Sting", interprete: "Sting", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/b1/73/bb/b173bb13-7d61-5973-71f2-f1fa5db4bdc6/19UMGIM61624.rgb.jpg/600x600bb.jpg", voulue: true },
         { t: "Men in Black", a: "Men in Black", altA: ["MIB"], idApple: 279366591,
           q: "Men in Black Will Smith", interprete: "Will Smith", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/eb/3c/15/eb3c1520-e377-fe3f-e53d-32da66fa4490/888880552938.jpg/600x600bb.jpg", voulue: true },
-        { t: "Oh, Pretty Woman", a: "Pretty Woman", altA: ["Jolie femme"], idApple: 872478306,
-          q: "Oh, Pretty Woman Roy Orbison", interprete: "Roy Orbison", voulue: true },
+        
         { t: "Push It to the Limit", a: "Scarface", idApple: 1440761588,
           q: "Push It to the Limit Paul Engemann", interprete: "Paul Engemann", voulue: true },
         { t: "I Believe I Can Fly", a: "Space Jam", idApple: 303156673,
-          q: "I Believe I Can Fly R. Kelly", interprete: "R. Kelly", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/74/0d/94/740d9464-ef6c-6db0-5617-ffee13f43cd0/603497870356.jpg/600x600bb.jpg", voulue: true },
-        { t: "Taxi", a: "Taxi", idApple: 1751339110,
-          q: "Taxi Fonky Family", interprete: "Fonky Family", voulue: true }
+          q: "I Believe I Can Fly R. Kelly", interprete: "R. Kelly", pochette: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/74/0d/94/740d9464-ef6c-6db0-5617-ffee13f43cd0/603497870356.jpg/600x600bb.jpg", voulue: true }
+        
       ]
     },
     {
